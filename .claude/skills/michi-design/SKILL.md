@@ -50,8 +50,9 @@ that already exist. Don't invent new visual styles, and don't iterate on looks i
 **Type**
 - Zen Kaku Gothic New (400, 500, 700) for everything you read and for headings (700).
 - Zen Old Mincho (600) for the big Japanese on card faces and the term on a word or kanji page.
-- Load both with `next/font/google` (`display: swap`) and expose them as `--font-ui`, `--font-head`,
-  `--font-card`.
+- Load both from the Google Fonts stylesheet in `src/app/layout.tsx` (`display=swap`), exposed as
+  `--font-ui`, `--font-head`, `--font-card`. Not `next/font/google`: it downloads all ~600 Japanese
+  unicode-range files at every dev start and build, and the dev server times out on them.
 - Every Japanese string sits in an element with `lang="ja"`, so kanji take Japanese shapes, not Chinese.
 - Furigana uses `<ruby>` with `<rt>` at 0.4em in `--ink2`. Content stores it as ruby markup
   (`{食|た}べる`, see `content/schema.ts`); render it with one shared component.

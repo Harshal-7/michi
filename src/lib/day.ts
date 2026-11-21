@@ -103,11 +103,24 @@ export function formatShort(date: StudyDate, thisYear?: number): string {
   return thisYear === undefined || d.getUTCFullYear() === thisYear ? base : `${base} ${d.getUTCFullYear()}`;
 }
 
+/** "1 Jan", for small badges. */
+export function formatDayMonth(date: StudyDate): string {
+  const d = new Date(toUtcMidnight(date));
+  return `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()].slice(0, 3)}`;
+}
+
 // ---------------------------------------------------------------------------
 // Phases
 
 export const PHASE_IDS = ["n5", "n4", "n3", "work"] as const;
 export type PhaseId = (typeof PHASE_IDS)[number];
+
+export const PHASE_NAMES: Record<PhaseId, string> = {
+  n5: "N5 refresh",
+  n4: "N4 build",
+  n3: "N3 build",
+  work: "Work Japanese",
+};
 
 /** The part of the settings phaseFor needs: when each phase starts. */
 export type PhaseStarts = { phases: Record<PhaseId, { start: StudyDate }> };

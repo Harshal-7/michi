@@ -12,11 +12,9 @@ export const THEME_KEY = "michi:theme";
 
 /**
  * The page colour of each theme, for the phone's address bar and the manifest. They repeat
- * --page in src/app/globals.css (brand.test.ts checks), because neither can read CSS.
+ * --page in src/app/globals.css (theme.test.ts checks), because neither can read CSS.
  */
 export const PAGE_COLOR: Record<ResolvedTheme, string> = { light: "#f3eee4", dark: "#15120e" };
-/** --accent in light, the icon's background. */
-export const ACCENT_COLOR = "#b03a22";
 
 export function parseThemeChoice(value: unknown): ThemeChoice {
   return THEMES.includes(value as ThemeChoice) ? (value as ThemeChoice) : "system";
