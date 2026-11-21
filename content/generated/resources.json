@@ -1,0 +1,11 @@
+[
+  {
+    "slug": "res:jlpt-samples",
+    "title": "JLPT official sample questions",
+    "url": "https://www.jlpt.jp/e/samples/forlearners.html",
+    "skill": "jlpt",
+    "levels": ["N5", "N4", "N3"],
+    "free": true,
+    "notes": "Sample papers for every level, with audio and answers."
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "slug": "word:食べる:たべる",
+    "level": "N5",
+    "term": "食べる",
+    "reading": "たべる",
+    "meanings": ["to eat"],
+    "pos": ["verb-ichidan"],
+    "usuallyKana": false,
+    "example": { "ja": "{朝|あさ}ごはんを{食|た}べました。", "en": "I ate breakfast.", "source": "michi" }
+  }
+]

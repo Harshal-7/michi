@@ -1,0 +1,10 @@
+[
+  {
+    "slug": "prompt:n5:self-intro",
+    "level": "N5",
+    "prompt": "Introduce yourself: your name, where you're from and your job.",
+    "hints": ["〜です", "〜から{来|き}ました"],
+    "model": "はじめまして。アルジュンです。インドから{来|き}ました。エンジニアです。よろしくお{願|ねが}いします。",
+    "modelEn": "Nice to meet you. I'm Arjun. I'm from India. I'm an engineer. Pleased to meet you."
+  }
+]

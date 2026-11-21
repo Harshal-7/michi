@@ -1,0 +1,13 @@
+[
+  {
+    "slug": "kanji:日",
+    "kanji": "日",
+    "level": "N5",
+    "meanings": ["day", "sun", "Japan"],
+    "on": ["ニチ", "ジツ"],
+    "kun": ["ひ", "-び", "-か"],
+    "strokes": 4,
+    "examples": [{ "term": "日曜日", "reading": "にちようび", "meaning": "Sunday" }],
+    "lookalikes": ["目", "白"]
+  }
+]

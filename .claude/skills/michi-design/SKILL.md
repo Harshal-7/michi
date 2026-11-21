@@ -1,0 +1,125 @@
+---
+name: michi-design
+description: Michi's design rules (the approved mix "Colours Washi · Fonts 2 Print · Cards Soft · Nav Pill", light and dark). Read this before any UI work in this repo, including a new screen, a new part, a restyle or a layout change, so the result matches the approved canvas instead of inventing a new look.
+---
+
+# Designing in Michi
+
+Harshal designs the look on a canvas first and approves it. Build what the canvas shows, from the parts
+that already exist. Don't invent new visual styles, and don't iterate on looks in code.
+
+## 1. Where the design lives
+
+- **The canvas** (source of truth): https://claude.ai/artifact/AKqg3xuo9DhzzdtdBK3ZMY, page
+  **Final · your mix**. Read a board's source with the Artifact tool (`read`, `path`:
+  `project/<Board>.dc.html`). A copy of every board is also on Harshal's machine in
+  `~/Developer/docs/learning/japanese/michi-canvas/` (outside this repo).
+- **The approved plan** says what each screen does: `~/Developer/docs/learning/japanese/michi-plan.md`
+  (outside this repo).
+- Boards on the Final page, by row:
+  1. Daily loop: `F_SignIn`, `F_Today`, `F_TodayDone`, `F_AddWord`, `F_QuickCheckKana`,
+     `F_QuickCheckWords`, `F_ReviewFront`, `F_ReviewBack`, `F_ReviewDone`.
+  2. Practice: `F_Practice`, `F_QuizQuestion`, `F_Quiz` (results), `F_MockTest`, `F_MockResults`,
+     `F_Speaking`, `F_Shadowing`.
+  3. Grammar and logs: `F_Grammar`, `F_GrammarPoint`, `F_Log`, `F_ClassLog`, `F_Immersion`, `F_Import`.
+  4. More: `F_More`, `F_Work`, `F_WorkIntro`, `F_Resources`, `F_Progress`, `F_Decks`, `F_Settings`.
+  5. Laptop: `F_TodayWeb`, `F_ReviewWeb`, `F_GrammarWeb`, `F_ProgressWeb`.
+  6. Dark: `F_DarkToday`, `F_DarkReviewBack`, `F_DarkPractice`, `F_DarkGrammar`, `F_DarkClassLog`,
+     `F_DarkTodayWeb`. Every board also has a light/dark `theme` prop.
+  7. Parts and states: `F_Parts` (buttons, chips, inputs, rating buttons, task rows, progress bars, and
+     the empty, loading, "grades waiting to save", no-signal and "new version, reload" states), `F_Nav`.
+- How the boards are built: most `F_` boards style themselves inline with the tokens in
+  `project/michi.css`. `F_Today`, `F_ReviewFront`/`Back`, `F_Quiz`, `F_ClassLog` and `F_TodayWeb` are
+  wrappers that pass `colors="washi" fonts="2" cards="soft" nav="pill"` to the engine boards
+  (`Today`, `Review`, `Quiz`, `ClassLog`, `TodayWeb`); read the engine with those values. Ignore the
+  "Three looks" and "Mix and match" pages: they were the options, not the decision.
+
+## 2. How to work
+
+1. **Find the closest board** and build from the same parts, sizes and spacing.
+2. **If a screen or element has no design** (a new kind of screen, a new visual piece, a new layout),
+   don't improvise it in code. Draw it on the canvas next to the related boards, using the same tokens
+   and parts, tell Harshal, and build it once it's approved. Small variations of an existing pattern
+   (another settings row, another chip) don't need this.
+3. **Use only tokens.** No hex colours outside the token blocks in `src/app/globals.css`, no new font
+   sizes, radii or shadows when an existing one fits, no one-off button styles.
+4. **Check before handing over** (section 6), and say what you couldn't check.
+
+## 3. The system
+
+**Type**
+- Zen Kaku Gothic New (400, 500, 700) for everything you read and for headings (700).
+- Zen Old Mincho (600) for the big Japanese on card faces and the term on a word or kanji page.
+- Load both with `next/font/google` (`display: swap`) and expose them as `--font-ui`, `--font-head`,
+  `--font-card`.
+- Every Japanese string sits in an element with `lang="ja"`, so kanji take Japanese shapes, not Chinese.
+- Furigana uses `<ruby>` with `<rt>` at 0.4em in `--ink2`. Content stores it as ruby markup
+  (`{食|た}べる`, see `content/schema.ts`); render it with one shared component.
+
+**Colour** (light; dark in brackets). Tokens live in `src/app/globals.css`, with the dark set under
+`[data-theme="dark"]`.
+
+| Token | Light | Dark | Use |
+|---|---|---|---|
+| `--page` | #F3EEE4 | #15120E | page background |
+| `--surface` | #FBF8F1 | #1E1A15 | cards, nav, inputs |
+| `--surface2` | #ECE5D8 | #28231C | wells, chips, count tiles |
+| `--ink` | #1D1A16 | #EEE6D7 | text |
+| `--ink2` | #5B544A | #B2A794 | secondary text, furigana |
+| `--line` | #D9CFBE | #3A332A | borders, dividers |
+| `--accent` | #B03A22 | #E26A4E | the one solid button, current nav item, links that act |
+| `--on-accent` | #FFF8F0 | #1A0D08 | text on accent |
+| `--accent-soft` | #F2DCD3 | #3B2119 | current nav pill, picked chips |
+| `--good` | #2F6B45 | #88BC95 | done, on track, Good |
+| `--warn` | #8A560A | #DDA64A | 1–3 days behind, waiting to save |
+| `--again` | #A8361F | #EC7E63 | Again, missed |
+| `--easy` | #2F5C8A | #8DB3E0 | Easy |
+| `--track` | #E3D9C8 | #2E2821 | progress bar track |
+| `--glow` | rgba(176,58,34,.16) | rgba(226,106,78,.18) | nav shadow |
+| `--shadow` | rgba(40,30,20,.08) | rgba(0,0,0,.35) | card shadow |
+
+Rating buttons: Again `--again`, Hard `--ink`, Good `--good`, Easy `--easy`, each with its next interval.
+
+**Shape**
+- Cards: `--radius` 18px, no border, `--card-shadow` (`0 1px 2px var(--shadow), 0 8px 24px var(--shadow)`).
+- The one "next up" card on a screen gets `--hero-shadow` (a 2px accent ring plus the soft shadow).
+- Buttons and chips are pills (`--btn-radius` 999px). One solid accent button per screen; the rest are
+  quiet (surface or text buttons).
+- Targets at least 44px tall. Focus ring visible on everything you can tab to.
+
+**Navigation**
+- Phone: the floating pill bar from `F_Nav` (Today · Review · Practice · Grammar · Log; 22px stroke icons
+  at 1.6; the current item gets `--accent-soft` with `--accent` text). Progress, Work Japanese,
+  Resources, Decks and Settings live in the More sheet (`F_More`). The "+ word" quick add (`F_AddWord`)
+  is reachable from every screen.
+- Laptop (from 1024px wide): a sidebar with everything. Today, Review, Grammar and Progress have their
+  own laptop boards; every other screen is the sidebar plus the phone layout centred, at most 720px wide.
+
+**Theme**: system, light or dark, set by a script in `<head>` before the page paints (the same way the
+games app does it), stored per device.
+
+**Words**
+- Calm, plain and short. Say what happens ("Start", "Review the 10 mistakes").
+- No guilt about missed days and no hype. Numbers must agree with each other across a screen.
+- Mock scores are a "rough pass guide", never a promise of passing.
+
+## 4. States every screen needs
+
+Empty, loading, done for today, "grades waiting to save", no signal and "new version, reload" are drawn
+on `F_Parts` and `F_TodayDone`. Use those, don't invent new ones.
+
+## 5. Don'ts
+
+- Don't add colours, fonts, shadows, radii or button styles outside the token blocks.
+- Don't put Japanese text in an element without `lang="ja"`.
+- Don't iterate on a look in code to see what Harshal thinks. Draw it on the canvas.
+- Don't use `:has()` on `html` or `body`.
+
+## 6. Before you hand over
+
+- [ ] Phone width (390px) and a laptop (1280×800) both match their boards.
+- [ ] Light and dark.
+- [ ] Keyboard focus visible, targets at least 44px, text contrast at least 4.5:1.
+- [ ] Reduced motion: nothing moves that shouldn't, and nothing is hidden.
+- [ ] One solid accent button per screen; no hard-coded colours; `lang="ja"` on Japanese.
+- [ ] `pnpm check` passes. Say which device or screen size you didn't check.
