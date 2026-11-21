@@ -13,14 +13,18 @@ import { seed, seedIfChanged, type SeedSummary } from "@/db/seed/seed";
 
 if (existsSync(".env.local")) process.loadEnvFile(".env.local");
 
-function connectionString(): string {
+function connectionString(command: string): string {
   // Migrations and the seed are long-ish sessions: prefer a direct connection over the pooler.
   const url = process.env.DATABASE_URL_UNPOOLED || process.env.DATABASE_URL;
-  if (!url) {
-    console.error("DATABASE_URL isn't set. Copy .env.example to .env.local, or run `pnpm db:up` first.");
-    process.exit(1);
+  if (url) return url;
+  if (command === "deploy" && process.env.VERCEL) {
+    // The first Vercel build runs before Neon is connected. Let it finish: the app then shows
+    // what's missing on the sign-in page, and the next deploy migrates and seeds.
+    console.warn("⚠ DATABASE_URL isn't set, so migrations and the seed were skipped. Connect Neon in Vercel → Storage.");
+    process.exit(0);
   }
-  return url;
+  console.error("DATABASE_URL isn't set. Copy .env.example to .env.local and run `pnpm db:up`.");
+  process.exit(1);
 }
 
 function report(summary: SeedSummary) {
@@ -36,7 +40,7 @@ async function main(command: string | undefined) {
     console.error("Usage: tsx scripts/db.ts migrate | seed | deploy");
     process.exit(1);
   }
-  const db = createDb(connectionString(), { max: 1 });
+  const db = createDb(connectionString(command!), { max: 1 });
   try {
     if (command === "migrate" || command === "deploy") {
       await runMigrations(db);
