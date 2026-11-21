@@ -1,11 +1,554 @@
 [
   {
+    "slug": "res:tofugu-hiragana",
+    "title": "Tofugu: Learn Hiragana",
+    "url": "https://www.tofugu.com/japanese/learn-hiragana/",
+    "skill": "kana",
+    "levels": [
+      "N5"
+    ],
+    "free": true,
+    "notes": "A mnemonic for each of the 46 hiragana, with practice at the end of each row."
+  },
+  {
+    "slug": "res:tofugu-katakana",
+    "title": "Tofugu: Learn Katakana",
+    "url": "https://www.tofugu.com/japanese/learn-katakana/",
+    "skill": "kana",
+    "levels": [
+      "N5"
+    ],
+    "free": true,
+    "notes": "The same approach for katakana, including the extra loanword sounds."
+  },
+  {
+    "slug": "res:realkana",
+    "title": "Real Kana",
+    "url": "https://realkana.com/",
+    "skill": "kana",
+    "levels": [
+      "N5"
+    ],
+    "free": true,
+    "notes": "Quick kana drills: pick the rows you want and type the romaji."
+  },
+  {
+    "slug": "res:kanji-alive",
+    "title": "Kanji alive",
+    "url": "https://kanjialive.com/",
+    "skill": "kanji",
+    "levels": [
+      "N5",
+      "N4",
+      "N3"
+    ],
+    "free": true,
+    "notes": "Stroke-order animations, readings and audio for over 1,200 kanji."
+  },
+  {
+    "slug": "res:kanjivg",
+    "title": "KanjiVG",
+    "url": "https://kanjivg.tagaini.net/",
+    "skill": "kanji",
+    "levels": [
+      "N5",
+      "N4",
+      "N3"
+    ],
+    "free": true,
+    "notes": "Stroke-order diagrams for every kanji; many apps draw theirs from it."
+  },
+  {
+    "slug": "res:kanshudo",
+    "title": "Kanshudo",
+    "url": "https://www.kanshudo.com/",
+    "skill": "kanji",
+    "levels": [
+      "N5",
+      "N4",
+      "N3"
+    ],
+    "free": true,
+    "notes": "Kanji and words by JLPT level with flashcards; free account, paid extras."
+  },
+  {
+    "slug": "res:jlptsensei-n5",
+    "title": "JLPT Sensei: N5 grammar list",
+    "url": "https://jlptsensei.com/jlpt-n5-grammar-list/",
+    "skill": "grammar",
+    "levels": [
+      "N5"
+    ],
+    "free": true,
+    "notes": "Every N5 grammar point with explanations and examples; Michi links each point here."
+  },
+  {
+    "slug": "res:jlptsensei-n4",
+    "title": "JLPT Sensei: N4 grammar list",
+    "url": "https://jlptsensei.com/jlpt-n4-grammar-list/",
+    "skill": "grammar",
+    "levels": [
+      "N4"
+    ],
+    "free": true,
+    "notes": "The N4 list, for the phase from January."
+  },
+  {
+    "slug": "res:jlptsensei-n3",
+    "title": "JLPT Sensei: N3 grammar list",
+    "url": "https://jlptsensei.com/jlpt-n3-grammar-list/",
+    "skill": "grammar",
+    "levels": [
+      "N3"
+    ],
+    "free": true,
+    "notes": "The N3 list, for the early start in April and the phase from July."
+  },
+  {
+    "slug": "res:bunpro",
+    "title": "Bunpro",
+    "url": "https://bunpro.jp/",
+    "skill": "grammar",
+    "levels": [
+      "N5",
+      "N4",
+      "N3"
+    ],
+    "free": false,
+    "notes": "Grammar drills on a review schedule with many example sentences; paid after a free trial."
+  },
+  {
+    "slug": "res:tae-kim",
+    "title": "Tae Kim's Guide to Learning Japanese",
+    "url": "https://guidetojapanese.org/learn/",
+    "skill": "grammar",
+    "levels": [
+      "N5",
+      "N4"
+    ],
+    "free": true,
+    "notes": "A classic free grammar guide that builds from the basics; read it on its own site."
+  },
+  {
+    "slug": "res:imabi",
+    "title": "IMABI",
+    "url": "https://imabi.org/",
+    "skill": "grammar",
+    "levels": [
+      "N4",
+      "N3"
+    ],
+    "free": true,
+    "notes": "Very detailed free grammar lessons when you want to know why something works."
+  },
+  {
+    "slug": "res:sakubi",
+    "title": "Sakubi",
+    "url": "https://sakubi.neocities.org/",
+    "skill": "grammar",
+    "levels": [
+      "N5"
+    ],
+    "free": true,
+    "notes": "A short, fast beginner grammar primer to get reading sooner."
+  },
+  {
+    "slug": "res:maggie-sensei",
+    "title": "Maggie Sensei",
+    "url": "https://maggiesensei.com/",
+    "skill": "grammar",
+    "levels": [
+      "N4",
+      "N3"
+    ],
+    "free": true,
+    "notes": "Friendly lessons on single grammar points, nuance and casual speech."
+  },
+  {
+    "slug": "res:jisho",
+    "title": "Jisho",
+    "url": "https://jisho.org/",
+    "skill": "vocabulary",
+    "levels": [
+      "N5",
+      "N4",
+      "N3",
+      "work"
+    ],
+    "free": true,
+    "notes": "Dictionary built on JMdict and KANJIDIC: search in English, kana or kanji."
+  },
+  {
+    "slug": "res:anki",
+    "title": "Anki",
+    "url": "https://apps.ankiweb.net/",
+    "skill": "vocabulary",
+    "levels": [
+      "N5",
+      "N4",
+      "N3",
+      "work"
+    ],
+    "free": true,
+    "notes": "Spaced-repetition flashcards; free on desktop and Android."
+  },
+  {
+    "slug": "res:open-anki-jlpt-decks",
+    "title": "Open Anki JLPT decks",
+    "url": "https://github.com/jamsinclair/open-anki-jlpt-decks",
+    "skill": "vocabulary",
+    "levels": [
+      "N5",
+      "N4",
+      "N3"
+    ],
+    "free": true,
+    "notes": "Open JLPT word decks; Michi's word lists come from here."
+  },
+  {
+    "slug": "res:jpdb",
+    "title": "jpdb",
+    "url": "https://jpdb.io/",
+    "skill": "vocabulary",
+    "levels": [
+      "N4",
+      "N3"
+    ],
+    "free": true,
+    "notes": "Vocabulary decks for real anime, dramas and novels, ranked by frequency."
+  },
+  {
+    "slug": "res:nhk-easy-japanese",
+    "title": "NHK World: Easy Japanese",
+    "url": "https://www.nhk.or.jp/lesson/en/",
+    "skill": "listening",
+    "levels": [
+      "N5",
+      "N4"
+    ],
+    "free": true,
+    "notes": "Short audio lessons following a learner's life in Japan, with scripts."
+  },
+  {
+    "slug": "res:teppei",
+    "title": "Nihongo con Teppei",
+    "url": "https://nihongoconteppei.com/",
+    "skill": "listening",
+    "levels": [
+      "N4",
+      "N3"
+    ],
+    "free": true,
+    "notes": "Short podcast episodes in natural, easy Japanese; there's a beginner series too."
+  },
+  {
+    "slug": "res:cijapanese",
+    "title": "Comprehensible Japanese",
+    "url": "https://cijapanese.com/",
+    "skill": "listening",
+    "levels": [
+      "N5",
+      "N4",
+      "N3"
+    ],
+    "free": true,
+    "notes": "Graded video lessons told with pictures and gestures; many free, membership for more."
+  },
+  {
+    "slug": "res:erin",
+    "title": "Erin's Challenge! I can speak Japanese",
+    "url": "https://www.erin.jpf.go.jp/en/",
+    "skill": "listening",
+    "levels": [
+      "N5",
+      "N4"
+    ],
+    "free": true,
+    "notes": "Japan Foundation drama videos about school life, with scripts and quizzes."
+  },
+  {
+    "slug": "res:japanesepod101",
+    "title": "JapanesePod101",
+    "url": "https://www.japanesepod101.com/",
+    "skill": "listening",
+    "levels": [
+      "N5",
+      "N4",
+      "N3"
+    ],
+    "free": false,
+    "notes": "Large library of podcast lessons by level; paid subscription."
+  },
+  {
+    "slug": "res:jlpt-workbook",
+    "title": "JLPT Official Practice Workbook",
+    "url": "https://www.jlpt.jp/e/samples/sampleindex.html",
+    "skill": "jlpt",
+    "levels": [
+      "N5",
+      "N4",
+      "N3"
+    ],
+    "free": true,
+    "notes": "Official workbooks with listening audio; use them for the listening score in mocks."
+  },
+  {
+    "slug": "res:nhk-news-easy",
+    "title": "NHK News Web Easy",
+    "url": "https://www3.nhk.or.jp/news/easy/",
+    "skill": "reading",
+    "levels": [
+      "N4",
+      "N3"
+    ],
+    "free": true,
+    "notes": "Daily news in simple Japanese with furigana and audio."
+  },
+  {
+    "slug": "res:tadoku",
+    "title": "Tadoku: free graded readers",
+    "url": "https://tadoku.org/japanese/en/free-books-en/",
+    "skill": "reading",
+    "levels": [
+      "N5",
+      "N4",
+      "N3"
+    ],
+    "free": true,
+    "notes": "Free graded readers from level 0, many with audio."
+  },
+  {
+    "slug": "res:satori",
+    "title": "Satori Reader",
+    "url": "https://www.satorireader.com/",
+    "skill": "reading",
+    "levels": [
+      "N4",
+      "N3"
+    ],
+    "free": false,
+    "notes": "Graded stories with audio and line-by-line notes; paid, a few free episodes."
+  },
+  {
+    "slug": "res:watanoc",
+    "title": "Watanoc",
+    "url": "https://watanoc.com/",
+    "skill": "reading",
+    "levels": [
+      "N5",
+      "N4"
+    ],
+    "free": true,
+    "notes": "Short articles about life in Japan, tagged by JLPT level."
+  },
+  {
+    "slug": "res:matcha-easy",
+    "title": "MATCHA Easy Japanese",
+    "url": "https://matcha-jp.com/easy",
+    "skill": "reading",
+    "levels": [
+      "N4",
+      "N3"
+    ],
+    "free": true,
+    "notes": "Travel and culture articles in easy Japanese with furigana."
+  },
+  {
+    "slug": "res:yomujp",
+    "title": "Yomujp",
+    "url": "https://yomujp.com/",
+    "skill": "reading",
+    "levels": [
+      "N5",
+      "N4",
+      "N3"
+    ],
+    "free": true,
+    "notes": "Graded reading passages by JLPT level, with audio."
+  },
+  {
+    "slug": "res:yomitan",
+    "title": "Yomitan",
+    "url": "https://yomitan.wiki/",
+    "skill": "reading",
+    "levels": [
+      "N4",
+      "N3",
+      "work"
+    ],
+    "free": true,
+    "notes": "Pop-up dictionary for the browser: hover over Japanese to see the reading and meaning."
+  },
+  {
+    "slug": "res:ojad",
+    "title": "OJAD: Online Japanese Accent Dictionary",
+    "url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/eng/pages/home",
+    "skill": "speaking",
+    "levels": [
+      "N5",
+      "N4",
+      "N3"
+    ],
+    "free": true,
+    "notes": "Pitch accent for words and whole sentences, with synthesized audio."
+  },
+  {
+    "slug": "res:youglish",
+    "title": "YouGlish: Japanese",
+    "url": "https://youglish.com/japanese",
+    "skill": "speaking",
+    "levels": [
+      "N5",
+      "N4",
+      "N3"
+    ],
+    "free": true,
+    "notes": "Hear a word or phrase said in real YouTube videos, with subtitles."
+  },
+  {
+    "slug": "res:italki",
+    "title": "italki",
+    "url": "https://www.italki.com/",
+    "skill": "speaking",
+    "levels": [
+      "N4",
+      "N3",
+      "work"
+    ],
+    "free": false,
+    "notes": "Paid one-to-one lessons and conversation practice with teachers in Japan."
+  },
+  {
     "slug": "res:jlpt-samples",
     "title": "JLPT official sample questions",
     "url": "https://www.jlpt.jp/e/samples/forlearners.html",
     "skill": "jlpt",
-    "levels": ["N5", "N4", "N3"],
+    "levels": [
+      "N5",
+      "N4",
+      "N3"
+    ],
     "free": true,
-    "notes": "Sample papers for every level, with audio and answers."
+    "notes": "Sample papers for every level, with audio and answers; take the N5 one as a baseline."
+  },
+  {
+    "slug": "res:jlpt-cando",
+    "title": "JLPT Can-do list",
+    "url": "https://www.jlpt.jp/e/about/candolist.html",
+    "skill": "jlpt",
+    "levels": [
+      "N5",
+      "N4",
+      "N3"
+    ],
+    "free": true,
+    "notes": "What test-takers at each level say they can do in real life."
+  },
+  {
+    "slug": "res:jlpt-overseas",
+    "title": "JLPT test sites outside Japan",
+    "url": "https://www.jlpt.jp/e/application/overseas_list.html",
+    "skill": "jlpt",
+    "levels": [
+      "N5",
+      "N4",
+      "N3"
+    ],
+    "free": true,
+    "notes": "Local hosts by country and city, for dates and registration."
+  },
+  {
+    "slug": "res:tofugu-keigo",
+    "title": "Tofugu: Keigo",
+    "url": "https://www.tofugu.com/japanese/keigo/",
+    "skill": "business",
+    "levels": [
+      "N4",
+      "N3",
+      "work"
+    ],
+    "free": true,
+    "notes": "A clear guide to polite, humble and honorific speech."
+  },
+  {
+    "slug": "res:bjt",
+    "title": "BJT Business Japanese Proficiency Test",
+    "url": "https://www.kanken.or.jp/bjt/english/",
+    "skill": "business",
+    "levels": [
+      "work"
+    ],
+    "free": false,
+    "notes": "The business Japanese test; paid exam, with free sample questions on the site."
+  },
+  {
+    "slug": "res:nihongo-e-na",
+    "title": "NIHONGO e-na",
+    "url": "https://nihongo-e-na.com/eng/",
+    "skill": "general",
+    "levels": [
+      "N5",
+      "N4",
+      "N3"
+    ],
+    "free": true,
+    "notes": "Japan Foundation portal of free learning sites, searchable by skill and level."
+  },
+  {
+    "slug": "res:japan-dev",
+    "title": "Japan Dev",
+    "url": "https://japan-dev.com/",
+    "skill": "it",
+    "levels": [
+      "work"
+    ],
+    "free": true,
+    "notes": "English-friendly tech jobs in Japan, with guides to working there as a developer."
+  },
+  {
+    "slug": "res:qiita",
+    "title": "Qiita",
+    "url": "https://qiita.com/",
+    "skill": "it",
+    "levels": [
+      "work"
+    ],
+    "free": true,
+    "notes": "Japanese developer articles: real technical reading practice."
+  },
+  {
+    "slug": "res:e-words",
+    "title": "IT用語辞典 e-Words",
+    "url": "https://e-words.jp/",
+    "skill": "it",
+    "levels": [
+      "work"
+    ],
+    "free": true,
+    "notes": "Japanese dictionary of IT terms, explained in Japanese."
+  },
+  {
+    "slug": "res:mdn-ja",
+    "title": "MDN Web Docs (日本語)",
+    "url": "https://developer.mozilla.org/ja/",
+    "skill": "it",
+    "levels": [
+      "work"
+    ],
+    "free": true,
+    "notes": "Web docs in Japanese; read beside the English to pick up IT terms."
+  },
+  {
+    "slug": "res:tofugu",
+    "title": "Tofugu",
+    "url": "https://www.tofugu.com/japanese/",
+    "skill": "general",
+    "levels": [
+      "N5",
+      "N4",
+      "N3"
+    ],
+    "free": true,
+    "notes": "Articles on learning Japanese, grammar and the language behind the culture."
   }
 ]
