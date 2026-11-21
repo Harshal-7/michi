@@ -1,0 +1,5 @@
+[
+  { "slug": "kanji:日", "kanji": "日", "level": "N5", "meanings": ["day", "sun"], "on": ["ニチ"], "kun": ["ひ"], "strokes": 4, "examples": [], "lookalikes": ["目"] },
+  { "slug": "kanji:本", "kanji": "本", "level": "N5", "meanings": ["book", "origin"], "on": ["ホン"], "kun": ["もと"], "strokes": 5, "examples": [], "lookalikes": [] },
+  { "slug": "kanji:会", "kanji": "会", "level": "N4", "meanings": ["meet"], "on": ["カイ"], "kun": ["あ.う"], "strokes": 6, "examples": [], "lookalikes": [] }
+]

@@ -1,0 +1,5 @@
+[
+  { "kanji": "日", "meanings": ["day", "sun"], "on": ["ニチ"], "kun": ["ひ"], "strokes": 4, "grade": 1, "jlpt": "N5" },
+  { "kanji": "本", "meanings": ["book"], "on": ["ホン"], "kun": ["もと"], "strokes": 5, "grade": 1, "jlpt": "N5" },
+  { "kanji": "鬱", "meanings": ["gloom"], "on": ["ウツ"], "kun": [], "strokes": 29, "grade": 8, "jlpt": null }
+]
