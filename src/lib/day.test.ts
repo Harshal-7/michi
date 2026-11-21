@@ -88,8 +88,9 @@ describe("calendar helpers", () => {
 
   it("formats dates the way the screens show them", () => {
     expect(formatLong("2026-12-03")).toBe("Thursday 3 December");
-    expect(formatShort("2026-12-31", 2026)).toBe("Thu 31 Dec");
-    expect(formatShort("2027-07-04", 2026)).toBe("Sun 4 Jul 2027");
+    expect(formatShort("2026-12-31", "2026-11-21")).toBe("Thu 31 Dec");
+    expect(formatShort("2027-01-01", "2026-11-21")).toBe("Fri 1 Jan");
+    expect(formatShort("2027-07-04", "2026-11-21")).toBe("Sun 4 Jul 2027");
     expect(formatDayMonth("2027-01-01")).toBe("1 Jan");
   });
 });

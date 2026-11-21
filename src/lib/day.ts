@@ -96,11 +96,14 @@ export function formatLong(date: StudyDate): string {
   return `${WEEKDAYS[d.getUTCDay()]} ${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]}`;
 }
 
-/** "Thu 31 Dec", or "Sun 4 Jul 2027" when the year isn't `thisYear`. */
-export function formatShort(date: StudyDate, thisYear?: number): string {
+/**
+ * "Thu 31 Dec". The year is added for a date more than about six months from `today`
+ * ("Sun 4 Jul 2027"), where it could be read as the wrong one.
+ */
+export function formatShort(date: StudyDate, today?: StudyDate): string {
   const d = new Date(toUtcMidnight(date));
   const base = `${WEEKDAYS[d.getUTCDay()].slice(0, 3)} ${d.getUTCDate()} ${MONTHS[d.getUTCMonth()].slice(0, 3)}`;
-  return thisYear === undefined || d.getUTCFullYear() === thisYear ? base : `${base} ${d.getUTCFullYear()}`;
+  return today === undefined || Math.abs(daysBetween(today, date)) <= 180 ? base : `${base} ${d.getUTCFullYear()}`;
 }
 
 /** "1 Jan", for small badges. */

@@ -20,7 +20,7 @@ export default async function MorePage() {
   const notes: Partial<Record<string, string>> = {
     work:
       daysBetween(today, workUnlock) > 0
-        ? `unlocks ${formatShort(workUnlock, Number(today.slice(0, 4)))}`
+        ? `unlocks ${formatShort(workUnlock, today)}`
         : undefined,
   };
   return (

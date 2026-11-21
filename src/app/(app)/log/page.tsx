@@ -11,7 +11,7 @@ export const metadata: Metadata = { title: "Log" };
 export default async function LogPage() {
   await requireSignedIn();
   const { classes } = await getSettings(getDb());
-  const first = formatShort(classes.startsOn, Number(studyDate().slice(0, 4)));
+  const first = formatShort(classes.startsOn, studyDate());
   return (
     <Stub
       title="Log"

@@ -35,7 +35,7 @@ export default async function WorkPage() {
         <section className="flex items-center gap-3 rounded-card bg-accent-soft p-3.5">
           <Icon d={ICONS.lock} size={26} className="shrink-0 text-accent" />
           <div className="flex flex-auto flex-col gap-0.5">
-            <h2 className="m-0 text-[14.5px] font-bold">Unlocks {formatShort(workUnlock, Number(today.slice(0, 4)))}</h2>
+            <h2 className="m-0 text-[14.5px] font-bold">Unlocks {formatShort(workUnlock, today)}</h2>
             <p className="m-0 text-[12.5px] text-ink">It opens with the N4 phase. You can look around now.</p>
           </div>
         </section>

@@ -14,5 +14,8 @@ export default defineConfig({
     environment: "node",
     // Makes a migrated template database; files that need one copy it (src/db/test/test-db.ts).
     globalSetup: ["./src/db/test/global-setup.ts"],
+    // Creating and dropping a database can take a few seconds when the machine is busy.
+    hookTimeout: 30_000,
+    teardownTimeout: 30_000,
   },
 });

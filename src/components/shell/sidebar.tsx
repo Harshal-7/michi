@@ -7,11 +7,14 @@ import { Icon } from "@/components/ui/icon";
 
 import { MAIN_NAV, MORE_NAV, navKeyFor } from "./nav";
 
-/** The laptop sidebar with everything (TodayWeb). Shown from 1024px. */
+/**
+ * The laptop sidebar with everything (TodayWeb). Shown from 1024px. 228px rather than the
+ * board's 220px, so "Work Japanese" and its date badge fit on one line.
+ */
 export function Sidebar({ workBadge }: { workBadge: string | null }) {
   const current = navKeyFor(usePathname());
   return (
-    <aside className="sticky top-0 hidden h-dvh w-[220px] shrink-0 flex-col gap-[18px] overflow-y-auto border-r border-line px-3.5 py-6 laptop:flex">
+    <aside className="sticky top-0 hidden h-dvh w-[228px] shrink-0 flex-col gap-[18px] overflow-y-auto border-r border-line px-3.5 py-6 laptop:flex">
       <Link href="/" className="mx-2.5 flex items-baseline gap-2 font-head text-2xl no-underline">
         Michi{" "}
         <span lang="ja" className="text-accent">
@@ -32,9 +35,11 @@ export function Sidebar({ workBadge }: { workBadge: string | null }) {
               } ${locked && !on ? "opacity-85" : ""}`}
             >
               <Icon d={n.icon} size={20} />
-              <span className="flex-auto">{n.label}</span>
+              <span className="flex-auto whitespace-nowrap">{n.label}</span>
               {locked && (
-                <span className="rounded-full border border-line px-2 py-px text-xs font-bold text-ink2">{workBadge}</span>
+                <span className="whitespace-nowrap rounded-full border border-line px-2 py-px text-xs font-bold text-ink2">
+                  {workBadge}
+                </span>
               )}
             </Link>
           );
