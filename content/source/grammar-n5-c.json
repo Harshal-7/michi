@@ -1,0 +1,1407 @@
+[
+  {
+    "slug": "grammar:n5:no-naka-de-a-ga-ichiban",
+    "pattern": "Aの中でBが一番〜",
+    "meaning": "Of all the A, B is the most …. Names a group of three or more and picks the top one; also the shape of the question 〜の中で何が一番〜ですか.",
+    "examples": [
+      {
+        "ja": "{果物|くだもの}の{中|なか}でりんごが[[{一番|いちばん}]]{好|す}きです。",
+        "en": "Of all fruits, I like apples best."
+      },
+      {
+        "ja": "{家族|かぞく}[[の{中|なか}で]]{父|ちち}が{一番|いちばん}{背|せ}が{高|たか}いです。",
+        "en": "My father is the tallest in my family."
+      },
+      {
+        "ja": "{一週間|いっしゅうかん}の{中|なか}で{何曜日|なんようび}[[が]]{一番|いちばん}{忙|いそが}しいですか。",
+        "en": "Which day of the week are you busiest?"
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:no-naka-de-a-ga-ichiban-1",
+        "ja": "{動物|どうぶつ}の{中|なか}[[で]]{犬|いぬ}が{一番|いちばん}{好|す}きです。",
+        "en": "Of all animals, I like dogs best.",
+        "wrong": [
+          "に",
+          "を",
+          "へ"
+        ],
+        "explain": "の中で sets the group you are choosing from; に, を and へ can't do that."
+      },
+      {
+        "slug": "gq:n5:no-naka-de-a-ga-ichiban-2",
+        "ja": "この{三|みっ}つの{中|なか}で、どれが[[{一番|いちばん}]]{安|やす}いですか。",
+        "en": "Of these three, which one is the cheapest?",
+        "wrong": [
+          "ほう",
+          "ほど",
+          "まで"
+        ],
+        "explain": "Picking the top one out of three or more takes 一番."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:ichiban",
+      "grammar:n4:no-naka-de",
+      "grammar:n5:yori-hou-ga"
+    ]
+  },
+  {
+    "slug": "grammar:n5:node",
+    "pattern": "〜ので",
+    "meaning": "Because / so. Gives a reason in a soft, explanatory way, which suits requests and apologies. After a noun or な-adjective it becomes なので.",
+    "examples": [
+      {
+        "ja": "{雨|あめ}が{降|ふ}っている[[ので]]、{今日|きょう}は{出|で}かけません。",
+        "en": "It's raining, so I'm not going out today."
+      },
+      {
+        "ja": "{明日|あした}は{休|やす}みな[[ので]]、ゆっくり{寝|ね}ます。",
+        "en": "Tomorrow is my day off, so I'll sleep in."
+      },
+      {
+        "ja": "{頭|あたま}が{痛|いた}い[[ので]]、{早|はや}く{帰|かえ}ってもいいですか。",
+        "en": "I have a headache, so may I go home early?"
+      },
+      {
+        "ja": "この{部屋|へや}は{静|しず}かな[[ので]]、よく{勉強|べんきょう}できます。",
+        "en": "This room is quiet, so I can study well here."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:node-1",
+        "ja": "{風邪|かぜ}をひいた[[ので]]、{学校|がっこう}を{休|やす}みます。",
+        "en": "I've caught a cold, so I'm staying home from school.",
+        "wrong": [
+          "のに",
+          "しかし",
+          "ても"
+        ],
+        "explain": "The cold is the reason for staying home, so the link is ので, not a contrast."
+      },
+      {
+        "slug": "gq:n5:node-2",
+        "ja": "{今日|きょう}は{日曜日|にちようび}[[なので]]、{銀行|ぎんこう}は{休|やす}みです。",
+        "en": "It's Sunday today, so the bank is closed.",
+        "wrong": [
+          "ので",
+          "だので",
+          "なのに"
+        ],
+        "explain": "After a noun, ので becomes なので; なのに would mean 'even though'."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:kara",
+      "grammar:n4:noni"
+    ]
+  },
+  {
+    "slug": "grammar:n5:o-go",
+    "pattern": "お〜 / ご〜",
+    "meaning": "Polite prefixes for nouns. お goes on most native Japanese words (お茶, お金) and ご on most Chinese-origin words (ご家族, ご両親); some words almost always carry one.",
+    "examples": [
+      {
+        "ja": "[[お]]{茶|ちゃ}をどうぞ。",
+        "en": "Please have some tea."
+      },
+      {
+        "ja": "{先生|せんせい}の[[ご]]{家族|かぞく}は{何人|なんにん}ですか。",
+        "en": "How many people are there in your teacher's family?"
+      },
+      {
+        "ja": "[[お]]{名前|なまえ}は{何|なん}ですか。",
+        "en": "What is your name?"
+      },
+      {
+        "ja": "もう[[ご]]{飯|はん}を{食|た}べましたか。",
+        "en": "Have you eaten yet?"
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:o-go-1",
+        "ja": "すみません、[[お]]{手洗|てあら}いはどこですか。",
+        "en": "Excuse me, where is the restroom?",
+        "wrong": [
+          "ご",
+          "み",
+          "おん"
+        ],
+        "explain": "手洗い is a native word and the polite form is always お手洗い."
+      },
+      {
+        "slug": "gq:n5:o-go-2",
+        "ja": "{山下|やました}さんの[[ご]]{両親|りょうしん}はお{元気|げんき}ですか。",
+        "en": "Are Yamashita-san's parents well?",
+        "wrong": [
+          "お",
+          "み",
+          "おん"
+        ],
+        "explain": "両親 is a Chinese-origin word, so it takes ご."
+      }
+    ],
+    "confusables": [
+      "grammar:n4:o-ni-naru",
+      "grammar:n4:o-kudasai"
+    ]
+  },
+  {
+    "slug": "grammar:n5:o-wo",
+    "pattern": "Nを + verb",
+    "meaning": "Marks the direct object, the thing an action is done to. With movement verbs it also marks the place you pass through or leave (道を歩く, 家を出る).",
+    "examples": [
+      {
+        "ja": "{毎朝|まいあさ}、コーヒー[[を]]{飲|の}みます。",
+        "en": "I drink coffee every morning."
+      },
+      {
+        "ja": "{図書館|としょかん}で{本|ほん}[[を]]{借|か}りました。",
+        "en": "I borrowed a book at the library."
+      },
+      {
+        "ja": "この{道|みち}[[を]]まっすぐ{歩|ある}いてください。",
+        "en": "Please walk straight along this road."
+      },
+      {
+        "ja": "{八時|はちじ}に{家|いえ}[[を]]{出|で}ます。",
+        "en": "I leave home at eight."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:o-wo-1",
+        "ja": "{毎晩|まいばん}、{日本語|にほんご}の{新聞|しんぶん}[[を]]{読|よ}みます。",
+        "en": "Every evening I read a Japanese newspaper.",
+        "wrong": [
+          "が",
+          "に",
+          "へ"
+        ],
+        "explain": "The newspaper is what gets read, so it is the object and takes を."
+      },
+      {
+        "slug": "gq:n5:o-wo-2",
+        "ja": "{駅|えき}で{電車|でんしゃ}[[を]]{降|お}りました。",
+        "en": "I got off the train at the station.",
+        "wrong": [
+          "に",
+          "が",
+          "で"
+        ],
+        "explain": "降りる marks the thing you get off with を; に goes with 乗る."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:ga",
+      "grammar:n5:ni"
+    ]
+  },
+  {
+    "slug": "grammar:n5:o-kudasai",
+    "pattern": "Nをください",
+    "meaning": "Please give me N. The everyday way to ask for or order something; a quantity goes after を: 水を二つください.",
+    "examples": [
+      {
+        "ja": "すみません、{水|みず}[[をください]]。",
+        "en": "Excuse me, some water, please."
+      },
+      {
+        "ja": "このりんごを{三|みっ}つ[[ください]]。",
+        "en": "Three of these apples, please."
+      },
+      {
+        "ja": "その{赤|あか}いかばん[[をください]]。",
+        "en": "I'll take that red bag, please."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:o-kudasai-1",
+        "ja": "あの{白|しろ}いシャツ[[を]]ください。",
+        "en": "That white shirt, please.",
+        "wrong": [
+          "が",
+          "に",
+          "へ"
+        ],
+        "explain": "The thing you ask for is the object of ください, so it takes を."
+      },
+      {
+        "slug": "gq:n5:o-kudasai-2",
+        "ja": "{切手|きって}を{三枚|さんまい}[[ください]]。",
+        "en": "Three stamps, please.",
+        "wrong": [
+          "てください",
+          "あります",
+          "をください"
+        ],
+        "explain": "Noun + を + amount + ください asks for things; を comes once, before the amount, and てください follows a verb."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:te-kudasai",
+      "grammar:n5:ga-hoshii"
+    ]
+  },
+  {
+    "slug": "grammar:n5:shikashi",
+    "pattern": "A。しかし、B。",
+    "meaning": "However. Opens a sentence that goes against the one before it. Formal and mostly written; in conversation でも is more usual.",
+    "examples": [
+      {
+        "ja": "この{店|みせ}は{安|やす}いです。[[しかし]]、あまりおいしくないです。",
+        "en": "This place is cheap. However, the food isn't very good."
+      },
+      {
+        "ja": "{日本語|にほんご}は{難|むずか}しいです。[[しかし]]、とても{面白|おもしろ}いです。",
+        "en": "Japanese is difficult. However, it's very interesting."
+      },
+      {
+        "ja": "{毎日|まいにち}{練習|れんしゅう}しました。[[しかし]]、テストはよくできませんでした。",
+        "en": "I practised every day. However, the test went badly."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:shikashi-1",
+        "ja": "{薬|くすり}を{飲|の}みました。[[しかし]]、まだ{頭|あたま}が{痛|いた}いです。",
+        "en": "I took some medicine. However, my head still hurts.",
+        "wrong": [
+          "そして",
+          "それから",
+          "だから"
+        ],
+        "explain": "The headache continuing goes against what you'd expect, so a contrast word is needed."
+      },
+      {
+        "slug": "gq:n5:shikashi-2",
+        "ja": "{山下|やました}さんは{料理|りょうり}が{好|す}きです。[[しかし]]、あまり{上手|じょうず}じゃありません。",
+        "en": "Yamashita-san likes cooking. However, she isn't very good at it.",
+        "wrong": [
+          "だから",
+          "それから",
+          "それでは"
+        ],
+        "explain": "Liking it but not being good at it is a contrast, which しかし introduces."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:demo",
+      "grammar:n5:kedo",
+      "grammar:n5:keredo-mo"
+    ]
+  },
+  {
+    "slug": "grammar:n5:sore-kara",
+    "pattern": "A。それから、B。",
+    "meaning": "And then / after that. Puts the next action in order, and can also add one more item to a list (and also).",
+    "examples": [
+      {
+        "ja": "{朝|あさ}ご{飯|はん}を{食|た}べました。[[それから]]、{学校|がっこう}へ{行|い}きました。",
+        "en": "I had breakfast. Then I went to school."
+      },
+      {
+        "ja": "{宿題|しゅくだい}をして、[[それから]]テレビを{見|み}ます。",
+        "en": "I'll do my homework, and after that I'll watch TV."
+      },
+      {
+        "ja": "ペンとノート、[[それから]]{辞書|じしょ}を{持|も}ってきてください。",
+        "en": "Please bring a pen, a notebook, and also a dictionary."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:sore-kara-1",
+        "ja": "{駅|えき}で{友達|ともだち}に{会|あ}いました。[[それから]]、{一緒|いっしょ}に{映画|えいが}を{見|み}ました。",
+        "en": "I met a friend at the station. After that, we saw a movie together.",
+        "wrong": [
+          "しかし",
+          "でも",
+          "では"
+        ],
+        "explain": "The movie simply comes next, so the link is それから, not a contrast."
+      },
+      {
+        "slug": "gq:n5:sore-kara-2",
+        "ja": "{手|て}を{洗|あら}って、[[それから]]ご{飯|はん}を{食|た}べましょう。",
+        "en": "Let's wash our hands, and then eat.",
+        "wrong": [
+          "しかし",
+          "でも",
+          "だから"
+        ],
+        "explain": "Eating follows washing in time, which それから expresses."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:soshite",
+      "grammar:n5:te-kara"
+    ]
+  },
+  {
+    "slug": "grammar:n5:soshite",
+    "pattern": "A。そして、B。",
+    "meaning": "And / and then. Joins two sentences to add another point or the next event; a little more formal than それから.",
+    "examples": [
+      {
+        "ja": "この{部屋|へや}は{広|ひろ}いです。[[そして]]、とても{明|あか}るいです。",
+        "en": "This room is spacious. And it's very bright."
+      },
+      {
+        "ja": "{昨日|きのう}はデパートへ{行|い}きました。[[そして]]、{新|あたら}しい{靴|くつ}を{買|か}いました。",
+        "en": "Yesterday I went to a department store. And I bought new shoes."
+      },
+      {
+        "ja": "{山下|やました}さんは{頭|あたま}がいいです。[[そして]]、スポーツも{上手|じょうず}です。",
+        "en": "Yamashita-san is smart. And she's good at sports too."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:soshite-1",
+        "ja": "この{町|まち}は{静|しず}かです。[[そして]]、{緑|みどり}が{多|おお}いです。",
+        "en": "This town is quiet. And it has lots of greenery.",
+        "wrong": [
+          "でも",
+          "だから",
+          "それでは"
+        ],
+        "explain": "The second sentence adds another good point, so そして fits; there's no contrast or cause."
+      },
+      {
+        "slug": "gq:n5:soshite-2",
+        "ja": "{弟|おとうと}は{英語|えいご}を{勉強|べんきょう}しています。[[そして]]、{中国語|ちゅうごくご}も{勉強|べんきょう}しています。",
+        "en": "My younger brother is studying English. And he's studying Chinese too.",
+        "wrong": [
+          "しかし",
+          "それとも",
+          "では"
+        ],
+        "explain": "も adds one more thing to the first fact, which is what そして does."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:sore-kara",
+      "grammar:n4:sore-ni"
+    ]
+  },
+  {
+    "slug": "grammar:n5:sugiru",
+    "pattern": "〜すぎる / 〜すぎます",
+    "meaning": "Too / too much. Attach to a verb stem (食べすぎる) or an adjective stem (高すぎる, 静かすぎる) to say something goes past the right amount. It conjugates like an ichidan verb.",
+    "examples": [
+      {
+        "ja": "{昨日|きのう}の{夜|よる}、{食|た}べ[[すぎました]]。",
+        "en": "I ate too much last night."
+      },
+      {
+        "ja": "このかばんは{高|たか}[[すぎます]]。",
+        "en": "This bag is too expensive."
+      },
+      {
+        "ja": "この{問題|もんだい}は{難|むずか}し[[すぎて]]、わかりません。",
+        "en": "This question is too hard; I don't get it."
+      },
+      {
+        "ja": "テレビを{見|み}[[すぎる]]のは{目|め}に{悪|わる}いです。",
+        "en": "Watching too much TV is bad for your eyes."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:sugiru-1",
+        "ja": "このスープは[[{熱|あつ}すぎます]]。",
+        "en": "This soup is too hot.",
+        "wrong": [
+          "{熱|あつ}いすぎます",
+          "{熱|あつ}くすぎます",
+          "{熱|あつ}すぎるです"
+        ],
+        "explain": "Drop the final い of an い-adjective, then add すぎます."
+      },
+      {
+        "slug": "gq:n5:sugiru-2",
+        "ja": "{昨日|きのう}は[[{歩|ある}きすぎて]]、{足|あし}が{痛|いた}いです。",
+        "en": "I walked too much yesterday, so my legs hurt.",
+        "wrong": [
+          "{歩|ある}くすぎて",
+          "{歩|ある}いてすぎて",
+          "{歩|ある}かすぎて"
+        ],
+        "explain": "すぎる attaches to the ます-stem: 歩き + すぎて."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:totemo"
+    ]
+  },
+  {
+    "slug": "grammar:n5:ta-koto-ga-aru",
+    "pattern": "〜たことがある / 〜たことがあります",
+    "meaning": "Have done (at some point). Talks about experience, something that has happened to you at least once; たことがない means 'have never'.",
+    "examples": [
+      {
+        "ja": "{日本|にほん}へ{行|い}った[[ことがあります]]。",
+        "en": "I have been to Japan."
+      },
+      {
+        "ja": "すしを{食|た}べた[[ことがあります]]か。",
+        "en": "Have you ever eaten sushi?"
+      },
+      {
+        "ja": "{私|わたし}はまだ{飛行機|ひこうき}に{乗|の}った[[ことがありません]]。",
+        "en": "I've never been on a plane yet."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:ta-koto-ga-aru-1",
+        "ja": "{日本|にほん}の{歌|うた}を[[{歌|うた}った]]ことがありますか。",
+        "en": "Have you ever sung a Japanese song?",
+        "wrong": [
+          "{歌|うた}って",
+          "{歌|うた}いました",
+          "{歌|うた}いた"
+        ],
+        "explain": "Experience uses the plain past (た-form) before ことがある."
+      },
+      {
+        "slug": "gq:n5:ta-koto-ga-aru-2",
+        "ja": "{私|わたし}は{一度|いちど}も{海|うみ}で{泳|およ}いだことが[[ありません]]。",
+        "en": "I have never once swum in the sea.",
+        "wrong": [
+          "あります",
+          "いません",
+          "しません"
+        ],
+        "explain": "一度も needs a negative, and the verb in this pattern is always ある."
+      }
+    ],
+    "confusables": [
+      "grammar:n4:koto-ga-aru",
+      "grammar:n4:koto-ga-dekiru"
+    ]
+  },
+  {
+    "slug": "grammar:n5:tai",
+    "pattern": "〜たい / 〜たいです",
+    "meaning": "Want to (do). Attach to a verb stem to say what you want to do; it conjugates like an い-adjective (たくない, たかった). Used for yourself, or when asking someone directly.",
+    "examples": [
+      {
+        "ja": "{夏休|なつやす}みに{海|うみ}へ{行|い}き[[たい]]です。",
+        "en": "I want to go to the beach over the summer holidays."
+      },
+      {
+        "ja": "{今日|きょう}は{何|なに}も{食|た}べ[[たくない]]です。",
+        "en": "I don't want to eat anything today."
+      },
+      {
+        "ja": "{子供|こども}のとき、{先生|せんせい}になり[[たかった]]です。",
+        "en": "When I was a child, I wanted to be a teacher."
+      },
+      {
+        "ja": "{何|なに}が{飲|の}み[[たい]]ですか。",
+        "en": "What would you like to drink?"
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:tai-1",
+        "ja": "{新|あたら}しいパソコンを{買|か}い[[たい]]です。",
+        "en": "I want to buy a new computer.",
+        "wrong": [
+          "ほしい",
+          "たがる",
+          "ます"
+        ],
+        "explain": "Wanting to do something is verb stem + たい; ほしい goes after a noun."
+      },
+      {
+        "slug": "gq:n5:tai-2",
+        "ja": "{疲|つか}れたので、{今日|きょう}はどこへも{行|い}き[[たくない]]です。",
+        "en": "I'm tired, so I don't want to go anywhere today.",
+        "wrong": [
+          "たいない",
+          "たくありない",
+          "たいじゃない"
+        ],
+        "explain": "たい makes its negative like an い-adjective: たい becomes たくない."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:ga-hoshii",
+      "grammar:n4:tagaru",
+      "grammar:n4:te-hoshii"
+    ]
+  },
+  {
+    "slug": "grammar:n5:tari-tari",
+    "pattern": "〜たり〜たりする",
+    "meaning": "Do things like A and B. Gives a couple of example actions out of many, in no set order; the list ends with する.",
+    "examples": [
+      {
+        "ja": "{日曜日|にちようび}は{本|ほん}を{読|よ}ん[[だり]]、{音楽|おんがく}を{聞|き}いたりします。",
+        "en": "On Sundays I do things like reading and listening to music."
+      },
+      {
+        "ja": "{休|やす}みの{日|ひ}は{掃除|そうじ}をしたり、{洗濯|せんたく}をし[[たり]]します。",
+        "en": "On my days off I do things like cleaning and laundry."
+      },
+      {
+        "ja": "{昨日|きのう}は{友達|ともだち}と{買|か}い{物|もの}をしたり、{映画|えいが}を{見|み}たり[[しました]]。",
+        "en": "Yesterday I went shopping, saw a movie and so on with friends."
+      },
+      {
+        "ja": "{子供|こども}たちが{公園|こうえん}で{走|はし}っ[[たり]]、{遊|あそ}んだりしています。",
+        "en": "The children are running around and playing in the park."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:tari-tari-1",
+        "ja": "{夏休|なつやす}みは{山|やま}に{登|のぼ}ったり、{川|かわ}で{泳|およ}い[[だり]]しました。",
+        "en": "Over the summer holidays I did things like climbing mountains and swimming in rivers.",
+        "wrong": [
+          "たり",
+          "で",
+          "て"
+        ],
+        "explain": "たり is built from the た-form, and 泳ぐ becomes 泳いだ, so 泳いだり."
+      },
+      {
+        "slug": "gq:n5:tari-tari-2",
+        "ja": "{夜|よる}は、テレビを[[{見|み}たり]]、{手紙|てがみ}を{書|か}いたりします。",
+        "en": "In the evenings I do things like watching TV and writing letters.",
+        "wrong": [
+          "{見|み}るたり",
+          "{見|み}ますたり",
+          "{見|み}だり"
+        ],
+        "explain": "Take the た-form (見た) and add り: 見たり."
+      }
+    ],
+    "confusables": [
+      "grammar:n4:shi",
+      "grammar:n4:toka-toka",
+      "grammar:n5:ya"
+    ]
+  },
+  {
+    "slug": "grammar:n5:te-aru",
+    "pattern": "〜てある / 〜てあります",
+    "meaning": "Has been done (and stays that way). A transitive verb + てある describes a state someone set up on purpose, often ready for later; the thing usually takes が: 窓が開けてある.",
+    "examples": [
+      {
+        "ja": "{窓|まど}が{開|あ}け[[てあります]]。",
+        "en": "The window has been left open."
+      },
+      {
+        "ja": "{机|つくえ}の{上|うえ}に{花|はな}が{置|お}い[[てあります]]。",
+        "en": "Some flowers have been put on the desk."
+      },
+      {
+        "ja": "ドアに{名前|なまえ}が{書|か}い[[てあります]]。",
+        "en": "There's a name written on the door."
+      },
+      {
+        "ja": "{明日|あした}の{切符|きっぷ}はもう{買|か}っ[[てあります]]よ。",
+        "en": "I've already got tomorrow's tickets."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:te-aru-1",
+        "ja": "{寒|さむ}いので、{窓|まど}が{閉|し}め[[てあります]]。",
+        "en": "It's cold, so the windows have been shut.",
+        "wrong": [
+          "ています",
+          "てください",
+          "ましょう"
+        ],
+        "explain": "With が and a transitive verb like 閉める, a state someone set up is てある."
+      },
+      {
+        "slug": "gq:n5:te-aru-2",
+        "ja": "{冷蔵庫|れいぞうこ}にジュースが{入|い}れて[[あります]]。",
+        "en": "Some juice has been put in the fridge.",
+        "wrong": [
+          "います",
+          "ください",
+          "いきます"
+        ],
+        "explain": "入れる is transitive, so 'juice has been put in' with が is 入れてあります."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:te-iru",
+      "grammar:n4:te-oku",
+      "grammar:n4:tadoushi-jidoushi"
+    ]
+  },
+  {
+    "slug": "grammar:n5:te-iru",
+    "pattern": "〜ている / 〜ています",
+    "meaning": "Is doing / is in a state. Shows an action in progress (食べている), a habit (毎日走っている), or a state left by a change (結婚している, 住んでいる).",
+    "examples": [
+      {
+        "ja": "{今|いま}、{雨|あめ}が{降|ふ}っ[[ています]]。",
+        "en": "It's raining now."
+      },
+      {
+        "ja": "{兄|あに}は{銀行|ぎんこう}で{働|はたら}い[[ています]]。",
+        "en": "My older brother works at a bank."
+      },
+      {
+        "ja": "{山下|やました}さんは{結婚|けっこん}し[[ています]]か。",
+        "en": "Is Yamashita-san married?"
+      },
+      {
+        "ja": "{毎朝|まいあさ}、{公園|こうえん}を{走|はし}っ[[ています]]。",
+        "en": "I go running in the park every morning."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:te-iru-1",
+        "ja": "{母|はは}は{今|いま}、{台所|だいどころ}で{料理|りょうり}を[[{作|つく}っています]]。",
+        "en": "My mother is cooking in the kitchen right now.",
+        "wrong": [
+          "{作|つく}りています",
+          "{作|つく}んでいます",
+          "{作|つく}るています"
+        ],
+        "explain": "作る has the て-form 作って, then add います."
+      },
+      {
+        "slug": "gq:n5:te-iru-2",
+        "ja": "{姉|あね}は{去年|きょねん}から{外国|がいこく}に[[{住|す}んでいます]]。",
+        "en": "My older sister has been living abroad since last year.",
+        "wrong": [
+          "{住|す}みます",
+          "{住|す}んであります",
+          "{住|す}みましょう"
+        ],
+        "explain": "Living somewhere from a past point until now is a state: 住んでいます."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:te-aru",
+      "grammar:n4:te-ita",
+      "grammar:n4:teiru-tokoro"
+    ]
+  },
+  {
+    "slug": "grammar:n5:te-kara",
+    "pattern": "〜てから",
+    "meaning": "After doing A, then B. Stresses that B only happens once A is finished; with a length of time it also means 'since' (日本に来てから).",
+    "examples": [
+      {
+        "ja": "{歯|は}を{磨|みが}い[[てから]]、{寝|ね}ます。",
+        "en": "I brush my teeth before I go to bed."
+      },
+      {
+        "ja": "{電話|でんわ}をかけ[[てから]]、{友達|ともだち}の{家|いえ}へ{行|い}きます。",
+        "en": "I'll call first, then go over to my friend's house."
+      },
+      {
+        "ja": "{日本|にほん}に{来|き}[[てから]]、もう{二年|にねん}になります。",
+        "en": "It's been two years since I came to Japan."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:te-kara-1",
+        "ja": "{薬|くすり}を[[{飲|の}んでから]]、{寝|ね}てください。",
+        "en": "Please take the medicine and then go to sleep.",
+        "wrong": [
+          "{飲|の}みてから",
+          "{飲|の}むてから",
+          "{飲|の}んてから"
+        ],
+        "explain": "てから follows the て-form, and 飲む becomes 飲んで."
+      },
+      {
+        "slug": "gq:n5:te-kara-2",
+        "ja": "{宿題|しゅくだい}が[[{終|お}わってから]]、{遊|あそ}びに{行|い}きます。",
+        "en": "I'll go out to play after my homework is finished.",
+        "wrong": [
+          "{終|お}わりてから",
+          "{終|お}わるてから",
+          "{終|お}わったまえに"
+        ],
+        "explain": "Use the て-form 終わって + から; 前に would need the dictionary form."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:mae-ni",
+      "grammar:n4:ato-de",
+      "grammar:n5:sore-kara"
+    ]
+  },
+  {
+    "slug": "grammar:n5:te-kudasai",
+    "pattern": "〜てください",
+    "meaning": "Please do …. A polite request or instruction, made with the て-form of a verb.",
+    "examples": [
+      {
+        "ja": "もう{少|すこ}しゆっくり{話|はな}し[[てください]]。",
+        "en": "Please speak a little more slowly."
+      },
+      {
+        "ja": "ここに{名前|なまえ}を{書|か}い[[てください]]。",
+        "en": "Please write your name here."
+      },
+      {
+        "ja": "{明日|あした}は{八時|はちじ}に{来|き}[[てください]]。",
+        "en": "Please come at eight tomorrow."
+      },
+      {
+        "ja": "すみません、{写真|しゃしん}を{撮|と}っ[[てください]]。",
+        "en": "Excuse me, could you take a photo for us?"
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:te-kudasai-1",
+        "ja": "{暑|あつ}いですね。{窓|まど}を[[{開|あ}けて]]ください。",
+        "en": "It's hot, isn't it? Please open the window.",
+        "wrong": [
+          "{開|あ}け",
+          "{開|あ}けって",
+          "{開|あ}ける"
+        ],
+        "explain": "ください after a verb needs the て-form: 開けて."
+      },
+      {
+        "slug": "gq:n5:te-kudasai-2",
+        "ja": "{部屋|へや}を{出|で}るとき、{電気|でんき}を[[{消|け}して]]ください。",
+        "en": "Please turn off the light when you leave the room.",
+        "wrong": [
+          "{消|け}いて",
+          "{消|け}って",
+          "{消|け}すて"
+        ],
+        "explain": "Verbs ending in す make the て-form with して: 消して."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:o-kudasai",
+      "grammar:n5:naide-kudasai",
+      "grammar:n4:te-itadakemasen-ka"
+    ]
+  },
+  {
+    "slug": "grammar:n5:te-wa-ikenai",
+    "pattern": "〜てはいけない / 〜てはいけません",
+    "meaning": "Must not / not allowed. The て-form + はいけない forbids something: rules, signs and warnings.",
+    "examples": [
+      {
+        "ja": "ここで{写真|しゃしん}を{撮|と}っ[[てはいけません]]。",
+        "en": "You mustn't take photos here."
+      },
+      {
+        "ja": "{図書館|としょかん}で{大|おお}きい{声|こえ}で{話|はな}し[[てはいけません]]。",
+        "en": "You mustn't talk loudly in the library."
+      },
+      {
+        "ja": "{子供|こども}はお{酒|さけ}を{飲|の}ん[[ではいけません]]。",
+        "en": "Children must not drink alcohol."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:te-wa-ikenai-1",
+        "ja": "テストのとき、{辞書|じしょ}を[[{使|つか}っては]]いけません。",
+        "en": "You mustn't use a dictionary during the test.",
+        "wrong": [
+          "{使|つか}いては",
+          "{使|つか}んでは",
+          "{使|つか}ては"
+        ],
+        "explain": "使う has the て-form 使って, then add はいけません."
+      },
+      {
+        "slug": "gq:n5:te-wa-ikenai-2",
+        "ja": "{危|あぶ}ないですから、この{川|かわ}で{泳|およ}い[[ではいけません]]。",
+        "en": "It's dangerous, so you mustn't swim in this river.",
+        "wrong": [
+          "でもいいです",
+          "でください",
+          "でいます"
+        ],
+        "explain": "Because it's dangerous, swimming is forbidden: 泳いではいけません."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:cha-ikenai-ja-ikenai",
+      "grammar:n5:temo-ii-desu",
+      "grammar:n5:naide-kudasai"
+    ]
+  },
+  {
+    "slug": "grammar:n5:temo-ii-desu",
+    "pattern": "〜てもいいです",
+    "meaning": "May / it's OK to. The て-form + もいい gives permission; as a question (〜てもいいですか) it asks for it.",
+    "examples": [
+      {
+        "ja": "ここに{座|すわ}っ[[てもいいです]]か。",
+        "en": "May I sit here?"
+      },
+      {
+        "ja": "{窓|まど}を{開|あ}け[[てもいいです]]か。",
+        "en": "Is it all right if I open the window?"
+      },
+      {
+        "ja": "{明日|あした}は{休|やす}ん[[でもいいです]]よ。",
+        "en": "You can take tomorrow off."
+      },
+      {
+        "ja": "このペンを{使|つか}っ[[てもいいです]]。",
+        "en": "You may use this pen."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:temo-ii-desu-1",
+        "ja": "すみません、トイレを{借|か}り[[てもいいです]]か。",
+        "en": "Excuse me, may I use the bathroom?",
+        "wrong": [
+          "でもいいです",
+          "てもいいます",
+          "ってもいいです"
+        ],
+        "explain": "借りる is a る-verb, so 借りて + もいいです."
+      },
+      {
+        "slug": "gq:n5:temo-ii-desu-2",
+        "ja": "この{本|ほん}を{少|すこ}し[[{読|よ}んでも]]いいですか。",
+        "en": "May I read this book for a bit?",
+        "wrong": [
+          "{読|よ}みても",
+          "{読|よ}んでは",
+          "{読|よ}んても"
+        ],
+        "explain": "読む has the て-form 読んで, and permission uses も: 読んでもいい."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:te-wa-ikenai",
+      "grammar:n5:naku-temo-ii",
+      "grammar:n4:temo"
+    ]
+  },
+  {
+    "slug": "grammar:n5:to",
+    "pattern": "AとB / Nと（一緒に）",
+    "meaning": "And / with. Joins nouns into a complete list (A and B, nothing else), or marks the person you do something with.",
+    "examples": [
+      {
+        "ja": "{机|つくえ}の{上|うえ}にペン[[と]]ノートがあります。",
+        "en": "There's a pen and a notebook on the desk."
+      },
+      {
+        "ja": "{日曜日|にちようび}に{友達|ともだち}[[と]]{映画|えいが}を{見|み}ました。",
+        "en": "I saw a movie with a friend on Sunday."
+      },
+      {
+        "ja": "{母|はは}[[と]]{一緒|いっしょ}に{買|か}い{物|もの}に{行|い}きます。",
+        "en": "I'm going shopping with my mother."
+      },
+      {
+        "ja": "コーヒー[[と]]ケーキをください。",
+        "en": "A coffee and a piece of cake, please."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:to-1",
+        "ja": "{昨日|きのう}、{兄|あに}[[と]]{一緒|いっしょ}にテニスをしました。",
+        "en": "Yesterday I played tennis with my older brother.",
+        "wrong": [
+          "に",
+          "を",
+          "で"
+        ],
+        "explain": "The person you do something with takes と, often with 一緒に."
+      },
+      {
+        "slug": "gq:n5:to-2",
+        "ja": "{家族|かぞく}は{父|ちち}[[と]]{母|はは}と{私|わたし}の{三人|さんにん}です。",
+        "en": "There are three of us in my family: my father, my mother and me.",
+        "wrong": [
+          "や",
+          "を",
+          "が"
+        ],
+        "explain": "The list is complete (three people), so it's と; や would hint at others."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:ya",
+      "grammar:n5:issho-ni",
+      "grammar:n4:to"
+    ]
+  },
+  {
+    "slug": "grammar:n5:toki",
+    "pattern": "〜とき / 〜ときに",
+    "meaning": "When / at the time. Ties an event to a time or situation; it follows plain verbs, い-adjectives, な-adjectives with な, and nouns with の.",
+    "examples": [
+      {
+        "ja": "{子供|こども}の[[とき]]、よくこの{公園|こうえん}で{遊|あそ}びました。",
+        "en": "When I was a child, I often played in this park."
+      },
+      {
+        "ja": "{暇|ひま}な[[とき]]、{何|なに}をしますか。",
+        "en": "What do you do when you have free time?"
+      },
+      {
+        "ja": "{寒|さむ}い[[とき]]は、{温|あたた}かいお{茶|ちゃ}を{飲|の}みます。",
+        "en": "When it's cold, I drink hot tea."
+      },
+      {
+        "ja": "{家|いえ}を{出|で}る[[とき]]、「いってきます」と{言|い}います。",
+        "en": "When I leave the house, I say \"ittekimasu\"."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:toki-1",
+        "ja": "{学生|がくせい}[[の]]とき、{毎日|まいにち}{図書館|としょかん}へ{行|い}きました。",
+        "en": "When I was a student, I went to the library every day.",
+        "wrong": [
+          "な",
+          "だ",
+          "に"
+        ],
+        "explain": "A noun joins とき with の: 学生のとき."
+      },
+      {
+        "slug": "gq:n5:toki-2",
+        "ja": "{部屋|へや}が[[{静|しず}かな]]とき、{本|ほん}を{読|よ}みます。",
+        "en": "When my room is quiet, I read.",
+        "wrong": [
+          "{静|しず}かの",
+          "{静|しず}かだ",
+          "{静|しず}かい"
+        ],
+        "explain": "A な-adjective keeps な before とき: 静かなとき."
+      }
+    ],
+    "confusables": [
+      "grammar:n4:tara",
+      "grammar:n4:aida"
+    ]
+  },
+  {
+    "slug": "grammar:n5:totemo",
+    "pattern": "とても + adjective",
+    "meaning": "Very. Adds emphasis to an adjective or a feeling verb (とても好き) in positive sentences; for 'not very', use あまり〜ない instead.",
+    "examples": [
+      {
+        "ja": "この{本|ほん}は[[とても]]{面白|おもしろ}いです。",
+        "en": "This book is really interesting."
+      },
+      {
+        "ja": "{今日|きょう}は[[とても]]{暑|あつ}いですね。",
+        "en": "It's very hot today, isn't it?"
+      },
+      {
+        "ja": "{山下|やました}さんの{部屋|へや}は[[とても]]きれいです。",
+        "en": "Yamashita-san's room is very tidy."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:totemo-1",
+        "ja": "この{料理|りょうり}は[[とても]]おいしいです。",
+        "en": "This dish is very tasty.",
+        "wrong": [
+          "あまり",
+          "{少|すこ}しも",
+          "{何|なに}も"
+        ],
+        "explain": "The sentence is positive; あまり, 少しも and 何も all need a negative."
+      },
+      {
+        "slug": "gq:n5:totemo-2",
+        "ja": "この{店|みせ}は[[とても]]{有名|ゆうめい}です。",
+        "en": "This shop is very famous.",
+        "wrong": [
+          "たくさん",
+          "おおぜい",
+          "よく"
+        ],
+        "explain": "To say 'very' before an adjective, use とても; たくさん and おおぜい count amounts."
+      }
+    ],
+    "confusables": [
+      "grammar:n4:amari-nai",
+      "grammar:n4:zenzen-nai",
+      "grammar:n5:sugiru"
+    ]
+  },
+  {
+    "slug": "grammar:n5:tsumori",
+    "pattern": "〜つもりです / 〜ないつもりです",
+    "meaning": "Intend to / plan to. After a plain verb it says what you have decided to do; after ない, what you plan not to do.",
+    "examples": [
+      {
+        "ja": "{来年|らいねん}、{日本|にほん}へ{行|い}く[[つもり]]です。",
+        "en": "I'm planning to go to Japan next year."
+      },
+      {
+        "ja": "{今晩|こんばん}は{何|なに}も{食|た}べない[[つもり]]です。",
+        "en": "I intend not to eat anything tonight."
+      },
+      {
+        "ja": "{夏休|なつやす}みは{何|なに}をする[[つもり]]ですか。",
+        "en": "What are you planning to do over the summer holidays?"
+      },
+      {
+        "ja": "{新|あたら}しい{車|くるま}を{買|か}う[[つもり]]でしたが、{買|か}いませんでした。",
+        "en": "I was going to buy a new car, but I didn't."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:tsumori-1",
+        "ja": "{来月|らいげつ}から{毎朝|まいあさ}[[{走|はし}る]]つもりです。",
+        "en": "I plan to go running every morning from next month.",
+        "wrong": [
+          "{走|はし}ります",
+          "{走|はし}って",
+          "{走|はし}りたい"
+        ],
+        "explain": "つもり follows the plain dictionary form: 走るつもり."
+      },
+      {
+        "slug": "gq:n5:tsumori-2",
+        "ja": "{大学|だいがく}を{出|で}てから、{銀行|ぎんこう}で{働|はたら}く[[つもり]]です。",
+        "en": "After I finish university, I plan to work at a bank.",
+        "wrong": [
+          "たい",
+          "ましょう",
+          "ほしい"
+        ],
+        "explain": "After the dictionary form 働く, only つもり fits; たい and ましょう need the ます-stem."
+      }
+    ],
+    "confusables": [
+      "grammar:n4:yotei-da",
+      "grammar:n4:you-to-omou",
+      "grammar:n5:tai"
+    ]
+  },
+  {
+    "slug": "grammar:n5:wa-topic-marker",
+    "pattern": "Nは〜",
+    "meaning": "Marks the topic, what the sentence is about ('as for N'), and can also set one thing against another. Written は but said わ.",
+    "examples": [
+      {
+        "ja": "{私|わたし}[[は]]{学生|がくせい}です。",
+        "en": "I'm a student."
+      },
+      {
+        "ja": "{今日|きょう}[[は]]{暑|あつ}いですね。",
+        "en": "It's hot today, isn't it?"
+      },
+      {
+        "ja": "{肉|にく}は{食|た}べますが、{魚|さかな}[[は]]{食|た}べません。",
+        "en": "I eat meat, but I don't eat fish."
+      },
+      {
+        "ja": "トイレ[[は]]どこですか。",
+        "en": "Where is the restroom?"
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:wa-topic-marker-1",
+        "ja": "{明日|あした}[[は]]{何曜日|なんようび}ですか。",
+        "en": "What day of the week is tomorrow?",
+        "wrong": [
+          "を",
+          "に",
+          "の"
+        ],
+        "explain": "明日 is the topic you're asking about, so it takes は."
+      },
+      {
+        "slug": "gq:n5:wa-topic-marker-2",
+        "ja": "{兄|あに}は{背|せ}が{高|たか}いですが、{私|わたし}[[は]]{低|ひく}いです。",
+        "en": "My older brother is tall, but I'm short.",
+        "wrong": [
+          "を",
+          "に",
+          "も"
+        ],
+        "explain": "は sets 私 against 兄; も ('also') would contradict the contrast."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:ga",
+      "grammar:n5:mo",
+      "grammar:n4:wa-ga-wa"
+    ]
+  },
+  {
+    "slug": "grammar:n5:wa-yori-desu",
+    "pattern": "AはBより〜です",
+    "meaning": "A is more … than B. Takes A as the topic and compares it with B; より marks the thing you measure against.",
+    "examples": [
+      {
+        "ja": "{今日|きょう}は{昨日|きのう}[[より]]{寒|さむ}いです。",
+        "en": "Today is colder than yesterday."
+      },
+      {
+        "ja": "{電車|でんしゃ}はバス[[より]]{速|はや}いです。",
+        "en": "Trains are faster than buses."
+      },
+      {
+        "ja": "{兄|あに}は{父|ちち}[[より]]{背|せ}が{高|たか}いです。",
+        "en": "My older brother is taller than my father."
+      },
+      {
+        "ja": "{日本語|にほんご}は{英語|えいご}[[より]]{難|むずか}しいですか。",
+        "en": "Is Japanese harder than English?"
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:wa-yori-desu-1",
+        "ja": "{飛行機|ひこうき}は{電車|でんしゃ}[[より]]{高|たか}いです。",
+        "en": "Planes are more expensive than trains.",
+        "wrong": [
+          "ほど",
+          "まで",
+          "の"
+        ],
+        "explain": "より marks what you compare against; ほど only works with a negative."
+      },
+      {
+        "slug": "gq:n5:wa-yori-desu-2",
+        "ja": "このかばんは、あのかばん[[より]]{軽|かる}いです。",
+        "en": "This bag is lighter than that one.",
+        "wrong": [
+          "ほう",
+          "と",
+          "を"
+        ],
+        "explain": "The bag being compared against takes より."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:yori-hou-ga",
+      "grammar:n4:yori",
+      "grammar:n5:no-naka-de-a-ga-ichiban"
+    ]
+  },
+  {
+    "slug": "grammar:n5:wa-dou-desu-ka",
+    "pattern": "Nはどうですか",
+    "meaning": "How is N? / How about N? Asks for someone's opinion or impression, or makes a gentle suggestion; いかがですか is the more polite version.",
+    "examples": [
+      {
+        "ja": "{新|あたら}しい{仕事|しごと}[[はどうですか]]。",
+        "en": "How's the new job?"
+      },
+      {
+        "ja": "{日本|にほん}の{食|た}べ{物|もの}[[はどうですか]]。",
+        "en": "How do you find Japanese food?"
+      },
+      {
+        "ja": "{旅行|りょこう}[[はどうでしたか]]。",
+        "en": "How was your trip?"
+      },
+      {
+        "ja": "コーヒー[[はどうですか]]。",
+        "en": "Would you like some coffee?"
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:wa-dou-desu-ka-1",
+        "ja": "{新|あたら}しいアパートは[[どう]]ですか。",
+        "en": "How's your new apartment?",
+        "wrong": [
+          "どの",
+          "どんな",
+          "どうやって"
+        ],
+        "explain": "To ask what something is like, use どう; どの needs a noun after it."
+      },
+      {
+        "slug": "gq:n5:wa-dou-desu-ka-2",
+        "ja": "{今週|こんしゅう}は{忙|いそが}しいです。{来週|らいしゅう}[[は]]どうですか。",
+        "en": "I'm busy this week. How about next week?",
+        "wrong": [
+          "を",
+          "の",
+          "や"
+        ],
+        "explain": "The thing you suggest or ask about is the topic: 来週はどうですか."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:donna",
+      "grammar:n5:masen-ka",
+      "grammar:n4:tara-dou"
+    ]
+  },
+  {
+    "slug": "grammar:n5:ya",
+    "pattern": "AやB（など）",
+    "meaning": "A, B and so on. Lists a few examples from a bigger group, hinting there are more; often followed by など.",
+    "examples": [
+      {
+        "ja": "{冷蔵庫|れいぞうこ}に{卵|たまご}[[や]]{牛乳|ぎゅうにゅう}があります。",
+        "en": "There are eggs, milk and other things in the fridge."
+      },
+      {
+        "ja": "かばんの{中|なか}に{財布|さいふ}[[や]]{鍵|かぎ}などが{入|はい}っています。",
+        "en": "My bag has my wallet, keys and so on in it."
+      },
+      {
+        "ja": "{休|やす}みの{日|ひ}は{公園|こうえん}[[や]]{図書館|としょかん}へ{行|い}きます。",
+        "en": "On my days off I go to places like the park and the library."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:ya-1",
+        "ja": "{部屋|へや}にテレビ[[や]]ベッドなどがあります。",
+        "en": "There's a TV, a bed and so on in the room.",
+        "wrong": [
+          "を",
+          "が",
+          "で"
+        ],
+        "explain": "や links nouns as examples from a longer list, which など confirms."
+      },
+      {
+        "slug": "gq:n5:ya-2",
+        "ja": "スーパーで{肉|にく}[[や]]{野菜|やさい}などを{買|か}いました。",
+        "en": "I bought meat, vegetables and other things at the supermarket.",
+        "wrong": [
+          "を",
+          "が",
+          "の"
+        ],
+        "explain": "Two example items joined before など take や."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:to",
+      "grammar:n4:toka-toka",
+      "grammar:n4:nado"
+    ]
+  },
+  {
+    "slug": "grammar:n5:yo",
+    "pattern": "〜よ",
+    "meaning": "Sentence-ending particle for telling the listener something they don't know or should notice, like 'you know' or 'I tell you'. ね, by contrast, looks for agreement.",
+    "examples": [
+      {
+        "ja": "この{店|みせ}のラーメンはおいしいです[[よ]]。",
+        "en": "The ramen at this place is good, you know."
+      },
+      {
+        "ja": "{電車|でんしゃ}はもう{出|で}ました[[よ]]。",
+        "en": "The train has already left, I'm afraid."
+      },
+      {
+        "ja": "あ、{雨|あめ}が{降|ふ}っています[[よ]]。",
+        "en": "Oh, look, it's raining."
+      },
+      {
+        "ja": "{大丈夫|だいじょうぶ}です[[よ]]。",
+        "en": "It's fine, really."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:yo-1",
+        "ja": "{知|し}らないんですか。{明日|あした}はテストです[[よ]]。",
+        "en": "You didn't know? There's a test tomorrow!",
+        "wrong": [
+          "ね",
+          "か",
+          "を"
+        ],
+        "explain": "The listener doesn't know about the test, so you tell them with よ; ね assumes they already know."
+      },
+      {
+        "slug": "gq:n5:yo-2",
+        "ja": "「この{近|ちか}くに{銀行|ぎんこう}はありますか。」「ええ、{駅|えき}の{前|まえ}にあります[[よ]]。」",
+        "en": "\"Is there a bank near here?\" \"Yes, there's one in front of the station.\"",
+        "wrong": [
+          "か",
+          "を",
+          "に"
+        ],
+        "explain": "The answer gives the asker new information, which is what よ is for."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:ne",
+      "grammar:n5:naa"
+    ]
+  },
+  {
+    "slug": "grammar:n5:yori-hou-ga",
+    "pattern": "AよりBのほうが〜",
+    "meaning": "B is more … than A. Compares two things and puts the focus on the one that comes out ahead; also the usual answer to どちらが〜ですか.",
+    "examples": [
+      {
+        "ja": "{肉|にく}より{魚|さかな}の[[ほうが]]{好|す}きです。",
+        "en": "I like fish more than meat."
+      },
+      {
+        "ja": "この{町|まち}は、{昼|ひる}より{夜|よる}の[[ほうが]]にぎやかです。",
+        "en": "This town is livelier at night than during the day."
+      },
+      {
+        "ja": "「コーヒーと{紅茶|こうちゃ}と、どちらがいいですか。」「{紅茶|こうちゃ}の[[ほうが]]いいです。」",
+        "en": "\"Which would you like, coffee or tea?\" \"I'd prefer tea.\""
+      },
+      {
+        "ja": "{一人|ひとり}で{行|い}く[[より]]、みんなで{行|い}くほうが{楽|たの}しいです。",
+        "en": "Going with everyone is more fun than going alone."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:yori-hou-ga-1",
+        "ja": "{自転車|じてんしゃ}より{車|くるま}の[[ほうが]]{速|はや}いです。",
+        "en": "Cars are faster than bicycles.",
+        "wrong": [
+          "ほうに",
+          "ほうを",
+          "ほうで"
+        ],
+        "explain": "The winner of the comparison is marked with のほうが."
+      },
+      {
+        "slug": "gq:n5:yori-hou-ga-2",
+        "ja": "{私|わたし}は{犬|いぬ}[[より]]{猫|ねこ}のほうが{好|す}きです。",
+        "en": "I like cats more than dogs.",
+        "wrong": [
+          "ほど",
+          "から",
+          "で"
+        ],
+        "explain": "より marks the thing that loses the comparison."
+      }
+    ],
+    "confusables": [
+      "grammar:n5:wa-yori-desu",
+      "grammar:n5:hou-ga-ii",
+      "grammar:n5:no-naka-de-a-ga-ichiban"
+    ]
+  }
+]

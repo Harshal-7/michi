@@ -18,6 +18,7 @@ import {
   type Level,
   parseRuby,
   type Prompt,
+  toPlain,
   type Resource,
 } from "../../content/schema";
 import { buildDictionary } from "./dictionary";
@@ -187,9 +188,10 @@ async function main() {
     const level = wordLevel.get(e.word);
     if (!level) problem(`word-examples.json: unknown word ${e.word}`);
     else checkWritten(`example for ${e.word}`, e.ja, { level }, ctx);
-    if (level && !e.ja.includes(matched.find((m) => m.word.slug === e.word)!.word.term.replace(/〜/g, "").slice(0, 1))) {
+    const w = matched.find((m) => m.word.slug === e.word)?.word;
+    const plain = toPlain(e.ja);
+    if (w && !plain.includes(w.term.replace(/〜/g, "").slice(0, 1)) && !plain.includes(w.reading.replace(/〜/g, "").slice(0, 2)))
       warnings.push(`example for ${e.word} may not use the word: ${e.ja}`);
-    }
   }
   const exampleStats = await attachExamples(matched, dict, kr, new Map(michiExamples.map((e) => [e.word, e])));
   for (const slug of exampleStats.missingN5) problem(`N5 word ${slug} has no example`);
