@@ -1,0 +1,319 @@
+{
+  "links": [
+    {
+      "url": "https://www.tofugu.com/japanese/learn-hiragana/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Learn Hiragana: Tofugu's Ultimate Guide"
+    },
+    {
+      "url": "https://www.tofugu.com/japanese/learn-katakana/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Learn Katakana: The Ultimate Guide"
+    },
+    {
+      "url": "https://realkana.com/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Learn Hiragana, Katakana and Kanji | Real Kana"
+    },
+    {
+      "url": "https://kanjialive.com/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Kanji alive: A free study tool for reading and writing kanji"
+    },
+    {
+      "url": "https://kanjivg.tagaini.net/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "The Kanji Vector Graphics (KanjiVG) project - KanjiVG"
+    },
+    {
+      "url": "https://www.kanshudo.com/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Learn Japanese fast and effectively - Kanshudo"
+    },
+    {
+      "url": "https://jlptsensei.com/jlpt-n5-grammar-list/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "JLPT N5 Grammar List – JLPTsensei.com"
+    },
+    {
+      "url": "https://jlptsensei.com/jlpt-n4-grammar-list/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "JLPT N4 Grammar List – JLPTsensei.com"
+    },
+    {
+      "url": "https://jlptsensei.com/jlpt-n3-grammar-list/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "JLPT N3 Grammar List – JLPTsensei.com"
+    },
+    {
+      "url": "https://bunpro.jp/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Bunpro"
+    },
+    {
+      "url": "https://guidetojapanese.org/learn/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Learn Japanese – Tae Kim's Guide to Learning Japanese"
+    },
+    {
+      "url": "https://imabi.org/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "IMABI 今日 – Guided Japanese Mastery"
+    },
+    {
+      "url": "https://sakubi.neocities.org/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "昨日 Sakubi: Yesterday's Grammar Guide"
+    },
+    {
+      "url": "https://maggiesensei.com/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Maggie Sensei"
+    },
+    {
+      "url": "https://jisho.org/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Jisho.org: Japanese Dictionary"
+    },
+    {
+      "url": "https://apps.ankiweb.net/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Anki - powerful, intelligent flashcards"
+    },
+    {
+      "url": "https://github.com/jamsinclair/open-anki-jlpt-decks",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "GitHub - jamsinclair/open-anki-jlpt-decks: Open source and updatable JLPT Vocabu"
+    },
+    {
+      "url": "https://jpdb.io/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Japanese dictionary and spaced repetition system – jpdb"
+    },
+    {
+      "url": "https://www.nhk.or.jp/lesson/en/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Easy Japanese Learn Japanese | NHK WORLD-JAPAN"
+    },
+    {
+      "url": "https://nihongoconteppei.com/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Japanese podcast for beginners (Nihongo con Teppei) – The best way to learn how "
+    },
+    {
+      "url": "https://cijapanese.com/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Natural Japanese"
+    },
+    {
+      "url": "https://www.erin.jpf.go.jp/en/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Erin's Challenge! I Can Speak Japanese. Contents Library | The Japan Foundation"
+    },
+    {
+      "url": "https://www.japanesepod101.com/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Learn Japanese Online - JapanesePod101"
+    },
+    {
+      "url": "https://www.jlpt.jp/e/samples/sampleindex.html",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Japanese-Language Proficiency Test Official Practice Workbook | JLPT Japanese-La"
+    },
+    {
+      "url": "https://www3.nhk.or.jp/news/easy/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "NHKやさしいことばニュース | NEWS WEB EASY"
+    },
+    {
+      "url": "https://tadoku.org/japanese/en/free-books-en/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Free Tadoku Books - にほんごたどく"
+    },
+    {
+      "url": "https://www.satorireader.com/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Satori Reader | A Better Way To Study And Practice Your Japanese"
+    },
+    {
+      "url": "https://watanoc.com/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "free web magazine written in easy Japanese language"
+    },
+    {
+      "url": "https://matcha-jp.com/easy",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "MATCHA（やさしい日本語）- 日本の観光・文化・ホテル情報を世界に届けるメディア"
+    },
+    {
+      "url": "https://yomujp.com/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "日本語多読道場 yomujp"
+    },
+    {
+      "url": "https://yomitan.wiki/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Welcome to Yomitan - Yomitan"
+    },
+    {
+      "url": "https://www.gavo.t.u-tokyo.ac.jp/ojad/eng/pages/home",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "OJAD - Online Japanese Accent Dictionary"
+    },
+    {
+      "url": "https://youglish.com/japanese",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "How to Pronounce Japanese Like a Native | YouGlish"
+    },
+    {
+      "url": "https://www.italki.com/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "🌐 italki - Best Language Learning with Certified Tutors & Group Courses"
+    },
+    {
+      "url": "https://www.jlpt.jp/e/samples/forlearners.html",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "For Examinees: Let's Try Sample Questions! | JLPT Japanese-Language Proficiency "
+    },
+    {
+      "url": "https://www.jlpt.jp/e/about/candolist.html",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "JLPT Can-do Self-Evaluation List | JLPT Japanese-Language Proficiency Test"
+    },
+    {
+      "url": "https://www.jlpt.jp/e/application/overseas_list.html",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "List of Overseas Test Site Cities and Local Host Institutions | JLPT Japanese-La"
+    },
+    {
+      "url": "https://www.tofugu.com/japanese/keigo/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Keigo: The Importance of Politness in Japanese"
+    },
+    {
+      "url": "https://www.kanken.or.jp/bjt/english/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "BJT Business Japanese Proficiency Test"
+    },
+    {
+      "url": "https://nihongo-e-na.com/eng/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "NIHONGO eな - Portal for Learning Japanese"
+    },
+    {
+      "url": "https://japan-dev.com/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Software Developer Jobs in Japan | Japan Dev"
+    },
+    {
+      "url": "https://qiita.com/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Qiita"
+    },
+    {
+      "url": "https://e-words.jp/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "IT用語辞典 e-Words"
+    },
+    {
+      "url": "https://developer.mozilla.org/ja/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "MDN Web Docs"
+    },
+    {
+      "url": "https://www.tofugu.com/japanese/",
+      "ok": true,
+      "status": 200,
+      "checkedOn": "2026-11-21",
+      "note": "Japanese Learning Articles"
+    }
+  ]
+}

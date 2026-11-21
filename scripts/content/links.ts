@@ -10,18 +10,22 @@
  * Writes content/source/grammar-links.json and content/source/resource-links.json. The content
  * build never touches the network for these; it reads the committed tables.
  *
- * Flags: --skip-check reuses the previous check results for links already in the tables.
+ * Flags: --skip-check reuses the previous check results for links already in the tables;
+ * --pause <ms> sets the pause between requests (default 1200).
  */
 import { readFileSync } from "node:fs";
 import path from "node:path";
 
 import { LEVELS, type Level } from "../../content/schema";
+import { EXPECTED } from "./lib/expected";
 import { decodeEntities, getPage, pageTitle, sleep } from "./lib/http";
 import { SOURCE } from "./lib/paths";
 import { GrammarLinkTable, ResourceLinkTable, type GrammarPointLinks, ResourcesSource } from "./lib/source-types";
 import { writePretty } from "./lib/write";
 
-const PAUSE_MS = 1200;
+/** Pause between requests; `--pause <ms>` slows down further when a site starts refusing. */
+const pauseArg = process.argv.indexOf("--pause");
+const PAUSE_MS = pauseArg > 0 ? Number(process.argv[pauseArg + 1]) : 1200;
 const today = new Date().toISOString().slice(0, 10);
 
 type Row = { level: Level; n: number; romaji: string; title: string; url: string };
@@ -149,6 +153,11 @@ async function main() {
 
   console.log("Reading the JLPT Sensei grammar lists…");
   const rows = await readJlptSenseiLists();
+  // A site that refuses a request mid-run must never shrink the committed table.
+  for (const level of LEVELS) {
+    const got = rows.filter((r) => r.level === level).length;
+    if (got !== EXPECTED.grammar[level]) throw new Error(`Read ${got} ${level} points, expected ${EXPECTED.grammar[level]}; nothing written.`);
+  }
 
   console.log("Reading the Bunpro grammar index…");
   const index = await getPage("https://bunpro.jp/grammar_points");
@@ -186,7 +195,9 @@ async function main() {
   }
   process.stdout.write("\n");
 
-  writePretty(path.join(SOURCE, "grammar-links.json"), GrammarLinkTable.parse({ checkedOn: today, points, failed }));
+  const linked = new Set(points.flatMap((p) => p.links.map((l) => l.url)));
+  const browserChecked = (previous.success ? previous.data.browserChecked : []).filter((u) => linked.has(u));
+  writePretty(path.join(SOURCE, "grammar-links.json"), GrammarLinkTable.parse({ checkedOn: today, points, failed, browserChecked }));
 
   console.log("Checking resource links…");
   const resources = ResourcesSource.parse(readJson("resources.json") ?? []);

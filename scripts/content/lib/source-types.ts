@@ -21,6 +21,11 @@ export const GrammarLinkTable = z.object({
     }),
   ),
   failed: z.array(z.object({ slug: z.string(), url: z.string(), status: z.number(), note: z.string() })).default([]),
+  /**
+   * Links confirmed by opening them in a real browser, because the site refused scripted requests
+   * (Cloudflare 520) when the checker ran. They are in `points` like any other checked link.
+   */
+  browserChecked: z.array(z.string()).default([]),
 });
 export type GrammarLinkTable = z.infer<typeof GrammarLinkTable>;
 export type GrammarPointLinks = GrammarLinkTable["points"][number];
