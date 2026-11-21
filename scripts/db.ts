@@ -40,6 +40,11 @@ async function main(command: string | undefined) {
     console.error("Usage: tsx scripts/db.ts migrate | seed | deploy");
     process.exit(1);
   }
+  if (command === "deploy" && process.env.SKIP_DB_DEPLOY === "1") {
+    // An escape hatch, e.g. if Preview deployments ever share the production database.
+    console.log("SKIP_DB_DEPLOY=1: migrations and the seed were skipped.");
+    return;
+  }
   const db = createDb(connectionString(command!), { max: 1 });
   try {
     if (command === "migrate" || command === "deploy") {
