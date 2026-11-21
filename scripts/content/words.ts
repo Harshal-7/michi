@@ -85,9 +85,21 @@ function wordPos(deck: DeckWord, hit: Hit): Pos[] {
   return POS.filter((p) => pos.has(p));
 }
 
-/** For the few words JMdict doesn't match, a part of speech from the shape of the word. */
+/** The few listed words JMdict doesn't match as written, by hand. */
+const POS_BY_HAND: Record<string, Pos[]> = {
+  ゆっくりと: ["adverb"],
+  ラジオカセ: ["noun"],
+  "いくら〜ても": ["expression"],
+  "〜てしまう": ["auxiliary"],
+  お金持ち: ["noun"],
+  真中: ["noun"],
+  唯: ["adverb"],
+};
+
+/** For words JMdict doesn't match, a part of speech by hand or from the shape of the word. */
 function guessPos(deck: DeckWord): Pos[] {
   const term = deck.forms[0];
+  if (POS_BY_HAND[term]) return POS_BY_HAND[term];
   if (deck.interjection) return ["interjection"];
   if (deck.suru) return ["noun", "verb-suru"];
   if (term.startsWith("〜")) return ["suffix"];

@@ -44,7 +44,10 @@ pnpm content:links
 
 Reads JLPT Sensei's grammar lists and Bunpro's index, opens every grammar and resource link one at
 a time, and writes `source/grammar-links.json` and `source/resource-links.json`. It takes about ten
-minutes. `--skip-check` reuses earlier results for links that already passed.
+minutes. `--skip-check` reuses earlier results for links that already passed, and `--pause <ms>`
+slows it down. It refuses to write a table if a list page comes back short. When a site answers
+scripted requests with errors but loads in a browser, links confirmed by opening them in a browser
+are listed under `browserChecked` (90 JLPT Sensei pages on 21 Nov 2026).
 
 ```bash
 pnpm content:check-writing content/source/prompts.json
