@@ -12,7 +12,7 @@
  *
  * Flags: --skip-check reuses the previous check results for links already in the tables.
  */
-import { readFileSync, writeFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import path from "node:path";
 
 import { LEVELS, type Level } from "../../content/schema";
@@ -95,21 +95,28 @@ function matchBunpro(rows: Row[], bunpro: BunproPoint[]): Map<Row, BunproPoint> 
     const k = normTitle(b.title);
     byTitle.set(k, [...(byTitle.get(k) ?? []), b]);
   }
-  const out = new Map<Row, BunproPoint>();
+  // The whole title must match one Bunpro point at the same JLPT level. The same title can name
+  // different grammar at different levels (じゃない at N5 and N3), so a level mismatch is no match.
+  const hits = new Map<Row, BunproPoint>();
   for (const row of rows) {
-    // The whole title must match one Bunpro title, and only one point may carry it.
-    const hits = byTitle.get(normTitle(row.title)) ?? [];
-    if (hits.length === 1) out.set(row, hits[0]);
+    const same = (byTitle.get(normTitle(row.title)) ?? []).filter((b) => b.level === row.level);
+    if (same.length === 1) hits.set(row, same[0]);
   }
-  return out;
+  // A Bunpro page may back one point only (two N4 "そうだ" points are different grammar).
+  const uses = new Map<string, number>();
+  for (const b of hits.values()) uses.set(b.url, (uses.get(b.url) ?? 0) + 1);
+  for (const [row, b] of hits) if ((uses.get(b.url) ?? 0) > 1) hits.delete(row);
+  return hits;
 }
 
 type Check = { ok: boolean; status: number; note: string };
 
 async function checkJlptSensei(url: string): Promise<Check> {
   const res = await getPage(url);
-  const canonical = res.body.match(/<link rel=["']?canonical["']? href=["']?([^"' >]+)/)?.[1];
-  const ok = res.status === 200 && decodeURI(canonical ?? "") === decodeURI(url) && /Learn JLPT N\d Grammar/.test(pageTitle(res.body));
+  const canonical = res.body.match(/<link rel=["']?canonical["']? href=["']?([^"' >]+)/)?.[1] ?? "";
+  const same = (a: string) => decodeURI(a).toLowerCase();
+  // A real grammar page names itself as the canonical URL and has a JLPT Sensei grammar title.
+  const ok = res.status === 200 && same(canonical) === same(url) && /Grammar|JLPT/.test(pageTitle(res.body));
   return { ok, status: res.status, note: ok ? "" : `title "${pageTitle(res.body).slice(0, 60)}"` };
 }
 

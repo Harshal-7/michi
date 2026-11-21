@@ -9,9 +9,8 @@
  */
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
-import { createReadStream, createWriteStream, existsSync, mkdirSync, renameSync, rmSync } from "node:fs";
+import { createReadStream, existsSync, mkdirSync, renameSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { Readable } from "node:stream";
 import { pipeline } from "node:stream/promises";
 
 import { CACHE } from "./paths";
@@ -106,9 +105,9 @@ export async function ensureSource(name: SourceName): Promise<string> {
   if (!existsSync(download) || (await sha256(download)) !== src.sha256) {
     console.log(`  downloading ${name}…`);
     const res = await fetch(src.url);
-    if (!res.ok || !res.body) throw new Error(`Download failed for ${name}: ${res.status} ${src.url}`);
+    if (!res.ok) throw new Error(`Download failed for ${name}: ${res.status} ${src.url}`);
     const tmp = `${download}.part`;
-    await pipeline(Readable.fromWeb(res.body), createWriteStream(tmp));
+    writeFileSync(tmp, Buffer.from(await res.arrayBuffer()));
     const got = await sha256(tmp);
     if (got !== src.sha256) {
       if (!updating()) {

@@ -2,7 +2,7 @@
 import { readFileSync } from "node:fs";
 
 import { LEVELS, type Level } from "../../../content/schema";
-import { isKanjiChar, normaliseTilde } from "./jp";
+import { hasKanji, isKanjiChar, normaliseTilde } from "./jp";
 import { ensureSource } from "./sources";
 
 /** RFC 4180 CSV: quoted fields may hold commas, quotes ("") and newlines. */
@@ -87,11 +87,55 @@ export type DeckWord = {
   level: Level;
   /** Written forms as listed, first one first: "足; 脚" gives ["足", "脚"]. */
   forms: string[];
+  /** The reading, without the list's notes: "いい; よい" gives "いい", "けっこん (する)" gives "けっこん". */
   reading: string;
   meaning: string;
+  /** The list marks it as a する verb: "けっこん (する)" or "うんどうする" for 運動. */
+  suru: boolean;
+  /** The list marks it as an interjection: "しまった (かん)". */
+  interjection: boolean;
   /** Position in the source list. */
   index: number;
 };
+
+/**
+ * The lists put notes into the written form and reading: alternatives ("いい; よい", "回る、回す"),
+ * する verbs ("(する)"), interjections ("(かん)"), optional parts ("パート (タイム)",
+ * "〜(て) しまう") and a particle hint ("(〜を) とお"). This keeps the word and reads the notes.
+ */
+export function normaliseDeckRow(expression: string, reading: string) {
+  let suru = false;
+  let interjection = false;
+  const clean = (raw: string) => {
+    let t = normaliseTilde(raw.trim());
+    if (/\s*\(かん\)$/.test(t)) {
+      interjection = true;
+      t = t.replace(/\s*\(かん\)$/, "");
+    }
+    if (/\s*\(する\)$/.test(t)) {
+      suru = true;
+      t = t.replace(/\s*\(する\)$/, "");
+    }
+    t = t.replace(/^\(〜を\)\s*/, "");
+    t = t.replace(/\s+\([^)]*\)$/, "");
+    t = t.replace(/\(([^)]*)\)\s*/g, "$1");
+    return t.replace(/\s+/g, "");
+  };
+  let forms = expression.split(/[;、]\s*/).map(clean).filter(Boolean);
+  let readings = reading.split(/[;、]\s*/).map(clean).filter(Boolean);
+  if (readings.length === 0 && forms[0] && !hasKanji(forms[0])) readings = [forms[0]];
+  if (readings[0] && hasKanji(readings[0]) && !hasKanji(forms[0])) {
+    // いただく listed with 頂く as its "reading": the kana is the reading, the kanji another form.
+    forms = [...forms, readings[0]];
+    readings = [forms[0]];
+  }
+  let first = readings[0] ?? "";
+  if (first.endsWith("する") && first.length > 2 && !forms[0].endsWith("する")) {
+    suru = true;
+    first = first.slice(0, -2);
+  }
+  return { forms, reading: first, suru, interjection };
+}
 
 export async function loadDecks(): Promise<DeckWord[]> {
   const out: DeckWord[] = [];
@@ -102,9 +146,8 @@ export async function loadDecks(): Promise<DeckWord[]> {
     rows.forEach(([expression, reading, meaning], index) => {
       out.push({
         level,
-        forms: expression.split(/;\s*/).map((f) => normaliseTilde(f.trim())).filter(Boolean),
-        reading: normaliseTilde(reading.trim()),
-        meaning: meaning.trim(),
+        ...normaliseDeckRow(expression, reading),
+        meaning: meaning.trim().replace(/^-+\s*|\s*-+$/g, ""),
         index,
       });
     });
@@ -116,7 +159,8 @@ export async function loadDecks(): Promise<DeckWord[]> {
 export async function allowedKanjiByLevel(): Promise<Record<Level, Set<string>>> {
   const [kd, decks] = await Promise.all([loadKanjiData(), loadDecks()]);
   const out = {} as Record<Level, Set<string>>;
-  const acc = new Set<string>();
+  // お願いします is an N5 phrase that the list writes in kana; 願 is fine with furigana.
+  const acc = new Set<string>(["願"]);
   for (const level of LEVELS) {
     for (const [k, v] of kd) if (kanjiLevel(k, v) === level) acc.add(k);
     for (const w of decks) if (w.level === level) for (const f of w.forms) for (const c of f) if (isKanjiChar(c)) acc.add(c);

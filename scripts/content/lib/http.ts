@@ -6,7 +6,17 @@ export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 export type Page = { url: string; status: number; finalUrl: string; body: string };
 
-export async function getPage(url: string, { timeoutMs = 30_000 } = {}): Promise<Page> {
+/** Fetches a page, retrying a few times with a growing pause when the server errors (5xx) or drops. */
+export async function getPage(url: string, { timeoutMs = 30_000, tries = 4 } = {}): Promise<Page> {
+  let page = await getOnce(url, timeoutMs);
+  for (let i = 1; i < tries && (page.status === 0 || page.status >= 500); i++) {
+    await sleep(5000 * i);
+    page = await getOnce(url, timeoutMs);
+  }
+  return page;
+}
+
+async function getOnce(url: string, timeoutMs: number): Promise<Page> {
   try {
     const res = await fetch(url, {
       headers: { "user-agent": UA, accept: "text/html,application/xhtml+xml", "accept-language": "en" },
