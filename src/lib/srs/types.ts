@@ -29,3 +29,6 @@ export type StudyCard = {
   dueAt: string | null;
   item: ItemView;
 };
+
+/** The next task after a session: "New items · 2 kanji and 12 words · 15 min" (F_ReviewDone). */
+export type UpNext = { title: string; detail: string; href: string };
