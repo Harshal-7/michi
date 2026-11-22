@@ -1,0 +1,5 @@
+[
+  { "id": "1358280", "kanji": ["食べる"], "kana": ["たべる"], "meanings": ["to eat"], "pos": ["verb-ichidan"] },
+  { "id": "1582710", "kanji": ["日本"], "kana": ["にほん", "にっぽん"], "meanings": ["Japan"], "pos": ["noun"] },
+  { "id": "1000320", "kanji": [], "kana": ["あそこ"], "meanings": ["there", "over there"], "pos": ["pronoun"] }
+]

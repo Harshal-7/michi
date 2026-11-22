@@ -1,0 +1,61 @@
+import { blanks, parseRuby, toPlain } from "@content/schema";
+
+/** The canvas's "this word" mark (F_QuizQuestion): a 2px underline set 6px below. */
+const MARK = "font-semibold underline decoration-2 underline-offset-[6px]";
+
+type Props = {
+  /** Japanese with ruby markup: "{食|た}べる". May carry one [[answer]] blank. */
+  text: string;
+  /** Show furigana. Off renders the plain kanji (the furigana setting, round 1). */
+  furigana?: boolean;
+  /** A [[blank]]: "fill" shows the answer marked, "hide" a marked gap of about its length. */
+  blank?: "fill" | "hide";
+  className?: string;
+};
+
+/**
+ * The one way Japanese with furigana is shown. Always lang="ja", so kanji take Japanese shapes.
+ * <rt> styling (0.4em, --ink2) lives in globals.css.
+ */
+export function Ruby({ text, furigana = true, blank = "fill", className }: Props) {
+  const [answer] = blanks(text);
+  if (answer === undefined) {
+    return (
+      <span lang="ja" className={className}>
+        <Segments text={text} furigana={furigana} />
+      </span>
+    );
+  }
+  const [before, after] = text.split(`[[${answer}]]`);
+  return (
+    <span lang="ja" className={className}>
+      <Segments text={before} furigana={furigana} />
+      {blank === "fill" ? (
+        <span className={MARK}>
+          <Segments text={answer} furigana={furigana} />
+        </span>
+      ) : (
+        <>
+          <span aria-hidden="true" className={MARK}>
+            {"　".repeat(Math.max(2, [...toPlain(answer)].length))}
+          </span>
+          <span className="sr-only">(blank)</span>
+        </>
+      )}
+      <Segments text={after} furigana={furigana} />
+    </span>
+  );
+}
+
+function Segments({ text, furigana }: { text: string; furigana: boolean }) {
+  return parseRuby(text).map((s, i) =>
+    s.reading && furigana ? (
+      <ruby key={i}>
+        {s.text}
+        <rt>{s.reading}</rt>
+      </ruby>
+    ) : (
+      s.text
+    ),
+  );
+}
