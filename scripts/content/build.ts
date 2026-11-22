@@ -35,6 +35,7 @@ import { kanjiReadings, type KanjiReadings, plausible } from "./lib/ruby";
 import {
   GrammarLinkTable,
   GrammarMeanings,
+  GrammarLessons,
   GrammarWritten,
   LookalikeGroups,
   PromptsSource,
@@ -93,6 +94,17 @@ function buildGrammar(ctx: Ctx): Grammar[] {
   const known = new Set(table.points.map((p) => p.slug));
   for (const g of [...written, ...meanings]) if (!known.has(g.slug)) problem(`grammar ${g.slug} isn't in the link table`);
 
+  const lessons = readSource("grammar-lessons.json", GrammarLessons, []);
+  const lessonBySlug = new Map<string, { topic: string; gloss: string; formation: string; order: number }>();
+  for (const { topic, points } of lessons) {
+    for (const p of points) {
+      if (lessonBySlug.has(p.slug)) problem(`grammar-lessons.json lists ${p.slug} twice`);
+      if (!writtenBySlug.has(p.slug)) problem(`grammar-lessons.json: ${p.slug} isn't a written N5 point`);
+      checkWritten(`${p.slug} formation`, p.formation, { level: "N5" }, ctx);
+      lessonBySlug.set(p.slug, { topic, gloss: p.gloss, formation: p.formation, order: lessonBySlug.size });
+    }
+  }
+
   const questionSlugs = new Set<string>();
   const out: Grammar[] = [];
   for (const point of table.points) {
@@ -113,7 +125,9 @@ function buildGrammar(ctx: Ctx): Grammar[] {
         for (const w of q.wrong) checkWritten(`${q.slug} wrong option`, w, { level: "N5" }, ctx);
       }
       for (const c of g.confusables) if (!known.has(c) || c === g.slug) problem(`grammar ${g.slug} lists unknown confusable ${c}`);
-      out.push({ ...g, level: "N5", links: point.links });
+      const lesson = lessonBySlug.get(g.slug);
+      if (!lesson) problem(`grammar ${g.slug} isn't in grammar-lessons.json`);
+      out.push({ ...g, level: "N5", links: point.links, ...lesson });
     } else {
       const m = meaningBySlug.get(point.slug);
       if (!m) {

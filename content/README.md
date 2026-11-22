@@ -20,7 +20,7 @@ grammar points, resources and speaking prompts.
 | `kanji-info.json` | 2,136 jōyō kanji | KANJIDIC2 through kanji-data |
 | `words.json` | N5 718, N4 667, N3 2,137 | open-anki-jlpt-decks, matched to JMdict for `jmdictId` and part of speech; one example sentence each where one fits (every N5 word has one) |
 | `dictionary.json` | 22,661 | JMdict common words (jmdict-simplified 3.6.2) |
-| `grammar.json` | N5 84, N4 132, N3 182 | JLPT Sensei's level lists, links checked; meanings written fresh; N5 points have 3–4 fill-in examples, 2 quiz questions and confusables |
+| `grammar.json` | N5 84, N4 132, N3 182 | JLPT Sensei's level lists, links checked; meanings written fresh; N5 points have 3–4 fill-in examples, 2 quiz questions and confusables, plus the lesson fields from `source/grammar-lessons.json`: a short meaning, how it's made, its topic and its place in the learning order |
 | `resources.json` | 45 | `source/resources.json`, each link checked |
 | `prompts.json` | N5 40, N4 40 | `source/prompts.json` |
 

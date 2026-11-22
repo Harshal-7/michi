@@ -56,7 +56,11 @@
       "grammar:n5:te-wa-ikenai",
       "grammar:n5:nakucha",
       "grammar:n4:te-shimau-chau"
-    ]
+    ],
+    "gloss": "mustn't (casual)",
+    "formation": "verb て-form, with て → ちゃ and で → じゃ, + いけない",
+    "topic": "Permission and rules",
+    "order": 40
   },
   {
     "slug": "grammar:n5:da-desu",
@@ -115,7 +119,11 @@
       "grammar:n5:janai-dewa-nai",
       "grammar:n5:i-adjectives",
       "grammar:n5:na-adjectives"
-    ]
+    ],
+    "gloss": "is, am, are",
+    "formation": "noun / な-adjective + です (polite) or だ (plain)",
+    "topic": "Sentences with です",
+    "order": 0
   },
   {
     "slug": "grammar:n5:dake",
@@ -177,7 +185,11 @@
     "confusables": [
       "grammar:n4:bakari",
       "grammar:n4:dake-de"
-    ]
+    ],
+    "gloss": "only, just",
+    "formation": "noun / verb + だけ",
+    "topic": "Particles",
+    "order": 15
   },
   {
     "slug": "grammar:n5:darou",
@@ -240,7 +252,11 @@
       "grammar:n5:deshou",
       "grammar:n4:kamo-shirenai",
       "grammar:n4:hazu-da"
-    ]
+    ],
+    "gloss": "probably (casual)",
+    "formation": "plain form + だろう (noun / な-adjective without だ)",
+    "topic": "Ending a sentence",
+    "order": 81
   },
   {
     "slug": "grammar:n5:de",
@@ -298,7 +314,11 @@
     "confusables": [
       "grammar:n5:ni",
       "grammar:n5:ni-e"
-    ]
+    ],
+    "gloss": "at, in (where it happens); by, with",
+    "formation": "place / tool + で",
+    "topic": "Particles",
+    "order": 10
   },
   {
     "slug": "grammar:n5:demo",
@@ -357,7 +377,11 @@
       "grammar:n5:kedo",
       "grammar:n5:shikashi",
       "grammar:n4:demo"
-    ]
+    ],
+    "gloss": "but (starting a sentence)",
+    "formation": "でも、+ sentence",
+    "topic": "Joining sentences",
+    "order": 73
   },
   {
     "slug": "grammar:n5:deshou",
@@ -420,7 +444,11 @@
       "grammar:n5:darou",
       "grammar:n5:mashou",
       "grammar:n4:kamo-shirenai"
-    ]
+    ],
+    "gloss": "probably; right?",
+    "formation": "plain form + でしょう (noun / な-adjective without だ)",
+    "topic": "Ending a sentence",
+    "order": 80
   },
   {
     "slug": "grammar:n5:donna",
@@ -475,7 +503,11 @@
         "explain": "To ask what a person is like, use どんな + 人."
       }
     ],
-    "confusables": []
+    "confusables": [],
+    "gloss": "what kind of …?",
+    "formation": "どんな + noun",
+    "topic": "Question words",
+    "order": 29
   },
   {
     "slug": "grammar:n5:doushite",
@@ -537,7 +569,11 @@
     "confusables": [
       "grammar:n5:douyatte",
       "grammar:n5:kara"
-    ]
+    ],
+    "gloss": "why?",
+    "formation": "どうして + sentence + か",
+    "topic": "Question words",
+    "order": 30
   },
   {
     "slug": "grammar:n5:douyatte",
@@ -595,7 +631,11 @@
     "confusables": [
       "grammar:n5:doushite",
       "grammar:n5:kata"
-    ]
+    ],
+    "gloss": "how? by what means?",
+    "formation": "どうやって + verb",
+    "topic": "Question words",
+    "order": 31
   },
   {
     "slug": "grammar:n5:ga",
@@ -653,7 +693,11 @@
     "confusables": [
       "grammar:n5:wa-topic-marker",
       "grammar:n4:wa-ga-wa"
-    ]
+    ],
+    "gloss": "marks the subject",
+    "formation": "noun + が",
+    "topic": "Particles",
+    "order": 6
   },
   {
     "slug": "grammar:n5:ga-arimasu",
@@ -710,7 +754,11 @@
     ],
     "confusables": [
       "grammar:n5:ga-imasu"
-    ]
+    ],
+    "gloss": "there is; I have (things)",
+    "formation": "noun + が + あります",
+    "topic": "Having and wanting",
+    "order": 23
   },
   {
     "slug": "grammar:n5:ga-hoshii",
@@ -768,7 +816,11 @@
     "confusables": [
       "grammar:n5:tai",
       "grammar:n4:te-hoshii"
-    ]
+    ],
+    "gloss": "I want (a thing)",
+    "formation": "noun + が + ほしい",
+    "topic": "Having and wanting",
+    "order": 25
   },
   {
     "slug": "grammar:n5:ga-imasu",
@@ -825,7 +877,11 @@
     ],
     "confusables": [
       "grammar:n5:ga-arimasu"
-    ]
+    ],
+    "gloss": "there is; I have (people, animals)",
+    "formation": "noun + が + います",
+    "topic": "Having and wanting",
+    "order": 24
   },
   {
     "slug": "grammar:n5:hou-ga-ii",
@@ -883,7 +939,11 @@
     "confusables": [
       "grammar:n5:yori-hou-ga",
       "grammar:n4:tara-dou"
-    ]
+    ],
+    "gloss": "you'd better …",
+    "formation": "verb た-form or ない-form + ほうがいい",
+    "topic": "Permission and rules",
+    "order": 46
   },
   {
     "slug": "grammar:n5:i-adjectives",
@@ -940,7 +1000,11 @@
     ],
     "confusables": [
       "grammar:n5:na-adjectives"
-    ]
+    ],
+    "gloss": "い-adjectives: isn't, was, wasn't",
+    "formation": "{高|たか}い → {高|たか}くない, {高|たか}かった, {高|たか}くなかった",
+    "topic": "Describing things",
+    "order": 17
   },
   {
     "slug": "grammar:n5:ichiban",
@@ -998,7 +1062,11 @@
     "confusables": [
       "grammar:n5:no-naka-de-a-ga-ichiban",
       "grammar:n5:yori-hou-ga"
-    ]
+    ],
+    "gloss": "the most, number one",
+    "formation": "{一番|いちばん} + adjective",
+    "topic": "Comparing",
+    "order": 65
   },
   {
     "slug": "grammar:n5:issho-ni",
@@ -1055,7 +1123,11 @@
     ],
     "confusables": [
       "grammar:n5:to"
-    ]
+    ],
+    "gloss": "together with",
+    "formation": "person + と + {一緒|いっしょ}に + verb",
+    "topic": "Actions and time",
+    "order": 58
   },
   {
     "slug": "grammar:n5:itsumo",
@@ -1110,7 +1182,11 @@
         "explain": "いつも in a question asks about your usual habit."
       }
     ],
-    "confusables": []
+    "confusables": [],
+    "gloss": "always, usually",
+    "formation": "いつも + verb",
+    "topic": "Already, not yet, always",
+    "order": 62
   },
   {
     "slug": "grammar:n5:janai-dewa-nai",
@@ -1168,7 +1244,11 @@
     "confusables": [
       "grammar:n5:da-desu",
       "grammar:n4:janai-ka"
-    ]
+    ],
+    "gloss": "is not",
+    "formation": "noun / な-adjective + じゃない (polite: じゃありません)",
+    "topic": "Sentences with です",
+    "order": 2
   },
   {
     "slug": "grammar:n5:ka",
@@ -1226,7 +1306,11 @@
     "confusables": [
       "grammar:n5:ka-ka",
       "grammar:n4:ka-dou-ka"
-    ]
+    ],
+    "gloss": "makes a question; or",
+    "formation": "sentence + か / noun + か + noun",
+    "topic": "Sentences with です",
+    "order": 3
   },
   {
     "slug": "grammar:n5:ka-ka",
@@ -1281,7 +1365,11 @@
       "grammar:n5:ka",
       "grammar:n5:ya",
       "grammar:n4:ka-dou-ka"
-    ]
+    ],
+    "gloss": "A or B; whether or not",
+    "formation": "A + か + B + か",
+    "topic": "Particles",
+    "order": 16
   },
   {
     "slug": "grammar:n5:kara",
@@ -1340,7 +1428,11 @@
       "grammar:n5:node",
       "grammar:n5:made",
       "grammar:n4:noni"
-    ]
+    ],
+    "gloss": "from; because",
+    "formation": "noun + から (from) / sentence + から (because)",
+    "topic": "Particles",
+    "order": 13
   },
   {
     "slug": "grammar:n5:kata",
@@ -1398,7 +1490,11 @@
     "confusables": [
       "grammar:n5:douyatte",
       "grammar:n5:hou-ga-ii"
-    ]
+    ],
+    "gloss": "how to …; the way of …",
+    "formation": "verb stem + {方|かた}",
+    "topic": "Actions and time",
+    "order": 57
   },
   {
     "slug": "grammar:n5:kedo",
@@ -1457,7 +1553,11 @@
       "grammar:n5:keredo-mo",
       "grammar:n5:demo",
       "grammar:n4:noni"
-    ]
+    ],
+    "gloss": "but, though (casual)",
+    "formation": "sentence + けど",
+    "topic": "Joining sentences",
+    "order": 71
   },
   {
     "slug": "grammar:n5:keredo-mo",
@@ -1519,7 +1619,11 @@
     "confusables": [
       "grammar:n5:kedo",
       "grammar:n5:shikashi"
-    ]
+    ],
+    "gloss": "but, although (polite)",
+    "formation": "sentence + けれども or けれど",
+    "topic": "Joining sentences",
+    "order": 72
   },
   {
     "slug": "grammar:n5:mada",
@@ -1581,7 +1685,11 @@
     "confusables": [
       "grammar:n5:mou",
       "grammar:n5:mada-te-imasen"
-    ]
+    ],
+    "gloss": "still; not yet",
+    "formation": "まだ + verb / まだ + negative",
+    "topic": "Already, not yet, always",
+    "order": 60
   },
   {
     "slug": "grammar:n5:mada-te-imasen",
@@ -1644,7 +1752,11 @@
       "grammar:n5:mada",
       "grammar:n5:mou",
       "grammar:n5:te-iru"
-    ]
+    ],
+    "gloss": "haven't … yet",
+    "formation": "まだ + verb て-form + いません",
+    "topic": "Already, not yet, always",
+    "order": 61
   },
   {
     "slug": "grammar:n5:made",
@@ -1702,7 +1814,11 @@
     "confusables": [
       "grammar:n4:made-ni",
       "grammar:n5:kara"
-    ]
+    ],
+    "gloss": "until, as far as",
+    "formation": "noun + まで",
+    "topic": "Particles",
+    "order": 14
   },
   {
     "slug": "grammar:n5:mae-ni",
@@ -1760,7 +1876,11 @@
     "confusables": [
       "grammar:n5:te-kara",
       "grammar:n4:ato-de"
-    ]
+    ],
+    "gloss": "before …",
+    "formation": "verb dictionary form + {前|まえ}に / noun + の{前|まえ}に",
+    "topic": "Actions and time",
+    "order": 50
   },
   {
     "slug": "grammar:n5:masen-ka",
@@ -1822,7 +1942,11 @@
     "confusables": [
       "grammar:n5:mashou",
       "grammar:n5:mashouka"
-    ]
+    ],
+    "gloss": "won't you …? would you like to …?",
+    "formation": "verb stem + ませんか",
+    "topic": "Asking, inviting and offering",
+    "order": 35
   },
   {
     "slug": "grammar:n5:mashou",
@@ -1884,7 +2008,11 @@
     "confusables": [
       "grammar:n5:masen-ka",
       "grammar:n5:mashouka"
-    ]
+    ],
+    "gloss": "let's …",
+    "formation": "verb stem + ましょう",
+    "topic": "Asking, inviting and offering",
+    "order": 36
   },
   {
     "slug": "grammar:n5:mashouka",
@@ -1946,7 +2074,11 @@
     "confusables": [
       "grammar:n5:mashou",
       "grammar:n5:masen-ka"
-    ]
+    ],
+    "gloss": "shall I …? shall we …?",
+    "formation": "verb stem + ましょうか",
+    "topic": "Asking, inviting and offering",
+    "order": 37
   },
   {
     "slug": "grammar:n5:mo",
@@ -2008,7 +2140,11 @@
     "confusables": [
       "grammar:n5:wa-topic-marker",
       "grammar:n5:ga"
-    ]
+    ],
+    "gloss": "too, also; (not) either",
+    "formation": "noun + も, in place of は, が or を",
+    "topic": "Sentences with です",
+    "order": 5
   },
   {
     "slug": "grammar:n5:mou",
@@ -2070,7 +2206,11 @@
     "confusables": [
       "grammar:n5:mada",
       "grammar:n5:mada-te-imasen"
-    ]
+    ],
+    "gloss": "already; not any more",
+    "formation": "もう + past verb / もう + negative",
+    "topic": "Already, not yet, always",
+    "order": 59
   },
   {
     "slug": "grammar:n5:na-adjectives",
@@ -2128,7 +2268,11 @@
     "confusables": [
       "grammar:n5:i-adjectives",
       "grammar:n5:janai-dewa-nai"
-    ]
+    ],
+    "gloss": "な-adjectives",
+    "formation": "な-adjective + な + noun / な-adjective + です",
+    "topic": "Describing things",
+    "order": 18
   },
   {
     "slug": "grammar:n5:naa",
@@ -2186,7 +2330,11 @@
     "confusables": [
       "grammar:n5:ne",
       "grammar:n5:yo"
-    ]
+    ],
+    "gloss": "wow…; I wish…",
+    "formation": "plain form + なあ",
+    "topic": "Ending a sentence",
+    "order": 79
   },
   {
     "slug": "grammar:n5:naide",
@@ -2243,7 +2391,11 @@
     ],
     "confusables": [
       "grammar:n5:naide-kudasai"
-    ]
+    ],
+    "gloss": "without doing …",
+    "formation": "verb ない-form + で",
+    "topic": "Actions and time",
+    "order": 56
   },
   {
     "slug": "grammar:n5:naide-kudasai",
@@ -2306,7 +2458,11 @@
       "grammar:n5:te-kudasai",
       "grammar:n5:te-wa-ikenai",
       "grammar:n5:naide"
-    ]
+    ],
+    "gloss": "please don't …",
+    "formation": "verb ない-form + でください",
+    "topic": "Asking, inviting and offering",
+    "order": 34
   },
   {
     "slug": "grammar:n5:naito-ikenai",
@@ -2365,7 +2521,11 @@
       "grammar:n5:nakute-wa-ikenai",
       "grammar:n5:nakucha",
       "grammar:n5:naku-temo-ii"
-    ]
+    ],
+    "gloss": "have to (everyday)",
+    "formation": "verb ない-form + といけない",
+    "topic": "Permission and rules",
+    "order": 44
   },
   {
     "slug": "grammar:n5:naku-temo-ii",
@@ -2424,7 +2584,11 @@
       "grammar:n5:naito-ikenai",
       "grammar:n5:te-mo-ii",
       "grammar:n5:nakute-wa-ikenai"
-    ]
+    ],
+    "gloss": "don't have to",
+    "formation": "verb ない-form, with ない → なくて, + もいい",
+    "topic": "Permission and rules",
+    "order": 41
   },
   {
     "slug": "grammar:n5:nakucha",
@@ -2483,7 +2647,11 @@
       "grammar:n5:naito-ikenai",
       "grammar:n5:nakute-wa-ikenai",
       "grammar:n5:cha-ikenai-ja-ikenai"
-    ]
+    ],
+    "gloss": "gotta (casual)",
+    "formation": "verb ない-form, with ない → なくちゃ",
+    "topic": "Permission and rules",
+    "order": 45
   },
   {
     "slug": "grammar:n5:nakute-wa-ikenai",
@@ -2546,7 +2714,11 @@
       "grammar:n5:nakute-wa-naranai",
       "grammar:n5:te-wa-ikenai",
       "grammar:n5:naito-ikenai"
-    ]
+    ],
+    "gloss": "must, have to",
+    "formation": "verb ない-form, with ない → なくて, + はいけない",
+    "topic": "Permission and rules",
+    "order": 42
   },
   {
     "slug": "grammar:n5:nakute-wa-naranai",
@@ -2609,7 +2781,11 @@
       "grammar:n5:nakute-wa-ikenai",
       "grammar:n4:nakereba-naranai",
       "grammar:n5:naito-ikenai"
-    ]
+    ],
+    "gloss": "must (rules, writing)",
+    "formation": "verb ない-form, with ない → なくて, + はならない",
+    "topic": "Permission and rules",
+    "order": 43
   },
   {
     "slug": "grammar:n5:naru",
@@ -2667,7 +2843,11 @@
     "confusables": [
       "grammar:n5:ni-suru",
       "grammar:n4:you-ni-naru"
-    ]
+    ],
+    "gloss": "to become",
+    "formation": "noun / な-adjective + に + なる; い-adjective: い → く + なる",
+    "topic": "Describing things",
+    "order": 20
   },
   {
     "slug": "grammar:n5:ndesu",
@@ -2725,7 +2905,11 @@
     "confusables": [
       "grammar:n5:no-desu",
       "grammar:n5:kara"
-    ]
+    ],
+    "gloss": "the thing is …; is it that …?",
+    "formation": "plain form + んです (noun / な-adjective + なんです)",
+    "topic": "Ending a sentence",
+    "order": 82
   },
   {
     "slug": "grammar:n5:ne",
@@ -2787,7 +2971,11 @@
     "confusables": [
       "grammar:n5:yo",
       "grammar:n5:naa"
-    ]
+    ],
+    "gloss": "right? isn't it?",
+    "formation": "sentence + ね",
+    "topic": "Ending a sentence",
+    "order": 77
   },
   {
     "slug": "grammar:n5:ni",
@@ -2849,7 +3037,11 @@
     "confusables": [
       "grammar:n5:ni-e",
       "grammar:n5:de"
-    ]
+    ],
+    "gloss": "at a time, in a place, to someone",
+    "formation": "noun + に",
+    "topic": "Particles",
+    "order": 8
   },
   {
     "slug": "grammar:n5:ni-iku",
@@ -2907,7 +3099,11 @@
     "confusables": [
       "grammar:n5:ni",
       "grammar:n5:ni-e"
-    ]
+    ],
+    "gloss": "go to do …",
+    "formation": "verb stem / activity noun + に{行|い}く",
+    "topic": "Actions and time",
+    "order": 55
   },
   {
     "slug": "grammar:n5:ni-suru",
@@ -2969,7 +3165,11 @@
     "confusables": [
       "grammar:n5:naru",
       "grammar:n4:koto-ni-suru"
-    ]
+    ],
+    "gloss": "I'll have …; decide on",
+    "formation": "noun + に + する",
+    "topic": "Having and wanting",
+    "order": 28
   },
   {
     "slug": "grammar:n5:ni-e",
@@ -3027,7 +3227,11 @@
     "confusables": [
       "grammar:n5:ni",
       "grammar:n5:made"
-    ]
+    ],
+    "gloss": "to (a place)",
+    "formation": "place + に or へ (said え) + verb of movement",
+    "topic": "Particles",
+    "order": 9
   },
   {
     "slug": "grammar:n5:no",
@@ -3084,7 +3288,11 @@
     ],
     "confusables": [
       "grammar:n5:na-adjectives"
-    ]
+    ],
+    "gloss": "'s, of; joins two nouns",
+    "formation": "noun + の + noun",
+    "topic": "Sentences with です",
+    "order": 4
   },
   {
     "slug": "grammar:n5:no-desu",
@@ -3142,7 +3350,11 @@
     "confusables": [
       "grammar:n5:ndesu",
       "grammar:n5:node"
-    ]
+    ],
+    "gloss": "explains (careful speech)",
+    "formation": "plain form + のです (noun / な-adjective + なのです)",
+    "topic": "Ending a sentence",
+    "order": 83
   },
   {
     "slug": "grammar:n5:no-ga-heta",
@@ -3200,7 +3412,11 @@
     "confusables": [
       "grammar:n5:no-ga-jouzu",
       "grammar:n5:no-ga-suki"
-    ]
+    ],
+    "gloss": "bad at doing …",
+    "formation": "verb dictionary form + のが{下手|へた}",
+    "topic": "Likes and skills",
+    "order": 69
   },
   {
     "slug": "grammar:n5:no-ga-jouzu",
@@ -3258,7 +3474,11 @@
     "confusables": [
       "grammar:n5:no-ga-heta",
       "grammar:n5:no-ga-suki"
-    ]
+    ],
+    "gloss": "good at doing …",
+    "formation": "verb dictionary form + のが{上手|じょうず}",
+    "topic": "Likes and skills",
+    "order": 68
   },
   {
     "slug": "grammar:n5:no-ga-suki",
@@ -3316,7 +3536,11 @@
     "confusables": [
       "grammar:n5:no-ga-jouzu",
       "grammar:n5:no-ga-heta"
-    ]
+    ],
+    "gloss": "like doing …",
+    "formation": "verb dictionary form + のが{好|す}き",
+    "topic": "Likes and skills",
+    "order": 67
   },
   {
     "slug": "grammar:n5:no-naka-de-a-ga-ichiban",
@@ -3371,7 +3595,11 @@
       "grammar:n5:ichiban",
       "grammar:n4:no-naka-de",
       "grammar:n5:yori-hou-ga"
-    ]
+    ],
+    "gloss": "of all …, B is the most",
+    "formation": "group + の{中|なか}で + B + が + {一番|いちばん} + adjective",
+    "topic": "Comparing",
+    "order": 66
   },
   {
     "slug": "grammar:n5:node",
@@ -3433,7 +3661,11 @@
     "confusables": [
       "grammar:n5:kara",
       "grammar:n4:noni"
-    ]
+    ],
+    "gloss": "because, so (soft)",
+    "formation": "plain form + ので (noun / な-adjective + なので)",
+    "topic": "Joining sentences",
+    "order": 70
   },
   {
     "slug": "grammar:n5:o-go",
@@ -3491,7 +3723,11 @@
     "confusables": [
       "grammar:n4:o-ni-naru",
       "grammar:n4:o-kudasai"
-    ]
+    ],
+    "gloss": "polite お and ご",
+    "formation": "お + most Japanese words / ご + most Chinese-origin words",
+    "topic": "Describing things",
+    "order": 22
   },
   {
     "slug": "grammar:n5:o-wo",
@@ -3553,7 +3789,11 @@
     "confusables": [
       "grammar:n5:ga",
       "grammar:n5:ni"
-    ]
+    ],
+    "gloss": "marks the object",
+    "formation": "noun + を (said お) + verb",
+    "topic": "Particles",
+    "order": 7
   },
   {
     "slug": "grammar:n5:o-kudasai",
@@ -3607,7 +3847,11 @@
     "confusables": [
       "grammar:n5:te-kudasai",
       "grammar:n5:ga-hoshii"
-    ]
+    ],
+    "gloss": "please give me …",
+    "formation": "noun + を + ください",
+    "topic": "Having and wanting",
+    "order": 27
   },
   {
     "slug": "grammar:n5:shikashi",
@@ -3662,7 +3906,11 @@
       "grammar:n5:demo",
       "grammar:n5:kedo",
       "grammar:n5:keredo-mo"
-    ]
+    ],
+    "gloss": "however (written)",
+    "formation": "しかし、+ sentence",
+    "topic": "Joining sentences",
+    "order": 74
   },
   {
     "slug": "grammar:n5:sore-kara",
@@ -3716,7 +3964,11 @@
     "confusables": [
       "grammar:n5:soshite",
       "grammar:n5:te-kara"
-    ]
+    ],
+    "gloss": "and then, after that",
+    "formation": "それから、+ sentence",
+    "topic": "Joining sentences",
+    "order": 76
   },
   {
     "slug": "grammar:n5:soshite",
@@ -3770,7 +4022,11 @@
     "confusables": [
       "grammar:n5:sore-kara",
       "grammar:n4:sore-ni"
-    ]
+    ],
+    "gloss": "and, and then",
+    "formation": "そして、+ sentence",
+    "topic": "Joining sentences",
+    "order": 75
   },
   {
     "slug": "grammar:n5:sugiru",
@@ -3831,7 +4087,11 @@
     ],
     "confusables": [
       "grammar:n5:totemo"
-    ]
+    ],
+    "gloss": "too, too much",
+    "formation": "verb stem / adjective without い or な + すぎる",
+    "topic": "Describing things",
+    "order": 21
   },
   {
     "slug": "grammar:n5:ta-koto-ga-aru",
@@ -3889,7 +4149,11 @@
     "confusables": [
       "grammar:n4:koto-ga-aru",
       "grammar:n4:koto-ga-dekiru"
-    ]
+    ],
+    "gloss": "have done (before)",
+    "formation": "verb た-form + ことがある",
+    "topic": "Actions and time",
+    "order": 52
   },
   {
     "slug": "grammar:n5:tai",
@@ -3952,7 +4216,11 @@
       "grammar:n5:ga-hoshii",
       "grammar:n4:tagaru",
       "grammar:n4:te-hoshii"
-    ]
+    ],
+    "gloss": "want to do …",
+    "formation": "verb stem + たい",
+    "topic": "Having and wanting",
+    "order": 26
   },
   {
     "slug": "grammar:n5:tari-tari",
@@ -4011,7 +4279,11 @@
       "grammar:n4:shi",
       "grammar:n4:toka-toka",
       "grammar:n5:ya"
-    ]
+    ],
+    "gloss": "things like A and B",
+    "formation": "verb た-form + り, verb た-form + り + する",
+    "topic": "Actions and time",
+    "order": 53
   },
   {
     "slug": "grammar:n5:te-aru",
@@ -4070,7 +4342,11 @@
       "grammar:n5:te-iru",
       "grammar:n4:te-oku",
       "grammar:n4:tadoushi-jidoushi"
-    ]
+    ],
+    "gloss": "has been done (and stays so)",
+    "formation": "transitive verb て-form + ある",
+    "topic": "Actions and time",
+    "order": 48
   },
   {
     "slug": "grammar:n5:te-iru",
@@ -4129,7 +4405,11 @@
       "grammar:n5:te-aru",
       "grammar:n4:te-ita",
       "grammar:n4:teiru-tokoro"
-    ]
+    ],
+    "gloss": "is doing; is in a state",
+    "formation": "verb て-form + いる",
+    "topic": "Actions and time",
+    "order": 47
   },
   {
     "slug": "grammar:n5:te-kara",
@@ -4188,7 +4468,11 @@
       "grammar:n5:mae-ni",
       "grammar:n4:ato-de",
       "grammar:n5:sore-kara"
-    ]
+    ],
+    "gloss": "after doing …",
+    "formation": "verb て-form + から",
+    "topic": "Actions and time",
+    "order": 49
   },
   {
     "slug": "grammar:n5:te-kudasai",
@@ -4251,7 +4535,11 @@
       "grammar:n5:o-kudasai",
       "grammar:n5:naide-kudasai",
       "grammar:n4:te-itadakemasen-ka"
-    ]
+    ],
+    "gloss": "please do …",
+    "formation": "verb て-form + ください",
+    "topic": "Asking, inviting and offering",
+    "order": 33
   },
   {
     "slug": "grammar:n5:te-wa-ikenai",
@@ -4310,7 +4598,11 @@
       "grammar:n5:cha-ikenai-ja-ikenai",
       "grammar:n5:te-mo-ii",
       "grammar:n5:naide-kudasai"
-    ]
+    ],
+    "gloss": "must not",
+    "formation": "verb て-form + はいけない",
+    "topic": "Permission and rules",
+    "order": 39
   },
   {
     "slug": "grammar:n5:te-mo-ii",
@@ -4369,7 +4661,11 @@
       "grammar:n5:te-wa-ikenai",
       "grammar:n5:naku-temo-ii",
       "grammar:n4:temo"
-    ]
+    ],
+    "gloss": "it's OK to …; may I …?",
+    "formation": "verb て-form + もいい(です)",
+    "topic": "Permission and rules",
+    "order": 38
   },
   {
     "slug": "grammar:n5:to",
@@ -4428,7 +4724,11 @@
       "grammar:n5:ya",
       "grammar:n5:issho-ni",
       "grammar:n4:to"
-    ]
+    ],
+    "gloss": "and; with (someone)",
+    "formation": "noun + と + noun / person + と",
+    "topic": "Particles",
+    "order": 11
   },
   {
     "slug": "grammar:n5:toki",
@@ -4486,7 +4786,11 @@
     "confusables": [
       "grammar:n4:tara",
       "grammar:n4:aida"
-    ]
+    ],
+    "gloss": "when …",
+    "formation": "plain verb / い-adjective / な-adjective + な / noun + の, + とき",
+    "topic": "Actions and time",
+    "order": 51
   },
   {
     "slug": "grammar:n5:totemo",
@@ -4541,7 +4845,11 @@
       "grammar:n4:amari-nai",
       "grammar:n4:zenzen-nai",
       "grammar:n5:sugiru"
-    ]
+    ],
+    "gloss": "very",
+    "formation": "とても + adjective",
+    "topic": "Describing things",
+    "order": 19
   },
   {
     "slug": "grammar:n5:tsumori",
@@ -4600,7 +4908,11 @@
       "grammar:n4:yotei-da",
       "grammar:n4:you-to-omou",
       "grammar:n5:tai"
-    ]
+    ],
+    "gloss": "plan to, intend to",
+    "formation": "verb dictionary form or ない-form + つもりです",
+    "topic": "Actions and time",
+    "order": 54
   },
   {
     "slug": "grammar:n5:wa-topic-marker",
@@ -4663,7 +4975,11 @@
       "grammar:n5:ga",
       "grammar:n5:mo",
       "grammar:n4:wa-ga-wa"
-    ]
+    ],
+    "gloss": "as for …; the topic",
+    "formation": "noun + は (said わ)",
+    "topic": "Sentences with です",
+    "order": 1
   },
   {
     "slug": "grammar:n5:wa-yori-desu",
@@ -4722,7 +5038,11 @@
       "grammar:n5:yori-hou-ga",
       "grammar:n4:yori",
       "grammar:n5:no-naka-de-a-ga-ichiban"
-    ]
+    ],
+    "gloss": "A is more … than B",
+    "formation": "A + は + B + より + adjective",
+    "topic": "Comparing",
+    "order": 63
   },
   {
     "slug": "grammar:n5:wa-dou-desu-ka",
@@ -4781,7 +5101,11 @@
       "grammar:n5:donna",
       "grammar:n5:masen-ka",
       "grammar:n4:tara-dou"
-    ]
+    ],
+    "gloss": "how is …? how about …?",
+    "formation": "noun + は + どうですか",
+    "topic": "Question words",
+    "order": 32
   },
   {
     "slug": "grammar:n5:ya",
@@ -4840,7 +5164,11 @@
       "grammar:n5:to",
       "grammar:n4:toka-toka",
       "grammar:n4:nado"
-    ]
+    ],
+    "gloss": "A, B and so on",
+    "formation": "noun + や + noun (+ など)",
+    "topic": "Particles",
+    "order": 12
   },
   {
     "slug": "grammar:n5:yo",
@@ -4902,7 +5230,11 @@
     "confusables": [
       "grammar:n5:ne",
       "grammar:n5:naa"
-    ]
+    ],
+    "gloss": "you know; I'm telling you",
+    "formation": "sentence + よ",
+    "topic": "Ending a sentence",
+    "order": 78
   },
   {
     "slug": "grammar:n5:yori-hou-ga",
@@ -4961,7 +5293,11 @@
       "grammar:n5:wa-yori-desu",
       "grammar:n5:hou-ga-ii",
       "grammar:n5:no-naka-de-a-ga-ichiban"
-    ]
+    ],
+    "gloss": "B is more … than A",
+    "formation": "A + より + B + のほうが + adjective",
+    "topic": "Comparing",
+    "order": 64
   },
   {
     "slug": "grammar:n4:aida",
