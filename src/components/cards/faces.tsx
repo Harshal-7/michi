@@ -1,9 +1,8 @@
 "use client";
 
-import { toPlain } from "@content/schema";
-
 import { Ruby } from "@/components/ruby";
 import type { StudyCard } from "@/lib/srs/types";
+import { spoken } from "@/lib/voice/spoken";
 
 import { PlayPill, PlayRound } from "./voice";
 
@@ -36,8 +35,6 @@ function example(v: unknown): Example | null {
   return { ja: text(o.ja), en: text(o.en), tatoebaId: o.source === "tatoeba" && typeof tatoeba.ja === "number" ? tatoeba.ja : null };
 }
 
-/** Japanese with ruby markup, said with its readings so the voice can't misread a kanji. */
-const spoken = (ja: string) => toPlain(ja.replace(/\{([^{}|]+)\|([^{}|]+)\}/g, "$2"));
 
 /** The grammar example this review shows: the next one each time. */
 export function grammarExample(card: StudyCard): { ja: string; en: string } | null {

@@ -15,7 +15,7 @@ import type { ItemKind } from "@/lib/items/data";
 import type { CalendarException } from "./calendar";
 import { DayPlan } from "./day-plan";
 import { carryOver, CARRY_OVER_KINDS, countsForStreak, type DayActivity, evaluate, STREAK_KINDS, type TaskMark } from "./evaluate";
-import { type DeckState, type Level, PROJECTION_DAYS, QUICK_CHECK_DECKS } from "./pace";
+import { type DeckState, type Level, PROJECTION_DAYS, QUICK_CHECK_DECKS, READ_THROUGH_DECKS } from "./pace";
 import type { PlanInput } from "./plan";
 
 type Row = Record<string, unknown>;
@@ -138,8 +138,11 @@ export async function loadReviewCounts(db: DbOrTx, date: StudyDate) {
   );
 }
 
-/** The quick check's items left now, and how many it covered on `date`, kana apart. */
-export async function loadQuickCheck(db: DbOrTx, date: StudyDate) {
+/**
+ * The quick check's items left now, and how many it covered on `date`, kana apart. With
+ * READ_THROUGH_DECKS, the same for the N5 grammar read-through (its lessons are all "other").
+ */
+export async function loadQuickCheck(db: DbOrTx, date: StudyDate, deckSlugs: readonly string[] = QUICK_CHECK_DECKS) {
   const { start, end } = studyDayBounds(date);
   const r = await one<{
     left_kana: number;
@@ -152,7 +155,7 @@ export async function loadQuickCheck(db: DbOrTx, date: StudyDate) {
     sql`with ${itemState(date)},
       qc_items as (
         select distinct di.item_id from deck_items di join decks d on d.id = di.deck_id
-        where d.slug in (${list(QUICK_CHECK_DECKS)})
+        where d.slug in (${list(deckSlugs)})
       )
       select
         (count(*) filter (where q.item_id is null and not coalesce(s.started, false) and i.kind = 'kana'))::int as left_kana,
@@ -203,13 +206,14 @@ export async function loadMarks(db: DbOrTx, date: StudyDate): Promise<Record<str
 
 /** Everything plan() needs for `date`. */
 export async function loadPlanInput(db: DbOrTx, date: StudyDate): Promise<PlanInput> {
-  const [settings, exceptions, reviews, lastActiveDate, deckStates, quickCheck, carried] = await Promise.all([
+  const [settings, exceptions, reviews, lastActiveDate, deckStates, quickCheck, readThrough, carried] = await Promise.all([
     getSettings(db),
     loadExceptions(db),
     loadReviewCounts(db, date),
     loadLastActiveDate(db, date),
     loadDecks(db, date),
     loadQuickCheck(db, date),
+    loadQuickCheck(db, date, READ_THROUGH_DECKS),
     loadCarryOver(db, date),
   ]);
   return {
@@ -224,6 +228,7 @@ export async function loadPlanInput(db: DbOrTx, date: StudyDate): Promise<PlanIn
       remainingOther: quickCheck.leftOther + quickCheck.todayOther,
       startedOn: quickCheck.startedOn,
     },
+    readThrough: { remaining: readThrough.leftOther + readThrough.todayOther, startedOn: readThrough.startedOn },
     carryOver: carried,
   };
 }
@@ -248,7 +253,7 @@ export async function loadActivity(db: DbOrTx, plan: DayPlan): Promise<DayActivi
   const classDates = [...keyDates("class"), ...keyDates("log_class")];
   const weekStarts = keyDates("weekly_test");
 
-  const [reviews, graded, introduced, quickCheck, minutes, classLogs, assessments, grammar] = await Promise.all([
+  const [reviews, graded, introduced, quickCheck, minutes, classLogs, assessments, grammar, readThrough] = await Promise.all([
     loadReviewCounts(db, date),
     one<{ graded: number; ms: number }>(
       db,
@@ -288,6 +293,7 @@ export async function loadActivity(db: DbOrTx, plan: DayPlan): Promise<DayActivi
             or exists(select 1 from user_sentences where created_at >= ${start} and created_at < ${end}) as touched`,
         )
       : Promise.resolve({ touched: false }),
+    kinds.has("read_through") ? loadQuickCheck(db, date, READ_THROUGH_DECKS) : Promise.resolve(null),
   ]);
   const bySkill = Object.fromEntries(minutes.map((m) => [m.skill, m.minutes]));
   return {
@@ -303,6 +309,8 @@ export async function loadActivity(db: DbOrTx, plan: DayPlan): Promise<DayActivi
     weeklySubmitted: assessments.filter((a) => a.kind === "weekly" && a.week_start).map((a) => a.week_start!),
     mockSubmitted: assessments.some((a) => a.kind === "mock" && a.study_date === date),
     grammarTouched: grammar.touched,
+    lessonsRead: readThrough ? readThrough.todayOther : 0,
+    lessonsLeft: readThrough ? readThrough.leftOther : 0,
   };
 }
 
@@ -320,6 +328,8 @@ const NO_PAST_ACTIVITY: DayActivity = {
   weeklySubmitted: [],
   mockSubmitted: false,
   grammarTouched: false,
+  lessonsRead: 0,
+  lessonsLeft: Number.POSITIVE_INFINITY,
 };
 
 /**

@@ -76,6 +76,8 @@ export const NEW_ITEM_MINUTES: Record<ItemKind, number> = { kana: 0.5, kanji: 1.
 
 /** The starter decks the quick check covers. They get no new items until it's finished. */
 export const QUICK_CHECK_DECKS: readonly string[] = ["hiragana", "katakana", "n5-kanji", "n5-words"];
+/** The grammar read-through's deck (decision 6): no new items until every lesson is read. */
+export const READ_THROUGH_DECKS: readonly string[] = ["n5-grammar"];
 
 /** On when switched on, or once its unlock date has come. */
 export function deckIsOn(deck: Pick<DeckState, "active" | "unlockOn">, date: StudyDate): boolean {
@@ -149,6 +151,8 @@ export type QuotaInput = {
   date: StudyDate;
   decks: readonly DeckState[];
   quickCheckDone: boolean;
+  /** Every N5 grammar lesson read (the read-through); true when left out. */
+  readThroughDone?: boolean;
   /** False on exam days, exam prep, recovery, re-entry and rest days. */
   newItemsAllowed: boolean;
 };
@@ -178,7 +182,9 @@ export function paceQuotas(input: QuotaInput): DeckQuota[] {
   entries.sort((a, b) => PRIORITY_ORDER[a.priority] - PRIORITY_ORDER[b.priority] || a.deck.id - b.deck.id);
 
   const gated = (e: (typeof entries)[number]) =>
-    !input.newItemsAllowed || (!input.quickCheckDone && QUICK_CHECK_DECKS.includes(e.deck.slug ?? ""));
+    !input.newItemsAllowed ||
+    (!input.quickCheckDone && QUICK_CHECK_DECKS.includes(e.deck.slug ?? "")) ||
+    (input.readThroughDone === false && READ_THROUGH_DECKS.includes(e.deck.slug ?? ""));
   const capped = allocate(entries, () => false);
   const quota = allocate(entries, gated);
   return entries.map((e, i) => ({ ...e, capped: capped[i], quota: quota[i] }));

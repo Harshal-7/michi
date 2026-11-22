@@ -237,6 +237,16 @@ export const Grammar = z.object({
   questions: z.array(GrammarQuestion).default([]),
   /** Slugs of points that are easy to mix up with this one (から / ので / のに). */
   confusables: z.array(keyed("grammar")).default([]),
+  /** The lesson's title, in Japanese where it can be (may hold ruby): "〜てください", "だ / です". */
+  title: nonEmpty.optional(),
+  /** The lesson's short meaning, for lists: "please do …". Written fresh; N5 for now. */
+  gloss: nonEmpty.optional(),
+  /** How it's made, in English with Japanese (may hold ruby): "verb て-form + ください". */
+  formation: nonEmpty.optional(),
+  /** The lesson group it's taught in: "Permission and rules". */
+  topic: nonEmpty.optional(),
+  /** Its place in the learning order within its level, from 0. */
+  order: z.int().min(0).optional(),
 });
 export type Grammar = z.infer<typeof Grammar>;
 

@@ -95,7 +95,30 @@ describe("freezing the day's plan", () => {
     const plan = await ensureDayPlan(db, DAY);
     expect(plan.tasks.find((t) => t.kind === "quick_check")).toMatchObject({ target: 12 });
     expect(plan.quickCheckTarget).toBe(12);
-    expect(Object.keys(plan.newQuota)).toEqual([String(grammar.deck.id)]);
+    // N5 grammar waits for its read-through too.
+    expect(plan.newQuota).toEqual({});
+  });
+
+  it("plans the grammar read-through, ticks it as lessons are marked, and frees N5 grammar once it's done", async () => {
+    const plan = await ensureDayPlan(db, DAY);
+    // 10 lessons over 7 days.
+    expect(plan.tasks.find((t) => t.kind === "read_through")).toMatchObject({ target: 2, href: "/grammar/next" });
+    const mark = (itemId: number, at = noon(DAY)) => db.insert(quickCheck).values({ itemId, verdict: "known", verified: true, checkedAt: at });
+    await mark(grammar.items[0].id);
+    const status = () =>
+      Promise.all([loadActivity(db, plan), loadMarks(db, DAY)]).then(([a, m]) => evaluate(plan, a, m).tasks.find((t) => t.task.kind === "read_through")!);
+    expect(await status()).toMatchObject({ state: "todo", progress: { done: 1, of: 2 } });
+    await mark(grammar.items[1].id);
+    expect((await status()).state).toBe("done");
+    // Lessons read today still count as left at the start of the day, so a rebuild keeps the target.
+    expect((await loadPlanInput(db, DAY)).readThrough).toEqual({ remaining: 10, startedOn: DAY });
+    // The read-through's lessons don't count towards the quick check.
+    expect((await loadQuickCheck(db, DAY)).todayOther).toBe(0);
+
+    for (const item of grammar.items.slice(2)) await mark(item.id, noon(addDays(DAY, -1)));
+    const next = await ensureDayPlan(db, addDays(DAY, 1));
+    expect(next.tasks.some((t) => t.kind === "read_through")).toBe(false);
+    expect(Object.keys(next.newQuota)).toEqual([String(grammar.deck.id)]);
   });
 
   it("counts the plan's input as of the start of the day", async () => {

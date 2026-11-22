@@ -23,7 +23,11 @@ export const ROUTES = {
   quickCheck: "/quick-check",
   decks: "/decks",
   practice: "/practice",
+  /** Kana charts, verb forms and grammar. */
+  learn: "/learn",
   grammar: "/grammar",
+  /** The next N5 grammar lesson not read yet (the read-through). */
+  nextLesson: "/grammar/next",
   log: "/log",
   minutes: "/log/minutes",
   settings: "/settings",
@@ -38,6 +42,8 @@ export type DayMode = (typeof DAY_MODES)[number];
 export const TASK_KINDS = [
   "reviews",
   "quick_check",
+  /** The N5 grammar read-through (decision 6): today's share of lessons, opened at ROUTES.nextLesson. */
+  "read_through",
   "new_items",
   "class",
   "log_class",

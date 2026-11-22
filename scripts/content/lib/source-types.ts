@@ -44,6 +44,17 @@ export const ResourcesSource = z.array(Resource);
 export const GrammarWritten = z.array(Grammar.omit({ level: true, links: true }));
 export type GrammarWritten = z.infer<typeof GrammarWritten>;
 
+/**
+ * The N5 grammar lessons in learning order: topics in the order they're taught, each with its
+ * points' short meaning and how they're made. Every N5 point appears exactly once.
+ */
+export const GrammarLessons = z.array(
+  z.object({
+    topic: nonEmpty,
+    points: z.array(z.object({ slug: nonEmpty, title: nonEmpty, gloss: nonEmpty, formation: nonEmpty })).min(1),
+  }),
+);
+
 /** Hand-written pattern and meaning for N4 and N3 points, ahead of their examples. */
 export const GrammarMeanings = z.array(z.object({ slug: nonEmpty, pattern: nonEmpty, meaning: nonEmpty }));
 

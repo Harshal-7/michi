@@ -10,6 +10,8 @@ import {
   plan,
   type PlanInput,
   quickCheckPlan,
+  READ_THROUGH_KEY,
+  readThroughPlan,
   REVIEW_SHARE,
   reviewMinutes,
   TYPICAL,
@@ -33,6 +35,8 @@ describe("planner budgets", () => {
     { reviews: { due: 260, learningDue: 30 } },
     { reviews: { due: 900, learningDue: 60 } },
     { quickCheck: { remainingKana: 228, remainingOther: 798, startedOn: null } },
+    { quickCheck: { remainingKana: 228, remainingOther: 798, startedOn: null }, readThrough: { remaining: 84, startedOn: null } },
+    { reviews: { due: 260, learningDue: 30 }, readThrough: { remaining: 60, startedOn: "2026-11-22" } },
   ];
 
   for (const kinds of [AVAILABLE_TASK_KINDS, TASK_KINDS]) {
@@ -186,6 +190,54 @@ describe("the quick check", () => {
     const after = plan(planInput("2026-12-03"));
     expect(after.quickCheckTarget).toBe(0);
     expect(find(after, "quick_check")).toBeUndefined();
+  });
+});
+
+describe("the grammar read-through", () => {
+  const fresh = { remaining: 84, startedOn: null };
+  const slugsOf = (input: PlanInput, p: DayPlan) => Object.keys(p.newQuota).map((id) => input.decks.find((d) => String(d.id) === id)!.slug);
+
+  it("spreads the lessons left over 7 days from the first, at most 30 a day after that", () => {
+    expect(readThroughPlan(fresh, "2026-12-03")).toEqual({ target: 12, minutes: 18 });
+    expect(readThroughPlan({ remaining: 50, startedOn: "2026-12-03" }, "2026-12-06")).toEqual({ target: 13, minutes: 20 });
+    expect(readThroughPlan({ remaining: 70, startedOn: "2026-12-03" }, "2026-12-20")!.target).toBe(30);
+    expect(readThroughPlan({ remaining: 0, startedOn: "2026-12-03" }, "2026-12-04")).toBeNull();
+    expect(readThroughPlan(undefined, "2026-12-04")).toBeNull();
+  });
+
+  it("plans a task that opens the next lesson, and holds back N5 grammar's new items until it's done", () => {
+    const input = planInput("2026-12-03", { readThrough: fresh });
+    const p = plan(input);
+    expect(p.tasks.find((t) => t.key === READ_THROUGH_KEY)).toMatchObject({
+      kind: "read_through",
+      title: "Read N5 grammar",
+      target: 12,
+      minutes: 18,
+      must: false,
+      href: "/grammar/next",
+    });
+    expect(slugsOf(input, p)).not.toContain("n5-grammar");
+    const after = planInput("2026-12-03", { readThrough: { remaining: 0, startedOn: "2026-11-30" } });
+    const done = plan(after);
+    expect(done.tasks.some((t) => t.key === READ_THROUGH_KEY)).toBe(false);
+    expect(slugsOf(after, done)).toContain("n5-grammar");
+  });
+
+  it("comes alongside the quick check on day 1 and fits a weekday", () => {
+    const input = planInput("2026-12-03", { quickCheck: { remainingKana: 228, remainingOther: 798, startedOn: null }, readThrough: fresh });
+    const p = plan(input);
+    expect(p.tasks.map((t) => t.key)).toEqual(["quick_check", "reviews", READ_THROUGH_KEY, "speaking", "listening"]);
+    expect(total(p)).toBeLessThanOrEqual(p.budgetMinutes);
+    // Nothing from the N5 lists the two checks cover.
+    expect(slugsOf(input, p)).toEqual([]);
+  });
+
+  it("reads fewer lessons when the day is short", () => {
+    const settings = settingsWith({ budgets: { weekdayMinutes: 30 } });
+    const p = plan(planInput("2026-12-08", { settings, readThrough: fresh, reviews: { due: 90, learningDue: 0 } }));
+    const rt = p.tasks.find((t) => t.key === READ_THROUGH_KEY);
+    expect(total(p)).toBeLessThanOrEqual(30);
+    if (rt) expect(rt.target).toBe(Math.floor(rt.minutes / 1.5));
   });
 });
 

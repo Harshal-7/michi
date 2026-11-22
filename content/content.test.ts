@@ -157,6 +157,11 @@ describe("grammar", () => {
     expect(n5.filter((g) => g.questions.length < 2).map((g) => g.slug)).toEqual([]);
   });
 
+  it("every N5 point is a lesson: title, short meaning, how it's made, topic and a place in the order", () => {
+    expect(n5.filter((g) => !g.title || !g.gloss || !g.formation || !g.topic).map((g) => g.slug)).toEqual([]);
+    expect(n5.map((g) => g.order).sort((a, b) => (a ?? 0) - (b ?? 0))).toEqual(n5.map((_, i) => i));
+  });
+
   it("every example and question has exactly one blank", () => {
     for (const g of n5) {
       for (const e of g.examples) expect(blanks(e.ja), `${g.slug}: ${e.ja}`).toHaveLength(1);

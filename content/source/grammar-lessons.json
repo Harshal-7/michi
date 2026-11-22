@@ -1,0 +1,151 @@
+[
+  {
+    "topic": "Sentences with です",
+    "points": [
+      { "slug": "grammar:n5:da-desu", "title": "だ / です", "gloss": "is, am, are", "formation": "noun / な-adjective + です (polite) or だ (plain)" },
+      { "slug": "grammar:n5:wa-topic-marker", "title": "は", "gloss": "as for …; the topic", "formation": "noun + は (said わ)" },
+      { "slug": "grammar:n5:janai-dewa-nai", "title": "じゃない / ではない", "gloss": "is not", "formation": "noun / な-adjective + じゃない (polite: じゃありません)" },
+      { "slug": "grammar:n5:ka", "title": "か", "gloss": "makes a question; or", "formation": "sentence + か / noun + か + noun" },
+      { "slug": "grammar:n5:no", "title": "の", "gloss": "'s, of; joins two nouns", "formation": "noun + の + noun" },
+      { "slug": "grammar:n5:mo", "title": "も", "gloss": "too, also; (not) either", "formation": "noun + も, in place of は, が or を" }
+    ]
+  },
+  {
+    "topic": "Particles",
+    "points": [
+      { "slug": "grammar:n5:ga", "title": "が", "gloss": "marks the subject", "formation": "noun + が" },
+      { "slug": "grammar:n5:o-wo", "title": "を", "gloss": "marks the object", "formation": "noun + を (said お) + verb" },
+      { "slug": "grammar:n5:ni", "title": "に", "gloss": "at a time, in a place, to someone", "formation": "noun + に" },
+      { "slug": "grammar:n5:ni-e", "title": "に / へ", "gloss": "to (a place)", "formation": "place + に or へ (said え) + verb of movement" },
+      { "slug": "grammar:n5:de", "title": "で", "gloss": "at, in (where it happens); by, with", "formation": "place / tool + で" },
+      { "slug": "grammar:n5:to", "title": "と", "gloss": "and; with (someone)", "formation": "noun + と + noun / person + と" },
+      { "slug": "grammar:n5:ya", "title": "や", "gloss": "A, B and so on", "formation": "noun + や + noun (+ など)" },
+      { "slug": "grammar:n5:kara", "title": "から", "gloss": "from; because", "formation": "noun + から (from) / sentence + から (because)" },
+      { "slug": "grammar:n5:made", "title": "まで", "gloss": "until, as far as", "formation": "noun + まで" },
+      { "slug": "grammar:n5:dake", "title": "だけ", "gloss": "only, just", "formation": "noun / verb + だけ" },
+      { "slug": "grammar:n5:ka-ka", "title": "〜か〜か", "gloss": "A or B; whether or not", "formation": "A + か + B + か" }
+    ]
+  },
+  {
+    "topic": "Describing things",
+    "points": [
+      { "slug": "grammar:n5:i-adjectives", "title": "い-adjectives", "gloss": "い-adjectives: isn't, was, wasn't", "formation": "{高|たか}い → {高|たか}くない, {高|たか}かった, {高|たか}くなかった" },
+      { "slug": "grammar:n5:na-adjectives", "title": "な-adjectives", "gloss": "な-adjectives", "formation": "な-adjective + な + noun / な-adjective + です" },
+      { "slug": "grammar:n5:totemo", "title": "とても", "gloss": "very", "formation": "とても + adjective" },
+      { "slug": "grammar:n5:naru", "title": "〜になる / 〜くなる", "gloss": "to become", "formation": "noun / な-adjective + に + なる; い-adjective: い → く + なる" },
+      { "slug": "grammar:n5:sugiru", "title": "〜すぎる", "gloss": "too, too much", "formation": "verb stem / adjective without い or な + すぎる" },
+      { "slug": "grammar:n5:o-go", "title": "お〜 / ご〜", "gloss": "polite お and ご", "formation": "お + most Japanese words / ご + most Chinese-origin words" }
+    ]
+  },
+  {
+    "topic": "Having and wanting",
+    "points": [
+      { "slug": "grammar:n5:ga-arimasu", "title": "〜があります", "gloss": "there is; I have (things)", "formation": "noun + が + あります" },
+      { "slug": "grammar:n5:ga-imasu", "title": "〜がいます", "gloss": "there is; I have (people, animals)", "formation": "noun + が + います" },
+      { "slug": "grammar:n5:ga-hoshii", "title": "〜がほしい", "gloss": "I want (a thing)", "formation": "noun + が + ほしい" },
+      { "slug": "grammar:n5:tai", "title": "〜たい", "gloss": "want to do …", "formation": "verb stem + たい" },
+      { "slug": "grammar:n5:o-kudasai", "title": "〜をください", "gloss": "please give me …", "formation": "noun + を + ください" },
+      { "slug": "grammar:n5:ni-suru", "title": "〜にする", "gloss": "I'll have …; decide on", "formation": "noun + に + する" }
+    ]
+  },
+  {
+    "topic": "Question words",
+    "points": [
+      { "slug": "grammar:n5:donna", "title": "どんな", "gloss": "what kind of …?", "formation": "どんな + noun" },
+      { "slug": "grammar:n5:doushite", "title": "どうして", "gloss": "why?", "formation": "どうして + sentence + か" },
+      { "slug": "grammar:n5:douyatte", "title": "どうやって", "gloss": "how? by what means?", "formation": "どうやって + verb" },
+      { "slug": "grammar:n5:wa-dou-desu-ka", "title": "〜はどうですか", "gloss": "how is …? how about …?", "formation": "noun + は + どうですか" }
+    ]
+  },
+  {
+    "topic": "Asking, inviting and offering",
+    "points": [
+      { "slug": "grammar:n5:te-kudasai", "title": "〜てください", "gloss": "please do …", "formation": "verb て-form + ください" },
+      { "slug": "grammar:n5:naide-kudasai", "title": "〜ないでください", "gloss": "please don't …", "formation": "verb ない-form + でください" },
+      { "slug": "grammar:n5:masen-ka", "title": "〜ませんか", "gloss": "won't you …? would you like to …?", "formation": "verb stem + ませんか" },
+      { "slug": "grammar:n5:mashou", "title": "〜ましょう", "gloss": "let's …", "formation": "verb stem + ましょう" },
+      { "slug": "grammar:n5:mashouka", "title": "〜ましょうか", "gloss": "shall I …? shall we …?", "formation": "verb stem + ましょうか" }
+    ]
+  },
+  {
+    "topic": "Permission and rules",
+    "points": [
+      { "slug": "grammar:n5:te-mo-ii", "title": "〜てもいい", "gloss": "it's OK to …; may I …?", "formation": "verb て-form + もいい(です)" },
+      { "slug": "grammar:n5:te-wa-ikenai", "title": "〜てはいけない", "gloss": "must not", "formation": "verb て-form + はいけない" },
+      { "slug": "grammar:n5:cha-ikenai-ja-ikenai", "title": "〜ちゃいけない / 〜じゃいけない", "gloss": "mustn't (casual)", "formation": "verb て-form, with て → ちゃ and で → じゃ, + いけない" },
+      { "slug": "grammar:n5:naku-temo-ii", "title": "〜なくてもいい", "gloss": "don't have to", "formation": "verb ない-form, with ない → なくて, + もいい" },
+      { "slug": "grammar:n5:nakute-wa-ikenai", "title": "〜なくてはいけない", "gloss": "must, have to", "formation": "verb ない-form, with ない → なくて, + はいけない" },
+      { "slug": "grammar:n5:nakute-wa-naranai", "title": "〜なくてはならない", "gloss": "must (rules, writing)", "formation": "verb ない-form, with ない → なくて, + はならない" },
+      { "slug": "grammar:n5:naito-ikenai", "title": "〜ないといけない", "gloss": "have to (everyday)", "formation": "verb ない-form + といけない" },
+      { "slug": "grammar:n5:nakucha", "title": "〜なくちゃ", "gloss": "gotta (casual)", "formation": "verb ない-form, with ない → なくちゃ" },
+      { "slug": "grammar:n5:hou-ga-ii", "title": "〜ほうがいい", "gloss": "you'd better …", "formation": "verb た-form or ない-form + ほうがいい" }
+    ]
+  },
+  {
+    "topic": "Actions and time",
+    "points": [
+      { "slug": "grammar:n5:te-iru", "title": "〜ている", "gloss": "is doing; is in a state", "formation": "verb て-form + いる" },
+      { "slug": "grammar:n5:te-aru", "title": "〜てある", "gloss": "has been done (and stays so)", "formation": "transitive verb て-form + ある" },
+      { "slug": "grammar:n5:te-kara", "title": "〜てから", "gloss": "after doing …", "formation": "verb て-form + から" },
+      { "slug": "grammar:n5:mae-ni", "title": "〜{前|まえ}に", "gloss": "before …", "formation": "verb dictionary form + {前|まえ}に / noun + の{前|まえ}に" },
+      { "slug": "grammar:n5:toki", "title": "〜とき", "gloss": "when …", "formation": "plain verb / い-adjective / な-adjective + な / noun + の, + とき" },
+      { "slug": "grammar:n5:ta-koto-ga-aru", "title": "〜たことがある", "gloss": "have done (before)", "formation": "verb た-form + ことがある" },
+      { "slug": "grammar:n5:tari-tari", "title": "〜たり〜たりする", "gloss": "things like A and B", "formation": "verb た-form + り, verb た-form + り + する" },
+      { "slug": "grammar:n5:tsumori", "title": "〜つもり", "gloss": "plan to, intend to", "formation": "verb dictionary form or ない-form + つもりです" },
+      { "slug": "grammar:n5:ni-iku", "title": "〜に{行|い}く", "gloss": "go to do …", "formation": "verb stem / activity noun + に{行|い}く" },
+      { "slug": "grammar:n5:naide", "title": "〜ないで", "gloss": "without doing …", "formation": "verb ない-form + で" },
+      { "slug": "grammar:n5:kata", "title": "〜{方|かた}", "gloss": "how to …; the way of …", "formation": "verb stem + {方|かた}" },
+      { "slug": "grammar:n5:issho-ni", "title": "{一緒|いっしょ}に", "gloss": "together with", "formation": "person + と + {一緒|いっしょ}に + verb" }
+    ]
+  },
+  {
+    "topic": "Already, not yet, always",
+    "points": [
+      { "slug": "grammar:n5:mou", "title": "もう", "gloss": "already; not any more", "formation": "もう + past verb / もう + negative" },
+      { "slug": "grammar:n5:mada", "title": "まだ", "gloss": "still; not yet", "formation": "まだ + verb / まだ + negative" },
+      { "slug": "grammar:n5:mada-te-imasen", "title": "まだ〜ていません", "gloss": "haven't … yet", "formation": "まだ + verb て-form + いません" },
+      { "slug": "grammar:n5:itsumo", "title": "いつも", "gloss": "always, usually", "formation": "いつも + verb" }
+    ]
+  },
+  {
+    "topic": "Comparing",
+    "points": [
+      { "slug": "grammar:n5:wa-yori-desu", "title": "AはBより〜", "gloss": "A is more … than B", "formation": "A + は + B + より + adjective" },
+      { "slug": "grammar:n5:yori-hou-ga", "title": "AよりBのほうが〜", "gloss": "B is more … than A", "formation": "A + より + B + のほうが + adjective" },
+      { "slug": "grammar:n5:ichiban", "title": "{一番|いちばん}", "gloss": "the most, number one", "formation": "{一番|いちばん} + adjective" },
+      { "slug": "grammar:n5:no-naka-de-a-ga-ichiban", "title": "〜の{中|なか}で〜が{一番|いちばん}", "gloss": "of all …, B is the most", "formation": "group + の{中|なか}で + B + が + {一番|いちばん} + adjective" }
+    ]
+  },
+  {
+    "topic": "Likes and skills",
+    "points": [
+      { "slug": "grammar:n5:no-ga-suki", "title": "〜のが{好|す}き", "gloss": "like doing …", "formation": "verb dictionary form + のが{好|す}き" },
+      { "slug": "grammar:n5:no-ga-jouzu", "title": "〜のが{上手|じょうず}", "gloss": "good at doing …", "formation": "verb dictionary form + のが{上手|じょうず}" },
+      { "slug": "grammar:n5:no-ga-heta", "title": "〜のが{下手|へた}", "gloss": "bad at doing …", "formation": "verb dictionary form + のが{下手|へた}" }
+    ]
+  },
+  {
+    "topic": "Joining sentences",
+    "points": [
+      { "slug": "grammar:n5:node", "title": "〜ので", "gloss": "because, so (soft)", "formation": "plain form + ので (noun / な-adjective + なので)" },
+      { "slug": "grammar:n5:kedo", "title": "〜けど", "gloss": "but, though (casual)", "formation": "sentence + けど" },
+      { "slug": "grammar:n5:keredo-mo", "title": "〜けれども", "gloss": "but, although (polite)", "formation": "sentence + けれども or けれど" },
+      { "slug": "grammar:n5:demo", "title": "でも", "gloss": "but (starting a sentence)", "formation": "でも、+ sentence" },
+      { "slug": "grammar:n5:shikashi", "title": "しかし", "gloss": "however (written)", "formation": "しかし、+ sentence" },
+      { "slug": "grammar:n5:soshite", "title": "そして", "gloss": "and, and then", "formation": "そして、+ sentence" },
+      { "slug": "grammar:n5:sore-kara", "title": "それから", "gloss": "and then, after that", "formation": "それから、+ sentence" }
+    ]
+  },
+  {
+    "topic": "Ending a sentence",
+    "points": [
+      { "slug": "grammar:n5:ne", "title": "〜ね", "gloss": "right? isn't it?", "formation": "sentence + ね" },
+      { "slug": "grammar:n5:yo", "title": "〜よ", "gloss": "you know; I'm telling you", "formation": "sentence + よ" },
+      { "slug": "grammar:n5:naa", "title": "〜なあ", "gloss": "wow…; I wish…", "formation": "plain form + なあ" },
+      { "slug": "grammar:n5:deshou", "title": "〜でしょう", "gloss": "probably; right?", "formation": "plain form + でしょう (noun / な-adjective without だ)" },
+      { "slug": "grammar:n5:darou", "title": "〜だろう", "gloss": "probably (casual)", "formation": "plain form + だろう (noun / な-adjective without だ)" },
+      { "slug": "grammar:n5:ndesu", "title": "〜んです", "gloss": "the thing is …; is it that …?", "formation": "plain form + んです (noun / な-adjective + なんです)" },
+      { "slug": "grammar:n5:no-desu", "title": "〜のです", "gloss": "explains (careful speech)", "formation": "plain form + のです (noun / な-adjective + なのです)" }
+    ]
+  }
+]

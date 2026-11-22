@@ -25,7 +25,7 @@ export type NavKey =
   | "today"
   | "review"
   | "practice"
-  | "grammar"
+  | "learn"
   | "log"
   | "progress"
   | "work"
@@ -40,7 +40,7 @@ export const MAIN_NAV: NavItem[] = [
   { key: "today", href: "/", label: "Today", icon: ICONS.today },
   { key: "review", href: "/review", label: "Review", icon: ICONS.review },
   { key: "practice", href: "/practice", label: "Practice", icon: ICONS.practice },
-  { key: "grammar", href: "/grammar", label: "Grammar", icon: ICONS.grammar },
+  { key: "learn", href: "/learn", label: "Learn", icon: ICONS.grammar },
   { key: "log", href: "/log", label: "Log", icon: ICONS.log },
 ];
 
@@ -58,6 +58,8 @@ export function navKeyFor(pathname: string): NavKey | "more" | "add-word" | null
   if (pathname === "/") return "today";
   if (pathname === "/more" || pathname.startsWith("/more/")) return "more";
   if (pathname === "/add-word") return "add-word";
+  // Grammar lessons live under Learn.
+  if (pathname === "/grammar" || pathname.startsWith("/grammar/")) return "learn";
   const item = [...MAIN_NAV, ...MORE_NAV].find((n) => n.href !== "/" && (pathname === n.href || pathname.startsWith(`${n.href}/`)));
   return item?.key ?? null;
 }

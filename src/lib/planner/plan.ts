@@ -8,7 +8,8 @@
  *    takes the quiz's place), and at least 10 minutes of speaking.
  * 2. Reviews, up to 55% of the free time.
  * 3. New items from the pace, scaled down if they don't fit the time left.
- * 4. The rest (grammar, more speaking, Work Japanese, reading, listening), each up to its usual
+ * 4. The rest (the N5 grammar read-through while it lasts, then grammar, more speaking, Work
+ *    Japanese, reading, listening), each up to its usual
  *    minutes from the "Typical days" table while time lasts. Immersion goes last, so it's the
  *    first to be trimmed.
  *
@@ -36,12 +37,13 @@ import { type DeckQuota, type DeckState, minutesFor, paceQuotas, scaleToMinutes 
 
 /**
  * Round 1 has Reviews, the quick check, New items, and listening, speaking and reading logged
- * in the minutes log. Round 2 adds grammar, the daily quiz and the weekly test; round 3 the class
- * and its log; round 4 mocks and Work Japanese.
+ * in the minutes log; round 1.5 the grammar read-through. Round 2 adds grammar, the daily quiz
+ * and the weekly test; round 3 the class and its log; round 4 mocks and Work Japanese.
  */
 export const AVAILABLE_TASK_KINDS: readonly TaskKind[] = [
   "reviews",
   "quick_check",
+  "read_through",
   "new_items",
   "speaking",
   "listening",
@@ -55,6 +57,7 @@ export const DISPLAY_ORDER: readonly TaskKind[] = [
   "quick_check",
   "reviews",
   "new_items",
+  "read_through",
   "grammar",
   "daily_quiz",
   "weekly_test",
@@ -92,6 +95,12 @@ export const EXAM_PREP_LISTENING = 1.5;
 /** The quick check is spread over the first 3 days, kana first. */
 export const QUICK_CHECK_DAYS = 3;
 export const QUICK_CHECK_SECONDS = { kana: 2, other: 4.5 };
+/** The N5 grammar read-through: about 1.5 minutes a lesson, spread over 7 days from the first. */
+export const READ_THROUGH_DAYS = 7;
+export const READ_THROUGH_MINUTES = 1.5;
+/** Past its 7 days, what's left still comes at most this many a day. */
+export const READ_THROUGH_MAX = 30;
+export const READ_THROUGH_KEY = "read_through";
 
 export type DayType = "weekday" | "weekend" | "class_weekend";
 
@@ -114,6 +123,8 @@ export type PlanInput = {
   decks: readonly DeckState[];
   /** Items the quick check has left at the start of the day, and the day it started. */
   quickCheck: { remainingKana: number; remainingOther: number; startedOn: StudyDate | null };
+  /** N5 grammar lessons the read-through has left at the start of the day, and its first day. None when left out. */
+  readThrough?: { remaining: number; startedOn: StudyDate | null };
   /** Unfinished tasks from yesterday that carry over (logging a class, the weekly test). */
   carryOver?: readonly DayTask[];
   /** Which task kinds have screens; AVAILABLE_TASK_KINDS unless a test says otherwise. */
@@ -171,6 +182,19 @@ export function quickCheckPlan(
   const kana = Math.min(target, quickCheck.remainingKana);
   const seconds = kana * QUICK_CHECK_SECONDS.kana + (target - kana) * QUICK_CHECK_SECONDS.other;
   return { target, minutes: Math.max(1, Math.ceil(seconds / 60)) };
+}
+
+/** Today's share of the grammar read-through: what's left over the days left of its first 7. */
+export function readThroughPlan(
+  readThrough: PlanInput["readThrough"],
+  date: StudyDate,
+): { target: number; minutes: number } | null {
+  const remaining = readThrough?.remaining ?? 0;
+  if (remaining <= 0) return null;
+  const daysIn = readThrough?.startedOn ? daysBetween(readThrough.startedOn, date) : 0;
+  const daysLeft = Math.max(1, READ_THROUGH_DAYS - daysIn);
+  const target = Math.min(READ_THROUGH_MAX, Math.ceil(remaining / daysLeft));
+  return { target, minutes: Math.ceil(target * READ_THROUGH_MINUTES) };
 }
 
 export function plan(input: PlanInput): DayPlan {
@@ -280,6 +304,7 @@ export function planDetail(input: PlanInput): PlanDetail {
     date,
     decks: input.decks,
     quickCheckDone: input.quickCheck.remainingKana + input.quickCheck.remainingOther === 0,
+    readThroughDone: (input.readThrough?.remaining ?? 0) === 0,
     newItemsAllowed: mode === "normal",
   });
   const grammarApart = has("grammar");
@@ -302,6 +327,15 @@ export function planDetail(input: PlanInput): PlanDetail {
     add(minutes);
     left -= minutes;
   };
+  // The grammar read-through comes with the quick check, first of the rest: it stands in for
+  // N5 grammar's new items until every lesson is read. Short of time, it's fewer lessons.
+  const rt = has("read_through") ? readThroughPlan(input.readThrough, date) : null;
+  if (rt) {
+    fill(rt.minutes, (minutes) => {
+      const target = minutes >= rt.minutes ? rt.target : Math.max(1, Math.floor(minutes / READ_THROUGH_MINUTES));
+      tasks.push(task({ key: READ_THROUGH_KEY, kind: "read_through", title: "Read N5 grammar", minutes, target, href: ROUTES.nextLesson }));
+    });
+  }
   const grammar = grammarApart ? quotas.filter((q) => q.quota > 0 && isGrammar(q)) : [];
   if (grammar.length > 0) {
     fill(typical.grammar, (minutes) => {
