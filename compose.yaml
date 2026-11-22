@@ -1,5 +1,9 @@
 # Local Postgres for development and tests (OrbStack or Docker): pnpm db:up
 # Port 54329 so it doesn't clash with another Postgres on 5432.
+# A fixed project name, so every worktree shares one container and one volume instead of each
+# folder's own project fighting over the name michi-postgres.
+name: michi
+
 services:
   postgres:
     image: postgres:17-alpine
