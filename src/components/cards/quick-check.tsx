@@ -278,10 +278,7 @@ function Check({ items: loaded, ...props }: QuickCheckProps) {
                   aria-label={`${(elapsed / 1000).toFixed(1)} seconds of 3 used`}
                   className="h-1.5 flex-auto overflow-hidden rounded-full bg-track"
                 >
-                  <div
-                    className={`h-full ${elapsed <= FAST_MS ? "bg-good" : "bg-warn"}`}
-                    style={{ width: `${Math.min(100, (elapsed / FAST_MS) * 100)}%` }}
-                  />
+                  <TimerFill startedAt={startedAt} running={!stopped} />
                 </div>
                 <span className="w-10 text-right text-[12.5px] text-ink2">{(elapsed / 1000).toFixed(1)} s</span>
               </div>
@@ -518,5 +515,39 @@ function QuickCheckDone(props: {
         Back to Today
       </Link>
     </>
+  );
+}
+
+/**
+ * The 3-second bar. The browser animates it (`transform`, off the main thread), so it slides
+ * smoothly even while typing re-renders the card, and it turns amber once the 3 seconds are up.
+ */
+function TimerFill({ startedAt, running }: { startedAt: number; running: boolean }) {
+  const fill = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = fill.current;
+    if (!el) return;
+    const elapsed = Math.max(0, Date.now() - startedAt);
+    const from = Math.min(1, elapsed / FAST_MS);
+    el.dataset.over = elapsed > FAST_MS ? "true" : "false";
+    if (!running || from >= 1) {
+      el.style.transform = `scaleX(${from})`;
+      return;
+    }
+    const slide = el.animate([{ transform: `scaleX(${from})` }, { transform: "scaleX(1)" }], {
+      duration: FAST_MS - elapsed,
+      easing: "linear",
+      fill: "forwards",
+    });
+    slide.onfinish = () => (el.dataset.over = "true");
+    return () => slide.cancel();
+  }, [startedAt, running]);
+  return (
+    <div
+      ref={fill}
+      data-over="false"
+      style={{ transform: "scaleX(0)" }}
+      className="h-full w-full origin-left bg-good data-[over=true]:bg-warn"
+    />
   );
 }
