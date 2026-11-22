@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { safeNext } from "@/lib/auth/device";
+import { SIGN_IN_REQUIRED } from "@/lib/auth/required";
 import { authSetupProblems, currentSession } from "@/lib/auth/session";
 
 import { SignInForm } from "./sign-in-form";
@@ -11,6 +12,7 @@ export const metadata: Metadata = { title: "Sign in" };
 /** F_SignIn. */
 export default async function SignInPage({ searchParams }: PageProps<"/sign-in">) {
   const next = safeNext((await searchParams).next);
+  if (!SIGN_IN_REQUIRED) redirect(next);
   const problems = authSetupProblems();
   if (problems.length === 0 && (await currentSession())) redirect(next);
   return (

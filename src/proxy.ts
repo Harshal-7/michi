@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server";
 
+import { SIGN_IN_REQUIRED } from "@/lib/auth/required";
 import { SESSION_COOKIE, sessionSecret, verifySessionToken } from "@/lib/auth/token";
 
 /**
@@ -8,6 +9,7 @@ import { SESSION_COOKIE, sessionSecret, verifySessionToken } from "@/lib/auth/to
  * Handlers check the session itself again (src/lib/auth/session.ts).
  */
 export function proxy(request: NextRequest) {
+  if (!SIGN_IN_REQUIRED) return NextResponse.next();
   const secret = sessionSecret();
   if (secret && verifySessionToken(request.cookies.get(SESSION_COOKIE)?.value, secret)) return NextResponse.next();
 
