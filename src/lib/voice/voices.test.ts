@@ -7,11 +7,17 @@ const voices: VoiceInfo[] = [
   { name: "Kyoko", lang: "ja-JP", localService: true },
   { name: "Google 日本語", lang: "ja-JP", localService: false },
   { name: "Japanese Japan", lang: "ja_JP", localService: true },
+  { name: "Eddy (Japanese (Japan))", lang: "ja-JP", localService: true },
 ];
 
 describe("voices", () => {
   it("lists Japanese voices, Google's first", () => {
-    expect(japaneseVoices(voices).map((v) => v.name)).toEqual(["Google 日本語", "Japanese Japan", "Kyoko"]);
+    expect(japaneseVoices(voices).map((v) => v.name)).toEqual([
+      "Google 日本語",
+      "Kyoko",
+      "Eddy (Japanese (Japan))",
+      "Japanese Japan",
+    ]);
   });
 
   it("uses the voice picked in Settings when this device has it", () => {

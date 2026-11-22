@@ -10,9 +10,12 @@ export type VoicePrefs = { name: string | null; rate: number };
 
 const isJapanese = (v: VoiceInfo) => /^ja([-_]|$)/i.test(v.lang);
 
-/** Japanese voices, Google's first (the clearest on Android and in Chrome), then on-device ones. */
+/** Apple's standard Japanese voices; the Mac also lists novelty ones (Eddy, Grandma…). */
+const STANDARD = /kyoko|otoya|o-ren|hattori/i;
+
+/** Japanese voices: Google's first (the clearest on Android and in Chrome), then the standard ones. */
 export function japaneseVoices<V extends VoiceInfo>(voices: readonly V[]): V[] {
-  const score = (v: VoiceInfo) => (/google/i.test(v.name) ? 0 : 2) + (v.localService ? 0 : 1);
+  const score = (v: VoiceInfo) => (/google/i.test(v.name) ? 0 : STANDARD.test(v.name) ? 2 : 4) + (v.localService ? 0 : 1);
   return voices.filter(isJapanese).sort((a, b) => score(a) - score(b) || a.name.localeCompare(b.name));
 }
 
