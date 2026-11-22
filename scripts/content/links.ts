@@ -65,6 +65,13 @@ async function readJlptSenseiLists(): Promise<Row[]> {
   return rows;
 }
 
+/**
+ * Slugs that differ from the romaji, kept because a database already holds them. The base shipped a
+ * sample record for 〜てもいいです as grammar:n5:te-mo-ii and production seeded it, so the real point
+ * keeps that key (the seed matches by key; a new key would leave the sample in place).
+ */
+const SLUG_FOR: Record<string, string> = { "grammar:n5:temo-ii-desu": "grammar:n5:te-mo-ii" };
+
 /** A URL-safe slug from the romaji title: "cha ikenai / ja ikenai" → "cha-ikenai-ja-ikenai". */
 function slugify(romaji: string): string {
   return romaji
@@ -172,6 +179,7 @@ async function main() {
     let slug = `grammar:${row.level.toLowerCase()}:${slugify(row.romaji)}`;
     for (let i = 2; slugs.has(slug); i++) slug = `grammar:${row.level.toLowerCase()}:${slugify(row.romaji)}-${i}`;
     slugs.add(slug);
+    slug = SLUG_FOR[slug] ?? slug;
 
     const links: GrammarPointLinks["links"] = [];
     const candidates: { site: "jlptsensei" | "bunpro"; url: string; check: () => Promise<Check> }[] = [

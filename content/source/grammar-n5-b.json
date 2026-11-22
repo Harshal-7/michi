@@ -517,7 +517,7 @@
         "explain": "持つ is godan: 持たない becomes 持たなくてもいい."
       }
     ],
-    "confusables": ["grammar:n5:naito-ikenai", "grammar:n5:temo-ii-desu", "grammar:n5:nakute-wa-ikenai"]
+    "confusables": ["grammar:n5:naito-ikenai", "grammar:n5:te-mo-ii", "grammar:n5:nakute-wa-ikenai"]
   },
   {
     "slug": "grammar:n5:nakucha",
