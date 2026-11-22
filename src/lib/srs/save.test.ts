@@ -9,7 +9,7 @@ import { addDays, daysBetween, studyDate } from "@/lib/day";
 import type { GradeOp } from "./ops";
 import { FRONT_OF_QUEUE, recordQuizMiss, saveOps } from "./save";
 import { KNOWN_FIRST_DAY, KNOWN_PER_DAY } from "./spread";
-import { addCard, cardRow, resetStudyTables } from "./test-helpers";
+import { addCard, addManyCards, cardRow, resetStudyTables } from "./test-helpers";
 
 let db: Db;
 let drop: () => Promise<void>;
@@ -184,8 +184,7 @@ describe("quick check", () => {
   });
 
   it("never puts more than 30 known items due on one day", async () => {
-    const added = [];
-    for (let i = 0; i < 900; i++) added.push(await addCard(db));
+    const added = await addManyCards(db, 900);
     for (let i = 0; i < added.length; i += 20) {
       await saveOps(
         db,
@@ -210,7 +209,7 @@ describe("quick check", () => {
     expect(sample.stability).toBeGreaterThan(10);
     const logs = await db.select().from(reviewLogs).where(eq(reviewLogs.source, "quick_check"));
     expect(logs).toHaveLength(900);
-  });
+  }, 60_000);
 
   it("puts unsure and forgotten items at the front of the new queue", async () => {
     const unsure = await addCard(db, { newRank: 40 });

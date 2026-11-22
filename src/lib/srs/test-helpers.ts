@@ -55,3 +55,28 @@ export async function cardRow(db: Db, id: number) {
   const [row] = await db.select().from(cards).where(eq(cards.id, id));
   return row;
 }
+
+/** Many word items with one new card each, added in two statements. */
+export async function addManyCards(db: Db, n: number): Promise<{ itemId: number; cardId: number }[]> {
+  const start = counter;
+  counter += n;
+  const rows = await db
+    .insert(items)
+    .values(
+      Array.from({ length: n }, (_, i) => ({
+        kind: "word" as const,
+        level: "N5" as const,
+        term: `語${start + i + 1}`,
+        reading: `ご${start + i + 1}`,
+        meaning: `word ${start + i + 1}`,
+        source: "starter" as const,
+        dedupeKey: `test-${start + i + 1}`,
+      })),
+    )
+    .returning({ id: items.id });
+  const made = await db
+    .insert(cards)
+    .values(rows.map((r, i) => ({ itemId: r.id, cardType: "recognition" as const, newRank: start + i + 1 })))
+    .returning({ id: cards.id, itemId: cards.itemId });
+  return made.map((c) => ({ itemId: c.itemId, cardId: c.id }));
+}
