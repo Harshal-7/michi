@@ -1,0 +1,5900 @@
+{
+  "checkedOn": "2026-11-21",
+  "points": [
+    {
+      "slug": "grammar:n5:cha-ikenai-ja-ikenai",
+      "level": "N5",
+      "n": 1,
+      "title": "ちゃいけない・じゃいけない",
+      "romaji": "cha ikenai / ja ikenai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a1%e3%82%83%e3%81%84%e3%81%91%e3%81%aa%e3%81%84-%e3%81%98%e3%82%83%e3%81%84%e3%81%91%e3%81%aa%e3%81%84-cha-ikenai-ja-dame/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:da-desu",
+      "level": "N5",
+      "n": 2,
+      "title": "だ / です",
+      "romaji": "da / desu",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a0-da-%e3%81%a7%e3%81%99-desu-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:dake",
+      "level": "N5",
+      "n": 3,
+      "title": "だけ",
+      "romaji": "dake",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a0%e3%81%91-dake-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%91"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:darou",
+      "level": "N5",
+      "n": 4,
+      "title": "だろう",
+      "romaji": "darou",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a0%e3%82%8d%e3%81%86-darou-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%82%8D%E3%81%86"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:de",
+      "level": "N5",
+      "n": 5,
+      "title": "で",
+      "romaji": "de",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a7-de-particle-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:demo",
+      "level": "N5",
+      "n": 6,
+      "title": "でも",
+      "romaji": "demo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a7%e3%82%82-demo-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:deshou",
+      "level": "N5",
+      "n": 7,
+      "title": "でしょう",
+      "romaji": "deshou",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a7%e3%81%97%e3%82%87%e3%81%86-deshou-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%97%E3%82%87%E3%81%86"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:donna",
+      "level": "N5",
+      "n": 8,
+      "title": "どんな",
+      "romaji": "donna",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a9%e3%82%93%e3%81%aa-donna-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:doushite",
+      "level": "N5",
+      "n": 9,
+      "title": "どうして",
+      "romaji": "doushite",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a9%e3%81%86%e3%81%97%e3%81%a6-doushite-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A9%E3%81%86%E3%81%97%E3%81%A6"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:douyatte",
+      "level": "N5",
+      "n": 10,
+      "title": "どうやって",
+      "romaji": "douyatte",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a9%e3%81%86%e3%82%84%e3%81%a3%e3%81%a6-douyatte-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:ga",
+      "level": "N5",
+      "n": 11,
+      "title": "が",
+      "romaji": "ga",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8c-ga-subject-marker-particle/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:ga-arimasu",
+      "level": "N5",
+      "n": 12,
+      "title": "があります",
+      "romaji": "ga arimasu",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8c%e3%81%82%e3%82%8a%e3%81%be%e3%81%99-ga-arimasu-%e3%81%8c%e3%81%82%e3%82%8b-ga-aru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:ga-hoshii",
+      "level": "N5",
+      "n": 13,
+      "title": "がほしい",
+      "romaji": "ga hoshii",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8c%e3%81%bb%e3%81%97%e3%81%84-ga-hoshii-%e3%81%8c%e6%ac%b2%e3%81%97%e3%81%84-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:ga-imasu",
+      "level": "N5",
+      "n": 14,
+      "title": "がいます",
+      "romaji": "ga imasu",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8c%e3%81%84%e3%81%be%e3%81%99-ga-imasu-%e3%81%8c%e3%81%84%e3%82%8b-ga-iru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:hou-ga-ii",
+      "level": "N5",
+      "n": 15,
+      "title": "ほうがいい",
+      "romaji": "hou ga ii",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e6%96%b9%e3%81%8c%e3%81%84%e3%81%84-%e3%81%bb%e3%81%86%e3%81%8c%e3%81%84%e3%81%84-hou-ga-ii-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:i-adjectives",
+      "level": "N5",
+      "n": 16,
+      "title": "い-adjectives",
+      "romaji": "i-adjectives",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/japanese-%e3%81%84-adjectives-%e3%81%84%e5%bd%a2%e5%ae%b9%e8%a9%9e-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:ichiban",
+      "level": "N5",
+      "n": 17,
+      "title": "一番（いちばん）",
+      "romaji": "ichiban",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e4%b8%80%e7%95%aa-%e3%81%84%e3%81%a1%e3%81%b0%e3%82%93-ichiban-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:issho-ni",
+      "level": "N5",
+      "n": 18,
+      "title": "一緒に（いっしょに）",
+      "romaji": "issho ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e4%b8%80%e7%b7%92%e3%81%ab-%e3%81%84%e3%81%a3%e3%81%97%e3%82%87%e3%81%ab-issho-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:itsumo",
+      "level": "N5",
+      "n": 19,
+      "title": "いつも",
+      "romaji": "itsumo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%84%e3%81%a4%e3%82%82-itsumo-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:janai-dewa-nai",
+      "level": "N5",
+      "n": 20,
+      "title": "じゃない・ではない",
+      "romaji": "janai / dewa nai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%98%e3%82%83%e3%81%aa%e3%81%84-janai-%e3%81%a7%e3%81%af%e3%81%aa%e3%81%84-dewa-nai-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:ka",
+      "level": "N5",
+      "n": 21,
+      "title": "か",
+      "romaji": "ka",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8b-ka-question-particle-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:ka-ka",
+      "level": "N5",
+      "n": 22,
+      "title": "か～か",
+      "romaji": "ka~ka",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8b%ef%bd%9e%e3%81%8b-ka-ka-or-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:kara",
+      "level": "N5",
+      "n": 23,
+      "title": "から",
+      "romaji": "kara",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8b%e3%82%89-kara-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:kata",
+      "level": "N5",
+      "n": 24,
+      "title": "方（かた）",
+      "romaji": "kata",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e6%96%b9-%e3%81%8b%e3%81%9f-kata-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:kedo",
+      "level": "N5",
+      "n": 25,
+      "title": "けど",
+      "romaji": "kedo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%91%e3%81%a9-kedo-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:keredo-mo",
+      "level": "N5",
+      "n": 26,
+      "title": "けれども",
+      "romaji": "keredo mo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%91%e3%82%8c%e3%81%a9%e3%82%82-keredo-mo-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%91%E3%82%8C%E3%81%A9%E3%82%82"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:mada",
+      "level": "N5",
+      "n": 27,
+      "title": "まだ",
+      "romaji": "mada",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%be%e3%81%a0-mada-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%A0"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:mada-te-imasen",
+      "level": "N5",
+      "n": 28,
+      "title": "まだ～ていません",
+      "romaji": "mada ~te imasen",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%be%e3%81%a0%ef%bd%9e%e3%81%a6%e3%81%84%e3%81%be%e3%81%9b%e3%82%93-mada-te-imasen-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%A0-%E3%81%A6%E3%81%84%E3%81%BE%E3%81%9B%E3%82%93"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:made",
+      "level": "N5",
+      "n": 29,
+      "title": "まで",
+      "romaji": "made",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%be%e3%81%a7-made-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:mae-ni",
+      "level": "N5",
+      "n": 30,
+      "title": "前に（まえに）",
+      "romaji": "mae ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e5%89%8d%e3%81%ab-%e3%81%be%e3%81%88%e3%81%ab-mae-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:masen-ka",
+      "level": "N5",
+      "n": 31,
+      "title": "ませんか",
+      "romaji": "masen ka",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%be%e3%81%9b%e3%82%93%e3%81%8b-masen-ka-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%9B%E3%82%93%E3%81%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:mashou",
+      "level": "N5",
+      "n": 32,
+      "title": "ましょう",
+      "romaji": "mashou",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%be%e3%81%97%e3%82%87%e3%81%86-mashou-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%97%E3%82%87%E3%81%86"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:mashouka",
+      "level": "N5",
+      "n": 33,
+      "title": "ましょうか",
+      "romaji": "mashouka",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%be%e3%81%97%e3%82%87%e3%81%86%e3%81%8b-mashouka-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%81%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:mo",
+      "level": "N5",
+      "n": 34,
+      "title": "も",
+      "romaji": "mo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%82-mo-particle-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%82%82"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:mou",
+      "level": "N5",
+      "n": 35,
+      "title": "もう",
+      "romaji": "mou",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%82%e3%81%86-mou-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%86"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:na-adjectives",
+      "level": "N5",
+      "n": 36,
+      "title": "な-adjectives",
+      "romaji": "na-adjectives",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/japanese-%e3%81%aa-adjectives-%e3%81%aa%e5%bd%a2%e5%ae%b9%e8%a9%9e-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:naa",
+      "level": "N5",
+      "n": 37,
+      "title": "なあ",
+      "romaji": "naa",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%82-naa-sentence-ending-particle-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:naide",
+      "level": "N5",
+      "n": 38,
+      "title": "ないで",
+      "romaji": "naide",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%84%e3%81%a7-naide-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:naide-kudasai",
+      "level": "N5",
+      "n": 39,
+      "title": "ないでください",
+      "romaji": "naide kudasai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%84%e3%81%a7%e3%81%8f%e3%81%a0%e3%81%95%e3%81%84-naide-kudasai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84%E3%81%A7%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:naito-ikenai",
+      "level": "N5",
+      "n": 40,
+      "title": "ないといけない",
+      "romaji": "naito ikenai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%84%e3%81%a8%e3%81%84%e3%81%91%e3%81%aa%e3%81%84-naito-ikenai-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:naku-temo-ii",
+      "level": "N5",
+      "n": 41,
+      "title": "なくてもいい",
+      "romaji": "naku temo ii",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%8f%e3%81%a6%e3%82%82%e3%81%84%e3%81%84-naku-temo-ii-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:nakucha",
+      "level": "N5",
+      "n": 42,
+      "title": "なくちゃ",
+      "romaji": "nakucha",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%8f%e3%81%a1%e3%82%83-%e3%83%80%e3%83%a1-nakucha-dame-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:nakute-wa-ikenai",
+      "level": "N5",
+      "n": 43,
+      "title": "なくてはいけない",
+      "romaji": "nakute wa ikenai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%8f%e3%81%a6%e3%81%af%e3%81%84%e3%81%91%e3%81%aa%e3%81%84-nakute-wa-ikenai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A6%E3%81%AF%E3%81%84%E3%81%91%E3%81%AA%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:nakute-wa-naranai",
+      "level": "N5",
+      "n": 44,
+      "title": "なくてはならない",
+      "romaji": "nakute wa naranai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%8f%e3%81%a6%e3%81%af%e3%81%aa%e3%82%89%e3%81%aa%e3%81%84-nakute-wa-naranai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8F%E3%81%A6%E3%81%AF%E3%81%AA%E3%82%89%E3%81%AA%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:naru",
+      "level": "N5",
+      "n": 45,
+      "title": "なる",
+      "romaji": "naru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%82%8b-naru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:ndesu",
+      "level": "N5",
+      "n": 46,
+      "title": "んです",
+      "romaji": "ndesu",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%93%e3%81%a7%e3%81%99-ndesu-%e3%82%93%e3%81%a0-nda-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:ne",
+      "level": "N5",
+      "n": 47,
+      "title": "ね",
+      "romaji": "ne",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ad-ne-particle-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AD"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:ni",
+      "level": "N5",
+      "n": 48,
+      "title": "に",
+      "romaji": "ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab-ni-destination-particle-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AB"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:ni-iku",
+      "level": "N5",
+      "n": 49,
+      "title": "に行く（にいく）",
+      "romaji": "ni iku",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%97%e3%81%ab%e3%81%84%e3%81%8f-ni-iku-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:ni-suru",
+      "level": "N5",
+      "n": 50,
+      "title": "にする",
+      "romaji": "ni suru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e3%81%99%e3%82%8b-ni-suru-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%99%E3%82%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:ni-e",
+      "level": "N5",
+      "n": 51,
+      "title": "に/へ",
+      "romaji": "ni/e",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab-%e3%81%b8-ni-e-directional-particle-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:no",
+      "level": "N5",
+      "n": 52,
+      "title": "の",
+      "romaji": "no",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ae-no-possessive-particle-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:no-desu",
+      "level": "N5",
+      "n": 53,
+      "title": "のです",
+      "romaji": "no desu",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ae%e3%81%a7%e3%81%99-no-desu-%e3%81%ae%e3%81%a0-noda-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:no-ga-heta",
+      "level": "N5",
+      "n": 54,
+      "title": "のが下手（のがへた）",
+      "romaji": "no ga heta",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ae%e3%81%8c%e4%b8%8b%e6%89%8b-%e3%81%ae%e3%81%8c%e3%81%b8%e3%81%9f-no-ga-heta-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:no-ga-jouzu",
+      "level": "N5",
+      "n": 55,
+      "title": "のが上手（のがじょうず）",
+      "romaji": "no ga jouzu",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ae%e3%81%8c%e4%b8%8a%e6%89%8b-no-ga-jouzu-%e3%81%ae%e3%81%8c%e3%81%98%e3%82%87%e3%81%86%e3%81%9a%e3%81%a7%e3%81%99-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:no-ga-suki",
+      "level": "N5",
+      "n": 56,
+      "title": "のが好き（のがすき）",
+      "romaji": "no ga suki",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ae%e3%81%8c%e5%a5%bd%e3%81%8d-no-ga-suki-%e3%81%ae%e3%81%8c%e3%81%99%e3%81%8d%e3%81%a7%e3%81%99-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:no-naka-de-a-ga-ichiban",
+      "level": "N5",
+      "n": 57,
+      "title": "の中で[A]が一番（のなかで[A]がいちばん）",
+      "romaji": "no naka de [A] ga ichiban",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ae%e4%b8%ad%e3%81%a7%e3%81%8c%e4%b8%80%e7%95%aa-%e3%81%ae%e3%81%aa%e3%81%8b%e3%81%a7%e3%81%8c%e3%81%84%e3%81%a1%e3%81%b0%e3%82%93-no-naka-de-ga-ichiban-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:node",
+      "level": "N5",
+      "n": 58,
+      "title": "ので",
+      "romaji": "node",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ae%e3%81%a7-node-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AE%E3%81%A7"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:o-go",
+      "level": "N5",
+      "n": 59,
+      "title": "お / ご",
+      "romaji": "o / go",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e5%be%a1-%e3%81%8a-%e3%81%94-o-go-polite-marker-particle-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:o-wo",
+      "level": "N5",
+      "n": 60,
+      "title": "を",
+      "romaji": "o / wo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%92-wo-object-marker-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%82%92"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:o-kudasai",
+      "level": "N5",
+      "n": 61,
+      "title": "をください",
+      "romaji": "o kudasai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%92%e3%81%8f%e3%81%a0%e3%81%95%e3%81%84-o-kudasai-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:shikashi",
+      "level": "N5",
+      "n": 62,
+      "title": "しかし",
+      "romaji": "shikashi",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%97%e3%81%8b%e3%81%97-shikashi-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:sore-kara",
+      "level": "N5",
+      "n": 63,
+      "title": "それから",
+      "romaji": "sore kara",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9d%e3%82%8c%e3%81%8b%e3%82%89-sore-kara-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:soshite",
+      "level": "N5",
+      "n": 64,
+      "title": "そして",
+      "romaji": "soshite",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9d%e3%81%97%e3%81%a6-soshite-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:sugiru",
+      "level": "N5",
+      "n": 65,
+      "title": "すぎる",
+      "romaji": "sugiru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%99%e3%81%8e%e3%82%8b-sugiru-%e9%81%8e%e3%81%8e%e3%82%8b-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%99%E3%81%8E%E3%82%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:ta-koto-ga-aru",
+      "level": "N5",
+      "n": 66,
+      "title": "たことがある",
+      "romaji": "ta koto ga aru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9f%e3%81%93%e3%81%a8%e3%81%8c%e3%81%82%e3%82%8b-ta-koto-ga-aru-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%93%E3%81%A8%E3%81%8C%E3%81%82%E3%82%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:tai",
+      "level": "N5",
+      "n": 67,
+      "title": "たい",
+      "romaji": "tai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9f%e3%81%84-tai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:tari-tari",
+      "level": "N5",
+      "n": 68,
+      "title": "たり～たり",
+      "romaji": "tari~tari",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9f%e3%82%8a%ef%bd%9e%e3%81%9f%e3%82%8a%e3%81%99%e3%82%8b-tari-tari-suru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:te-aru",
+      "level": "N5",
+      "n": 69,
+      "title": "てある",
+      "romaji": "te aru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%82%e3%82%8b-te-aru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:te-iru",
+      "level": "N5",
+      "n": 70,
+      "title": "ている",
+      "romaji": "te iru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%84%e3%82%8b-te-iru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:te-kara",
+      "level": "N5",
+      "n": 71,
+      "title": "てから",
+      "romaji": "te kara",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%8b%e3%82%89-te-kara-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8B%E3%82%89"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:te-kudasai",
+      "level": "N5",
+      "n": 72,
+      "title": "てください",
+      "romaji": "te kudasai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%8f%e3%81%a0%e3%81%95%e3%81%84-te-kudasai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:te-wa-ikenai",
+      "level": "N5",
+      "n": 73,
+      "title": "てはいけない",
+      "romaji": "te wa ikenai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%af%e3%81%84%e3%81%91%e3%81%aa%e3%81%84-te-wa-ikenai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%AF%E3%81%84%E3%81%91%E3%81%AA%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:temo-ii-desu",
+      "level": "N5",
+      "n": 74,
+      "title": "てもいいです",
+      "romaji": "temo ii desu",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%82%82%e3%81%84%e3%81%84%e3%81%a7%e3%81%99%e3%81%8b-temo-ii-desu-ka-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:to",
+      "level": "N5",
+      "n": 75,
+      "title": "と",
+      "romaji": "to",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8-to-particle-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:toki",
+      "level": "N5",
+      "n": 76,
+      "title": "とき",
+      "romaji": "toki",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e6%99%82-%e3%81%a8%e3%81%8d-toki-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:totemo",
+      "level": "N5",
+      "n": 77,
+      "title": "とても",
+      "romaji": "totemo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%a6%e3%82%82-totemo-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:tsumori",
+      "level": "N5",
+      "n": 78,
+      "title": "つもり",
+      "romaji": "tsumori",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a4%e3%82%82%e3%82%8a-tsumori-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:wa-topic-marker",
+      "level": "N5",
+      "n": 79,
+      "title": "は",
+      "romaji": "wa - topic marker",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%af-wa-topic-marker-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AF"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:wa-yori-desu",
+      "level": "N5",
+      "n": 80,
+      "title": "は〜より・・・です",
+      "romaji": "wa ~yori... desu",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%af%e3%80%9c%e3%82%88%e3%82%8a-%e3%81%a7%e3%81%99-wa-yori-desu-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:wa-dou-desu-ka",
+      "level": "N5",
+      "n": 81,
+      "title": "はどうですか",
+      "romaji": "wa dou desu ka",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%af%e3%81%a9%e3%81%86%e3%81%a7%e3%81%99%e3%81%8b-wa-dou-desu-ka-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:ya",
+      "level": "N5",
+      "n": 82,
+      "title": "や",
+      "romaji": "ya",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%84-ya-particle-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%82%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:yo",
+      "level": "N5",
+      "n": 83,
+      "title": "よ",
+      "romaji": "yo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%88-yo-ending-particle-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%82%88"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n5:yori-hou-ga",
+      "level": "N5",
+      "n": 84,
+      "title": "より～ほうが",
+      "romaji": "yori ~hou ga",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%88%e3%82%8a%ef%bd%9e%e3%81%ae%e3%81%bb%e3%81%86%e3%81%8c-yori-no-hou-ga-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:aida",
+      "level": "N4",
+      "n": 1,
+      "title": "間（あいだ）",
+      "romaji": "aida",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e9%96%93-aida-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:aida-ni",
+      "level": "N4",
+      "n": 2,
+      "title": "間に（あいだに）",
+      "romaji": "aida ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e9%96%93%e3%81%ab-aida-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:amari-nai",
+      "level": "N4",
+      "n": 3,
+      "title": "あまり～ない",
+      "romaji": "amari~nai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%82%e3%81%be%e3%82%8a%ef%bd%9e%e3%81%aa%e3%81%84-amarinai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%82%E3%81%BE%E3%82%8A-%E3%81%AA%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:ato-de",
+      "level": "N4",
+      "n": 4,
+      "title": "後で（あとで）",
+      "romaji": "ato de",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e5%be%8c%e3%81%a7-%e3%81%82%e3%81%a8%e3%81%a7-ato-de-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:ba",
+      "level": "N4",
+      "n": 5,
+      "title": "ば",
+      "romaji": "ba",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%b0-ba-conditional-form-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%B0"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:baai-wa",
+      "level": "N4",
+      "n": 6,
+      "title": "場合は（ばあいは）",
+      "romaji": "baai wa",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e5%a0%b4%e5%90%88%e3%81%af-baai-wa-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:bakari",
+      "level": "N4",
+      "n": 7,
+      "title": "ばかり",
+      "romaji": "bakari",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%b0%e3%81%8b%e3%82%8a-bakari-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:dake-de",
+      "level": "N4",
+      "n": 8,
+      "title": "だけで",
+      "romaji": "dake de",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a0%e3%81%91%e3%81%a7-dake-de-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%81%91%E3%81%A7"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:dasu",
+      "level": "N4",
+      "n": 9,
+      "title": "出す（だす）",
+      "romaji": "dasu",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e5%87%ba%e3%81%99-dasu-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:de-gozaimasu",
+      "level": "N4",
+      "n": 10,
+      "title": "でございます",
+      "romaji": "de gozaimasu",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a7%e3%81%94%e3%81%96%e3%81%84%e3%81%be%e3%81%99-de-gozaimasu-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%81%94%E3%81%96%E3%81%84%E3%81%BE%E3%81%99"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:demo",
+      "level": "N4",
+      "n": 11,
+      "title": "でも",
+      "romaji": "demo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a7%e3%82%82-demo-meaning-something/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A7%E3%82%82"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:dewa-nai-ka",
+      "level": "N4",
+      "n": 12,
+      "title": "ではないか",
+      "romaji": "dewa nai ka",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a7%e3%81%af%e3%81%aa%e3%81%84%e3%81%8b-dewa-nai-ka-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:ga-hitsuyou",
+      "level": "N4",
+      "n": 13,
+      "title": "が必要（がひつよう）",
+      "romaji": "ga hitsuyou",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8c%e5%bf%85%e8%a6%81-ga-hitsuyou-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:ga-suru",
+      "level": "N4",
+      "n": 14,
+      "title": "がする",
+      "romaji": "ga suru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8c%e3%81%99%e3%82%8b-ga-suru-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%99%E3%82%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:gari",
+      "level": "N4",
+      "n": 15,
+      "title": "がり",
+      "romaji": "gari",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8c%e3%82%8a-gari-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:garu-gatteiru",
+      "level": "N4",
+      "n": 16,
+      "title": "がる / がっている",
+      "romaji": "garu / gatteiru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8c%e3%82%8b-garu-%e3%81%8c%e3%81%a3%e3%81%a6%e3%81%84%e3%82%8b-gatteiru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:gozaimasu",
+      "level": "N4",
+      "n": 17,
+      "title": "ございます",
+      "romaji": "gozaimasu",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%94%e3%81%96%e3%81%84%e3%81%be%e3%81%99-gozaimasu-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%94%E3%81%96%E3%81%84%E3%81%BE%E3%81%99"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:hajimeru",
+      "level": "N4",
+      "n": 18,
+      "title": "始める（はじめる）",
+      "romaji": "hajimeru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e5%a7%8b%e3%82%81%e3%82%8b-hajimeru-%e5%a7%8b%e3%82%81%e3%81%9f-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:hazu-da",
+      "level": "N4",
+      "n": 19,
+      "title": "はずだ",
+      "romaji": "hazu da",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%af%e3%81%9a%e3%81%a0-hazu-da-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AF%E3%81%9A%E3%81%A0"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:hazu-ga-nai",
+      "level": "N4",
+      "n": 20,
+      "title": "はずがない",
+      "romaji": "hazu ga nai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%af%e3%81%9a%e3%81%8c%e3%81%aa%e3%81%84-hazu-ga-nai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AF%E3%81%9A%E3%81%8C%E3%81%AA%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:hitsuyou-ga-aru",
+      "level": "N4",
+      "n": 21,
+      "title": "必要がある（ひつようがある）",
+      "romaji": "hitsuyou ga aru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e5%bf%85%e8%a6%81%e3%81%8c%e3%81%82%e3%82%8b-hitsuyou-ga-aru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:ikou-kei-volitional-form",
+      "level": "N4",
+      "n": 22,
+      "title": "意向形 （いこうけい）",
+      "romaji": "ikou kei - volitional form",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e6%84%8f%e5%90%91%e5%bd%a2-ikou-kei-volitional-form-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:irassharu",
+      "level": "N4",
+      "n": 23,
+      "title": "いらっしゃる",
+      "romaji": "irassharu",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%84%e3%82%89%e3%81%a3%e3%81%97%e3%82%83%e3%82%8b-irassharu-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%84%E3%82%89%E3%81%A3%E3%81%97%E3%82%83%E3%82%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:itashimasu",
+      "level": "N4",
+      "n": 24,
+      "title": "いたします",
+      "romaji": "itashimasu",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%84%e3%81%9f%e3%81%97%e3%81%be%e3%81%99-itashimasu-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:janai-ka",
+      "level": "N4",
+      "n": 25,
+      "title": "じゃないか",
+      "romaji": "janai ka",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%98%e3%82%83%e3%81%aa%e3%81%84%e3%81%8b-janai-ka-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%98%E3%82%83%E3%81%AA%E3%81%84%E3%81%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:ka-dou-ka",
+      "level": "N4",
+      "n": 26,
+      "title": "かどうか",
+      "romaji": "ka dou ka",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8b%e3%81%a9%e3%81%86%e3%81%8b-ka-dou-ka-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%A9%E3%81%86%E3%81%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:ka-shira",
+      "level": "N4",
+      "n": 27,
+      "title": "かしら",
+      "romaji": "ka shira",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8b%e3%81%97%e3%82%89-ka-shira-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%97%E3%82%89"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:kai",
+      "level": "N4",
+      "n": 28,
+      "title": "かい",
+      "romaji": "kai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8b%e3%81%84-kai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:kamo-shirenai",
+      "level": "N4",
+      "n": 29,
+      "title": "かもしれない",
+      "romaji": "kamo shirenai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8b%e3%82%82%e3%81%97%e3%82%8c%e3%81%aa%e3%81%84-kamo-shirenai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%82%82%E3%81%97%E3%82%8C%E3%81%AA%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:kana",
+      "level": "N4",
+      "n": 30,
+      "title": "かな",
+      "romaji": "kana",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8b%e3%81%aa-kana-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%8B%E3%81%AA"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:kara-tsukuru",
+      "level": "N4",
+      "n": 31,
+      "title": "から作る（からつくる）",
+      "romaji": "kara tsukuru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8b%e3%82%89%e4%bd%9c%e3%82%8b-%e4%bd%9c%e3%82%89%e3%82%8c%e3%81%a6%e3%81%84%e3%82%8b-kara-tsukuru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:kitto",
+      "level": "N4",
+      "n": 32,
+      "title": "きっと",
+      "romaji": "kitto",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8d%e3%81%a3%e3%81%a8-kitto-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:koro-goro",
+      "level": "N4",
+      "n": 33,
+      "title": "頃（ころ / ごろ）",
+      "romaji": "koro / goro",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e9%a0%83-%e3%81%93%e3%82%8d-%e3%81%94%e3%82%8d-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:koto",
+      "level": "N4",
+      "n": 34,
+      "title": "こと",
+      "romaji": "koto",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%93%e3%81%a8-koto-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:koto-ga-aru",
+      "level": "N4",
+      "n": 35,
+      "title": "ことがある",
+      "romaji": "koto ga aru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%93%e3%81%a8%e3%81%8c%e3%81%82%e3%82%8b-koto-ga-aru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:koto-ga-dekiru",
+      "level": "N4",
+      "n": 36,
+      "title": "ことができる",
+      "romaji": "koto ga dekiru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%93%e3%81%a8%e3%81%8c%e3%81%a7%e3%81%8d%e3%82%8b-koto-ga-dekiru-%e3%81%93%e3%81%a8%e3%81%8c%e3%81%a7%e3%81%8d%e3%81%be%e3%81%99%e3%81%8b-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%8C%E3%81%A7%E3%81%8D%E3%82%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:koto-ni-naru",
+      "level": "N4",
+      "n": 37,
+      "title": "ことになる",
+      "romaji": "koto ni naru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%93%e3%81%a8%e3%81%ab%e3%81%aa%e3%82%8b-koto-ni-naru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:koto-ni-suru",
+      "level": "N4",
+      "n": 38,
+      "title": "ことにする",
+      "romaji": "koto ni suru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%93%e3%81%a8%e3%81%ab%e3%81%99%e3%82%8b-koto-ni-suru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:ku-suru",
+      "level": "N4",
+      "n": 39,
+      "title": "くする",
+      "romaji": "ku suru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%84-adjective-%e3%81%8f%e3%81%99%e3%82%8b-ku-suru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:kyuu-ni",
+      "level": "N4",
+      "n": 40,
+      "title": "急に（きゅうに）",
+      "romaji": "kyuu ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e6%80%a5%e3%81%ab-kyuu-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:made-ni",
+      "level": "N4",
+      "n": 41,
+      "title": "までに",
+      "romaji": "made ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%be%e3%81%a7%e3%81%ab-made-ni-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%A7%E3%81%AB"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:mama",
+      "level": "N4",
+      "n": 42,
+      "title": "まま",
+      "romaji": "mama",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%be%e3%81%be-mama-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:matawa",
+      "level": "N4",
+      "n": 43,
+      "title": "または",
+      "romaji": "matawa",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%be%e3%81%9f%e3%81%af-matawa-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:mitai-da",
+      "level": "N4",
+      "n": 44,
+      "title": "みたいだ",
+      "romaji": "mitai da",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%bf%e3%81%9f%e3%81%84%e3%81%a0-mitai-da-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:mitai-na",
+      "level": "N4",
+      "n": 45,
+      "title": "みたいな",
+      "romaji": "mitai na",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%bf%e3%81%9f%e3%81%84%e3%81%aa-mitai-na-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:mitai-ni",
+      "level": "N4",
+      "n": 46,
+      "title": "みたいに",
+      "romaji": "mitai ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%bf%e3%81%9f%e3%81%84%e3%81%ab-mitai-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:mo",
+      "level": "N4",
+      "n": 47,
+      "title": "も",
+      "romaji": "mo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%82-mo-meaning-as-many-as/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:na",
+      "level": "N4",
+      "n": 48,
+      "title": "な",
+      "romaji": "na",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa-na-meaning-order-dont-do/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:nado",
+      "level": "N4",
+      "n": 49,
+      "title": "など",
+      "romaji": "nado",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%a9-nado-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%A9"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:nagara",
+      "level": "N4",
+      "n": 50,
+      "title": "ながら",
+      "romaji": "nagara",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%8c%e3%82%89-nagara-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8C%E3%82%89"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:nakanaka-nai",
+      "level": "N4",
+      "n": 51,
+      "title": "なかなか～ない",
+      "romaji": "nakanaka~nai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%8b%e3%81%aa%e3%81%8b%ef%bd%9e%e3%81%aa%e3%81%84-nakanaka-nai-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:nakereba-ikenai",
+      "level": "N4",
+      "n": 52,
+      "title": "なければいけない",
+      "romaji": "nakereba ikenai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%91%e3%82%8c%e3%81%b0%e3%81%84%e3%81%91%e3%81%aa%e3%81%84-nakereba-ikenai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%91%E3%82%8C%E3%81%B0%E3%81%84%E3%81%91%E3%81%AA%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:nakereba-naranai",
+      "level": "N4",
+      "n": 53,
+      "title": "なければならない",
+      "romaji": "nakereba naranai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%91%e3%82%8c%e3%81%b0%e3%81%aa%e3%82%89%e3%81%aa%e3%81%84-nakereba-naranai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%91%E3%82%8C%E3%81%B0%E3%81%AA%E3%82%89%E3%81%AA%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:nara",
+      "level": "N4",
+      "n": 54,
+      "title": "なら",
+      "romaji": "nara",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%82%89-nara-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%82%89"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:nasai",
+      "level": "N4",
+      "n": 55,
+      "title": "なさい",
+      "romaji": "nasai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%95%e3%81%84-nasai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%95%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:nasaru",
+      "level": "N4",
+      "n": 56,
+      "title": "なさる",
+      "romaji": "nasaru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%95%e3%82%8b-nasaru-%e3%81%aa%e3%81%95%e3%81%84%e3%81%be%e3%81%99-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%95%E3%82%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:ni-ki-ga-tsuku",
+      "level": "N4",
+      "n": 57,
+      "title": "に気がつく（にきがつく）",
+      "romaji": "ni ki ga tsuku",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e6%b0%97%e3%81%8c%e3%81%a4%e3%81%8f-ni-ki-ga-tsuku-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:ni-mieru",
+      "level": "N4",
+      "n": 58,
+      "title": "に見える（にみえる）",
+      "romaji": "ni mieru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e3%81%bf%e3%81%88%e3%82%8b-%e3%81%ab%e8%a6%8b%e3%81%88%e3%82%8b-ni-mieru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:ni-suru",
+      "level": "N4",
+      "n": 59,
+      "title": "にする",
+      "romaji": "ni suru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa-adjective-%e3%81%ab%e3%81%99%e3%82%8b-ni-suru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:nikui",
+      "level": "N4",
+      "n": 60,
+      "title": "にくい",
+      "romaji": "nikui",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e3%81%8f%e3%81%84-nikui-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%8F%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:no-naka-de",
+      "level": "N4",
+      "n": 61,
+      "title": "の中で（のなかで）",
+      "romaji": "no naka de",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ae%e4%b8%ad%e3%81%a7-no-naka-de-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:noni",
+      "level": "N4",
+      "n": 62,
+      "title": "のに",
+      "romaji": "noni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ae%e3%81%ab-noni-meaning-even-though/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:noni-2",
+      "level": "N4",
+      "n": 63,
+      "title": "のに",
+      "romaji": "noni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ae%e3%81%ab-noni-meaning-to-do/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:nowa-da",
+      "level": "N4",
+      "n": 64,
+      "title": "のは〜だ",
+      "romaji": "nowa~da",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ae%e3%81%af%e3%80%9c%e3%81%a0-nowa-da-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:o-kudasai",
+      "level": "N4",
+      "n": 65,
+      "title": "お～ください",
+      "romaji": "o~kudasai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8a%ef%bd%9e%e3%81%8f%e3%81%a0%e3%81%95%e3%81%84-o-kudasai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%8A-%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:o-ni-naru",
+      "level": "N4",
+      "n": 66,
+      "title": "お～になる",
+      "romaji": "o~ni naru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8a%ef%bd%9e%e3%81%ab%e3%81%aa%e3%82%8b-o-ni-naru-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%8A-%E3%81%AB%E3%81%AA%E3%82%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:oki-ni",
+      "level": "N4",
+      "n": 67,
+      "title": "おきに",
+      "romaji": "oki ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8a%e3%81%8d%e3%81%ab-oki-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:owaru",
+      "level": "N4",
+      "n": 68,
+      "title": "終わる（おわる）",
+      "romaji": "owaru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e7%b5%82%e3%82%8f%e3%82%8b-%e3%81%8a%e3%82%8f%e3%82%8b-owaru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:rareru",
+      "level": "N4",
+      "n": 69,
+      "title": "られる",
+      "romaji": "rareru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%89%e3%82%8c%e3%82%8b-rareru-japanese-potential-form/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:rashii",
+      "level": "N4",
+      "n": 70,
+      "title": "らしい",
+      "romaji": "rashii",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%89%e3%81%97%e3%81%84-rashii-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:sa",
+      "level": "N4",
+      "n": 71,
+      "title": "さ",
+      "romaji": "sa",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%95-sa-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%95"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:sakki",
+      "level": "N4",
+      "n": 72,
+      "title": "さっき",
+      "romaji": "sakki",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%95%e3%81%a3%e3%81%8d-sakki-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:saserareru",
+      "level": "N4",
+      "n": 73,
+      "title": "させられる",
+      "romaji": "saserareru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%95%e3%81%9b%e3%82%89%e3%82%8c%e3%82%8b-saserareru-meaning-causative-passive-form/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:saseru",
+      "level": "N4",
+      "n": 74,
+      "title": "させる",
+      "romaji": "saseru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%95%e3%81%9b%e3%82%8b-saseru-causative-form-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:sasete-kudasai",
+      "level": "N4",
+      "n": 75,
+      "title": "させてください",
+      "romaji": "sasete kudasai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%95%e3%81%9b%e3%81%a6%e3%81%8f%e3%81%a0%e3%81%95%e3%81%84-sasete-kudasai-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:sasuga",
+      "level": "N4",
+      "n": 76,
+      "title": "さすが",
+      "romaji": "sasuga",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%95%e3%81%99%e3%81%8c%e3%81%ab-sasuga-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:shi",
+      "level": "N4",
+      "n": 77,
+      "title": "し",
+      "romaji": "shi",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%97-shi-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:sonna-ni",
+      "level": "N4",
+      "n": 78,
+      "title": "そんなに",
+      "romaji": "sonna ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9d%e3%82%93%e3%81%aa%e3%81%ab-sonnna-ni-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%93%E3%81%AA%E3%81%AB"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:sore-demo",
+      "level": "N4",
+      "n": 79,
+      "title": "それでも",
+      "romaji": "sore demo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9d%e3%82%8c%e3%81%a7%e3%82%82-sore-demo-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%8C%E3%81%A7%E3%82%82"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:sore-ni",
+      "level": "N4",
+      "n": 80,
+      "title": "それに",
+      "romaji": "sore ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9d%e3%82%8c%e3%81%ab-sore-ni-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%82%8C%E3%81%AB"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:sou-da-1",
+      "level": "N4",
+      "n": 81,
+      "title": "そうだ",
+      "romaji": "sou da [1]",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9d%e3%81%86%e3%81%a0-sou-da-i-heard-that/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:sou-da-2",
+      "level": "N4",
+      "n": 82,
+      "title": "そうだ",
+      "romaji": "sou da [2]",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9d%e3%81%86%e3%81%a0-sou-da-looks-like/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:sou-ni-sou-na",
+      "level": "N4",
+      "n": 83,
+      "title": "そうに / そうな",
+      "romaji": "sou ni / sou na",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9d%e3%81%86%e3%81%ab-%e3%81%9d%e3%81%86%e3%81%aa-sou-ni-sou-na-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:ta-bakari",
+      "level": "N4",
+      "n": 84,
+      "title": "たばかり",
+      "romaji": "ta bakari",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9f%e3%81%b0%e3%81%8b%e3%82%8a-ta-bakari-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%B0%E3%81%8B%E3%82%8A"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:ta-tokoro",
+      "level": "N4",
+      "n": 85,
+      "title": "たところ",
+      "romaji": "ta tokoro",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9f%e3%81%a8%e3%81%93%e3%82%8d-ta-tokoro-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:tadoushi-jidoushi",
+      "level": "N4",
+      "n": 86,
+      "title": "他動詞 & 自動詞（たどうし & じどうし）",
+      "romaji": "tadoushi & jidoushi",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e4%bb%96%e5%8b%95%e8%a9%9e-%e8%87%aa%e5%8b%95%e8%a9%9e-transitive-intransitive-verbs-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:tagaru",
+      "level": "N4",
+      "n": 87,
+      "title": "たがる",
+      "romaji": "tagaru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9f%e3%81%8c%e3%82%8b-tagaru-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%8C%E3%82%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:tara",
+      "level": "N4",
+      "n": 88,
+      "title": "たら",
+      "romaji": "tara",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9f%e3%82%89-tara-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%82%89"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:tara-dou",
+      "level": "N4",
+      "n": 89,
+      "title": "たらどう",
+      "romaji": "tara dou",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9f%e3%82%89%e3%81%a9%e3%81%86-tara-dou-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%82%89%E3%81%A9%E3%81%86"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:tara-ii-desu-ka",
+      "level": "N4",
+      "n": 90,
+      "title": "たらいいですか",
+      "romaji": "tara ii desu ka",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9f%e3%82%89%e3%81%84%e3%81%84%e3%81%a7%e3%81%99%e3%81%8b-tara-ii-desu-ka-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:te-de",
+      "level": "N4",
+      "n": 91,
+      "title": "て / で",
+      "romaji": "te / de",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6-%e3%81%a7-te-de-conjunctive-particle-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:te-ageru",
+      "level": "N4",
+      "n": 92,
+      "title": "てあげる",
+      "romaji": "te ageru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%82%e3%81%92%e3%82%8b-te-ageru-%e3%81%a6%e3%81%82%e3%81%92%e3%81%be%e3%81%99-te-agemasu-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%82%E3%81%92%E3%82%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:te-hoshii",
+      "level": "N4",
+      "n": 93,
+      "title": "てほしい",
+      "romaji": "te hoshii",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e6%ac%b2%e3%81%97%e3%81%84-%e3%81%a6%e3%81%bb%e3%81%97%e3%81%84-te-hoshii-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%BB%E3%81%97%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:te-iku",
+      "level": "N4",
+      "n": 94,
+      "title": "ていく",
+      "romaji": "te iku",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%84%e3%81%8f-te-iku-%e3%81%a6%e3%81%84%e3%81%a3%e3%81%9f-te-itta-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%81%8F"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:te-ita",
+      "level": "N4",
+      "n": 95,
+      "title": "ていた",
+      "romaji": "te ita",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%84%e3%81%9f-te-ita-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%81%9F"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:te-itadakemasen-ka",
+      "level": "N4",
+      "n": 96,
+      "title": "ていただけませんか",
+      "romaji": "te itadakemasen ka",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%84%e3%81%9f%e3%81%a0%e3%81%91%e3%81%be%e3%81%9b%e3%82%93%e3%81%8b-te-itadakemasen-ka-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%84%E3%81%9F%E3%81%A0%E3%81%91%E3%81%BE%E3%81%9B%E3%82%93%E3%81%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:te-kureru",
+      "level": "N4",
+      "n": 97,
+      "title": "てくれる",
+      "romaji": "te kureru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%8f%e3%82%8c%e3%82%8b-te-kureru-%e3%81%a6%e3%81%8f%e3%82%8c%e3%81%9f-te-kureta-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8F%E3%82%8C%E3%82%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:te-kuru",
+      "level": "N4",
+      "n": 98,
+      "title": "てくる",
+      "romaji": "te kuru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%8f%e3%82%8b-te-kuru-%e3%81%a6%e3%81%8d%e3%81%be%e3%81%99-te-kimasu-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8F%E3%82%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:te-miru",
+      "level": "N4",
+      "n": 99,
+      "title": "てみる",
+      "romaji": "te miru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%bf%e3%82%8b-te-miru-%e3%81%a6%e3%81%bf%e3%81%9f%e3%81%84-te-mitai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%BF%E3%82%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:te-morau",
+      "level": "N4",
+      "n": 100,
+      "title": "てもらう",
+      "romaji": "te morau",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%82%82%e3%82%89%e3%81%86-te-morau-%e3%81%a6%e3%82%82%e3%82%89%e3%81%84%e3%81%9f%e3%81%84-te-moraitai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%82%82%E3%82%89%E3%81%86"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:te-oku",
+      "level": "N4",
+      "n": 101,
+      "title": "ておく",
+      "romaji": "te oku",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%8a%e3%81%8f-te-oku-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%8A%E3%81%8F"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:te-shimau-chau",
+      "level": "N4",
+      "n": 102,
+      "title": "てしまう / ちゃう",
+      "romaji": "te shimau / chau",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%97%e3%81%be%e3%81%86-te-shimau-%e3%81%a1%e3%82%83%e3%81%86-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:te-sumimasen",
+      "level": "N4",
+      "n": 103,
+      "title": "てすみません",
+      "romaji": "te sumimasen",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%99%e3%81%bf%e3%81%be%e3%81%9b%e3%82%93-te-sumimasen-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%99%E3%81%BF%E3%81%BE%E3%81%9B%E3%82%93"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:te-yaru",
+      "level": "N4",
+      "n": 104,
+      "title": "てやる",
+      "romaji": "te yaru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%82%84%e3%82%8b-te-yaru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:te-yokatta",
+      "level": "N4",
+      "n": 105,
+      "title": "てよかった",
+      "romaji": "te yokatta",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%82%88%e3%81%8b%e3%81%a3%e3%81%9f-te-yokatta-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%82%88%E3%81%8B%E3%81%A3%E3%81%9F"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:teiru-tokoro",
+      "level": "N4",
+      "n": 106,
+      "title": "ているところ",
+      "romaji": "teiru tokoro",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%84%e3%82%8b%e3%81%a8%e3%81%93%e3%82%8d-teiru-tokoro-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:temo",
+      "level": "N4",
+      "n": 107,
+      "title": "ても",
+      "romaji": "temo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%82%82-temo-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%82%82"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:to",
+      "level": "N4",
+      "n": 108,
+      "title": "と",
+      "romaji": "to",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8-to-meaning-whenever/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A8-conditional"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:to-ittemo-ii",
+      "level": "N4",
+      "n": 109,
+      "title": "と言ってもいい（といってもいい）",
+      "romaji": "to ittemo ii",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e8%a8%80%e3%81%a3%e3%81%a6%e3%82%82%e3%81%84%e3%81%84-to-ittemo-ii-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:to-iu",
+      "level": "N4",
+      "n": 110,
+      "title": "という",
+      "romaji": "to iu",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%84%e3%81%86-to-iu-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:to-iu-koto",
+      "level": "N4",
+      "n": 111,
+      "title": "ということ",
+      "romaji": "to iu koto",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%84%e3%81%86%e3%81%93%e3%81%a8-to-iu-koto-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%86%E3%81%93%E3%81%A8"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:to-iwarete-iru",
+      "level": "N4",
+      "n": 112,
+      "title": "と言われている（といわれている）",
+      "romaji": "to iwarete iru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e8%a8%80%e3%82%8f%e3%82%8c%e3%81%a6%e3%81%84%e3%82%8b-to-iwarete-iru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:to-kiita",
+      "level": "N4",
+      "n": 113,
+      "title": "と聞いた（ときいた）",
+      "romaji": "to kiita",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e8%81%9e%e3%81%84%e3%81%9f-%e3%81%a8%e3%81%8d%e3%81%84%e3%81%9f-to-kiita-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:to-omou",
+      "level": "N4",
+      "n": 114,
+      "title": "と思う（とおもう）",
+      "romaji": "to omou",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e6%80%9d%e3%81%86-to-omou-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:toka-toka",
+      "level": "N4",
+      "n": 115,
+      "title": "とか～とか",
+      "romaji": "toka~toka",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%8b%ef%bd%9e%e3%81%a8%e3%81%8b-toka-toka-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%8B-%E3%81%A8%E3%81%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:tokoro",
+      "level": "N4",
+      "n": 116,
+      "title": "ところ",
+      "romaji": "tokoro",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%93%e3%82%8d-tokoro-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:tsuzukeru",
+      "level": "N4",
+      "n": 117,
+      "title": "続ける（つづける）",
+      "romaji": "tsuzukeru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e7%b6%9a%e3%81%91%e3%82%8b-tsuzukeru-%e7%b6%9a%e3%81%91%e3%81%a6%e3%81%84%e3%82%8b-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:tte",
+      "level": "N4",
+      "n": 118,
+      "title": "って",
+      "romaji": "tte",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a3%e3%81%a6-tte-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:ukemi-kei",
+      "level": "N4",
+      "n": 119,
+      "title": "受身形（うけみけい）",
+      "romaji": "ukemi kei",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e5%8f%97%e8%ba%ab%e5%bd%a2-ukemi-japanese-passive-form/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:wa-ga-wa",
+      "level": "N4",
+      "n": 120,
+      "title": "は〜が… は",
+      "romaji": "wa~ga... wa",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%af%e3%80%9c%e3%81%8c%ef%bd%9e%e3%81%af-wa-ga-wa-meaning-but-however/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:yasui",
+      "level": "N4",
+      "n": 121,
+      "title": "やすい",
+      "romaji": "yasui",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%84%e3%81%99%e3%81%84-yasui-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%82%84%E3%81%99%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:yatto",
+      "level": "N4",
+      "n": 122,
+      "title": "やっと",
+      "romaji": "yatto",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%84%e3%81%a3%e3%81%a8-yatto-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:yori",
+      "level": "N4",
+      "n": 123,
+      "title": "より",
+      "romaji": "yori",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%88%e3%82%8a-yori-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%82%88%E3%82%8A"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:yotei-da",
+      "level": "N4",
+      "n": 124,
+      "title": "予定だ（よていだ）",
+      "romaji": "yotei da",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e4%ba%88%e5%ae%9a%e3%81%a0-yotei-da-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:you-da",
+      "level": "N4",
+      "n": 125,
+      "title": "ようだ",
+      "romaji": "you da",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%88%e3%81%86%e3%81%a0-you-da-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%A0"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:you-ni-you-na",
+      "level": "N4",
+      "n": 126,
+      "title": "ように / ような",
+      "romaji": "you ni / you na",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%88%e3%81%86%e3%81%ab-%e3%82%88%e3%81%86%e3%81%aa-you-ni-na-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:you-ni-naru",
+      "level": "N4",
+      "n": 127,
+      "title": "ようになる",
+      "romaji": "you ni naru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%88%e3%81%86%e3%81%ab%e3%81%aa%e3%82%8b-you-ni-naru-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%82%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:you-ni-suru",
+      "level": "N4",
+      "n": 128,
+      "title": "ようにする",
+      "romaji": "you ni suru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%88%e3%81%86%e3%81%ab%e3%81%99%e3%82%8b-you-ni-suru-%e3%82%88%e3%81%86%e3%81%ab%e3%81%97%e3%81%a6%e3%81%84%e3%82%8b-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%82%88%E3%81%86%E3%81%AB%E3%81%99%E3%82%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:you-to-omou",
+      "level": "N4",
+      "n": 129,
+      "title": "ようと思う（ようとおもう）",
+      "romaji": "you to omou",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%88%e3%81%86%e3%81%a8%e6%80%9d%e3%81%86-you-to-omou-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:zehi",
+      "level": "N4",
+      "n": 130,
+      "title": "ぜひ",
+      "romaji": "zehi",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9c%e3%81%b2-zehi-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:zenzen-nai",
+      "level": "N4",
+      "n": 131,
+      "title": "全然～ない（ぜんぜん～ない）",
+      "romaji": "zenzen~nai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e5%85%a8%e7%84%b6%ef%bd%9e%e3%81%aa%e3%81%84-zenzen-nai-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n4:zurai",
+      "level": "N4",
+      "n": 132,
+      "title": "づらい",
+      "romaji": "zurai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a5%e3%82%89%e3%81%84-zurai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A5%E3%82%89%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ageru",
+      "level": "N3",
+      "n": 1,
+      "title": "上げる（あげる）",
+      "romaji": "ageru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e4%b8%8a%e3%81%92%e3%82%8b-ageru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:amari",
+      "level": "N3",
+      "n": 2,
+      "title": "あまり",
+      "romaji": "amari",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%82%e3%81%be%e3%82%8a-amari-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%82%E3%81%BE%E3%82%8A"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:amari-ni-mo",
+      "level": "N3",
+      "n": 3,
+      "title": "あまりにも",
+      "romaji": "amari ni mo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%82%e3%81%be%e3%82%8a%e3%81%ab%e3%82%82-amari-ni-mo-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:au",
+      "level": "N3",
+      "n": 4,
+      "title": "合う（あう）",
+      "romaji": "au",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e5%90%88%e3%81%86-%e3%81%82%e3%81%86-au-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ba-ii",
+      "level": "N3",
+      "n": 5,
+      "title": "ばいい",
+      "romaji": "ba ii",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%b0%e3%81%84%e3%81%84-ba-ii-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%B0%E3%81%84%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ba-yokatta",
+      "level": "N3",
+      "n": 6,
+      "title": "ばよかった",
+      "romaji": "ba yokatta",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%b0%e3%82%88%e3%81%8b%e3%81%a3%e3%81%9f-ba-yokatta-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ba-hodo",
+      "level": "N3",
+      "n": 7,
+      "title": "ば～ほど",
+      "romaji": "ba~hodo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%b0%ef%bd%9e%e3%81%bb%e3%81%a9-ba-hodo-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%B0-%E3%81%BB%E3%81%A9"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ba-noni",
+      "level": "N3",
+      "n": 8,
+      "title": "ば～のに",
+      "romaji": "ba~noni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%b0%ef%bd%9e%e3%81%ae%e3%81%ab-ba-noni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:bakari-de",
+      "level": "N3",
+      "n": 9,
+      "title": "ばかりで",
+      "romaji": "bakari de",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%b0%e3%81%8b%e3%82%8a%e3%81%a7-bakari-de-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:bakari-denaku",
+      "level": "N3",
+      "n": 10,
+      "title": "ばかりでなく",
+      "romaji": "bakari denaku",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%b0%e3%81%8b%e3%82%8a%e3%81%a7%e3%81%aa%e3%81%8f-bakari-denaku-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%B0%E3%81%8B%E3%82%8A%E3%81%A7%E3%81%AA%E3%81%8F"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:beki-da",
+      "level": "N3",
+      "n": 11,
+      "title": "べきだ",
+      "romaji": "beki da",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%b9%e3%81%8d%e3%81%a0-beki-da-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:beki-dewa-nai",
+      "level": "N3",
+      "n": 12,
+      "title": "べきではない",
+      "romaji": "beki dewa nai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%b9%e3%81%8d%e3%81%a7%e3%81%af%e3%81%aa%e3%81%84-beki-dewa-nai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%B9%E3%81%8D%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:betsu-ni-nai",
+      "level": "N3",
+      "n": 13,
+      "title": "別に～ない（べつに～ない）",
+      "romaji": "betsu ni~nai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e5%88%a5%e3%81%ab%ef%bd%9e%e3%81%aa%e3%81%84-betsu-ni-nai-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:buri-ni",
+      "level": "N3",
+      "n": 14,
+      "title": "ぶりに",
+      "romaji": "buri ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%b6%e3%82%8a%e3%81%ab-buri-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:chuu-juu",
+      "level": "N3",
+      "n": 15,
+      "title": "中（ちゅう）",
+      "romaji": "chuu / juu",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e4%b8%ad-chuu-juu-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:dake",
+      "level": "N3",
+      "n": 16,
+      "title": "だけ",
+      "romaji": "dake",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a0%e3%81%91-dake-meaning-as-much-as/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:dake-de-naku",
+      "level": "N3",
+      "n": 17,
+      "title": "だけでなく",
+      "romaji": "dake de naku",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a0%e3%81%91%e3%81%a7%e3%81%aa%e3%81%8f-dake-de-naku-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:dakedo",
+      "level": "N3",
+      "n": 18,
+      "title": "だけど",
+      "romaji": "dakedo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a0%e3%81%91%e3%81%a9-dakedo-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:darake",
+      "level": "N3",
+      "n": 19,
+      "title": "だらけ",
+      "romaji": "darake",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a0%e3%82%89%e3%81%91-darake-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A0%E3%82%89%E3%81%91"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:donna-ni-temo",
+      "level": "N3",
+      "n": 20,
+      "title": "どんなに～ても",
+      "romaji": "donna ni~temo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a9%e3%82%93%e3%81%aa%e3%81%ab%ef%bd%9e%e3%81%a6%e3%82%82-donna-ni-temo-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A9%E3%82%93%E3%81%AA%E3%81%AB-%E3%81%A6%E3%82%82"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:doushitemo",
+      "level": "N3",
+      "n": 21,
+      "title": "どうしても",
+      "romaji": "doushitemo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a9%e3%81%86%e3%81%97%e3%81%a6%e3%82%82-doushitemo-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A9%E3%81%86%E3%81%97%E3%81%A6%E3%82%82"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:furi-o-suru",
+      "level": "N3",
+      "n": 22,
+      "title": "ふりをする",
+      "romaji": "furi o suru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%b5%e3%82%8a%e3%82%92%e3%81%99%e3%82%8b-furi-o-suru-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%B5%E3%82%8A%E3%82%92%E3%81%99%E3%82%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:futo",
+      "level": "N3",
+      "n": 23,
+      "title": "ふと",
+      "romaji": "futo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%b5%e3%81%a8-futo-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:gachi",
+      "level": "N3",
+      "n": 24,
+      "title": "がち",
+      "romaji": "gachi",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8c%e3%81%a1-gachi-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%A1"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:gatai",
+      "level": "N3",
+      "n": 25,
+      "title": "がたい",
+      "romaji": "gatai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8c%e3%81%9f%e3%81%84-gatai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%8C%E3%81%9F%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:gimi",
+      "level": "N3",
+      "n": 26,
+      "title": "気味（ぎみ）",
+      "romaji": "gimi",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e6%b0%97%e5%91%b3-%e3%81%8e%e3%81%bf-gimi-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:goto-ni",
+      "level": "N3",
+      "n": 27,
+      "title": "ごとに",
+      "romaji": "goto ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%94%e3%81%a8%e3%81%ab-goto-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:hodo",
+      "level": "N3",
+      "n": 28,
+      "title": "ほど",
+      "romaji": "hodo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e7%a8%8b-%e3%81%bb%e3%81%a9-hodo-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%BB%E3%81%A9"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:hodo-nai",
+      "level": "N3",
+      "n": 29,
+      "title": "ほど～ない",
+      "romaji": "hodo~nai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%bb%e3%81%a9%ef%bd%9e%e3%81%aa%e3%81%84-hodo-nai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%BB%E3%81%A9%EF%BD%9E%E3%81%AA%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ichido-ni",
+      "level": "N3",
+      "n": 30,
+      "title": "一度に（いちどに）",
+      "romaji": "ichido ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e4%b8%80%e5%ba%a6%e3%81%ab-ichido-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ikura-temo",
+      "level": "N3",
+      "n": 31,
+      "title": "いくら～ても",
+      "romaji": "ikura~temo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%84%e3%81%8f%e3%82%89%ef%bd%9e%e3%81%a6%e3%82%82-ikura-temo-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ippou-da",
+      "level": "N3",
+      "n": 32,
+      "title": "一方だ（いっぽうだ）",
+      "romaji": "ippou da",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e4%b8%80%e6%96%b9%e3%81%a0-ippou-da-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ittai",
+      "level": "N3",
+      "n": 33,
+      "title": "一体（いったい）",
+      "romaji": "ittai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e4%b8%80%e4%bd%93-%e3%81%84%e3%81%a3%e3%81%9f%e3%81%84-ittai-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:janai",
+      "level": "N3",
+      "n": 34,
+      "title": "じゃない",
+      "romaji": "janai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%98%e3%82%83%e3%81%aa%e3%81%84-janai-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ka-nani-ka",
+      "level": "N3",
+      "n": 35,
+      "title": "か何か（かなにか）",
+      "romaji": "ka nani ka",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8b%e4%bd%95%e3%81%8b-ka-nani-ka-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:kakeru",
+      "level": "N3",
+      "n": 36,
+      "title": "かける",
+      "romaji": "kakeru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8b%e3%81%91%e3%82%8b-kakeru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:kara-ni-kakete",
+      "level": "N3",
+      "n": 37,
+      "title": "から〜にかけて",
+      "romaji": "kara~ni kakete",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8b%e3%82%89%e3%80%9c%e3%81%ab%e3%81%8b%e3%81%91%e3%81%a6-kara-ni-kakete-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:kawari-ni",
+      "level": "N3",
+      "n": 38,
+      "title": "代わりに（かわりに）",
+      "romaji": "kawari ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e4%bb%a3%e3%82%8f%e3%82%8a%e3%81%ab-%e3%81%8b%e3%82%8f%e3%82%8a%e3%81%ab-kawari-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:kekka",
+      "level": "N3",
+      "n": 39,
+      "title": "結果（けっか）",
+      "romaji": "kekka",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9f%e7%b5%90%e6%9e%9c-ta-kekka-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:kekkyoku",
+      "level": "N3",
+      "n": 40,
+      "title": "結局（けっきょく）",
+      "romaji": "kekkyoku",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e7%b5%90%e5%b1%80%e3%81%af-kekkyoku-wa-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:kesshite-nai",
+      "level": "N3",
+      "n": 41,
+      "title": "決して～ない（けっして～ない）",
+      "romaji": "kesshite~nai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e6%b1%ba%e3%81%97%e3%81%a6%ef%bd%9e%e3%81%aa%e3%81%84-kesshite-nai-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:kirenai",
+      "level": "N3",
+      "n": 42,
+      "title": "切れない（きれない）",
+      "romaji": "kirenai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e5%88%87%e3%82%8c%e3%81%aa%e3%81%84-kirenai-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:kiri",
+      "level": "N3",
+      "n": 43,
+      "title": "きり",
+      "romaji": "kiri",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8d%e3%82%8a-kiri-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%8D%E3%82%8A"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:kiru",
+      "level": "N3",
+      "n": 44,
+      "title": "切る（きる）",
+      "romaji": "kiru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e5%88%87%e3%82%8b-kiru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:kke",
+      "level": "N3",
+      "n": 45,
+      "title": "っけ",
+      "romaji": "kke",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a3%e3%81%91-kke-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A3%E3%81%91"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:komu",
+      "level": "N3",
+      "n": 46,
+      "title": "込む（こむ）",
+      "romaji": "komu",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e8%be%bc%e3%82%80-%e3%81%93%e3%82%80-komu-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:koso",
+      "level": "N3",
+      "n": 47,
+      "title": "こそ",
+      "romaji": "koso",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%93%e3%81%9d-koso-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%9D"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:koto",
+      "level": "N3",
+      "n": 48,
+      "title": "こと",
+      "romaji": "koto",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%93%e3%81%a8-koto-meaning-must-do/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:koto-kara",
+      "level": "N3",
+      "n": 49,
+      "title": "ことから",
+      "romaji": "koto kara",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%93%e3%81%a8%e3%81%8b%e3%82%89-koto-kara-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%8B%E3%82%89"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:koto-ni-natteiru",
+      "level": "N3",
+      "n": 50,
+      "title": "ことになっている",
+      "romaji": "koto ni natteiru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%93%e3%81%a8%e3%81%ab%e3%81%aa%e3%81%a3%e3%81%a6%e3%81%84%e3%82%8b-koto-ni-natteiru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:koto-wa-nai",
+      "level": "N3",
+      "n": 51,
+      "title": "ことはない",
+      "romaji": "koto wa nai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%93%e3%81%a8%e3%81%af%e3%81%aa%e3%81%84-koto-wa-nai/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%93%E3%81%A8%E3%81%AF%E3%81%AA%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:koto-wa-ga",
+      "level": "N3",
+      "n": 52,
+      "title": "ことは～が",
+      "romaji": "koto wa~ga",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%93%e3%81%a8%e3%81%af%ef%bd%9e%e3%81%8c-koto-waga-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:kurai-gurai",
+      "level": "N3",
+      "n": 53,
+      "title": "くらい / ぐらい",
+      "romaji": "kurai / gurai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8f%e3%82%89%e3%81%84-kurai-%e3%81%90%e3%82%89%e3%81%84-gurai-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:kuse-ni",
+      "level": "N3",
+      "n": 54,
+      "title": "くせに",
+      "romaji": "kuse ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8f%e3%81%9b%e3%81%ab-kuse-ni-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%8F%E3%81%9B%E3%81%AB"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:maru-de",
+      "level": "N3",
+      "n": 55,
+      "title": "まるで",
+      "romaji": "maru de",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%be%e3%82%8b%e3%81%a7-maru-de-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:masaka",
+      "level": "N3",
+      "n": 56,
+      "title": "まさか",
+      "romaji": "masaka",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%be%e3%81%95%e3%81%8b-masaka-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%BE%E3%81%95%E3%81%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:metta-ni-nai",
+      "level": "N3",
+      "n": 57,
+      "title": "めったに～ない",
+      "romaji": "metta ni~nai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%81%e3%81%a3%e3%81%9f%e3%81%ab%ef%bd%9e%e3%81%aa%e3%81%84-metta-ni-nai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%82%81%E3%81%A3%E3%81%9F%E3%81%AB-%E3%81%AA%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:mo-ba-mo",
+      "level": "N3",
+      "n": 58,
+      "title": "も～ば～も",
+      "romaji": "mo~ba~mo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%82%ef%bd%9e%e3%81%b0%ef%bd%9e%e3%82%82-mobamo-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:moshika-shitara",
+      "level": "N3",
+      "n": 59,
+      "title": "もしかしたら",
+      "romaji": "moshika shitara",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%82%e3%81%97%e3%81%8b%e3%81%97%e3%81%9f%e3%82%89-moshika-shitara-%e3%82%82%e3%81%97%e3%81%8b%e3%81%99%e3%82%8b%e3%81%a8-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%82%82%E3%81%97%E3%81%8B%E3%81%97%E3%81%9F%E3%82%89"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:moshimo-tara",
+      "level": "N3",
+      "n": 60,
+      "title": "もしも〜たら",
+      "romaji": "moshimo~tara",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%82%e3%81%97%e3%82%82%e3%80%9c%e3%81%9f%e3%82%89-moshimo-tara-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:muke",
+      "level": "N3",
+      "n": 61,
+      "title": "向け（むけ）",
+      "romaji": "muke",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e5%90%91%e3%81%91-muke-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:muki",
+      "level": "N3",
+      "n": 62,
+      "title": "向き（むき）",
+      "romaji": "muki",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e5%90%91%e3%81%8d-muki-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:mushiro",
+      "level": "N3",
+      "n": 63,
+      "title": "むしろ",
+      "romaji": "mushiro",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%80%e3%81%97%e3%82%8d-mushiro-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%82%80%E3%81%97%E3%82%8D"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:nagara-mo",
+      "level": "N3",
+      "n": 64,
+      "title": "ながらも",
+      "romaji": "nagara mo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%8c%e3%82%89%e3%82%82-nagara-mo-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8C%E3%82%89%E3%82%82"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:nai-koto-wa-nai",
+      "level": "N3",
+      "n": 65,
+      "title": "ないことはない",
+      "romaji": "nai koto wa nai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%84%e3%81%93%e3%81%a8%e3%81%af%e3%81%aa%e3%81%84-nai-koto-wa-nai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%84%E3%81%93%E3%81%A8%E3%81%AF%E3%81%AA%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:naito",
+      "level": "N3",
+      "n": 66,
+      "title": "ないと",
+      "romaji": "naito",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%84%e3%81%a8-naito-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:nakanaka",
+      "level": "N3",
+      "n": 67,
+      "title": "なかなか",
+      "romaji": "nakanaka",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%8b%e3%81%aa%e3%81%8b-nakanaka-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AA%E3%81%8B%E3%81%AA%E3%81%8B"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:nanka-nante-nado",
+      "level": "N3",
+      "n": 68,
+      "title": "なんか / なんて / など",
+      "romaji": "nanka / nante / nado",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%82%93%e3%81%8b-nanka-%e3%81%aa%e3%82%93%e3%81%a8-nante-%e3%81%aa%e3%81%a9-nado-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:naosu",
+      "level": "N3",
+      "n": 69,
+      "title": "直す（なおす）",
+      "romaji": "naosu",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e7%9b%b4%e3%81%99-%e3%81%aa%e3%81%8a%e3%81%99-naosu-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:naru-beku",
+      "level": "N3",
+      "n": 70,
+      "title": "なるべく",
+      "romaji": "naru beku",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%82%8b%e3%81%b9%e3%81%8f-naru-beku-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:nazenara",
+      "level": "N3",
+      "n": 71,
+      "title": "なぜなら",
+      "romaji": "nazenara",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%9c%e3%81%aa%e3%82%89-nazenara-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ndatte",
+      "level": "N3",
+      "n": 72,
+      "title": "んだって",
+      "romaji": "ndatte",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%93%e3%81%a0%e3%81%a3%e3%81%a6-n-datte-tte-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%82%93%E3%81%A0%E3%81%A3%E3%81%A6"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ni-chigai-nai",
+      "level": "N3",
+      "n": 73,
+      "title": "に違いない（にちがいない）",
+      "romaji": "ni chigai nai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e9%81%95%e3%81%84%e3%81%aa%e3%81%84-ni-chigai-nai-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ni-hanshite",
+      "level": "N3",
+      "n": 74,
+      "title": "に反して（にはんして）",
+      "romaji": "ni hanshite",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e5%8f%8d%e3%81%97%e3%81%a6-ni-hanshite-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ni-kakete",
+      "level": "N3",
+      "n": 75,
+      "title": "にかけて",
+      "romaji": "ni kakete",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e3%81%8b%e3%81%91%e3%81%a6-ni-kakete-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%8B%E3%81%91%E3%81%A6"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ni-kan-suru-ni-kan-shite",
+      "level": "N3",
+      "n": 76,
+      "title": "に関する / に関して（にかんする / にかんして）",
+      "romaji": "ni kan suru / ni kan shite",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e9%96%a2%e3%81%99%e3%82%8b-%e3%81%ab%e9%96%a2%e3%81%97%e3%81%a6-ni-kan-suru-ni-kan-shite-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ni-kawatte-ni-kawari",
+      "level": "N3",
+      "n": 77,
+      "title": "にかわって / にかわり",
+      "romaji": "ni kawatte / ni kawari",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e3%81%8b%e3%82%8f%e3%81%a3%e3%81%a6-ni-kawatte-%e3%81%ab%e3%81%8b%e3%82%8f%e3%82%8a-ni-kawari-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ni-kurabete",
+      "level": "N3",
+      "n": 78,
+      "title": "に比べて（にくらべて）",
+      "romaji": "ni kurabete",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e6%af%94%e3%81%b9%e3%81%a6-ni-kurabete-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ni-nareru",
+      "level": "N3",
+      "n": 79,
+      "title": "に慣れる（になれる）",
+      "romaji": "ni nareru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e6%85%a3%e3%82%8c%e3%82%8b-%e3%81%ab%e3%81%aa%e3%82%8c%e3%82%8b-ni-nareru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ni-oite-ni-okeru",
+      "level": "N3",
+      "n": 80,
+      "title": "において / における",
+      "romaji": "ni oite / ni okeru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e3%81%8a%e3%81%84%e3%81%a6-ni-oite-%e3%81%ab%e3%81%8a%e3%81%91%e3%82%8b-ni-okeru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ni-shitagatte",
+      "level": "N3",
+      "n": 81,
+      "title": "にしたがって",
+      "romaji": "ni shitagatte",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e3%81%97%e3%81%9f%e3%81%8c%e3%81%a3%e3%81%a6-ni-shitagatte-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ni-shite-mo",
+      "level": "N3",
+      "n": 82,
+      "title": "にしても",
+      "romaji": "ni shite mo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e3%81%97%e3%81%a6%e3%82%82-ni-shite-mo-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%97%E3%81%A6%E3%82%82"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ni-shite-wa",
+      "level": "N3",
+      "n": 83,
+      "title": "にしては",
+      "romaji": "ni shite wa",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e3%81%97%e3%81%a6%e3%81%af-ni-shite-wa-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%97%E3%81%A6%E3%81%AF"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ni-taishite",
+      "level": "N3",
+      "n": 84,
+      "title": "に対して（にたいして）",
+      "romaji": "ni taishite",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e5%af%be%e3%81%97%e3%81%a6-%e3%81%ab%e3%81%9f%e3%81%84%e3%81%97%e3%81%a6-ni-taishite-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ni-totte",
+      "level": "N3",
+      "n": 85,
+      "title": "にとって",
+      "romaji": "ni totte",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e3%81%a8%e3%81%a3%e3%81%a6-ni-totte-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ni-tsuite",
+      "level": "N3",
+      "n": 86,
+      "title": "について",
+      "romaji": "ni tsuite",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e3%81%a4%e3%81%84%e3%81%a6-ni-tsuite-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ni-tsurete",
+      "level": "N3",
+      "n": 87,
+      "title": "につれて",
+      "romaji": "ni tsurete",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e3%81%a4%e3%82%8c%e3%81%a6-ni-tsurete-%e3%81%ab%e3%81%a4%e3%82%8c-ni-tsure-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AB%E3%81%A4%E3%82%8C%E3%81%A6"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ni-wa",
+      "level": "N3",
+      "n": 88,
+      "title": "には",
+      "romaji": "ni wa",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e3%81%af-ni-wa-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ni-yoru-to-ni-yoreba",
+      "level": "N3",
+      "n": 89,
+      "title": "によると /によれば",
+      "romaji": "ni yoru to/ni yoreba",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e3%82%88%e3%82%8b%e3%81%a8-%e3%81%ab%e3%82%88%e3%82%8c%e3%81%b0-ni-yoru-to-ni-yoreba-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ni-yotte-ni-yoru",
+      "level": "N3",
+      "n": 90,
+      "title": "によって / による",
+      "romaji": "ni yotte / ni yoru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e3%82%88%e3%81%a3%e3%81%a6-%e3%81%ab%e3%82%88%e3%82%8b-ni-yotte-ni-yoru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:no-deshou-ka",
+      "level": "N3",
+      "n": 91,
+      "title": "のでしょうか",
+      "romaji": "no deshou ka",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ae%e3%81%a7%e3%81%97%e3%82%87%e3%81%86%e3%81%8b-no-deshou-ka-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:o-chuushin-ni",
+      "level": "N3",
+      "n": 92,
+      "title": "を中心に（をちゅうしんに）",
+      "romaji": "o chuushin ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%92%e4%b8%ad%e5%bf%83%e3%81%ab-o-chuushin-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:o-hajime",
+      "level": "N3",
+      "n": 93,
+      "title": "をはじめ",
+      "romaji": "o hajime",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%92%e3%81%af%e3%81%98%e3%82%81%e3%81%a8%e3%81%99%e3%82%8b-o-hajime-to-suru-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%82%92%E3%81%AF%E3%81%98%E3%82%81"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:o-komete",
+      "level": "N3",
+      "n": 94,
+      "title": "を込めて（をこめて）",
+      "romaji": "o komete",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%92%e8%be%bc%e3%82%81%e3%81%a6-%e3%82%92%e3%81%93%e3%82%81%e3%81%a6-o-komete-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:o-tsuujite-o-tooshite",
+      "level": "N3",
+      "n": 95,
+      "title": "を通じて / を通して（をつうじて / をとおして）",
+      "romaji": "o tsuujite / o tooshite",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%92%e9%80%9a%e3%81%98%e3%81%a6-%e3%82%92%e9%80%9a%e3%81%97%e3%81%a6-o-tsuujite-o-tooshite-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:okage-de",
+      "level": "N3",
+      "n": 96,
+      "title": "おかげで",
+      "romaji": "okage de",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8a%e3%81%8b%e3%81%92%e3%81%a7-okage-de-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%8A%E3%81%8B%E3%81%92%E3%81%A7"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ppanashi",
+      "level": "N3",
+      "n": 97,
+      "title": "っぱなし",
+      "romaji": "ppanashi",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a3%e3%81%b1%e3%81%aa%e3%81%97-ppanashi-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A3%E3%81%B1%E3%81%AA%E3%81%97"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ppoi",
+      "level": "N3",
+      "n": 98,
+      "title": "っぽい",
+      "romaji": "ppoi",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a3%e3%81%bd%e3%81%84-ppoi-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A3%E3%81%BD%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:sae",
+      "level": "N3",
+      "n": 99,
+      "title": "さえ",
+      "romaji": "sae",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%95%e3%81%88-sae-%e3%81%a7%e3%81%95%e3%81%88%e3%82%82-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%95%E3%81%88"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:sae-ba",
+      "level": "N3",
+      "n": 100,
+      "title": "さえ～ば",
+      "romaji": "sae~ba",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%95%e3%81%88%ef%bd%9e%e3%81%b0-sae-ba-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%95%E3%81%88-%E3%81%B0"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:sai-ni",
+      "level": "N3",
+      "n": 101,
+      "title": "際に（さいに）",
+      "romaji": "sai ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e9%9a%9b%e3%81%ab-sai-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:saichuu-ni",
+      "level": "N3",
+      "n": 102,
+      "title": "最中に（さいちゅうに）",
+      "romaji": "saichuu ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e7%9c%9f%e3%81%a3%e6%9c%80%e4%b8%ad%e3%81%ab-%e3%81%be%e3%81%a3%e3%81%95%e3%81%84%e3%81%a1%e3%82%85%e3%81%86%e3%81%ab-saichuu-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:sara-ni",
+      "level": "N3",
+      "n": 103,
+      "title": "さらに",
+      "romaji": "sara ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%95%e3%82%89%e3%81%ab-sara-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:sate",
+      "level": "N3",
+      "n": 104,
+      "title": "さて",
+      "romaji": "sate",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%95%e3%81%a6-sate-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%95%E3%81%A6"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:sei-de",
+      "level": "N3",
+      "n": 105,
+      "title": "せいで",
+      "romaji": "sei de",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9b%e3%81%84%e3%81%a7-sei-de-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%9B%E3%81%84%E3%81%A7"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:seizei",
+      "level": "N3",
+      "n": 106,
+      "title": "せいぜい",
+      "romaji": "seizei",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9b%e3%81%84%e3%81%9c%e3%81%84-seizei-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:shibaraku",
+      "level": "N3",
+      "n": 107,
+      "title": "しばらく",
+      "romaji": "shibaraku",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%97%e3%81%b0%e3%82%89%e3%81%8f-shibaraku-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:shikanai",
+      "level": "N3",
+      "n": 108,
+      "title": "しかない",
+      "romaji": "shikanai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%97%e3%81%8b%e3%81%aa%e3%81%84-shika-nai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%97%E3%81%8B%E3%81%AA%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:sono-tame-ni",
+      "level": "N3",
+      "n": 109,
+      "title": "そのために",
+      "romaji": "sono tame ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9d%e3%81%ae%e7%82%ba-%e3%81%9d%e3%81%ae%e3%81%9f%e3%82%81-sono-tame-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%9D%E3%81%AE%E3%81%9F%E3%82%81-%E3%81%AB"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:soretomo",
+      "level": "N3",
+      "n": 110,
+      "title": "それとも",
+      "romaji": "soretomo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9d%e3%82%8c%e3%81%a8%e3%82%82-soretomo-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:sou-mo-nai-sou-ni-nai",
+      "level": "N3",
+      "n": 111,
+      "title": "そうもない /そうにない",
+      "romaji": "sou mo nai /sou ni nai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9d%e3%81%86%e3%82%82%e3%81%aa%e3%81%84-sou-mo-nai-%e3%81%9d%e3%81%86%e3%81%ab%e3%81%aa%e3%81%84-sou-ni-nai-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:sude-ni",
+      "level": "N3",
+      "n": 112,
+      "title": "すでに",
+      "romaji": "sude ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%99%e3%81%a7%e3%81%ab-sude-ni-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%99%E3%81%A7%E3%81%AB"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:sunawachi",
+      "level": "N3",
+      "n": 113,
+      "title": "すなわち",
+      "romaji": "sunawachi",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e5%8d%b3%e3%81%a1-%e3%81%99%e3%81%aa%e3%82%8f%e3%81%a1-sunawachi-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:suuryou-wa",
+      "level": "N3",
+      "n": 114,
+      "title": "数量 + は（すうりょう + は）",
+      "romaji": "suuryou + wa",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e6%95%b0%e9%87%8f-%e3%81%af-suuryou-wa-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ta-mono-da",
+      "level": "N3",
+      "n": 115,
+      "title": "たものだ",
+      "romaji": "ta mono da",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9f%e3%82%82%e3%81%ae%e3%81%a0-ta-mono-da-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%82%82%E3%81%AE%E3%81%A0"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ta-totan",
+      "level": "N3",
+      "n": 116,
+      "title": "たとたん",
+      "romaji": "ta totan",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9f%e3%81%a8%e3%81%9f%e3%82%93-ta-totan-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:tabi-ni",
+      "level": "N3",
+      "n": 117,
+      "title": "たびに",
+      "romaji": "tabi ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9f%e3%81%b3%e3%81%ab-tabi-ni-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%B3%E3%81%AB"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:tame-ni",
+      "level": "N3",
+      "n": 118,
+      "title": "ために",
+      "romaji": "tame ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9f%e3%82%81%e3%81%ab-tame-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:tashika-ni",
+      "level": "N3",
+      "n": 119,
+      "title": "確かに（たしかに）",
+      "romaji": "tashika ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e7%a2%ba%e3%81%8b%e3%81%ab-tashika-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:tate",
+      "level": "N3",
+      "n": 120,
+      "title": "たて",
+      "romaji": "tate",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9f%e3%81%a6-tate-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%A6"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:tatoe-temo",
+      "level": "N3",
+      "n": 121,
+      "title": "たとえ～ても",
+      "romaji": "tatoe~temo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9f%e3%81%a8%e3%81%88%ef%bd%9e%e3%81%a6%e3%82%82-tatoe-temo-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%9F%E3%81%A8%E3%81%88-%E3%81%A6%E3%82%82"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:tatoeba",
+      "level": "N3",
+      "n": 122,
+      "title": "例えば（たとえば）",
+      "romaji": "tatoeba",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e4%be%8b%e3%81%88%e3%81%b0-%e3%81%9f%e3%81%a8%e3%81%88%e3%81%b0-tatoeba-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:tatte",
+      "level": "N3",
+      "n": 123,
+      "title": "たって",
+      "romaji": "tatte",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9f%e3%81%a3%e3%81%a6-tatte-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:te-bakari-iru",
+      "level": "N3",
+      "n": 124,
+      "title": "てばかりいる",
+      "romaji": "te bakari iru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%b0%e3%81%8b%e3%82%8a%e3%81%84%e3%82%8b-te-bakari-iru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:te-goran",
+      "level": "N3",
+      "n": 125,
+      "title": "てごらん",
+      "romaji": "te goran",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%94%e3%82%89%e3%82%93-te-goran-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A6%E3%81%94%E3%82%89%E3%82%93"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:te-hajimete",
+      "level": "N3",
+      "n": 126,
+      "title": "てはじめて",
+      "romaji": "te hajimete",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%af%e3%81%98%e3%82%81%e3%81%a6-te-hajimete-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:te-kara-de-nai-to",
+      "level": "N3",
+      "n": 127,
+      "title": "てからでないと",
+      "romaji": "te kara de nai to",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%8b%e3%82%89%e3%81%a7%e3%81%aa%e3%81%84%e3%81%a8-te-kara-de-nai-to-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:te-shou-ga-nai-te-shikata-ga-nai",
+      "level": "N3",
+      "n": 128,
+      "title": "てしょうがない・てしかたがない",
+      "romaji": "te shou ga nai/te shikata ga nai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%97%e3%82%87%e3%81%86%e3%81%8c%e3%81%aa%e3%81%84-te-shou-ga-nai-%e3%81%a6%e4%bb%95%e6%96%b9%e3%81%8c%e3%81%aa%e3%81%84-shikata-ga-nai-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:te-sumu",
+      "level": "N3",
+      "n": 129,
+      "title": "て済む（てすむ）",
+      "romaji": "te sumu",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e6%b8%88%e3%82%80-te-sumu-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:te-wa-ikenai-kara",
+      "level": "N3",
+      "n": 130,
+      "title": "てはいけないから",
+      "romaji": "te wa ikenai kara",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%af%e3%81%84%e3%81%91%e3%81%aa%e3%81%84%e3%81%8b%e3%82%89-te-wa-ikenai-kara-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:teiru-baai-janai",
+      "level": "N3",
+      "n": 131,
+      "title": "ている場合じゃない（ているばあいじゃない）",
+      "romaji": "teiru baai janai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%84%e3%82%8b%e5%a0%b4%e5%90%88%e3%81%98%e3%82%83%e3%81%aa%e3%81%84-teiru-baai-janai-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:teki",
+      "level": "N3",
+      "n": 132,
+      "title": "的（てき）",
+      "romaji": "teki",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e7%9a%84-%e3%81%a6%e3%81%8d-teki-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:temo-hajimaranai",
+      "level": "N3",
+      "n": 133,
+      "title": "ても始まらない（てもはじまらない）",
+      "romaji": "temo hajimaranai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%82%82%e5%a7%8b%e3%81%be%e3%82%89%e3%81%aa%e3%81%84-temo-hajimaranai-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:temo-kamawanai",
+      "level": "N3",
+      "n": 134,
+      "title": "ても構わない（てもかまわない）",
+      "romaji": "temo kamawanai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%82%82%e3%81%8b%e3%81%be%e3%82%8f%e3%81%aa%e3%81%84-temo-kamawanai-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:temo-shou-ga-nai-temo-shikata-ga-nai",
+      "level": "N3",
+      "n": 135,
+      "title": "てもしょうがない / てもしかたがない",
+      "romaji": "temo shou ga nai / temo shikata ga nai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%82%82%e3%81%97%e3%82%87%e3%81%86%e3%81%8c%e3%81%aa%e3%81%84%e3%83%bb%e3%81%a6%e3%82%82%e4%bb%95%e6%96%b9%e3%81%8c%e3%81%aa%e3%81%84-temo-shou-ga-nai-temo-shikata-ga-nai-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:to-ieba",
+      "level": "N3",
+      "n": 136,
+      "title": "と言えば（といえば）",
+      "romaji": "to ieba",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e8%a8%80%e3%81%88%e3%81%b0-%e3%81%a8%e3%81%84%e3%81%88%e3%81%b0-to-ieba-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:to-ii-tara-ii",
+      "level": "N3",
+      "n": 137,
+      "title": "といい / たらいい",
+      "romaji": "to ii / tara ii",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%84%e3%81%84-to-ii-%e3%81%9f%e3%82%89%e3%81%84%e3%81%84-tara-ii-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:to-ittemo",
+      "level": "N3",
+      "n": 138,
+      "title": "といっても",
+      "romaji": "to ittemo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%84%e3%81%a3%e3%81%a6%e3%82%82-to-ittemo-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:to-iu-koto-da",
+      "level": "N3",
+      "n": 139,
+      "title": "ということだ",
+      "romaji": "to iu koto da",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%84%e3%81%86%e3%81%93%e3%81%a8%e3%81%a0-to-iu-koto-da-%e3%81%a8%e3%81%ae%e3%81%93%e3%81%a8%e3%81%a0-to-no-koto-da-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%86%E3%81%93%E3%81%A8%E3%81%A0"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:to-iu-nowa",
+      "level": "N3",
+      "n": 140,
+      "title": "というのは",
+      "romaji": "to iu nowa",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%84%e3%81%86%e3%81%ae%e3%81%af-to-iu-nowa-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%86%E3%81%AE%E3%81%AF"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:to-iu-to",
+      "level": "N3",
+      "n": 141,
+      "title": "と言うと（というと）",
+      "romaji": "to iu to",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e8%a8%80%e3%81%86%e3%81%a8-%e3%81%a8%e3%81%84%e3%81%86%e3%81%a8-to-iuto-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:to-iu-yori",
+      "level": "N3",
+      "n": 142,
+      "title": "というより",
+      "romaji": "to iu yori",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%84%e3%81%86%e3%82%88%e3%82%8a-to-iu-yori-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%84%E3%81%86%E3%82%88%E3%82%8A"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:to-mieru-to-miete",
+      "level": "N3",
+      "n": 143,
+      "title": "とみえる / とみえて",
+      "romaji": "to mieru / to miete",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%bf%e3%81%88%e3%81%a6-miete-%e3%81%a8%e3%81%bf%e3%81%88%e3%82%8b-to-mieru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:to-sureba-to-shitara-to-suru-to",
+      "level": "N3",
+      "n": 144,
+      "title": "とすれば・としたら・とすると",
+      "romaji": "to sureba / to shitara / to suru to",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%99%e3%82%8c%e3%81%b0-%e3%81%a8%e3%81%97%e3%81%9f%e3%82%89-%e3%81%a8%e3%81%99%e3%82%8b%e3%81%a8-sureba-shitara-suru-to-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:to-tomo-ni",
+      "level": "N3",
+      "n": 145,
+      "title": "と共に（とともに）",
+      "romaji": "to tomo ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e5%85%b1%e3%81%ab-to-tomo-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:tochuu-de-tochuu-ni",
+      "level": "N3",
+      "n": 146,
+      "title": "途中で/途中に（とちゅうで/とちゅうに）",
+      "romaji": "tochuu de / tochuu ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e9%80%94%e4%b8%ad%e3%81%a7-%e9%80%94%e4%b8%ad%e3%81%ab-tochuu-de-tochuu-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:tokoro-de",
+      "level": "N3",
+      "n": 147,
+      "title": "ところで",
+      "romaji": "tokoro de",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%93%e3%82%8d%e3%81%a7-tokoro-de-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%93%E3%82%8D%E3%81%A7"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:tokoro-ga",
+      "level": "N3",
+      "n": 148,
+      "title": "ところが",
+      "romaji": "tokoro ga",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%93%e3%82%8d%e3%81%8c-tokoro-ga-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%93%E3%82%8D%E3%81%8C"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:toori-ni",
+      "level": "N3",
+      "n": 149,
+      "title": "とおりに",
+      "romaji": "toori ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%8a%e3%82%8a%e3%81%ab-toori-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:toosu",
+      "level": "N3",
+      "n": 150,
+      "title": "通す（とおす）",
+      "romaji": "toosu",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e9%80%9a%e3%81%99-%e3%81%a8%e3%81%8a%e3%81%99-toosu-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:toshite",
+      "level": "N3",
+      "n": 151,
+      "title": "として",
+      "romaji": "toshite",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%97%e3%81%a6-toshite-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%97%E3%81%A6"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:totemo-nai",
+      "level": "N3",
+      "n": 152,
+      "title": "とても～ない",
+      "romaji": "totemo~nai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%a6%e3%82%82%ef%bd%9e%e3%81%aa%e3%81%84-totemo-nai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A8%E3%81%A6%E3%82%82-%E3%81%AA%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:towa-kagiranai",
+      "level": "N3",
+      "n": 153,
+      "title": "とは限らない（とはかぎらない）",
+      "romaji": "towa kagiranai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%af%e9%99%90%e3%82%89%e3%81%aa%e3%81%84-towa-kagiranai-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:tsui",
+      "level": "N3",
+      "n": 154,
+      "title": "つい",
+      "romaji": "tsui",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a4%e3%81%84-tsui-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A4%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:tsui-ni",
+      "level": "N3",
+      "n": 155,
+      "title": "ついに",
+      "romaji": "tsui ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a4%e3%81%84%e3%81%ab-tsui-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:tsuide-ni",
+      "level": "N3",
+      "n": 156,
+      "title": "ついでに",
+      "romaji": "tsuide ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a4%e3%81%84%e3%81%a7%e3%81%ab-tsuide-ni-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A4%E3%81%84%E3%81%A7%E3%81%AB"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:tsumari",
+      "level": "N3",
+      "n": 157,
+      "title": "つまり",
+      "romaji": "tsumari",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a4%e3%81%be%e3%82%8a-tsumari-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%A4%E3%81%BE%E3%82%8A"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:tsumori-datta",
+      "level": "N3",
+      "n": 158,
+      "title": "つもりだった",
+      "romaji": "tsumori datta",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a4%e3%82%82%e3%82%8a%e3%81%a0%e3%81%a3%e3%81%9f-tsumori-datta-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:tsumori-de",
+      "level": "N3",
+      "n": 159,
+      "title": "つもりで",
+      "romaji": "tsumori de",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a4%e3%82%82%e3%82%8a%e3%81%a7-tsumori-de-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:uchi-ni",
+      "level": "N3",
+      "n": 160,
+      "title": "うちに",
+      "romaji": "uchi ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%86%e3%81%a1%e3%81%ab-uchi-ni-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%86%E3%81%A1%E3%81%AB"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ue-de",
+      "level": "N3",
+      "n": 161,
+      "title": "上で（うえで）",
+      "romaji": "ue de",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e4%b8%8a%e3%81%a7-%e3%81%86%e3%81%88%e3%81%a7-ue-de-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:ue-ni",
+      "level": "N3",
+      "n": 162,
+      "title": "上に（うえに）",
+      "romaji": "ue ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e4%b8%8a%e3%81%ab-ue-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:wa-betsu-toshite",
+      "level": "N3",
+      "n": 163,
+      "title": "は別として（はべつとして）",
+      "romaji": "wa betsu toshite",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%af%e5%88%a5%e3%81%a8%e3%81%97%e3%81%a6-wa-betsu-toshite-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:wa-mochiron",
+      "level": "N3",
+      "n": 164,
+      "title": "はもちろん",
+      "romaji": "wa mochiron",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%af%e3%82%82%e3%81%a1%e3%82%8d%e3%82%93-wa-mochiron-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%AF%E3%82%82%E3%81%A1%E3%82%8D%E3%82%93"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:wa-de-yuumei",
+      "level": "N3",
+      "n": 165,
+      "title": "は～で有名（は～でゆうめい）",
+      "romaji": "wa~de yuumei",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%af%ef%bd%9e%e3%81%a7%e6%9c%89%e5%90%8d-wa-de-yuumei-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:wake-da",
+      "level": "N3",
+      "n": 166,
+      "title": "わけだ",
+      "romaji": "wake da",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%8f%e3%81%91%e3%81%a0-wake-da-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%82%8F%E3%81%91%E3%81%A0"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:wake-dewa-nai",
+      "level": "N3",
+      "n": 167,
+      "title": "わけではない",
+      "romaji": "wake dewa nai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%8f%e3%81%91%e3%81%a7%e3%81%af%e3%81%aa%e3%81%84-wake-dewa-nai-%e3%82%8f%e3%81%91%e3%81%98%e3%82%83%e3%81%aa%e3%81%84-wake-janai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%82%8F%E3%81%91%E3%81%A7%E3%81%AF%E3%81%AA%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:wake-ga-nai",
+      "level": "N3",
+      "n": 168,
+      "title": "わけがない",
+      "romaji": "wake ga nai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%8f%e3%81%91%e3%81%8c%e3%81%aa%e3%81%84-wake-ga-nai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%82%8F%E3%81%91%E3%81%8C%E3%81%AA%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:wake-niwa-ikanai",
+      "level": "N3",
+      "n": 169,
+      "title": "わけにはいかない",
+      "romaji": "wake niwa ikanai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%8f%e3%81%91%e3%81%ab%e3%81%af%e3%81%84%e3%81%8b%e3%81%aa%e3%81%84-wake-niwa-ikanai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%82%8F%E3%81%91%E3%81%AB%E3%81%AF%E3%81%84%E3%81%8B%E3%81%AA%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:wari-ni",
+      "level": "N3",
+      "n": 170,
+      "title": "割に（わりに）",
+      "romaji": "wari ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e5%89%b2%e3%81%ab-%e3%82%8f%e3%82%8a%e3%81%ab-wari-ni-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:wazato",
+      "level": "N3",
+      "n": 171,
+      "title": "わざと",
+      "romaji": "wazato",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%8f%e3%81%96%e3%81%a8-wazato-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:wazawaza",
+      "level": "N3",
+      "n": 172,
+      "title": "わざわざ",
+      "romaji": "wazawaza",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%8f%e3%81%96%e3%82%8f%e3%81%96-wazawaza-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%82%8F%E3%81%96%E3%82%8F%E3%81%96"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:yorimo",
+      "level": "N3",
+      "n": 173,
+      "title": "よりも",
+      "romaji": "yorimo",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%88%e3%82%8a%e3%82%82-yorimo-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:you-ga-nai",
+      "level": "N3",
+      "n": 174,
+      "title": "ようがない",
+      "romaji": "you ga nai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%88%e3%81%86%e3%81%8c%e3%81%aa%e3%81%84-you-ga-nai-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:you-na-ki-ga-suru",
+      "level": "N3",
+      "n": 175,
+      "title": "ような気がする（ようなきがする）",
+      "romaji": "you na ki ga suru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%88%e3%81%86%e3%81%aa%e6%b0%97%e3%81%8c%e3%81%99%e3%82%8b-you-na-ki-ga-suru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:you-ni",
+      "level": "N3",
+      "n": 176,
+      "title": "ように",
+      "romaji": "you ni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%88%e3%81%86%e3%81%ab-you-ni-meaning-in-order-to/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:you-ni-mieru",
+      "level": "N3",
+      "n": 177,
+      "title": "ように見える（ようにみえる）",
+      "romaji": "you ni mieru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%88%e3%81%86%e3%81%ab%e8%a6%8b%e3%81%88%e3%82%8b-you-ni-mieru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:you-to-shinai",
+      "level": "N3",
+      "n": 178,
+      "title": "ようとしない",
+      "romaji": "you to shinai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%88%e3%81%86%e3%81%a8%e3%81%97%e3%81%aa%e3%81%84-you-to-shinai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/-%E3%82%88%E3%81%86%E3%81%A8%E3%81%97%E3%81%AA%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:you-to-suru",
+      "level": "N3",
+      "n": 179,
+      "title": "ようとする",
+      "romaji": "you to suru",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%82%88%e3%81%86%e3%81%a8%e3%81%99%e3%82%8b-you-to-suru-meaning/"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:zuni",
+      "level": "N3",
+      "n": 180,
+      "title": "ずに",
+      "romaji": "zuni",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9a%e3%81%ab-zuni-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%9A%E3%81%AB"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:zuni-wa-irarenai",
+      "level": "N3",
+      "n": 181,
+      "title": "ずにはいられない",
+      "romaji": "zuni wa irarenai",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9a%e3%81%ab%e3%81%af%e3%81%84%e3%82%89%e3%82%8c%e3%81%aa%e3%81%84-zu-ni-wa-irarenai-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%9A%E3%81%AB%E3%81%AF%E3%81%84%E3%82%89%E3%82%8C%E3%81%AA%E3%81%84"
+        }
+      ]
+    },
+    {
+      "slug": "grammar:n3:zutsu",
+      "level": "N3",
+      "n": 182,
+      "title": "ずつ",
+      "romaji": "zutsu",
+      "links": [
+        {
+          "site": "jlptsensei",
+          "url": "https://jlptsensei.com/learn-japanese-grammar/jlpt-n3-grammar-%e3%81%9a%e3%81%a4-zutsu-meaning/"
+        },
+        {
+          "site": "bunpro",
+          "url": "https://bunpro.jp/grammar_points/%E3%81%9A%E3%81%A4"
+        }
+      ]
+    }
+  ],
+  "failed": [],
+  "browserChecked": [
+    "https://jlptsensei.com/learn-japanese-grammar/japanese-%e3%81%84-adjectives-%e3%81%84%e5%bd%a2%e5%ae%b9%e8%a9%9e-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8b-ka-question-particle-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/japanese-%e3%81%aa-adjectives-%e3%81%aa%e5%bd%a2%e5%ae%b9%e8%a9%9e-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%82%93%e3%81%a7%e3%81%99-ndesu-%e3%82%93%e3%81%a0-nda-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ae%e3%81%8c%e4%b8%8b%e6%89%8b-%e3%81%ae%e3%81%8c%e3%81%b8%e3%81%9f-no-ga-heta-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ae%e3%81%8c%e4%b8%8a%e6%89%8b-no-ga-jouzu-%e3%81%ae%e3%81%8c%e3%81%98%e3%82%87%e3%81%86%e3%81%9a%e3%81%a7%e3%81%99-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ae%e3%81%8c%e5%a5%bd%e3%81%8d-no-ga-suki-%e3%81%ae%e3%81%8c%e3%81%99%e3%81%8d%e3%81%a7%e3%81%99-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ae%e4%b8%ad%e3%81%a7%e3%81%8c%e4%b8%80%e7%95%aa-%e3%81%ae%e3%81%aa%e3%81%8b%e3%81%a7%e3%81%8c%e3%81%84%e3%81%a1%e3%81%b0%e3%82%93-no-naka-de-ga-ichiban-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%82%92-wo-object-marker-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%97%e3%81%8b%e3%81%97-shikashi-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9d%e3%82%8c%e3%81%8b%e3%82%89-sore-kara-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9f%e3%81%93%e3%81%a8%e3%81%8c%e3%81%82%e3%82%8b-ta-koto-ga-aru-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9f%e3%82%8a%ef%bd%9e%e3%81%9f%e3%82%8a%e3%81%99%e3%82%8b-tari-tari-suru-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%84%e3%82%8b-te-iru-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%8f%e3%81%a0%e3%81%95%e3%81%84-te-kudasai-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%af-wa-topic-marker-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8c%e3%81%99%e3%82%8b-ga-suru-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%98%e3%82%83%e3%81%aa%e3%81%84%e3%81%8b-janai-ka-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8b%e3%81%84-kai-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8d%e3%81%a3%e3%81%a8-kitto-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%93%e3%81%a8%e3%81%ab%e3%81%aa%e3%82%8b-koto-ni-naru-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%be%e3%81%9f%e3%81%af-matawa-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%bf%e3%81%9f%e3%81%84%e3%81%a0-mitai-da-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%bf%e3%81%9f%e3%81%84%e3%81%ab-mitai-ni-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa-na-meaning-order-dont-do/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%8c%e3%82%89-nagara-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%8b%e3%81%aa%e3%81%8b%ef%bd%9e%e3%81%aa%e3%81%84-nakanaka-nai-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%82%89-nara-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%97-shi-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9d%e3%82%8c%e3%81%ab-sore-ni-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%84%e3%81%8f-te-iku-%e3%81%a6%e3%81%84%e3%81%a3%e3%81%9f-te-itta-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%84%e3%81%9f-te-ita-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%82%82-temo-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%84%e3%81%86%e3%81%93%e3%81%a8-to-iu-koto-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e6%80%9d%e3%81%86-to-omou-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%af%e3%80%9c%e3%81%8c%ef%bd%9e%e3%81%af-wa-ga-wa-meaning-but-however/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%82%84%e3%81%a3%e3%81%a8-yatto-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%82%88%e3%81%86%e3%81%a0-you-da-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%82%88%e3%81%86%e3%81%ab-%e3%82%88%e3%81%86%e3%81%aa-you-ni-na-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e5%85%a8%e7%84%b6%ef%bd%9e%e3%81%aa%e3%81%84-zenzen-nai-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%b6%e3%82%8a%e3%81%ab-buri-ni-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a0%e3%81%91%e3%81%a7%e3%81%aa%e3%81%8f-dake-de-naku-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%93%e3%81%a8-koto-meaning-must-do/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%93%e3%81%a8%e3%81%ab%e3%81%aa%e3%81%a3%e3%81%a6%e3%81%84%e3%82%8b-koto-ni-natteiru-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%8f%e3%82%89%e3%81%84-kurai-%e3%81%90%e3%82%89%e3%81%84-gurai-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%be%e3%82%8b%e3%81%a7-maru-de-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%be%e3%81%95%e3%81%8b-masaka-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%82%82%ef%bd%9e%e3%81%b0%ef%bd%9e%e3%82%82-mobamo-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%82%82%e3%81%97%e3%82%82%e3%80%9c%e3%81%9f%e3%82%89-moshimo-tara-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e5%90%91%e3%81%8d-muki-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%82%80%e3%81%97%e3%82%8d-mushiro-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%84%e3%81%a8-naito-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e7%9b%b4%e3%81%99-%e3%81%aa%e3%81%8a%e3%81%99-naosu-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%82%8b%e3%81%b9%e3%81%8f-naru-beku-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%aa%e3%81%9c%e3%81%aa%e3%82%89-nazenara-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%82%93%e3%81%a0%e3%81%a3%e3%81%a6-n-datte-tte-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e3%81%8b%e3%81%91%e3%81%a6-ni-kakete-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e3%81%8b%e3%82%8f%e3%81%a3%e3%81%a6-ni-kawatte-%e3%81%ab%e3%81%8b%e3%82%8f%e3%82%8a-ni-kawari-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e6%af%94%e3%81%b9%e3%81%a6-ni-kurabete-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%ab%e6%85%a3%e3%82%8c%e3%82%8b-%e3%81%ab%e3%81%aa%e3%82%8c%e3%82%8b-ni-nareru-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a3%e3%81%bd%e3%81%84-ppoi-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%95%e3%81%88-sae-%e3%81%a7%e3%81%95%e3%81%88%e3%82%82-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%95%e3%81%88%ef%bd%9e%e3%81%b0-sae-ba-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e7%9c%9f%e3%81%a3%e6%9c%80%e4%b8%ad%e3%81%ab-%e3%81%be%e3%81%a3%e3%81%95%e3%81%84%e3%81%a1%e3%82%85%e3%81%86%e3%81%ab-saichuu-ni-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%97%e3%81%b0%e3%82%89%e3%81%8f-shibaraku-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9d%e3%81%ae%e7%82%ba-%e3%81%9d%e3%81%ae%e3%81%9f%e3%82%81-sono-tame-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%99%e3%81%a7%e3%81%ab-sude-ni-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9f%e3%81%a3%e3%81%a6-tatte-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%97%e3%82%87%e3%81%86%e3%81%8c%e3%81%aa%e3%81%84-te-shou-ga-nai-%e3%81%a6%e4%bb%95%e6%96%b9%e3%81%8c%e3%81%aa%e3%81%84-shikata-ga-nai-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e6%b8%88%e3%82%80-te-sumu-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%af%e3%81%84%e3%81%91%e3%81%aa%e3%81%84%e3%81%8b%e3%82%89-te-wa-ikenai-kara-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%81%84%e3%82%8b%e5%a0%b4%e5%90%88%e3%81%98%e3%82%83%e3%81%aa%e3%81%84-teiru-baai-janai-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e7%9a%84-%e3%81%a6%e3%81%8d-teki-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%82%82%e3%81%8b%e3%81%be%e3%82%8f%e3%81%aa%e3%81%84-temo-kamawanai-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a6%e3%82%82%e3%81%97%e3%82%87%e3%81%86%e3%81%8c%e3%81%aa%e3%81%84%e3%83%bb%e3%81%a6%e3%82%82%e4%bb%95%e6%96%b9%e3%81%8c%e3%81%aa%e3%81%84-temo-shou-ga-nai-temo-shikata-ga-nai-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%84%e3%81%a3%e3%81%a6%e3%82%82-to-ittemo-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e9%80%94%e4%b8%ad%e3%81%a7-%e9%80%94%e4%b8%ad%e3%81%ab-tochuu-de-tochuu-ni-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%93%e3%82%8d%e3%81%a7-tokoro-de-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e9%80%9a%e3%81%99-%e3%81%a8%e3%81%8a%e3%81%99-toosu-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%a6%e3%82%82%ef%bd%9e%e3%81%aa%e3%81%84-totemo-nai-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a8%e3%81%af%e9%99%90%e3%82%89%e3%81%aa%e3%81%84-towa-kagiranai-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a4%e3%81%84-tsui-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a4%e3%81%84%e3%81%ab-tsui-ni-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a4%e3%82%82%e3%82%8a%e3%81%a0%e3%81%a3%e3%81%9f-tsumori-datta-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%a4%e3%82%82%e3%82%8a%e3%81%a7-tsumori-de-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e4%b8%8a%e3%81%ab-ue-ni-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%82%88%e3%82%8a%e3%82%82-yorimo-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%82%88%e3%81%86%e3%81%aa%e6%b0%97%e3%81%8c%e3%81%99%e3%82%8b-you-na-ki-ga-suru-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%82%88%e3%81%86%e3%81%a8%e3%81%99%e3%82%8b-you-to-suru-meaning/",
+    "https://jlptsensei.com/learn-japanese-grammar/%e3%81%9a%e3%81%ab%e3%81%af%e3%81%84%e3%82%89%e3%82%8c%e3%81%aa%e3%81%84-zu-ni-wa-irarenai-meaning/"
+  ]
+}

@@ -1,0 +1,1122 @@
+[
+  {
+    "slug": "grammar:n5:made",
+    "pattern": "〜まで",
+    "meaning": "Until, as far as: marks where a time, a distance or a range ends. Often paired with から (from).",
+    "examples": [
+      {
+        "ja": "{毎日|まいにち}9{時|じ}から5{時|じ}[[まで]]{働|はたら}きます。",
+        "en": "I work from nine to five every day."
+      },
+      {
+        "ja": "{駅|えき}[[まで]]{歩|ある}いて10{分|ぷん}です。",
+        "en": "It's a ten-minute walk to the station."
+      },
+      {
+        "ja": "{夏休|なつやす}みは{来週|らいしゅう}の{金曜日|きんようび}[[まで]]です。",
+        "en": "The summer holidays last until next Friday."
+      },
+      {
+        "ja": "{昨日|きのう}は{夜遅|よるおそ}く[[まで]]{勉強|べんきょう}しました。",
+        "en": "Yesterday I studied until late at night."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:made-1",
+        "ja": "{朝|あさ}から{晩|ばん}[[まで]]{雨|あめ}が{降|ふ}っていました。",
+        "en": "It rained from morning till night.",
+        "wrong": ["に", "で", "を"],
+        "explain": "から〜まで marks a span: from one point until another."
+      },
+      {
+        "slug": "gq:n5:made-2",
+        "ja": "{電車|でんしゃ}が{来|く}る[[まで]]、ここで{待|ま}ちましょう。",
+        "en": "Let's wait here until the train comes.",
+        "wrong": ["までに", "と", "あと"],
+        "explain": "まで goes with an action that lasts up to a point, like waiting; までに means 'by' a deadline."
+      }
+    ],
+    "confusables": ["grammar:n4:made-ni", "grammar:n5:kara"]
+  },
+  {
+    "slug": "grammar:n5:mae-ni",
+    "pattern": "Verb (dictionary form) + 前に / Noun + の前に",
+    "meaning": "Before: the first action happens before the second. The verb before 前に stays in dictionary form even in a past sentence; nouns take の前に.",
+    "examples": [
+      {
+        "ja": "{寝|ね}る[[{前|まえ}に]]{歯|は}を{磨|みが}きます。",
+        "en": "I brush my teeth before I go to bed."
+      },
+      {
+        "ja": "{食|た}べる[[{前|まえ}に]]{手|て}を{洗|あら}いましょう。",
+        "en": "Let's wash our hands before we eat."
+      },
+      {
+        "ja": "{日本|にほん}へ{来|く}る[[{前|まえ}に]]、{少|すこ}し{日本語|にほんご}を{勉強|べんきょう}しました。",
+        "en": "I studied a little Japanese before I came to Japan."
+      },
+      {
+        "ja": "{授業|じゅぎょう}の[[{前|まえ}に]]{宿題|しゅくだい}を{出|だ}してください。",
+        "en": "Please hand in your homework before class."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:mae-ni-1",
+        "ja": "{昨日|きのう}は[[{寝|ね}る]]{前|まえ}に{少|すこ}し{本|ほん}を{読|よ}みました。",
+        "en": "Last night I read a little before going to sleep.",
+        "wrong": ["{寝|ね}た", "{寝|ね}て", "{寝|ね}ない"],
+        "explain": "前に always follows the dictionary form, even when the sentence is in the past."
+      },
+      {
+        "slug": "gq:n5:mae-ni-2",
+        "ja": "{家|いえ}を{出|で}る[[{前|まえ}に]]、{電気|でんき}を{消|け}します。",
+        "en": "I turn off the lights before I leave the house.",
+        "wrong": ["{後|あと}で", "{前|まえ}で", "{前|まえ}を"],
+        "explain": "Dictionary form + 前に means 'before doing'; 前で is a place, 'in front of'."
+      }
+    ],
+    "confusables": ["grammar:n5:te-kara", "grammar:n4:ato-de"]
+  },
+  {
+    "slug": "grammar:n5:masen-ka",
+    "pattern": "Verb-stem + ませんか",
+    "meaning": "Won't you…? / Would you like to…?: a polite, soft invitation that makes it easy for the other person to say no.",
+    "examples": [
+      {
+        "ja": "{一緒|いっしょ}に{映画|えいが}を{見|み}[[ませんか]]。",
+        "en": "Would you like to see a film together?"
+      },
+      {
+        "ja": "{日曜日|にちようび}、{公園|こうえん}を{散歩|さんぽ}し[[ませんか]]。",
+        "en": "How about a walk in the park on Sunday?"
+      },
+      {
+        "ja": "ちょっと{休|やす}み[[ませんか]]。",
+        "en": "Why don't we take a short break?"
+      },
+      {
+        "ja": "{今晩|こんばん}、うちでご{飯|はん}を{食|た}べ[[ませんか]]。",
+        "en": "Would you like to have dinner at my place tonight?"
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:masen-ka-1",
+        "ja": "{明日|あした}、{一緒|いっしょ}に{図書館|としょかん}へ[[{行|い}きませんか]]。",
+        "en": "Would you like to go to the library with me tomorrow?",
+        "wrong": ["{行|い}かませんか", "{行|い}きませんでしたか", "{行|い}くませんか"],
+        "explain": "ませんか attaches to the ます-stem (行き), and an invitation about tomorrow can't be past."
+      },
+      {
+        "slug": "gq:n5:masen-ka-2",
+        "ja": "{私|わたし}の{家|いえ}に{遊|あそ}びに{来|き}[[ませんか]]。",
+        "en": "Would you like to come over to my place?",
+        "wrong": ["ましょうか", "ましょう", "ながら"],
+        "explain": "Only the listener can come to the speaker's home, so it has to be an invitation: ませんか."
+      }
+    ],
+    "confusables": ["grammar:n5:mashou", "grammar:n5:mashouka"]
+  },
+  {
+    "slug": "grammar:n5:mashou",
+    "pattern": "Verb-stem + ましょう",
+    "meaning": "Let's…: a polite way to suggest doing something together, or to agree to a plan someone has offered.",
+    "examples": [
+      {
+        "ja": "もう{遅|おそ}いですから、{帰|かえ}り[[ましょう]]。",
+        "en": "It's late, so let's go home."
+      },
+      {
+        "ja": "{駅|えき}の{前|まえ}で{会|あ}い[[ましょう]]。",
+        "en": "Let's meet in front of the station."
+      },
+      {
+        "ja": "{一緒|いっしょ}に{晩|ばん}ご{飯|はん}を{作|つく}り[[ましょう]]。",
+        "en": "Let's make dinner together."
+      },
+      {
+        "ja": "{次|つぎ}の{問題|もんだい}をやり[[ましょう]]。",
+        "en": "Let's do the next question."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:mashou-1",
+        "ja": "「{一緒|いっしょ}に{帰|かえ}りませんか。」「ええ、{帰|かえ}り[[ましょう]]。」",
+        "en": "\"Shall we go home together?\" \"Yes, let's.\"",
+        "wrong": ["ませんか", "ました", "ませんでした"],
+        "explain": "To say yes to an invitation, answer with ましょう: 'yes, let's'."
+      },
+      {
+        "slug": "gq:n5:mashou-2",
+        "ja": "では、10ページを[[{読|よ}みましょう]]。",
+        "en": "Right, let's read page 10.",
+        "wrong": ["{読|よ}むましょう", "{読|よ}ましょう", "{読|よ}んましょう"],
+        "explain": "ましょう attaches to the ます-stem: 読む becomes 読み."
+      }
+    ],
+    "confusables": ["grammar:n5:masen-ka", "grammar:n5:mashouka"]
+  },
+  {
+    "slug": "grammar:n5:mashouka",
+    "pattern": "Verb-stem + ましょうか",
+    "meaning": "Shall I…? / Shall we…?: offers to do something for someone, or asks what to do together.",
+    "examples": [
+      {
+        "ja": "その{荷物|にもつ}、{持|も}ち[[ましょうか]]。",
+        "en": "Shall I carry that bag for you?"
+      },
+      {
+        "ja": "{暑|あつ}いですね。{窓|まど}を{開|あ}け[[ましょうか]]。",
+        "en": "It's hot, isn't it? Shall I open the window?"
+      },
+      {
+        "ja": "どこで{昼|ひる}ご{飯|はん}を{食|た}べ[[ましょうか]]。",
+        "en": "Where shall we have lunch?"
+      },
+      {
+        "ja": "{写真|しゃしん}を{撮|と}り[[ましょうか]]。",
+        "en": "Shall I take a photo of you?"
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:mashouka-1",
+        "ja": "{私|わたし}が{窓|まど}を{閉|し}め[[ましょうか]]。",
+        "en": "Shall I close the window?",
+        "wrong": ["ませんか", "てください", "たいですか"],
+        "explain": "With 私が the speaker is offering to do it, so ましょうか fits."
+      },
+      {
+        "slug": "gq:n5:mashouka-2",
+        "ja": "{何時|なんじ}に{駅|えき}で{会|あ}い[[ましょうか]]。",
+        "en": "What time shall we meet at the station?",
+        "wrong": ["ませんか", "なさい", "ません"],
+        "explain": "A question word plus ましょうか asks the other person to help decide a plan."
+      }
+    ],
+    "confusables": ["grammar:n5:mashou", "grammar:n5:masen-ka"]
+  },
+  {
+    "slug": "grammar:n5:mo",
+    "pattern": "Noun + も",
+    "meaning": "Too, also; with a negative, (not) either. It takes the place of は, が or を. A question word + も + negative means nobody or nothing.",
+    "examples": [
+      {
+        "ja": "{私|わたし}[[も]]コーヒーが{好|す}きです。",
+        "en": "I like coffee too."
+      },
+      {
+        "ja": "{兄|あに}は{肉|にく}も{魚|さかな}[[も]]{食|た}べません。",
+        "en": "My older brother eats neither meat nor fish."
+      },
+      {
+        "ja": "{昨日|きのう}は{何|なに}[[も]]{食|た}べませんでした。",
+        "en": "I didn't eat anything yesterday."
+      },
+      {
+        "ja": "{駅|えき}で1{時間|じかん}[[も]]{待|ま}ちました。",
+        "en": "I waited at the station for a whole hour."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:mo-1",
+        "ja": "{部屋|へや}には{誰|だれ}[[も]]いませんでした。",
+        "en": "There was nobody in the room.",
+        "wrong": ["が", "を", "は"],
+        "explain": "Question word + も + a negative verb means 'nobody' or 'nothing'."
+      },
+      {
+        "slug": "gq:n5:mo-2",
+        "ja": "{父|ちち}も{母|はは}[[も]]{元気|げんき}です。",
+        "en": "Both my father and my mother are well.",
+        "wrong": ["は", "が", "を"],
+        "explain": "AもBも means 'both A and B'; the second noun takes も as well."
+      }
+    ],
+    "confusables": ["grammar:n5:wa-topic-marker", "grammar:n5:ga"]
+  },
+  {
+    "slug": "grammar:n5:mou",
+    "pattern": "もう + Verb",
+    "meaning": "Already, with a finished action; not … any more, with a negative. Before an amount it means 'more': もう一つ, もう少し.",
+    "examples": [
+      {
+        "ja": "{宿題|しゅくだい}は[[もう]]{終|お}わりました。",
+        "en": "I've already finished my homework."
+      },
+      {
+        "ja": "{電車|でんしゃ}は[[もう]]{出|で}ましたか。",
+        "en": "Has the train already left?"
+      },
+      {
+        "ja": "{父|ちち}は[[もう]]たばこを{吸|す}いません。",
+        "en": "My father doesn't smoke any more."
+      },
+      {
+        "ja": "[[もう]]{一|ひと}つください。",
+        "en": "One more, please."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:mou-1",
+        "ja": "{昼|ひる}ご{飯|はん}は[[もう]]{食|た}べましたか。",
+        "en": "Have you had lunch yet?",
+        "wrong": ["まだ", "あまり", "ぜんぜん"],
+        "explain": "もう with a past verb asks whether something has already happened; まだ, あまり and ぜんぜん don't fit a finished action."
+      },
+      {
+        "slug": "gq:n5:mou-2",
+        "ja": "すみません、[[もう]]{少|すこ}しゆっくり{話|はな}してください。",
+        "en": "Excuse me, could you speak a little more slowly?",
+        "wrong": ["まだ", "もっと", "とても"],
+        "explain": "もう少し is the set way to say 'a little more'."
+      }
+    ],
+    "confusables": ["grammar:n5:mada", "grammar:n5:mada-te-imasen"]
+  },
+  {
+    "slug": "grammar:n5:na-adjectives",
+    "pattern": "な-adjective + な + Noun / な-adjective + です",
+    "meaning": "Adjectives like 静か, 有名 and 便利. They take な before a noun and work like nouns at the end of a sentence: 静かです, 静かじゃない, 静かでした.",
+    "examples": [
+      {
+        "ja": "{静|しず}か[[な]]{町|まち}に{住|す}みたいです。",
+        "en": "I want to live in a quiet town."
+      },
+      {
+        "ja": "この{部屋|へや}はあまりきれい[[じゃない]]です。",
+        "en": "This room isn't very clean."
+      },
+      {
+        "ja": "{日曜日|にちようび}の{公園|こうえん}はとてもにぎやか[[でした]]。",
+        "en": "The park was really lively on Sunday."
+      },
+      {
+        "ja": "{私|わたし}は{魚|さかな}が{嫌|きら}い[[じゃありません]]。",
+        "en": "I don't dislike fish."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:na-adjectives-1",
+        "ja": "ここは{有名|ゆうめい}[[な]]レストランです。",
+        "en": "This is a famous restaurant.",
+        "wrong": ["の", "い", "だ"],
+        "explain": "A な-adjective takes な before a noun."
+      },
+      {
+        "slug": "gq:n5:na-adjectives-2",
+        "ja": "{先週|せんしゅう}は{仕事|しごと}が{大変|たいへん}[[でした]]。",
+        "en": "Work was tough last week.",
+        "wrong": ["かったです", "です", "なでした"],
+        "explain": "In the past, a な-adjective takes でした, like a noun; かった is for い-adjectives."
+      }
+    ],
+    "confusables": ["grammar:n5:i-adjectives", "grammar:n5:janai-dewa-nai"]
+  },
+  {
+    "slug": "grammar:n5:naa",
+    "pattern": "Plain form + なあ",
+    "meaning": "A casual exclamation or sigh, often said to yourself: 'Wow…', 'Man…'. After たい it sounds wistful: 'I'd love to…'.",
+    "examples": [
+      {
+        "ja": "この{店|みせ}のケーキ、おいしい[[なあ]]。",
+        "en": "The cake at this place is so good."
+      },
+      {
+        "ja": "{仕事|しごと}が{忙|いそが}しい[[なあ]]。",
+        "en": "Man, work is busy."
+      },
+      {
+        "ja": "{日本|にほん}に{行|い}きたい[[なあ]]。",
+        "en": "I'd really love to go to Japan."
+      },
+      {
+        "ja": "{大|おお}きい{家|いえ}だ[[なあ]]。",
+        "en": "What a big house!"
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:naa-1",
+        "ja": "いい{天気|てんき}[[だなあ]]。",
+        "en": "What lovely weather.",
+        "wrong": ["ななあ", "のなあ", "なのなあ"],
+        "explain": "After a noun, なあ needs だ in front of it: 天気だなあ."
+      },
+      {
+        "slug": "gq:n5:naa-2",
+        "ja": "この{部屋|へや}、[[{寒|さむ}いなあ]]。",
+        "en": "This room is freezing.",
+        "wrong": ["{寒|さむ}だなあ", "{寒|さむ}いだなあ", "{寒|さむ}くなあ"],
+        "explain": "An い-adjective takes なあ straight after い, with no だ."
+      }
+    ],
+    "confusables": ["grammar:n5:ne", "grammar:n5:yo"]
+  },
+  {
+    "slug": "grammar:n5:naide",
+    "pattern": "Verb (ない-form) + ないで",
+    "meaning": "Without doing: you do the main action and skip the first one, like going out without an umbrella.",
+    "examples": [
+      {
+        "ja": "{朝|あさ}ご{飯|はん}を{食|た}べ[[ないで]]{学校|がっこう}へ{行|い}きました。",
+        "en": "I went to school without eating breakfast."
+      },
+      {
+        "ja": "{傘|かさ}を{持|も}た[[ないで]]{出|で}かけました。",
+        "en": "I went out without an umbrella."
+      },
+      {
+        "ja": "{辞書|じしょ}を{使|つか}わ[[ないで]]この{本|ほん}を{読|よ}みました。",
+        "en": "I read this book without using a dictionary."
+      },
+      {
+        "ja": "{昨日|きのう}は{寝|ね}[[ないで]]{勉強|べんきょう}しました。",
+        "en": "Yesterday I studied without sleeping."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:naide-1",
+        "ja": "{歯|は}を{磨|みが}か[[ないで]]{寝|ね}ました。",
+        "en": "I went to bed without brushing my teeth.",
+        "wrong": ["なくて", "なかった", "ない"],
+        "explain": "ないで joins a skipped action to the main verb: 'without doing'."
+      },
+      {
+        "slug": "gq:n5:naide-2",
+        "ja": "{何|なに}も[[{言|い}わないで]]{帰|かえ}りました。",
+        "en": "He went home without saying anything.",
+        "wrong": ["{言|い}いないで", "{言|い}うないで", "{言|い}わなくて"],
+        "explain": "言う is a godan verb, so its ない-form is 言わない; なくて can't mean 'without'."
+      }
+    ],
+    "confusables": ["grammar:n5:naide-kudasai"]
+  },
+  {
+    "slug": "grammar:n5:naide-kudasai",
+    "pattern": "Verb (ない-form) + ないでください",
+    "meaning": "Please don't…: a polite request asking someone not to do something.",
+    "examples": [
+      {
+        "ja": "ここで{写真|しゃしん}を{撮|と}ら[[ないでください]]。",
+        "en": "Please don't take photos here."
+      },
+      {
+        "ja": "{教室|きょうしつ}で{食|た}べ[[ないでください]]。",
+        "en": "Please don't eat in the classroom."
+      },
+      {
+        "ja": "この{話|はなし}は{誰|だれ}にも{言|い}わ[[ないでください]]。",
+        "en": "Please don't tell anyone about this."
+      },
+      {
+        "ja": "{明日|あした}の{授業|じゅぎょう}を{忘|わす}れ[[ないでください]]。",
+        "en": "Please don't forget tomorrow's class."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:naide-kudasai-1",
+        "ja": "{危|あぶ}ないですから、この{川|かわ}で{泳|およ}が[[ないでください]]。",
+        "en": "It's dangerous, so please don't swim in this river.",
+        "wrong": ["なくてください", "ないください", "ないてください"],
+        "explain": "The polite 'please don't' is the ない-form + でください."
+      },
+      {
+        "slug": "gq:n5:naide-kudasai-2",
+        "ja": "ここは{図書館|としょかん}ですから、{大|おお}きい{声|こえ}で[[{話|はな}さないでください]]。",
+        "en": "This is a library, so please don't talk loudly.",
+        "wrong": ["{話|はな}しないでください", "{話|はな}すないでください", "{話|はな}さなくてください"],
+        "explain": "話す is a godan verb: its ない-form is 話さない."
+      }
+    ],
+    "confusables": ["grammar:n5:te-kudasai", "grammar:n5:te-wa-ikenai", "grammar:n5:naide"]
+  },
+  {
+    "slug": "grammar:n5:naito-ikenai",
+    "pattern": "Verb (ない-form) + ないといけない",
+    "meaning": "Have to, must: literally 'if I don't, it won't do'. Very common in everyday speech.",
+    "examples": [
+      {
+        "ja": "{明日|あした}は6{時|じ}に{起|お}き[[ないといけません]]。",
+        "en": "I have to get up at six tomorrow."
+      },
+      {
+        "ja": "{薬|くすり}を{飲|の}ま[[ないといけません]]。",
+        "en": "I have to take my medicine."
+      },
+      {
+        "ja": "{今日|きょう}は{部屋|へや}を{掃除|そうじ}し[[ないといけません]]。",
+        "en": "I need to clean my room today."
+      },
+      {
+        "ja": "もう{帰|かえ}ら[[ないといけません]]。",
+        "en": "I have to go home now."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:naito-ikenai-1",
+        "ja": "{明日|あした}の{朝|あさ}は{早|はや}いですから、{今日|きょう}は{早|はや}く{寝|ね}[[ないといけません]]。",
+        "en": "I have an early start tomorrow, so I have to go to bed early tonight.",
+        "wrong": ["なくといけません", "ないでといけません", "ないにいけません"],
+        "explain": "The pattern is the ない-form + と + いけません."
+      },
+      {
+        "slug": "gq:n5:naito-ikenai-2",
+        "ja": "{財布|さいふ}を{忘|わす}れました。{家|いえ}に[[{帰|かえ}らないといけません]]。",
+        "en": "I've left my wallet behind. I have to go back home.",
+        "wrong": ["{帰|かえ}ないといけません", "{帰|かえ}りないといけません", "{帰|かえ}るないといけません"],
+        "explain": "帰る looks like an ichidan verb but is godan, so its ない-form is 帰らない."
+      }
+    ],
+    "confusables": ["grammar:n5:nakute-wa-ikenai", "grammar:n5:nakucha", "grammar:n5:naku-temo-ii"]
+  },
+  {
+    "slug": "grammar:n5:naku-temo-ii",
+    "pattern": "Verb (ない-form) + なくてもいい(です)",
+    "meaning": "Don't have to, needn't: says that something isn't necessary.",
+    "examples": [
+      {
+        "ja": "{明日|あした}は{学校|がっこう}へ{来|こ}[[なくてもいいです]]。",
+        "en": "You don't have to come to school tomorrow."
+      },
+      {
+        "ja": "{靴|くつ}を{脱|ぬ}が[[なくてもいいです]]よ。",
+        "en": "You don't need to take your shoes off."
+      },
+      {
+        "ja": "{全部|ぜんぶ}は{食|た}べ[[なくてもいいです]]。",
+        "en": "You don't have to eat all of it."
+      },
+      {
+        "ja": "{名前|なまえ}は{書|か}か[[なくてもいい]]ですか。",
+        "en": "Is it all right if I don't write my name?"
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:naku-temo-ii-1",
+        "ja": "{今日|きょう}は{日曜日|にちようび}ですから、{早|はや}く{起|お}き[[なくてもいいです]]。",
+        "en": "It's Sunday today, so I don't have to get up early.",
+        "wrong": ["なくてはいいです", "ないてもいいです", "なくてもいけません"],
+        "explain": "'Don't have to' is the ない-form with い dropped + くてもいい."
+      },
+      {
+        "slug": "gq:n5:naku-temo-ii-2",
+        "ja": "{雨|あめ}が{降|ふ}っていませんから、{傘|かさ}は[[{持|も}たなくてもいいです]]よ。",
+        "en": "It isn't raining, so you don't need to take an umbrella.",
+        "wrong": ["{持|も}ちなくてもいいです", "{持|も}つなくてもいいです", "{持|も}たないてもいいです"],
+        "explain": "持つ is godan: 持たない becomes 持たなくてもいい."
+      }
+    ],
+    "confusables": ["grammar:n5:naito-ikenai", "grammar:n5:temo-ii-desu", "grammar:n5:nakute-wa-ikenai"]
+  },
+  {
+    "slug": "grammar:n5:nakucha",
+    "pattern": "Verb (ない-form) + なくちゃ",
+    "meaning": "Gotta, have to: a casual spoken shortening of なくては(いけない). The いけない part is usually left off.",
+    "examples": [
+      {
+        "ja": "あ、もう8{時|じ}だ。{行|い}か[[なくちゃ]]。",
+        "en": "Oh, it's already eight. I've got to go."
+      },
+      {
+        "ja": "{明日|あした}テストだから、{勉強|べんきょう}し[[なくちゃ]]。",
+        "en": "I've got a test tomorrow, so I need to study."
+      },
+      {
+        "ja": "{牛乳|ぎゅうにゅう}がない。{買|か}わ[[なくちゃ]]。",
+        "en": "We're out of milk. I need to buy some."
+      },
+      {
+        "ja": "{母|はは}に{電話|でんわ}し[[なくちゃ]]いけない。",
+        "en": "I have to call my mum."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:nakucha-1",
+        "ja": "もう{遅|おそ}いから、{帰|かえ}ら[[なくちゃ]]。",
+        "en": "It's late, so I've got to head home.",
+        "wrong": ["ないくちゃ", "ないちゃ", "なちゃ"],
+        "explain": "なくちゃ is a squeezed なくては: the ない-form with い dropped + くちゃ."
+      },
+      {
+        "slug": "gq:n5:nakucha-2",
+        "ja": "{明日|あした}は{早|はや}く[[{起|お}きなくちゃ]]。",
+        "en": "I've got to get up early tomorrow.",
+        "wrong": ["{起|お}かなくちゃ", "{起|お}きるなくちゃ", "{起|お}きなくちゃう"],
+        "explain": "起きる is ichidan: drop る to get 起きない, then 起きなくちゃ."
+      }
+    ],
+    "confusables": ["grammar:n5:naito-ikenai", "grammar:n5:nakute-wa-ikenai", "grammar:n5:cha-ikenai-ja-ikenai"]
+  },
+  {
+    "slug": "grammar:n5:nakute-wa-ikenai",
+    "pattern": "Verb (ない-form) + なくてはいけない",
+    "meaning": "Must, have to: something is required, by a rule or by the situation.",
+    "examples": [
+      {
+        "ja": "{学生|がくせい}は{宿題|しゅくだい}をし[[なくてはいけません]]。",
+        "en": "Students have to do their homework."
+      },
+      {
+        "ja": "{図書館|としょかん}の{本|ほん}を{返|かえ}さ[[なくてはいけません]]。",
+        "en": "I have to return the library books."
+      },
+      {
+        "ja": "{日本|にほん}では{家|いえ}に{入|はい}る{時|とき}、{靴|くつ}を{脱|ぬ}が[[なくてはいけません]]。",
+        "en": "In Japan you have to take your shoes off when you go into a house."
+      },
+      {
+        "ja": "{今日|きょう}はこの{手紙|てがみ}を{書|か}か[[なくてはいけません]]。",
+        "en": "I have to write this letter today."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:nakute-wa-ikenai-1",
+        "ja": "{電車|でんしゃ}に{乗|の}る{時|とき}は、{切符|きっぷ}を{買|か}わ[[なくてはいけません]]。",
+        "en": "You have to buy a ticket when you take the train.",
+        "wrong": ["てはいけません", "ないてはいけません", "なくてもいけません"],
+        "explain": "'Must' is the ない-form with い dropped + くてはいけません."
+      },
+      {
+        "slug": "gq:n5:nakute-wa-ikenai-2",
+        "ja": "{日曜日|にちようび}も{仕事|しごと}を[[しなくてはいけません]]。",
+        "en": "I have to work on Sundays too.",
+        "wrong": ["さなくてはいけません", "すなくてはいけません", "しなくてもいけません"],
+        "explain": "The ない-form of する is しない, so it becomes しなくてはいけません."
+      }
+    ],
+    "confusables": ["grammar:n5:nakute-wa-naranai", "grammar:n5:te-wa-ikenai", "grammar:n5:naito-ikenai"]
+  },
+  {
+    "slug": "grammar:n5:nakute-wa-naranai",
+    "pattern": "Verb (ない-form) + なくてはならない",
+    "meaning": "Must, have to: means the same as なくてはいけない but sounds stiffer. Used for duties and rules, and in writing.",
+    "examples": [
+      {
+        "ja": "{子供|こども}は{学校|がっこう}へ{行|い}か[[なくてはなりません]]。",
+        "en": "Children must go to school."
+      },
+      {
+        "ja": "{外国|がいこく}へ{行|い}く{時|とき}は、パスポートを{持|も}って{行|い}か[[なくてはなりません]]。",
+        "en": "When you travel abroad, you must take your passport."
+      },
+      {
+        "ja": "{会社|かいしゃ}には9{時|じ}に{着|つ}か[[なくてはなりません]]。",
+        "en": "I have to be at the office at nine."
+      },
+      {
+        "ja": "{借|か}りたお{金|かね}は{返|かえ}さ[[なくてはなりません]]。",
+        "en": "Money you borrow must be paid back."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:nakute-wa-naranai-1",
+        "ja": "{病院|びょういん}の{中|なか}では{静|しず}かにし[[なくてはなりません]]。",
+        "en": "You must keep quiet inside the hospital.",
+        "wrong": ["なくてはなれません", "ないてはなりません", "なくてもなりません"],
+        "explain": "The pattern ends in なりません, the polite negative of なる."
+      },
+      {
+        "slug": "gq:n5:nakute-wa-naranai-2",
+        "ja": "{次|つぎ}のバスまで、ここで[[{待|ま}たなくてはなりません]]。",
+        "en": "I have to wait here until the next bus.",
+        "wrong": ["{待|ま}ちなくてはなりません", "{待|ま}つなくてはなりません", "{待|ま}たないてはなりません"],
+        "explain": "待つ is godan: 待たない becomes 待たなくてはなりません."
+      }
+    ],
+    "confusables": ["grammar:n5:nakute-wa-ikenai", "grammar:n4:nakereba-naranai", "grammar:n5:naito-ikenai"]
+  },
+  {
+    "slug": "grammar:n5:naru",
+    "pattern": "Noun / な-adjective + になる, い-adjective (〜く) + なる",
+    "meaning": "To become: shows a change. Nouns and な-adjectives take に (医者になる, 静かになる); い-adjectives change い to く (暗くなる).",
+    "examples": [
+      {
+        "ja": "{春|はる}になって、{暖|あたた}か[[くなりました]]。",
+        "en": "Spring has come and it's got warmer."
+      },
+      {
+        "ja": "{兄|あに}は{医者|いしゃ}[[になりました]]。",
+        "en": "My older brother became a doctor."
+      },
+      {
+        "ja": "{部屋|へや}を{掃除|そうじ}して、きれい[[になりました]]。",
+        "en": "I cleaned the room and now it's tidy."
+      },
+      {
+        "ja": "{来月|らいげつ}、20{歳|さい}[[になります]]。",
+        "en": "I'll turn twenty next month."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:naru-1",
+        "ja": "{夕方|ゆうがた}、{空|そら}が{暗|くら}[[くなりました]]。",
+        "en": "In the evening the sky got dark.",
+        "wrong": ["いになりました", "になりました", "いなりました"],
+        "explain": "An い-adjective changes い to く before なる: 暗い becomes 暗くなる."
+      },
+      {
+        "slug": "gq:n5:naru-2",
+        "ja": "{子供|こども}たちが{寝|ね}て、{家|いえ}が{静|しず}か[[になりました]]。",
+        "en": "The children went to sleep and the house went quiet.",
+        "wrong": ["くなりました", "ななりました", "でなりました"],
+        "explain": "A な-adjective takes に before なる: 静かになる."
+      }
+    ],
+    "confusables": ["grammar:n5:ni-suru", "grammar:n4:you-ni-naru"]
+  },
+  {
+    "slug": "grammar:n5:ndesu",
+    "pattern": "Plain form + んです (Noun / な-adjective + なんです)",
+    "meaning": "Explains, or asks about, the reason or background: 'the thing is…', 'is it that…?'. Conversational; nouns and な-adjectives take なんです.",
+    "examples": [
+      {
+        "ja": "{頭|あたま}が{痛|いた}い[[んです]]。",
+        "en": "I've got a headache, you see."
+      },
+      {
+        "ja": "どうして{食|た}べない[[んですか]]。",
+        "en": "Why aren't you eating?"
+      },
+      {
+        "ja": "{今日|きょう}は{誕生日|たんじょうび}な[[んです]]。",
+        "en": "It's my birthday today, actually."
+      },
+      {
+        "ja": "{昨日|きのう}はパーティーに{行|い}きませんでした。{仕事|しごと}が{忙|いそが}しかった[[んです]]。",
+        "en": "I didn't go to the party yesterday. Work was busy."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:ndesu-1",
+        "ja": "{遅|おそ}くなってすみません。{電車|でんしゃ}が{来|こ}なかった[[んです]]。",
+        "en": "Sorry I'm late. The train didn't come.",
+        "wrong": ["なんです", "んだです", "なのです"],
+        "explain": "After a verb, んです attaches directly; な is only for nouns and な-adjectives."
+      },
+      {
+        "slug": "gq:n5:ndesu-2",
+        "ja": "{今日|きょう}は{遊|あそ}びません。{明日|あした}テスト[[なんです]]。",
+        "en": "I'm not going out today. I've got a test tomorrow.",
+        "wrong": ["んです", "だんです", "のんです"],
+        "explain": "A noun needs な before んです: テストなんです."
+      }
+    ],
+    "confusables": ["grammar:n5:no-desu", "grammar:n5:kara"]
+  },
+  {
+    "slug": "grammar:n5:ne",
+    "pattern": "Sentence + ね",
+    "meaning": "Right? / isn't it?: looks for agreement or checks something both people know. It also softens a remark or fills a pause (そうですね…).",
+    "examples": [
+      {
+        "ja": "{今日|きょう}はいい{天気|てんき}です[[ね]]。",
+        "en": "Lovely weather today, isn't it?"
+      },
+      {
+        "ja": "このケーキ、おいしいです[[ね]]。",
+        "en": "This cake is delicious, isn't it?"
+      },
+      {
+        "ja": "{明日|あした}は10{時|じ}です[[ね]]。",
+        "en": "It's at ten tomorrow, right?"
+      },
+      {
+        "ja": "マリアさんは{日本語|にほんご}が{上手|じょうず}です[[ね]]。",
+        "en": "Your Japanese is really good, Maria."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:ne-1",
+        "ja": "「この{店|みせ}、{安|やす}いですね。」「ええ、{本当|ほんとう}に{安|やす}いです[[ね]]。」",
+        "en": "\"This shop is cheap, isn't it?\" \"Yes, it really is.\"",
+        "wrong": ["か", "を", "に"],
+        "explain": "When you agree with something you both see, end with ね."
+      },
+      {
+        "slug": "gq:n5:ne-2",
+        "ja": "「{何|なに}を{飲|の}みますか。」「そうです[[ね]]、じゃあ、コーヒーにします。」",
+        "en": "\"What will you have to drink?\" \"Let me see… I'll have coffee, then.\"",
+        "wrong": ["か", "よ", "が"],
+        "explain": "そうですね buys a moment to think before answering."
+      }
+    ],
+    "confusables": ["grammar:n5:yo", "grammar:n5:naa"]
+  },
+  {
+    "slug": "grammar:n5:ni",
+    "pattern": "Noun + に",
+    "meaning": "Marks a point: a time (7時に), where something is (机の上に), a destination, or the person you give to or meet.",
+    "examples": [
+      {
+        "ja": "{毎朝|まいあさ}7{時|じ}[[に]]{起|お}きます。",
+        "en": "I get up at seven every morning."
+      },
+      {
+        "ja": "{机|つくえ}の{上|うえ}[[に]]{本|ほん}があります。",
+        "en": "There's a book on the desk."
+      },
+      {
+        "ja": "{友達|ともだち}[[に]]{手紙|てがみ}を{書|か}きました。",
+        "en": "I wrote a letter to a friend."
+      },
+      {
+        "ja": "{駅|えき}で{電車|でんしゃ}[[に]]{乗|の}りました。",
+        "en": "I got on the train at the station."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:ni-1",
+        "ja": "{毎晩|まいばん}11{時|じ}[[に]]{寝|ね}ます。",
+        "en": "I go to bed at eleven every night.",
+        "wrong": ["で", "を", "が"],
+        "explain": "A clock time takes に."
+      },
+      {
+        "slug": "gq:n5:ni-2",
+        "ja": "{冷蔵庫|れいぞうこ}の{中|なか}[[に]]{牛乳|ぎゅうにゅう}があります。",
+        "en": "There's milk in the fridge.",
+        "wrong": ["で", "を", "へ"],
+        "explain": "With あります and います, the place where something is takes に."
+      }
+    ],
+    "confusables": ["grammar:n5:ni-e", "grammar:n5:de"]
+  },
+  {
+    "slug": "grammar:n5:ni-iku",
+    "pattern": "Verb-stem + に行く / Noun + に行く",
+    "meaning": "Go somewhere to do something: the purpose (a verb stem or an activity noun) comes before に and a verb of movement.",
+    "examples": [
+      {
+        "ja": "{公園|こうえん}へ{遊|あそ}び[[に{行|い}きます]]。",
+        "en": "I'm going to the park to play."
+      },
+      {
+        "ja": "デパートへ{服|ふく}を{買|か}い[[に{行|い}きました]]。",
+        "en": "I went to the department store to buy clothes."
+      },
+      {
+        "ja": "{昼|ひる}ご{飯|はん}を{食|た}べ[[に{行|い}きませんか]]。",
+        "en": "Do you want to go and get lunch?"
+      },
+      {
+        "ja": "{明日|あした}、{買|か}い{物|もの}[[に{行|い}きます]]。",
+        "en": "I'm going shopping tomorrow."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:ni-iku-1",
+        "ja": "{郵便局|ゆうびんきょく}へ{切手|きって}を{買|か}い[[に]]{行|い}きます。",
+        "en": "I'm going to the post office to buy stamps.",
+        "wrong": ["で", "へ", "を"],
+        "explain": "Verb-stem + に shows the purpose of going."
+      },
+      {
+        "slug": "gq:n5:ni-iku-2",
+        "ja": "{日曜日|にちようび}に{海|うみ}へ[[{泳|およ}ぎ]]に{行|い}きました。",
+        "en": "On Sunday I went to the sea to swim.",
+        "wrong": ["{泳|およ}ぐ", "{泳|およ}いで", "{泳|およ}が"],
+        "explain": "The purpose verb goes in its ます-stem: 泳ぐ becomes 泳ぎ."
+      }
+    ],
+    "confusables": ["grammar:n5:ni", "grammar:n5:ni-e"]
+  },
+  {
+    "slug": "grammar:n5:ni-suru",
+    "pattern": "Noun + にする",
+    "meaning": "To decide on, go with: used when you choose something, such as ordering in a café or picking a day.",
+    "examples": [
+      {
+        "ja": "{私|わたし}はコーヒー[[にします]]。",
+        "en": "I'll have coffee."
+      },
+      {
+        "ja": "{誕生日|たんじょうび}のプレゼントは{花|はな}[[にしました]]。",
+        "en": "I went with flowers for the birthday present."
+      },
+      {
+        "ja": "{旅行|りょこう}は{来月|らいげつ}[[にしましょう]]。",
+        "en": "Let's make the trip next month."
+      },
+      {
+        "ja": "{赤|あか}いのと{青|あお}いの、どちら[[にしますか]]。",
+        "en": "The red one or the blue one: which will you take?"
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:ni-suru-1",
+        "ja": "{昼|ひる}ご{飯|はん}は{何|なに}[[にします]]か。",
+        "en": "What are you going to have for lunch?",
+        "wrong": ["がします", "がなります", "へします"],
+        "explain": "Choosing something is Noun + にする."
+      },
+      {
+        "slug": "gq:n5:ni-suru-2",
+        "ja": "{飲|の}み{物|もの}はオレンジジュース[[にします]]。",
+        "en": "For my drink, I'll have orange juice.",
+        "wrong": ["をします", "がします", "へします"],
+        "explain": "When you pick from options, the choice takes にする."
+      }
+    ],
+    "confusables": ["grammar:n5:naru", "grammar:n4:koto-ni-suru"]
+  },
+  {
+    "slug": "grammar:n5:ni-e",
+    "pattern": "Place + に / へ + verb of movement",
+    "meaning": "Both mark where you're heading. へ points to the direction; に points to the arrival point and has other jobs, like times and people, that へ can't do.",
+    "examples": [
+      {
+        "ja": "{来年|らいねん}、{日本|にほん}[[へ]]{行|い}きます。",
+        "en": "I'm going to Japan next year."
+      },
+      {
+        "ja": "{毎日|まいにち}6{時|じ}に{家|いえ}[[に]]{帰|かえ}ります。",
+        "en": "I get home at six every day."
+      },
+      {
+        "ja": "この{道|みち}を{北|きた}[[へ]]{行|い}ってください。",
+        "en": "Please go north along this road."
+      },
+      {
+        "ja": "{友達|ともだち}は{昨日|きのう}アメリカ[[に]]{着|つ}きました。",
+        "en": "My friend arrived in America yesterday."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:ni-e-1",
+        "ja": "{駅|えき}で{先生|せんせい}[[に]]{会|あ}いました。",
+        "en": "I ran into my teacher at the station.",
+        "wrong": ["へ", "を", "で"],
+        "explain": "The person you meet with 会う takes に; へ only shows direction."
+      },
+      {
+        "slug": "gq:n5:ni-e-2",
+        "ja": "これは{母|はは}[[への]]{手紙|てがみ}です。",
+        "en": "This is a letter to my mother.",
+        "wrong": ["にの", "での", "をの"],
+        "explain": "へ can take の to link to a noun (a letter to…); に can't."
+      }
+    ],
+    "confusables": ["grammar:n5:ni", "grammar:n5:made"]
+  },
+  {
+    "slug": "grammar:n5:no",
+    "pattern": "Noun + の + Noun",
+    "meaning": "Joins two nouns: whose it is (私の傘), or what kind or where from (日本語の先生). It can also stand for a noun already mentioned: 兄のです.",
+    "examples": [
+      {
+        "ja": "これは{私|わたし}[[の]]{傘|かさ}です。",
+        "en": "This is my umbrella."
+      },
+      {
+        "ja": "{日本語|にほんご}[[の]]{先生|せんせい}はとても{面白|おもしろ}いです。",
+        "en": "Our Japanese teacher is really fun."
+      },
+      {
+        "ja": "その{青|あお}いかばんは{兄|あに}[[の]]です。",
+        "en": "That blue bag is my older brother's."
+      },
+      {
+        "ja": "{大学|だいがく}[[の]]{友達|ともだち}と{映画|えいが}を{見|み}ました。",
+        "en": "I saw a film with a friend from university."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:no-1",
+        "ja": "あれはトムさん[[の]]{車|くるま}です。",
+        "en": "That's Tom's car.",
+        "wrong": ["が", "を", "に"],
+        "explain": "の shows who something belongs to."
+      },
+      {
+        "slug": "gq:n5:no-2",
+        "ja": "{学校|がっこう}[[の]]{前|まえ}に{本屋|ほんや}があります。",
+        "en": "There's a bookshop in front of the school.",
+        "wrong": ["で", "に", "を"],
+        "explain": "Position words like 前 and 上 join the noun with の: 学校の前."
+      }
+    ],
+    "confusables": ["grammar:n5:na-adjectives"]
+  },
+  {
+    "slug": "grammar:n5:no-desu",
+    "pattern": "Plain form + のです (Noun / な-adjective + なのです)",
+    "meaning": "Gives or asks for an explanation, like んです but fuller and more formal. Common in writing and careful speech.",
+    "examples": [
+      {
+        "ja": "{今日|きょう}、トムさんは{会社|かいしゃ}を{休|やす}みます。{風邪|かぜ}を{引|ひ}いた[[のです]]。",
+        "en": "Tom is off work today. He has caught a cold."
+      },
+      {
+        "ja": "この{村|むら}には{駅|えき}がありません。{村|むら}の{人|ひと}はバスで{町|まち}へ{行|い}く[[のです]]。",
+        "en": "This village has no station, so the people here go to town by bus."
+      },
+      {
+        "ja": "どうして{日本語|にほんご}を{勉強|べんきょう}している[[のですか]]。",
+        "en": "Why is it that you're studying Japanese?"
+      },
+      {
+        "ja": "{本当|ほんとう}は、{魚|さかな}が{嫌|きら}いな[[のです]]。",
+        "en": "The truth is, I don't like fish."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:no-desu-1",
+        "ja": "{私|わたし}は{毎朝|まいあさ}、{駅|えき}まで{歩|ある}きます。{体|からだ}にいい[[のです]]。",
+        "en": "I walk to the station every morning. It's good for my health.",
+        "wrong": ["なのです", "だのです", "のだです"],
+        "explain": "An い-adjective takes のです directly, with no な or だ."
+      },
+      {
+        "slug": "gq:n5:no-desu-2",
+        "ja": "この{部屋|へや}は{駅|えき}から{近|ちか}くて、とても{便利|べんり}[[なのです]]。",
+        "en": "This flat is close to the station, so it's very convenient.",
+        "wrong": ["のです", "だのです", "いのです"],
+        "explain": "A な-adjective keeps な before のです: 便利なのです."
+      }
+    ],
+    "confusables": ["grammar:n5:ndesu", "grammar:n5:node"]
+  },
+  {
+    "slug": "grammar:n5:no-ga-heta",
+    "pattern": "Verb (dictionary form) + のが下手(です)",
+    "meaning": "Bad at doing something. の turns the verb into a noun so it can take が下手.",
+    "examples": [
+      {
+        "ja": "{私|わたし}は{歌|うた}を{歌|うた}う[[のが{下手|へた}]]です。",
+        "en": "I'm bad at singing."
+      },
+      {
+        "ja": "{父|ちち}は{料理|りょうり}を{作|つく}る[[のが{下手|へた}]]です。",
+        "en": "My father is a bad cook."
+      },
+      {
+        "ja": "{兄|あに}は{英語|えいご}を{話|はな}す[[のが{下手|へた}]]です。",
+        "en": "My older brother is bad at speaking English."
+      },
+      {
+        "ja": "{私|わたし}は{人|ひと}の{名前|なまえ}を{覚|おぼ}える[[のが{下手|へた}]]です。",
+        "en": "I'm bad at remembering people's names."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:no-ga-heta-1",
+        "ja": "{私|わたし}は{泳|およ}ぐ[[のが]]{下手|へた}です。",
+        "en": "I'm a poor swimmer.",
+        "wrong": ["が", "のを", "のに"],
+        "explain": "A verb needs の before が下手: 泳ぐのが下手."
+      },
+      {
+        "slug": "gq:n5:no-ga-heta-2",
+        "ja": "{妹|いもうと}は{漢字|かんじ}を[[{読|よ}む]]のが{下手|へた}です。",
+        "en": "My younger sister is bad at reading kanji.",
+        "wrong": ["{読|よ}んで", "{読|よ}み", "{読|よ}むこと"],
+        "explain": "The verb before のが stays in dictionary form."
+      }
+    ],
+    "confusables": ["grammar:n5:no-ga-jouzu", "grammar:n5:no-ga-suki"]
+  },
+  {
+    "slug": "grammar:n5:no-ga-jouzu",
+    "pattern": "Verb (dictionary form) + のが上手(です)",
+    "meaning": "Good at doing something. Mostly said about other people; said about yourself it can sound like boasting.",
+    "examples": [
+      {
+        "ja": "{母|はは}は{料理|りょうり}を{作|つく}る[[のが{上手|じょうず}]]です。",
+        "en": "My mother is a good cook."
+      },
+      {
+        "ja": "ケンさんは{写真|しゃしん}を{撮|と}る[[のが{上手|じょうず}]]ですね。",
+        "en": "You take great photos, Ken."
+      },
+      {
+        "ja": "{弟|おとうと}は{絵|え}をかく[[のが{上手|じょうず}]]です。",
+        "en": "My younger brother is good at drawing."
+      },
+      {
+        "ja": "マリアさんは{英語|えいご}を{教|おし}える[[のが{上手|じょうず}]]です。",
+        "en": "Maria is good at teaching English."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:no-ga-jouzu-1",
+        "ja": "{姉|あね}はピアノを{弾|ひ}く[[のが]]{上手|じょうず}です。",
+        "en": "My older sister plays the piano well.",
+        "wrong": ["のを", "のに", "のと"],
+        "explain": "上手 takes が, so the verb phrase becomes 弾くのが."
+      },
+      {
+        "slug": "gq:n5:no-ga-jouzu-2",
+        "ja": "リサさんは{人|ひと}の{話|はなし}を[[{聞|き}く]]のが{上手|じょうず}です。",
+        "en": "Lisa is a good listener.",
+        "wrong": ["{聞|き}いて", "{聞|き}き", "{聞|き}くこと"],
+        "explain": "The verb before のが is in dictionary form."
+      }
+    ],
+    "confusables": ["grammar:n5:no-ga-heta", "grammar:n5:no-ga-suki"]
+  },
+  {
+    "slug": "grammar:n5:no-ga-suki",
+    "pattern": "Verb (dictionary form) + のが好き(です)",
+    "meaning": "Like doing something. の turns the verb phrase into a noun so it can take が好き.",
+    "examples": [
+      {
+        "ja": "{私|わたし}は{本|ほん}を{読|よ}む[[のが{好|す}き]]です。",
+        "en": "I like reading books."
+      },
+      {
+        "ja": "{妹|いもうと}は{犬|いぬ}と{遊|あそ}ぶ[[のが{好|す}き]]です。",
+        "en": "My younger sister loves playing with the dog."
+      },
+      {
+        "ja": "{日曜日|にちようび}に{公園|こうえん}を{歩|ある}く[[のが{好|す}き]]です。",
+        "en": "I like walking in the park on Sundays."
+      },
+      {
+        "ja": "{父|ちち}は{古|ふる}い{映画|えいが}を{見|み}る[[のが{好|す}き]]です。",
+        "en": "My father likes watching old films."
+      }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:no-ga-suki-1",
+        "ja": "{私|わたし}は{音楽|おんがく}を{聞|き}く[[のが]]{好|す}きです。",
+        "en": "I like listening to music.",
+        "wrong": ["が", "のに", "のと"],
+        "explain": "A verb needs の to become a noun before が好き."
+      },
+      {
+        "slug": "gq:n5:no-ga-suki-2",
+        "ja": "{私|わたし}は{友達|ともだち}と[[{話|はな}す]]のが{好|す}きです。",
+        "en": "I like talking with my friends.",
+        "wrong": ["{話|はな}して", "{話|はな}し", "{話|はな}すこと"],
+        "explain": "Dictionary form + のが好き: 話すのが好き."
+      }
+    ],
+    "confusables": ["grammar:n5:no-ga-jouzu", "grammar:n5:no-ga-heta"]
+  }
+]

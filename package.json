@@ -19,7 +19,10 @@
     "db:deploy": "tsx scripts/db.ts deploy",
     "auth:hash": "node scripts/auth-hash.mjs",
     "auth:secret": "node scripts/auth-secret.mjs",
-    "icons": "node scripts/draw-icons.mjs"
+    "icons": "node scripts/draw-icons.mjs",
+    "content:build": "tsx scripts/content/build.ts",
+    "content:links": "tsx scripts/content/links.ts",
+    "content:check-writing": "tsx scripts/content/check-writing.ts"
   },
   "packageManager": "pnpm@12.14.0",
   "dependencies": {

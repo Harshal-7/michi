@@ -1,0 +1,785 @@
+[
+  {
+    "slug": "grammar:n5:cha-ikenai-ja-ikenai",
+    "pattern": "〜ちゃいけない / 〜じゃいけない",
+    "meaning": "Casual 'you mustn't': the spoken short form of 〜てはいけない. 〜ては becomes 〜ちゃ, and 〜では becomes 〜じゃ.",
+    "examples": [
+      { "ja": "ここで{写真|しゃしん}を{撮|と}っ[[ちゃいけない]]よ。", "en": "You can't take photos here." },
+      { "ja": "{授業中|じゅぎょうちゅう}に{寝|ね}[[ちゃいけない]]よ。", "en": "You mustn't sleep in class." },
+      { "ja": "この{川|かわ}で{泳|およ}い[[じゃいけない]]よ。", "en": "You can't swim in this river." },
+      { "ja": "{子供|こども}はお{酒|さけ}を{飲|の}ん[[じゃいけない]]。", "en": "Children mustn't drink alcohol." }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:cha-ikenai-ja-ikenai-1",
+        "ja": "テストの{時|とき}、ノートを[[{見|み}ちゃいけない]]よ。",
+        "en": "You mustn't look at your notes during the test.",
+        "wrong": ["{見|み}じゃいけない", "{見|み}っちゃいけない", "{見|み}りちゃいけない"],
+        "explain": "見る is an ichidan verb: 見て becomes 見ちゃ."
+      },
+      {
+        "slug": "gq:n5:cha-ikenai-ja-ikenai-2",
+        "ja": "{道|みち}で[[{遊|あそ}んじゃいけない]]よ。",
+        "en": "You mustn't play in the street.",
+        "wrong": ["{遊|あそ}んちゃいけない", "{遊|あそ}びちゃいけない", "{遊|あそ}っちゃいけない"],
+        "explain": "遊ぶ becomes 遊んで, and a て-form ending in で turns into じゃ."
+      }
+    ],
+    "confusables": ["grammar:n5:te-wa-ikenai", "grammar:n5:nakucha", "grammar:n4:te-shimau-chau"]
+  },
+  {
+    "slug": "grammar:n5:da-desu",
+    "pattern": "Noun / な-adj + だ / です",
+    "meaning": "The copula 'is / am / are' after a noun or な-adjective. です is polite; だ is the plain form for friends and for writing.",
+    "examples": [
+      { "ja": "{私|わたし}は{学生|がくせい}[[です]]。", "en": "I'm a student." },
+      { "ja": "あの{人|ひと}は{木村|きむら}さんのお{兄|にい}さん[[だ]]よ。", "en": "That's Kimura's older brother." },
+      { "ja": "{明日|あした}は{休|やす}み[[です]]か。", "en": "Is tomorrow a day off?" },
+      { "ja": "それは{私|わたし}の{傘|かさ}[[だ]]よ。", "en": "That's my umbrella." }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:da-desu-1",
+        "ja": "この{本|ほん}はとても{面白|おもしろ}い[[です]]。",
+        "en": "This book is very interesting.",
+        "wrong": ["だ", "ます", "でした"],
+        "explain": "い-adjectives take です to be polite, never だ; the past would be 面白かったです."
+      },
+      {
+        "slug": "gq:n5:da-desu-2",
+        "ja": "この{部屋|へや}はいつも{静|しず}か[[だ]]ね。",
+        "en": "This room is always quiet, isn't it?",
+        "wrong": ["な", "い", "の"],
+        "explain": "In casual speech a な-adjective ends the sentence with だ; な only goes before a noun."
+      }
+    ],
+    "confusables": ["grammar:n5:janai-dewa-nai", "grammar:n5:i-adjectives", "grammar:n5:na-adjectives"]
+  },
+  {
+    "slug": "grammar:n5:dake",
+    "pattern": "Noun / Verb + だけ",
+    "meaning": "'Only, just': limits things to what comes before it and nothing more.",
+    "examples": [
+      { "ja": "{朝|あさ}はコーヒー[[だけ]]{飲|の}みます。", "en": "In the morning I only drink coffee." },
+      { "ja": "{日本語|にほんご}は{少|すこ}し[[だけ]]{分|わ}かります。", "en": "I understand just a little Japanese." },
+      { "ja": "この{店|みせ}は{日曜日|にちようび}[[だけ]]{休|やす}みです。", "en": "This shop is closed only on Sundays." },
+      { "ja": "{昨日|きのう}のパーティーには{一人|ひとり}[[だけ]]{来|き}ました。", "en": "Only one person came to yesterday's party." }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:dake-1",
+        "ja": "{財布|さいふ}に{千円|せんえん}[[だけ]]あります。",
+        "en": "I only have 1,000 yen in my wallet.",
+        "wrong": ["しか", "を", "に"],
+        "explain": "だけ goes with an affirmative verb; しか would need ありません."
+      },
+      {
+        "slug": "gq:n5:dake-2",
+        "ja": "すみません、{見|み}ている[[だけ]]です。",
+        "en": "Sorry, I'm just looking.",
+        "wrong": ["しか", "も", "など"],
+        "explain": "Verb + だけです means 'I'm only doing this'."
+      }
+    ],
+    "confusables": ["grammar:n4:bakari", "grammar:n4:dake-de"]
+  },
+  {
+    "slug": "grammar:n5:darou",
+    "pattern": "〜だろう",
+    "meaning": "Plain form of でしょう: 'probably', or 'right?' when you expect the listener to agree. Used in casual speech and in writing.",
+    "examples": [
+      { "ja": "{明日|あした}は{雨|あめ}[[だろう]]。", "en": "It'll probably rain tomorrow." },
+      { "ja": "{木村|きむら}さんはもう{家|いえ}に{帰|かえ}った[[だろう]]。", "en": "Kimura has probably gone home by now." },
+      { "ja": "あの{店|みせ}は{高|たか}い[[だろう]]。", "en": "That shop is probably expensive." },
+      { "ja": "{一緒|いっしょ}に{行|い}く[[だろう]]？", "en": "You're coming with us, right?" }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:darou-1",
+        "ja": "{明日|あした}はたぶん{晴|は}れ[[だろう]]。",
+        "en": "It'll probably be sunny tomorrow.",
+        "wrong": ["だだろう", "なだろう", "だろうです"],
+        "explain": "だろう attaches straight to a noun, with no だ or な, and is never followed by です."
+      },
+      {
+        "slug": "gq:n5:darou-2",
+        "ja": "{木村|きむら}さんはもう{駅|えき}に{着|つ}い[[ただろう]]。",
+        "en": "Kimura has probably reached the station by now.",
+        "wrong": ["てだろう", "ただだろう", "たでしょうだ"],
+        "explain": "Put だろう after the plain past form: 着いた + だろう."
+      }
+    ],
+    "confusables": ["grammar:n5:deshou", "grammar:n4:kamo-shirenai", "grammar:n4:hazu-da"]
+  },
+  {
+    "slug": "grammar:n5:de",
+    "pattern": "Noun + で",
+    "meaning": "Marks where an action takes place, or the tool, language or transport used to do it.",
+    "examples": [
+      { "ja": "{図書館|としょかん}[[で]]{本|ほん}を{読|よ}みます。", "en": "I read books at the library." },
+      { "ja": "{毎朝|まいあさ}バス[[で]]{会社|かいしゃ}へ{行|い}きます。", "en": "I go to work by bus every morning." },
+      { "ja": "{日本語|にほんご}[[で]]{手紙|てがみ}を{書|か}きました。", "en": "I wrote a letter in Japanese." },
+      { "ja": "{箸|はし}[[で]]ご{飯|はん}を{食|た}べます。", "en": "I eat rice with chopsticks." }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:de-1",
+        "ja": "{食堂|しょくどう}[[で]]{昼|ひる}ご{飯|はん}を{食|た}べました。",
+        "en": "I had lunch in the cafeteria.",
+        "wrong": ["に", "を", "へ"],
+        "explain": "The place where an action happens takes で."
+      },
+      {
+        "slug": "gq:n5:de-2",
+        "ja": "{日本語|にほんご}[[で]]{話|はな}してください。",
+        "en": "Please speak in Japanese.",
+        "wrong": ["に", "が", "へ"],
+        "explain": "The language you speak in takes で."
+      }
+    ],
+    "confusables": ["grammar:n5:ni", "grammar:n5:ni-e"]
+  },
+  {
+    "slug": "grammar:n5:demo",
+    "pattern": "でも、〜",
+    "meaning": "'But' or 'however' at the start of a sentence, setting it against the one before. Common in conversation.",
+    "examples": [
+      { "ja": "{日本語|にほんご}は{難|むずか}しいです。[[でも]]、{面白|おもしろ}いです。", "en": "Japanese is hard. But it's interesting." },
+      { "ja": "{昨日|きのう}は{雨|あめ}でした。[[でも]]、{公園|こうえん}へ{行|い}きました。", "en": "It rained yesterday. But I went to the park anyway." },
+      { "ja": "この{店|みせ}は{安|やす}いです。[[でも]]、あまりおいしくないです。", "en": "This place is cheap. But the food isn't very good." },
+      { "ja": "{行|い}きたいです。[[でも]]、{時間|じかん}がありません。", "en": "I want to go. But I don't have time." }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:demo-1",
+        "ja": "この{靴|くつ}はとても{高|たか}いです。[[でも]]、{買|か}いました。",
+        "en": "These shoes are very expensive. But I bought them.",
+        "wrong": ["から", "ので", "のに"],
+        "explain": "でも can open a sentence; から, ので and のに must attach to the end of a clause."
+      },
+      {
+        "slug": "gq:n5:demo-2",
+        "ja": "{兄|あに}は{背|せ}が{高|たか}いです。[[でも]]、{弟|おとうと}は{低|ひく}いです。",
+        "en": "My older brother is tall. But my younger brother is short.",
+        "wrong": ["ても", "から", "のに"],
+        "explain": "Only でも can start a new sentence to show contrast."
+      }
+    ],
+    "confusables": ["grammar:n5:kedo", "grammar:n5:shikashi", "grammar:n4:demo"]
+  },
+  {
+    "slug": "grammar:n5:deshou",
+    "pattern": "〜でしょう",
+    "meaning": "'Probably' when making a polite guess; with a rising tone, 'right?' to check that the listener agrees.",
+    "examples": [
+      { "ja": "{明日|あした}は{晴|は}れる[[でしょう]]。", "en": "It will probably be sunny tomorrow." },
+      { "ja": "{木村|きむら}さんは{来|こ}ない[[でしょう]]。", "en": "Kimura probably won't come." },
+      { "ja": "あのレストランは{高|たか}い[[でしょう]]ね。", "en": "That restaurant must be expensive." },
+      { "ja": "この{本|ほん}、{面白|おもしろ}かった[[でしょう]]？", "en": "This book was good, wasn't it?" }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:deshou-1",
+        "ja": "{今晩|こんばん}は{雪|ゆき}が{降|ふ}る[[でしょう]]。",
+        "en": "It will probably snow tonight.",
+        "wrong": ["ましょう", "ですでしょう", "だでしょう"],
+        "explain": "でしょう follows the plain form directly; ましょう means 'let's' and goes on a verb stem."
+      },
+      {
+        "slug": "gq:n5:deshou-2",
+        "ja": "あの{人|ひと}はたぶん{学生|がくせい}[[でしょう]]。",
+        "en": "That person is probably a student.",
+        "wrong": ["だでしょう", "なでしょう", "ましょう"],
+        "explain": "でしょう attaches straight to a noun, with no だ or な."
+      }
+    ],
+    "confusables": ["grammar:n5:darou", "grammar:n5:mashou", "grammar:n4:kamo-shirenai"]
+  },
+  {
+    "slug": "grammar:n5:donna",
+    "pattern": "どんな + Noun",
+    "meaning": "'What kind of…?': asks what something or someone is like. It always comes directly before a noun.",
+    "examples": [
+      { "ja": "[[どんな]]{音楽|おんがく}が{好|す}きですか。", "en": "What kind of music do you like?" },
+      { "ja": "{新|あたら}しいアパートは[[どんな]]{所|ところ}ですか。", "en": "What's your new apartment like?" },
+      { "ja": "[[どんな]]スポーツをしますか。", "en": "What sports do you play?" },
+      { "ja": "あなたの{町|まち}は[[どんな]]{町|まち}ですか。", "en": "What's your town like?" }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:donna-1",
+        "ja": "[[どんな]]{食|た}べ{物|もの}が{好|す}きですか。",
+        "en": "What kind of food do you like?",
+        "wrong": ["どう", "どれ", "どこ"],
+        "explain": "どんな comes right before a noun to ask 'what kind of'."
+      },
+      {
+        "slug": "gq:n5:donna-2",
+        "ja": "{木村|きむら}さんのお{姉|ねえ}さんは[[どんな]]{人|ひと}ですか。",
+        "en": "What is Kimura's older sister like?",
+        "wrong": ["どう", "どれ", "どちら"],
+        "explain": "To ask what a person is like, use どんな + 人."
+      }
+    ],
+    "confusables": []
+  },
+  {
+    "slug": "grammar:n5:doushite",
+    "pattern": "どうして〜か",
+    "meaning": "'Why?': asks for a reason. The reply usually ends in 〜から or 〜からです.",
+    "examples": [
+      { "ja": "[[どうして]]{昨日|きのう}{学校|がっこう}を{休|やす}んだんですか。", "en": "Why were you off school yesterday?" },
+      { "ja": "[[どうして]]{日本語|にほんご}を{勉強|べんきょう}しているんですか。", "en": "Why are you studying Japanese?" },
+      { "ja": "[[どうして]]{何|なに}も{食|た}べないんですか。", "en": "Why aren't you eating anything?" },
+      { "ja": "「[[どうして]]{傘|かさ}を{持|も}っているんですか。」「{午後|ごご}、{雨|あめ}が{降|ふ}るからです。」", "en": "\"Why have you got an umbrella?\" \"Because it's going to rain this afternoon.\"" }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:doushite-1",
+        "ja": "「[[どうして]]{窓|まど}を{開|あ}けたんですか。」「{暑|あつ}かったからです。」",
+        "en": "\"Why did you open the window?\" \"Because it was hot.\"",
+        "wrong": ["どれ", "どこ", "だれ"],
+        "explain": "The reply gives a reason (〜からです), so the question asks 'why'."
+      },
+      {
+        "slug": "gq:n5:doushite-2",
+        "ja": "「[[どうして]]{何|なに}も{言|い}わなかったんですか。」「よく{分|わ}からなかったからです。」",
+        "en": "\"Why didn't you say anything?\" \"Because I didn't really understand.\"",
+        "wrong": ["どんな", "どれ", "どちら"],
+        "explain": "The reply gives a reason, so the question needs どうして."
+      }
+    ],
+    "confusables": ["grammar:n5:douyatte", "grammar:n5:kara"]
+  },
+  {
+    "slug": "grammar:n5:douyatte",
+    "pattern": "どうやって + Verb",
+    "meaning": "'How?', 'by what means?': asks about the method or route for doing something.",
+    "examples": [
+      { "ja": "{駅|えき}まで[[どうやって]]{行|い}きますか。", "en": "How do I get to the station?" },
+      { "ja": "この{漢字|かんじ}は[[どうやって]]{読|よ}みますか。", "en": "How do you read this kanji?" },
+      { "ja": "[[どうやって]]{日本語|にほんご}を{勉強|べんきょう}しましたか。", "en": "How did you study Japanese?" },
+      { "ja": "このカメラは[[どうやって]]{使|つか}うんですか。", "en": "How do you use this camera?" }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:douyatte-1",
+        "ja": "「{会社|かいしゃ}まで[[どうやって]]{来|き}ますか。」「{自転車|じてんしゃ}で{来|き}ます。」",
+        "en": "\"How do you get to work?\" \"I come by bike.\"",
+        "wrong": ["どんな", "どれ", "どこ"],
+        "explain": "The reply gives a means (自転車で), so the question asks 'how'."
+      },
+      {
+        "slug": "gq:n5:douyatte-2",
+        "ja": "この{料理|りょうり}は[[どうやって]]{作|つく}りますか。",
+        "en": "How do you make this dish?",
+        "wrong": ["どんな", "どちら", "どこ"],
+        "explain": "どうやって asks the method and goes before a verb; どんな needs a noun after it."
+      }
+    ],
+    "confusables": ["grammar:n5:doushite", "grammar:n5:kata"]
+  },
+  {
+    "slug": "grammar:n5:ga",
+    "pattern": "Noun + が",
+    "meaning": "Marks the subject, especially new information or the answer to 'who?' or 'what?'. Also marks the object of words like 好き, 上手 and 分かる.",
+    "examples": [
+      { "ja": "{私|わたし}は{猫|ねこ}[[が]]{好|す}きです。", "en": "I like cats." },
+      { "ja": "あ、{雨|あめ}[[が]]{降|ふ}っていますね。", "en": "Oh, it's raining." },
+      { "ja": "マリアさんは{英語|えいご}[[が]]{分|わ}かります。", "en": "Maria understands English." },
+      { "ja": "「{誰|だれ}が{作|つく}りましたか。」「{母|はは}[[が]]{作|つく}りました。」", "en": "\"Who made it?\" \"My mother made it.\"" }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:ga-1",
+        "ja": "{誰|だれ}[[が]]この{手紙|てがみ}を{書|か}きましたか。",
+        "en": "Who wrote this letter?",
+        "wrong": ["は", "を", "も"],
+        "explain": "Question words like 誰 take が as the subject, never は."
+      },
+      {
+        "slug": "gq:n5:ga-2",
+        "ja": "{木村|きむら}さんはテニス[[が]]{上手|じょうず}です。",
+        "en": "Kimura is good at tennis.",
+        "wrong": ["を", "に", "で"],
+        "explain": "上手 marks the skill with が."
+      }
+    ],
+    "confusables": ["grammar:n5:wa-topic-marker", "grammar:n4:wa-ga-wa"]
+  },
+  {
+    "slug": "grammar:n5:ga-arimasu",
+    "pattern": "Noun + が + あります",
+    "meaning": "'There is' or 'I have' for things and events. People and animals take います instead.",
+    "examples": [
+      { "ja": "{机|つくえ}の{上|うえ}に{本|ほん}が[[あります]]。", "en": "There's a book on the desk." },
+      { "ja": "{明日|あした}、テストが[[あります]]。", "en": "I have a test tomorrow." },
+      { "ja": "この{近|ちか}くに{銀行|ぎんこう}が[[あります]]か。", "en": "Is there a bank near here?" },
+      { "ja": "{今日|きょう}は{時間|じかん}が[[ありません]]。", "en": "I don't have time today." }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:ga-arimasu-1",
+        "ja": "{部屋|へや}にテレビが[[あります]]。",
+        "en": "There's a TV in the room.",
+        "wrong": ["います", "です", "あるます"],
+        "explain": "A TV is a thing, so it takes あります."
+      },
+      {
+        "slug": "gq:n5:ga-arimasu-2",
+        "ja": "{財布|さいふ}にお{金|かね}が[[ありません]]。",
+        "en": "There's no money in my wallet.",
+        "wrong": ["いません", "あるません", "ありないです"],
+        "explain": "Money is a thing; the negative of あります is ありません."
+      }
+    ],
+    "confusables": ["grammar:n5:ga-imasu"]
+  },
+  {
+    "slug": "grammar:n5:ga-hoshii",
+    "pattern": "Noun + が + ほしい",
+    "meaning": "'I want (something)': for objects you'd like to have. ほしい conjugates like an い-adjective; for actions use 〜たい.",
+    "examples": [
+      { "ja": "{新|あたら}しいパソコンが[[ほしい]]です。", "en": "I want a new computer." },
+      { "ja": "{誕生日|たんじょうび}に{何|なに}が[[ほしい]]ですか。", "en": "What do you want for your birthday?" },
+      { "ja": "{前|まえ}は{大|おお}きい{車|くるま}が[[ほしかった]]です。", "en": "I used to want a big car." },
+      { "ja": "{今|いま}は{何|なに}も[[ほしくない]]です。", "en": "I don't want anything right now." }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:ga-hoshii-1",
+        "ja": "{子供|こども}の{時|とき}、{自転車|じてんしゃ}が[[ほしかったです]]。",
+        "en": "When I was a child, I wanted a bike.",
+        "wrong": ["ほしいでした", "ほしかったでした", "ほしくでした"],
+        "explain": "ほしい is an い-adjective, so its past is ほしかったです."
+      },
+      {
+        "slug": "gq:n5:ga-hoshii-2",
+        "ja": "もっと{広|ひろ}い{部屋|へや}が[[ほしいです]]。",
+        "en": "I want a bigger room.",
+        "wrong": ["たいです", "ほしいます", "ほしいだ"],
+        "explain": "For things you want, use ほしい; たい attaches to verbs."
+      }
+    ],
+    "confusables": ["grammar:n5:tai", "grammar:n4:te-hoshii"]
+  },
+  {
+    "slug": "grammar:n5:ga-imasu",
+    "pattern": "Noun + が + います",
+    "meaning": "'There is' or 'I have' for people and animals. Things take あります.",
+    "examples": [
+      { "ja": "{公園|こうえん}に{子供|こども}が[[います]]。", "en": "There are children in the park." },
+      { "ja": "{私|わたし}は{兄|あに}が{二人|ふたり}[[います]]。", "en": "I have two older brothers." },
+      { "ja": "{木|き}の{上|うえ}に{鳥|とり}が[[います]]。", "en": "There's a bird up in the tree." },
+      { "ja": "{教室|きょうしつ}に{先生|せんせい}が[[いません]]。", "en": "The teacher isn't in the classroom." }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:ga-imasu-1",
+        "ja": "{庭|にわ}に{猫|ねこ}が[[います]]。",
+        "en": "There's a cat in the garden.",
+        "wrong": ["あります", "です", "いるます"],
+        "explain": "A cat is alive, so it takes います."
+      },
+      {
+        "slug": "gq:n5:ga-imasu-2",
+        "ja": "{日曜日|にちようび}は{会社|かいしゃ}に{誰|だれ}も[[いません]]。",
+        "en": "There's nobody at the office on Sundays.",
+        "wrong": ["ありません", "います", "ないです"],
+        "explain": "誰も needs a negative, and people take いる: いません."
+      }
+    ],
+    "confusables": ["grammar:n5:ga-arimasu"]
+  },
+  {
+    "slug": "grammar:n5:hou-ga-ii",
+    "pattern": "〜たほうがいい / 〜ないほうがいい",
+    "meaning": "'You'd better' or 'it's best to': gives advice. Use the past form (〜た) to advise doing something and 〜ない to advise against it.",
+    "examples": [
+      { "ja": "{雨|あめ}が{降|ふ}っていますから、タクシーで{行|い}った[[ほうがいい]]ですよ。", "en": "It's raining, so you'd better take a taxi." },
+      { "ja": "{夜|よる}はあまり{食|た}べない[[ほうがいい]]です。", "en": "It's better not to eat much at night." },
+      { "ja": "{今日|きょう}は{寒|さむ}いですから、コートを{着|き}た[[ほうがいい]]ですよ。", "en": "It's cold today, so you'd better wear a coat." },
+      { "ja": "{疲|つか}れている{時|とき}は、{早|はや}く{寝|ね}た[[ほうがいい]]です。", "en": "When you're tired, it's best to go to bed early." }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:hou-ga-ii-1",
+        "ja": "{風邪|かぜ}ですか。{薬|くすり}を[[{飲|の}んだ]]ほうがいいですよ。",
+        "en": "Have you got a cold? You'd better take some medicine.",
+        "wrong": ["{飲|の}んで", "{飲|の}み", "{飲|の}んた"],
+        "explain": "To advise doing something, use the past た-form + ほうがいい."
+      },
+      {
+        "slug": "gq:n5:hou-ga-ii-2",
+        "ja": "{危|あぶ}ないですから、この{川|かわ}で[[{泳|およ}がない]]ほうがいいです。",
+        "en": "It's dangerous, so you'd better not swim in this river.",
+        "wrong": ["{泳|およ}ぎない", "{泳|およ}かない", "{泳|およ}がなくて"],
+        "explain": "To advise against something, use the ない-form: 泳ぐ becomes 泳がない."
+      }
+    ],
+    "confusables": ["grammar:n5:yori-hou-ga", "grammar:n4:tara-dou"]
+  },
+  {
+    "slug": "grammar:n5:i-adjectives",
+    "pattern": "〜い / 〜くない / 〜かった / 〜くなかった",
+    "meaning": "Adjectives ending in い change that ending for negative and past: 高い, 高くない, 高かった, 高くなかった. いい works from よい: よくない, よかった.",
+    "examples": [
+      { "ja": "{今日|きょう}はとても[[{暑|あつ}い]]です。", "en": "It's very hot today." },
+      { "ja": "この{部屋|へや}はあまり[[{広|ひろ}くない]]です。", "en": "This room isn't very big." },
+      { "ja": "{昨日|きのう}のテストは[[{難|むずか}しかった]]です。", "en": "Yesterday's test was difficult." },
+      { "ja": "{旅行|りょこう}はとても[[よかった]]です。", "en": "The trip was really good." }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:i-adjectives-1",
+        "ja": "{昨日|きのう}はとても[[{寒|さむ}かったです]]。",
+        "en": "It was very cold yesterday.",
+        "wrong": ["{寒|さむ}いでした", "{寒|さむ}かったでした", "{寒|さむ}くでした"],
+        "explain": "The past of 寒い is 寒かった; い-adjectives never take でした."
+      },
+      {
+        "slug": "gq:n5:i-adjectives-2",
+        "ja": "この{映画|えいが}はあまり[[よくなかったです]]。",
+        "en": "This film wasn't very good.",
+        "wrong": ["いくなかったです", "よくないでした", "いいじゃなかったです"],
+        "explain": "いい conjugates from よい: よくない, よかった, よくなかった."
+      }
+    ],
+    "confusables": ["grammar:n5:na-adjectives"]
+  },
+  {
+    "slug": "grammar:n5:ichiban",
+    "pattern": "一番 + Adjective",
+    "meaning": "'Most', 'number one': marks the top of a group, often with 〜の中で or 〜で.",
+    "examples": [
+      { "ja": "{家族|かぞく}の{中|なか}で{父|ちち}が[[{一番|いちばん}]]{背|せ}が{高|たか}いです。", "en": "My father is the tallest in my family." },
+      { "ja": "スポーツの{中|なか}でサッカーが[[{一番|いちばん}]]{好|す}きです。", "en": "Of all sports, I like football the most." },
+      { "ja": "{一年|いちねん}で{八月|はちがつ}が[[{一番|いちばん}]]{暑|あつ}いです。", "en": "August is the hottest month of the year." },
+      { "ja": "この{店|みせ}で[[{一番|いちばん}]]{安|やす}いのはどれですか。", "en": "Which is the cheapest one in this shop?" }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:ichiban-1",
+        "ja": "クラスで{木村|きむら}さんが[[{一番|いちばん}]]{若|わか}いです。",
+        "en": "Kimura is the youngest in the class.",
+        "wrong": ["ほう", "{一回|いっかい}", "{一度|いちど}"],
+        "explain": "Within a group, the top one is marked with 一番."
+      },
+      {
+        "slug": "gq:n5:ichiban-2",
+        "ja": "{日本|にほん}の{料理|りょうり}で{何|なに}が[[{一番|いちばん}]]{好|す}きですか。",
+        "en": "What's your favourite Japanese dish?",
+        "wrong": ["{一|ひと}つ", "{一日|いちにち}", "ほう"],
+        "explain": "一番 + 好き asks which one you like the most."
+      }
+    ],
+    "confusables": ["grammar:n5:no-naka-de-a-ga-ichiban", "grammar:n5:yori-hou-ga"]
+  },
+  {
+    "slug": "grammar:n5:issho-ni",
+    "pattern": "Person + と + 一緒に + Verb",
+    "meaning": "'Together (with)': doing something along with someone, who is marked with と.",
+    "examples": [
+      { "ja": "{友達|ともだち}と[[{一緒|いっしょ}に]]{映画|えいが}を{見|み}ました。", "en": "I watched a film with a friend." },
+      { "ja": "{明日|あした}、[[{一緒|いっしょ}に]]{昼|ひる}ご{飯|はん}を{食|た}べませんか。", "en": "Shall we have lunch together tomorrow?" },
+      { "ja": "{毎晩|まいばん}、{家族|かぞく}と[[{一緒|いっしょ}に]]テレビを{見|み}ます。", "en": "Every evening I watch TV with my family." },
+      { "ja": "{犬|いぬ}と[[{一緒|いっしょ}に]]{公園|こうえん}を{歩|ある}きます。", "en": "I walk in the park with my dog." }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:issho-ni-1",
+        "ja": "{母|はは}[[と]]{一緒|いっしょ}に{買|か}い{物|もの}に{行|い}きました。",
+        "en": "I went shopping with my mother.",
+        "wrong": ["を", "で", "に"],
+        "explain": "The person you do something with is marked with と."
+      },
+      {
+        "slug": "gq:n5:issho-ni-2",
+        "ja": "{日曜日|にちようび}、{友達|ともだち}と[[{一緒|いっしょ}に]]テニスをしました。",
+        "en": "On Sunday I played tennis with a friend.",
+        "wrong": ["{一緒|いっしょ}", "{一緒|いっしょ}を", "{一緒|いっしょ}が"],
+        "explain": "一緒 needs に to work with a verb: 一緒に."
+      }
+    ],
+    "confusables": ["grammar:n5:to"]
+  },
+  {
+    "slug": "grammar:n5:itsumo",
+    "pattern": "いつも + Verb",
+    "meaning": "'Always' or 'usually': something that happens every time or as a regular habit.",
+    "examples": [
+      { "ja": "{朝|あさ}は[[いつも]]パンを{食|た}べます。", "en": "I always have bread in the morning." },
+      { "ja": "{木村|きむら}さんは[[いつも]]{元気|げんき}ですね。", "en": "Kimura is always so cheerful." },
+      { "ja": "{私|わたし}は[[いつも]]11{時|じ}に{寝|ね}ます。", "en": "I always go to bed at eleven." },
+      { "ja": "[[いつも]]{駅|えき}まで{歩|ある}いて{行|い}きます。", "en": "I always walk to the station." }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:itsumo-1",
+        "ja": "{父|ちち}は[[いつも]]{朝|あさ}6{時|じ}に{起|お}きます。",
+        "en": "My father always gets up at six in the morning.",
+        "wrong": ["あまり", "いつ", "ぜんぜん"],
+        "explain": "あまり and ぜんぜん need a negative; いつも fits a regular habit."
+      },
+      {
+        "slug": "gq:n5:itsumo-2",
+        "ja": "[[いつも]]{何時|なんじ}に{寝|ね}ますか。",
+        "en": "What time do you usually go to bed?",
+        "wrong": ["いつか", "あまり", "ぜんぜん"],
+        "explain": "いつも in a question asks about your usual habit."
+      }
+    ],
+    "confusables": []
+  },
+  {
+    "slug": "grammar:n5:janai-dewa-nai",
+    "pattern": "Noun / な-adj + じゃない / ではない",
+    "meaning": "'Is not': the negative of だ / です after a noun or な-adjective. じゃない is spoken and ではない more formal; the polite forms end in ありません.",
+    "examples": [
+      { "ja": "これは{私|わたし}のかばん[[じゃない]]よ。", "en": "This isn't my bag." },
+      { "ja": "{父|ちち}は{医者|いしゃ}[[ではありません]]。", "en": "My father isn't a doctor." },
+      { "ja": "この{辺|へん}はあまり{静|しず}か[[じゃない]]です。", "en": "This area isn't very quiet." },
+      { "ja": "それは{本当|ほんとう}[[ではない]]。", "en": "That is not true." }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:janai-dewa-nai-1",
+        "ja": "{木村|きむら}さんは{日本人|にほんじん}[[じゃありません]]。",
+        "en": "Kimura isn't Japanese.",
+        "wrong": ["くありません", "じゃないません", "がありません"],
+        "explain": "Nouns are negated with じゃありません, never with く."
+      },
+      {
+        "slug": "gq:n5:janai-dewa-nai-2",
+        "ja": "この{町|まち}は{有名|ゆうめい}[[じゃない]]です。",
+        "en": "This town isn't famous.",
+        "wrong": ["くない", "ない", "なない"],
+        "explain": "な-adjectives take じゃない; くない is only for い-adjectives."
+      }
+    ],
+    "confusables": ["grammar:n5:da-desu", "grammar:n4:janai-ka"]
+  },
+  {
+    "slug": "grammar:n5:ka",
+    "pattern": "〜か",
+    "meaning": "At the end of a sentence it makes a question. Between two nouns it means 'or', and after a question word it means 'some-' (誰か, 何か).",
+    "examples": [
+      { "ja": "これは{何|なん}です[[か]]。", "en": "What is this?" },
+      { "ja": "{明日|あした}、{学校|がっこう}に{来|き}ます[[か]]。", "en": "Are you coming to school tomorrow?" },
+      { "ja": "コーヒー[[か]]{紅茶|こうちゃ}をください。", "en": "Coffee or tea, please." },
+      { "ja": "{誰|だれ}[[か]]{来|き}ましたよ。", "en": "Someone's here." }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:ka-1",
+        "ja": "あの{人|ひと}は{誰|だれ}です[[か]]。",
+        "en": "Who is that person?",
+        "wrong": ["よ", "を", "が"],
+        "explain": "か at the end turns the sentence into a question."
+      },
+      {
+        "slug": "gq:n5:ka-2",
+        "ja": "{冷蔵庫|れいぞうこ}に{何|なに}[[か]]ありますか。",
+        "en": "Is there anything in the fridge?",
+        "wrong": ["も", "を", "に"],
+        "explain": "何か means 'something'; 何も would need a negative."
+      }
+    ],
+    "confusables": ["grammar:n5:ka-ka", "grammar:n4:ka-dou-ka"]
+  },
+  {
+    "slug": "grammar:n5:ka-ka",
+    "pattern": "A か B か",
+    "meaning": "'A or B': lists choices for the listener to pick from. With a verb and its negative it means 'whether or not'.",
+    "examples": [
+      { "ja": "{肉|にく}か{魚|さかな}[[か]]、どちらがいいですか。", "en": "Meat or fish, which would you like?" },
+      { "ja": "{行|い}く[[か]]{行|い}かないか、まだ{分|わ}かりません。", "en": "I don't know yet whether I'll go or not." },
+      { "ja": "{土曜日|どようび}[[か]]{日曜日|にちようび}か、どちらが{暇|ひま}ですか。", "en": "Which day are you free, Saturday or Sunday?" }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:ka-ka-1",
+        "ja": "{電車|でんしゃ}[[か]]バスか、どちらで{行|い}きますか。",
+        "en": "Train or bus, which will you take?",
+        "wrong": ["も", "を", "や"],
+        "explain": "AかBか lists the choices; the first か follows A."
+      },
+      {
+        "slug": "gq:n5:ka-ka-2",
+        "ja": "{明日|あした}{来|く}る[[か]]{来|こ}ないか、{電話|でんわ}で{教|おし}えてください。",
+        "en": "Please call and tell me whether you're coming tomorrow or not.",
+        "wrong": ["と", "が", "を"],
+        "explain": "Verb + か + its negative + か means 'whether or not'."
+      }
+    ],
+    "confusables": ["grammar:n5:ka", "grammar:n5:ya", "grammar:n4:ka-dou-ka"]
+  },
+  {
+    "slug": "grammar:n5:kara",
+    "pattern": "〜から",
+    "meaning": "After a reason: 'because, so'. After a noun, place or time: 'from', the starting point.",
+    "examples": [
+      { "ja": "{雨|あめ}が{降|ふ}っています[[から]]、{傘|かさ}を{持|も}って{行|い}きます。", "en": "It's raining, so I'll take an umbrella." },
+      { "ja": "{暑|あつ}い[[から]]、{窓|まど}を{開|あ}けましょう。", "en": "It's hot, so let's open the window." },
+      { "ja": "{夏休|なつやす}みは{来週|らいしゅう}[[から]]です。", "en": "The summer holidays start next week." },
+      { "ja": "{家|いえ}[[から]]{駅|えき}まで{歩|ある}いて10{分|ぷん}です。", "en": "It's a ten-minute walk from my house to the station." }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:kara-1",
+        "ja": "{仕事|しごと}は{朝|あさ}9{時|じ}[[から]]{夕方|ゆうがた}5{時|じ}までです。",
+        "en": "Work is from 9 in the morning until 5 in the evening.",
+        "wrong": ["まで", "に", "で"],
+        "explain": "から marks the starting time; まで marks the end."
+      },
+      {
+        "slug": "gq:n5:kara-2",
+        "ja": "{疲|つか}れた[[から]]、{少|すこ}し{休|やす}みましょう。",
+        "en": "I'm tired, so let's take a short break.",
+        "wrong": ["でも", "ても", "まで"],
+        "explain": "から after a clause gives the reason."
+      }
+    ],
+    "confusables": ["grammar:n5:node", "grammar:n5:made", "grammar:n4:noni"]
+  },
+  {
+    "slug": "grammar:n5:kata",
+    "pattern": "Verb-stem + 方",
+    "meaning": "Verb stem + 方 means 'how to do' or 'the way of doing' it: 読み方, 使い方.",
+    "examples": [
+      { "ja": "この{漢字|かんじ}の{読|よ}み[[{方|かた}]]を{教|おし}えてください。", "en": "Please tell me how to read this kanji." },
+      { "ja": "{駅|えき}への{行|い}き[[{方|かた}]]が{分|わ}かりません。", "en": "I don't know how to get to the station." },
+      { "ja": "{母|はは}にカレーの{作|つく}り[[{方|かた}]]を{習|なら}いました。", "en": "My mother taught me how to make curry." },
+      { "ja": "このカメラの{使|つか}い[[{方|かた}]]は{難|むずか}しいです。", "en": "This camera is hard to use." }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:kata-1",
+        "ja": "{日本|にほん}の{手紙|てがみ}の[[{書|か}き{方|かた}]]を{習|なら}いたいです。",
+        "en": "I want to learn how to write a Japanese letter.",
+        "wrong": ["{書|か}いて{方|かた}", "{書|か}か{方|かた}", "{書|か}け{方|かた}"],
+        "explain": "方 attaches to the ます-stem: 書きます becomes 書き方."
+      },
+      {
+        "slug": "gq:n5:kata-2",
+        "ja": "この{果物|くだもの}の[[{食|た}べ{方|かた}]]を{知|し}っていますか。",
+        "en": "Do you know how to eat this fruit?",
+        "wrong": ["{食|た}べて{方|かた}", "{食|た}べり{方|かた}", "{食|た}べるの{方|かた}"],
+        "explain": "For ichidan verbs, drop る and add 方: 食べ方."
+      }
+    ],
+    "confusables": ["grammar:n5:douyatte", "grammar:n5:hou-ga-ii"]
+  },
+  {
+    "slug": "grammar:n5:kedo",
+    "pattern": "〜けど",
+    "meaning": "'But', 'though': joins two contrasting clauses. Casual and very common; it also softens a request or introduces a topic.",
+    "examples": [
+      { "ja": "この{店|みせ}は{高|たか}い[[けど]]、おいしいです。", "en": "This place is expensive, but the food is good." },
+      { "ja": "{日本語|にほんご}を{勉強|べんきょう}しています[[けど]]、まだ{下手|へた}です。", "en": "I'm studying Japanese, but I'm still not good at it." },
+      { "ja": "{明日|あした}{映画|えいが}に{行|い}きます[[けど]]、{一緒|いっしょ}に{行|い}きませんか。", "en": "I'm going to a film tomorrow. Would you like to come?" },
+      { "ja": "{昨日|きのう}は{寒|さむ}かった[[けど]]、{今日|きょう}は{暖|あたた}かいね。", "en": "It was cold yesterday, but today's warm, isn't it?" }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:kedo-1",
+        "ja": "{部屋|へや}は{狭|せま}い[[けど]]、{駅|えき}から{近|ちか}いです。",
+        "en": "The room is small, but it's close to the station.",
+        "wrong": ["でも", "ても", "だけど"],
+        "explain": "けど attaches straight to the plain form; い-adjectives never take だ."
+      },
+      {
+        "slug": "gq:n5:kedo-2",
+        "ja": "{今日|きょう}は{日曜日|にちようび}だ[[けど]]、{仕事|しごと}に{行|い}きます。",
+        "en": "It's Sunday today, but I'm going to work.",
+        "wrong": ["でも", "ても", "ので"],
+        "explain": "After a noun, けど follows だ: 日曜日だけど."
+      }
+    ],
+    "confusables": ["grammar:n5:keredo-mo", "grammar:n5:demo", "grammar:n4:noni"]
+  },
+  {
+    "slug": "grammar:n5:keredo-mo",
+    "pattern": "〜けれども / 〜けれど",
+    "meaning": "'But', 'although': the fuller, more polite form of けど, used in careful speech and writing. けれど sits in between.",
+    "examples": [
+      { "ja": "{日本|にほん}の{夏|なつ}は{暑|あつ}いです[[けれども]]、{好|す}きです。", "en": "Japanese summers are hot, but I like them." },
+      { "ja": "{何回|なんかい}も{読|よ}みました[[けれども]]、よく{分|わ}かりませんでした。", "en": "I read it many times, but I didn't really understand it." },
+      { "ja": "すみません[[けれども]]、{少|すこ}し{待|ま}ってください。", "en": "I'm sorry, but please wait a moment." },
+      { "ja": "{兄|あに}は{料理|りょうり}が{上手|じょうず}です[[けれど]]、{私|わたし}は{下手|へた}です。", "en": "My brother is good at cooking, but I'm bad at it." }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:keredo-mo-1",
+        "ja": "{薬|くすり}を{飲|の}みました[[けれども]]、まだ{頭|あたま}が{痛|いた}いです。",
+        "en": "I took some medicine, but I still have a headache.",
+        "wrong": ["でも", "ても", "だけれども"],
+        "explain": "けれども follows the ます-form directly to show contrast."
+      },
+      {
+        "slug": "gq:n5:keredo-mo-2",
+        "ja": "{木村|きむら}さんは{学生|がくせい}です[[けれども]]、{毎日|まいにち}{仕事|しごと}をしています。",
+        "en": "Kimura is a student, but he works every day.",
+        "wrong": ["でも", "ても", "たら"],
+        "explain": "けれども can follow です to join two contrasting clauses."
+      }
+    ],
+    "confusables": ["grammar:n5:kedo", "grammar:n5:shikashi"]
+  },
+  {
+    "slug": "grammar:n5:mada",
+    "pattern": "まだ〜 / まだ〜ない",
+    "meaning": "With an affirmative verb, 'still'; with a negative, or as まだです, 'not yet'.",
+    "examples": [
+      { "ja": "{外|そと}は[[まだ]]{明|あか}るいです。", "en": "It's still light outside." },
+      { "ja": "{子供|こども}たちは[[まだ]]{寝|ね}ています。", "en": "The children are still asleep." },
+      { "ja": "{兄|あに}は[[まだ]]{学生|がくせい}です。", "en": "My older brother is still a student." },
+      { "ja": "コーヒーが[[まだ]]{少|すこ}しあります。", "en": "There's still a little coffee left." }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:mada-1",
+        "ja": "{雨|あめ}が[[まだ]]{降|ふ}っています。",
+        "en": "It's still raining.",
+        "wrong": ["まで", "あまり", "ぜんぜん"],
+        "explain": "With an affirmative verb, まだ means 'still'."
+      },
+      {
+        "slug": "gq:n5:mada-2",
+        "ja": "「{宿題|しゅくだい}はもう{終|お}わりましたか。」「いいえ、[[まだ]]です。」",
+        "en": "\"Have you finished your homework?\" \"No, not yet.\"",
+        "wrong": ["もう", "まで", "いつ"],
+        "explain": "いいえ、まだです is the short answer for 'not yet'."
+      }
+    ],
+    "confusables": ["grammar:n5:mou", "grammar:n5:mada-te-imasen"]
+  },
+  {
+    "slug": "grammar:n5:mada-te-imasen",
+    "pattern": "まだ + Verb-て + いません",
+    "meaning": "'Haven't done it yet': for something that hasn't happened so far but still might. The usual answer to もう〜ましたか.",
+    "examples": [
+      { "ja": "{宿題|しゅくだい}はまだし[[ていません]]。", "en": "I haven't done my homework yet." },
+      { "ja": "{木村|きむら}さんはまだ{来|き}[[ていません]]。", "en": "Kimura hasn't arrived yet." },
+      { "ja": "その{映画|えいが}はまだ{見|み}[[ていません]]。", "en": "I haven't seen that film yet." },
+      { "ja": "{手紙|てがみ}はまだ{書|か}い[[ていません]]。", "en": "I haven't written the letter yet." }
+    ],
+    "questions": [
+      {
+        "slug": "gq:n5:mada-te-imasen-1",
+        "ja": "「もう{昼|ひる}ご{飯|はん}を{食|た}べましたか。」「いいえ、まだ{食|た}べ[[ていません]]。」",
+        "en": "\"Have you had lunch yet?\" \"No, not yet.\"",
+        "wrong": ["ませんでした", "てありません", "てしません"],
+        "explain": "'Not yet' uses まだ + 〜ていません, not the past negative."
+      },
+      {
+        "slug": "gq:n5:mada-te-imasen-2",
+        "ja": "{新|あたら}しい{漢字|かんじ}はまだ{覚|おぼ}え[[ていません]]。",
+        "en": "I haven't learned the new kanji yet.",
+        "wrong": ["ませんでした", "ないでした", "ていないません"],
+        "explain": "まだ + 〜ていません: 覚える becomes 覚えていません."
+      }
+    ],
+    "confusables": ["grammar:n5:mada", "grammar:n5:mou", "grammar:n5:te-iru"]
+  }
+]

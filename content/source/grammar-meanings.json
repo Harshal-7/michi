@@ -1,0 +1,1572 @@
+[
+  {
+    "slug": "grammar:n4:aida",
+    "pattern": "〜間 / 〜あいだ",
+    "meaning": "'While / during': the main action goes on for the whole stretch of time. Attaches to Verb-ている, an adjective, or noun + の."
+  },
+  {
+    "slug": "grammar:n4:aida-ni",
+    "pattern": "〜間に / 〜あいだに",
+    "meaning": "'While / during', but the main action happens at one point inside that stretch instead of filling all of it (which is plain 間). Same attachments as 間."
+  },
+  {
+    "slug": "grammar:n4:amari-nai",
+    "pattern": "あまり〜ない",
+    "meaning": "With a negative verb or adjective: 'not very / not much'. A soft, partial negative, not a total denial."
+  },
+  {
+    "slug": "grammar:n4:ato-de",
+    "pattern": "〜あとで / 〜後で",
+    "meaning": "'After': Verb-た form or noun + の + あとで. The main action follows once the first one is over."
+  },
+  {
+    "slug": "grammar:n4:ba",
+    "pattern": "〜ば",
+    "meaning": "Conditional 'if': verbs change the final -u to -eba (行けば), i-adjectives take -ければ. Sets a condition and the result that follows; common for general truths and hypotheticals."
+  },
+  {
+    "slug": "grammar:n4:baai-wa",
+    "pattern": "〜場合は",
+    "meaning": "'In the case of / if it happens that', for situations that may come up, typical of rules and instructions. Plain form, noun + の, or na-adjective + な."
+  },
+  {
+    "slug": "grammar:n4:bakari",
+    "pattern": "〜ばかり",
+    "meaning": "Noun + ばかり: 'nothing but / only that', usually hinting there is too much of one thing (eats only meat, nothing but complaints)."
+  },
+  {
+    "slug": "grammar:n4:dake-de",
+    "pattern": "〜だけで",
+    "meaning": "'Just by / with only': one small thing on its own is enough to bring the result (just thinking about it is fun). Plain verb or noun + だけで."
+  },
+  {
+    "slug": "grammar:n4:dasu",
+    "pattern": "〜出す",
+    "meaning": "Verb stem + 出す: something starts suddenly or bursts out, 'break into / start to' (burst out crying, suddenly started raining)."
+  },
+  {
+    "slug": "grammar:n4:de-gozaimasu",
+    "pattern": "〜でございます",
+    "meaning": "A very polite です, used by staff to customers and in formal announcements. Replaces です after nouns and na-adjectives."
+  },
+  {
+    "slug": "grammar:n4:demo",
+    "pattern": "〜でも",
+    "meaning": "Noun + でも: 'even' (even a child knows that), or a soft 'or something' in offers (coffee or something?). Not ても, which follows a verb's て form, and not the 'but' that opens a sentence."
+  },
+  {
+    "slug": "grammar:n4:dewa-nai-ka",
+    "pattern": "〜ではないか",
+    "meaning": "Formal or written 'isn't it? / surely': presents something as obvious and invites agreement, or a surprised 'why, it's ...!'. The stiff counterpart of じゃないか."
+  },
+  {
+    "slug": "grammar:n4:ga-hitsuyou",
+    "pattern": "〜が必要",
+    "meaning": "Noun + が必要だ: '~ is needed'. Names the thing required; the person or purpose takes に or には."
+  },
+  {
+    "slug": "grammar:n4:ga-suru",
+    "pattern": "〜がする",
+    "meaning": "Noun + がする for something you sense: a smell, sound, taste or feeling is noticed (it smells good, I hear a noise, I have a feeling)."
+  },
+  {
+    "slug": "grammar:n4:gari",
+    "pattern": "〜がり",
+    "meaning": "Adjective stem + がり (often + 屋): a noun for someone who easily feels that way, like 'someone who's always cold' or 'a scaredy-cat'. A light, slightly teasing label."
+  },
+  {
+    "slug": "grammar:n4:garu-gatteiru",
+    "pattern": "〜がる / 〜がっている",
+    "meaning": "Adjective stem (or たい stem) + がる: describes someone else's feelings or wishes from how they act ('acts scared', 'seems to want'). ている form for the current state."
+  },
+  {
+    "slug": "grammar:n4:gozaimasu",
+    "pattern": "〜ございます",
+    "meaning": "A very polite あります, 'there is / we have', used in service and formal speech (the restroom is over there). Different from でございます, which replaces です."
+  },
+  {
+    "slug": "grammar:n4:hajimeru",
+    "pattern": "〜始める",
+    "meaning": "Verb stem + 始める: 'start to / begin doing'. A neutral beginning of an action or change; compare 出す, which is sudden."
+  },
+  {
+    "slug": "grammar:n4:hazu-da",
+    "pattern": "〜はずだ",
+    "meaning": "'Should be / is supposed to': a confident conclusion from facts or reasoning. Plain form, noun + の, or na-adjective + な."
+  },
+  {
+    "slug": "grammar:n4:hazu-ga-nai",
+    "pattern": "〜はずがない",
+    "meaning": "'There's no way that / it can't be': the speaker reasons that something is impossible. The firm opposite of はずだ."
+  },
+  {
+    "slug": "grammar:n4:hitsuyou-ga-aru",
+    "pattern": "〜必要がある",
+    "meaning": "Dictionary form + 必要がある: 'need to / it's necessary to do'. 必要はない means 'there's no need to'. Takes a verb, while が必要 takes a noun."
+  },
+  {
+    "slug": "grammar:n4:ikou-kei-volitional-form",
+    "pattern": "〜おう / 〜よう (意向形)",
+    "meaning": "Volitional form: godan verbs change -u to -ou (行こう), ichidan verbs swap る for よう (食べよう), する becomes しよう. Means 'let's' or 'I'll'; the polite version is ましょう."
+  },
+  {
+    "slug": "grammar:n4:irassharu",
+    "pattern": "いらっしゃる",
+    "meaning": "Honorific verb for いる, 行く and 来る, used for the listener or someone you respect. Polite form is いらっしゃいます."
+  },
+  {
+    "slug": "grammar:n4:itashimasu",
+    "pattern": "いたします",
+    "meaning": "Humble polite form of します, for your own actions toward a customer or superior. Often in お / ご + verb + いたします."
+  },
+  {
+    "slug": "grammar:n4:janai-ka",
+    "pattern": "〜じゃないか",
+    "meaning": "Casual 'isn't it? / come on': insists something is obvious, scolds, or shows surprise ('hey, it's you!'). Sounds blunt and a bit masculine; ではないか is the formal version."
+  },
+  {
+    "slug": "grammar:n4:ka-dou-ka",
+    "pattern": "〜かどうか",
+    "meaning": "'Whether or not', for an embedded yes-no question: plain form + かどうか + know, ask, decide. Nouns and na-adjectives drop だ."
+  },
+  {
+    "slug": "grammar:n4:ka-shira",
+    "pattern": "〜かしら",
+    "meaning": "Sentence-final 'I wonder', soft and traditionally feminine. Does the same job as かな."
+  },
+  {
+    "slug": "grammar:n4:kai",
+    "pattern": "〜かい",
+    "meaning": "Casual ending for yes-no questions, warm or a little old-fashioned, mostly from male or older speakers. Plain form + かい."
+  },
+  {
+    "slug": "grammar:n4:kamo-shirenai",
+    "pattern": "〜かもしれない",
+    "meaning": "'Might / may': possible but not certain. Plain form; nouns and na-adjectives drop だ. Polite: かもしれません."
+  },
+  {
+    "slug": "grammar:n4:kana",
+    "pattern": "〜かな",
+    "meaning": "Sentence-final 'I wonder', thinking aloud or softening a question. Casual and used by everyone, while かしら sounds feminine."
+  },
+  {
+    "slug": "grammar:n4:kara-tsukuru",
+    "pattern": "〜から作る",
+    "meaning": "'Made from': the raw material is changed and can't be seen in the result (wine from grapes). With で作る the material is still visible."
+  },
+  {
+    "slug": "grammar:n4:kitto",
+    "pattern": "きっと",
+    "meaning": "'Surely / I bet': strong confidence in a guess or wish, often with だろう or と思う. Surer than たぶん."
+  },
+  {
+    "slug": "grammar:n4:koro-goro",
+    "pattern": "〜ごろ / 〜ころ / 〜頃",
+    "meaning": "'Around / about' a time. ごろ follows a clock time or date (around 3 o'clock); ころ follows a phrase or noun + の for a period (back when I was a child)."
+  },
+  {
+    "slug": "grammar:n4:koto",
+    "pattern": "Verb + こと (makes a noun)",
+    "meaning": "Plain verb + こと: turns a verb or clause into a noun, 'doing / the act of', so it can be a subject or object. The base of ことができる, ことがある and more."
+  },
+  {
+    "slug": "grammar:n4:koto-ga-aru",
+    "pattern": "〜ことがある",
+    "meaning": "Dictionary or ない form + ことがある: 'there are times when / sometimes'. Not たことがある with past た, which means 'have done before'."
+  },
+  {
+    "slug": "grammar:n4:koto-ga-dekiru",
+    "pattern": "〜ことができる",
+    "meaning": "Dictionary form + ことができる: 'can / be able to'. A bit more formal than the potential form; also for what's allowed (you can pay by card)."
+  },
+  {
+    "slug": "grammar:n4:koto-ni-naru",
+    "pattern": "〜ことになる",
+    "meaning": "Dictionary or ない form + ことになる: 'it's been decided / it turns out that', when others or circumstances decide. ことにする is your own decision."
+  },
+  {
+    "slug": "grammar:n4:koto-ni-suru",
+    "pattern": "〜ことにする",
+    "meaning": "Dictionary or ない form + ことにする: 'decide to', a choice the speaker makes. ことにしている is a rule you keep for yourself."
+  },
+  {
+    "slug": "grammar:n4:ku-suru",
+    "pattern": "〜くする",
+    "meaning": "I-adjective stem + くする: 'make something (more) ~' on purpose (make the room warmer, make it shorter). Na-adjectives and nouns use にする."
+  },
+  {
+    "slug": "grammar:n4:kyuu-ni",
+    "pattern": "急に",
+    "meaning": "'Suddenly / all of a sudden', for an abrupt, unexpected change (it suddenly got cold, stopped without warning)."
+  },
+  {
+    "slug": "grammar:n4:made-ni",
+    "pattern": "〜までに",
+    "meaning": "'By' a deadline: the action happens at some point before then. まで alone means 'until', the action lasting up to that time."
+  },
+  {
+    "slug": "grammar:n4:mama",
+    "pattern": "〜まま",
+    "meaning": "'As it is / unchanged': a state stays the same while something else happens (slept with the light on). Verb-た, ない form, noun + の, or adjective."
+  },
+  {
+    "slug": "grammar:n4:matawa",
+    "pattern": "または",
+    "meaning": "Formal 'or' between choices in notices, forms and instructions. In speech, か or それとも is more usual."
+  },
+  {
+    "slug": "grammar:n4:mitai-da",
+    "pattern": "〜みたいだ",
+    "meaning": "Casual 'seems / looks like': a guess from what you see or hear, or a comparison (it's like a dream). Plain form or noun directly, no の needed."
+  },
+  {
+    "slug": "grammar:n4:mitai-na",
+    "pattern": "〜みたいな",
+    "meaning": "〜みたいな + noun: 'a [thing] like ~', describing or giving an example (a person like you). The adjective form of みたいだ."
+  },
+  {
+    "slug": "grammar:n4:mitai-ni",
+    "pattern": "〜みたいに",
+    "meaning": "〜みたいに + verb or adjective: 'like / as if', describing how something is done (sings like a pro). The adverb form of みたいだ."
+  },
+  {
+    "slug": "grammar:n4:mo",
+    "pattern": "〜も",
+    "meaning": "Number + counter + も: 'as many as / as much as', stressing that the amount feels large (waited three whole hours). With a negative, 一つも〜ない is 'not even one'."
+  },
+  {
+    "slug": "grammar:n4:na",
+    "pattern": "〜な",
+    "meaning": "Dictionary form + な: a blunt 'don't!'. Rough and mostly male; seen on signs and in strong warnings. Much harsher than ないで."
+  },
+  {
+    "slug": "grammar:n4:nado",
+    "pattern": "〜など",
+    "meaning": "'And so on / such as': picks examples from a longer list, or softens a single example. More formal than とか."
+  },
+  {
+    "slug": "grammar:n4:nagara",
+    "pattern": "〜ながら",
+    "meaning": "Verb stem + ながら: 'while doing', two actions by the same person at once. The main action comes last (study while listening to music)."
+  },
+  {
+    "slug": "grammar:n4:nakanaka-nai",
+    "pattern": "なかなか〜ない",
+    "meaning": "With a negative: 'not easily / just won't', something takes longer or is harder than hoped (the bus just won't come)."
+  },
+  {
+    "slug": "grammar:n4:nakereba-ikenai",
+    "pattern": "〜なければいけない",
+    "meaning": "ない form, drop い, add ければいけない: 'must / have to'. Leans toward personal or situational need; common in speech. Casual: なきゃ."
+  },
+  {
+    "slug": "grammar:n4:nakereba-naranai",
+    "pattern": "〜なければならない",
+    "meaning": "Also 'must / have to', but more formal and objective: rules, duties, social obligation and writing. いけない is the more personal, spoken version."
+  },
+  {
+    "slug": "grammar:n4:nara",
+    "pattern": "〜なら",
+    "meaning": "'If / if that's the case': picks up a topic or what someone just said and responds or advises (if it's sushi you want, go to ...). Plain form or noun."
+  },
+  {
+    "slug": "grammar:n4:nasai",
+    "pattern": "〜なさい",
+    "meaning": "Verb stem + なさい: a firm command from a parent, teacher or test paper (go to bed, choose one). Polite in shape but used toward people below you."
+  },
+  {
+    "slug": "grammar:n4:nasaru",
+    "pattern": "なさる",
+    "meaning": "Honorific verb for する, used for what someone you respect does. Polite form なさいます; also ご + noun + なさる."
+  },
+  {
+    "slug": "grammar:n4:ni-ki-ga-tsuku",
+    "pattern": "〜に気がつく / 〜に気づく",
+    "meaning": "'Notice / realize': noun + に気がつく, or plain form + ことに気がつく. Something comes to your attention."
+  },
+  {
+    "slug": "grammar:n4:ni-mieru",
+    "pattern": "〜に見える",
+    "meaning": "'Looks / appears (to be)': noun or na-adjective + に見える; i-adjectives take く見える. A judgement from how it looks."
+  },
+  {
+    "slug": "grammar:n4:ni-suru",
+    "pattern": "〜にする",
+    "meaning": "Na-adjective or noun + にする: 'make something ~', changing its state on purpose (keep it quiet, make the room clean). The partner of くする, not the N5 'decide on' にする."
+  },
+  {
+    "slug": "grammar:n4:nikui",
+    "pattern": "〜にくい",
+    "meaning": "Verb stem + にくい: 'hard to do', because of the thing's nature (hard to read, hard to open). Opposite of やすい."
+  },
+  {
+    "slug": "grammar:n4:no-naka-de",
+    "pattern": "〜の中で",
+    "meaning": "Noun + の中で: 'among / within' a group or range, setting the scope for a comparison or choice. Works with any statement, not only 一番."
+  },
+  {
+    "slug": "grammar:n4:noni",
+    "pattern": "〜のに",
+    "meaning": "'Although / even though', with surprise, frustration or regret that things went against expectations. Plain form; nouns and na-adjectives take な."
+  },
+  {
+    "slug": "grammar:n4:noni-2",
+    "pattern": "〜のに使う / 〜のに必要",
+    "meaning": "Dictionary form + のに: 'for / in order to', followed by words like 使う, 必要, 便利 or 時間がかかる. A purpose, unlike the 'although' のに."
+  },
+  {
+    "slug": "grammar:n4:nowa-da",
+    "pattern": "〜のは〜だ",
+    "meaning": "'The one that ~ is X': plain form + のは moves information to the front so the part after it gets the focus (it was yesterday that I met him)."
+  },
+  {
+    "slug": "grammar:n4:o-kudasai",
+    "pattern": "お〜ください / ご〜ください",
+    "meaning": "お + verb stem (ご + suru-noun) + ください: a polite, respectful request (please wait). Softer and more formal than てください."
+  },
+  {
+    "slug": "grammar:n4:o-ni-naru",
+    "pattern": "お〜になる / ご〜になる",
+    "meaning": "お + verb stem + になる: honorific form for actions of someone you respect (the president has gone home). Verbs with their own honorific (いる, 見る, 言う) use that instead."
+  },
+  {
+    "slug": "grammar:n4:oki-ni",
+    "pattern": "〜おきに",
+    "meaning": "Number + counter + おきに: 'every other / at intervals of'. 一日おきに is every other day; with distances it gives the gap (trees every five meters)."
+  },
+  {
+    "slug": "grammar:n4:owaru",
+    "pattern": "〜終わる",
+    "meaning": "Verb stem + 終わる: 'finish doing' (finish reading, finish eating)."
+  },
+  {
+    "slug": "grammar:n4:rareru",
+    "pattern": "〜られる",
+    "meaning": "Potential form, 'can do': ichidan verbs take られる (食べられる), godan verbs change -u to -eru (行ける). Same shape as the passive and honorific られる, so context decides."
+  },
+  {
+    "slug": "grammar:n4:rashii",
+    "pattern": "〜らしい",
+    "meaning": "'Seems / apparently': a conclusion from what you heard or read. Also noun + らしい for 'typical of / a proper ~' (very like him). Plain form; nouns attach directly."
+  },
+  {
+    "slug": "grammar:n4:sa",
+    "pattern": "〜さ",
+    "meaning": "Adjective stem + さ: turns an adjective into a noun for its degree, like '-ness' (height, the cold, kindness). Works with i- and na-adjectives."
+  },
+  {
+    "slug": "grammar:n4:sakki",
+    "pattern": "さっき",
+    "meaning": "'A moment ago / just now', casual. Points back a little while earlier."
+  },
+  {
+    "slug": "grammar:n4:saserareru",
+    "pattern": "〜させられる",
+    "meaning": "Causative-passive: 'be made to do' something you didn't want (was made to wait). Godan verbs not ending in す often shorten to される (待たされる)."
+  },
+  {
+    "slug": "grammar:n4:saseru",
+    "pattern": "〜させる",
+    "meaning": "Causative, 'make or let someone do': ichidan + させる, godan -u to -aseru (行かせる), する to させる. The person doing it takes に or を."
+  },
+  {
+    "slug": "grammar:n4:sasete-kudasai",
+    "pattern": "〜させてください",
+    "meaning": "Causative て form + ください: 'please let me do', asking permission or politely offering to do something."
+  },
+  {
+    "slug": "grammar:n4:sasuga",
+    "pattern": "さすが",
+    "meaning": "Praise when someone or something lives up to its reputation: 'just what you'd expect from ~'. Often さすが + noun + だ."
+  },
+  {
+    "slug": "grammar:n4:shi",
+    "pattern": "〜し",
+    "meaning": "Plain form + し: lists reasons or points, 'and what's more', often hinting there are others. Frequently the reasons behind a decision."
+  },
+  {
+    "slug": "grammar:n4:sonna-ni",
+    "pattern": "そんなに",
+    "meaning": "'That much / so', about a degree just mentioned. With a negative: 'not that ~ (not as much as you'd think)'."
+  },
+  {
+    "slug": "grammar:n4:sore-demo",
+    "pattern": "それでも",
+    "meaning": "'Even so / nevertheless': what follows holds despite what was just said."
+  },
+  {
+    "slug": "grammar:n4:sore-ni",
+    "pattern": "それに",
+    "meaning": "'Besides / on top of that': adds one more point, often another reason, to what came before."
+  },
+  {
+    "slug": "grammar:n4:sou-da-1",
+    "pattern": "Plain form + そうだ (hearsay)",
+    "meaning": "Hearsay: full plain form + そうだ, 'I heard that / they say', passing on information from a source. Unlike the 'looks like' そうだ, it follows the whole word (降るそうだ)."
+  },
+  {
+    "slug": "grammar:n4:sou-da-2",
+    "pattern": "Stem + そうだ (looks like)",
+    "meaning": "Appearance: verb stem or adjective stem + そうだ, a guess from how things look (looks tasty, it's about to rain). いい becomes よさそう. Not the hearsay そうだ."
+  },
+  {
+    "slug": "grammar:n4:sou-ni-sou-na",
+    "pattern": "〜そうに / 〜そうな",
+    "meaning": "Forms of the 'looks like' そうだ: そうな + noun (a tasty-looking cake), そうに + verb (smiling happily). Built on verb or adjective stems."
+  },
+  {
+    "slug": "grammar:n4:ta-bakari",
+    "pattern": "〜たばかり",
+    "meaning": "Verb-た + ばかり: 'just did', when it feels recent to the speaker even if some time has passed (I only started last month). たところ is literally moments ago."
+  },
+  {
+    "slug": "grammar:n4:ta-tokoro",
+    "pattern": "〜たところ",
+    "meaning": "Verb-た + ところ: 'have just done', the action finished a moment ago (I've just got home). Narrower and more literal than たばかり."
+  },
+  {
+    "slug": "grammar:n4:tadoushi-jidoushi",
+    "pattern": "〜を開ける / 〜が開く (他動詞・自動詞)",
+    "meaning": "Transitive verbs take を and someone does the action (I open the door); intransitive verbs take が and the thing happens by itself (the door opens). Many come in pairs."
+  },
+  {
+    "slug": "grammar:n4:tagaru",
+    "pattern": "〜たがる",
+    "meaning": "Verb stem + たがる: 'wants to do' for someone else, judged from their behavior; usually たがっている. たい is only for the speaker."
+  },
+  {
+    "slug": "grammar:n4:tara",
+    "pattern": "〜たら",
+    "meaning": "Past た + ら: 'if / when / once', the most flexible conditional: the first thing happens, then the second. Also for discovering something after an action."
+  },
+  {
+    "slug": "grammar:n4:tara-dou",
+    "pattern": "〜たらどう",
+    "meaning": "Verb-たら + どう (ですか): 'why don't you ~?', a casual suggestion. Can sound pushy toward superiors."
+  },
+  {
+    "slug": "grammar:n4:tara-ii-desu-ka",
+    "pattern": "〜たらいいですか",
+    "meaning": "Question word + verb-たら + いいですか: asking for advice, 'what / where / how should I ~?'."
+  },
+  {
+    "slug": "grammar:n4:te-de",
+    "pattern": "〜て / 〜で",
+    "meaning": "Te form, or noun + で, giving a cause: the first part leads to a feeling or result (sorry I'm late, closed because of the rain). The result is usually not a request or command."
+  },
+  {
+    "slug": "grammar:n4:te-ageru",
+    "pattern": "〜てあげる",
+    "meaning": "Verb-て + あげる: 'do something for someone', the speaker or their side doing a favor. Can sound condescending toward superiors."
+  },
+  {
+    "slug": "grammar:n4:te-hoshii",
+    "pattern": "〜てほしい",
+    "meaning": "Verb-て + ほしい: 'want someone to do'. The person takes に. ないでほしい is 'I'd rather you didn't'."
+  },
+  {
+    "slug": "grammar:n4:te-iku",
+    "pattern": "〜ていく",
+    "meaning": "Verb-て + いく: a change or action continuing from now into the future, or doing something and then going (will keep growing, take it with you)."
+  },
+  {
+    "slug": "grammar:n4:te-ita",
+    "pattern": "〜ていた",
+    "meaning": "Past of ている: 'was doing' at a past moment, or a state that held back then (was living in Osaka)."
+  },
+  {
+    "slug": "grammar:n4:te-itadakemasen-ka",
+    "pattern": "〜ていただけませんか",
+    "meaning": "Verb-て + いただけませんか: a very polite request, 'could I possibly ask you to ~?'. Humbler than てくれませんか."
+  },
+  {
+    "slug": "grammar:n4:te-kureru",
+    "pattern": "〜てくれる",
+    "meaning": "Verb-て + くれる: someone does a favor for the speaker or the speaker's side. Shows gratitude; the giver is the subject."
+  },
+  {
+    "slug": "grammar:n4:te-kuru",
+    "pattern": "〜てくる",
+    "meaning": "Verb-て + くる: a change that has built up to now or is starting to appear (it's getting cold); also 'go and come back / come doing'."
+  },
+  {
+    "slug": "grammar:n4:te-miru",
+    "pattern": "〜てみる",
+    "meaning": "Verb-て + みる: 'try doing' to see what it's like or what happens."
+  },
+  {
+    "slug": "grammar:n4:te-morau",
+    "pattern": "〜てもらう",
+    "meaning": "Verb-て + もらう: 'have someone do / get someone to do'. The receiver is the subject and the giver takes に. Humble: ていただく."
+  },
+  {
+    "slug": "grammar:n4:te-oku",
+    "pattern": "〜ておく",
+    "meaning": "Verb-て + おく: do something in advance to prepare, or leave things as they are. Casual: とく."
+  },
+  {
+    "slug": "grammar:n4:te-shimau-chau",
+    "pattern": "〜てしまう / 〜ちゃう",
+    "meaning": "Verb-て + しまう: the action is done completely, or 'end up doing' with regret or surprise. ちゃう / じゃう is the casual contraction."
+  },
+  {
+    "slug": "grammar:n4:te-sumimasen",
+    "pattern": "〜てすみません",
+    "meaning": "Verb-て + すみません: 'sorry for ~', apologizing for something you did or caused (sorry I'm late). More formal: て申し訳ありません."
+  },
+  {
+    "slug": "grammar:n4:te-yaru",
+    "pattern": "〜てやる",
+    "meaning": "Verb-て + やる: do something for someone below you (a child, a pet, plants), or a threat like 'I'll show you'. Rougher than てあげる."
+  },
+  {
+    "slug": "grammar:n4:te-yokatta",
+    "pattern": "〜てよかった",
+    "meaning": "Verb-て + よかった: 'I'm glad that ~', relief or happiness about how something turned out."
+  },
+  {
+    "slug": "grammar:n4:teiru-tokoro",
+    "pattern": "〜ているところ",
+    "meaning": "Verb-ている + ところ: 'right in the middle of doing'. Stresses that the action is in progress at that moment."
+  },
+  {
+    "slug": "grammar:n4:temo",
+    "pattern": "〜ても",
+    "meaning": "Verb or i-adjective て form + も: 'even if / even though', the outcome doesn't change. Nouns and na-adjectives take でも."
+  },
+  {
+    "slug": "grammar:n4:to",
+    "pattern": "〜と",
+    "meaning": "Dictionary form + と: 'when / if', a natural or automatic result that always follows (turn right and you'll see it). Can't end with a request or intention."
+  },
+  {
+    "slug": "grammar:n4:to-ittemo-ii",
+    "pattern": "〜と言ってもいい",
+    "meaning": "'You could say / it's fair to call it ~': offers a judgement or a slightly bold description."
+  },
+  {
+    "slug": "grammar:n4:to-iu",
+    "pattern": "〜という",
+    "meaning": "A という B: 'a B called A', introducing a name or something the listener may not know. Also reports what something says."
+  },
+  {
+    "slug": "grammar:n4:to-iu-koto",
+    "pattern": "〜ということ",
+    "meaning": "Plain form + ということ: turns a whole statement into a noun, 'the fact that ~', or explains 'what this means is ~'."
+  },
+  {
+    "slug": "grammar:n4:to-iwarete-iru",
+    "pattern": "〜と言われている",
+    "meaning": "'It is said / people say that ~': general belief or common knowledge, without naming a source."
+  },
+  {
+    "slug": "grammar:n4:to-kiita",
+    "pattern": "〜と聞いた",
+    "meaning": "Plain form + と聞いた: 'I heard that ~', reporting something heard, often naming who said it with から or に."
+  },
+  {
+    "slug": "grammar:n4:to-omou",
+    "pattern": "〜と思う",
+    "meaning": "Plain form + と思う: 'I think that ~', giving an opinion or guess. と思っている for a view held over time, or someone else's."
+  },
+  {
+    "slug": "grammar:n4:toka-toka",
+    "pattern": "〜とか〜とか",
+    "meaning": "'Things like A and B': lists a few examples casually; works with nouns and verbs. More casual than や〜など."
+  },
+  {
+    "slug": "grammar:n4:tokoro",
+    "pattern": "〜ところ",
+    "meaning": "Dictionary form + ところ: 'about to do', the action is just going to start. The base of a family with ているところ (in the middle) and たところ (just done)."
+  },
+  {
+    "slug": "grammar:n4:tsuzukeru",
+    "pattern": "〜続ける",
+    "meaning": "Verb stem + 続ける: 'keep doing / continue', the action goes on without stopping."
+  },
+  {
+    "slug": "grammar:n4:tte",
+    "pattern": "〜って",
+    "meaning": "Casual と or という: quotes speech or thought (she said she's coming), or marks a topic like は. Very common in conversation."
+  },
+  {
+    "slug": "grammar:n4:ukemi-kei",
+    "pattern": "〜れる / 〜られる (受身形)",
+    "meaning": "Passive: ichidan + られる, godan -u to -areru (読まれる). The doer takes に. Also the 'suffering' passive, for something that happens to you and bothers you (got rained on)."
+  },
+  {
+    "slug": "grammar:n4:wa-ga-wa",
+    "pattern": "〜は〜が、〜は〜",
+    "meaning": "Contrast with は: 'A is ..., but B is ...'. Each は marks one side being compared, and が joins the two halves."
+  },
+  {
+    "slug": "grammar:n4:yasui",
+    "pattern": "〜やすい",
+    "meaning": "Verb stem + やすい: 'easy to do', or 'tends to / is likely to' (breaks easily). Opposite of にくい."
+  },
+  {
+    "slug": "grammar:n4:yatto",
+    "pattern": "やっと",
+    "meaning": "'Finally / at last', after waiting or effort, with relief. For results you wanted."
+  },
+  {
+    "slug": "grammar:n4:yori",
+    "pattern": "〜より",
+    "meaning": "Noun + より: 'than', the comparison marker on its own (A is bigger than B). In formal notices it also means 'from' a time or place."
+  },
+  {
+    "slug": "grammar:n4:yotei-da",
+    "pattern": "〜予定だ",
+    "meaning": "Dictionary form or noun + の + 予定だ: 'be scheduled to / plan to', an arranged plan. Firmer than つもり, which is only an intention."
+  },
+  {
+    "slug": "grammar:n4:you-da",
+    "pattern": "〜ようだ",
+    "meaning": "'Seems / appears': a judgement from what you saw, heard or felt. Plain form, noun + の, na-adjective + な. More formal than みたいだ."
+  },
+  {
+    "slug": "grammar:n4:you-ni-you-na",
+    "pattern": "〜ように / 〜ような",
+    "meaning": "'Like / as': ような + noun, ように + verb or adjective, for comparisons and examples (eyes like stars, do it as I showed you). The formal side of みたいな / みたいに."
+  },
+  {
+    "slug": "grammar:n4:you-ni-naru",
+    "pattern": "〜ようになる",
+    "meaning": "Dictionary or ない form + ようになる: 'come to / reach the point where', a gradual change in ability or habit (I can read kanji now)."
+  },
+  {
+    "slug": "grammar:n4:you-ni-suru",
+    "pattern": "〜ようにする",
+    "meaning": "Dictionary or ない form + ようにする: 'make sure to / try to', a conscious effort. ようにしている is something you make a habit of."
+  },
+  {
+    "slug": "grammar:n4:you-to-omou",
+    "pattern": "〜ようと思う / 〜おうと思う",
+    "meaning": "Volitional form + と思う: 'I'm thinking of doing'. ようと思っている is an intention held for some time."
+  },
+  {
+    "slug": "grammar:n4:zehi",
+    "pattern": "ぜひ",
+    "meaning": "'By all means / definitely', with requests and wishes (please do come). Not used with negatives."
+  },
+  {
+    "slug": "grammar:n4:zenzen-nai",
+    "pattern": "全然〜ない",
+    "meaning": "With a negative: 'not at all'. Total denial, much stronger than あまり〜ない."
+  },
+  {
+    "slug": "grammar:n4:zurai",
+    "pattern": "〜づらい",
+    "meaning": "Verb stem + づらい: 'hard to do', mainly because it feels physically or emotionally uncomfortable (hard to say, hard to walk in). More personal than にくい."
+  },
+  {
+    "slug": "grammar:n3:ageru",
+    "pattern": "〜上げる / 〜あげる",
+    "meaning": "Verb stem + 上げる: finish something completely and with care (finish writing a report), or lift up. Not the giving verb あげる."
+  },
+  {
+    "slug": "grammar:n3:amari",
+    "pattern": "〜あまり",
+    "meaning": "Dictionary form or noun + の + あまり: 'so much that / out of too much ~', a feeling or state goes so far that an odd or bad result follows. Not あまり〜ない ('not very')."
+  },
+  {
+    "slug": "grammar:n3:amari-ni-mo",
+    "pattern": "あまりにも",
+    "meaning": "'Far too / so very', an emphatic あまりに. Usually leads to a result: it was so ~ that something happened."
+  },
+  {
+    "slug": "grammar:n3:au",
+    "pattern": "〜合う",
+    "meaning": "Verb stem + 合う: 'do to each other / together' (help each other, talk it over)."
+  },
+  {
+    "slug": "grammar:n3:ba-ii",
+    "pattern": "〜ばいい",
+    "meaning": "Ba form + いい: 'you just have to / all you need is', simple advice; どうすればいい asks for it. Also a hope: 'it'd be nice if'."
+  },
+  {
+    "slug": "grammar:n3:ba-yokatta",
+    "pattern": "〜ばよかった",
+    "meaning": "Ba form + よかった: 'should have / I wish I had', regret about the past. With のに it often points at someone else."
+  },
+  {
+    "slug": "grammar:n3:ba-hodo",
+    "pattern": "〜ば〜ほど",
+    "meaning": "'The more ..., the more ...': the same word twice, ば form first, then plain form + ほど (the more I read, the more I understand)."
+  },
+  {
+    "slug": "grammar:n3:ba-noni",
+    "pattern": "〜ば〜のに",
+    "meaning": "Ba form + いい / よかった + のに: 'if only / it would be better if', regret or a complaint that something isn't happening or didn't happen."
+  },
+  {
+    "slug": "grammar:n3:bakari-de",
+    "pattern": "〜ばかりで",
+    "meaning": "'Only ~ and nothing more': one thing keeps happening while what's expected doesn't, often 〜ばかりで〜ない (all talk and no action)."
+  },
+  {
+    "slug": "grammar:n3:bakari-denaku",
+    "pattern": "〜ばかりでなく",
+    "meaning": "Plain form or noun + ばかりでなく: 'not only A but also B', with も in the second half. Formal; same idea as だけでなく."
+  },
+  {
+    "slug": "grammar:n3:beki-da",
+    "pattern": "〜べきだ",
+    "meaning": "Dictionary form + べきだ: 'should / ought to', what is right or expected. する becomes すべき or するべき."
+  },
+  {
+    "slug": "grammar:n3:beki-dewa-nai",
+    "pattern": "〜べきではない",
+    "meaning": "Dictionary form + べきではない: 'should not', what is wrong or improper. Firmer and more principled than ないほうがいい."
+  },
+  {
+    "slug": "grammar:n3:betsu-ni-nai",
+    "pattern": "別に〜ない",
+    "meaning": "'Not particularly / not really'. Said alone, 別に is a curt 'nothing much'."
+  },
+  {
+    "slug": "grammar:n3:buri-ni",
+    "pattern": "〜ぶりに",
+    "meaning": "Length of time + ぶりに: 'for the first time in ~', doing something again after a gap (met for the first time in five years)."
+  },
+  {
+    "slug": "grammar:n3:chuu-juu",
+    "pattern": "〜中",
+    "meaning": "Read ちゅう: 'in the middle of / during' an activity or period (in a meeting, sometime this week). Read じゅう: 'throughout / all over' (all day long, all over the world)."
+  },
+  {
+    "slug": "grammar:n3:dake",
+    "pattern": "〜だけ",
+    "meaning": "'As much as': verb + だけ for doing something to the full extent (eat as much as you like, できるだけ 'as much as possible'). Beyond the basic だけ, 'only'."
+  },
+  {
+    "slug": "grammar:n3:dake-de-naku",
+    "pattern": "〜だけでなく",
+    "meaning": "Plain form or noun + だけでなく: 'not only A but also B', followed by も. A little less stiff than ばかりでなく."
+  },
+  {
+    "slug": "grammar:n3:dakedo",
+    "pattern": "だけど",
+    "meaning": "'But / however', a casual conjunction to open a sentence or join clauses. Softer than だが; でも is even more casual."
+  },
+  {
+    "slug": "grammar:n3:darake",
+    "pattern": "〜だらけ",
+    "meaning": "Noun + だらけ: 'full of / covered in' something unwanted (covered in mud, full of mistakes)."
+  },
+  {
+    "slug": "grammar:n3:donna-ni-temo",
+    "pattern": "どんなに〜ても",
+    "meaning": "'No matter how ~': どんなに + verb or adjective in ても form. The outcome stays the same however much."
+  },
+  {
+    "slug": "grammar:n3:doushitemo",
+    "pattern": "どうしても",
+    "meaning": "'No matter what / at any cost' with a strong wish; with a negative, 'just can't, however hard I try'."
+  },
+  {
+    "slug": "grammar:n3:furi-o-suru",
+    "pattern": "〜ふりをする",
+    "meaning": "Plain form, noun + の, or adjective + ふりをする: 'pretend to / act as if' (pretend to be asleep)."
+  },
+  {
+    "slug": "grammar:n3:futo",
+    "pattern": "ふと",
+    "meaning": "'Suddenly / without thinking': something happens by chance or for no reason, often a thought or glance (it suddenly struck me)."
+  },
+  {
+    "slug": "grammar:n3:gachi",
+    "pattern": "〜がち",
+    "meaning": "Verb stem or noun + がち: 'tend to / prone to', mostly for bad habits or conditions (tends to forget, often ill)."
+  },
+  {
+    "slug": "grammar:n3:gatai",
+    "pattern": "〜がたい",
+    "meaning": "Verb stem + がたい: 'hard to / can hardly', for something you can barely bring yourself to accept (unbelievable, unforgivable). Formal."
+  },
+  {
+    "slug": "grammar:n3:gimi",
+    "pattern": "〜気味 / 〜ぎみ",
+    "meaning": "Verb stem or noun + 気味: 'a touch of / a bit ~', a slight sign of something, usually unwelcome (a slight cold, a bit tired)."
+  },
+  {
+    "slug": "grammar:n3:goto-ni",
+    "pattern": "〜ごとに",
+    "meaning": "Noun or dictionary form + ごとに: 'every / each', something happens at each unit or occasion (every hour, each time it rains)."
+  },
+  {
+    "slug": "grammar:n3:hodo",
+    "pattern": "〜ほど",
+    "meaning": "'To the point that / so ~ that', showing degree (so tired I can't stand). Also a rough amount, 'about'."
+  },
+  {
+    "slug": "grammar:n3:hodo-nai",
+    "pattern": "〜ほど〜ない",
+    "meaning": "A は B ほど〜ない: 'A is not as ~ as B'. Only used with a negative."
+  },
+  {
+    "slug": "grammar:n3:ichido-ni",
+    "pattern": "一度に",
+    "meaning": "'All at once / in one go', many things done at the same time."
+  },
+  {
+    "slug": "grammar:n3:ikura-temo",
+    "pattern": "いくら〜ても",
+    "meaning": "'No matter how much ~': いくら + ても form; however much effort or amount, it makes no difference."
+  },
+  {
+    "slug": "grammar:n3:ippou-da",
+    "pattern": "〜一方だ",
+    "meaning": "Dictionary form + 一方だ: 'keeps on ~ing', a steady change in one direction, often for the worse (prices keep rising)."
+  },
+  {
+    "slug": "grammar:n3:ittai",
+    "pattern": "いったい / 一体",
+    "meaning": "'What on earth / why on earth', strengthens a question with surprise or annoyance. Used with question words."
+  },
+  {
+    "slug": "grammar:n3:janai",
+    "pattern": "〜じゃない",
+    "meaning": "Not a real negative: 'isn't it? / don't you think?', seeking agreement or gently reminding (that's nice, isn't it). Softer than じゃないか."
+  },
+  {
+    "slug": "grammar:n3:ka-nani-ka",
+    "pattern": "〜か何か",
+    "meaning": "Noun + か何か: 'or something', a vague example (tea or something)."
+  },
+  {
+    "slug": "grammar:n3:kakeru",
+    "pattern": "〜かける",
+    "meaning": "Verb stem + かける: 'half-done / about to', an action started but not finished, or on the verge of happening (a half-read book)."
+  },
+  {
+    "slug": "grammar:n3:kara-ni-kakete",
+    "pattern": "〜から〜にかけて",
+    "meaning": "'From A through B': a span of time or area with loose edges, covering the whole stretch between. Vaguer than から〜まで."
+  },
+  {
+    "slug": "grammar:n3:kawari-ni",
+    "pattern": "〜代わりに",
+    "meaning": "Noun + の or plain form + 代わりに: 'instead of', one thing replaces another; also 'in exchange for' (I'll help you, and in return ...)."
+  },
+  {
+    "slug": "grammar:n3:kekka",
+    "pattern": "〜結果",
+    "meaning": "Verb-た or noun + の + 結果: 'as a result of', the outcome after an action or process."
+  },
+  {
+    "slug": "grammar:n3:kekkyoku",
+    "pattern": "結局",
+    "meaning": "'In the end / after all', the final outcome, often not what was planned."
+  },
+  {
+    "slug": "grammar:n3:kesshite-nai",
+    "pattern": "決して〜ない",
+    "meaning": "'Never / by no means', a strong denial or firm promise."
+  },
+  {
+    "slug": "grammar:n3:kirenai",
+    "pattern": "〜きれない / 〜切れない",
+    "meaning": "Verb stem + きれない: 'can't do it all / too much to finish' (can't eat it all, countless). The negative potential of 〜きる."
+  },
+  {
+    "slug": "grammar:n3:kiri",
+    "pattern": "〜きり",
+    "meaning": "'Only / just' as a limit (just the two of us). Verb-た + きり: 'since then and nothing more' (left and never came back). Casual: っきり."
+  },
+  {
+    "slug": "grammar:n3:kiru",
+    "pattern": "〜きる / 〜切る",
+    "meaning": "Verb stem + きる: do something completely, to the very end (used up all the money, read the whole book)."
+  },
+  {
+    "slug": "grammar:n3:kke",
+    "pattern": "〜っけ",
+    "meaning": "Sentence-final っけ: 'was it? / did I?', trying to recall something or checking a fact. Casual; often with past forms (だったっけ)."
+  },
+  {
+    "slug": "grammar:n3:komu",
+    "pattern": "〜込む",
+    "meaning": "Verb stem + 込む: 'into' (run into, put into), or doing something deeply and thoroughly."
+  },
+  {
+    "slug": "grammar:n3:koso",
+    "pattern": "〜こそ",
+    "meaning": "'Precisely / this one above all': stresses the word before it as the one that really counts (this time for sure; I'm the one who should apologize)."
+  },
+  {
+    "slug": "grammar:n3:koto",
+    "pattern": "Verb + こと (a rule: \"must\")",
+    "meaning": "Dictionary or ない form + こと ending a sentence: a written rule or instruction, 'must / be sure to'. Common in notices and teachers' directions."
+  },
+  {
+    "slug": "grammar:n3:koto-kara",
+    "pattern": "〜ことから",
+    "meaning": "'From the fact that / since': gives the evidence or the origin of a conclusion or name. Formal."
+  },
+  {
+    "slug": "grammar:n3:koto-ni-natteiru",
+    "pattern": "〜ことになっている",
+    "meaning": "'It's the rule / it's arranged that': a decision or custom already in place. ことになる is the decision being made."
+  },
+  {
+    "slug": "grammar:n3:koto-wa-nai",
+    "pattern": "〜ことはない",
+    "meaning": "Dictionary form + ことはない: 'there's no need to / don't have to', often reassuring someone."
+  },
+  {
+    "slug": "grammar:n3:koto-wa-ga",
+    "pattern": "〜ことは〜が",
+    "meaning": "The same word on both sides of ことは: 'it's true that ~, but ...', a grudging admission before a 'but' (I did read it, but ...)."
+  },
+  {
+    "slug": "grammar:n3:kurai-gurai",
+    "pattern": "〜くらい / 〜ぐらい",
+    "meaning": "Degree, 'so ~ that / to the point of' (so happy I could cry); also 'at least' (at least say thanks), or 'nothing is as ~ as' with ない. Beyond the basic 'about' an amount."
+  },
+  {
+    "slug": "grammar:n3:kuse-ni",
+    "pattern": "〜くせに",
+    "meaning": "Plain form or noun + の + くせに: 'even though / despite', with criticism or contempt for someone's behavior."
+  },
+  {
+    "slug": "grammar:n3:maru-de",
+    "pattern": "まるで",
+    "meaning": "'Just like / as if', with ようだ or みたいだ for a vivid comparison that isn't literally true."
+  },
+  {
+    "slug": "grammar:n3:masaka",
+    "pattern": "まさか",
+    "meaning": "'No way / surely not', disbelief that something could happen or be true."
+  },
+  {
+    "slug": "grammar:n3:metta-ni-nai",
+    "pattern": "めったに〜ない",
+    "meaning": "With a negative: 'rarely / hardly ever'."
+  },
+  {
+    "slug": "grammar:n3:mo-ba-mo",
+    "pattern": "〜も〜ば〜も",
+    "meaning": "'Both A and B': adds a second point of the same kind, with ば form in the middle (he can sing and dance too). Used for praise or complaints."
+  },
+  {
+    "slug": "grammar:n3:moshika-shitara",
+    "pattern": "もしかしたら",
+    "meaning": "'Maybe / perhaps', a low-confidence guess, often with かもしれない."
+  },
+  {
+    "slug": "grammar:n3:moshimo-tara",
+    "pattern": "もしも〜たら",
+    "meaning": "'If by any chance', a stronger もし for unlikely or imagined situations."
+  },
+  {
+    "slug": "grammar:n3:muke",
+    "pattern": "〜向け",
+    "meaning": "Noun + 向け: 'made for / aimed at' a target group by design (books for children, products for overseas)."
+  },
+  {
+    "slug": "grammar:n3:muki",
+    "pattern": "〜向き",
+    "meaning": "Noun + 向き: 'suited to', it happens to fit that group well (good for beginners); also 'facing' a direction. Unlike 向け, it isn't about who it was made for."
+  },
+  {
+    "slug": "grammar:n3:mushiro",
+    "pattern": "むしろ",
+    "meaning": "'Rather / if anything', picking the second option as closer to the truth."
+  },
+  {
+    "slug": "grammar:n3:nagara-mo",
+    "pattern": "〜ながらも",
+    "meaning": "'Although / while', contrast between two facts (though small, the room is bright). Formal."
+  },
+  {
+    "slug": "grammar:n3:nai-koto-wa-nai",
+    "pattern": "〜ないことはない",
+    "meaning": "Double negative: 'it's not that I can't / I could, I suppose', a hesitant yes."
+  },
+  {
+    "slug": "grammar:n3:naito",
+    "pattern": "〜ないと",
+    "meaning": "ない form + と at the end of a sentence: 'I've got to / have to', short for ないといけない. Casual."
+  },
+  {
+    "slug": "grammar:n3:nakanaka",
+    "pattern": "なかなか",
+    "meaning": "Positive use: 'quite / pretty', better than expected (pretty good). Unlike なかなか〜ない ('not easily')."
+  },
+  {
+    "slug": "grammar:n3:nanka-nante-nado",
+    "pattern": "〜なんか / 〜なんて / 〜など",
+    "meaning": "'Things like / such as', often dismissive or humble (someone like me). なんか and なんて are casual; なんて also shows surprise or disbelief ('to think that ~!')."
+  },
+  {
+    "slug": "grammar:n3:naosu",
+    "pattern": "〜直す",
+    "meaning": "Verb stem + 直す: 'do again / redo' to fix or improve (rewrite, call back)."
+  },
+  {
+    "slug": "grammar:n3:naru-beku",
+    "pattern": "なるべく",
+    "meaning": "'As much as possible / if possible', a reasonable effort."
+  },
+  {
+    "slug": "grammar:n3:nazenara",
+    "pattern": "なぜなら",
+    "meaning": "'Because / the reason is', opens a sentence giving the reason, often ending in からだ."
+  },
+  {
+    "slug": "grammar:n3:ndatte",
+    "pattern": "〜んだって",
+    "meaning": "Plain form + んだって: 'I heard that ~', casual hearsay. As a question: 'is it true that ~?'."
+  },
+  {
+    "slug": "grammar:n3:ni-chigai-nai",
+    "pattern": "〜に違いない",
+    "meaning": "Plain form + に違いない (nouns and na-adjectives drop だ): 'must be / no doubt', a confident conclusion. Stronger and more written than だろう."
+  },
+  {
+    "slug": "grammar:n3:ni-hanshite",
+    "pattern": "〜に反して",
+    "meaning": "Noun + に反して: 'contrary to / against' expectations, plans or rules (contrary to forecasts). に反する + noun."
+  },
+  {
+    "slug": "grammar:n3:ni-kakete",
+    "pattern": "〜にかけて",
+    "meaning": "Noun + にかけて: 'over / through', a stretch of time or area running up to and around that point (through the weekend). Used alone or as the second half of から〜にかけて."
+  },
+  {
+    "slug": "grammar:n3:ni-kan-suru-ni-kan-shite",
+    "pattern": "〜に関する / 〜に関して",
+    "meaning": "'About / regarding', a formal について. に関する + noun, に関して + verb."
+  },
+  {
+    "slug": "grammar:n3:ni-kawatte-ni-kawari",
+    "pattern": "〜にかわって / 〜にかわり",
+    "meaning": "'On behalf of / in place of', one person or thing takes over another's role. More formal than 代わりに."
+  },
+  {
+    "slug": "grammar:n3:ni-kurabete",
+    "pattern": "〜に比べて / 〜と比べて",
+    "meaning": "Noun + に比べて (or と比べて): 'compared with', setting up a comparison between two things. Plain form + のに比べて for actions."
+  },
+  {
+    "slug": "grammar:n3:ni-nareru",
+    "pattern": "〜に慣れる",
+    "meaning": "'Get used to': noun + に慣れる; for an action, verb + のに慣れる."
+  },
+  {
+    "slug": "grammar:n3:ni-oite-ni-okeru",
+    "pattern": "〜において / 〜における",
+    "meaning": "Formal 'in / at' for a place, time or field (in the field of science). における + noun."
+  },
+  {
+    "slug": "grammar:n3:ni-shitagatte",
+    "pattern": "〜にしたがって",
+    "meaning": "'In accordance with' a rule or instruction, or 'as' one change leads to another. Unlike につれて, it also covers following instructions."
+  },
+  {
+    "slug": "grammar:n3:ni-shite-mo",
+    "pattern": "〜にしても",
+    "meaning": "'Even if / even granting that', accepting one point while saying something else still holds."
+  },
+  {
+    "slug": "grammar:n3:ni-shite-wa",
+    "pattern": "〜にしては",
+    "meaning": "'For / considering', something is different from what you'd expect of it (good Japanese for a beginner)."
+  },
+  {
+    "slug": "grammar:n3:ni-taishite",
+    "pattern": "〜に対して",
+    "meaning": "'Toward / against / in contrast to', marking the target of an action or feeling, or a contrast."
+  },
+  {
+    "slug": "grammar:n3:ni-totte",
+    "pattern": "〜にとって",
+    "meaning": "'For / to' someone, from their point of view (important for me)."
+  },
+  {
+    "slug": "grammar:n3:ni-tsuite",
+    "pattern": "〜について",
+    "meaning": "'About / concerning', the topic of talking, thinking or writing. についての + noun."
+  },
+  {
+    "slug": "grammar:n3:ni-tsurete",
+    "pattern": "〜につれて",
+    "meaning": "'As ~, ...': one gradual change brings another (as it got dark, it grew colder). Not used for following instructions."
+  },
+  {
+    "slug": "grammar:n3:ni-wa",
+    "pattern": "〜には",
+    "meaning": "Dictionary form + には: 'in order to / to', followed by what's needed or how hard it is. Also 'for' someone's judgement (too hard for me)."
+  },
+  {
+    "slug": "grammar:n3:ni-yoru-to-ni-yoreba",
+    "pattern": "〜によると / 〜によれば",
+    "meaning": "'According to', citing a source; the sentence usually ends with そうだ or らしい."
+  },
+  {
+    "slug": "grammar:n3:ni-yotte-ni-yoru",
+    "pattern": "〜によって / 〜による",
+    "meaning": "'By / depending on / due to': marks the means, cause, the doer in a passive, or what something varies with. による + noun."
+  },
+  {
+    "slug": "grammar:n3:no-deshou-ka",
+    "pattern": "〜のでしょうか",
+    "meaning": "Polite 'I wonder / might it be?', a soft question that sounds less direct than ですか."
+  },
+  {
+    "slug": "grammar:n3:o-chuushin-ni",
+    "pattern": "〜を中心に",
+    "meaning": "Noun + を中心に: 'centered on / mainly around', the core of an activity or area (sales mainly in Asia). を中心とした + noun."
+  },
+  {
+    "slug": "grammar:n3:o-hajime",
+    "pattern": "〜をはじめ",
+    "meaning": "Noun + をはじめ: 'starting with / including', naming the main example first before the rest (Tokyo and other big cities)."
+  },
+  {
+    "slug": "grammar:n3:o-komete",
+    "pattern": "〜を込めて",
+    "meaning": "Noun + を込めて: 'with / filled with' a feeling put into an action or gift (with love, with thanks)."
+  },
+  {
+    "slug": "grammar:n3:o-tsuujite-o-tooshite",
+    "pattern": "〜を通じて / 〜を通して",
+    "meaning": "Noun + を通じて / を通して: 'through / via' a means or go-between (through a friend), or 'throughout' a period (all year round)."
+  },
+  {
+    "slug": "grammar:n3:okage-de",
+    "pattern": "〜おかげで",
+    "meaning": "Plain form or noun + の + おかげで: 'thanks to', crediting a good result to a cause. Sometimes used sarcastically."
+  },
+  {
+    "slug": "grammar:n3:ppanashi",
+    "pattern": "〜っぱなし",
+    "meaning": "Verb stem + っぱなし: 'left on / left as is', something left in a state it shouldn't be (left the tap running), or going on nonstop."
+  },
+  {
+    "slug": "grammar:n3:ppoi",
+    "pattern": "〜っぽい",
+    "meaning": "Noun or verb stem + っぽい: '-ish / -like / tends to'. Casual and often negative (childish, forgetful)."
+  },
+  {
+    "slug": "grammar:n3:sae",
+    "pattern": "〜さえ",
+    "meaning": "Noun + さえ: 'even', stressing an extreme case (even a child could do it). Often replaces が or を."
+  },
+  {
+    "slug": "grammar:n3:sae-ba",
+    "pattern": "〜さえ〜ば",
+    "meaning": "さえ + ば form: 'if only / as long as', the one condition that is enough on its own (as long as I have time, ...)."
+  },
+  {
+    "slug": "grammar:n3:sai-ni",
+    "pattern": "〜際に",
+    "meaning": "Verb or noun + の + 際に: 'when / on the occasion of', a formal とき for notices, business and announcements."
+  },
+  {
+    "slug": "grammar:n3:saichuu-ni",
+    "pattern": "〜最中に",
+    "meaning": "Verb-ている or noun + の + 最中に: 'right in the middle of', usually when something interrupts (the phone rang mid-meeting)."
+  },
+  {
+    "slug": "grammar:n3:sara-ni",
+    "pattern": "さらに",
+    "meaning": "'Furthermore / even more': adds another point or raises the degree (it got even colder)."
+  },
+  {
+    "slug": "grammar:n3:sate",
+    "pattern": "さて",
+    "meaning": "'Well then / now', opening a sentence to change the topic or move to the next item."
+  },
+  {
+    "slug": "grammar:n3:sei-de",
+    "pattern": "〜せいで",
+    "meaning": "Plain form or noun + の + せいで: 'because of', blaming a cause for a bad result. The negative counterpart of おかげで."
+  },
+  {
+    "slug": "grammar:n3:seizei",
+    "pattern": "せいぜい",
+    "meaning": "'At most / at best' (it'll cost a thousand yen at most). Also 'do as much as you can', encouraging or a little ironic."
+  },
+  {
+    "slug": "grammar:n3:shibaraku",
+    "pattern": "しばらく",
+    "meaning": "'For a while', a span that can be short or long. しばらくですね: 'it's been a while'."
+  },
+  {
+    "slug": "grammar:n3:shikanai",
+    "pattern": "〜しかない",
+    "meaning": "Dictionary form + しかない: 'have no choice but to / all I can do is'."
+  },
+  {
+    "slug": "grammar:n3:sono-tame-ni",
+    "pattern": "そのために",
+    "meaning": "Opens a sentence: 'for that reason' or 'for that purpose', pointing back to what was just said."
+  },
+  {
+    "slug": "grammar:n3:soretomo",
+    "pattern": "それとも",
+    "meaning": "'Or', joining two questions to offer a choice (tea, or coffee?). Only in questions; または is the 'or' of statements and forms."
+  },
+  {
+    "slug": "grammar:n3:sou-mo-nai-sou-ni-nai",
+    "pattern": "〜そうもない / 〜そうにない",
+    "meaning": "Verb stem + そうもない / そうにない: 'unlikely to / doesn't look like it will' (the rain doesn't look like stopping). The negative of the 'looks like' そうだ."
+  },
+  {
+    "slug": "grammar:n3:sude-ni",
+    "pattern": "すでに",
+    "meaning": "'Already / by then', a formal or written もう."
+  },
+  {
+    "slug": "grammar:n3:sunawachi",
+    "pattern": "すなわち",
+    "meaning": "'Namely / that is to say', restating something more precisely. Formal and written; つまり is the spoken choice."
+  },
+  {
+    "slug": "grammar:n3:suuryou-wa",
+    "pattern": "数量 + は",
+    "meaning": "Number + counter + は: 'at least', setting a minimum amount (it'll take at least three days)."
+  },
+  {
+    "slug": "grammar:n3:ta-mono-da",
+    "pattern": "〜たものだ",
+    "meaning": "Verb-た + ものだ: 'used to', fondly recalling something you often did in the past."
+  },
+  {
+    "slug": "grammar:n3:ta-totan",
+    "pattern": "〜たとたん",
+    "meaning": "Verb-た + とたん (に): 'the moment / just as', something unexpected happens right after. Not for planned follow-up actions."
+  },
+  {
+    "slug": "grammar:n3:tabi-ni",
+    "pattern": "〜たびに",
+    "meaning": "Dictionary form or noun + の + たびに: 'every time', the same thing happens on each occasion (every time I see this photo, ...)."
+  },
+  {
+    "slug": "grammar:n3:tame-ni",
+    "pattern": "〜ために / 〜為に",
+    "meaning": "Dictionary form or noun + の + ために: 'in order to / for' a purpose. After a past form or a cause, it means 'because of'."
+  },
+  {
+    "slug": "grammar:n3:tashika-ni",
+    "pattern": "確かに",
+    "meaning": "'Certainly / it's true', agreeing that something is so, often before a 'but' (true, it's cheap, but ...)."
+  },
+  {
+    "slug": "grammar:n3:tate",
+    "pattern": "〜たて",
+    "meaning": "Verb stem + たて: 'freshly / just done' (fresh-baked bread, freshly painted)."
+  },
+  {
+    "slug": "grammar:n3:tatoe-temo",
+    "pattern": "たとえ〜ても",
+    "meaning": "たとえ + ても form: 'even if (it were so)', for hypothetical cases; たとえ adds weight to ても."
+  },
+  {
+    "slug": "grammar:n3:tatoeba",
+    "pattern": "例えば",
+    "meaning": "'For example', introducing an example, often followed by など or とか."
+  },
+  {
+    "slug": "grammar:n3:tatte",
+    "pattern": "〜たって",
+    "meaning": "Verb or i-adjective た form + って: 'even if', a casual ても (no matter how much you cry). だって after nouns and na-adjectives."
+  },
+  {
+    "slug": "grammar:n3:te-bakari-iru",
+    "pattern": "〜てばかりいる",
+    "meaning": "Verb-て + ばかりいる: 'do nothing but', criticizing someone for always doing one thing (he does nothing but play games)."
+  },
+  {
+    "slug": "grammar:n3:te-goran",
+    "pattern": "〜てごらん",
+    "meaning": "Verb-て + ごらん: 'try ~ (and see)', said kindly to someone younger, like a child."
+  },
+  {
+    "slug": "grammar:n3:te-hajimete",
+    "pattern": "〜てはじめて",
+    "meaning": "Verb-て + はじめて: 'only after ~ did I', a realization that came only after an experience."
+  },
+  {
+    "slug": "grammar:n3:te-kara-de-nai-to",
+    "pattern": "〜てからでないと",
+    "meaning": "Verb-て + からでないと: 'not until / unless you ~ first', followed by something that can't happen yet."
+  },
+  {
+    "slug": "grammar:n3:te-shou-ga-nai-te-shikata-ga-nai",
+    "pattern": "〜てしょうがない / 〜てしかたがない",
+    "meaning": "Te form + しょうがない: 'extremely / can't help feeling', a strong feeling or urge you can't control (so sleepy I can't stand it). しかたがない is a bit more formal."
+  },
+  {
+    "slug": "grammar:n3:te-sumu",
+    "pattern": "〜て済む",
+    "meaning": "Verb-て (or noun + で) + 済む: 'get by with / only have to', the matter ends with less trouble or cost than feared. ないで済む: 'get away without having to'."
+  },
+  {
+    "slug": "grammar:n3:te-wa-ikenai-kara",
+    "pattern": "〜てはいけないから",
+    "meaning": "Verb-て + はいけないから: 'in case / because it would be bad if', the reason for a precaution (take an umbrella in case it rains)."
+  },
+  {
+    "slug": "grammar:n3:teiru-baai-janai",
+    "pattern": "〜ている場合じゃない",
+    "meaning": "Verb-ている + 場合じゃない: 'this is no time to ~', something more urgent needs doing. ではない in more formal speech."
+  },
+  {
+    "slug": "grammar:n3:teki",
+    "pattern": "〜的",
+    "meaning": "Noun + 的: '-ic / -al', making a na-adjective (scientific, personal). 的な + noun, 的に + verb."
+  },
+  {
+    "slug": "grammar:n3:temo-hajimaranai",
+    "pattern": "〜ても始まらない",
+    "meaning": "Verb-ても + 始まらない: 'it's no use ~ing', doing that now won't help (no use crying about it)."
+  },
+  {
+    "slug": "grammar:n3:temo-kamawanai",
+    "pattern": "〜ても構わない",
+    "meaning": "Te form + も構わない: 'I don't mind if / it's all right to'. A little more formal than てもいい."
+  },
+  {
+    "slug": "grammar:n3:temo-shou-ga-nai-temo-shikata-ga-nai",
+    "pattern": "〜てもしょうがない / 〜てもしかたがない",
+    "meaning": "Verb-ても + しょうがない: 'there's no point in ~', it won't change anything. Not the てしょうがない that means 'extremely'."
+  },
+  {
+    "slug": "grammar:n3:to-ieba",
+    "pattern": "〜と言えば / 〜といえば",
+    "meaning": "'Speaking of', picking up a topic just mentioned and saying what it brings to mind (speaking of Kyoto, the temples ...)."
+  },
+  {
+    "slug": "grammar:n3:to-ii-tara-ii",
+    "pattern": "〜といい / 〜たらいい",
+    "meaning": "Plain form + といい, or た form + らいい: a hope, 'I hope / it'd be nice if' (often with なあ or ですね), or advice, 'you should'."
+  },
+  {
+    "slug": "grammar:n3:to-ittemo",
+    "pattern": "〜といっても",
+    "meaning": "'Although I say / even though', correcting an impression that's too big (I've been abroad, but only once)."
+  },
+  {
+    "slug": "grammar:n3:to-iu-koto-da",
+    "pattern": "〜ということだ",
+    "meaning": "Plain form + ということだ: 'I hear that ~' passing on news, or 'that means ~' drawing a conclusion. Unlike ということ, which only turns a statement into a noun."
+  },
+  {
+    "slug": "grammar:n3:to-iu-nowa",
+    "pattern": "〜というのは",
+    "meaning": "'What ~ means is / ~ is' for defining a word, or 'the reason is' when it ends with からだ."
+  },
+  {
+    "slug": "grammar:n3:to-iu-to",
+    "pattern": "〜と言うと / 〜というと",
+    "meaning": "'Speaking of / when you say', recalling an association, or asking for clarification ('by X, do you mean ...?')."
+  },
+  {
+    "slug": "grammar:n3:to-iu-yori",
+    "pattern": "〜というより",
+    "meaning": "Plain form or noun + というより: 'rather than / more ~ than', swapping a description for a more accurate one (more cold than cool)."
+  },
+  {
+    "slug": "grammar:n3:to-mieru-to-miete",
+    "pattern": "〜とみえる / 〜とみえて",
+    "meaning": "Plain form + とみえる: 'it seems / apparently', a guess based on visible evidence. とみえて links that guess to what follows."
+  },
+  {
+    "slug": "grammar:n3:to-sureba-to-shitara-to-suru-to",
+    "pattern": "〜とすれば / 〜としたら / 〜とすると",
+    "meaning": "Plain form + とすれば / としたら / とすると: 'assuming / if it were so', imagining a situation and following it to its result."
+  },
+  {
+    "slug": "grammar:n3:to-tomo-ni",
+    "pattern": "〜とともに / 〜と共に",
+    "meaning": "Noun or dictionary form + とともに: 'together with', or 'as' one change goes along with another. Formal."
+  },
+  {
+    "slug": "grammar:n3:tochuu-de-tochuu-ni",
+    "pattern": "〜途中で / 〜途中に",
+    "meaning": "'On the way / partway through'. 途中で for something that happens partway; 途中に for something located along the way."
+  },
+  {
+    "slug": "grammar:n3:tokoro-de",
+    "pattern": "ところで",
+    "meaning": "'By the way', opening a sentence to switch to a new topic."
+  },
+  {
+    "slug": "grammar:n3:tokoro-ga",
+    "pattern": "ところが",
+    "meaning": "'However / but then', the result goes against expectations. Not followed by the speaker's own wish or request."
+  },
+  {
+    "slug": "grammar:n3:toori-ni",
+    "pattern": "〜とおりに",
+    "meaning": "Verb or noun + の + とおりに: 'as / just as', doing something the same way (do it as I said)."
+  },
+  {
+    "slug": "grammar:n3:toosu",
+    "pattern": "〜通す",
+    "meaning": "Verb stem + 通す: 'do through to the end without stopping' (read it all the way through, hold out)."
+  },
+  {
+    "slug": "grammar:n3:toshite",
+    "pattern": "〜として",
+    "meaning": "Noun + として: 'as', in the role or status of (work as an engineer). としては: 'as for / for a ~'."
+  },
+  {
+    "slug": "grammar:n3:totemo-nai",
+    "pattern": "とても〜ない",
+    "meaning": "とても + negative, usually potential: 'can't possibly / by no means', it's beyond you. Not とても 'very'."
+  },
+  {
+    "slug": "grammar:n3:towa-kagiranai",
+    "pattern": "〜とは限らない",
+    "meaning": "Plain form + とは限らない: 'not necessarily / not always', a general rule has exceptions. Often with 必ずしも."
+  },
+  {
+    "slug": "grammar:n3:tsui",
+    "pattern": "つい",
+    "meaning": "'Without meaning to', doing something by habit or impulse that you shouldn't (I ended up eating too much). Often with てしまう."
+  },
+  {
+    "slug": "grammar:n3:tsui-ni",
+    "pattern": "ついに",
+    "meaning": "'Finally / at last', after a long process; the outcome can be good or bad. やっと stresses relief at a wished-for result."
+  },
+  {
+    "slug": "grammar:n3:tsuide-ni",
+    "pattern": "〜ついでに",
+    "meaning": "Verb or noun + の + ついでに: 'while you're at it', doing an extra thing alongside the main one."
+  },
+  {
+    "slug": "grammar:n3:tsumari",
+    "pattern": "つまり",
+    "meaning": "'In other words / so', restating or summing up what was said."
+  },
+  {
+    "slug": "grammar:n3:tsumori-datta",
+    "pattern": "〜つもりだった",
+    "meaning": "Plain form + つもりだった: 'I meant to / I thought I had', when the plan didn't happen or reality turned out different."
+  },
+  {
+    "slug": "grammar:n3:tsumori-de",
+    "pattern": "〜つもりで",
+    "meaning": "Plain form + つもりで: 'with the intention of', or 'as if / acting as though' (treat it as the real test)."
+  },
+  {
+    "slug": "grammar:n3:uchi-ni",
+    "pattern": "〜うちに",
+    "meaning": "Dictionary, ている or ない form, adjective, or noun + の + うちに: 'while still / before it changes', acting while a state lasts (eat it while it's hot)."
+  },
+  {
+    "slug": "grammar:n3:ue-de",
+    "pattern": "〜上で / 〜うえで",
+    "meaning": "Verb-た + 上で: 'after (doing), then' (decide after talking it over). Dictionary form or noun + の + 上で: 'when / for the purpose of'."
+  },
+  {
+    "slug": "grammar:n3:ue-ni",
+    "pattern": "〜上に / 〜うえに",
+    "meaning": "Plain form or noun + の + 上に: 'on top of / besides', adding a second point of the same kind (cheap and tasty too)."
+  },
+  {
+    "slug": "grammar:n3:wa-betsu-toshite",
+    "pattern": "〜は別として",
+    "meaning": "Noun + は別として: 'aside from / setting ~ apart', putting one point aside to talk about the rest."
+  },
+  {
+    "slug": "grammar:n3:wa-mochiron",
+    "pattern": "〜はもちろん",
+    "meaning": "A はもちろん B も: 'not to mention A, B too', giving the obvious case before a less obvious one."
+  },
+  {
+    "slug": "grammar:n3:wa-de-yuumei",
+    "pattern": "〜は〜で有名",
+    "meaning": "A は B で有名だ: 'A is famous for B'. で marks what it's known for."
+  },
+  {
+    "slug": "grammar:n3:wake-da",
+    "pattern": "〜わけだ",
+    "meaning": "Plain form + わけだ: 'that's why / no wonder / so that means', a natural conclusion from what's known."
+  },
+  {
+    "slug": "grammar:n3:wake-dewa-nai",
+    "pattern": "〜わけではない",
+    "meaning": "Plain form + わけではない: 'it's not that / it doesn't mean that', denying only part of something."
+  },
+  {
+    "slug": "grammar:n3:wake-ga-nai",
+    "pattern": "〜わけがない",
+    "meaning": "Plain form + わけがない: 'there's no way that', a firm denial based on reasoning. Close to はずがない."
+  },
+  {
+    "slug": "grammar:n3:wake-niwa-ikanai",
+    "pattern": "〜わけにはいかない",
+    "meaning": "Dictionary form + わけにはいかない: 'can't (afford to)', ruled out by social, moral or practical reasons even though it's possible."
+  },
+  {
+    "slug": "grammar:n3:wari-ni",
+    "pattern": "〜わりに / 〜割に",
+    "meaning": "Plain form or noun + の + わりに: 'considering / for', the result is more or less than you'd expect (cheap for the quality)."
+  },
+  {
+    "slug": "grammar:n3:wazato",
+    "pattern": "わざと",
+    "meaning": "'On purpose / deliberately', often for something mean or surprising."
+  },
+  {
+    "slug": "grammar:n3:wazawaza",
+    "pattern": "わざわざ",
+    "meaning": "'Go to the trouble of / specially', an effort beyond what's needed, often for someone else (thanks for coming all this way)."
+  },
+  {
+    "slug": "grammar:n3:yorimo",
+    "pattern": "〜よりも",
+    "meaning": "Noun + よりも: 'than', a more emphatic より; 何よりも means 'more than anything'."
+  },
+  {
+    "slug": "grammar:n3:you-ga-nai",
+    "pattern": "〜ようがない",
+    "meaning": "Verb stem + ようがない: 'there's no way to', no method exists (there's no way to contact him)."
+  },
+  {
+    "slug": "grammar:n3:you-na-ki-ga-suru",
+    "pattern": "〜ような気がする",
+    "meaning": "Plain form or noun + の + ような気がする: 'I have a feeling that / it seems to me', a vague impression."
+  },
+  {
+    "slug": "grammar:n3:you-ni",
+    "pattern": "〜ように",
+    "meaning": "Dictionary or ない form + ように: 'so that / in order that', for goals you can't directly control (so I don't forget); also reported requests and wishes (told him to come early)."
+  },
+  {
+    "slug": "grammar:n3:you-ni-mieru",
+    "pattern": "〜ように見える",
+    "meaning": "Plain form or noun + の + ように見える: 'looks like / seems', a judgement from appearance. Takes a whole clause, where に見える takes a noun or adjective."
+  },
+  {
+    "slug": "grammar:n3:you-to-shinai",
+    "pattern": "〜ようとしない",
+    "meaning": "Volitional form + としない: 'won't even try to / refuses to', about someone else's unwillingness."
+  },
+  {
+    "slug": "grammar:n3:you-to-suru",
+    "pattern": "〜ようとする",
+    "meaning": "Volitional form + とする: 'try to' (an attempt, often unsuccessful) or 'be about to' (just as I was leaving)."
+  },
+  {
+    "slug": "grammar:n3:zuni",
+    "pattern": "〜ずに",
+    "meaning": "ない stem + ずに: 'without doing', more formal than ないで. する becomes せずに."
+  },
+  {
+    "slug": "grammar:n3:zuni-wa-irarenai",
+    "pattern": "〜ずにはいられない",
+    "meaning": "ない stem + ずにはいられない: 'can't help doing', an urge you can't hold back. する becomes せずには."
+  },
+  {
+    "slug": "grammar:n3:zutsu",
+    "pattern": "〜ずつ",
+    "meaning": "Number or amount + ずつ: 'each / at a time' (two each, little by little)."
+  }
+]

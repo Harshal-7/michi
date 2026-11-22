@@ -1,0 +1,962 @@
+[
+  {
+    "slug": "prompt:n5:self-intro",
+    "level": "N5",
+    "prompt": "Introduce yourself: your name, where you're from and your job.",
+    "hints": [
+      "〜です",
+      "〜から{来|き}ました",
+      "{仕事|しごと}は〜です"
+    ],
+    "model": "はじめまして、アルジュンです。インドから{来|き}ました。{仕事|しごと}はエンジニアです。よろしくお{願|ねが}いします。",
+    "modelEn": "Nice to meet you, I'm Arjun. I'm from India. I work as an engineer. Pleased to meet you."
+  },
+  {
+    "slug": "prompt:n5:family",
+    "level": "N5",
+    "prompt": "Tell a new friend about your family: how many of you there are and who they are.",
+    "hints": [
+      "〜{人|にん}{家族|かぞく}です",
+      "〜と〜と〜がいます",
+      "〜は〜ています"
+    ],
+    "model": "うちは4{人|にん}{家族|かぞく}です。{父|ちち}と{母|はは}と{妹|いもうと}がいます。{妹|いもうと}は{大学|だいがく}で{英語|えいご}を{勉強|べんきょう}しています。",
+    "modelEn": "There are four of us in my family. I have my father, my mother and a younger sister. My sister is studying English at university."
+  },
+  {
+    "slug": "prompt:n5:job",
+    "level": "N5",
+    "prompt": "Tell someone you've just met where you work and what you do there.",
+    "hints": [
+      "〜で{働|はたら}いています",
+      "{毎日|まいにち}〜ています",
+      "〜ですが、〜"
+    ],
+    "model": "IT{会社|がいしゃ}で{働|はたら}いています。{毎日|まいにち}パソコンでプログラムを{書|か}いています。{少|すこ}し{忙|いそが}しいですが、{面白|おもしろ}いです。",
+    "modelEn": "I work at an IT company. Every day I write programs on a computer. It's a bit busy, but it's interesting."
+  },
+  {
+    "slug": "prompt:n5:morning-routine",
+    "level": "N5",
+    "prompt": "Describe your usual morning, from getting up to leaving home.",
+    "hints": [
+      "〜{時|じ}に〜ます",
+      "〜て、〜",
+      "それから、〜"
+    ],
+    "model": "{毎朝|まいあさ}6{時|じ}に{起|お}きます。シャワーを{浴|あ}びて、{朝|あさ}ごはんを{食|た}べます。それから、8{時|じ}ごろ{家|いえ}を{出|で}ます。",
+    "modelEn": "I get up at six every morning. I take a shower and have breakfast. Then I leave home around eight."
+  },
+  {
+    "slug": "prompt:n5:evenings",
+    "level": "N5",
+    "prompt": "Tell a coworker what you usually do in the evening after work.",
+    "hints": [
+      "〜てから、〜",
+      "〜たり〜たりします",
+      "〜{前|まえ}に、〜"
+    ],
+    "model": "{家|いえ}に{帰|かえ}ってから、{晩|ばん}ごはんを{作|つく}ります。そのあと、テレビを{見|み}たり、{音楽|おんがく}を{聞|き}いたりします。{寝|ね}る{前|まえ}に、{少|すこ}し{日本語|にほんご}を{勉強|べんきょう}します。",
+    "modelEn": "After I get home, I make dinner. After that, I watch TV or listen to music. Before bed, I study a little Japanese."
+  },
+  {
+    "slug": "prompt:n5:free-time",
+    "level": "N5",
+    "prompt": "Tell a coworker what you like to do in your free time.",
+    "hints": [
+      "〜のが{好|す}きです",
+      "{暇|ひま}なとき、〜",
+      "よく〜ます"
+    ],
+    "model": "{暇|ひま}なとき、{写真|しゃしん}を{撮|と}るのが{好|す}きです。{日曜日|にちようび}はよくカメラを{持|も}って、{公園|こうえん}や{川|かわ}へ{行|い}きます。",
+    "modelEn": "In my free time I like taking photos. On Sundays I often take my camera and go to parks or the river."
+  },
+  {
+    "slug": "prompt:n5:last-saturday",
+    "level": "N5",
+    "prompt": "Tell a coworker what you did last Saturday.",
+    "hints": [
+      "〜に{行|い}きました",
+      "そのあと、〜",
+      "〜かったです"
+    ],
+    "model": "{先週|せんしゅう}の{土曜日|どようび}は、{友達|ともだち}と{映画|えいが}を{見|み}に{行|い}きました。そのあと、{駅|えき}の{近|ちか}くのレストランで{晩|ばん}ごはんを{食|た}べました。とても{楽|たの}しかったです。",
+    "modelEn": "Last Saturday I went to see a movie with a friend. After that we had dinner at a restaurant near the station. It was a lot of fun."
+  },
+  {
+    "slug": "prompt:n5:ordering-food",
+    "level": "N5",
+    "prompt": "At a restaurant, order a dish and a drink.",
+    "hints": [
+      "〜をください",
+      "〜を{一|ひと}つ",
+      "それから、〜も"
+    ],
+    "model": "すみません。カレーを{一|ひと}つください。それから、{冷|つめ}たいお{茶|ちゃ}もください。",
+    "modelEn": "Excuse me. One curry, please. And a cold tea as well, please."
+  },
+  {
+    "slug": "prompt:n5:food-likes",
+    "level": "N5",
+    "prompt": "Tell a friend which Japanese foods you like and which you don't.",
+    "hints": [
+      "〜が{大好|だいす}きです",
+      "〜が{一番|いちばん}です",
+      "〜はあまり{好|す}きじゃありません"
+    ],
+    "model": "{日本|にほん}の{料理|りょうり}は{大好|だいす}きです。{中|なか}でも、すしが{一番|いちばん}です。でも、なっとうはあまり{好|す}きじゃありません。",
+    "modelEn": "I love Japanese food. Sushi is my favorite of all. But I don't really like natto."
+  },
+  {
+    "slug": "prompt:n5:buying-a-bag",
+    "level": "N5",
+    "prompt": "At a shop, ask the price of a bag and say you'll take it.",
+    "hints": [
+      "〜はいくらですか",
+      "この〜",
+      "じゃ、これをください"
+    ],
+    "model": "すみません、この{赤|あか}いかばんはいくらですか。3000{円|えん}ですね。じゃ、これをください。",
+    "modelEn": "Excuse me, how much is this red bag? 3,000 yen, right. OK, I'll take it."
+  },
+  {
+    "slug": "prompt:n5:nearest-station",
+    "level": "N5",
+    "prompt": "Ask a stranger if there's a station nearby and how long it takes to walk there.",
+    "hints": [
+      "この{近|ちか}くに〜はありますか",
+      "{歩|ある}いて{何分|なんぷん}ぐらいですか",
+      "すみません、〜"
+    ],
+    "model": "すみません。この{近|ちか}くに{駅|えき}はありますか。ここから{歩|ある}いて{何分|なんぷん}ぐらいですか。",
+    "modelEn": "Excuse me. Is there a station near here? About how many minutes is it on foot from here?"
+  },
+  {
+    "slug": "prompt:n5:directions-to-office",
+    "level": "N5",
+    "prompt": "Tell a visitor how to get from the station to your office.",
+    "hints": [
+      "まっすぐ{行|い}ってください",
+      "〜を{右|みぎ}に{曲|ま}がってください",
+      "〜の{隣|となり}の〜です"
+    ],
+    "model": "{駅|えき}を{出|で}て、まっすぐ{行|い}ってください。{大|おお}きい{交差点|こうさてん}を{右|みぎ}に{曲|ま}がってください。{銀行|ぎんこう}の{隣|となり}の{白|しろ}い{建物|たてもの}です。",
+    "modelEn": "Leave the station and go straight. Turn right at the big intersection. It's the white building next to the bank."
+  },
+  {
+    "slug": "prompt:n5:meeting-time",
+    "level": "N5",
+    "prompt": "Tell a coworker when and where tomorrow's meeting is.",
+    "hints": [
+      "〜から〜までです",
+      "〜{時|じ}{半|はん}",
+      "〜で〜します"
+    ],
+    "model": "{明日|あした}のミーティングは10{時|じ}から11{時|じ}{半|はん}までです。3{階|がい}の{大|おお}きい{部屋|へや}でします。{山本|やまもと}さんも{来|き}ますよ。",
+    "modelEn": "Tomorrow's meeting is from 10 to 11:30. It's in the big room on the third floor. Yamamoto-san is coming too."
+  },
+  {
+    "slug": "prompt:n5:birthday",
+    "level": "N5",
+    "prompt": "Tell a friend when your birthday is and how you usually spend it.",
+    "hints": [
+      "〜{月|がつ}〜{日|にち}です",
+      "〜には、〜",
+      "いつも〜ます"
+    ],
+    "model": "わたしの{誕生日|たんじょうび}は5{月|がつ}21{日|にち}です。{誕生日|たんじょうび}には、いつも{家族|かぞく}とレストランで{晩|ばん}ごはんを{食|た}べます。",
+    "modelEn": "My birthday is May 21st. On my birthday I always have dinner at a restaurant with my family."
+  },
+  {
+    "slug": "prompt:n5:todays-weather",
+    "level": "N5",
+    "prompt": "Describe today's weather and say what you'll take when you go out.",
+    "hints": [
+      "{今日|きょう}は〜ています",
+      "〜でしょう",
+      "ですから、〜"
+    ],
+    "model": "{今日|きょう}は{朝|あさ}から{曇|くも}っています。{午後|ごご}は{雨|あめ}が{降|ふ}るでしょう。ですから、{傘|かさ}を{持|も}って{行|い}きます。",
+    "modelEn": "It's been cloudy since this morning. It will probably rain in the afternoon. So I'll take an umbrella."
+  },
+  {
+    "slug": "prompt:n5:favorite-season",
+    "level": "N5",
+    "prompt": "Tell a friend which season you like best and why.",
+    "hints": [
+      "〜の{中|なか}で〜が{一番|いちばん}{好|す}きです",
+      "〜からです",
+      "〜すぎて、〜"
+    ],
+    "model": "{一年|いちねん}の{中|なか}で、{秋|あき}が{一番|いちばん}{好|す}きです。{涼|すず}しくて、{食|た}べ{物|もの}もおいしいからです。{夏|なつ}は{暑|あつ}すぎて、あまり{好|す}きじゃありません。",
+    "modelEn": "Of all the seasons, I like autumn best. That's because it's cool and the food is good too. Summer is too hot, so I don't like it much."
+  },
+  {
+    "slug": "prompt:n5:summer-plans",
+    "level": "N5",
+    "prompt": "Tell a friend your plans for the summer holidays.",
+    "hints": [
+      "〜つもりです",
+      "〜たり〜たりしたいです",
+      "〜と〜へ{行|い}きます"
+    ],
+    "model": "{夏休|なつやす}みは、{家族|かぞく}と{海|うみ}へ{行|い}くつもりです。{海|うみ}で{泳|およ}いだり、おいしい{魚|さかな}を{食|た}べたりしたいです。",
+    "modelEn": "For the summer holidays I'm planning to go to the beach with my family. I want to swim in the sea and eat good fish."
+  },
+  {
+    "slug": "prompt:n5:lunch-invite",
+    "level": "N5",
+    "prompt": "Invite a coworker to have lunch with you today.",
+    "hints": [
+      "{一緒|いっしょ}に〜ませんか",
+      "〜ましょう",
+      "〜ができました"
+    ],
+    "model": "{中村|なかむら}さん、{今日|きょう}、{一緒|いっしょ}に{昼|ひる}ごはんを{食|た}べませんか。{駅|えき}の{前|まえ}に{新|あたら}しいそば{屋|や}ができました。12{時|じ}に{行|い}きましょう。",
+    "modelEn": "Nakamura-san, would you like to have lunch together today? A new soba place has opened in front of the station. Let's go at 12."
+  },
+  {
+    "slug": "prompt:n5:declining-politely",
+    "level": "N5",
+    "prompt": "A friend invites you out on Friday night; thank them and politely say you can't.",
+    "hints": [
+      "〜はちょっと…",
+      "〜なくてはいけないんです",
+      "〜はどうですか"
+    ],
+    "model": "ありがとうございます。でも、{金曜日|きんようび}の{夜|よる}はちょっと…。レポートを{書|か}かなくてはいけないんです。{土曜日|どようび}はどうですか。",
+    "modelEn": "Thank you. But Friday night is a bit difficult... I have to write a report. How about Saturday?"
+  },
+  {
+    "slug": "prompt:n5:borrow-a-pen",
+    "level": "N5",
+    "prompt": "Ask a coworker if you can borrow their pen for a moment.",
+    "hints": [
+      "〜てもいいですか",
+      "ちょっと〜",
+      "すぐに〜ます"
+    ],
+    "model": "すみません、ペンを{忘|わす}れました。ちょっと{借|か}りてもいいですか。すぐに{返|かえ}します。",
+    "modelEn": "Sorry, I forgot my pen. Could I borrow yours for a moment? I'll give it right back."
+  },
+  {
+    "slug": "prompt:n5:speak-slowly",
+    "level": "N5",
+    "prompt": "Ask a coworker to speak more slowly because you didn't understand.",
+    "hints": [
+      "〜てください",
+      "もう{少|すこ}し〜",
+      "よく{分|わ}かりませんでした"
+    ],
+    "model": "すみません、よく{分|わ}かりませんでした。もう{少|すこ}しゆっくり{話|はな}してください。",
+    "modelEn": "Sorry, I didn't quite understand. Please speak a little more slowly."
+  },
+  {
+    "slug": "prompt:n5:my-room",
+    "level": "N5",
+    "prompt": "Describe your room: what's in it and where things are.",
+    "hints": [
+      "〜に〜があります",
+      "〜の{上|うえ}に〜",
+      "〜の{隣|となり}に〜"
+    ],
+    "model": "わたしの{部屋|へや}はあまり{広|ひろ}くないです。{窓|まど}の{前|まえ}に{机|つくえ}があって、{机|つくえ}の{上|うえ}にパソコンがあります。ベッドの{隣|となり}には{本棚|ほんだな}があります。",
+    "modelEn": "My room isn't very big. There's a desk in front of the window, and there's a computer on the desk. Next to the bed there's a bookshelf."
+  },
+  {
+    "slug": "prompt:n5:my-town",
+    "level": "N5",
+    "prompt": "Describe the town you live in.",
+    "hints": [
+      "〜で、〜な{町|まち}です",
+      "〜や〜があります",
+      "〜の{近|ちか}くに〜"
+    ],
+    "model": "わたしが{住|す}んでいる{町|まち}は、{静|しず}かできれいな{町|まち}です。{駅|えき}の{近|ちか}くに{大|おお}きいスーパーや{公園|こうえん}があります。とても{便利|べんり}です。",
+    "modelEn": "The town I live in is quiet and pretty. Near the station there's a big supermarket and a park. It's very convenient."
+  },
+  {
+    "slug": "prompt:n5:past-trip",
+    "level": "N5",
+    "prompt": "Tell a friend about a trip you took last year.",
+    "hints": [
+      "〜へ{行|い}きました",
+      "〜ていて、〜でした",
+      "〜も〜かったです"
+    ],
+    "model": "{去年|きょねん}の{冬|ふゆ}、{友達|ともだち}と{北海道|ほっかいどう}へ{行|い}きました。{雪|ゆき}がたくさん{降|ふ}っていて、とてもきれいでした。{魚|さかな}もおいしかったです。",
+    "modelEn": "Last winter I went to Hokkaido with friends. Lots of snow was falling, and it was really beautiful. The fish was delicious too."
+  },
+  {
+    "slug": "prompt:n5:been-to-japan",
+    "level": "N5",
+    "prompt": "Say whether you've ever been to Japan and what you'd like to do there.",
+    "hints": [
+      "〜たことがあります",
+      "まだ〜たことがありません",
+      "いつか〜たいです"
+    ],
+    "model": "いいえ、まだ{日本|にほん}へ{行|い}ったことがありません。いつか{春|はる}に{行|い}って、さくらを{見|み}たいです。{古|ふる}い{町|まち}も{歩|ある}きたいです。",
+    "modelEn": "No, I've never been to Japan yet. Someday I want to go in spring and see the cherry blossoms. I'd also like to walk around old towns."
+  },
+  {
+    "slug": "prompt:n5:at-the-doctor",
+    "level": "N5",
+    "prompt": "Tell a doctor what's wrong and since when.",
+    "hints": [
+      "〜から〜が{痛|いた}いです",
+      "〜も{少|すこ}し〜",
+      "〜でしょうか"
+    ],
+    "model": "{昨日|きのう}の{夜|よる}から{頭|あたま}が{痛|いた}いです。お{腹|なか}も{少|すこ}し{痛|いた}いです。{風邪|かぜ}でしょうか。",
+    "modelEn": "I've had a headache since last night. My stomach hurts a little too. Could it be a cold?"
+  },
+  {
+    "slug": "prompt:n5:running-late",
+    "level": "N5",
+    "prompt": "Phone a coworker to say you'll be late because your train has stopped.",
+    "hints": [
+      "もしもし、〜",
+      "〜ので、〜",
+      "〜ぐらい{遅|おそ}くなります"
+    ],
+    "model": "もしもし、{木村|きむら}さんですか。{電車|でんしゃ}が{止|と}まっているので、30{分|ぷん}ぐらい{遅|おそ}くなります。すみません。",
+    "modelEn": "Hello, is this Kimura-san? My train has stopped, so I'll be about 30 minutes late. Sorry."
+  },
+  {
+    "slug": "prompt:n5:smaller-size",
+    "level": "N5",
+    "prompt": "At a clothes shop, ask if they have this shirt in a smaller size.",
+    "hints": [
+      "〜はありますか",
+      "もう{少|すこ}し〜のは",
+      "〜がいいです"
+    ],
+    "model": "すみません、このシャツはちょっと{大|おお}きいです。もう{少|すこ}し{小|ちい}さいのはありますか。{色|いろ}は{青|あお}がいいです。",
+    "modelEn": "Excuse me, this shirt is a bit big. Do you have a slightly smaller one? I'd like it in blue."
+  },
+  {
+    "slug": "prompt:n5:train-or-bus",
+    "level": "N5",
+    "prompt": "Say whether you prefer the train or the bus, and why.",
+    "hints": [
+      "〜より〜のほうが〜です",
+      "〜ですから",
+      "〜ですが、〜"
+    ],
+    "model": "バスより{電車|でんしゃ}のほうが{好|す}きです。{電車|でんしゃ}のほうが{速|はや}いですから。バスは{安|やす}いですが、{時間|じかん}がかかります。",
+    "modelEn": "I prefer the train to the bus. That's because the train is faster. The bus is cheap, but it takes a long time."
+  },
+  {
+    "slug": "prompt:n5:why-japanese",
+    "level": "N5",
+    "prompt": "Explain why you're studying Japanese.",
+    "hints": [
+      "〜たいので、〜",
+      "〜ています",
+      "〜も{大好|だいす}きです"
+    ],
+    "model": "いつか{日本|にほん}で{働|はたら}きたいので、{日本語|にほんご}を{勉強|べんきょう}しています。{日本|にほん}のアニメや{音楽|おんがく}も{大好|だいす}きです。",
+    "modelEn": "I'm studying Japanese because I want to work in Japan someday. I also love Japanese anime and music."
+  },
+  {
+    "slug": "prompt:n5:cold-advice",
+    "level": "N5",
+    "prompt": "A coworker has a bad cold; give them some advice.",
+    "hints": [
+      "〜たほうがいいですよ",
+      "〜ないほうがいいです",
+      "{大丈夫|だいじょうぶ}ですか"
+    ],
+    "model": "{大丈夫|だいじょうぶ}ですか。{今日|きょう}は{早|はや}く{帰|かえ}って、{寝|ね}たほうがいいですよ。{冷|つめ}たいものは{飲|の}まないほうがいいです。",
+    "modelEn": "Are you OK? You should go home early today and get some sleep. It's better not to drink anything cold."
+  },
+  {
+    "slug": "prompt:n5:todays-clothes",
+    "level": "N5",
+    "prompt": "Describe what you're wearing today.",
+    "hints": [
+      "〜を{着|き}ています",
+      "〜をはいています",
+      "〜をかけています"
+    ],
+    "model": "{今日|きょう}は{白|しろ}いシャツを{着|き}て、{黒|くろ}いズボンをはいています。{眼鏡|めがね}もかけています。",
+    "modelEn": "Today I'm wearing a white shirt and black pants. I'm wearing glasses too."
+  },
+  {
+    "slug": "prompt:n5:describe-a-friend",
+    "level": "N5",
+    "prompt": "Describe a good friend: what they look like and what kind of person they are.",
+    "hints": [
+      "〜は〜が〜です",
+      "〜くて、〜",
+      "〜な{人|ひと}です"
+    ],
+    "model": "{友達|ともだち}の{小川|おがわ}さんは{背|せ}が{高|たか}くて、{目|め}が{大|おお}きいです。とても{元気|げんき}で、{面白|おもしろ}い{人|ひと}です。{歌|うた}も{上手|じょうず}です。",
+    "modelEn": "My friend Ogawa-san is tall and has big eyes. She's very lively and funny. She's a good singer, too."
+  },
+  {
+    "slug": "prompt:n5:pet",
+    "level": "N5",
+    "prompt": "Tell someone about a pet you have.",
+    "hints": [
+      "〜に〜がいます",
+      "{名前|なまえ}は〜です",
+      "いつも〜ています"
+    ],
+    "model": "{家|いえ}に{猫|ねこ}が{一匹|いっぴき}います。{名前|なまえ}はミルクです。{白|しろ}くて、とても{小|ちい}さいです。いつも{窓|まど}のそばで{寝|ね}ています。",
+    "modelEn": "I have a cat at home. Her name is Milk. She's white and very small. She's always sleeping by the window."
+  },
+  {
+    "slug": "prompt:n5:sunday-chores",
+    "level": "N5",
+    "prompt": "Tell a friend what housework you do on Sundays.",
+    "hints": [
+      "〜て、〜をします",
+      "〜に{行|い}きます",
+      "いつも〜"
+    ],
+    "model": "{日曜日|にちようび}の{朝|あさ}は、いつも{部屋|へや}を{掃除|そうじ}して、{洗濯|せんたく}をします。{午後|ごご}はスーパーへ{買|か}い{物|もの}に{行|い}きます。",
+    "modelEn": "On Sunday mornings I always clean my room and do the laundry. In the afternoon I go shopping at the supermarket."
+  },
+  {
+    "slug": "prompt:n5:languages",
+    "level": "N5",
+    "prompt": "Tell someone which languages you speak and how well.",
+    "hints": [
+      "〜と〜ができます",
+      "まだ〜ですが、〜",
+      "{少|すこ}しずつ〜"
+    ],
+    "model": "{英語|えいご}とヒンディー{語|ご}ができます。{日本語|にほんご}はまだ{下手|へた}ですが、{毎日|まいにち}、{少|すこ}しずつ{練習|れんしゅう}しています。",
+    "modelEn": "I can speak English and Hindi. My Japanese is still poor, but I practice a little every day."
+  },
+  {
+    "slug": "prompt:n5:something-to-buy",
+    "level": "N5",
+    "prompt": "Tell a friend something you want to buy and why.",
+    "hints": [
+      "〜がほしいです",
+      "〜ですから",
+      "〜に{行|い}きたいです"
+    ],
+    "model": "{新|あたら}しい{自転車|じてんしゃ}がほしいです。{今|いま}の{自転車|じてんしゃ}はとても{古|ふる}いですから。{来月|らいげつ}、{買|か}いに{行|い}きたいです。",
+    "modelEn": "I want a new bicycle. My current one is really old. I'd like to go and buy one next month."
+  },
+  {
+    "slug": "prompt:n5:lost-wallet",
+    "level": "N5",
+    "prompt": "At a police box, say you've lost your wallet and describe it.",
+    "hints": [
+      "〜をなくしました",
+      "〜くて、〜です",
+      "たぶん〜です"
+    ],
+    "model": "すみません、{財布|さいふ}をなくしました。{黒|くろ}くて、{小|ちい}さい{財布|さいふ}です。たぶん{電車|でんしゃ}の{中|なか}です。",
+    "modelEn": "Excuse me, I've lost my wallet. It's a small black wallet. It's probably on the train."
+  },
+  {
+    "slug": "prompt:n5:hosting-a-guest",
+    "level": "N5",
+    "prompt": "Welcome a guest to your home and offer them something to drink.",
+    "hints": [
+      "どうぞ、〜てください",
+      "{何|なに}か〜ますか",
+      "〜ましょうか"
+    ],
+    "model": "どうぞ、こちらに{座|すわ}ってください。{何|なに}か{飲|の}みますか。コーヒーを{入|い}れましょうか。",
+    "modelEn": "Please, have a seat here. Would you like something to drink? Shall I make some coffee?"
+  },
+  {
+    "slug": "prompt:n5:office-rules",
+    "level": "N5",
+    "prompt": "Tell a visitor what they can and can't do in your office.",
+    "hints": [
+      "〜てはいけません",
+      "〜てもいいです",
+      "〜で〜てください"
+    ],
+    "model": "ここで{写真|しゃしん}を{撮|と}ってはいけません。でも、{飲|の}み{物|もの}は{飲|の}んでもいいです。たばこは{外|そと}で{吸|す}ってください。",
+    "modelEn": "You can't take photos here. But you're welcome to have drinks. Please smoke outside."
+  },
+  {
+    "slug": "prompt:n4:what-you-can-eat",
+    "level": "N4",
+    "prompt": "Tell your host what you can and can't eat or drink.",
+    "hints": [
+      "〜も〜も{食|た}べられます",
+      "〜は{食|た}べられません",
+      "〜は{飲|の}めないので、〜"
+    ],
+    "model": "{肉|にく}も{魚|さかな}も{食|た}べられます。でも、{生|なま}の{卵|たまご}はちょっと{食|た}べられません。それから、お{酒|さけ}は{飲|の}めないので、お{茶|ちゃ}をいただけますか。",
+    "modelEn": "I can eat both meat and fish. But I can't really eat raw eggs. Also, I can't drink alcohol, so could I have some tea?"
+  },
+  {
+    "slug": "prompt:n4:new-abilities",
+    "level": "N4",
+    "prompt": "Tell someone something you've become able to do since you started studying Japanese.",
+    "hints": [
+      "〜ようになりました",
+      "〜（ら）れるようになりました",
+      "〜{始|はじ}めてから"
+    ],
+    "model": "{日本語|にほんご}を{勉強|べんきょう}し{始|はじ}めてから、{駅|えき}の{案内|あんない}が{読|よ}めるようになりました。{最近|さいきん}は、{簡単|かんたん}なニュースも{少|すこ}し{分|わ}かるようになりました。",
+    "modelEn": "Since I started studying Japanese, I've become able to read the signs at stations. Lately I can understand a bit of simple news, too."
+  },
+  {
+    "slug": "prompt:n4:after-the-project",
+    "level": "N4",
+    "prompt": "Tell a coworker what you want to do once this project is finished.",
+    "hints": [
+      "〜たら、〜たいです",
+      "〜が{終|お}わったら",
+      "〜て、ゆっくりしたいです"
+    ],
+    "model": "このプロジェクトが{終|お}わったら、{一週間|いっしゅうかん}ぐらい{休|やす}みを{取|と}りたいです。{暖|あたた}かい{所|ところ}へ{旅行|りょこう}に{行|い}って、ゆっくりしたいです。",
+    "modelEn": "Once this project is over, I'd like to take about a week off. I want to travel somewhere warm and relax."
+  },
+  {
+    "slug": "prompt:n4:train-to-airport",
+    "level": "N4",
+    "prompt": "At a station, ask which train goes to the airport and whether you need to change.",
+    "hints": [
+      "〜ばいいですか",
+      "どの〜に{乗|の}れば〜",
+      "〜なければなりませんか"
+    ],
+    "model": "すみません、{空港|くうこう}へ{行|い}きたいんですが、どの{電車|でんしゃ}に{乗|の}ればいいですか。{途中|とちゅう}で{乗|の}り{換|か}えなければなりませんか。",
+    "modelEn": "Excuse me, I'd like to get to the airport. Which train should I take? Do I have to change trains on the way?"
+  },
+  {
+    "slug": "prompt:n4:late-coffee",
+    "level": "N4",
+    "prompt": "Explain what happens to you when you drink coffee late in the day.",
+    "hints": [
+      "〜と、〜",
+      "〜なくなります",
+      "〜にしています"
+    ],
+    "model": "{夜|よる}コーヒーを{飲|の}むと、{眠|ねむ}れなくなります。だから、{午後|ごご}3{時|じ}からはハーブティーにしています。",
+    "modelEn": "If I drink coffee at night, I can't sleep. So from 3 p.m. on, I stick to herbal tea."
+  },
+  {
+    "slug": "prompt:n4:gift-for-mother",
+    "level": "N4",
+    "prompt": "Tell a coworker what you gave your mother for her birthday and how she reacted.",
+    "hints": [
+      "〜に〜をあげました",
+      "〜てくれました",
+      "〜たいです"
+    ],
+    "model": "{先月|せんげつ}、{母|はは}の{誕生日|たんじょうび}に{花|はな}とケーキをあげました。{母|はは}はとても{喜|よろこ}んでくれました。{来年|らいねん}は{一緒|いっしょ}に{旅行|りょこう}に{行|い}きたいです。",
+    "modelEn": "Last month I gave my mother flowers and a cake for her birthday. She was really happy. Next year I'd like to go on a trip with her."
+  },
+  {
+    "slug": "prompt:n4:help-when-new",
+    "level": "N4",
+    "prompt": "Tell someone how your coworkers helped you when you were new at work.",
+    "hints": [
+      "〜てくれました",
+      "〜てもらいました",
+      "〜ころ"
+    ],
+    "model": "{会社|かいしゃ}に{入|はい}ったころ、{先輩|せんぱい}がいろいろ{教|おし}えてくれました。{分|わ}からないときは、いつもすぐに{手伝|てつだ}ってもらいました。とても{嬉|うれ}しかったです。",
+    "modelEn": "When I joined the company, my senior colleagues taught me all sorts of things. Whenever I didn't understand something, they always helped me right away. That made me really happy."
+  },
+  {
+    "slug": "prompt:n4:broken-mug",
+    "level": "N4",
+    "prompt": "Apologize to a coworker for breaking their mug.",
+    "hints": [
+      "〜てしまいました",
+      "〜ているときに",
+      "〜て{返|かえ}します"
+    ],
+    "model": "{田中|たなか}さん、すみません。{洗|あら}っているときに、マグカップを{割|わ}ってしまいました。{同|おな}じのを{買|か}って{返|かえ}します。",
+    "modelEn": "Tanaka-san, I'm so sorry. I broke your mug while I was washing it. I'll buy you the same one."
+  },
+  {
+    "slug": "prompt:n4:healthy-habit",
+    "level": "N4",
+    "prompt": "Tell someone about a healthy habit you're trying to keep.",
+    "hints": [
+      "〜ようにしています",
+      "〜ないようにしています",
+      "できるだけ〜"
+    ],
+    "model": "{最近|さいきん}、できるだけ{階段|かいだん}を{使|つか}うようにしています。それから、{寝|ね}る{前|まえ}には{何|なに}も{食|た}べないようにしています。",
+    "modelEn": "Lately I've been trying to take the stairs as much as I can. I also try not to eat anything before bed."
+  },
+  {
+    "slug": "prompt:n4:cake-window",
+    "level": "N4",
+    "prompt": "Looking at the cakes in a shop window, tell your friend what you think of them.",
+    "hints": [
+      "〜そうですね",
+      "ちょっと〜そうです",
+      "〜てみましょうか"
+    ],
+    "model": "わあ、このケーキ、おいしそうですね。でも、ちょっと{高|たか}そうです。あっちの{小|ちい}さいのを{一|ひと}つ{買|か}ってみましょうか。",
+    "modelEn": "Wow, this cake looks delicious. But it looks a bit expensive. Shall we try one of the small ones over there?"
+  },
+  {
+    "slug": "prompt:n4:weather-forecast",
+    "level": "N4",
+    "prompt": "Tell a coworker what the weather forecast said about tomorrow.",
+    "hints": [
+      "{天気予報|てんきよほう}では、〜",
+      "〜そうです",
+      "〜たほうがいいですね"
+    ],
+    "model": "{天気予報|てんきよほう}では、{明日|あした}は{雨|あめ}がたくさん{降|ふ}るそうです。{電車|でんしゃ}が{遅|おく}れるかもしれないので、いつもより{早|はや}く{家|いえ}を{出|で}たほうがいいですね。",
+    "modelEn": "According to the weather forecast, it's going to rain a lot tomorrow. The trains might be delayed, so we'd better leave home earlier than usual."
+  },
+  {
+    "slug": "prompt:n4:absent-coworker",
+    "level": "N4",
+    "prompt": "A coworker asks why Tanaka-san isn't in today; make a guess.",
+    "hints": [
+      "〜かもしれません",
+      "〜のかもしれません",
+      "〜ので、〜"
+    ],
+    "model": "{田中|たなか}さんは{昨日|きのう}、あまり{元気|げんき}がなかったので、{風邪|かぜ}を{引|ひ}いたのかもしれません。あとでわたしが{連絡|れんらく}してみます。",
+    "modelEn": "Tanaka-san didn't seem very well yesterday, so maybe he's caught a cold. I'll get in touch with him later."
+  },
+  {
+    "slug": "prompt:n4:late-delivery",
+    "level": "N4",
+    "prompt": "A coworker is worried a delivery hasn't arrived; reassure them.",
+    "hints": [
+      "〜はずです",
+      "〜と{言|い}っていました",
+      "もし〜たら"
+    ],
+    "model": "{大丈夫|だいじょうぶ}ですよ。{昨日|きのう}の{夜|よる}に{送|おく}ったと{言|い}っていましたから、{今日|きょう}の{午後|ごご}には{届|とど}くはずです。もし{届|とど}かなかったら、わたしが{電話|でんわ}で{聞|き}きます。",
+    "modelEn": "Don't worry. They said they sent it last night, so it should arrive this afternoon. If it doesn't come, I'll call and ask."
+  },
+  {
+    "slug": "prompt:n4:reception",
+    "level": "N4",
+    "prompt": "Greet a visitor at reception and ask them to take a seat and wait for your manager.",
+    "hints": [
+      "お〜ください",
+      "お〜になって",
+      "すぐに{参|まい}ります"
+    ],
+    "model": "いらっしゃいませ。{田中|たなか}はすぐに{参|まい}ります。こちらにおかけになって、{少々|しょうしょう}お{待|ま}ちください。",
+    "modelEn": "Welcome. Tanaka will be right with you. Please have a seat here and wait a moment."
+  },
+  {
+    "slug": "prompt:n4:closed-restaurant",
+    "level": "N4",
+    "prompt": "Complain to a friend that a restaurant was closed even though you went all the way there.",
+    "hints": [
+      "〜のに、〜",
+      "〜も〜て",
+      "{本当|ほんとう}に〜でした"
+    ],
+    "model": "{先週|せんしゅう}、{有名|ゆうめい}なラーメン{屋|や}に{行|い}ったのに、{休|やす}みでした。1{時間|じかん}もかけて{行|い}ったので、{本当|ほんとう}に{残念|ざんねん}でした。",
+    "modelEn": "Last week I went to a famous ramen shop, but it was closed. I'd spent a whole hour getting there, so I was really disappointed."
+  },
+  {
+    "slug": "prompt:n4:calling-a-client",
+    "level": "N4",
+    "prompt": "Phone a client's office, introduce yourself and ask for Tanaka-san.",
+    "hints": [
+      "〜と{申|もう}します",
+      "〜はいらっしゃいますか",
+      "〜のことで"
+    ],
+    "model": "お{世話|せわ}になっております。さくらシステムの{山田|やまだ}と{申|もう}します。{田中|たなか}さんはいらっしゃいますか。{来週|らいしゅう}の{会議|かいぎ}のことで、お{電話|でんわ}しました。",
+    "modelEn": "Thank you as always for your help. My name is Yamada, from Sakura Systems. Is Tanaka-san there, please? I'm calling about next week's meeting."
+  },
+  {
+    "slug": "prompt:n4:taking-a-call",
+    "level": "N4",
+    "prompt": "Answer a call at work and say your manager is in a meeting.",
+    "hints": [
+      "〜ております",
+      "{申|もう}し{訳|わけ}ありません",
+      "お〜いたしましょうか"
+    ],
+    "model": "{申|もう}し{訳|わけ}ありません。{田中|たなか}はただいま{会議|かいぎ}に{出|で}ております。3{時|じ}ごろ{戻|もど}りますので、こちらからお{電話|でんわ}いたしましょうか。",
+    "modelEn": "I'm very sorry. Tanaka is in a meeting at the moment. He'll be back around three, so shall we call you back?"
+  },
+  {
+    "slug": "prompt:n4:tried-something-new",
+    "level": "N4",
+    "prompt": "Tell a coworker about something new you tried recently and how it went.",
+    "hints": [
+      "〜てみました",
+      "{初|はじ}めて〜",
+      "{思|おも}ったより〜"
+    ],
+    "model": "{先週|せんしゅう}、{初|はじ}めてヨガをやってみました。{思|おも}ったより{大変|たいへん}でしたが、{終|お}わったあとは、とても{気持|きも}ちがよかったです。",
+    "modelEn": "Last week I tried yoga for the first time. It was harder than I expected, but I felt really good afterwards."
+  },
+  {
+    "slug": "prompt:n4:meeting-prep",
+    "level": "N4",
+    "prompt": "Tell your manager what you've prepared for tomorrow's meeting with a client.",
+    "hints": [
+      "〜ておきました",
+      "〜ておきます",
+      "もう〜"
+    ],
+    "model": "{会議室|かいぎしつ}はもう{予約|よやく}しておきました。プロジェクターも{準備|じゅんび}しておきました。{明日|あした}の{朝|あさ}、お{客|きゃく}さんの{飲|の}み{物|もの}を{買|か}っておきます。",
+    "modelEn": "I've already booked the meeting room. I've set up the projector too. Tomorrow morning I'll buy drinks for the visitors."
+  },
+  {
+    "slug": "prompt:n4:weekend-duties",
+    "level": "N4",
+    "prompt": "Tell a friend what you have to do this weekend instead of relaxing.",
+    "hints": [
+      "〜なければなりません",
+      "〜ので、〜",
+      "それに、〜も"
+    ],
+    "model": "{今週|こんしゅう}の{土曜日|どようび}はゆっくりできません。{来週|らいしゅう}は{試験|しけん}があるので、{勉強|べんきょう}しなければなりません。それに、{部屋|へや}の{掃除|そうじ}もしなければなりません。",
+    "modelEn": "I can't take it easy this Saturday. I have an exam next week, so I have to study. On top of that, I have to clean my room too."
+  },
+  {
+    "slug": "prompt:n4:new-year-plans",
+    "level": "N4",
+    "prompt": "Tell a coworker what you're thinking of doing over the New Year holidays.",
+    "hints": [
+      "〜（よ）うと{思|おも}っています",
+      "{久|ひさ}しぶりに〜",
+      "〜ので、{楽|たの}しみです"
+    ],
+    "model": "お{正月|しょうがつ}は{国|くに}へ{帰|かえ}ろうと{思|おも}っています。{久|ひさ}しぶりに{家族|かぞく}に{会|あ}えるので、とても{楽|たの}しみです。",
+    "modelEn": "I'm thinking of going back home for New Year. I'll get to see my family for the first time in ages, so I'm really looking forward to it."
+  },
+  {
+    "slug": "prompt:n4:business-trip",
+    "level": "N4",
+    "prompt": "Tell a client your schedule for next week's business trip.",
+    "hints": [
+      "〜{予定|よてい}です",
+      "〜から〜まで",
+      "〜におります"
+    ],
+    "model": "{来週|らいしゅう}の{火曜日|かようび}から{木曜日|もくようび}まで、{仕事|しごと}で{名古屋|なごや}へ{行|い}く{予定|よてい}です。{金曜日|きんようび}からは{事務所|じむしょ}におります。",
+    "modelEn": "From Tuesday to Thursday next week, I'm scheduled to be in Nagoya on business. From Friday I'll be back in the office."
+  },
+  {
+    "slug": "prompt:n4:review-request",
+    "level": "N4",
+    "prompt": "Politely ask your manager to look over a report you wrote.",
+    "hints": [
+      "〜ていただけませんか",
+      "〜んですが、〜",
+      "お{時間|じかん}があるときに"
+    ],
+    "model": "{部長|ぶちょう}、すみません。{来週|らいしゅう}の{会議|かいぎ}のレポートを{書|か}いたんですが、お{時間|じかん}があるときに{見|み}ていただけませんか。",
+    "modelEn": "Excuse me. I've written the report for next week's meeting. Could you look it over when you have time?"
+  },
+  {
+    "slug": "prompt:n4:volunteer-to-present",
+    "level": "N4",
+    "prompt": "Volunteer to give the presentation at the next team meeting.",
+    "hints": [
+      "〜させてください",
+      "ぜひ〜",
+      "もう〜ています"
+    ],
+    "model": "{次|つぎ}の{会議|かいぎ}のプレゼンは、ぜひわたしにやらせてください。{準備|じゅんび}はもう{始|はじ}めています。",
+    "modelEn": "Please let me give the presentation at the next meeting. I've already started preparing."
+  },
+  {
+    "slug": "prompt:n4:bad-habit",
+    "level": "N4",
+    "prompt": "Confess a bad habit you have.",
+    "hints": [
+      "〜ながら〜",
+      "いつも〜てしまいます",
+      "よく〜に〜（ら）れます"
+    ],
+    "model": "{悪|わる}い{習慣|しゅうかん}なんですが、ごはんを{食|た}べながら、いつもスマホを{見|み}てしまいます。よく{家族|かぞく}に{注意|ちゅうい}されます。",
+    "modelEn": "It's a bad habit, but I always end up looking at my phone while I eat. My family often tells me off for it."
+  },
+  {
+    "slug": "prompt:n4:new-laptop",
+    "level": "N4",
+    "prompt": "Tell a coworker what you think of your new laptop.",
+    "hints": [
+      "〜やすいです",
+      "〜にくいです",
+      "〜くて、〜"
+    ],
+    "model": "{新|あたら}しいパソコンは{軽|かる}くて、{持|も}ち{運|はこ}びやすいです。でも、キーボードが{小|ちい}さいので、ちょっと{打|う}ちにくいです。",
+    "modelEn": "My new laptop is light and easy to carry around. But the keyboard is small, so it's a bit hard to type on."
+  },
+  {
+    "slug": "prompt:n4:why-this-company",
+    "level": "N4",
+    "prompt": "Explain why you chose the company you work for.",
+    "hints": [
+      "〜し、〜",
+      "〜からです",
+      "〜にしたのは"
+    ],
+    "model": "{今|いま}の{会社|かいしゃ}にしたのは、{家|いえ}から{近|ちか}いし、{新|あたら}しい{技術|ぎじゅつ}も{勉強|べんきょう}できるからです。それに、{先輩|せんぱい}たちもみんな{親切|しんせつ}です。",
+    "modelEn": "I chose my current company because it's close to home and I can learn new technology. Besides, my senior colleagues are all kind."
+  },
+  {
+    "slug": "prompt:n4:city-or-country",
+    "level": "N4",
+    "prompt": "Say whether you think it's better to live in a big city or the countryside, and why.",
+    "hints": [
+      "〜と{思|おも}います",
+      "〜のほうが〜",
+      "でも、〜かもしれません"
+    ],
+    "model": "わたしは{田舎|いなか}のほうがいいと{思|おも}います。{空気|くうき}がきれいで、{静|しず}かですから。でも、{仕事|しごと}を{探|さが}すのは{大変|たいへん}かもしれません。",
+    "modelEn": "I think the countryside is better. The air is clean and it's quiet. But finding a job might be hard."
+  },
+  {
+    "slug": "prompt:n4:favor-while-away",
+    "level": "N4",
+    "prompt": "Ask your roommate to do a couple of things for you while you're away.",
+    "hints": [
+      "〜てほしいんです",
+      "〜ておいてください",
+      "〜ので、〜"
+    ],
+    "model": "{来週|らいしゅう}から{一週間|いっしゅうかん}、{旅行|りょこう}に{行|い}くので、{花|はな}に{水|みず}をやってほしいんです。それから、{手紙|てがみ}が{来|き}たら、{取|と}っておいてください。",
+    "modelEn": "I'm going on a trip for a week starting next week, so I'd like you to water the plants. Also, if any letters come, please keep them for me."
+  },
+  {
+    "slug": "prompt:n4:crowded-train",
+    "level": "N4",
+    "prompt": "Tell a friend about a bad morning on a crowded train.",
+    "hints": [
+      "〜（ら）れました",
+      "〜に〜を〜（ら）れました",
+      "{朝|あさ}から〜"
+    ],
+    "model": "{今朝|けさ}、{込|こ}んでいる{電車|でんしゃ}の{中|なか}で{足|あし}を{踏|ふ}まれました。それに、{隣|となり}の{人|ひと}にコーヒーをかけられました。{朝|あさ}から{大変|たいへん}でした。",
+    "modelEn": "This morning someone stepped on my foot on a crowded train. On top of that, the person next to me got coffee all over me. What a way to start the day."
+  },
+  {
+    "slug": "prompt:n4:childhood-rules",
+    "level": "N4",
+    "prompt": "Tell someone what your parents made you do, or let you do, when you were a child.",
+    "hints": [
+      "〜に〜させました",
+      "〜させてくれました",
+      "〜ころ"
+    ],
+    "model": "{子供|こども}のころ、{母|はは}は{毎日|まいにち}わたしにピアノを{練習|れんしゅう}させました。でも、{日曜日|にちようび}は{好|す}きなだけゲームをさせてくれました。",
+    "modelEn": "When I was a kid, my mother made me practice the piano every day. But on Sundays she let me play games as much as I liked."
+  },
+  {
+    "slug": "prompt:n4:recent-decision",
+    "level": "N4",
+    "prompt": "Tell a coworker about a decision you made recently.",
+    "hints": [
+      "〜ことにしました",
+      "〜し、〜",
+      "〜より〜"
+    ],
+    "model": "{来月|らいげつ}から、{会社|かいしゃ}まで{自転車|じてんしゃ}で{来|く}ることにしました。{運動|うんどう}にもなりますし、{電車|でんしゃ}より{早|はや}く{着|つ}くんです。",
+    "modelEn": "I've decided to cycle to work starting next month. It's good exercise, and I actually get here faster than by train."
+  },
+  {
+    "slug": "prompt:n4:transfer-news",
+    "level": "N4",
+    "prompt": "Tell a friend your news: your company is sending you to work in Japan.",
+    "hints": [
+      "〜ことになりました",
+      "〜から、〜",
+      "〜ですが、〜"
+    ],
+    "model": "{来年|らいねん}の4{月|がつ}から、{東京|とうきょう}の{事務所|じむしょ}で{働|はたら}くことになりました。ちょっと{心配|しんぱい}ですが、とても{楽|たの}しみです。",
+    "modelEn": "It's been decided that I'll work at the Tokyo office from April next year. I'm a little nervous, but I'm really looking forward to it."
+  },
+  {
+    "slug": "prompt:n4:just-moved",
+    "level": "N4",
+    "prompt": "Tell a neighbor you've just moved in and ask about good places to eat nearby.",
+    "hints": [
+      "〜たばかりです",
+      "〜ので、まだ〜",
+      "〜たら、〜てください"
+    ],
+    "model": "{先週|せんしゅう}ここに{引|ひ}っ{越|こ}してきたばかりなので、まだこの{辺|へん}のことがよく{分|わ}かりません。おいしいお{店|みせ}があったら、ぜひ{教|おし}えてください。",
+    "modelEn": "I only moved here last week, so I don't really know the area yet. If you know any good places to eat, please tell me."
+  },
+  {
+    "slug": "prompt:n4:in-progress",
+    "level": "N4",
+    "prompt": "Your manager asks how a report is going; say you're in the middle of writing it.",
+    "hints": [
+      "〜ているところです",
+      "あと〜ぐらいで",
+      "〜たら、すぐに〜"
+    ],
+    "model": "{今|いま}、ちょうど{書|か}いているところです。あと30{分|ぷん}ぐらいで{終|お}わると{思|おも}います。{終|お}わったら、すぐにお{送|おく}りします。",
+    "modelEn": "I'm writing it right now. I think I'll be done in about 30 more minutes. As soon as it's finished, I'll send it to you."
+  },
+  {
+    "slug": "prompt:n4:party-maybe",
+    "level": "N4",
+    "prompt": "Tell a friend you're not sure yet whether you can come to their party.",
+    "hints": [
+      "〜かどうか{分|わ}かりません",
+      "〜たら、〜ます",
+      "〜までに〜"
+    ],
+    "model": "{土曜日|どようび}のパーティー、{行|い}けるかどうかまだ{分|わ}かりません。{仕事|しごと}が{早|はや}く{終|お}わったら、{行|い}きます。{金曜日|きんようび}までに{連絡|れんらく}しますね。",
+    "modelEn": "I don't know yet whether I can make it to Saturday's party. If I finish work early, I'll come. I'll let you know by Friday."
+  },
+  {
+    "slug": "prompt:n4:food-recommendation",
+    "level": "N4",
+    "prompt": "A coworker is visiting your country; recommend something they should eat.",
+    "hints": [
+      "〜なら、〜",
+      "ぜひ〜てみてください",
+      "〜くて、〜"
+    ],
+    "model": "{辛|から}いものが{大丈夫|だいじょうぶ}なら、ぜひ{町|まち}の{小|ちい}さいお{店|みせ}でカレーを{食|た}べてみてください。{安|やす}くて、とてもおいしいですよ。",
+    "modelEn": "If you're OK with spicy food, you should definitely try the curry at one of the little local places. It's cheap and really tasty."
+  },
+  {
+    "slug": "prompt:n4:broken-printer",
+    "level": "N4",
+    "prompt": "Tell a coworker that the office printer seems to be broken.",
+    "hints": [
+      "〜みたいです",
+      "〜も〜ません",
+      "〜てもらったほうがいいですね"
+    ],
+    "model": "プリンターが{壊|こわ}れているみたいです。さっきから{紙|かみ}が{一枚|いちまい}も{出|で}てきません。だれかに{見|み}てもらったほうがいいですね。",
+    "modelEn": "The printer seems to be broken. Not a single sheet has come out for a while now. We should get someone to look at it."
+  },
+  {
+    "slug": "prompt:n4:useful-app",
+    "level": "N4",
+    "prompt": "Recommend a useful app to a friend and say what it's good for.",
+    "hints": [
+      "〜のに{便利|べんり}です",
+      "〜ずつ",
+      "〜で〜ています"
+    ],
+    "model": "このアプリは、{漢字|かんじ}を{覚|おぼ}えるのにとても{便利|べんり}です。わたしは{毎日|まいにち}、{電車|でんしゃ}の{中|なか}で10{分|ぷん}ずつ{使|つか}っています。",
+    "modelEn": "This app is really handy for memorizing kanji. I use it for ten minutes every day on the train."
+  },
+  {
+    "slug": "prompt:n4:glad-you-went",
+    "level": "N4",
+    "prompt": "Tell a friend about a concert you went to and say you're glad you went.",
+    "hints": [
+      "〜てよかったです",
+      "〜ですし、〜",
+      "また〜たいです"
+    ],
+    "model": "{昨日|きのう}のコンサート、{本当|ほんとう}に{行|い}ってよかったです。{歌|うた}も{素晴|すば}らしかったですし、{席|せき}も{前|まえ}のほうでした。また{行|い}きたいです。",
+    "modelEn": "I'm so glad I went to the concert yesterday. The singing was wonderful, and our seats were near the front. I want to go again."
+  }
+]

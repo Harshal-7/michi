@@ -131,7 +131,10 @@ export const Example = z
       .object({
         ja: z.number().int().positive(),
         en: z.number().int().positive(),
+        /** Who added the Japanese sentence. */
         author: z.string().optional(),
+        /** Who added the English sentence. */
+        enAuthor: z.string().optional(),
       })
       .optional(),
   })
