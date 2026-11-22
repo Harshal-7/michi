@@ -38,8 +38,9 @@ migrated template.
 | `TEST_DATABASE_URL` | The Postgres server tests make their databases on | Optional; defaults to the local one |
 | `SKIP_DB_DEPLOY` | `1` skips migrations and the seed on a deploy | Optional, an escape hatch |
 
-`pnpm auth:hash --vercel` and `pnpm auth:secret --vercel` send the value straight to the linked Vercel
-project (Production and Preview) instead of printing it. Never put the passphrase itself anywhere.
+`pnpm auth:hash --vercel` and `pnpm auth:secret --vercel` send the value straight to the Vercel project
+`michi` (Production and Preview, stored as a Secret) instead of printing it. Never put the passphrase
+itself anywhere.
 
 ## Database
 

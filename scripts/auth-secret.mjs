@@ -2,8 +2,8 @@
 // Makes SESSION_SECRET, the random key that signs the sign-in cookie.
 //
 //   pnpm auth:secret            prints the line for .env.local or Vercel
-//   pnpm auth:secret --vercel   sends it straight to the linked Vercel project (Production
-//                               and Preview) instead of printing it
+//   pnpm auth:secret --vercel   sends it straight to the Vercel project "michi" (Production
+//                               and Preview, as a Secret) instead of printing it
 //
 // Run it once. Changing SESSION_SECRET later signs every device out.
 

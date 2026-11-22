@@ -3,8 +3,8 @@
 // scrambled form the app checks sign-ins against. The passphrase itself is never saved.
 //
 //   pnpm auth:hash            prints the line for .env.local or Vercel
-//   pnpm auth:hash --vercel   sends it straight to the linked Vercel project (Production
-//                             and Preview) instead of printing it
+//   pnpm auth:hash --vercel   sends it straight to the Vercel project "michi" (Production
+//                             and Preview, as a Secret) instead of printing it
 //
 // Must stay in step with src/lib/auth/password.ts (a unit test checks this).
 
@@ -65,17 +65,21 @@ function askHidden(prompt) {
   });
 }
 
-/** Sends a value to the linked Vercel project through stdin, so it never shows on screen. */
+/** The Vercel project; VERCEL_PROJECT=<name> for another one. */
+const VERCEL_PROJECT = process.env.VERCEL_PROJECT || "michi";
+
+/**
+ * Sends a value to the Vercel project through stdin, so it never shows on screen. Stored as a
+ * Secret (sensitive) for Production and Preview, replacing any earlier value.
+ */
 export function sendToVercel(name, value) {
   const result = spawnSync(
     "vercel",
-    ["env", "add", name, "--environment", "production,preview", "--sensitive", "--force", "--yes"],
+    ["env", "add", name, "--project", VERCEL_PROJECT, "--environment", "production,preview", "--sensitive", "--force", "--yes"],
     { input: value, stdio: ["pipe", "inherit", "inherit"] },
   );
   if (result.error || result.status !== 0) {
-    throw new Error(
-      `Couldn't add ${name} to Vercel. Check that the Vercel CLI is signed in and this folder is linked (vercel link).`,
-    );
+    throw new Error(`Couldn't add ${name} to the Vercel project "${VERCEL_PROJECT}". Check that the Vercel CLI is signed in.`);
   }
 }
 
