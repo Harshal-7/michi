@@ -96,16 +96,19 @@ function chip(card: DeckCard) {
   return <span className={`${CHIP} bg-accent-soft`}>Learning</span>;
 }
 
-/** Every card in the list, with a way to suspend it (it stops coming up) or bring it back. */
+/** Every card in the list, with a way to suspend it (it stops coming up) or bring it back. Two columns on a wide screen. */
 export function DeckCards({ cards }: { cards: DeckCard[] }) {
   const [shown, setShown] = useOptimistic(cards, (state, change: { cardId: number; suspended: boolean }) =>
     state.map((c) => (c.cardId === change.cardId ? { ...c, suspended: change.suspended } : c)),
   );
   const [, start] = useTransition();
   return (
-    <section className="flex flex-col rounded-card bg-surface px-3.5 py-1 shadow-card">
+    <section className="flex flex-col rounded-card bg-surface px-3.5 py-1 shadow-card wide:grid wide:grid-cols-2 wide:gap-x-8 wide:px-5 wide:py-2">
       {shown.map((card, i) => (
-        <div key={card.cardId} className={`flex min-h-[52px] items-center gap-3 py-1.5 ${i ? "border-t border-line" : ""}`}>
+        <div
+          key={card.cardId}
+          className={`flex min-h-[52px] min-w-0 items-center gap-3 py-1.5 ${i ? "border-t border-line" : ""} ${i === 1 ? "wide:border-t-0" : ""}`}
+        >
           <span className="flex min-w-0 flex-auto flex-col">
             <span lang="ja" className={`font-card text-lg font-semibold ${card.suspended ? "text-ink2" : ""}`}>
               {card.term}

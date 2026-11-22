@@ -9,7 +9,7 @@ import type { VoicePrefs } from "@/lib/voice/voices";
 import { LessonCheck, PlayIcon, StatusChips } from "./lesson-parts";
 import { BackLink } from "./tabs";
 
-const card = "flex flex-col gap-2 rounded-card bg-surface px-3.5 py-3 shadow-card";
+const card = "flex flex-col gap-2 rounded-card bg-surface px-3.5 py-3 shadow-card laptop:gap-1 laptop:px-6 laptop:py-5";
 const SITE = { jlptsensei: "JLPT Sensei", bunpro: "Bunpro" } as const;
 const OUT = "M14 4h6v6 M20 4l-9 9 M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5";
 const same = (a: string, b: string) => a.replace(/[\s〜()（）]/g, "").toLowerCase() === b.replace(/[\s〜()（）]/g, "").toLowerCase();
@@ -37,7 +37,7 @@ export function LessonView({
       <div className="laptop:hidden">
         <BackLink href="/grammar">Grammar</BackLink>
       </div>
-      <header className="flex flex-col gap-[3px]">
+      <header className="flex flex-col gap-[3px] laptop:gap-1">
         <p className="m-0 text-[12.5px] text-ink2">{kicker}</p>
         <h1 className="m-0 font-card text-[36px] leading-[1.25] font-semibold laptop:text-[40px]">
           <Mixed text={lesson.pattern} />
@@ -49,21 +49,21 @@ export function LessonView({
           </p>
         )}
       </header>
-      <p className="m-0 text-[14.5px] leading-[1.7]">
+      <p className="m-0 text-[14.5px] leading-[1.7] laptop:max-w-[64ch] laptop:text-[15.5px] laptop:leading-[1.75]">
         <Mixed text={lesson.meaning} />
       </p>
       <StatusChips itemId={lesson.id} status={lesson.status} />
 
       {lesson.examples.length > 0 && (
         <section className={card}>
-          <h2 className="m-0 text-[13px] font-bold">Examples</h2>
+          <h2 className="m-0 text-[13px] font-bold laptop:mb-1">Examples</h2>
           {lesson.examples.map((ex, i) => (
-            <div key={ex.ja} className="flex items-center gap-2">
+            <div key={ex.ja} className={`flex items-center gap-2 laptop:gap-4 laptop:py-2.5 ${i ? "laptop:border-t laptop:border-line" : ""}`}>
               <div className="flex min-w-0 flex-auto flex-col gap-px">
-                <p className="m-0 font-card text-lg leading-[1.85]">
+                <p className="m-0 font-card text-lg leading-[1.85] laptop:text-[20px]">
                   <Ruby text={ex.ja} furigana={furigana} blank="accent" />
                 </p>
-                <p className="m-0 text-[13px] text-ink2">{ex.en}</p>
+                <p className="m-0 text-[13px] text-ink2 laptop:text-[13.5px]">{ex.en}</p>
               </div>
               <PlayIcon text={spoken(ex.ja)} label={`Play example ${i + 1}`} />
             </div>
@@ -71,6 +71,7 @@ export function LessonView({
         </section>
       )}
 
+      <div className="flex flex-col gap-3 wide:grid wide:grid-cols-[minmax(0,1fr)_220px] wide:items-start wide:gap-4">
       {lesson.confusables.length > 0 && (
         <section className={card}>
           <h2 className="m-0 text-[13px] font-bold">Don&apos;t mix up with</h2>
@@ -90,7 +91,7 @@ export function LessonView({
       )}
 
       {lesson.links.length > 0 && (
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-2 gap-2 wide:col-start-2 wide:grid-cols-1">
           {lesson.links.map((l) => (
             <a
               key={l.url}
@@ -107,6 +108,7 @@ export function LessonView({
           ))}
         </div>
       )}
+      </div>
 
       <LessonCheck
         key={lesson.id}

@@ -17,7 +17,8 @@ export const levelParam = (v: unknown): Level => (typeof v === "string" && (LEVE
 
 /**
  * Grammar (F_Grammar, F_GrammarWeb): the list on a phone, and on a laptop the list beside the
- * lesson. With a lesson selected, a phone shows just the lesson.
+ * lesson. With a lesson selected, a phone shows just the lesson. On a laptop the list column
+ * stays in view and scrolls on its own, so the lesson can be read down the page beside it.
  */
 export async function GrammarScreen({ level, selectedId, lesson }: { level: Level; selectedId: number | null; lesson: ReactNode }) {
   const today = studyDate();
@@ -32,8 +33,13 @@ export async function GrammarScreen({ level, selectedId, lesson }: { level: Leve
   const pct = (n: number) => `${counts.total ? (n / counts.total) * 100 : 0}%`;
 
   return (
-    <div data-wide className="flex flex-col gap-3 laptop:grid laptop:grid-cols-[400px_minmax(0,1fr)] laptop:items-start laptop:gap-x-10">
-      <div className={`flex flex-col gap-2.5 ${selectedId ? "max-laptop:hidden" : ""}`}>
+    <div
+      data-wide
+      className="flex flex-col gap-3 laptop:grid laptop:grid-cols-[340px_minmax(0,1fr)] laptop:items-start laptop:gap-x-10 wide:grid-cols-[380px_minmax(0,1fr)] wide:gap-x-14"
+    >
+      <div
+        className={`flex flex-col gap-2.5 laptop:sticky laptop:top-0 laptop:-mx-3 laptop:-mt-7 laptop:max-h-[calc(100dvh-32px)] laptop:overflow-y-auto laptop:overscroll-contain laptop:px-3 laptop:pt-7 laptop:pb-8 ${selectedId ? "max-laptop:hidden" : ""}`}
+      >
         <BackLink href={ROUTES.learn}>Learn</BackLink>
         <PageHeader kicker={formatLong(today)} title="Grammar" />
         <LinkTabs
@@ -77,7 +83,7 @@ export async function GrammarScreen({ level, selectedId, lesson }: { level: Leve
         )}
         <GrammarList points={points} nextId={next?.id ?? null} selectedId={selectedId} />
       </div>
-      <div className={`flex flex-col gap-3 ${selectedId ? "" : "max-laptop:hidden"}`}>{lesson}</div>
+      <div className={`flex flex-col gap-3 laptop:max-w-[760px] laptop:gap-4 ${selectedId ? "" : "max-laptop:hidden"}`}>{lesson}</div>
     </div>
   );
 }

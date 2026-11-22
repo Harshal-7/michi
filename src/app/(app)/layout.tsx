@@ -13,8 +13,8 @@ import { todaysPlan } from "@/lib/planner/today-plan";
  * floating pill nav. Pages use the phone layout, centred and at most 720px wide on a laptop.
  * Layouts don't run again on every navigation, so each page checks the session too.
  * The first page load of each study day freezes the day's plan (src/lib/planner/freeze.ts), so
- * every page and both devices see the same list. A page that opts in with `data-wide` (Today on
- * a laptop) gets the wider column of its laptop board.
+ * every page and both devices see the same list. A page that opts in with `data-wide` gets the
+ * wider 1136px column on a laptop, and lays out its own columns there (mostly from `wide:`, 1280px).
  */
 export default async function AppLayout({ children }: LayoutProps<"/">) {
   await requireSignedIn();

@@ -17,10 +17,9 @@ export default async function SettingsPage() {
   const today = studyDate();
   const [settings, exceptions] = await Promise.all([getSettings(db), listOverrides(db, today, addDays(today, 3 * 366))]);
   return (
-    <>
+    <div data-wide className="mx-auto flex w-full max-w-[720px] flex-col gap-3 wide:max-w-none wide:gap-5">
       <h1 className="m-0 font-head text-[28px] leading-[1.2]">Settings</h1>
-      <SettingsEditor settings={settings} exceptions={exceptions} today={today} />
-      <SignOut device={session.device} />
-    </>
+      <SettingsEditor settings={settings} exceptions={exceptions} today={today} footer={<SignOut device={session.device} />} />
+    </div>
   );
 }

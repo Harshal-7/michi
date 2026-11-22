@@ -91,6 +91,8 @@
   --shadow-nav: var(--nav-shadow);
 
   --breakpoint-laptop: 64rem;
+  /* Wide laptop screens (1280px+): pages that opt in with data-wide use a second column. */
+  --breakpoint-wide: 80rem;
 }
 
 /* font-head for headings, font-card for big Japanese on cards (Zen Old Mincho). */

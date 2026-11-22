@@ -19,17 +19,21 @@ const COLUMNS = [
   { form: "ta", label: "た" },
 ] as const;
 
-/** Verb forms (Learn): the three groups, how each N5 form is made, and a table of examples. */
+/**
+ * Verb forms (Learn): the three groups, how each N5 form is made, and a table of examples. On a
+ * wide screen the groups and form guides flow in two columns, with the full table under them.
+ */
 export default async function VerbsPage() {
   await requireSignedIn();
   const { furigana } = await getSettings(getDb());
   const teExample = (from: string) => VERBS.find((v) => v.group === 1 && v.ending.endsWith(from) && v.base !== "行");
 
   return (
-    <>
+    <div data-wide className="mx-auto flex w-full max-w-[720px] flex-col gap-3 wide:max-w-none wide:gap-5">
       <BackLink href={ROUTES.learn}>Learn</BackLink>
       <PageHeader title="Verb forms" sub="The three groups and the forms N5 grammar is built on" />
 
+      <div className="flex flex-col gap-3 wide:block wide:columns-2 wide:gap-5 wide:[&>section]:mb-5 wide:[&>section]:break-inside-avoid">
       <section className={card}>
         <h2 className="m-0 text-[13px] font-bold">Three groups</h2>
         {GROUP_NOTES.map((g, i) => (
@@ -89,6 +93,7 @@ export default async function VerbsPage() {
           )}
         </section>
       ))}
+      </div>
 
       <section className={card}>
         <h2 className="m-0 text-[13px] font-bold">All the forms</h2>
@@ -132,7 +137,7 @@ export default async function VerbsPage() {
           </table>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 
