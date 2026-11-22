@@ -27,7 +27,8 @@ that already exist. Don't invent new visual styles, and don't iterate on looks i
   6. Dark: `F_DarkToday`, `F_DarkReviewBack`, `F_DarkPractice`, `F_DarkGrammar`, `F_DarkClassLog`,
      `F_DarkTodayWeb`. Every board also has a light/dark `theme` prop.
   7. Parts and states: `F_Parts` (buttons, chips, inputs, rating buttons, task rows, progress bars, and
-     the empty, loading, "grades waiting to save", no-signal and "new version, reload" states), `F_Nav`.
+     the empty, loading, "grades waiting to save", no-signal and "new version, reload" states), `F_Nav`,
+     `F_PhoneTop` (the phone's top bar, approved 22 Nov 2026).
 - How the boards are built: most `F_` boards style themselves inline with the tokens in
   `project/michi.css`. `F_Today`, `F_ReviewFront`/`Back`, `F_Quiz`, `F_ClassLog` and `F_TodayWeb` are
   wrappers that pass `colors="washi" fonts="2" cards="soft" nav="pill"` to the engine boards
@@ -91,10 +92,13 @@ Rating buttons: Again `--again`, Hard `--ink`, Good `--good`, Easy `--easy`, eac
 **Navigation**
 - Phone: the floating pill bar from `F_Nav` (Today · Review · Practice · Grammar · Log; 22px stroke icons
   at 1.6; the current item gets `--accent-soft` with `--accent` text). Progress, Work Japanese,
-  Resources, Decks and Settings live in the More sheet (`F_More`). The "+ word" quick add (`F_AddWord`)
-  is reachable from every screen.
-- Laptop (from 1024px wide): a sidebar with everything. Today, Review, Grammar and Progress have their
-  own laptop boards; every other screen is the sidebar plus the phone layout centred, at most 720px wide.
+  Resources, Decks and Settings live on the More page (`F_More`).
+- Phone top bar (`F_PhoneTop`, `src/components/shell/phone-top-bar.tsx`) on every phone page: "Michi 道"
+  on the left; on the right a quiet "+ Add a word" pill (to the quick add, `F_AddWord`) and a round More
+  button, which turns `--accent-soft` on the More page. Pages start 12px below it.
+- Laptop (from 1024px wide): a 228px sidebar with everything, ending in "+ Add a word". Today, Review,
+  Grammar and Progress have their own laptop boards; every other screen is the sidebar plus the phone
+  layout centred, at most 720px wide.
 
 **Theme**: system, light or dark, set by a script in `<head>` before the page paints (the same way the
 games app does it), stored per device.
