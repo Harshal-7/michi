@@ -9,9 +9,10 @@
 import { and, asc, eq, inArray, sql } from "drizzle-orm";
 
 import type { Level } from "@content/schema";
-import type { DbOrTx } from "@/db/client";
+import type { Db, DbOrTx } from "@/db/client";
 import { cards, decks, grammarProgress, items, quickCheck } from "@/db/schema";
 import { GrammarData } from "@/lib/items/data";
+import { saveOps } from "@/lib/srs/save";
 
 export type GrammarStatus = "not_started" | "learning" | "confident";
 export const STATUS_LABEL: Record<GrammarStatus, string> = {
@@ -176,6 +177,42 @@ export async function setGrammarStatus(db: DbOrTx, itemId: number, status: Gramm
     .insert(grammarProgress)
     .values({ itemId, status })
     .onConflictDoUpdate({ target: grammarProgress.itemId, set: { status, updatedAt: new Date() } });
+}
+
+export type MarkInput = {
+  /** Made on the device, so pressing twice or a retry saves the verdict once. */
+  opId: string;
+  itemId: number;
+  choice: "known" | "learn";
+  /** The lesson's check questions answered: true for right. */
+  answers: boolean[];
+};
+
+/**
+ * The end of a lesson (decision 6's read-through). "I know this" is a known quick-check verdict,
+ * so the card starts with a long interval, unless a check question was missed: then it counts as
+ * "Learn it", which puts the card first in line for new cards. Returns the status it set and the
+ * next lesson not read yet at the same level.
+ */
+export async function markLessonIn(db: Db, input: MarkInput): Promise<{ status: GrammarStatus; next: number | null } | { error: string }> {
+  const [item] = await db.select({ level: items.level, kind: items.kind }).from(items).where(eq(items.id, input.itemId));
+  if (!item?.level || item.kind !== "grammar") return { error: "That grammar point isn't there any more." };
+  const missed = input.answers.some((a) => !a);
+  const [result] = await saveOps(db, [
+    {
+      kind: "check",
+      id: input.opId,
+      itemId: input.itemId,
+      verdict: input.choice === "known" ? "known" : "unsure",
+      verified: input.choice === "known" && input.answers.length > 0 ? !missed : null,
+      checkedAt: new Date().toISOString(),
+    },
+  ]);
+  if (!result || (result.status !== "saved" && result.status !== "duplicate")) return { error: "That didn't save. Try again." };
+  const status: GrammarStatus = input.choice === "known" && !missed ? "confident" : "learning";
+  await setGrammarStatus(db, input.itemId, status);
+  const next = nextUnread(await loadPoints(db, item.level), input.itemId);
+  return { status, next: next?.id ?? null };
 }
 
 /** When each level's grammar deck switches on, for the level tabs' notes. */

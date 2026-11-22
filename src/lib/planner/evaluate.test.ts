@@ -66,6 +66,21 @@ describe("evaluate", () => {
     expect(allSkipped.finished).toBe(false);
   });
 
+  it("ticks the grammar read-through when today's lessons are marked, or none are left", () => {
+    const withRead = {
+      tasks: [
+        ...plan.tasks,
+        { key: "read_through", kind: "read_through" as const, title: "Read N5 grammar", minutes: 18, must: false, target: 12, href: ROUTES.nextLesson },
+      ],
+    };
+    const read = (a: DayActivity) => evaluate(withRead, a).tasks.find((t) => t.task.key === "read_through")!;
+    expect(read({ ...busy, lessonsRead: 11, lessonsLeft: 60 })).toMatchObject({ state: "todo", progress: { done: 11, of: 12 } });
+    expect(read({ ...busy, lessonsRead: 12, lessonsLeft: 60 }).state).toBe("done");
+    expect(read({ ...busy, lessonsRead: 3, lessonsLeft: 0 }).state).toBe("done");
+    // A status change alone is the grammar task's rule, not the read-through's.
+    expect(read({ ...busy, grammarTouched: true, lessonsLeft: 60 }).state).toBe("todo");
+  });
+
   it("counts a day for the streak when Reviews are done", () => {
     expect(countsForStreak(evaluate(plan, { ...busy, reviewsGraded: 64 }))).toBe(true);
     expect(countsForStreak(evaluate(plan, busy))).toBe(false);

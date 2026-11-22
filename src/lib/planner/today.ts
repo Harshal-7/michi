@@ -23,7 +23,7 @@ import type { Settings } from "@/lib/settings/schema";
 import { type Calendar, examOn, isClassDay, makeCalendar, MOCK_MINUTES, mockOn, nextExam, type UpcomingExam } from "./calendar";
 import type { DayPlan, DayTask } from "./day-plan";
 import { type DayActivity, type DayStatus, countsForStreak, evaluate, type TaskStatus } from "./evaluate";
-import { type DeckState, type Level, type ListTrack, toneFor, type Tone, trackDecks } from "./pace";
+import { type DeckState, type Level, type ListTrack, READ_THROUGH_DECKS, toneFor, type Tone, trackDecks } from "./pace";
 import { planDetail } from "./plan";
 import { loadActivity, loadCountedDays, loadDecks, loadMarks, loadPlanInput, loadPlans, loadQuickCheck } from "./store";
 import { type Streak, streakOf } from "./streak";
@@ -138,6 +138,10 @@ function rowFor(t: TaskStatus, next: string | null, plan: DayPlan, decks: readon
     case "new_items":
       detail = newItemsSummary(plan.newQuota, decks);
       unit = "started";
+      break;
+    case "read_through":
+      detail = `${plural(target, "lesson")}: I know this, or Learn it`;
+      unit = "read";
       break;
     case "grammar":
       detail = plural(target, "point");
@@ -444,6 +448,8 @@ function doneSummary(status: DayStatus, activity: DayActivity, plan: DayPlan, de
       case "listening":
       case "reading":
         return `${logged(t)} min`;
+      case "read_through":
+        return plural(activity.lessonsRead, "lesson");
       default:
         return "done";
     }
@@ -462,7 +468,7 @@ const WEEKDAY_NAMES = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "
 async function tomorrowPreview(db: Db, cal: Calendar, date: StudyDate, settings: Settings): Promise<TodayView["tomorrow"]> {
   const tomorrow = addDays(date, 1);
   const { end } = studyDayBounds(tomorrow);
-  const [decks, [due], qc, exceptions] = await Promise.all([
+  const [decks, [due], qc, rt, exceptions] = await Promise.all([
     loadDecks(db, tomorrow),
     rows<{ due: number; learning: number }>(
       db,
@@ -471,6 +477,7 @@ async function tomorrowPreview(db: Db, cal: Calendar, date: StudyDate, settings:
         from cards where status = 'active' and state <> 'new' and due_at < ${end}`,
     ),
     loadQuickCheck(db, date),
+    loadQuickCheck(db, date, READ_THROUGH_DECKS),
     Promise.resolve([...cal.overrides].map(([d, kind]) => ({ date: d, kind }))),
   ]);
   const { plan, mode } = planDetail({
@@ -481,6 +488,7 @@ async function tomorrowPreview(db: Db, cal: Calendar, date: StudyDate, settings:
     lastActiveDate: date,
     decks,
     quickCheck: { remainingKana: qc.leftKana, remainingOther: qc.leftOther, startedOn: qc.startedOn },
+    readThrough: { remaining: rt.leftOther, startedOn: rt.startedOn },
   });
   const weekday = WEEKDAY_NAMES[new Date(`${tomorrow}T00:00:00Z`).getUTCDay()];
   if (mode === "exam_day") return { weekday, summary: "Exam day: the exam is the only thing on.", note: null };
@@ -490,6 +498,8 @@ async function tomorrowPreview(db: Db, cal: Calendar, date: StudyDate, settings:
   if (reviews?.target) parts.push(plural(reviews.target, "review"));
   const qcTask = plan.tasks.find((t) => t.kind === "quick_check");
   if (qcTask) parts.push(`the quick check (${plural(qcTask.target ?? 0, "item")})`);
+  const rtTask = plan.tasks.find((t) => t.kind === "read_through");
+  if (rtTask) parts.push(`${plural(rtTask.target ?? 0, "grammar lesson")}`);
   if (Object.keys(plan.newQuota).length) parts.push(newItemsSummary(plan.newQuota, decks));
   const summary = `About ${minutes} minutes${parts.length ? `: ${parts.join(", ")}` : ""}.`;
   const notes: Partial<Record<string, string>> = {

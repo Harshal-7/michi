@@ -31,6 +31,9 @@ export type DayActivity = {
   mockSubmitted: boolean;
   /** Today's grammar point got a status change, a note or a sentence. */
   grammarTouched: boolean;
+  /** N5 grammar lessons marked today in the read-through, and how many are left. */
+  lessonsRead: number;
+  lessonsLeft: number;
 };
 
 export const NO_ACTIVITY: DayActivity = {
@@ -46,6 +49,8 @@ export const NO_ACTIVITY: DayActivity = {
   weeklySubmitted: [],
   mockSubmitted: false,
   grammarTouched: false,
+  lessonsRead: 0,
+  lessonsLeft: 0,
 };
 
 export type TaskMark = "done" | "skipped";
@@ -110,6 +115,10 @@ function autoProgress(task: DayTask, a: DayActivity): { done: boolean; progress:
     }
     case "mock":
       return { done: a.mockSubmitted, progress: null };
+    case "read_through": {
+      const result = counted(a.lessonsRead, task.target ?? 0);
+      return { ...result, done: result.done || a.lessonsLeft === 0 };
+    }
     case "grammar":
       return { done: a.grammarTouched, progress: null };
     default:

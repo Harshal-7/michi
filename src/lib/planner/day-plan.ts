@@ -42,6 +42,8 @@ export type DayMode = (typeof DAY_MODES)[number];
 export const TASK_KINDS = [
   "reviews",
   "quick_check",
+  /** The N5 grammar read-through (decision 6): today's share of lessons, opened at ROUTES.nextLesson. */
+  "read_through",
   "new_items",
   "class",
   "log_class",
