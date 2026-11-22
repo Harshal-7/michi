@@ -447,7 +447,7 @@ export function SettingsEditor({ settings, exceptions, today }: { settings: Sett
         {(
           [
             ["furigana", "Furigana", settings.furigana ? "Above my level" : "Off"],
-            // Dark mode is switched off for now (src/lib/theme.ts), so there's no theme to pick.
+            // Hidden if dark mode is ever switched off again (src/lib/theme.ts).
             ...(DARK_MODE ? ([["theme", "Theme", { system: "System", light: "Light", dark: "Dark" }[settings.theme]]] as const) : []),
           ] as const
         ).map(([key, name, value]) => (

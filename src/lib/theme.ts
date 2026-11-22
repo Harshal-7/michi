@@ -5,11 +5,10 @@
  */
 
 /**
- * Dark mode is switched off for now (Harshal, 22 Nov 2026): every device shows the light theme,
- * whatever it or Settings asks for. TODO: set this back to true in a later round. The dark tokens
- * in src/app/globals.css and the stored choices are kept, so turning it on needs nothing else.
+ * Whether the dark theme is offered. It was off for the first round and came back on 22 Nov 2026
+ * with the Material-style colours; false again would show light everywhere and hide Settings' Theme row.
  */
-export const DARK_MODE = false;
+export const DARK_MODE = true;
 
 export const THEMES = ["system", "light", "dark"] as const;
 export type ThemeChoice = (typeof THEMES)[number];
@@ -21,7 +20,7 @@ export const THEME_KEY = "michi:theme";
  * The page colour of each theme, for the phone's address bar and the manifest. They repeat
  * --page in src/app/globals.css (theme.test.ts checks), because neither can read CSS.
  */
-export const PAGE_COLOR: Record<ResolvedTheme, string> = { light: "#faf8f3", dark: "#15120e" };
+export const PAGE_COLOR: Record<ResolvedTheme, string> = { light: "#faf8f3", dark: "#121212" };
 
 export function parseThemeChoice(value: unknown): ThemeChoice {
   return THEMES.includes(value as ThemeChoice) ? (value as ThemeChoice) : "system";
