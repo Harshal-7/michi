@@ -5525,7 +5525,7 @@
   {
     "slug": "grammar:n4:koto",
     "level": "N4",
-    "pattern": "〜こと",
+    "pattern": "Verb + こと (makes a noun)",
     "meaning": "Plain verb + こと: turns a verb or clause into a noun, 'doing / the act of', so it can be a subject or object. The base of ことができる, ことがある and more.",
     "links": [
       {
@@ -6298,7 +6298,7 @@
   {
     "slug": "grammar:n4:sou-da-1",
     "level": "N4",
-    "pattern": "〜そうだ",
+    "pattern": "Plain form + そうだ (hearsay)",
     "meaning": "Hearsay: full plain form + そうだ, 'I heard that / they say', passing on information from a source. Unlike the 'looks like' そうだ, it follows the whole word (降るそうだ).",
     "links": [
       {
@@ -6313,7 +6313,7 @@
   {
     "slug": "grammar:n4:sou-da-2",
     "level": "N4",
-    "pattern": "〜そうだ",
+    "pattern": "Stem + そうだ (looks like)",
     "meaning": "Appearance: verb stem or adjective stem + そうだ, a guess from how things look (looks tasty, it's about to rain). いい becomes よさそう. Not the hearsay そうだ.",
     "links": [
       {
@@ -7951,7 +7951,7 @@
   {
     "slug": "grammar:n3:koto",
     "level": "N3",
-    "pattern": "〜こと",
+    "pattern": "Verb + こと (a rule: \"must\")",
     "meaning": "Dictionary or ない form + こと ending a sentence: a written rule or instruction, 'must / be sure to'. Common in notices and teachers' directions.",
     "links": [
       {

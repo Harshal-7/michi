@@ -7,6 +7,8 @@
   { "word": "word:そっち:そっち", "ja": "そっちは{危|あぶ}ないですよ。", "en": "It's dangerous over there." },
   { "word": "word:どっち:どっち", "ja": "{紅茶|こうちゃ}とコーヒーと、どっちが{好|す}きですか。", "en": "Which do you like better, tea or coffee?" },
   { "word": "word:ゆっくりと:ゆっくりと", "ja": "もう{少|すこ}しゆっくりと{話|はな}してください。", "en": "Please speak a little more slowly." },
+  { "word": "word:キロ:キロ:キログラム", "ja": "この{荷物|にもつ}は10キログラムです。", "en": "This luggage weighs ten kilograms." },
+  { "word": "word:キロ:キロ:キロメートル", "ja": "{駅|えき}から{学校|がっこう}まで2キロメートルぐらいです。", "en": "It's about two kilometres from the station to the school." },
   { "word": "word:コピーする:コピーする", "ja": "この{紙|かみ}を{三枚|さんまい}コピーしてください。", "en": "Please make three copies of this sheet." },
   { "word": "word:ラジオカセ:ラジオカセ", "ja": "{父|ちち}は{古|ふる}いラジオカセで{音楽|おんがく}を{聞|き}きます。", "en": "My father listens to music on an old radio cassette player." },
   { "word": "word:ワイシャツ:ワイシャツ", "ja": "{白|しろ}いワイシャツを{着|き}て、{会社|かいしゃ}へ{行|い}きます。", "en": "I put on a white dress shirt and go to the office." },

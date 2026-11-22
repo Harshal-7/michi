@@ -7,6 +7,7 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
 import { EXPECTED } from "../scripts/content/lib/expected";
+import { dedupeKey } from "../src/lib/items/dedupe";
 import {
   blanks,
   CONTENT_FILES,
@@ -95,6 +96,14 @@ describe("keys and duplicates", () => {
       levelsOf.set(k, (levelsOf.get(k) ?? new Set()).add(w.level));
     }
     expect([...levelsOf].filter(([, l]) => l.size > 1).map(([k]) => k)).toEqual([]);
+  });
+
+  it("gives the seed one item per record (no two share a written form)", () => {
+    const keys = [
+      ...words.map((w) => `word:${dedupeKey("word", w.term, w.reading)}`),
+      ...grammar.map((g) => `grammar:${dedupeKey("grammar", g.pattern)}`),
+    ];
+    expect(keys.filter((k, i) => keys.indexOf(k) !== i)).toEqual([]);
   });
 
   it("uses each quiz question slug once", () => {

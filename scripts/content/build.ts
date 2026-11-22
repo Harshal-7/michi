@@ -21,6 +21,7 @@ import {
   toPlain,
   type Resource,
 } from "../../content/schema";
+import { dedupeKey } from "../../src/lib/items/dedupe";
 import { buildDictionary } from "./dictionary";
 import { attachExamples } from "./examples";
 import { buildKana } from "./kana";
@@ -233,6 +234,17 @@ async function main() {
     parsed[name] = result.data as unknown[];
     const keys = (result.data as Record<string, unknown>[]).map((r) => r[CONTENT_KEYS[name]]);
     if (new Set(keys).size !== keys.length) problem(`${name}: duplicate keys`);
+  }
+
+  // The seed treats records with the same written form as one item, so each must be distinct.
+  const seedKeys = [
+    ...words.map((w) => ({ key: `word:${dedupeKey("word", w.term, w.reading)}`, slug: w.slug })),
+    ...grammar.map((g) => ({ key: `grammar:${dedupeKey("grammar", g.pattern)}`, slug: g.slug })),
+  ];
+  const owner = new Map<string, string>();
+  for (const { key, slug } of seedKeys) {
+    if (owner.has(key)) problem(`${slug} and ${owner.get(key)} would be one item in the app (same form ${key})`);
+    else owner.set(key, slug);
   }
 
   for (const w of warnings) console.log(`warning: ${w}`);

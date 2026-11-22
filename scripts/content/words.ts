@@ -85,6 +85,15 @@ function wordPos(deck: DeckWord, hit: Hit): Pos[] {
   return POS.filter((p) => pos.has(p));
 }
 
+/**
+ * The list has キロ twice, for kilogram and for kilometre. As one written form they would be one
+ * item in the app, so each shows its full form, which is also N5 vocabulary.
+ */
+const FULL_FORM: Record<string, { term: string; meanings: string[] }> = {
+  "word:キロ:キロ:キログラム": { term: "キログラム", meanings: ["kilogram", "kilo (short form キロ)"] },
+  "word:キロ:キロ:キロメートル": { term: "キロメートル", meanings: ["kilometre", "kilo (short form キロ)"] },
+};
+
 /** The few listed words JMdict doesn't match as written, by hand. */
 const POS_BY_HAND: Record<string, Pos[]> = {
   ゆっくりと: ["adverb"],
@@ -134,12 +143,13 @@ export function buildWords(decks: DeckWord[], dict: JmIndex): { matched: Matched
     const hit = matchEntry(deck, dict);
     if (!hit) unmatched.push(`${deck.level} ${term} (${deck.reading})`);
     const pos = hit ? wordPos(deck, hit) : [];
+    const full = FULL_FORM[slug];
     const word: Word = {
       slug,
       level: deck.level,
-      term,
-      reading: deck.reading,
-      meanings: splitMeanings(deck.meaning),
+      term: full?.term ?? term,
+      reading: full?.term ?? deck.reading,
+      meanings: full?.meanings ?? splitMeanings(deck.meaning),
       pos: pos.length ? pos : guessPos(deck),
       usuallyKana: !hasKanji(term),
       ...(hit ? { jmdictId: hit.entry.id } : {}),
