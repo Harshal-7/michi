@@ -7,6 +7,7 @@ import { cache } from "react";
 import { createSession, deleteSession, findSession, type SessionRow } from "@/db/auth";
 import { getDb } from "@/db/client";
 
+import { SIGN_IN_REQUIRED } from "./required";
 import { hashSessionId, newSessionId, SESSION_COOKIE, SESSION_TTL_SECONDS, sessionSecret, signSession, verifySessionToken } from "./token";
 
 /**
@@ -42,8 +43,12 @@ async function cookieSessionId(): Promise<string | null> {
   return verifySessionToken((await cookies()).get(SESSION_COOKIE)?.value, secret);
 }
 
+/** Every request's session while sign-in is switched off (src/lib/auth/required.ts). */
+const OPEN_SESSION: Session = { device: "device", createdAt: new Date(0), expiresAt: new Date(8.64e15) };
+
 /** This request's session, or null. Looked up once per request. */
 export const currentSession = cache(async (): Promise<Session | null> => {
+  if (!SIGN_IN_REQUIRED) return OPEN_SESSION;
   const id = await cookieSessionId();
   if (!id || !process.env.DATABASE_URL) return null;
   const row = await findSession(getDb(), hashSessionId(id));

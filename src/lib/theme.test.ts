@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 
 import { describe, expect, it } from "vitest";
 
-import { PAGE_COLOR, parseThemeChoice, resolveTheme, THEME_SCRIPT } from "./theme";
+import { DARK_MODE, PAGE_COLOR, parseThemeChoice, resolveTheme, THEME_SCRIPT } from "./theme";
 
 const css = readFileSync("src/app/globals.css", "utf8");
 const block = (selector: string) => {
@@ -13,11 +13,43 @@ const token = (selector: string, name: string) => new RegExp(`--${name}:\\s*([^;
 
 describe("theme", () => {
   it("resolves the device's choice", () => {
-    expect(resolveTheme("system", true)).toBe("dark");
-    expect(resolveTheme("system", false)).toBe("light");
-    expect(resolveTheme("light", true)).toBe("light");
+    expect(resolveTheme("system", true, true)).toBe("dark");
+    expect(resolveTheme("system", false, true)).toBe("light");
+    expect(resolveTheme("light", true, true)).toBe("light");
     expect(parseThemeChoice("sepia")).toBe("system");
     expect(parseThemeChoice("dark")).toBe("dark");
+  });
+
+  it("shows light everywhere while dark mode is off", () => {
+    expect(DARK_MODE).toBe(false);
+    expect(resolveTheme("dark", true)).toBe("light");
+    expect(resolveTheme("system", true)).toBe("light");
+  });
+
+  it("puts light on the page before React loads while dark mode is off", () => {
+    const run = (stored: string | null, systemDark: boolean) => {
+      const attrs: Record<string, string> = {};
+      const meta = { setAttribute: () => {} };
+      const env = {
+        document: {
+          documentElement: { setAttribute: (k: string, v: string) => (attrs[k] = v) },
+          querySelector: () => meta,
+          head: { appendChild: () => {} },
+        },
+        localStorage: { getItem: () => stored },
+        window: { matchMedia: () => ({ matches: systemDark }) },
+        matchMedia: () => ({ matches: systemDark }),
+      };
+      new Function("document", "localStorage", "window", "matchMedia", THEME_SCRIPT)(
+        env.document,
+        env.localStorage,
+        env.window,
+        env.matchMedia,
+      );
+      return attrs["data-theme"];
+    };
+    expect(run("dark", true)).toBe("light");
+    expect(run(null, true)).toBe("light");
   });
 
   it("keeps the address bar and manifest colours in step with the tokens", () => {

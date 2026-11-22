@@ -8,7 +8,7 @@ import { setThemeChoice } from "@/components/theme-sync";
 import { Icon } from "@/components/ui/icon";
 import { daysBetween, formatDayMonth, formatShort, PHASE_NAMES, phaseFor, type StudyDate } from "@/lib/day";
 import type { Settings, SettingsPatch } from "@/lib/settings/schema";
-import type { ThemeChoice } from "@/lib/theme";
+import { DARK_MODE, type ThemeChoice } from "@/lib/theme";
 
 import { removeException, type SaveResult, saveException, saveSettings } from "./actions";
 
@@ -447,7 +447,8 @@ export function SettingsEditor({ settings, exceptions, today }: { settings: Sett
         {(
           [
             ["furigana", "Furigana", settings.furigana ? "Above my level" : "Off"],
-            ["theme", "Theme", { system: "System", light: "Light", dark: "Dark" }[settings.theme]],
+            // Dark mode is switched off for now (src/lib/theme.ts), so there's no theme to pick.
+            ...(DARK_MODE ? ([["theme", "Theme", { system: "System", light: "Light", dark: "Dark" }[settings.theme]]] as const) : []),
           ] as const
         ).map(([key, name, value]) => (
           <div key={key} className="border-t border-line">

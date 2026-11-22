@@ -103,6 +103,10 @@ Rating buttons: Again `--again`, Hard `--ink`, Good `--good`, Easy `--easy`, eac
 **Theme**: system, light or dark, set by a script in `<head>` before the page paints (the same way the
 games app does it), stored per device.
 
+**Dark mode is switched off for now** (Harshal, 22 Nov 2026; to come back in a later round): `DARK_MODE`
+in `src/lib/theme.ts` is false, so every device shows light. Keep using tokens so dark still works when it's
+switched back on, but check new screens in light only until then.
+
 **Words**
 - Calm, plain and short. Say what happens ("Start", "Review the 10 mistakes").
 - No guilt about missed days and no hype. Numbers must agree with each other across a screen.

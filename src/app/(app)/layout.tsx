@@ -1,3 +1,4 @@
+import { AppStatus } from "@/components/cards/app-status";
 import { PhoneNav } from "@/components/shell/phone-nav";
 import { PhoneTopBar } from "@/components/shell/phone-top-bar";
 import { Sidebar } from "@/components/shell/sidebar";
@@ -33,6 +34,7 @@ export default async function AppLayout({ children }: LayoutProps<"/">) {
         </main>
       </div>
       <PhoneNav />
+      <AppStatus />
     </div>
   );
 }
