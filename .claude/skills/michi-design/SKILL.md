@@ -112,10 +112,18 @@ Rating buttons: Again `--again`, Hard `--ink`, Good `--good`, Easy `--easy`, eac
   stays the phone layout at 720px. The patterns:
   - **Side panel that stays in view**: the thing you pick (a kana's detail, a deck's pace) in a
     sticky right or left column, the long list beside it (Kana from `laptop:`, deck page from `wide:`).
-  - **Two columns of cards**: Settings (dates and study left; voice, look and data right, from `wide:`).
+  - **Two columns of cards**: Settings (dates and study left; voice, look and data right), Japanese
+    voice (the list and speed left, the install help right), both from `wide:`.
+  - **Flowing reference cards**: Verb forms puts its guides in two CSS columns (`columns-2`) from
+    `wide:`, with the full table across the bottom.
   - **Two-column rows inside one card**: Decks (from `laptop:`), a deck's cards (from `wide:`).
   - **List and detail** (Grammar): the list column is sticky and scrolls on its own; the lesson reads
     down the page beside it, at most 760px, with roomier cards and examples split by lines.
+  - Stay at 720px on purpose: focus screens (Quick check, a review session) keep one centred column so
+    the eye stays on the card; hubs that already fit on a screen (Learn) and placeholder pages
+    (Log, Practice, Resources, Add a word, Work) get their wide layout when their round builds them.
+- Picking one of a few options (Settings → Theme, Furigana): a segmented control, equal segments in a
+  `--surface2` track with the chosen one on `--surface` with the card shadow, like the level tabs.
 
 **Theme**: system, light or dark, set by a script in `<head>` before the page paints (the same way the
 games app does it), stored per device.

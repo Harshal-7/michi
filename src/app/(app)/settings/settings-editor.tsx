@@ -603,11 +603,15 @@ function Choice({
   return (
     <fieldset className="m-0 flex flex-col gap-2 border-none p-0" disabled={pending}>
       <legend className="sr-only">{name}</legend>
-      <div className="flex flex-wrap gap-1.5">
+      {/* A segmented control, like the grammar status (F_GrammarPoint): equal segments in one track. */}
+      <div
+        className="grid max-w-[420px] gap-1 rounded-btn bg-surface2 p-1"
+        style={{ gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))` }}
+      >
         {options.map(([v, text]) => (
           <label
             key={v}
-            className="inline-flex min-h-11 cursor-pointer items-center rounded-full border border-line px-3.5 text-[13px] has-[:checked]:border-ink has-[:checked]:bg-ink has-[:checked]:font-bold has-[:checked]:text-page has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-accent"
+            className="relative inline-flex min-h-10 cursor-pointer items-center justify-center rounded-btn px-3 text-[13.5px] font-medium text-ink2 has-[:checked]:bg-surface has-[:checked]:font-bold has-[:checked]:text-ink has-[:checked]:shadow-card has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-accent"
           >
             <input type="radio" name={name} value={v} defaultChecked={v === value} onChange={() => onChoose(v)} className="sr-only" />
             {text}
