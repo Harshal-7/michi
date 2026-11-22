@@ -1,0 +1,6 @@
+[
+  { "slug": "kana:hiragana:a", "script": "hiragana", "group": "basic", "kana": "あ", "romaji": "a", "accept": [], "lookalikes": ["お"] },
+  { "slug": "kana:hiragana:i", "script": "hiragana", "group": "basic", "kana": "い", "romaji": "i", "accept": [], "lookalikes": ["り"] },
+  { "slug": "kana:katakana:shi", "script": "katakana", "group": "basic", "kana": "シ", "romaji": "shi", "accept": ["si"], "lookalikes": ["ツ"] },
+  { "slug": "kana:katakana:tsu", "script": "katakana", "group": "basic", "kana": "ツ", "romaji": "tsu", "accept": ["tu"], "lookalikes": ["シ"] }
+]

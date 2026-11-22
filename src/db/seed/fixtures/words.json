@@ -1,0 +1,6 @@
+[
+  { "slug": "word:食べる:たべる", "level": "N5", "term": "食べる", "reading": "たべる", "meanings": ["to eat"], "pos": ["verb-ichidan"] },
+  { "slug": "word:日本:にほん", "level": "N5", "term": "日本", "reading": "にほん", "meanings": ["Japan"], "pos": ["noun"] },
+  { "slug": "word:会う:あう", "level": "N4", "term": "会う", "reading": "あう", "meanings": ["to meet"], "pos": ["verb-godan"] },
+  { "slug": "word:n4:食べる", "level": "N4", "term": "食べる", "reading": "たべる", "meanings": ["to eat"], "pos": ["verb-ichidan"] }
+]

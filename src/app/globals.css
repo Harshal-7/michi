@@ -1,1 +1,155 @@
 @import "tailwindcss";
+
+/*
+ * Michi's tokens: the approved mix "Colours Washi · Fonts 2 Print · Cards Soft · Nav Pill".
+ * The values come from .claude/skills/michi-design/SKILL.md and the canvas's michi.css.
+ * These two blocks are the only place colours are written down; everything else uses the tokens.
+ * src/lib/theme.ts repeats --page for the manifest and the phone's address bar, and
+ * src/app/icon.svg uses the light --accent and --on-accent; src/lib/theme.test.ts keeps them in step.
+ */
+:root {
+  --page: #f3eee4;
+  --surface: #fbf8f1;
+  --surface2: #ece5d8;
+  --ink: #1d1a16;
+  --ink2: #5b544a;
+  --line: #d9cfbe;
+  --accent: #b03a22;
+  --on-accent: #fff8f0;
+  --accent-soft: #f2dcd3;
+  --good: #2f6b45;
+  --warn: #8a560a;
+  --again: #a8361f;
+  --easy: #2f5c8a;
+  --track: #e3d9c8;
+  --glow: rgba(176, 58, 34, 0.16);
+  --shadow: rgba(40, 30, 20, 0.08);
+
+  --radius: 18px;
+  --btn-radius: 999px;
+  --card-shadow: 0 1px 2px var(--shadow), 0 8px 24px var(--shadow);
+  --hero-shadow: 0 0 0 2px var(--accent), 0 8px 24px var(--shadow);
+  --nav-shadow: 0 10px 30px var(--glow);
+
+  /* Loaded from Google Fonts in src/app/layout.tsx. */
+  --font-ui: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  --font-head: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  --font-card: "Zen Old Mincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
+  --head-weight: 700;
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --page: #15120e;
+  --surface: #1e1a15;
+  --surface2: #28231c;
+  --ink: #eee6d7;
+  --ink2: #b2a794;
+  --line: #3a332a;
+  --accent: #e26a4e;
+  --on-accent: #1a0d08;
+  --accent-soft: #3b2119;
+  --good: #88bc95;
+  --warn: #dda64a;
+  --again: #ec7e63;
+  --easy: #8db3e0;
+  --track: #2e2821;
+  --glow: rgba(226, 106, 78, 0.18);
+  --shadow: rgba(0, 0, 0, 0.35);
+
+  color-scheme: dark;
+}
+
+/* Tailwind names for the tokens: bg-surface, text-ink2, border-line, rounded-card, shadow-card, laptop: … */
+@theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-surface2: var(--surface2);
+  --color-ink: var(--ink);
+  --color-ink2: var(--ink2);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-good: var(--good);
+  --color-warn: var(--warn);
+  --color-again: var(--again);
+  --color-easy: var(--easy);
+  --color-track: var(--track);
+
+  --radius-card: var(--radius);
+  --radius-btn: var(--btn-radius);
+
+  --shadow-card: var(--card-shadow);
+  --shadow-hero: var(--hero-shadow);
+  --shadow-nav: var(--nav-shadow);
+
+  --breakpoint-laptop: 64rem;
+}
+
+/* font-head for headings, font-card for big Japanese on cards (Zen Old Mincho). */
+@utility font-head {
+  font-family: var(--font-head);
+  font-weight: var(--head-weight);
+}
+@utility font-card {
+  font-family: var(--font-card);
+}
+
+@layer base {
+  html {
+    background: var(--page);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--page);
+    color: var(--ink);
+    font-family: var(--font-ui);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  /* Furigana: 0.4em in the secondary ink. */
+  rt {
+    font-size: 0.4em;
+    color: var(--ink2);
+  }
+
+  /* A visible ring on everything you can tab to. */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
