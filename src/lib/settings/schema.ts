@@ -26,9 +26,9 @@ export const SettingsShape = z.object({
   phases: z.object({ n5: phaseStart, n4: phaseStart, n3: phaseStart, work: phaseStart }),
   exams: z.object({ N4: exam, N3: exam }),
   registration: z.object({
-    /** When the "register for the exam" card starts showing. */
-    N4: z.object({ remindOn: date }),
-    N3: z.object({ remindOn: date }),
+    /** When the "register for the exam" card starts showing; `registered` puts it away. */
+    N4: z.object({ remindOn: date, registered: z.boolean() }),
+    N3: z.object({ remindOn: date, registered: z.boolean() }),
     /** Your city's JLPT host, picked in Settings. */
     hostUrl: z.url().nullable(),
   }),
@@ -97,8 +97,8 @@ export const DEFAULT_SETTINGS: Settings = {
     N3: { date: "2027-12-05", confirmed: false },
   },
   registration: {
-    N4: { remindOn: "2027-03-01" },
-    N3: { remindOn: "2027-08-01" },
+    N4: { remindOn: "2027-03-01", registered: false },
+    N3: { remindOn: "2027-08-01", registered: false },
     hostUrl: null,
   },
   listDeadlines: { N5: "2026-12-26", N4: "2027-06-12", N3: "2027-11-13" },
