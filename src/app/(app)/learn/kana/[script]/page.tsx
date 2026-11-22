@@ -35,41 +35,57 @@ export default async function KanaPage({ params }: PageProps<"/learn/kana/[scrip
   const counts = kanaCounts(rows);
   const checkLeft = check.total - check.checked > 0 && counts.new > 0;
 
+  const next = checkLeft ? (
+    <Link
+      href={ROUTES.quickCheck}
+      className="flex min-h-[50px] items-center justify-center rounded-btn bg-accent text-[15px] font-bold text-on-accent no-underline"
+    >
+      Check yourself in the quick check
+    </Link>
+  ) : (
+    deckId && (
+      <Link
+        href={`${ROUTES.review}?deck=${deckId}`}
+        className="flex min-h-[50px] items-center justify-center rounded-btn bg-accent text-[15px] font-bold text-on-accent no-underline"
+      >
+        Review {NAMES[script].toLowerCase()}
+      </Link>
+    )
+  );
+
   return (
-    <>
-      <BackLink href={ROUTES.learn}>Learn</BackLink>
-      <PageHeader
-        title={NAMES[script]}
-        sub={`${rows.length} characters · ${counts.review} in your reviews · ${counts.learning} learning · ${counts.new} not started`}
+    <div data-wide className="mx-auto flex w-full max-w-[720px] flex-col gap-3 laptop:max-w-none">
+      <div className="flex flex-col gap-3 laptop:flex-row laptop:items-end laptop:justify-between laptop:gap-6">
+        <div className="flex flex-col gap-3">
+          <BackLink href={ROUTES.learn}>Learn</BackLink>
+          <PageHeader
+            title={NAMES[script]}
+            sub={`${rows.length} characters · ${counts.review} in your reviews · ${counts.learning} learning · ${counts.new} not started`}
+          />
+        </div>
+        <div className="laptop:w-[280px] laptop:shrink-0 wide:w-[320px]">
+          <LinkTabs
+            label="Script"
+            tabs={SCRIPTS.map((s) => ({ href: `/learn/kana/${s}`, label: NAMES[s], current: s === script }))}
+          />
+        </div>
+      </div>
+      <KanaChart
+        sections={kanaChart(rows)}
+        voice={settings.voice}
+        furigana={settings.furigana}
+        footer={
+          <>
+            <p className="m-0 flex flex-wrap gap-3 text-xs text-ink2">
+              <Legend dot="bg-good">In your reviews</Legend>
+              <Legend dot="bg-accent">Learning</Legend>
+              <Legend dot="bg-track border border-line">Not started</Legend>
+            </p>
+            {next}
+          </>
+        }
       />
-      <LinkTabs
-        label="Script"
-        tabs={SCRIPTS.map((s) => ({ href: `/learn/kana/${s}`, label: NAMES[s], current: s === script }))}
-      />
-      <KanaChart sections={kanaChart(rows)} voice={settings.voice} furigana={settings.furigana} />
-      <p className="m-0 flex flex-wrap gap-3 text-xs text-ink2">
-        <Legend dot="bg-good">In your reviews</Legend>
-        <Legend dot="bg-accent">Learning</Legend>
-        <Legend dot="bg-track border border-line">Not started</Legend>
-      </p>
-      {checkLeft ? (
-        <Link
-          href={ROUTES.quickCheck}
-          className="flex min-h-[50px] items-center justify-center rounded-btn bg-accent text-[15px] font-bold text-on-accent no-underline"
-        >
-          Check yourself in the quick check
-        </Link>
-      ) : (
-        deckId && (
-          <Link
-            href={`${ROUTES.review}?deck=${deckId}`}
-            className="flex min-h-[50px] items-center justify-center rounded-btn bg-accent text-[15px] font-bold text-on-accent no-underline"
-          >
-            Review {NAMES[script].toLowerCase()}
-          </Link>
-        )
-      )}
-    </>
+    </div>
   );
 }
 

@@ -44,13 +44,13 @@ export default async function DecksPage() {
   const [decks, plan, settings] = await Promise.all([listDecks(db, today), readDayPlan(db, today), getSettings(db)]);
   const workLocked = daysBetween(today, settings.workUnlock) > 0;
   return (
-    <>
+    <div data-wide className="mx-auto flex w-full max-w-[720px] flex-col gap-3 laptop:max-w-none">
       <PageHeader kicker="New cards come from the lists that are on" title="Decks" />
       <DeckList
         rows={decks.map((d) => ({ id: d.id, name: d.name, on: d.on, meta: deckMeta(d, plan, today) }))}
         workLockedUntil={workLocked ? formatShort(settings.workUnlock, today) : null}
       />
       {!decks.some((d) => d.source === "class") && <EmptyState>Class decks appear after your first class log.</EmptyState>}
-    </>
+    </div>
   );
 }

@@ -104,8 +104,18 @@ Rating buttons: Again `--again`, Hard `--ink`, Good `--good`, Easy `--easy`, eac
   on the left; on the right a quiet "+ Add a word" pill (to the quick add, `F_AddWord`) and a round More
   button, which turns `--accent-soft` on the More page. Pages start 12px below it.
 - Laptop (from 1024px wide): a 228px sidebar with everything, ending in "+ Add a word". Today, Review,
-  Grammar and Progress have their own laptop boards; every other screen is the sidebar plus the phone
-  layout centred, at most 720px wide.
+  Grammar and Progress have their own laptop boards; other screens are the sidebar plus the phone
+  layout centred, at most 720px wide, unless they opt into the wide column (below).
+- Wide column (Harshal, 22 Nov 2026: long single columns meant too much scrolling on a laptop). A page
+  that puts `data-wide` on its top element gets up to 1136px and lays out its own columns, from
+  `laptop:` (1024px) where they fit, otherwise from `wide:` (1280px, `--breakpoint-wide`). Below that it
+  stays the phone layout at 720px. The patterns:
+  - **Side panel that stays in view**: the thing you pick (a kana's detail, a deck's pace) in a
+    sticky right or left column, the long list beside it (Kana from `laptop:`, deck page from `wide:`).
+  - **Two columns of cards**: Settings (dates and study left; voice, look and data right, from `wide:`).
+  - **Two-column rows inside one card**: Decks (from `laptop:`), a deck's cards (from `wide:`).
+  - **List and detail** (Grammar): the list column is sticky and scrolls on its own; the lesson reads
+    down the page beside it, at most 760px, with roomier cards and examples split by lines.
 
 **Theme**: system, light or dark, set by a script in `<head>` before the page paints (the same way the
 games app does it), stored per device.

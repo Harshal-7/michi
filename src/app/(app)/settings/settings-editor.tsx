@@ -65,7 +65,18 @@ const hostName = (url: string | null) => {
 };
 
 /** F_Settings: tiles that open an editor in place, the voice-and-look rows, and data. */
-export function SettingsEditor({ settings, exceptions, today }: { settings: Settings; exceptions: Exception[]; today: StudyDate }) {
+export function SettingsEditor({
+  settings,
+  exceptions,
+  today,
+  footer,
+}: {
+  settings: Settings;
+  exceptions: Exception[];
+  today: StudyDate;
+  /** Goes under the last section (the right-hand column on a wide screen). */
+  footer?: ReactNode;
+}) {
   const [open, setOpen] = useState<EditorKey | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [saved, setSaved] = useState<string | null>(null);
@@ -387,7 +398,9 @@ export function SettingsEditor({ settings, exceptions, today }: { settings: Sett
   const groupOf = (key: EditorKey) => groups.find((g) => g.tiles.some((t) => t.key === key))?.title;
 
   return (
-    <>
+    <div className="flex flex-col gap-3 wide:grid wide:grid-cols-2 wide:items-start wide:gap-5">
+      {/* Wide: dates and study on the left; voice, look and data on the right. */}
+      <div className="flex flex-col gap-3 wide:gap-5">
       {groups.map((g) => (
         <section key={g.title} className={`${card} flex flex-col gap-2 px-3 pt-2.5 pb-3`}>
           <h2 className={`${groupTitle} mx-0.5`}>{g.title}</h2>
@@ -417,7 +430,9 @@ export function SettingsEditor({ settings, exceptions, today }: { settings: Sett
           )}
         </section>
       ))}
+      </div>
 
+      <div className="flex flex-col gap-3 wide:gap-5">
       <section className={`${card} flex flex-col px-3.5 pt-2.5 pb-1.5`}>
         <h2 className={`${groupTitle} mb-0.5`}>Voice and look</h2>
         <Link href="/settings/voice" className="flex min-h-11 items-center gap-2.5 no-underline">
@@ -492,7 +507,9 @@ export function SettingsEditor({ settings, exceptions, today }: { settings: Sett
           <span className="text-[13px] text-ink2">coming in round 3</span>
         </div>
       </section>
-    </>
+      {footer}
+      </div>
+    </div>
   );
 }
 

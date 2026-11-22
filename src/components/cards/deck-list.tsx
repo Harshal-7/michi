@@ -13,16 +13,19 @@ const CHEVRON = "M9 6l6 6-6 6";
 
 export type DeckRowView = { id: number; name: string; on: boolean; meta: string };
 
-/** The list on F_Decks: each deck with its switch; the name opens the deck. */
+/** The list on F_Decks: each deck with its switch; the name opens the deck. Two columns on a laptop. */
 export function DeckList({ rows, workLockedUntil }: { rows: DeckRowView[]; workLockedUntil: string | null }) {
   const [optimistic, setOptimistic] = useOptimistic(rows, (state, change: { id: number; on: boolean }) =>
     state.map((r) => (r.id === change.id ? { ...r, on: change.on } : r)),
   );
   const [, start] = useTransition();
   return (
-    <section className="flex flex-col rounded-card bg-surface px-3.5 py-1 shadow-card">
+    <section className="flex flex-col rounded-card bg-surface px-3.5 py-1 shadow-card laptop:grid laptop:grid-cols-2 laptop:gap-x-8 laptop:px-5 laptop:py-2 wide:gap-x-10 wide:px-6">
       {optimistic.map((deck, i) => (
-        <div key={deck.id} className={`box-border flex min-h-[50px] items-center gap-3 py-[5px] ${i ? "border-t border-line" : ""}`}>
+        <div
+          key={deck.id}
+          className={`box-border flex min-h-[50px] items-center gap-3 py-[5px] laptop:min-h-[60px] ${i ? "border-t border-line" : ""} ${i === 1 ? "laptop:border-t-0" : ""}`}
+        >
           <Link href={`/decks/${deck.id}`} className="flex min-h-11 min-w-0 flex-auto items-center gap-2 no-underline">
             <span className="flex min-w-0 flex-auto flex-col gap-px">
               <span className={`text-[14.5px] font-semibold ${deck.on ? "text-ink" : "text-ink2"}`}>{deck.name}</span>

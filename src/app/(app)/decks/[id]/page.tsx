@@ -30,7 +30,12 @@ export default async function DeckPage({ params }: PageProps<"/decks/[id]">) {
   const on = isDeckOn(deck, today);
 
   return (
-    <>
+    <div
+      data-wide
+      className="mx-auto flex w-full max-w-[720px] flex-col gap-3 wide:grid wide:max-w-none wide:grid-cols-[340px_minmax(0,1fr)] wide:items-start wide:gap-x-8"
+    >
+      {/* Wide: the deck, its review button and its pace stay in view on the left; the cards fill the right. */}
+      <div className="flex flex-col gap-3 wide:sticky wide:top-7">
       <PageHeader
         kicker={
           <Link href="/decks" className="text-ink2">
@@ -54,7 +59,8 @@ export default async function DeckPage({ params }: PageProps<"/decks/[id]">) {
         perDay={deck.pacePerDay}
         deadline={deadline ? formatShort(deadline, today) : null}
       />
+      </div>
       {cards.length ? <DeckCards cards={cards} /> : <EmptyState>This deck has no cards yet.</EmptyState>}
-    </>
+    </div>
   );
 }
