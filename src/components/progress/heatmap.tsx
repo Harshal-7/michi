@@ -66,16 +66,16 @@ export function Heatmap({ weeks, today }: { weeks: HeatmapDay[][]; today: StudyD
         <p className="m-0 text-[12.5px] leading-[1.45] text-ink2">{summary}</p>
         <p className="m-0 text-xs text-ink2">Darker = more reviews</p>
       </div>
-      {/* Scrolls sideways on a phone, starting at this week (the right-hand end). */}
+      {/* Scrolls sideways on a phone, starting at this week (the right-hand end); fits on a laptop. */}
       <div dir="rtl" className="overflow-x-auto pb-1">
-        <div dir="ltr" className="w-max">
+        <div dir="ltr" className="w-max laptop:w-full">
           <svg
             width={width}
             height={height}
             viewBox={`0 0 ${width} ${height}`}
             role="img"
             aria-label={`Reviews per day over the last year: ${total} reviews on ${active} days. ${summary}`}
-            className="block"
+            className="block laptop:h-auto laptop:w-full"
           >
             {weeks.map((week, w) =>
               week.map((d, i) => (

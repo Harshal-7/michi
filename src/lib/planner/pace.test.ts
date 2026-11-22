@@ -200,6 +200,12 @@ describe("projections and the on-track marker", () => {
   it("projects a new list from today's plan rather than from nothing", () => {
     const fresh = { ...words, paceStart: null };
     expect(trackDecks(cal(), "2026-12-03", [fresh], {}, { [fresh.id]: 14 }).tone).toBe("good");
+    // One slow day isn't a trend: under 3 days of pace, today's plan decides.
+    const oneDay = { ...words, paceStart: "2026-12-02" };
+    expect(trackDecks(cal(), "2026-12-03", [oneDay], { [oneDay.id]: 16 }).tone).toBe("good");
+    // After that, a week of nothing shows.
+    const idle = { ...words, paceStart: "2026-11-26" };
+    expect(trackDecks(cal(), "2026-12-03", [idle], { [idle.id]: 16 }).tone).toBe("bad");
   });
 });
 

@@ -17,7 +17,11 @@ import { todaysPlan } from "@/lib/planner/today-plan";
  */
 export default async function AppLayout({ children }: LayoutProps<"/">) {
   await requireSignedIn();
-  const [settings] = await Promise.all([getSettings(getDb()), todaysPlan()]);
+  const [settings] = await Promise.all([
+    getSettings(getDb()),
+    // If the plan can't be built, Today shows the error; every other page still works.
+    todaysPlan().catch((error: unknown) => console.error("Couldn't build today's plan", error)),
+  ]);
   const workLocked = daysBetween(studyDate(), settings.workUnlock) > 0;
   return (
     <div className="min-h-dvh laptop:flex">

@@ -111,9 +111,9 @@ export function newItemsSummary(quota: Readonly<Record<string, number>>, decks: 
 }
 
 const DETAILS: Partial<Record<DayTask["kind"], string>> = {
-  speaking: "talk, shadow or read aloud, then log it",
-  listening: "anime, podcast or NHK Easy, then log it",
-  reading: "NHK Easy or Tadoku, then log it",
+  speaking: "talk, shadow or read aloud",
+  listening: "anime, podcast or NHK Easy",
+  reading: "NHK Easy or Tadoku",
   log_class: "words, kanji and grammar from class",
   daily_quiz: "10 questions",
   weekly_test: "25 questions on this week",
@@ -384,9 +384,9 @@ async function thisWeek(db: Db, date: StudyDate, week: { start: StudyDate; end: 
   const recall = reviews.n > 0 ? Math.round((reviews.recalled / reviews.n) * 100) : null;
   return [
     { label: "days studied", value: `${streak.thisWeek} of 7` },
-    { label: `study time · ${formatMinutes(plannedMinutes)} planned`, value: formatMinutes(doneMinutes) },
+    { label: plannedMinutes > 0 ? `study time · ${formatMinutes(plannedMinutes)} planned` : "study time", value: formatMinutes(doneMinutes) },
     { label: recall === null ? "reviews" : `reviews · ${recall}% recalled`, value: String(reviews.n) },
-    { label: `new items · ${plannedNew} planned`, value: String(introduced.n) },
+    { label: plannedNew > 0 ? `new items · ${plannedNew} planned` : "new items", value: String(introduced.n) },
     { label: "listening", value: formatMinutes(minutes.listening) },
     { label: "speaking", value: formatMinutes(minutes.speaking) },
   ];
@@ -424,8 +424,15 @@ function comingUp(cal: Calendar, date: StudyDate, settings: Settings): { title: 
 }
 
 function doneSummary(status: DayStatus, activity: DayActivity, plan: DayPlan, decks: readonly DeckState[]): NonNullable<TodayView["done"]> {
+  const logged = (t: TaskStatus): number =>
+    t.task.kind === "reviews"
+      ? activity.reviewMinutes
+      : t.task.kind === "speaking" || t.task.kind === "listening" || t.task.kind === "reading"
+        ? (activity.minutes[t.task.kind] ?? 0)
+        : 0;
   const result = (t: TaskStatus): string => {
     if (t.state === "skipped") return "skipped";
+    if (!t.auto) return "marked done";
     switch (t.task.kind) {
       case "reviews":
         return t.task.target ? plural(Math.max(activity.reviewsGraded, t.task.target), "card") : "nothing due";
@@ -435,22 +442,14 @@ function doneSummary(status: DayStatus, activity: DayActivity, plan: DayPlan, de
         return plural(activity.quickChecked, "item");
       case "speaking":
       case "listening":
-      case "reading": {
-        const m = activity.minutes[t.task.kind] ?? 0;
-        return m > 0 ? `${m} min` : "done";
-      }
+      case "reading":
+        return `${logged(t)} min`;
       default:
         return "done";
     }
   };
-  const minutes =
-    activity.reviewMinutes +
-    (activity.minutes.listening ?? 0) +
-    (activity.minutes.speaking ?? 0) +
-    (activity.minutes.reading ?? 0) +
-    status.tasks
-      .filter((t) => t.state === "done" && (t.task.kind === "new_items" || t.task.kind === "quick_check"))
-      .reduce((s, t) => s + t.task.minutes, 0);
+  // Time logged where there is some, otherwise the task's planned minutes.
+  const minutes = status.tasks.filter((t) => t.state === "done").reduce((s, t) => s + (logged(t) || t.task.minutes), 0);
   return {
     minutes,
     items: status.tasks.map((t) => ({ key: t.task.key, title: t.task.title, result: result(t), marked: t.mark !== null && !t.auto })),
@@ -481,7 +480,7 @@ async function tomorrowPreview(db: Db, cal: Calendar, date: StudyDate, settings:
     reviews: { due: due.due, learningDue: due.learning },
     lastActiveDate: date,
     decks,
-    quickCheck: { remainingKana: qc.leftKana, remainingOther: qc.leftOther, startedOn: qc.startedOn ?? date },
+    quickCheck: { remainingKana: qc.leftKana, remainingOther: qc.leftOther, startedOn: qc.startedOn },
   });
   const weekday = WEEKDAY_NAMES[new Date(`${tomorrow}T00:00:00Z`).getUTCDay()];
   if (mode === "exam_day") return { weekday, summary: "Exam day: the exam is the only thing on.", note: null };

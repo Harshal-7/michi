@@ -63,6 +63,8 @@ export const N3_EARLY_MARGIN_DAYS = 14;
 export const LEFTOVER_DAYS = 21;
 /** Projections look at the pace of the last two weeks, today's plan included. */
 export const PROJECTION_DAYS = 14;
+/** With fewer days of pace than this, projections go by today's plan alone. */
+export const MIN_HISTORY_DAYS = 3;
 /** Projections stop looking after three years. */
 const PROJECTION_LIMIT_DAYS = 3 * 366;
 
@@ -232,18 +234,25 @@ export function n3EarlyStartOn(cal: Calendar, date: StudyDate, decks: readonly D
 
 const capFor = (deck: DeckState) => (deck.kind ? (DAILY_CAPS[deck.kind] ?? Infinity) : Infinity);
 
+/** The first day of the deck's pace window, and how many days before today it holds. */
+export function historyOf(deck: Pick<DeckState, "paceStart">, date: StudyDate): { from: StudyDate; days: number } | null {
+  if (!deck.paceStart) return null;
+  const windowStart = addDays(date, -(PROJECTION_DAYS - 1));
+  const from = daysBetween(windowStart, deck.paceStart) > 0 ? deck.paceStart : windowStart;
+  return { from, days: Math.max(0, daysBetween(from, date)) };
+}
+
 /**
  * Items per unit of pace weight: what was started since this deck's pace began (at most the last
- * 14 days, which counts missed days as nothing), plus today's plan. With no weight to go on
- * (a rest day on the first day), the formula's own rate.
+ * 14 days, which counts missed days as nothing), plus today's plan. Until there are 3 days of
+ * that, today's plan alone. With no weight to go on (a rest day), the formula's own rate.
  */
 export function paceRate(cal: Calendar, date: StudyDate, deck: DeckState, plannedToday: number): number {
   let started = plannedToday;
   let weight = paceWeight(cal, date);
-  if (deck.paceStart) {
-    const windowStart = addDays(date, -(PROJECTION_DAYS - 1));
-    const from = daysBetween(windowStart, deck.paceStart) > 0 ? deck.paceStart : windowStart;
-    for (let d = from; daysBetween(d, date) > 0; d = addDays(d, 1)) {
+  const history = historyOf(deck, date);
+  if (history && history.days >= MIN_HISTORY_DAYS) {
+    for (let d = history.from; daysBetween(d, date) > 0; d = addDays(d, 1)) {
       started += deck.startedByDay[d] ?? 0;
       weight += paceWeight(cal, d);
     }
@@ -305,8 +314,9 @@ export function trackFor(
 
 /**
  * The on-track marker for one or more decks shown as one bar (hiragana and katakana are "Kana").
- * `planned` is today's frozen quota per deck id; a deck with no pace yet uses its capped quota,
- * so the first days project from the plan rather than from nothing.
+ * `planned` is today's frozen quota per deck id. A deck with under 3 days of pace uses its capped
+ * quota when today's plan gives it nothing (the quick check, a recovery day), so the first days
+ * project from the pace it will have rather than from nothing.
  */
 export function trackDecks(
   cal: Calendar,
@@ -320,7 +330,8 @@ export function trackDecks(
   let deadline: StudyDate | null = null;
   for (const deck of decks) {
     remaining += deck.notStarted;
-    const today = deck.paceStart ? (planned[deck.id] ?? 0) : (planned[deck.id] ?? capped[deck.id] ?? 0);
+    const settled = (historyOf(deck, date)?.days ?? 0) >= MIN_HISTORY_DAYS;
+    const today = settled ? (planned[deck.id] ?? 0) : planned[deck.id] || (capped[deck.id] ?? 0);
     rate += paceRate(cal, date, deck, today);
     const own = deckDeadline(deck, date, cal).deadline;
     if (own && (!deadline || daysBetween(deadline, own) > 0)) deadline = own;

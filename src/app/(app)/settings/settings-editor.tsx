@@ -47,7 +47,8 @@ const WEEKDAYS = [
 ] as const;
 const EXCEPTION_NAMES: Record<Exception["kind"], string> = { rest: "Rest day", no_class: "No class", exam: "Exam day" };
 
-const hours = (minutes: number) => (minutes % 60 === 0 ? `${minutes / 60} h` : minutes < 60 ? `${minutes} min` : `${(minutes / 60).toFixed(1).replace(/\.0$/, "")} h`);
+/** "75 min", "2 h", "3.5 h", as F_Settings writes them. */
+const hours = (minutes: number) => (minutes >= 60 && minutes % 30 === 0 ? `${minutes / 60} h` : `${minutes} min`);
 const time12 = (t: string) => {
   const [h, m] = t.split(":").map(Number);
   const suffix = h >= 12 ? "pm" : "am";
@@ -74,7 +75,7 @@ export function SettingsEditor({ settings, exceptions, today }: { settings: Sett
     setError(null);
     setSaved(null);
   };
-  const run = (work: () => Promise<SaveResult>, done: string, close = true) =>
+  const run = (work: () => Promise<SaveResult>, done: string, close = false) =>
     startTransition(async () => {
       const result = await work();
       if (result.ok) {
@@ -263,7 +264,7 @@ export function SettingsEditor({ settings, exceptions, today }: { settings: Sett
                 <button
                   type="button"
                   disabled={pending}
-                  onClick={() => run(() => removeException(e.date), "Removed. Today's plan is up to date.", false)}
+                  onClick={() => run(() => removeException(e.date), "Removed. Today's plan is up to date.")}
                   className="min-h-11 border-none bg-transparent px-1 text-[13px] font-semibold text-ink2 underline underline-offset-2"
                 >
                   Remove
@@ -284,7 +285,6 @@ export function SettingsEditor({ settings, exceptions, today }: { settings: Sett
                 return result;
               },
               "Added. Today's plan is up to date.",
-              false,
             )
           }
           hint="A rest day has only a few reviews and no new items; it doesn't count against the pace."
@@ -388,7 +388,6 @@ export function SettingsEditor({ settings, exceptions, today }: { settings: Sett
 
   return (
     <>
-      {!open && status}
       {groups.map((g) => (
         <section key={g.title} className={`${card} flex flex-col gap-2 px-3 pt-2.5 pb-3`}>
           <h2 className={`${groupTitle} mx-0.5`}>{g.title}</h2>

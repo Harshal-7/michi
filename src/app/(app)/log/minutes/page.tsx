@@ -6,7 +6,7 @@ import { Icon } from "@/components/ui/icon";
 import { EmptyState, PageHeader } from "@/components/ui/page";
 import { getDb } from "@/db/client";
 import { requireSignedIn } from "@/lib/auth/session";
-import { formatShort, studyDate, weekOf } from "@/lib/day";
+import { formatLong, formatShort, studyDate, weekOf } from "@/lib/day";
 import { formatMinutes } from "@/lib/planner/today";
 
 import { deleteMinutes } from "./actions";
@@ -39,7 +39,7 @@ export default async function MinutesPage({ searchParams }: PageProps<"/log/minu
         <Icon d={ICONS.chevronLeft} size={16} stroke={1.8} />
         Log
       </Link>
-      <PageHeader kicker={formatShort(today)} title="Add minutes" />
+      <PageHeader kicker={formatLong(today)} title="Add minutes" />
       <MinutesForm initialKind={initialKind} days={days} />
 
       <section aria-labelledby="week-title" className="flex flex-col gap-2.5 rounded-card bg-surface p-3.5 shadow-card">
@@ -71,7 +71,13 @@ export default async function MinutesPage({ searchParams }: PageProps<"/log/minu
               <span className="flex min-w-0 flex-auto flex-col gap-px">
                 <span className="truncate text-[14.5px] font-semibold">{e.note || KIND_LABELS[e.kind]}</span>
                 <span className="text-[12.5px] text-ink2">
-                  {[e.note ? KIND_LABELS[e.kind] : null, SKILL_LABELS[e.skill], e.auto ? "logged by itself" : null].filter(Boolean).join(" · ")}
+                  {[
+                    e.note ? KIND_LABELS[e.kind] : null,
+                    SKILL_LABELS[e.skill] !== KIND_LABELS[e.kind] ? SKILL_LABELS[e.skill] : null,
+                    e.auto ? "logged by itself" : "logged by hand",
+                  ]
+                    .filter(Boolean)
+                    .join(" · ")}
                 </span>
               </span>
               <span className="shrink-0 text-sm font-bold">{e.minutes} min</span>
