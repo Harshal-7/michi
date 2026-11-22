@@ -12,10 +12,17 @@ import { MAX_OPS_PER_REQUEST, type Op, type OpResult, type OpsResponse } from ".
 const KEY = "michi.outbox.v1";
 const ENDPOINT = "/api/reviews";
 const MAX_BACKOFF_MS = 60_000;
+/** A save normally takes well under a second; only one still waiting after this is worth showing. */
+const STUCK_AFTER_MS = 4000;
 
 export type OutboxState = {
-  /** Ops not yet saved. */
+  /** Ops not yet saved, including one on its way right now. */
   waiting: number;
+  /**
+   * Grades are held up: a send failed, or one has waited longer than a save normally takes. The
+   * "N grades waiting to save" note shows only then, so it doesn't flash up after every answer.
+   */
+  stuck: boolean;
   /** The last send failed, or the browser says it's offline. */
   offline: boolean;
   /** The server said the session is gone. */
@@ -26,7 +33,14 @@ export type OutboxState = {
   serverVersion: string | null;
 };
 
-const SERVER_STATE: OutboxState = { waiting: 0, offline: false, signedOut: false, stale: 0, serverVersion: null };
+const SERVER_STATE: OutboxState = {
+  waiting: 0,
+  stuck: false,
+  offline: false,
+  signedOut: false,
+  stale: 0,
+  serverVersion: null,
+};
 
 class Outbox {
   private memory: Op[] = [];
@@ -34,11 +48,15 @@ class Outbox {
   private sending = false;
   private failures = 0;
   private timer: ReturnType<typeof setTimeout> | null = null;
+  private stuckTimer: ReturnType<typeof setTimeout> | null = null;
+  /** When this page first saw each op waiting (ops left from an earlier visit: when it loaded). */
+  private seenAt = new Map<string, number>();
   private listeners = new Set<() => void>();
   private state: OutboxState = { ...SERVER_STATE };
 
   constructor() {
-    this.state = { ...this.state, waiting: this.read().length, offline: !navigator.onLine };
+    this.state = { ...this.state, offline: !navigator.onLine };
+    this.track(this.read().length);
     window.addEventListener("online", () => {
       this.update({ offline: false });
       void this.flush();
@@ -52,7 +70,7 @@ class Outbox {
     window.addEventListener("pagehide", () => this.sendOnLeave());
     // Another tab added or saved ops.
     window.addEventListener("storage", (e) => {
-      if (e.key === KEY) this.update({ waiting: this.read().length });
+      if (e.key === KEY) this.track(this.read().length);
     });
   }
 
@@ -131,11 +149,11 @@ class Outbox {
         body: JSON.stringify({ ops: batch }),
       });
     } catch {
-      this.update({ offline: true });
+      this.update({ offline: true, stuck: true });
       return "retry";
     }
     if (response.status === 401) {
-      this.update({ signedOut: true, offline: false });
+      this.update({ signedOut: true, offline: false, stuck: true });
       return "stop";
     }
     if (response.status === 400) {
@@ -144,7 +162,7 @@ class Outbox {
       return "ok";
     }
     if (!response.ok) {
-      this.update({ offline: false });
+      this.update({ offline: false, stuck: true });
       return "retry";
     }
     const body = (await response.json()) as OpsResponse;
@@ -194,7 +212,43 @@ class Outbox {
     } catch {
       // Private windows can refuse storage; the ops stay in memory for this page.
     }
-    this.update({ waiting: ops.length });
+    this.track(ops.length);
+  }
+
+  /** Counts what's waiting, and starts or stops the clock that decides it's stuck. */
+  private track(waiting: number) {
+    if (waiting === 0) {
+      if (this.stuckTimer) clearTimeout(this.stuckTimer);
+      this.stuckTimer = null;
+      this.seenAt.clear();
+      this.update({ waiting, stuck: false });
+      return;
+    }
+    this.update({ waiting });
+    this.checkStuck();
+  }
+
+  /** Stuck once the oldest op still waiting has waited longer than a save normally takes. */
+  private checkStuck() {
+    if (this.stuckTimer) return;
+    const now = Date.now();
+    const ops = this.read();
+    if (ops.length === 0) return;
+    const oldest = Math.min(...ops.map((op) => this.seenAt.get(op.id) ?? this.seen(op.id, now)));
+    const wait = oldest + STUCK_AFTER_MS - now;
+    if (wait <= 0) {
+      this.update({ stuck: true });
+      return;
+    }
+    this.stuckTimer = setTimeout(() => {
+      this.stuckTimer = null;
+      this.checkStuck();
+    }, wait);
+  }
+
+  private seen(id: string, at: number): number {
+    this.seenAt.set(id, at);
+    return at;
   }
 
   private update(patch: Partial<OutboxState>) {

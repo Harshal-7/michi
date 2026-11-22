@@ -81,6 +81,21 @@ function Check({ items: loaded, ...props }: QuickCheckProps) {
     if (isKana && !spot) input.current?.focus();
   }, [isKana, index, spot]);
 
+  // Time away from the tab (another app, the phone locked) doesn't count against the kana.
+  useEffect(() => {
+    let hiddenAt: number | null = null;
+    const onVisibility = () => {
+      if (document.visibilityState === "hidden") hiddenAt = Date.now();
+      else if (hiddenAt !== null) {
+        const away = Date.now() - hiddenAt;
+        hiddenAt = null;
+        setStartedAt((t) => t + away);
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => document.removeEventListener("visibilitychange", onVisibility);
+  }, []);
+
   const record = useCallback((target: CheckItem, verdict: Verdict, verified: boolean | null) => {
     getOutbox().add({
       kind: "check",
@@ -302,7 +317,7 @@ function Check({ items: loaded, ...props }: QuickCheckProps) {
                 </button>
               </div>
               <p className="m-0 mt-auto text-center text-[12.5px] leading-normal text-ink2">
-                Fast and right counts as known. Wrong or slow goes into your new cards.
+                Right within 3 seconds counts as known. Wrong or slower goes into your new cards.
               </p>
             </>
           ) : item ? (
@@ -481,7 +496,7 @@ function QuickCheckDone(props: {
             </div>
           ))}
         </div>
-        {total > 0 && <SaveState state={props.outbox} />}
+        {total > 0 && <SaveState state={props.outbox} saving />}
       </section>
       <section className="flex flex-col gap-1.5 rounded-card bg-surface px-3.5 py-3 shadow-card">
         <p className="m-0 text-sm">
