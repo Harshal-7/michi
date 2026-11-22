@@ -6,9 +6,12 @@ import { getOutbox, type OutboxState } from "@/lib/srs/outbox";
 
 const plural = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
 
-/** "3 grades waiting to save · retrying", or nothing when everything is saved. */
+/**
+ * "3 grades waiting to save · retrying", only once grades are held up. A save on its way right
+ * after an answer isn't shown: it would push the screen down and up after every card.
+ */
 export function WaitingChip({ state }: { state: OutboxState }) {
-  if (state.waiting === 0) return null;
+  if (state.waiting === 0 || !state.stuck) return null;
   return (
     <p
       role="status"
@@ -21,9 +24,13 @@ export function WaitingChip({ state }: { state: OutboxState }) {
 
 const CHECK = "M5 12.5l4.5 4.5L19 7.5";
 
-/** "All grades saved" with a tick, or the waiting chip. */
-export function SaveState({ state, total }: { state: OutboxState; total?: number }) {
-  if (state.waiting > 0) return <WaitingChip state={state} />;
+/**
+ * "All grades saved" with a tick, or the waiting chip once grades are held up. `saving` shows
+ * "Saving…" while the last ones are on their way (summaries); mid-session it stays as it was.
+ */
+export function SaveState({ state, total, saving = false }: { state: OutboxState; total?: number; saving?: boolean }) {
+  if (state.waiting > 0 && state.stuck) return <WaitingChip state={state} />;
+  if (state.waiting > 0 && saving) return <p className="m-0 text-[13px] font-bold text-ink2">Saving…</p>;
   return (
     <p className="m-0 flex items-center gap-2 text-[13px] font-bold text-good">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

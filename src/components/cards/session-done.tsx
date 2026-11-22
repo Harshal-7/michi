@@ -63,7 +63,7 @@ export function SessionDone(props: {
         ) : (
           <p className="m-0 text-[15px] text-ink2">Nothing was graded this time.</p>
         )}
-        {props.graded > 0 && <SaveState state={props.outbox} total={props.graded} />}
+        {props.graded > 0 && <SaveState state={props.outbox} total={props.graded} saving />}
       </section>
 
       {(props.waiting.length > 0 || props.trouble.length > 0) && (
