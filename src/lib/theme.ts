@@ -21,7 +21,7 @@ export const THEME_KEY = "michi:theme";
  * The page colour of each theme, for the phone's address bar and the manifest. They repeat
  * --page in src/app/globals.css (theme.test.ts checks), because neither can read CSS.
  */
-export const PAGE_COLOR: Record<ResolvedTheme, string> = { light: "#f3eee4", dark: "#15120e" };
+export const PAGE_COLOR: Record<ResolvedTheme, string> = { light: "#faf8f3", dark: "#15120e" };
 
 export function parseThemeChoice(value: unknown): ThemeChoice {
   return THEMES.includes(value as ThemeChoice) ? (value as ThemeChoice) : "system";

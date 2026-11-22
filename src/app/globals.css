@@ -8,12 +8,12 @@
  * src/app/icon.svg uses the light --accent and --on-accent; src/lib/theme.test.ts keeps them in step.
  */
 :root {
-  --page: #f3eee4;
-  --surface: #fbf8f1;
-  --surface2: #ece5d8;
+  --page: #faf8f3;
+  --surface: #fefdfa;
+  --surface2: #f2eee6;
   --ink: #1d1a16;
   --ink2: #5b544a;
-  --line: #d9cfbe;
+  --line: #e3dccf;
   --accent: #b03a22;
   --on-accent: #fff8f0;
   --accent-soft: #f2dcd3;
@@ -21,7 +21,7 @@
   --warn: #8a560a;
   --again: #a8361f;
   --easy: #2f5c8a;
-  --track: #e3d9c8;
+  --track: #ebe5da;
   --glow: rgba(176, 58, 34, 0.16);
   --shadow: rgba(40, 30, 20, 0.08);
 

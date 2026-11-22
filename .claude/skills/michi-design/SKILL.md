@@ -63,12 +63,12 @@ that already exist. Don't invent new visual styles, and don't iterate on looks i
 
 | Token | Light | Dark | Use |
 |---|---|---|---|
-| `--page` | #F3EEE4 | #15120E | page background |
-| `--surface` | #FBF8F1 | #1E1A15 | cards, nav, inputs |
-| `--surface2` | #ECE5D8 | #28231C | wells, chips, count tiles |
+| `--page` | #FAF8F3 | #15120E | page background |
+| `--surface` | #FEFDFA | #1E1A15 | cards, nav, inputs |
+| `--surface2` | #F2EEE6 | #28231C | wells, chips, count tiles |
 | `--ink` | #1D1A16 | #EEE6D7 | text |
 | `--ink2` | #5B544A | #B2A794 | secondary text, furigana |
-| `--line` | #D9CFBE | #3A332A | borders, dividers |
+| `--line` | #E3DCCF | #3A332A | borders, dividers |
 | `--accent` | #B03A22 | #E26A4E | the one solid button, current nav item, links that act |
 | `--on-accent` | #FFF8F0 | #1A0D08 | text on accent |
 | `--accent-soft` | #F2DCD3 | #3B2119 | current nav pill, picked chips |
@@ -76,9 +76,13 @@ that already exist. Don't invent new visual styles, and don't iterate on looks i
 | `--warn` | #8A560A | #DDA64A | 1–3 days behind, waiting to save |
 | `--again` | #A8361F | #EC7E63 | Again, missed |
 | `--easy` | #2F5C8A | #8DB3E0 | Easy |
-| `--track` | #E3D9C8 | #2E2821 | progress bar track |
+| `--track` | #EBE5DA | #2E2821 | progress bar track |
 | `--glow` | rgba(176,58,34,.16) | rgba(226,106,78,.18) | nav shadow |
 | `--shadow` | rgba(40,30,20,.08) | rgba(0,0,0,.35) | card shadow |
+
+On 22 Nov 2026 Harshal asked for a lighter, whiter page, so `--page`, `--surface`, `--surface2`, `--line`
+and `--track` (light) are brighter than the canvas (which had #F3EEE4, #FBF8F1, #ECE5D8, #D9CFBE, #E3D9C8).
+Cards stay a touch warmer than pure white on purpose. Use the values in this table, not the canvas.
 
 Rating buttons: Again `--again`, Hard `--ink`, Good `--good`, Easy `--easy`, each with its next interval.
 
