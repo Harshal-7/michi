@@ -23,7 +23,11 @@ export const ROUTES = {
   quickCheck: "/quick-check",
   decks: "/decks",
   practice: "/practice",
+  /** Kana charts, verb forms and grammar. */
+  learn: "/learn",
   grammar: "/grammar",
+  /** The next N5 grammar lesson not read yet (the read-through). */
+  nextLesson: "/grammar/next",
   log: "/log",
   minutes: "/log/minutes",
   settings: "/settings",
