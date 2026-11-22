@@ -8,12 +8,12 @@
  * src/app/icon.svg uses the light --accent and --on-accent; src/lib/theme.test.ts keeps them in step.
  */
 :root {
-  --page: #f3eee4;
-  --surface: #fbf8f1;
-  --surface2: #ece5d8;
+  --page: #faf8f3;
+  --surface: #fefdfa;
+  --surface2: #f2eee6;
   --ink: #1d1a16;
   --ink2: #5b544a;
-  --line: #d9cfbe;
+  --line: #e3dccf;
   --accent: #b03a22;
   --on-accent: #fff8f0;
   --accent-soft: #f2dcd3;
@@ -21,7 +21,7 @@
   --warn: #8a560a;
   --again: #a8361f;
   --easy: #2f5c8a;
-  --track: #e3d9c8;
+  --track: #ebe5da;
   --glow: rgba(176, 58, 34, 0.16);
   --shadow: rgba(40, 30, 20, 0.08);
 
@@ -40,23 +40,28 @@
   color-scheme: light;
 }
 
+/*
+ * Dark follows Material's dark theme (m2.material.io/design/color/dark-theme): a #121212 base,
+ * raised surfaces lighter by a white overlay (1dp 5%, 6dp 11%), text at 87% and 60% white, and
+ * desaturated accents so they pass 4.5:1 on every surface.
+ */
 [data-theme="dark"] {
-  --page: #15120e;
-  --surface: #1e1a15;
-  --surface2: #28231c;
-  --ink: #eee6d7;
-  --ink2: #b2a794;
-  --line: #3a332a;
-  --accent: #e26a4e;
+  --page: #121212;
+  --surface: #1e1e1e;
+  --surface2: #2c2c2c;
+  --ink: #e0e0e0;
+  --ink2: #a0a0a0;
+  --line: #383838;
+  --accent: #e88a73;
   --on-accent: #1a0d08;
-  --accent-soft: #3b2119;
-  --good: #88bc95;
-  --warn: #dda64a;
-  --again: #ec7e63;
-  --easy: #8db3e0;
-  --track: #2e2821;
-  --glow: rgba(226, 106, 78, 0.18);
-  --shadow: rgba(0, 0, 0, 0.35);
+  --accent-soft: #342522;
+  --good: #8fcb9b;
+  --warn: #e0b565;
+  --again: #f28b82;
+  --easy: #8ab4f8;
+  --track: #333333;
+  --glow: rgba(232, 138, 115, 0.16);
+  --shadow: rgba(0, 0, 0, 0.5);
 
   color-scheme: dark;
 }

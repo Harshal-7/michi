@@ -20,13 +20,15 @@ describe("theme", () => {
     expect(parseThemeChoice("dark")).toBe("dark");
   });
 
-  it("shows light everywhere while dark mode is off", () => {
-    expect(DARK_MODE).toBe(false);
-    expect(resolveTheme("dark", true)).toBe("light");
-    expect(resolveTheme("system", true)).toBe("light");
+  it("follows the choice while dark mode is on, and shows light everywhere when it's off", () => {
+    expect(DARK_MODE).toBe(true);
+    expect(resolveTheme("dark", false)).toBe("dark");
+    expect(resolveTheme("light", true)).toBe("light");
+    expect(resolveTheme("system", true)).toBe("dark");
+    expect(resolveTheme("dark", true, false)).toBe("light");
   });
 
-  it("puts light on the page before React loads while dark mode is off", () => {
+  it("puts the chosen theme on the page before React loads", () => {
     const run = (stored: string | null, systemDark: boolean) => {
       const attrs: Record<string, string> = {};
       const meta = { setAttribute: () => {} };
@@ -48,8 +50,11 @@ describe("theme", () => {
       );
       return attrs["data-theme"];
     };
-    expect(run("dark", true)).toBe("light");
-    expect(run(null, true)).toBe("light");
+    expect(run("dark", false)).toBe("dark");
+    expect(run("light", true)).toBe("light");
+    expect(run(null, true)).toBe("dark");
+    expect(run(null, false)).toBe("light");
+    expect(run("nonsense", true)).toBe("dark");
   });
 
   it("keeps the address bar and manifest colours in step with the tokens", () => {

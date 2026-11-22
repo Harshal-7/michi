@@ -63,22 +63,29 @@ that already exist. Don't invent new visual styles, and don't iterate on looks i
 
 | Token | Light | Dark | Use |
 |---|---|---|---|
-| `--page` | #F3EEE4 | #15120E | page background |
-| `--surface` | #FBF8F1 | #1E1A15 | cards, nav, inputs |
-| `--surface2` | #ECE5D8 | #28231C | wells, chips, count tiles |
-| `--ink` | #1D1A16 | #EEE6D7 | text |
-| `--ink2` | #5B544A | #B2A794 | secondary text, furigana |
-| `--line` | #D9CFBE | #3A332A | borders, dividers |
-| `--accent` | #B03A22 | #E26A4E | the one solid button, current nav item, links that act |
+| `--page` | #FAF8F3 | #121212 | page background |
+| `--surface` | #FEFDFA | #1E1E1E | cards, nav, inputs |
+| `--surface2` | #F2EEE6 | #2C2C2C | wells, chips, count tiles |
+| `--ink` | #1D1A16 | #E0E0E0 | text |
+| `--ink2` | #5B544A | #A0A0A0 | secondary text, furigana |
+| `--line` | #E3DCCF | #383838 | borders, dividers |
+| `--accent` | #B03A22 | #E88A73 | the one solid button, current nav item, links that act |
 | `--on-accent` | #FFF8F0 | #1A0D08 | text on accent |
-| `--accent-soft` | #F2DCD3 | #3B2119 | current nav pill, picked chips |
-| `--good` | #2F6B45 | #88BC95 | done, on track, Good |
-| `--warn` | #8A560A | #DDA64A | 1–3 days behind, waiting to save |
-| `--again` | #A8361F | #EC7E63 | Again, missed |
-| `--easy` | #2F5C8A | #8DB3E0 | Easy |
-| `--track` | #E3D9C8 | #2E2821 | progress bar track |
-| `--glow` | rgba(176,58,34,.16) | rgba(226,106,78,.18) | nav shadow |
-| `--shadow` | rgba(40,30,20,.08) | rgba(0,0,0,.35) | card shadow |
+| `--accent-soft` | #F2DCD3 | #342522 | current nav pill, picked chips |
+| `--good` | #2F6B45 | #8FCB9B | done, on track, Good |
+| `--warn` | #8A560A | #E0B565 | 1–3 days behind, waiting to save |
+| `--again` | #A8361F | #F28B82 | Again, missed |
+| `--easy` | #2F5C8A | #8AB4F8 | Easy |
+| `--track` | #EBE5DA | #333333 | progress bar track |
+| `--glow` | rgba(176,58,34,.16) | rgba(232,138,115,.16) | nav shadow |
+| `--shadow` | rgba(40,30,20,.08) | rgba(0,0,0,.5) | card shadow |
+
+On 22 Nov 2026 Harshal asked for a lighter, whiter page, so `--page`, `--surface`, `--surface2`, `--line`
+and `--track` (light) are brighter than the canvas (which had #F3EEE4, #FBF8F1, #ECE5D8, #D9CFBE, #E3D9C8).
+Cards stay a touch warmer than pure white on purpose. The dark column was redone the same day after
+Material's dark theme (https://m2.material.io/design/color/dark-theme.html): a #121212 base, raised
+surfaces lighter by a white overlay (`--surface` 5%, `--surface2` 11%), text at 87% and 60% white, and
+desaturated accents that pass 4.5:1 on every surface. Use the values in this table, not the canvas.
 
 Rating buttons: Again `--again`, Hard `--ink`, Good `--good`, Easy `--easy`, each with its next interval.
 
@@ -103,9 +110,8 @@ Rating buttons: Again `--again`, Hard `--ink`, Good `--good`, Easy `--easy`, eac
 **Theme**: system, light or dark, set by a script in `<head>` before the page paints (the same way the
 games app does it), stored per device.
 
-**Dark mode is switched off for now** (Harshal, 22 Nov 2026; to come back in a later round): `DARK_MODE`
-in `src/lib/theme.ts` is false, so every device shows light. Keep using tokens so dark still works when it's
-switched back on, but check new screens in light only until then.
+Dark mode is on (`DARK_MODE` in `src/lib/theme.ts`), picked per device in Settings → Theme. Check new
+screens in light and dark.
 
 **Words**
 - Calm, plain and short. Say what happens ("Start", "Review the 10 mistakes").
