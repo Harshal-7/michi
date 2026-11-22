@@ -73,7 +73,7 @@ export function SessionDone(props: {
             <p className="m-0 text-sm">
               The {props.waiting.length === 1 ? "card" : `${props.waiting.length} cards`}{" "}
               {props.mode === "new" ? "you're learning" : "you missed"} come{props.waiting.length === 1 ? "s" : ""} back in
-              about {backIn} {backIn === 1 ? "minute" : "minutes"}, and Today shows them.
+              about {backIn} {backIn === 1 ? "minute" : "minutes"}, and Today shows {props.waiting.length === 1 ? "it" : "them"}.
             </p>
           )}
           {props.trouble.map((term) => (

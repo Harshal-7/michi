@@ -11,6 +11,7 @@ import { FAST_MS, kanaVerdict, romajiMatches, SPOT_CHECK_EVERY, spotOptions } fr
 import type { UpNext } from "@/lib/srs/types";
 import type { VoicePrefs } from "@/lib/voice/voices";
 
+import { SessionLoading, useInBrowser } from "./loading";
 import { UpNextCard } from "./session-done";
 import { NoSignal, SaveNotes, SaveState, WaitingChip } from "./status";
 import { PlayPill, VoiceProvider } from "./voice";
@@ -42,7 +43,16 @@ export type QuickCheckProps = {
  * answer, then Knew it / Unsure / Forgot. One "Knew it" in five gets a multiple-choice spot check.
  */
 export function QuickCheck(props: QuickCheckProps) {
+  return useInBrowser() ? <Check {...props} /> : <SessionLoading />;
+}
+
+function Check({ items: loaded, ...props }: QuickCheckProps) {
   const outbox = useOutbox();
+  // Items checked on an earlier visit whose verdicts are still waiting to save aren't asked again.
+  const [items] = useState(() => {
+    const waiting = getOutbox().pending().items;
+    return waiting.size ? loaded.filter((i) => !waiting.has(i.itemId)) : loaded;
+  });
   const [index, setIndex] = useState(0);
   const [stopped, setStopped] = useState(false);
   const [shown, setShown] = useState(false);
@@ -57,7 +67,7 @@ export function QuickCheck(props: QuickCheckProps) {
   const [spot, setSpot] = useState<Spot | null>(null);
   const input = useRef<HTMLInputElement>(null);
 
-  const item = props.items[index] ?? null;
+  const item = items[index] ?? null;
   const isKana = item?.kind === "kana";
 
   // The kana timer.
@@ -95,7 +105,7 @@ export function QuickCheck(props: QuickCheckProps) {
       const t = Date.now();
       setStartedAt(t);
       setNow(t);
-      if (holding && (nextIndex >= holding.askAt || nextIndex >= props.items.length)) {
+      if (holding && (nextIndex >= holding.askAt || nextIndex >= items.length)) {
         const pool = holding.item.kind === "kanji" ? props.pool.kanji : props.pool.word;
         const { options, answerIndex } = spotOptions(holding.item.meaning, pool);
         if (options.length === 4) setSpot({ item: holding.item, options, answerIndex, chosen: null });
@@ -103,7 +113,7 @@ export function QuickCheck(props: QuickCheckProps) {
         setHeld(null);
       } else setHeld(holding);
     },
-    [held, index, props.items.length, props.pool, record],
+    [held, index, items.length, props.pool, record],
   );
 
   const answerKana = useCallback(
@@ -158,7 +168,7 @@ export function QuickCheck(props: QuickCheckProps) {
         tally={tally}
         day={props.day}
         finished={!stopped}
-        leftAfter={props.leftAfter + Math.max(0, props.items.length - index)}
+        leftAfter={props.leftAfter + Math.max(0, items.length - index)}
         upNext={props.upNext}
         outbox={outbox}
       />
@@ -167,7 +177,7 @@ export function QuickCheck(props: QuickCheckProps) {
 
   const kind = spot ? spot.item.kind : item!.kind;
   const kindTitle = kind === "kana" ? "kana" : kind === "kanji" ? "N5 kanji" : "N5 words";
-  const progress = Math.round((index / props.items.length) * 100);
+  const progress = Math.round((index / items.length) * 100);
   const elapsed = Math.max(0, now - startedAt);
 
   return (
@@ -185,12 +195,12 @@ export function QuickCheck(props: QuickCheckProps) {
             </button>
             <p className="m-0 text-[15px] font-bold">Quick check · {kindTitle}</p>
             <p className="m-0 min-w-11 text-right text-[13px] text-ink2">
-              {index} / {props.items.length}
+              {index} / {items.length}
             </p>
           </div>
           <div
             role="img"
-            aria-label={`${index} of ${props.items.length} checked`}
+            aria-label={`${index} of ${items.length} checked`}
             className="mx-1.5 h-1 overflow-hidden rounded-full bg-track"
           >
             <div className="h-full bg-accent" style={{ width: `${progress}%` }} />

@@ -83,6 +83,15 @@ class Outbox {
     if (!this.cancel(reviewId)) this.add({ kind: "undo", id: crypto.randomUUID(), reviewId });
   }
 
+  /** Cards and items with a grade or verdict not saved yet: a session loaded now shouldn't ask them again. */
+  pending(): { cards: Set<number>; items: Set<number> } {
+    const ops = this.read();
+    return {
+      cards: new Set(ops.flatMap((op) => (op.kind === "grade" ? [op.cardId] : []))),
+      items: new Set(ops.flatMap((op) => (op.kind === "check" ? [op.itemId] : []))),
+    };
+  }
+
   clearStale() {
     this.update({ stale: 0 });
   }

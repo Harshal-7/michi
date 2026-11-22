@@ -21,6 +21,7 @@ import type { VoicePrefs } from "@/lib/voice/voices";
 
 import { CardBack, CardFront, cardLabel } from "./faces";
 import { FlagEditPanel } from "./flag-edit";
+import { SessionLoading, useInBrowser } from "./loading";
 import { SaveNotes, SaveState, WaitingChip } from "./status";
 import { SessionDone } from "./session-done";
 import { VoiceProvider } from "./voice";
@@ -92,16 +93,30 @@ export type SessionProps = {
   upNext: UpNext | null;
 };
 
+/** Runs in the browser only: the session starts from the outbox and the device's clock. */
+export function ReviewSession(props: SessionProps) {
+  return useInBrowser() ? <Session {...props} /> : <SessionLoading />;
+}
+
+/**
+ * Cards graded on an earlier visit whose grades are still waiting to save: the server doesn't
+ * know yet, so it sent them again. They're left out rather than asked twice.
+ */
+function withoutWaiting(cards: StudyCard[]): StudyCard[] {
+  const waiting = getOutbox().pending().cards;
+  return waiting.size ? cards.filter((c) => !waiting.has(c.id)) : cards;
+}
+
 /**
  * A review or new-item session (F_ReviewFront, F_ReviewBack, F_ReviewWeb), then its summary
  * (F_ReviewDone). FSRS runs here for the button labels and the next card; every grade goes to
  * the outbox, and the server re-runs FSRS when it arrives. Full screen on a phone.
  */
-export function ReviewSession(props: SessionProps) {
+function Session(props: SessionProps) {
   const { mode, fsrs } = props;
   const router = useRouter();
   const outbox = useOutbox();
-  const [session, setSession] = useState<Session>(() => start(props.cards, Date.now()));
+  const [session, setSession] = useState<Session>(() => start(withoutWaiting(props.cards), Date.now()));
   const [undo, setUndo] = useState<{ before: Session; reviewId: string } | null>(null);
   const [scheduler, setScheduler] = useState<Scheduler | null>(null);
   const [panel, setPanel] = useState(false);
@@ -222,8 +237,7 @@ export function ReviewSession(props: SessionProps) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (panel || e.metaKey || e.ctrlKey || e.altKey || session.endedAt !== null) return;
-      const target = e.target as HTMLElement | null;
-      if (target?.closest("input, textarea, select, [contenteditable=true]")) return;
+      if (e.target instanceof Element && e.target.closest("input, textarea, select, [contenteditable=true]")) return;
       if (e.key === " " && !revealed) {
         e.preventDefault();
         reveal();
