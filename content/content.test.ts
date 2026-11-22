@@ -106,6 +106,26 @@ describe("keys and duplicates", () => {
     expect(keys.filter((k, i) => keys.indexOf(k) !== i)).toEqual([]);
   });
 
+  it("keeps the keys of the sample records production already holds", () => {
+    // The base shipped one-record samples and production seeded them. The seed matches records by
+    // key, so each real record for the same thing must keep the sample's key to replace it.
+    const keys: Record<ContentFile, string[]> = {
+      kana: ["kana:hiragana:a", "kana:katakana:shi"],
+      kanji: ["kanji:日"],
+      "kanji-info": ["日"],
+      words: ["word:食べる:たべる"],
+      dictionary: ["1358280"],
+      grammar: ["grammar:n5:te-mo-ii"],
+      resources: ["res:jlpt-samples"],
+      prompts: ["prompt:n5:self-intro"],
+    };
+    for (const name of Object.keys(keys) as ContentFile[]) {
+      const have = new Set(load<Record<string, unknown>>(name).map((r) => r[CONTENT_KEYS[name]]));
+      for (const k of keys[name]) expect(have.has(k), `${name} ${k}`).toBe(true);
+    }
+    expect(grammar.find((g) => g.slug === "grammar:n5:te-mo-ii")?.pattern).toBe("〜てもいいです");
+  });
+
   it("uses each quiz question slug once", () => {
     const slugs = grammar.flatMap((g) => g.questions.map((q) => q.slug));
     expect(new Set(slugs).size).toBe(slugs.length);

@@ -2422,7 +2422,7 @@
     ],
     "confusables": [
       "grammar:n5:naito-ikenai",
-      "grammar:n5:temo-ii-desu",
+      "grammar:n5:te-mo-ii",
       "grammar:n5:nakute-wa-ikenai"
     ]
   },
@@ -4308,12 +4308,12 @@
     ],
     "confusables": [
       "grammar:n5:cha-ikenai-ja-ikenai",
-      "grammar:n5:temo-ii-desu",
+      "grammar:n5:te-mo-ii",
       "grammar:n5:naide-kudasai"
     ]
   },
   {
-    "slug": "grammar:n5:temo-ii-desu",
+    "slug": "grammar:n5:te-mo-ii",
     "level": "N5",
     "pattern": "〜てもいいです",
     "meaning": "May / it's OK to. The て-form + もいい gives permission; as a question (〜てもいいですか) it asks for it.",
@@ -4343,7 +4343,7 @@
     ],
     "questions": [
       {
-        "slug": "gq:n5:temo-ii-desu-1",
+        "slug": "gq:n5:te-mo-ii-1",
         "ja": "すみません、トイレを{借|か}り[[てもいいです]]か。",
         "en": "Excuse me, may I use the bathroom?",
         "wrong": [
@@ -4354,7 +4354,7 @@
         "explain": "借りる is a る-verb, so 借りて + もいいです."
       },
       {
-        "slug": "gq:n5:temo-ii-desu-2",
+        "slug": "gq:n5:te-mo-ii-2",
         "ja": "この{本|ほん}を{少|すこ}し[[{読|よ}んでも]]いいですか。",
         "en": "May I read this book for a bit?",
         "wrong": [
