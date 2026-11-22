@@ -237,6 +237,8 @@ export const Grammar = z.object({
   questions: z.array(GrammarQuestion).default([]),
   /** Slugs of points that are easy to mix up with this one (から / ので / のに). */
   confusables: z.array(keyed("grammar")).default([]),
+  /** The lesson's title, in Japanese where it can be (may hold ruby): "〜てください", "だ / です". */
+  title: nonEmpty.optional(),
   /** The lesson's short meaning, for lists: "please do …". Written fresh; N5 for now. */
   gloss: nonEmpty.optional(),
   /** How it's made, in English with Japanese (may hold ruby): "verb て-form + ください". */

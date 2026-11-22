@@ -93,7 +93,7 @@ export default async function VerbsPage() {
       <section className={card}>
         <h2 className="m-0 text-[13px] font-bold">All the forms</h2>
         <div className="-mx-3.5 overflow-x-auto px-3.5">
-          <table className="w-full min-w-[520px] border-collapse">
+          <table className="w-full min-w-[440px] border-collapse">
             <caption className="sr-only">Fifteen verbs in the dictionary, ます, ない, て and た forms</caption>
             <thead>
               <tr className="text-left text-xs text-ink2">
@@ -108,7 +108,7 @@ export default async function VerbsPage() {
             <tbody>
               {VERBS.map((v, i) => (
                 <tr key={v.base + v.ending} className={i ? "border-t border-line" : ""}>
-                  <th scope="row" className="py-1.5 pr-3 text-left font-normal">
+                  <th scope="row" className="w-[6.5rem] py-1.5 pr-3 text-left font-normal">
                     <span className="flex flex-col">
                       <Ruby text={conjugate(v, "dictionary")} furigana={furigana} className="font-card text-[17px] leading-[1.8]" />
                       <span className="text-xs text-ink2">

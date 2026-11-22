@@ -95,13 +95,14 @@ function buildGrammar(ctx: Ctx): Grammar[] {
   for (const g of [...written, ...meanings]) if (!known.has(g.slug)) problem(`grammar ${g.slug} isn't in the link table`);
 
   const lessons = readSource("grammar-lessons.json", GrammarLessons, []);
-  const lessonBySlug = new Map<string, { topic: string; gloss: string; formation: string; order: number }>();
+  const lessonBySlug = new Map<string, { topic: string; title: string; gloss: string; formation: string; order: number }>();
   for (const { topic, points } of lessons) {
     for (const p of points) {
       if (lessonBySlug.has(p.slug)) problem(`grammar-lessons.json lists ${p.slug} twice`);
       if (!writtenBySlug.has(p.slug)) problem(`grammar-lessons.json: ${p.slug} isn't a written N5 point`);
+      checkWritten(`${p.slug} title`, p.title, { level: "N5" }, ctx);
       checkWritten(`${p.slug} formation`, p.formation, { level: "N5" }, ctx);
-      lessonBySlug.set(p.slug, { topic, gloss: p.gloss, formation: p.formation, order: lessonBySlug.size });
+      lessonBySlug.set(p.slug, { topic, title: p.title, gloss: p.gloss, formation: p.formation, order: lessonBySlug.size });
     }
   }
 

@@ -49,11 +49,18 @@ export default async function LearnPage() {
           <div className="h-2 overflow-hidden rounded-full bg-track" aria-hidden="true">
             <div className="h-full bg-good" style={{ width: `${grammar.total ? (grammar.read / grammar.total) * 100 : 0}%` }} />
           </div>
+          <p className="m-0 text-[13px]">
+            <span className="text-ink2">Next: </span>
+            <span className="font-card text-base font-semibold">
+              <Mixed text={next.pattern} />
+            </span>
+            <span className="text-ink2"> · {next.gloss}</span>
+          </p>
           <Link
             href={`/grammar/${next.id}`}
-            className="mt-1 flex min-h-[50px] items-center justify-center gap-1.5 rounded-btn bg-accent px-4 text-[15px] font-bold text-on-accent no-underline"
+            className="flex min-h-[50px] items-center justify-center rounded-btn bg-accent px-4 text-[15px] font-bold text-on-accent no-underline"
           >
-            {grammar.read === 0 ? "Start" : "Continue"}: <Mixed text={next.pattern} />
+            {grammar.read === 0 ? "Start the read-through" : "Continue"}
           </Link>
         </section>
       )}

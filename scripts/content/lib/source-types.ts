@@ -51,7 +51,7 @@ export type GrammarWritten = z.infer<typeof GrammarWritten>;
 export const GrammarLessons = z.array(
   z.object({
     topic: nonEmpty,
-    points: z.array(z.object({ slug: nonEmpty, gloss: nonEmpty, formation: nonEmpty })).min(1),
+    points: z.array(z.object({ slug: nonEmpty, title: nonEmpty, gloss: nonEmpty, formation: nonEmpty })).min(1),
   }),
 );
 

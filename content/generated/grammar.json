@@ -57,6 +57,7 @@
       "grammar:n5:nakucha",
       "grammar:n4:te-shimau-chau"
     ],
+    "title": "〜ちゃいけない / 〜じゃいけない",
     "gloss": "mustn't (casual)",
     "formation": "verb て-form, with て → ちゃ and で → じゃ, + いけない",
     "topic": "Permission and rules",
@@ -120,6 +121,7 @@
       "grammar:n5:i-adjectives",
       "grammar:n5:na-adjectives"
     ],
+    "title": "だ / です",
     "gloss": "is, am, are",
     "formation": "noun / な-adjective + です (polite) or だ (plain)",
     "topic": "Sentences with です",
@@ -186,6 +188,7 @@
       "grammar:n4:bakari",
       "grammar:n4:dake-de"
     ],
+    "title": "だけ",
     "gloss": "only, just",
     "formation": "noun / verb + だけ",
     "topic": "Particles",
@@ -253,6 +256,7 @@
       "grammar:n4:kamo-shirenai",
       "grammar:n4:hazu-da"
     ],
+    "title": "〜だろう",
     "gloss": "probably (casual)",
     "formation": "plain form + だろう (noun / な-adjective without だ)",
     "topic": "Ending a sentence",
@@ -315,6 +319,7 @@
       "grammar:n5:ni",
       "grammar:n5:ni-e"
     ],
+    "title": "で",
     "gloss": "at, in (where it happens); by, with",
     "formation": "place / tool + で",
     "topic": "Particles",
@@ -378,6 +383,7 @@
       "grammar:n5:shikashi",
       "grammar:n4:demo"
     ],
+    "title": "でも",
     "gloss": "but (starting a sentence)",
     "formation": "でも、+ sentence",
     "topic": "Joining sentences",
@@ -445,6 +451,7 @@
       "grammar:n5:mashou",
       "grammar:n4:kamo-shirenai"
     ],
+    "title": "〜でしょう",
     "gloss": "probably; right?",
     "formation": "plain form + でしょう (noun / な-adjective without だ)",
     "topic": "Ending a sentence",
@@ -504,6 +511,7 @@
       }
     ],
     "confusables": [],
+    "title": "どんな",
     "gloss": "what kind of …?",
     "formation": "どんな + noun",
     "topic": "Question words",
@@ -570,6 +578,7 @@
       "grammar:n5:douyatte",
       "grammar:n5:kara"
     ],
+    "title": "どうして",
     "gloss": "why?",
     "formation": "どうして + sentence + か",
     "topic": "Question words",
@@ -632,6 +641,7 @@
       "grammar:n5:doushite",
       "grammar:n5:kata"
     ],
+    "title": "どうやって",
     "gloss": "how? by what means?",
     "formation": "どうやって + verb",
     "topic": "Question words",
@@ -694,6 +704,7 @@
       "grammar:n5:wa-topic-marker",
       "grammar:n4:wa-ga-wa"
     ],
+    "title": "が",
     "gloss": "marks the subject",
     "formation": "noun + が",
     "topic": "Particles",
@@ -755,6 +766,7 @@
     "confusables": [
       "grammar:n5:ga-imasu"
     ],
+    "title": "〜があります",
     "gloss": "there is; I have (things)",
     "formation": "noun + が + あります",
     "topic": "Having and wanting",
@@ -817,6 +829,7 @@
       "grammar:n5:tai",
       "grammar:n4:te-hoshii"
     ],
+    "title": "〜がほしい",
     "gloss": "I want (a thing)",
     "formation": "noun + が + ほしい",
     "topic": "Having and wanting",
@@ -878,6 +891,7 @@
     "confusables": [
       "grammar:n5:ga-arimasu"
     ],
+    "title": "〜がいます",
     "gloss": "there is; I have (people, animals)",
     "formation": "noun + が + います",
     "topic": "Having and wanting",
@@ -940,6 +954,7 @@
       "grammar:n5:yori-hou-ga",
       "grammar:n4:tara-dou"
     ],
+    "title": "〜ほうがいい",
     "gloss": "you'd better …",
     "formation": "verb た-form or ない-form + ほうがいい",
     "topic": "Permission and rules",
@@ -1001,6 +1016,7 @@
     "confusables": [
       "grammar:n5:na-adjectives"
     ],
+    "title": "い-adjectives",
     "gloss": "い-adjectives: isn't, was, wasn't",
     "formation": "{高|たか}い → {高|たか}くない, {高|たか}かった, {高|たか}くなかった",
     "topic": "Describing things",
@@ -1063,6 +1079,7 @@
       "grammar:n5:no-naka-de-a-ga-ichiban",
       "grammar:n5:yori-hou-ga"
     ],
+    "title": "{一番|いちばん}",
     "gloss": "the most, number one",
     "formation": "{一番|いちばん} + adjective",
     "topic": "Comparing",
@@ -1124,6 +1141,7 @@
     "confusables": [
       "grammar:n5:to"
     ],
+    "title": "{一緒|いっしょ}に",
     "gloss": "together with",
     "formation": "person + と + {一緒|いっしょ}に + verb",
     "topic": "Actions and time",
@@ -1183,6 +1201,7 @@
       }
     ],
     "confusables": [],
+    "title": "いつも",
     "gloss": "always, usually",
     "formation": "いつも + verb",
     "topic": "Already, not yet, always",
@@ -1245,6 +1264,7 @@
       "grammar:n5:da-desu",
       "grammar:n4:janai-ka"
     ],
+    "title": "じゃない / ではない",
     "gloss": "is not",
     "formation": "noun / な-adjective + じゃない (polite: じゃありません)",
     "topic": "Sentences with です",
@@ -1307,6 +1327,7 @@
       "grammar:n5:ka-ka",
       "grammar:n4:ka-dou-ka"
     ],
+    "title": "か",
     "gloss": "makes a question; or",
     "formation": "sentence + か / noun + か + noun",
     "topic": "Sentences with です",
@@ -1366,6 +1387,7 @@
       "grammar:n5:ya",
       "grammar:n4:ka-dou-ka"
     ],
+    "title": "〜か〜か",
     "gloss": "A or B; whether or not",
     "formation": "A + か + B + か",
     "topic": "Particles",
@@ -1429,6 +1451,7 @@
       "grammar:n5:made",
       "grammar:n4:noni"
     ],
+    "title": "から",
     "gloss": "from; because",
     "formation": "noun + から (from) / sentence + から (because)",
     "topic": "Particles",
@@ -1491,6 +1514,7 @@
       "grammar:n5:douyatte",
       "grammar:n5:hou-ga-ii"
     ],
+    "title": "〜{方|かた}",
     "gloss": "how to …; the way of …",
     "formation": "verb stem + {方|かた}",
     "topic": "Actions and time",
@@ -1554,6 +1578,7 @@
       "grammar:n5:demo",
       "grammar:n4:noni"
     ],
+    "title": "〜けど",
     "gloss": "but, though (casual)",
     "formation": "sentence + けど",
     "topic": "Joining sentences",
@@ -1620,6 +1645,7 @@
       "grammar:n5:kedo",
       "grammar:n5:shikashi"
     ],
+    "title": "〜けれども",
     "gloss": "but, although (polite)",
     "formation": "sentence + けれども or けれど",
     "topic": "Joining sentences",
@@ -1686,6 +1712,7 @@
       "grammar:n5:mou",
       "grammar:n5:mada-te-imasen"
     ],
+    "title": "まだ",
     "gloss": "still; not yet",
     "formation": "まだ + verb / まだ + negative",
     "topic": "Already, not yet, always",
@@ -1753,6 +1780,7 @@
       "grammar:n5:mou",
       "grammar:n5:te-iru"
     ],
+    "title": "まだ〜ていません",
     "gloss": "haven't … yet",
     "formation": "まだ + verb て-form + いません",
     "topic": "Already, not yet, always",
@@ -1815,6 +1843,7 @@
       "grammar:n4:made-ni",
       "grammar:n5:kara"
     ],
+    "title": "まで",
     "gloss": "until, as far as",
     "formation": "noun + まで",
     "topic": "Particles",
@@ -1877,6 +1906,7 @@
       "grammar:n5:te-kara",
       "grammar:n4:ato-de"
     ],
+    "title": "〜{前|まえ}に",
     "gloss": "before …",
     "formation": "verb dictionary form + {前|まえ}に / noun + の{前|まえ}に",
     "topic": "Actions and time",
@@ -1943,6 +1973,7 @@
       "grammar:n5:mashou",
       "grammar:n5:mashouka"
     ],
+    "title": "〜ませんか",
     "gloss": "won't you …? would you like to …?",
     "formation": "verb stem + ませんか",
     "topic": "Asking, inviting and offering",
@@ -2009,6 +2040,7 @@
       "grammar:n5:masen-ka",
       "grammar:n5:mashouka"
     ],
+    "title": "〜ましょう",
     "gloss": "let's …",
     "formation": "verb stem + ましょう",
     "topic": "Asking, inviting and offering",
@@ -2075,6 +2107,7 @@
       "grammar:n5:mashou",
       "grammar:n5:masen-ka"
     ],
+    "title": "〜ましょうか",
     "gloss": "shall I …? shall we …?",
     "formation": "verb stem + ましょうか",
     "topic": "Asking, inviting and offering",
@@ -2141,6 +2174,7 @@
       "grammar:n5:wa-topic-marker",
       "grammar:n5:ga"
     ],
+    "title": "も",
     "gloss": "too, also; (not) either",
     "formation": "noun + も, in place of は, が or を",
     "topic": "Sentences with です",
@@ -2207,6 +2241,7 @@
       "grammar:n5:mada",
       "grammar:n5:mada-te-imasen"
     ],
+    "title": "もう",
     "gloss": "already; not any more",
     "formation": "もう + past verb / もう + negative",
     "topic": "Already, not yet, always",
@@ -2269,6 +2304,7 @@
       "grammar:n5:i-adjectives",
       "grammar:n5:janai-dewa-nai"
     ],
+    "title": "な-adjectives",
     "gloss": "な-adjectives",
     "formation": "な-adjective + な + noun / な-adjective + です",
     "topic": "Describing things",
@@ -2331,6 +2367,7 @@
       "grammar:n5:ne",
       "grammar:n5:yo"
     ],
+    "title": "〜なあ",
     "gloss": "wow…; I wish…",
     "formation": "plain form + なあ",
     "topic": "Ending a sentence",
@@ -2392,6 +2429,7 @@
     "confusables": [
       "grammar:n5:naide-kudasai"
     ],
+    "title": "〜ないで",
     "gloss": "without doing …",
     "formation": "verb ない-form + で",
     "topic": "Actions and time",
@@ -2459,6 +2497,7 @@
       "grammar:n5:te-wa-ikenai",
       "grammar:n5:naide"
     ],
+    "title": "〜ないでください",
     "gloss": "please don't …",
     "formation": "verb ない-form + でください",
     "topic": "Asking, inviting and offering",
@@ -2522,6 +2561,7 @@
       "grammar:n5:nakucha",
       "grammar:n5:naku-temo-ii"
     ],
+    "title": "〜ないといけない",
     "gloss": "have to (everyday)",
     "formation": "verb ない-form + といけない",
     "topic": "Permission and rules",
@@ -2585,6 +2625,7 @@
       "grammar:n5:te-mo-ii",
       "grammar:n5:nakute-wa-ikenai"
     ],
+    "title": "〜なくてもいい",
     "gloss": "don't have to",
     "formation": "verb ない-form, with ない → なくて, + もいい",
     "topic": "Permission and rules",
@@ -2648,6 +2689,7 @@
       "grammar:n5:nakute-wa-ikenai",
       "grammar:n5:cha-ikenai-ja-ikenai"
     ],
+    "title": "〜なくちゃ",
     "gloss": "gotta (casual)",
     "formation": "verb ない-form, with ない → なくちゃ",
     "topic": "Permission and rules",
@@ -2715,6 +2757,7 @@
       "grammar:n5:te-wa-ikenai",
       "grammar:n5:naito-ikenai"
     ],
+    "title": "〜なくてはいけない",
     "gloss": "must, have to",
     "formation": "verb ない-form, with ない → なくて, + はいけない",
     "topic": "Permission and rules",
@@ -2782,6 +2825,7 @@
       "grammar:n4:nakereba-naranai",
       "grammar:n5:naito-ikenai"
     ],
+    "title": "〜なくてはならない",
     "gloss": "must (rules, writing)",
     "formation": "verb ない-form, with ない → なくて, + はならない",
     "topic": "Permission and rules",
@@ -2844,6 +2888,7 @@
       "grammar:n5:ni-suru",
       "grammar:n4:you-ni-naru"
     ],
+    "title": "〜になる / 〜くなる",
     "gloss": "to become",
     "formation": "noun / な-adjective + に + なる; い-adjective: い → く + なる",
     "topic": "Describing things",
@@ -2906,6 +2951,7 @@
       "grammar:n5:no-desu",
       "grammar:n5:kara"
     ],
+    "title": "〜んです",
     "gloss": "the thing is …; is it that …?",
     "formation": "plain form + んです (noun / な-adjective + なんです)",
     "topic": "Ending a sentence",
@@ -2972,6 +3018,7 @@
       "grammar:n5:yo",
       "grammar:n5:naa"
     ],
+    "title": "〜ね",
     "gloss": "right? isn't it?",
     "formation": "sentence + ね",
     "topic": "Ending a sentence",
@@ -3038,6 +3085,7 @@
       "grammar:n5:ni-e",
       "grammar:n5:de"
     ],
+    "title": "に",
     "gloss": "at a time, in a place, to someone",
     "formation": "noun + に",
     "topic": "Particles",
@@ -3100,6 +3148,7 @@
       "grammar:n5:ni",
       "grammar:n5:ni-e"
     ],
+    "title": "〜に{行|い}く",
     "gloss": "go to do …",
     "formation": "verb stem / activity noun + に{行|い}く",
     "topic": "Actions and time",
@@ -3166,6 +3215,7 @@
       "grammar:n5:naru",
       "grammar:n4:koto-ni-suru"
     ],
+    "title": "〜にする",
     "gloss": "I'll have …; decide on",
     "formation": "noun + に + する",
     "topic": "Having and wanting",
@@ -3228,6 +3278,7 @@
       "grammar:n5:ni",
       "grammar:n5:made"
     ],
+    "title": "に / へ",
     "gloss": "to (a place)",
     "formation": "place + に or へ (said え) + verb of movement",
     "topic": "Particles",
@@ -3289,6 +3340,7 @@
     "confusables": [
       "grammar:n5:na-adjectives"
     ],
+    "title": "の",
     "gloss": "'s, of; joins two nouns",
     "formation": "noun + の + noun",
     "topic": "Sentences with です",
@@ -3351,6 +3403,7 @@
       "grammar:n5:ndesu",
       "grammar:n5:node"
     ],
+    "title": "〜のです",
     "gloss": "explains (careful speech)",
     "formation": "plain form + のです (noun / な-adjective + なのです)",
     "topic": "Ending a sentence",
@@ -3413,6 +3466,7 @@
       "grammar:n5:no-ga-jouzu",
       "grammar:n5:no-ga-suki"
     ],
+    "title": "〜のが{下手|へた}",
     "gloss": "bad at doing …",
     "formation": "verb dictionary form + のが{下手|へた}",
     "topic": "Likes and skills",
@@ -3475,6 +3529,7 @@
       "grammar:n5:no-ga-heta",
       "grammar:n5:no-ga-suki"
     ],
+    "title": "〜のが{上手|じょうず}",
     "gloss": "good at doing …",
     "formation": "verb dictionary form + のが{上手|じょうず}",
     "topic": "Likes and skills",
@@ -3537,6 +3592,7 @@
       "grammar:n5:no-ga-jouzu",
       "grammar:n5:no-ga-heta"
     ],
+    "title": "〜のが{好|す}き",
     "gloss": "like doing …",
     "formation": "verb dictionary form + のが{好|す}き",
     "topic": "Likes and skills",
@@ -3596,6 +3652,7 @@
       "grammar:n4:no-naka-de",
       "grammar:n5:yori-hou-ga"
     ],
+    "title": "〜の{中|なか}で〜が{一番|いちばん}",
     "gloss": "of all …, B is the most",
     "formation": "group + の{中|なか}で + B + が + {一番|いちばん} + adjective",
     "topic": "Comparing",
@@ -3662,6 +3719,7 @@
       "grammar:n5:kara",
       "grammar:n4:noni"
     ],
+    "title": "〜ので",
     "gloss": "because, so (soft)",
     "formation": "plain form + ので (noun / な-adjective + なので)",
     "topic": "Joining sentences",
@@ -3724,6 +3782,7 @@
       "grammar:n4:o-ni-naru",
       "grammar:n4:o-kudasai"
     ],
+    "title": "お〜 / ご〜",
     "gloss": "polite お and ご",
     "formation": "お + most Japanese words / ご + most Chinese-origin words",
     "topic": "Describing things",
@@ -3790,6 +3849,7 @@
       "grammar:n5:ga",
       "grammar:n5:ni"
     ],
+    "title": "を",
     "gloss": "marks the object",
     "formation": "noun + を (said お) + verb",
     "topic": "Particles",
@@ -3848,6 +3908,7 @@
       "grammar:n5:te-kudasai",
       "grammar:n5:ga-hoshii"
     ],
+    "title": "〜をください",
     "gloss": "please give me …",
     "formation": "noun + を + ください",
     "topic": "Having and wanting",
@@ -3907,6 +3968,7 @@
       "grammar:n5:kedo",
       "grammar:n5:keredo-mo"
     ],
+    "title": "しかし",
     "gloss": "however (written)",
     "formation": "しかし、+ sentence",
     "topic": "Joining sentences",
@@ -3965,6 +4027,7 @@
       "grammar:n5:soshite",
       "grammar:n5:te-kara"
     ],
+    "title": "それから",
     "gloss": "and then, after that",
     "formation": "それから、+ sentence",
     "topic": "Joining sentences",
@@ -4023,6 +4086,7 @@
       "grammar:n5:sore-kara",
       "grammar:n4:sore-ni"
     ],
+    "title": "そして",
     "gloss": "and, and then",
     "formation": "そして、+ sentence",
     "topic": "Joining sentences",
@@ -4088,6 +4152,7 @@
     "confusables": [
       "grammar:n5:totemo"
     ],
+    "title": "〜すぎる",
     "gloss": "too, too much",
     "formation": "verb stem / adjective without い or な + すぎる",
     "topic": "Describing things",
@@ -4150,6 +4215,7 @@
       "grammar:n4:koto-ga-aru",
       "grammar:n4:koto-ga-dekiru"
     ],
+    "title": "〜たことがある",
     "gloss": "have done (before)",
     "formation": "verb た-form + ことがある",
     "topic": "Actions and time",
@@ -4217,6 +4283,7 @@
       "grammar:n4:tagaru",
       "grammar:n4:te-hoshii"
     ],
+    "title": "〜たい",
     "gloss": "want to do …",
     "formation": "verb stem + たい",
     "topic": "Having and wanting",
@@ -4280,6 +4347,7 @@
       "grammar:n4:toka-toka",
       "grammar:n5:ya"
     ],
+    "title": "〜たり〜たりする",
     "gloss": "things like A and B",
     "formation": "verb た-form + り, verb た-form + り + する",
     "topic": "Actions and time",
@@ -4343,6 +4411,7 @@
       "grammar:n4:te-oku",
       "grammar:n4:tadoushi-jidoushi"
     ],
+    "title": "〜てある",
     "gloss": "has been done (and stays so)",
     "formation": "transitive verb て-form + ある",
     "topic": "Actions and time",
@@ -4406,6 +4475,7 @@
       "grammar:n4:te-ita",
       "grammar:n4:teiru-tokoro"
     ],
+    "title": "〜ている",
     "gloss": "is doing; is in a state",
     "formation": "verb て-form + いる",
     "topic": "Actions and time",
@@ -4469,6 +4539,7 @@
       "grammar:n4:ato-de",
       "grammar:n5:sore-kara"
     ],
+    "title": "〜てから",
     "gloss": "after doing …",
     "formation": "verb て-form + から",
     "topic": "Actions and time",
@@ -4536,6 +4607,7 @@
       "grammar:n5:naide-kudasai",
       "grammar:n4:te-itadakemasen-ka"
     ],
+    "title": "〜てください",
     "gloss": "please do …",
     "formation": "verb て-form + ください",
     "topic": "Asking, inviting and offering",
@@ -4599,6 +4671,7 @@
       "grammar:n5:te-mo-ii",
       "grammar:n5:naide-kudasai"
     ],
+    "title": "〜てはいけない",
     "gloss": "must not",
     "formation": "verb て-form + はいけない",
     "topic": "Permission and rules",
@@ -4662,6 +4735,7 @@
       "grammar:n5:naku-temo-ii",
       "grammar:n4:temo"
     ],
+    "title": "〜てもいい",
     "gloss": "it's OK to …; may I …?",
     "formation": "verb て-form + もいい(です)",
     "topic": "Permission and rules",
@@ -4725,6 +4799,7 @@
       "grammar:n5:issho-ni",
       "grammar:n4:to"
     ],
+    "title": "と",
     "gloss": "and; with (someone)",
     "formation": "noun + と + noun / person + と",
     "topic": "Particles",
@@ -4787,6 +4862,7 @@
       "grammar:n4:tara",
       "grammar:n4:aida"
     ],
+    "title": "〜とき",
     "gloss": "when …",
     "formation": "plain verb / い-adjective / な-adjective + な / noun + の, + とき",
     "topic": "Actions and time",
@@ -4846,6 +4922,7 @@
       "grammar:n4:zenzen-nai",
       "grammar:n5:sugiru"
     ],
+    "title": "とても",
     "gloss": "very",
     "formation": "とても + adjective",
     "topic": "Describing things",
@@ -4909,6 +4986,7 @@
       "grammar:n4:you-to-omou",
       "grammar:n5:tai"
     ],
+    "title": "〜つもり",
     "gloss": "plan to, intend to",
     "formation": "verb dictionary form or ない-form + つもりです",
     "topic": "Actions and time",
@@ -4976,6 +5054,7 @@
       "grammar:n5:mo",
       "grammar:n4:wa-ga-wa"
     ],
+    "title": "は",
     "gloss": "as for …; the topic",
     "formation": "noun + は (said わ)",
     "topic": "Sentences with です",
@@ -5039,6 +5118,7 @@
       "grammar:n4:yori",
       "grammar:n5:no-naka-de-a-ga-ichiban"
     ],
+    "title": "AはBより〜",
     "gloss": "A is more … than B",
     "formation": "A + は + B + より + adjective",
     "topic": "Comparing",
@@ -5102,6 +5182,7 @@
       "grammar:n5:masen-ka",
       "grammar:n4:tara-dou"
     ],
+    "title": "〜はどうですか",
     "gloss": "how is …? how about …?",
     "formation": "noun + は + どうですか",
     "topic": "Question words",
@@ -5165,6 +5246,7 @@
       "grammar:n4:toka-toka",
       "grammar:n4:nado"
     ],
+    "title": "や",
     "gloss": "A, B and so on",
     "formation": "noun + や + noun (+ など)",
     "topic": "Particles",
@@ -5231,6 +5313,7 @@
       "grammar:n5:ne",
       "grammar:n5:naa"
     ],
+    "title": "〜よ",
     "gloss": "you know; I'm telling you",
     "formation": "sentence + よ",
     "topic": "Ending a sentence",
@@ -5294,6 +5377,7 @@
       "grammar:n5:hou-ga-ii",
       "grammar:n5:no-naka-de-a-ga-ichiban"
     ],
+    "title": "AよりBのほうが〜",
     "gloss": "B is more … than A",
     "formation": "A + より + B + のほうが + adjective",
     "topic": "Comparing",

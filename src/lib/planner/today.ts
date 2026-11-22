@@ -140,7 +140,7 @@ function rowFor(t: TaskStatus, next: string | null, plan: DayPlan, decks: readon
       unit = "started";
       break;
     case "read_through":
-      detail = `${plural(target, "lesson")}: I know this, or Learn it`;
+      detail = plural(target, "lesson");
       unit = "read";
       break;
     case "grammar":

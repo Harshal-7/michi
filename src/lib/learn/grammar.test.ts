@@ -29,6 +29,7 @@ describe("grammar lessons", () => {
     expect(glossOf("please do …", "A polite request.")).toBe("please do …");
     expect(glossOf(undefined, "Too, also; with a negative, (not) either.")).toBe("Too, also");
     expect(glossOf(undefined, "Because / so. Gives a reason.")).toBe("Because / so");
+    expect(glossOf(undefined, "'While / during', but the main action happens at one point inside that stretch.")).toBe("While / during");
   });
 
   it("shows the status you set, or Learning once the card has started", () => {

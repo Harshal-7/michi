@@ -63,7 +63,8 @@ export async function GrammarScreen({ level, selectedId, lesson }: { level: Leve
           {next && next.id !== selectedId && (
             <Link
               href={`/grammar/${next.id}`}
-              className="mt-1 flex min-h-11 items-center justify-center gap-1.5 rounded-btn border border-line bg-surface2 px-3.5 text-[13.5px] font-semibold no-underline"
+              // On a laptop with nothing picked, that lesson is already open beside the list.
+              className={`mt-1 flex min-h-11 items-center justify-center gap-1.5 rounded-btn border border-line bg-surface2 px-3.5 text-[13.5px] font-semibold no-underline ${selectedId ? "" : "laptop:hidden"}`}
             >
               Continue reading: <Mixed text={next.pattern} />
             </Link>

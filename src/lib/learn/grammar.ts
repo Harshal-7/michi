@@ -27,6 +27,7 @@ export const READ_THROUGH_LEVEL: Level = "N5";
 export type PointRow = {
   id: number;
   level: Level;
+  /** The lesson's title ("〜てください"), or the content's pattern for points without one. */
   pattern: string;
   gloss: string;
   /** For search: the full meaning and the content key's romaji ("te-kudasai"). */
@@ -39,8 +40,9 @@ export type PointRow = {
 /** "please do …" from the lesson, or the meaning's first clause for points without one yet. */
 export function glossOf(gloss: string | undefined, meaning: string): string {
   if (gloss) return gloss;
-  const first = meaning.split(/(?<=[.:;])\s/)[0] ?? meaning;
-  return first.replace(/[.:;]$/, "");
+  let first = (meaning.split(/(?<=[.:;])\s/)[0] ?? meaning).replace(/[.:;]$/, "");
+  if (first.length > 50) first = first.split(/,\s/)[0];
+  return first.replace(/^['"‘“]+|['"’”]+$/g, "");
 }
 
 export function statusOf(stored: GrammarStatus | null, cardState: string | null): GrammarStatus {
@@ -76,9 +78,9 @@ export async function loadPoints(db: DbOrTx, level: Level): Promise<PointRow[]> 
     return {
       id: r.id,
       level: r.level ?? level,
-      pattern: r.pattern,
+      pattern: d.title ?? r.pattern,
       gloss: glossOf(d.gloss, r.meaning),
-      searchText: `${r.meaning} ${r.seedSlug?.split(":").at(-1)?.replace(/-/g, " ") ?? ""}`,
+      searchText: `${r.pattern} ${r.meaning} ${r.seedSlug?.split(":").at(-1)?.replace(/-/g, " ") ?? ""}`,
       topic: d.topic ?? null,
       status: statusOf(r.stored, r.cardState),
       read: r.checked !== null || (r.cardState !== null && r.cardState !== "new"),
@@ -151,7 +153,7 @@ export async function loadLesson(db: DbOrTx, id: number): Promise<Lesson | null>
   return {
     id: row.id,
     level: row.level,
-    pattern: row.pattern,
+    pattern: d.title ?? row.pattern,
     meaning: row.meaning,
     gloss: glossOf(d.gloss, row.meaning),
     formation: d.formation ?? null,
@@ -164,7 +166,8 @@ export async function loadLesson(db: DbOrTx, id: number): Promise<Lesson | null>
       .filter((c) => c !== undefined)
       .map((c) => {
         const cd = GrammarData.partial().safeParse(c.data);
-        return { id: c.id, pattern: c.pattern, gloss: glossOf(cd.success ? cd.data.gloss : undefined, c.meaning) };
+        const cdata = cd.success ? cd.data : {};
+        return { id: c.id, pattern: cdata.title ?? c.pattern, gloss: glossOf(cdata.gloss, c.meaning) };
       }),
     status: statusOf(row.stored, row.cardState),
     verdict: row.verdict,

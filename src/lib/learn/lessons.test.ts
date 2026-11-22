@@ -20,7 +20,7 @@ const lesson = (name: string, order: number, confusables: string[] = []) => ({
   formation: `verb て-form + ${name}`,
   topic: order < 2 ? "Requests" : "Rules",
   order,
-  links: [{ site: "jlptsensei", url: `https://jlptsensei.com/${name}` }],
+  links: [{ site: "jlptsensei" as const, url: `https://jlptsensei.com/${name}` }],
   examples: [{ ja: `{書|か}いて[[${name}]]。`, en: "An example." }],
   questions: [],
   confusables,
