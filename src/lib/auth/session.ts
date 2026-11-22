@@ -2,6 +2,7 @@ import "server-only";
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { connection } from "next/server";
 import { cache } from "react";
 
 import { createSession, deleteSession, findSession, type SessionRow } from "@/db/auth";
@@ -48,7 +49,12 @@ const OPEN_SESSION: Session = { device: "device", createdAt: new Date(0), expire
 
 /** This request's session, or null. Looked up once per request. */
 export const currentSession = cache(async (): Promise<Session | null> => {
-  if (!SIGN_IN_REQUIRED) return OPEN_SESSION;
+  if (!SIGN_IN_REQUIRED) {
+    // Reading the cookie is what made every page render per request. Without it Next prerenders
+    // pages at build time and Vercel serves those copies, so Today shows the build's numbers.
+    await connection();
+    return OPEN_SESSION;
+  }
   const id = await cookieSessionId();
   if (!id || !process.env.DATABASE_URL) return null;
   const row = await findSession(getDb(), hashSessionId(id));
