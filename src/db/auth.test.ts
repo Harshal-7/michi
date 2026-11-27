@@ -42,6 +42,19 @@ describe("sign-in rate limit", () => {
     expect(await signInAllowed(db, "1.2.3.4", minutes(1))).toBe(false);
   });
 
+  it("counts the games' PIN tries apart, so guests can't lock the passphrase out", async () => {
+    await db.execute(
+      sql`insert into sign_in_attempts (key, ok, at) select 'play:name:g' || g, false, ${minutes(0)} from generate_series(1, 150) g`,
+    );
+    expect(await signInAllowed(db, "1.2.3.4", minutes(1))).toBe(true);
+    expect(await signInAllowed(db, "play:name:someone", minutes(1))).toBe(true);
+    await db.execute(
+      sql`insert into sign_in_attempts (key, ok, at) select 'play:name:h' || g, false, ${minutes(0)} from generate_series(1, 50) g`,
+    );
+    expect(await signInAllowed(db, "play:name:someone", minutes(1))).toBe(false);
+    expect(await signInAllowed(db, "1.2.3.4", minutes(1))).toBe(true);
+  });
+
   it("clears tries older than a day", async () => {
     await recordSignInAttempt(db, "1.2.3.4", false, minutes(0));
     await recordSignInAttempt(db, "1.2.3.4", true, minutes(25 * 60));
