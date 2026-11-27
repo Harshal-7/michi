@@ -22,6 +22,13 @@
       "when": 1795814300021,
       "tag": "0002_kana_game",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1795814344242,
+      "tag": "0003_vocab_progress",
+      "breakpoints": true
     }
   ]
 }

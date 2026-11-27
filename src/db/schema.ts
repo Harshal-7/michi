@@ -762,3 +762,32 @@ export const kanaGameAnswers = pgTable(
   },
   (t) => [primaryKey({ columns: [t.gameId, t.itemId] }), index().on(t.itemId)],
 );
+
+// ---------------------------------------------------------------------------
+// Typed vocabulary practice (/learn/vocab, added 28 Nov 2026)
+
+/** ja_en: see the word, type the meaning; en_ja: see the meaning, type the word. */
+export const vocabDirection = pgEnum("vocab_direction", ["ja_en", "en_ja"]);
+
+/**
+ * Right and wrong counts per word and direction from typed practice, for its filters and the
+ * "312 of 718 typed right" line. Practice never touches a card's review schedule.
+ */
+export const vocabProgress = pgTable(
+  "vocab_progress",
+  {
+    itemId: integer()
+      .notNull()
+      .references(() => items.id, { onDelete: "cascade" }),
+    direction: vocabDirection().notNull(),
+    right: integer().notNull().default(0),
+    wrong: integer().notNull().default(0),
+    /** Whether the latest answer was right. */
+    lastRight: boolean().notNull(),
+    lastAt: at().notNull(),
+  },
+  (t) => [
+    primaryKey({ columns: [t.itemId, t.direction] }),
+    check("vocab_progress_counts", sql`${t.right} >= 0 and ${t.wrong} >= 0`),
+  ],
+);

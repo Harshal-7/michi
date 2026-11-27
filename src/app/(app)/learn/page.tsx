@@ -31,6 +31,7 @@ export default async function LearnPage() {
     { href: "/learn/kana/katakana", label: "Katakana", note: kanaNote(katakana), glyph: "ア" },
     { href: ROUTES.kanaGame, label: "Kana game", note: "read a kana and type it, or hear it and find it", glyph: "か" },
     { href: "/learn/verbs", label: "Verb forms", note: "the 3 groups; ます, ない, て and た", glyph: "て" },
+    { href: ROUTES.vocab, label: "Vocabulary", note: "type the meaning or the word · N5 to N3", glyph: "語" },
     { href: ROUTES.grammar, label: "Grammar", note: `N5 · ${grammar.total} points · ${grammar.confident} confident · ${grammar.learning} learning`, glyph: "文" },
   ];
 
