@@ -10,7 +10,7 @@ import { saveRun } from "@/lib/games/save";
 import type { GameRun } from "@/lib/games/types";
 
 import type { Db } from "./client";
-import { createGuest, deleteGuest, loadBoard, loadItemAnswers, loadRuns, ownerPlayer, type Player, setGuestHidden } from "./play";
+import { createGuest, deleteGuest, loadBoard, loadItemAnswers, loadRuns, loadSummary, ownerPlayer, type Player, setGuestHidden, takenNameKeys } from "./play";
 import { activityLogs, gameAnswers, gameRuns, items, kanaGameAnswers, kanaGames, players, reviewLogs } from "./schema";
 import { createTestDb } from "./test/test-db";
 
@@ -136,6 +136,33 @@ describe("leaderboards", () => {
     await deleteGuest(db, owner.id);
     expect(await db.select().from(gameRuns)).toHaveLength(0);
     expect(await ownerPlayer(db)).toMatchObject({ id: owner.id });
+  });
+});
+
+describe("a player's summary and names", () => {
+  it("counts their runs and keeps the best of each game with its setup", async () => {
+    const mei = await guest("Mei");
+    expect(await loadSummary(db, mei.id)).toMatchObject({ runs: 0, bests: [] });
+    await saveRun(db, mei, run("2026-12-02T05:00:00.000Z", 12), NOW);
+    await saveRun(db, mei, run("2026-12-02T05:10:00.000Z", 18, { setup: "find:hiragana:basic:20" }), NOW);
+    await saveRun(db, mei, run("2026-12-02T05:20:00.000Z", 14), NOW);
+    const summary = await loadSummary(db, mei.id);
+    expect(summary.runs).toBe(3);
+    expect(summary.bests).toEqual([{ game: "kana", setup: "find:hiragana:basic:20", score: 90 }]);
+    expect(Date.parse(summary.since)).not.toBeNaN();
+  });
+
+  it("says which name keys are taken", async () => {
+    await guest("Aki");
+    expect(await takenNameKeys(db, ["aki", "aki2", "harshal"])).toEqual(new Set(["aki", "harshal"]));
+    expect(await takenNameKeys(db, [])).toEqual(new Set());
+  });
+
+  it("puts each place's right-first-time count on the board", async () => {
+    const aki = await guest("Aki");
+    await saveRun(db, aki, run("2026-12-02T05:00:00.000Z", 19), NOW);
+    const [row] = await loadBoard(db, "kana", "read:hiragana:basic:20", null);
+    expect(row).toMatchObject({ name: "Aki", cards: 20, firstTryRight: 19, score: 95 });
   });
 });
 

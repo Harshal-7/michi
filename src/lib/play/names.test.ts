@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { cleanName, cleanPin, nameKey, nameProblem, pinProblem } from "./names";
+import { cleanName, cleanPin, nameKey, nameProblem, pinProblem, suggestionsFor } from "./names";
 
 describe("player names", () => {
   it("takes 3 to 16 letters, digits, kana or kanji", () => {
@@ -29,6 +29,22 @@ describe("player names", () => {
     for (const bad of ["Harshal", "HARSHAL", "admin", "MICHI", "xfuckx", "Hitler88", "死ね死ね"]) {
       expect(nameProblem(bad), bad).toMatch(/isn't available/);
     }
+  });
+});
+
+describe("name suggestions", () => {
+  it("offer the name with a number, counting on from one it ends in", () => {
+    expect(suggestionsFor("sakura").slice(0, 2)).toEqual(["sakura1", "sakura2"]);
+    expect(suggestionsFor("sakura22").slice(0, 2)).toEqual(["sakura23", "sakura24"]);
+    expect(suggestionsFor("Sakura22")).not.toContain("sakura22");
+  });
+
+  it("stay 16 characters or fewer, and pass the name rules", () => {
+    for (const s of suggestionsFor("abcdefghijklmnop")) {
+      expect([...s].length).toBeLessThanOrEqual(16);
+      expect(nameProblem(s), s).toBeNull();
+    }
+    for (const s of suggestionsFor("さくら")) expect(nameProblem(s), s).toBeNull();
   });
 });
 

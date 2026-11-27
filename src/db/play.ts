@@ -188,11 +188,48 @@ export async function loadItemAnswers(db: DbOrTx, playerId: string, game: string
   return result.rows.map((r) => ({ mode: r.mode, item: r.item, right: r.right, ms: r.ms }));
 }
 
+/** Which of these name keys a player already has, for the name check's suggestions. */
+export async function takenNameKeys(db: DbOrTx, keys: readonly string[]): Promise<Set<string>> {
+  if (keys.length === 0) return new Set();
+  const rows = await db
+    .select({ key: players.nameKey })
+    .from(players)
+    .where(sql`${players.nameKey} in (${sql.join(keys.map((k) => sql`${k}`), sql`, `)})`);
+  return new Set(rows.map((r) => r.key));
+}
+
+/** A player's best run of one game, for the hub and their own page. */
+export type GameBest = { game: string; setup: string; score: number };
+/** What a player's own page and the hub show: since when, how many runs, the best of each game. */
+export type PlayerSummary = { since: string; runs: number; bests: GameBest[] };
+
+export async function loadSummary(db: DbOrTx, playerId: string): Promise<PlayerSummary> {
+  const [who, counted, bests] = await Promise.all([
+    db.select({ since: players.createdAt }).from(players).where(eq(players.id, playerId)),
+    db.select({ runs: sql<number>`count(*)::int` }).from(gameRuns).where(eq(gameRuns.playerId, playerId)),
+    db
+      .selectDistinctOn([gameRuns.game], { game: gameRuns.game, setup: gameRuns.setup, score: gameRuns.score })
+      .from(gameRuns)
+      .where(eq(gameRuns.playerId, playerId))
+      .orderBy(gameRuns.game, desc(gameRuns.score), sql`${gameRuns.meanMs} asc nulls last`, gameRuns.playedAt),
+  ]);
+  return { since: (who[0]?.since ?? new Date()).toISOString(), runs: counted[0]?.runs ?? 0, bests };
+}
+
 // ---------------------------------------------------------------------------
 // Leaderboards
 
 /** A player's best ranked run of one setup. */
-export type BoardRow = { playerId: string; name: string; isOwner: boolean; score: number; meanMs: number | null; playedAt: string };
+export type BoardRow = {
+  playerId: string;
+  name: string;
+  isOwner: boolean;
+  score: number;
+  meanMs: number | null;
+  playedAt: string;
+  cards: number;
+  firstTryRight: number;
+};
 
 /** The most rows a board keeps; places past this aren't shown. */
 export const BOARD_LIMIT = 1000;
@@ -210,6 +247,8 @@ export async function loadBoard(db: DbOrTx, game: string, setup: string, since: 
       score: gameRuns.score,
       meanMs: gameRuns.meanMs,
       playedAt: gameRuns.playedAt,
+      cards: gameRuns.cards,
+      firstTryRight: gameRuns.firstTryRight,
     })
     .from(gameRuns)
     .innerJoin(players, eq(players.id, gameRuns.playerId))

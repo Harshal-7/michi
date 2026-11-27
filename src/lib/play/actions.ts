@@ -7,12 +7,22 @@ import { headers } from "next/headers";
 import { deleteGuest, getDb, renamePlayer, setGuestHidden } from "@/db/play";
 import { BOARD_TAG } from "@/lib/games/leaderboard";
 
-import { checkGuest, makeGuest } from "./guests";
-import { cleanName, nameKey, nameProblem } from "./names";
+import { checkGuest, makeGuest, NO_MATCH, WAIT_MESSAGE } from "./guests";
+import { cleanName, nameKey, nameProblem, pinProblem } from "./names";
 import { currentPlayer, endPlayerSession, startPlayerSession } from "./player";
 
-/** What the guest sheet shows after a try: the player's name, or what went wrong. */
-export type PlayerState = { name?: string; error?: string };
+/**
+ * What the guest sheet shows after a try: the player's name, or what went wrong and where: the
+ * name box, the PIN boxes, or the 15-minute wait.
+ */
+export type PlayerState = { name?: string; error?: string; field?: "name" | "pin" | "wait" };
+
+/** Which part of the sheet an error belongs to. */
+function fieldOf(error: string): PlayerState["field"] {
+  if (error === WAIT_MESSAGE) return "wait";
+  if (error === NO_MATCH || error === pinProblem("")) return "pin";
+  return "name";
+}
 
 async function clientAddress(): Promise<string> {
   const h = await headers();
@@ -27,7 +37,7 @@ const text = (form: FormData, key: string) => {
 /** "New name": makes a guest with a name and a 4-digit PIN and signs this device in. */
 export async function createPlayer(_prev: PlayerState, form: FormData): Promise<PlayerState> {
   const result = await makeGuest(getDb(), text(form, "name"), text(form, "pin"), await clientAddress());
-  if ("error" in result) return { error: result.error };
+  if ("error" in result) return { error: result.error, field: fieldOf(result.error) };
   await startPlayerSession(result.player.id);
   return { name: result.player.name };
 }
@@ -35,7 +45,7 @@ export async function createPlayer(_prev: PlayerState, form: FormData): Promise<
 /** "Sign in": an existing guest's name and PIN. */
 export async function signInPlayer(_prev: PlayerState, form: FormData): Promise<PlayerState> {
   const result = await checkGuest(getDb(), text(form, "name"), text(form, "pin"), await clientAddress());
-  if ("error" in result) return { error: result.error };
+  if ("error" in result) return { error: result.error, field: fieldOf(result.error) };
   await startPlayerSession(result.player.id);
   return { name: result.player.name };
 }
