@@ -58,8 +58,9 @@ that already exist. Don't invent new visual styles, and don't iterate on looks i
 - Furigana uses `<ruby>` with `<rt>` at 0.4em in `--ink2`. Content stores it as ruby markup
   (`{食|た}べる`, see `content/schema.ts`); render it with one shared component.
 
-**Colour: themes.** Since 28 Nov 2026 each device picks a light theme and a dark theme (Settings → Theme;
-canvas page **Themes**, boards `T_Today` and `T_TodayWeb` with a `look` prop). Every theme fills the same
+**Colour: themes.** Since 28 Nov 2026 each device picks a light theme and a dark theme (Settings → Theme).
+The theme boards (`T_Today` and `T_TodayWeb`, with a `look` prop) are kept locally in
+`~/Developer/docs/learning/japanese/michi-canvas/themes-page-unpublished/`, not on the canvas. Every theme fills the same
 tokens in `src/app/globals.css`: the default light theme (Kumo) on `:root`, the others on
 `[data-look="…"]`; the default dark theme (Kuro) on `[data-theme="dark"]`, the others on
 `[data-theme="dark"][data-look="…"]`. Harshal's brief: whites and darks that differ in shade and in how
