@@ -30,6 +30,7 @@ export default async function LearnPage() {
     { href: "/learn/kana/hiragana", label: "Hiragana", note: kanaNote(hiragana), glyph: "あ" },
     { href: "/learn/kana/katakana", label: "Katakana", note: kanaNote(katakana), glyph: "ア" },
     { href: "/learn/verbs", label: "Verb forms", note: "the 3 groups; ます, ない, て and た", glyph: "て" },
+    { href: ROUTES.vocab, label: "Vocabulary", note: "type the meaning or the word · N5 to N3", glyph: "語" },
     { href: ROUTES.grammar, label: "Grammar", note: `N5 · ${grammar.total} points · ${grammar.confident} confident · ${grammar.learning} learning`, glyph: "文" },
   ];
 
