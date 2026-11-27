@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { PAGE_COLOR } from "@/lib/theme";
+import { DEFAULT_LOOKS, PAGE_COLOR } from "@/lib/theme";
 
 /**
  * Lets the phone install Michi like an app: full screen, with the icons that
@@ -18,8 +18,8 @@ export default function manifest(): MetadataRoute.Manifest {
     scope: "/",
     display: "standalone",
     orientation: "portrait",
-    background_color: PAGE_COLOR.light,
-    theme_color: PAGE_COLOR.light,
+    background_color: PAGE_COLOR[DEFAULT_LOOKS.light],
+    theme_color: PAGE_COLOR[DEFAULT_LOOKS.light],
     icons: [
       { src: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
       { src: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
