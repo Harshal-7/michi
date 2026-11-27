@@ -29,6 +29,7 @@ export default async function LearnPage() {
   const rows = [
     { href: "/learn/kana/hiragana", label: "Hiragana", note: kanaNote(hiragana), glyph: "あ" },
     { href: "/learn/kana/katakana", label: "Katakana", note: kanaNote(katakana), glyph: "ア" },
+    { href: ROUTES.kanaGame, label: "Kana game", note: "read a kana and type it, or hear it and find it", glyph: "か" },
     { href: "/learn/verbs", label: "Verb forms", note: "the 3 groups; ます, ない, て and た", glyph: "て" },
     { href: ROUTES.grammar, label: "Grammar", note: `N5 · ${grammar.total} points · ${grammar.confident} confident · ${grammar.learning} learning`, glyph: "文" },
   ];
