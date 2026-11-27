@@ -19,6 +19,7 @@ export const ICONS = {
   chevronRight: "M9 6l6 6-6 6",
   chevronLeft: "M15 5l-7 7 7 7",
   lock: "M6 11h12v9H6z M8 11V8a4 4 0 0 1 8 0v3",
+  games: "M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18z M10 8.5v7l6-3.5z",
 } as const;
 
 export type NavKey =
@@ -31,7 +32,8 @@ export type NavKey =
   | "work"
   | "resources"
   | "decks"
-  | "settings";
+  | "settings"
+  | "games";
 
 export type NavItem = { key: NavKey; href: string; label: string; icon: string; note?: string };
 
@@ -46,6 +48,7 @@ export const MAIN_NAV: NavItem[] = [
 
 /** The More page on a phone; the rest of the sidebar on a laptop. */
 export const MORE_NAV: NavItem[] = [
+  { key: "games", href: "/play", label: "Games", icon: ICONS.games, note: "the public games and leaderboards" },
   { key: "progress", href: "/progress", label: "Progress", icon: ICONS.progress, note: "levels, mock scores, minutes" },
   { key: "work", href: "/work", label: "Work Japanese", icon: ICONS.work, note: "interviews, the office and chat" },
   { key: "resources", href: "/resources", label: "Resources", icon: ICONS.resources, note: "links by skill and level" },

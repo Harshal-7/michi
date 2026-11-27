@@ -1,4 +1,4 @@
-/** The kana game's shared types: what a kana looks like to the game, and the choices on its start screen. */
+/** The kana game's types: what a kana looks like to the game, and the choices on its start screen. */
 
 export const SCRIPTS = ["hiragana", "katakana"] as const;
 export type Script = (typeof SCRIPTS)[number];
@@ -18,7 +18,8 @@ export type Length = (typeof LENGTHS)[number];
 export const WEAKEST_COUNT = 20;
 
 export type GameKana = {
-  id: number;
+  /** The content slug, `kana:hiragana:shi`: what a run's answers name. */
+  key: string;
   kana: string;
   /** The Hepburn answer shown: shi, chi, tsu. */
   romaji: string;

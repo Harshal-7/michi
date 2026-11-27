@@ -1,24 +1,14 @@
-import { readFileSync } from "node:fs";
-
-import type { Kana } from "@content/schema";
 import { describe, expect, it } from "vitest";
 
+import { progressOf, strengths, weakestFirst, weakItems, windowOf, type PastGame } from "../progress";
+import { bestStreakOf, cardPoints, loggedMinutes, summarise } from "../score";
+import { answer, buildDeck, COME_BACK_AFTER, currentCard, isFinished, isRetry, startGame } from "../turns";
 import { answersFor, findOptions, isRightTyping, judgeTyped, rowOf } from "./answer";
-import { answer, buildDeck, COME_BACK_AFTER, currentCard, isFinished, isRetry, kanaFor, startGame } from "./game";
-import { progressOf, strengths, weakestFirst, weakKana, windowOf, type PastGame } from "./progress";
-import { cardPoints, loggedMinutes, summarise } from "./score";
+import { ALL_KANA, kanaFor } from "./content";
 import type { GameKana } from "./types";
 
-const content = JSON.parse(readFileSync(new URL("../../../content/generated/kana.json", import.meta.url), "utf8")) as Kana[];
-const ALL: GameKana[] = content.map((k, i) => ({
-  id: i + 1,
-  kana: k.kana,
-  romaji: k.romaji,
-  accept: k.accept,
-  lookalikes: k.lookalikes,
-  script: k.script,
-  group: k.group,
-}));
+const ALL: readonly GameKana[] = ALL_KANA;
+const seedOf = (k: GameKana) => ALL.indexOf(k) + 1;
 const kana = (k: string) => ALL.find((x) => x.kana === k)!;
 
 /** A small seeded random, so shuffles repeat. */
@@ -80,10 +70,10 @@ describe("checking typed romaji", () => {
 describe("Find it options", () => {
   it("offers four kana of the same script, the answer once", () => {
     for (const target of ALL) {
-      const { options, answerIndex } = findOptions(target, ALL, seeded(target.id));
+      const { options, answerIndex } = findOptions(target, ALL, seeded(seedOf(target)));
       expect(options).toHaveLength(4);
       expect(options[answerIndex]).toBe(target);
-      expect(new Set(options.map((o) => o.id)).size).toBe(4);
+      expect(new Set(options.map((o) => o.key)).size).toBe(4);
       expect(options.every((o) => o.script === target.script)).toBe(true);
     }
   });
@@ -187,6 +177,19 @@ describe("scoring", () => {
     expect(summarise([{ right: false, ms: 900 }])).toEqual({ cards: 1, firstTryRight: 0, score: 0, meanMs: null });
   });
 
+  it("uses each game's own speed", () => {
+    const slow = { fullMs: 3000, noneMs: 8000 };
+    expect(cardPoints(true, 3000, slow)).toBe(100);
+    expect(cardPoints(true, 5500, slow)).toBe(85);
+    expect(cardPoints(true, 3000)).toBeLessThan(100);
+  });
+
+  it("finds the longest run right first time", () => {
+    const r = (right: boolean) => ({ right });
+    expect(bestStreakOf([r(true), r(true), r(false), r(true), r(true), r(true), r(false)])).toBe(3);
+    expect(bestStreakOf([r(false)])).toBe(0);
+  });
+
   it("logs whole minutes, none under half a minute", () => {
     expect(loggedMinutes(20_000)).toBe(0);
     expect(loggedMinutes(30_000)).toBe(1);
@@ -225,27 +228,27 @@ describe("progress over time", () => {
   it("rates each kana by its last ten answers and finds the weakest", () => {
     const answers = [
       // Newest first. Kana 1: always right and quick. Kana 2: missed twice. Kana 3: right but slow.
-      ...Array.from({ length: 12 }, () => ({ itemId: 1, right: true, ms: 900 })),
-      { itemId: 2, right: false, ms: 2000 },
-      { itemId: 2, right: true, ms: 1200 },
-      { itemId: 2, right: false, ms: 3000 },
-      { itemId: 3, right: true, ms: 5000 },
-      { itemId: 3, right: true, ms: 5000 },
+      ...Array.from({ length: 12 }, () => ({ item: "k1", right: true, ms: 900 })),
+      { item: "k2", right: false, ms: 2000 },
+      { item: "k2", right: true, ms: 1200 },
+      { item: "k2", right: false, ms: 3000 },
+      { item: "k3", right: true, ms: 5000 },
+      { item: "k3", right: true, ms: 5000 },
     ];
     const list = strengths(answers);
-    const one = list.find((s) => s.itemId === 1)!;
-    expect(one).toEqual({ itemId: 1, strength: 100, seen: 10, right: 10 });
-    expect(list.find((s) => s.itemId === 2)).toEqual({ itemId: 2, strength: 33, seen: 3, right: 1 });
-    expect(weakestFirst(list).map((s) => s.itemId)).toEqual([2, 3, 1]);
-    expect(weakKana(list).map((s) => s.itemId)).toEqual([2, 3]);
+    const one = list.find((s) => s.item === "k1")!;
+    expect(one).toEqual({ item: "k1", strength: 100, seen: 10, right: 10 });
+    expect(list.find((s) => s.item === "k2")).toEqual({ item: "k2", strength: 33, seen: 3, right: 1 });
+    expect(weakestFirst(list).map((s) => s.item)).toEqual(["k2", "k3", "k1"]);
+    expect(weakItems(list).map((s) => s.item)).toEqual(["k2", "k3"]);
   });
 
   it("puts the one missed more first when two rate the same", () => {
     const list = [
-      { itemId: 5, strength: 50, seen: 2, right: 1 },
-      { itemId: 6, strength: 50, seen: 4, right: 1 },
+      { item: "k5", strength: 50, seen: 2, right: 1 },
+      { item: "k6", strength: 50, seen: 4, right: 1 },
     ];
-    expect(weakestFirst(list).map((s) => s.itemId)).toEqual([6, 5]);
+    expect(weakestFirst(list).map((s) => s.item)).toEqual(["k6", "k5"]);
   });
 });
 
