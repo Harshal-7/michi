@@ -8,6 +8,7 @@ import { getSettings } from "@/db/settings";
 import { requireSignedIn } from "@/lib/auth/session";
 import { pointsFor } from "@/lib/learn/cached";
 import { loadLesson, nextUnread, pointCounts, READ_THROUGH_LEVEL } from "@/lib/learn/grammar";
+import { loadMine } from "@/lib/learn/sentences";
 
 export const metadata: Metadata = { title: "Grammar" };
 
@@ -18,7 +19,7 @@ export default async function GrammarPage({ searchParams }: PageProps<"/grammar"
   const db = getDb();
   const [settings, points] = await Promise.all([getSettings(db), pointsFor(level)]);
   const first = (level === READ_THROUGH_LEVEL ? nextUnread(points) : null) ?? points[0];
-  const lesson = first ? await loadLesson(db, first.id) : null;
+  const [lesson, mine] = first ? await Promise.all([loadLesson(db, first.id), loadMine(db, first.id)]) : [null, null];
   const counts = pointCounts(points);
   const progress = level === READ_THROUGH_LEVEL && counts.read < counts.total ? { read: counts.read, total: counts.total } : null;
 
@@ -27,8 +28,8 @@ export default async function GrammarPage({ searchParams }: PageProps<"/grammar"
       level={level}
       selectedId={null}
       lesson={
-        lesson ? (
-          <LessonView lesson={lesson} furigana={settings.furigana} voice={settings.voice} progress={progress} />
+        lesson && mine ? (
+          <LessonView lesson={lesson} furigana={settings.furigana} voice={settings.voice} progress={progress} mine={mine} />
         ) : (
           <EmptyState>No grammar points at this level yet.</EmptyState>
         )

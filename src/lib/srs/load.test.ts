@@ -2,7 +2,7 @@ import { eq } from "drizzle-orm";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import type { Db } from "@/db/client";
-import { cards, itemContexts } from "@/db/schema";
+import { cards, itemContexts, items, userSentences } from "@/db/schema";
 import { createTestDb } from "@/db/test/test-db";
 import { studyDayBounds } from "@/lib/day";
 import type { DayPlan } from "@/lib/planner/day-plan";
@@ -73,6 +73,30 @@ describe("loadReviewQueue", () => {
     const { cards: queue } = await loadReviewQueue(db, { settings, now, deckId: words });
     expect(queue).toHaveLength(1);
     expect(queue[0].item).toMatchObject({ id: word.itemId, kind: "word", context: { ja: "{教室|きょうしつ}で", en: "in class" } });
+  });
+  it("puts a grammar point's checked sentences after its examples, never the unchecked ones", async () => {
+    const point = await addCard(db, { kind: "grammar", cardType: "fill_in" });
+    const word = await addCard(db);
+    await db
+      .update(items)
+      .set({ data: { examples: [{ ja: "{書|か}い[[てください]]。", en: "Please write." }] } as never })
+      .where(eq(items.id, point.itemId));
+    await db.insert(userSentences).values([
+      { itemId: point.itemId, ja: "ゆっくり{話|はな}し[[てください]]。", en: "Please speak slowly.", checked: true },
+      { itemId: point.itemId, ja: "まどをあけ[[てください]]。", en: "", checked: false },
+      { itemId: word.itemId, ja: "[[語]]です。", en: "", checked: true },
+    ]);
+    await due(point.cardId, "review", now);
+    await due(word.cardId, "review", now);
+
+    const { cards: queue } = await loadReviewQueue(db, { settings, now });
+    const grammar = queue.find((c) => c.id === point.cardId);
+    expect(grammar?.item.data.examples).toEqual([
+      { ja: "{書|か}い[[てください]]。", en: "Please write." },
+      { ja: "ゆっくり{話|はな}し[[てください]]。", en: "Please speak slowly." },
+    ]);
+    // Only grammar points take sentences in as examples.
+    expect(queue.find((c) => c.id === word.cardId)?.item.data.examples).toBeUndefined();
   });
 });
 
