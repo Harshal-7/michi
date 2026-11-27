@@ -61,8 +61,9 @@ function shuffled<T>(list: readonly T[], random: () => number): T[] {
 
 /**
  * The four kana to pick from for Find it: the answer, its look-alikes first, then kana from the
- * same row, the same group, then any, all in the same script. A kana that sounds the same as
- * the answer is never an option. `random` is Math.random in the app, seeded in tests.
+ * same row, the same group, then any, all in the same script and from `all` (the screen passes
+ * the groups in play). A kana that sounds the same as the answer is never an option. `random`
+ * is Math.random in the app, seeded in tests.
  */
 export function findOptions(
   target: GameKana,

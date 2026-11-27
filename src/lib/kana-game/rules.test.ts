@@ -248,3 +248,13 @@ describe("progress over time", () => {
     expect(weakestFirst(list).map((s) => s.itemId)).toEqual([6, 5]);
   });
 });
+
+describe("Find it options from the groups in play", () => {
+  it("only offers kana from the pool it's given", () => {
+    const basic = kanaFor(ALL, ["katakana"], ["basic"]);
+    for (let seed = 1; seed < 30; seed++) {
+      const { options } = findOptions(kana("サ"), basic, seeded(seed));
+      expect(options.every((o) => o.group === "basic")).toBe(true);
+    }
+  });
+});
