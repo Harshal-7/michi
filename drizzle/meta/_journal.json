@@ -15,6 +15,13 @@
       "when": 1795811460084,
       "tag": "0001_round_2",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795814300021,
+      "tag": "0002_kana_game",
+      "breakpoints": true
     }
   ]
 }
