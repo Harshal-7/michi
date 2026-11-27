@@ -1,7 +1,7 @@
 /** Shapes of the committed inputs in content/source/. The build checks each file against these. */
 import { z } from "zod";
 
-import { Grammar, GrammarLink, Level, Prompt, Resource } from "../../../content/schema";
+import { Grammar, GrammarLink, Level, Prompt, Resource, Shadowing } from "../../../content/schema";
 
 const nonEmpty = z.string().trim().min(1);
 
@@ -59,6 +59,8 @@ export const GrammarLessons = z.array(
 export const GrammarMeanings = z.array(z.object({ slug: nonEmpty, pattern: nonEmpty, meaning: nonEmpty }));
 
 export const PromptsSource = z.array(Prompt);
+
+export const ShadowingSource = z.array(Shadowing);
 
 /** Fresh example sentences for words, keyed by word slug. They win over a Tatoeba match. */
 export const WordExamples = z.array(z.object({ word: nonEmpty, ja: nonEmpty, en: nonEmpty }));

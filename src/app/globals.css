@@ -1,33 +1,20 @@
 @import "tailwindcss";
 
 /*
- * Michi's tokens: the approved mix "Colours Washi · Fonts 2 Print · Cards Soft · Nav Pill".
- * The values come from .claude/skills/michi-design/SKILL.md and the canvas's michi.css.
- * These two blocks are the only place colours are written down; everything else uses the tokens.
- * src/lib/theme.ts repeats --page for the manifest and the phone's address bar, and
- * src/app/icon.svg uses the light --accent and --on-accent; src/lib/theme.test.ts keeps them in step.
+ * Michi's tokens: the approved mix "Colours Washi · Fonts 2 Print · Cards Soft · Nav Pill", with the
+ * themes Harshal picked on 28 Nov 2026 (canvas page "Themes"; .claude/skills/michi-design/SKILL.md).
+ * The theme blocks below are the only place colours are written down; everything else uses the tokens.
+ *
+ * Each device picks a light theme and a dark theme in Settings → Theme. THEME_SCRIPT in src/lib/theme.ts
+ * puts data-theme="light|dark" and data-look="<theme>" on <html> before the first paint. Every theme
+ * fills the same tokens; they differ in their whites or darks and in how cards sit on the page
+ * (--card-shadow: a soft shadow, a fine line, or nothing). They share the accent and rating colours.
+ * src/lib/theme.ts repeats each --page for the phone's address bar, and src/app/icon.svg uses the light
+ * --accent and --on-accent; src/lib/theme.test.ts keeps them in step.
  */
 :root {
-  --page: #faf8f3;
-  --surface: #fefdfa;
-  --surface2: #f2eee6;
-  --ink: #1d1a16;
-  --ink2: #5b544a;
-  --line: #e3dccf;
-  --accent: #b03a22;
-  --on-accent: #fff8f0;
-  --accent-soft: #f2dcd3;
-  --good: #2f6b45;
-  --warn: #8a560a;
-  --again: #a8361f;
-  --easy: #2f5c8a;
-  --track: #ebe5da;
-  --glow: rgba(176, 58, 34, 0.16);
-  --shadow: rgba(40, 30, 20, 0.08);
-
   --radius: 18px;
   --btn-radius: 999px;
-  --card-shadow: 0 1px 2px var(--shadow), 0 8px 24px var(--shadow);
   --hero-shadow: 0 0 0 2px var(--accent), 0 8px 24px var(--shadow);
   --nav-shadow: 0 10px 30px var(--glow);
 
@@ -40,12 +27,142 @@
   color-scheme: light;
 }
 
+/* Light themes. Kumo is the default, so it sits on :root. */
+/* Kumo 雲: light grey page, white raised cards. */
+:root {
+  --page: #f2f2f1;
+  --surface: #ffffff;
+  --surface2: #ececeb;
+  --ink: #1a1a1a;
+  --ink2: #595959;
+  --line: #e2e2e0;
+  --accent: #b03a22;
+  --on-accent: #fff8f0;
+  --accent-soft: #f8e4de;
+  --good: #2f6b45;
+  --warn: #7d5c00;
+  --again: #a3242b;
+  --easy: #2f5c8a;
+  --track: #e8e8e6;
+  --glow: rgba(176, 58, 34, 0.16);
+  --shadow: rgba(0, 0, 0, 0.06);
+  --card-shadow: 0 1px 2px var(--shadow), 0 8px 24px var(--shadow);
+}
+
+/* Shiro 白: pure white, cards drawn with a fine line. */
+[data-look="shiro"] {
+  --page: #ffffff;
+  --surface: #ffffff;
+  --surface2: #f4f4f3;
+  --ink: #1a1a1a;
+  --ink2: #5c5c5c;
+  --line: #e5e5e3;
+  --accent: #b03a22;
+  --on-accent: #fff8f0;
+  --accent-soft: #f8e4de;
+  --good: #2f6b45;
+  --warn: #7d5c00;
+  --again: #a3242b;
+  --easy: #2f5c8a;
+  --track: #ececea;
+  --glow: rgba(176, 58, 34, 0.16);
+  --shadow: rgba(0, 0, 0, 0.05);
+  --card-shadow: 0 0 0 1px var(--line);
+}
+
+/* Kinu 絹: white page, flat light grey cards. */
+[data-look="kinu"] {
+  --page: #ffffff;
+  --surface: #f5f5f4;
+  --surface2: #e9e9e7;
+  --ink: #1a1a1a;
+  --ink2: #575757;
+  --line: #e0e0de;
+  --accent: #b03a22;
+  --on-accent: #fff8f0;
+  --accent-soft: #f5e0d9;
+  --good: #2f6b45;
+  --warn: #7d5c00;
+  --again: #a3242b;
+  --easy: #2f5c8a;
+  --track: #e1e1df;
+  --glow: rgba(176, 58, 34, 0.16);
+  --shadow: rgba(0, 0, 0, 0.05);
+  --card-shadow: none;
+}
+
+/* Washi 和紙: the first look: cream paper. */
+[data-look="washi"] {
+  --page: #faf8f3;
+  --surface: #fefdfa;
+  --surface2: #f2eee6;
+  --ink: #1d1a16;
+  --ink2: #5b544a;
+  --line: #e3dccf;
+  --accent: #b03a22;
+  --on-accent: #fff8f0;
+  --accent-soft: #f2dcd3;
+  --good: #2f6b45;
+  --warn: #7d5c00;
+  --again: #a3242b;
+  --easy: #2f5c8a;
+  --track: #ebe5da;
+  --glow: rgba(176, 58, 34, 0.16);
+  --shadow: rgba(40, 30, 20, 0.08);
+  --card-shadow: 0 1px 2px var(--shadow), 0 8px 24px var(--shadow);
+}
+
 /*
- * Dark follows Material's dark theme (m2.material.io/design/color/dark-theme): a #121212 base,
- * raised surfaces lighter by a white overlay (1dp 5%, 6dp 11%), text at 87% and 60% white, and
- * desaturated accents so they pass 4.5:1 on every surface.
+ * Dark themes. Kuro is the default. They follow Material's dark theme
+ * (m2.material.io/design/color/dark-theme): raised surfaces are lighter than the page, text is
+ * off-white, and the accent and rating colours are desaturated so they pass 4.5:1 on every surface.
  */
+/* Kuro 黒: true black, cards drawn with a fine line. */
 [data-theme="dark"] {
+  --page: #000000;
+  --surface: #121212;
+  --surface2: #1f1f1f;
+  --ink: #ececec;
+  --ink2: #a3a3a3;
+  --line: #2c2c2c;
+  --accent: #e88a73;
+  --on-accent: #1a0d08;
+  --accent-soft: #33221e;
+  --good: #8fcb9b;
+  --warn: #e0b565;
+  --again: #f28b82;
+  --easy: #8ab4f8;
+  --track: #2a2a2a;
+  --glow: rgba(232, 138, 115, 0.16);
+  --shadow: rgba(0, 0, 0, 0.6);
+  --card-shadow: 0 0 0 1px var(--line);
+
+  color-scheme: dark;
+}
+
+/* Sumi 墨: soft charcoal, a touch warm. */
+[data-theme="dark"][data-look="sumi"] {
+  --page: #1a1918;
+  --surface: #252422;
+  --surface2: #302e2c;
+  --ink: #eeebe6;
+  --ink2: #aca79f;
+  --line: #3b3936;
+  --accent: #e88a73;
+  --on-accent: #1a0d08;
+  --accent-soft: #3d2a24;
+  --good: #8fcb9b;
+  --warn: #e0b565;
+  --again: #f28b82;
+  --easy: #8ab4f8;
+  --track: #373532;
+  --glow: rgba(232, 138, 115, 0.16);
+  --shadow: rgba(0, 0, 0, 0.45);
+  --card-shadow: 0 1px 2px var(--shadow), 0 8px 24px var(--shadow);
+}
+
+/* Graphite: Material grey, the first dark. */
+[data-theme="dark"][data-look="graphite"] {
   --page: #121212;
   --surface: #1e1e1e;
   --surface2: #2c2c2c;
@@ -62,8 +179,7 @@
   --track: #333333;
   --glow: rgba(232, 138, 115, 0.16);
   --shadow: rgba(0, 0, 0, 0.5);
-
-  color-scheme: dark;
+  --card-shadow: 0 1px 2px var(--shadow), 0 8px 24px var(--shadow);
 }
 
 /* Tailwind names for the tokens: bg-surface, text-ink2, border-line, rounded-card, shadow-card, laptop: … */

@@ -82,6 +82,12 @@ export default async function KanaPage({ params }: PageProps<"/learn/kana/[scrip
               <Legend dot="bg-track border border-line">Not started</Legend>
             </p>
             {next}
+            <Link
+              href={`${ROUTES.kanaGame}?script=${script}`}
+              className="flex min-h-[50px] items-center justify-center rounded-btn border border-line bg-surface text-[15px] font-bold no-underline"
+            >
+              Play the kana game
+            </Link>
           </>
         }
       />

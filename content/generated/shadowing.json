@@ -1,0 +1,464 @@
+[
+  {
+    "slug": "shadow:n5:daily-life",
+    "level": "N5",
+    "title": "Daily life",
+    "sentences": [
+      {
+        "ja": "{毎朝|まいあさ}、{七時|しちじ}に{起|お}きます。",
+        "en": "I get up at seven every morning."
+      },
+      {
+        "ja": "{朝|あさ}ごはんはパンとたまごです。",
+        "en": "Breakfast is bread and eggs."
+      },
+      {
+        "ja": "{八時|はちじ}に{家|いえ}を{出|で}ます。",
+        "en": "I leave home at eight."
+      },
+      {
+        "ja": "{電車|でんしゃ}で{会社|かいしゃ}に{行|い}きます。",
+        "en": "I go to the office by train."
+      },
+      {
+        "ja": "{昼|ひる}ごはんは{友|とも}だちと{食|た}べます。",
+        "en": "I have lunch with friends."
+      },
+      {
+        "ja": "{午後|ごご}はとてもいそがしいです。",
+        "en": "Afternoons are very busy."
+      },
+      {
+        "ja": "{六時|ろくじ}ごろ{家|うち}に{帰|かえ}ります。",
+        "en": "I get home at about six."
+      },
+      {
+        "ja": "{晩|ばん}ごはんのあとで、テレビを{見|み}ます。",
+        "en": "After dinner I watch TV."
+      },
+      {
+        "ja": "{夜|よる}は{少|すこ}し{本|ほん}を{読|よ}みます。",
+        "en": "At night I read a little."
+      },
+      {
+        "ja": "{十一時|じゅういちじ}に{寝|ね}ます。",
+        "en": "I go to bed at eleven."
+      }
+    ]
+  },
+  {
+    "slug": "shadow:n5:self-intro",
+    "level": "N5",
+    "title": "Introducing yourself",
+    "sentences": [
+      {
+        "ja": "はじめまして。",
+        "en": "Nice to meet you."
+      },
+      {
+        "ja": "わたしはケンです。",
+        "en": "I'm Ken."
+      },
+      {
+        "ja": "インドから{来|き}ました。",
+        "en": "I'm from India."
+      },
+      {
+        "ja": "{今|いま}は{日本|にほん}にすんでいます。",
+        "en": "I live in Japan now."
+      },
+      {
+        "ja": "{会社|かいしゃ}でコンピューターの{仕事|しごと}をしています。",
+        "en": "I work with computers at a company."
+      },
+      {
+        "ja": "{日本語|にほんご}を{勉強|べんきょう}しています。",
+        "en": "I'm studying Japanese."
+      },
+      {
+        "ja": "まだ{上手|じょうず}じゃありません。",
+        "en": "I'm not good at it yet."
+      },
+      {
+        "ja": "しゅみは{音楽|おんがく}を{聞|き}くことです。",
+        "en": "My hobby is listening to music."
+      },
+      {
+        "ja": "どうぞよろしくお{願|ねが}いします。",
+        "en": "Pleased to meet you."
+      }
+    ]
+  },
+  {
+    "slug": "shadow:n5:shopping",
+    "level": "N5",
+    "title": "Shopping",
+    "sentences": [
+      {
+        "ja": "すみません、このシャツはいくらですか。",
+        "en": "Excuse me, how much is this shirt?"
+      },
+      {
+        "ja": "{三千円|さんぜんえん}です。",
+        "en": "It's 3,000 yen."
+      },
+      {
+        "ja": "ちょっと{高|たか}いですね。",
+        "en": "That's a little expensive."
+      },
+      {
+        "ja": "もう{少|すこ}し{安|やす}いのはありますか。",
+        "en": "Do you have one that's a bit cheaper?"
+      },
+      {
+        "ja": "こちらは{二千円|にせんえん}です。",
+        "en": "This one is 2,000 yen."
+      },
+      {
+        "ja": "{青|あお}いのもありますか。",
+        "en": "Do you have a blue one too?"
+      },
+      {
+        "ja": "じゃあ、これをください。",
+        "en": "Then I'll take this one."
+      },
+      {
+        "ja": "カードでもいいですか。",
+        "en": "Can I pay by card?"
+      },
+      {
+        "ja": "はい、だいじょうぶです。",
+        "en": "Yes, that's fine."
+      },
+      {
+        "ja": "ありがとうございました。",
+        "en": "Thank you very much."
+      }
+    ]
+  },
+  {
+    "slug": "shadow:n5:time",
+    "level": "N5",
+    "title": "Time and days",
+    "sentences": [
+      {
+        "ja": "{今|いま}、{何時|なんじ}ですか。",
+        "en": "What time is it now?"
+      },
+      {
+        "ja": "{九時半|くじはん}です。",
+        "en": "It's half past nine."
+      },
+      {
+        "ja": "{今日|きょう}は{何曜日|なんようび}ですか。",
+        "en": "What day is it today?"
+      },
+      {
+        "ja": "{水曜日|すいようび}です。",
+        "en": "It's Wednesday."
+      },
+      {
+        "ja": "{明日|あした}は{休|やす}みです。",
+        "en": "Tomorrow is a day off."
+      },
+      {
+        "ja": "{日本語|にほんご}のクラスは{土曜日|どようび}と{日曜日|にちようび}です。",
+        "en": "Japanese class is on Saturdays and Sundays."
+      },
+      {
+        "ja": "クラスは{午前|ごぜん}{十時|じゅうじ}からです。",
+        "en": "Class starts at ten in the morning."
+      },
+      {
+        "ja": "{二時間|にじかん}ぐらいです。",
+        "en": "It's about two hours long."
+      },
+      {
+        "ja": "{来週|らいしゅう}の{月曜日|げつようび}に{会|あ}いましょう。",
+        "en": "Let's meet next Monday."
+      }
+    ]
+  },
+  {
+    "slug": "shadow:n5:directions",
+    "level": "N5",
+    "title": "Directions",
+    "sentences": [
+      {
+        "ja": "すみません、{駅|えき}はどこですか。",
+        "en": "Excuse me, where is the station?"
+      },
+      {
+        "ja": "この{道|みち}をまっすぐ{行|い}ってください。",
+        "en": "Go straight along this road."
+      },
+      {
+        "ja": "{二|ふた}つ{目|め}のかどを{右|みぎ}にまがってください。",
+        "en": "Turn right at the second corner."
+      },
+      {
+        "ja": "{駅|えき}は{銀行|ぎんこう}のとなりです。",
+        "en": "The station is next to the bank."
+      },
+      {
+        "ja": "{歩|ある}いて{何分|なんぷん}ぐらいですか。",
+        "en": "About how many minutes is it on foot?"
+      },
+      {
+        "ja": "{五分|ごふん}ぐらいです。",
+        "en": "About five minutes."
+      },
+      {
+        "ja": "{近|ちか}くにコンビニはありますか。",
+        "en": "Is there a convenience store nearby?"
+      },
+      {
+        "ja": "{郵便局|ゆうびんきょく}の{前|まえ}にあります。",
+        "en": "There's one in front of the post office."
+      },
+      {
+        "ja": "{左|ひだり}にある{白|しろ}いたてものです。",
+        "en": "It's the white building on the left."
+      },
+      {
+        "ja": "どうもありがとうございます。",
+        "en": "Thank you very much."
+      }
+    ]
+  },
+  {
+    "slug": "shadow:n5:restaurant",
+    "level": "N5",
+    "title": "At a restaurant",
+    "sentences": [
+      {
+        "ja": "いらっしゃいませ。{何名|なんめい}さまですか。",
+        "en": "Welcome. How many are you?"
+      },
+      {
+        "ja": "{二人|ふたり}です。",
+        "en": "Two."
+      },
+      {
+        "ja": "メニューをお{願|ねが}いします。",
+        "en": "Could we have the menu, please?"
+      },
+      {
+        "ja": "おすすめは{何|なん}ですか。",
+        "en": "What do you recommend?"
+      },
+      {
+        "ja": "{今日|きょう}のおすすめはてんぷらです。",
+        "en": "Today we recommend the tempura."
+      },
+      {
+        "ja": "じゃあ、てんぷらを{一|ひと}つください。",
+        "en": "Then one tempura, please."
+      },
+      {
+        "ja": "{飲|の}み{物|もの}は{何|なに}がいいですか。",
+        "en": "What would you like to drink?"
+      },
+      {
+        "ja": "{冷|つめ}たいお{茶|ちゃ}をください。",
+        "en": "Cold tea, please."
+      },
+      {
+        "ja": "とてもおいしかったです。",
+        "en": "That was delicious."
+      },
+      {
+        "ja": "おかいけいをお{願|ねが}いします。",
+        "en": "The bill, please."
+      }
+    ]
+  },
+  {
+    "slug": "shadow:n5:weather",
+    "level": "N5",
+    "title": "Weather",
+    "sentences": [
+      {
+        "ja": "{今日|きょう}はいい{天気|てんき}ですね。",
+        "en": "Nice weather today, isn't it?"
+      },
+      {
+        "ja": "そうですね。{空|そら}がとても{青|あお}いです。",
+        "en": "It is. The sky is very blue."
+      },
+      {
+        "ja": "{明日|あした}は{雨|あめ}が{降|ふ}るでしょう。",
+        "en": "It will probably rain tomorrow."
+      },
+      {
+        "ja": "{傘|かさ}を{持|も}って{行|い}ってください。",
+        "en": "Take an umbrella with you."
+      },
+      {
+        "ja": "{昨日|きのう}はとても{寒|さむ}かったです。",
+        "en": "Yesterday was very cold."
+      },
+      {
+        "ja": "{日本|にほん}の{夏|なつ}は{暑|あつ}いです。",
+        "en": "Summer in Japan is hot."
+      },
+      {
+        "ja": "わたしは{春|はる}が{一番|いちばん}{好|す}きです。",
+        "en": "I like spring best."
+      },
+      {
+        "ja": "{秋|あき}はすずしいです。",
+        "en": "Autumn is cool."
+      },
+      {
+        "ja": "{風|かぜ}が{強|つよ}いですね。",
+        "en": "The wind is strong, isn't it?"
+      },
+      {
+        "ja": "{窓|まど}を{閉|し}めましょうか。",
+        "en": "Shall I close the window?"
+      }
+    ]
+  },
+  {
+    "slug": "shadow:n5:family",
+    "level": "N5",
+    "title": "Family",
+    "sentences": [
+      {
+        "ja": "わたしは{四人|よにん}{家族|かぞく}です。",
+        "en": "There are four of us in my family."
+      },
+      {
+        "ja": "{父|ちち}と{母|はは}と{兄|あに}がいます。",
+        "en": "I have my father, my mother and an older brother."
+      },
+      {
+        "ja": "{父|ちち}は{銀行|ぎんこう}で{働|はたら}いています。",
+        "en": "My father works at a bank."
+      },
+      {
+        "ja": "{母|はは}は{料理|りょうり}がとても{上手|じょうず}です。",
+        "en": "My mother is a very good cook."
+      },
+      {
+        "ja": "{兄|あに}は{大学|だいがく}の{先生|せんせい}です。",
+        "en": "My older brother teaches at a university."
+      },
+      {
+        "ja": "{兄|あに}には{子|こ}どもが{二人|ふたり}います。",
+        "en": "My brother has two children."
+      },
+      {
+        "ja": "{日曜日|にちようび}はみんなで{晩|ばん}ごはんを{食|た}べます。",
+        "en": "On Sundays we all have dinner together."
+      },
+      {
+        "ja": "{犬|いぬ}もいます。",
+        "en": "We have a dog too."
+      },
+      {
+        "ja": "{家族|かぞく}の{写真|しゃしん}を{見|み}ますか。",
+        "en": "Would you like to see a family photo?"
+      },
+      {
+        "ja": "これが{母|はは}です。",
+        "en": "This is my mother."
+      }
+    ]
+  },
+  {
+    "slug": "shadow:n5:weekend",
+    "level": "N5",
+    "title": "Weekend plans",
+    "sentences": [
+      {
+        "ja": "こんどの{土曜日|どようび}、{何|なに}をしますか。",
+        "en": "What are you doing this Saturday?"
+      },
+      {
+        "ja": "{友|とも}だちと{映画|えいが}を{見|み}に{行|い}きます。",
+        "en": "I'm going to see a film with a friend."
+      },
+      {
+        "ja": "{日曜日|にちようび}は{家|うち}で{休|やす}みたいです。",
+        "en": "On Sunday I want to rest at home."
+      },
+      {
+        "ja": "{天気|てんき}がよかったら、{公園|こうえん}を{散歩|さんぽ}します。",
+        "en": "If the weather is good, I'll take a walk in the park."
+      },
+      {
+        "ja": "{一緒|いっしょ}に{行|い}きませんか。",
+        "en": "Would you like to come too?"
+      },
+      {
+        "ja": "いいですね。{何時|なんじ}に{会|あ}いましょうか。",
+        "en": "Sounds good. What time shall we meet?"
+      },
+      {
+        "ja": "{十時|じゅうじ}に{駅|えき}の{前|まえ}で{会|あ}いましょう。",
+        "en": "Let's meet in front of the station at ten."
+      },
+      {
+        "ja": "{昼|ひる}ごはんはどこで{食|た}べますか。",
+        "en": "Where shall we have lunch?"
+      },
+      {
+        "ja": "{近|ちか}くにおいしいラーメンの{店|みせ}があります。",
+        "en": "There's a good ramen place nearby."
+      },
+      {
+        "ja": "じゃあ、また{土曜日|どようび}に。",
+        "en": "See you on Saturday, then."
+      }
+    ]
+  },
+  {
+    "slug": "shadow:n5:station",
+    "level": "N5",
+    "title": "At the station",
+    "sentences": [
+      {
+        "ja": "すみません、{切符|きっぷ}はどこで{買|か}いますか。",
+        "en": "Excuse me, where do I buy a ticket?"
+      },
+      {
+        "ja": "あそこで{買|か}えます。",
+        "en": "You can buy one over there."
+      },
+      {
+        "ja": "{中山|なかやま}{駅|えき}までいくらですか。",
+        "en": "How much is it to Nakayama Station?"
+      },
+      {
+        "ja": "{二百円|にひゃくえん}です。",
+        "en": "It's 200 yen."
+      },
+      {
+        "ja": "{次|つぎ}の{電車|でんしゃ}は{何時|なんじ}ですか。",
+        "en": "What time is the next train?"
+      },
+      {
+        "ja": "{十時|じゅうじ}{五分|ごふん}です。",
+        "en": "It's at five past ten."
+      },
+      {
+        "ja": "{何番|なんばん}ホームから{出|で}ますか。",
+        "en": "Which platform does it leave from?"
+      },
+      {
+        "ja": "{三番|さんばん}ホームです。",
+        "en": "Platform three."
+      },
+      {
+        "ja": "この{電車|でんしゃ}は{中山|なかやま}に{行|い}きますか。",
+        "en": "Does this train go to Nakayama?"
+      },
+      {
+        "ja": "いいえ、{次|つぎ}の{駅|えき}で{乗|の}りかえてください。",
+        "en": "No, change trains at the next station."
+      }
+    ]
+  }
+]

@@ -3,10 +3,12 @@ import Link from "next/link";
 import { VoiceProvider } from "@/components/cards/voice";
 import { Mixed, Ruby } from "@/components/ruby";
 import type { Lesson } from "@/lib/learn/grammar";
+import type { Mine } from "@/lib/learn/sentences";
 import { spoken } from "@/lib/voice/spoken";
 import type { VoicePrefs } from "@/lib/voice/voices";
 
 import { LessonCheck, PlayIcon, StatusChips } from "./lesson-parts";
+import { LessonNotes, MySentences } from "./my-sentences";
 import { BackLink } from "./tabs";
 
 const card = "flex flex-col gap-2 rounded-card bg-surface px-3.5 py-3 shadow-card laptop:gap-1 laptop:px-6 laptop:py-5";
@@ -16,16 +18,19 @@ const same = (a: string, b: string) => a.replace(/[\s〜()（）]/g, "").toLower
 
 /**
  * A grammar lesson (F_GrammarPoint): the pattern, its short meaning and how it's made, the
- * explanation, examples you can hear, look-alikes, links, then the check and "I know this" /
- * "Learn it". Notes and your own sentences come in round 2.
+ * explanation, examples you can hear, look-alikes, links, your own sentences and notes, then the
+ * check and "I know this" / "Learn it".
  */
 export function LessonView({
   lesson,
   furigana,
   voice,
   progress,
+  mine,
 }: {
   lesson: Lesson;
+  /** Your sentences and notes on this point. */
+  mine: Mine;
   furigana: boolean;
   voice: VoicePrefs;
   /** The read-through so far, while it's going. */
@@ -109,6 +114,9 @@ export function LessonView({
         </div>
       )}
       </div>
+
+      <MySentences key={`s${lesson.id}`} itemId={lesson.id} pattern={lesson.pattern} sentences={mine.sentences} furigana={furigana} />
+      <LessonNotes key={`n${lesson.id}`} itemId={lesson.id} notes={mine.notes} />
 
       <LessonCheck
         key={lesson.id}

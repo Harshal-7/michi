@@ -58,39 +58,51 @@ that already exist. Don't invent new visual styles, and don't iterate on looks i
 - Furigana uses `<ruby>` with `<rt>` at 0.4em in `--ink2`. Content stores it as ruby markup
   (`{食|た}べる`, see `content/schema.ts`); render it with one shared component.
 
-**Colour** (light; dark in brackets). Tokens live in `src/app/globals.css`, with the dark set under
-`[data-theme="dark"]`.
+**Colour: themes.** Since 28 Nov 2026 each device picks a light theme and a dark theme (Settings → Theme;
+canvas page **Themes**, boards `T_Today` and `T_TodayWeb` with a `look` prop). Every theme fills the same
+tokens in `src/app/globals.css`: the default light theme (Kumo) on `:root`, the others on
+`[data-look="…"]`; the default dark theme (Kuro) on `[data-theme="dark"]`, the others on
+`[data-theme="dark"][data-look="…"]`. Harshal's brief: whites and darks that differ in shade and in how
+cards sit on the page, not tinted pages. So every theme shares one accent and one set of rating colours;
+only the neutrals and `--card-shadow` change. A new theme needs Harshal's OK on the canvas first, then a
+block in `globals.css` that fills every colour token, its `--page` in `PAGE_COLOR` and its name in
+`LOOKS` (`src/lib/theme.ts`); `theme.test.ts` checks the tokens and 4.5:1 contrast for each.
+
+| Theme | `--page` | `--surface` | `--surface2` | `--ink` / `--ink2` | `--line` | `--track` | Cards (`--card-shadow`) |
+|---|---|---|---|---|---|---|---|
+| **Kumo** 雲 (light default) | #F2F2F1 | #FFFFFF | #ECECEB | #1A1A1A / #595959 | #E2E2E0 | #E8E8E6 | soft shadow |
+| Shiro 白 | #FFFFFF | #FFFFFF | #F4F4F3 | #1A1A1A / #5C5C5C | #E5E5E3 | #ECECEA | fine line (`0 0 0 1px var(--line)`) |
+| Kinu 絹 | #FFFFFF | #F5F5F4 | #E9E9E7 | #1A1A1A / #575757 | #E0E0DE | #E1E1DF | flat (`none`) |
+| Washi 和紙 (the first look) | #FAF8F3 | #FEFDFA | #F2EEE6 | #1D1A16 / #5B544A | #E3DCCF | #EBE5DA | soft shadow |
+| **Kuro** 黒 (dark default) | #000000 | #121212 | #1F1F1F | #ECECEC / #A3A3A3 | #2C2C2C | #2A2A2A | fine line |
+| Sumi 墨 | #1A1918 | #252422 | #302E2C | #EEEBE6 / #ACA79F | #3B3936 | #373532 | soft shadow |
+| Graphite (the first dark) | #121212 | #1E1E1E | #2C2C2C | #E0E0E0 / #A0A0A0 | #383838 | #333333 | soft shadow |
+
+Shared by every light theme (dark in brackets):
 
 | Token | Light | Dark | Use |
 |---|---|---|---|
-| `--page` | #FAF8F3 | #121212 | page background |
-| `--surface` | #FEFDFA | #1E1E1E | cards, nav, inputs |
-| `--surface2` | #F2EEE6 | #2C2C2C | wells, chips, count tiles |
-| `--ink` | #1D1A16 | #E0E0E0 | text |
-| `--ink2` | #5B544A | #A0A0A0 | secondary text, furigana |
-| `--line` | #E3DCCF | #383838 | borders, dividers |
 | `--accent` | #B03A22 | #E88A73 | the one solid button, current nav item, links that act |
 | `--on-accent` | #FFF8F0 | #1A0D08 | text on accent |
-| `--accent-soft` | #F2DCD3 | #342522 | current nav pill, picked chips |
+| `--accent-soft` | #F8E4DE (Kinu #F5E0D9, Washi #F2DCD3) | #33221E (Sumi #3D2A24, Graphite #342522) | current nav pill, picked chips |
 | `--good` | #2F6B45 | #8FCB9B | done, on track, Good |
-| `--warn` | #8A560A | #E0B565 | 1–3 days behind, waiting to save |
-| `--again` | #A8361F | #F28B82 | Again, missed |
+| `--warn` | #7D5C00 | #E0B565 | 1–3 days behind, waiting to save |
+| `--again` | #A3242B | #F28B82 | Again, missed |
 | `--easy` | #2F5C8A | #8AB4F8 | Easy |
-| `--track` | #EBE5DA | #333333 | progress bar track |
 | `--glow` | rgba(176,58,34,.16) | rgba(232,138,115,.16) | nav shadow |
-| `--shadow` | rgba(40,30,20,.08) | rgba(0,0,0,.5) | card shadow |
+| `--shadow` | rgba(0,0,0,.06) (Shiro, Kinu .05; Washi rgba(40,30,20,.08)) | rgba(0,0,0,.6) (Sumi .45, Graphite .5) | card shadow |
 
-On 22 Nov 2026 Harshal asked for a lighter, whiter page, so `--page`, `--surface`, `--surface2`, `--line`
-and `--track` (light) are brighter than the canvas (which had #F3EEE4, #FBF8F1, #ECE5D8, #D9CFBE, #E3D9C8).
-Cards stay a touch warmer than pure white on purpose. The dark column was redone the same day after
-Material's dark theme (https://m2.material.io/design/color/dark-theme.html): a #121212 base, raised
-surfaces lighter by a white overlay (`--surface` 5%, `--surface2` 11%), text at 87% and 60% white, and
-desaturated accents that pass 4.5:1 on every surface. Use the values in this table, not the canvas.
+Contrast (checked by `theme.test.ts`): text, accent and rating colours are at least 4.5:1 on `--page`,
+`--surface` and `--surface2` in every theme. The lowest is the accent on `--accent-soft` in Washi, 4.6:1.
+`--again` and `--warn` (light) moved from #A8361F and #8A560A on 28 Nov so they are easier to tell apart.
+The dark themes follow Material's dark theme (https://m2.material.io/design/color/dark-theme.html): raised
+surfaces lighter than the page, off-white text, desaturated accents. Use the values here, not the
+"Final · your mix" boards, which still show the first Washi colours.
 
 Rating buttons: Again `--again`, Hard `--ink`, Good `--good`, Easy `--easy`, each with its next interval.
 
 **Shape**
-- Cards: `--radius` 18px, no border, `--card-shadow` (`0 1px 2px var(--shadow), 0 8px 24px var(--shadow)`).
+- Cards: `--radius` 18px, no border, `--card-shadow` (set by the theme: a soft shadow, a fine line or none).
 - The one "next up" card on a screen gets `--hero-shadow` (a 2px accent ring plus the soft shadow).
 - Buttons and chips are pills (`--btn-radius` 999px). One solid accent button per screen; the rest are
   quiet (surface or text buttons).
@@ -125,11 +137,13 @@ Rating buttons: Again `--again`, Hard `--ink`, Good `--good`, Easy `--easy`, eac
 - Picking one of a few options (Settings → Theme, Furigana): a segmented control, equal segments in a
   `--surface2` track with the chosen one on `--surface` with the card shadow, like the level tabs.
 
-**Theme**: system, light or dark, set by a script in `<head>` before the page paints (the same way the
-games app does it), stored per device.
+**Theme**: system, light or dark, plus a light theme and a dark theme, set by a script in `<head>` before
+the page paints (the same way the games app does it), stored per device (`localStorage`: `michi:theme`,
+`michi:light-look`, `michi:dark-look`). The script puts `data-theme` and `data-look` on `<html>`.
 
 Dark mode is on (`DARK_MODE` in `src/lib/theme.ts`), picked per device in Settings → Theme. Check new
-screens in light and dark.
+screens in light and dark, and in a lined theme (Shiro or Kuro) and the flat one (Kinu), since cards
+there have no shadow.
 
 **Words**
 - Calm, plain and short. Say what happens ("Start", "Review the 10 mistakes").
@@ -151,7 +165,7 @@ on `F_Parts` and `F_TodayDone`. Use those, don't invent new ones.
 ## 6. Before you hand over
 
 - [ ] Phone width (390px) and a laptop (1280×800) both match their boards.
-- [ ] Light and dark.
+- [ ] Light and dark, in a soft theme (Kumo), a lined one (Shiro or Kuro) and the flat one (Kinu).
 - [ ] Keyboard focus visible, targets at least 44px, text contrast at least 4.5:1.
 - [ ] Reduced motion: nothing moves that shouldn't, and nothing is hidden.
 - [ ] One solid accent button per screen; no hard-coded colours; `lang="ja"` on Japanese.

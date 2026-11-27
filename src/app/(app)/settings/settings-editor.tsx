@@ -4,11 +4,11 @@ import Link from "next/link";
 import { type FormEvent, type ReactNode, useState, useTransition } from "react";
 
 import { ICONS } from "@/components/shell/nav";
-import { setThemeChoice } from "@/components/theme-sync";
+import { setLook, setThemeChoice, useLooks } from "@/components/theme-sync";
 import { Icon } from "@/components/ui/icon";
 import { daysBetween, formatDayMonth, formatShort, PHASE_NAMES, phaseFor, type StudyDate } from "@/lib/day";
 import type { Settings, SettingsPatch } from "@/lib/settings/schema";
-import { DARK_MODE, type ThemeChoice } from "@/lib/theme";
+import { DARK_MODE, type DarkLook, type LightLook, LOOK_INFO, LOOKS, type ThemeChoice } from "@/lib/theme";
 
 import { removeException, type SaveResult, saveException, saveSettings } from "./actions";
 
@@ -81,6 +81,7 @@ export function SettingsEditor({
   const [error, setError] = useState<string | null>(null);
   const [saved, setSaved] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
+  const looks = useLooks();
   const toggle = (key: EditorKey) => {
     setOpen(open === key ? null : key);
     setError(null);
@@ -331,21 +332,39 @@ export function SettingsEditor({
       />
     ),
     theme: (
-      <Choice
-        name="theme"
-        value={settings.theme}
-        options={[
-          ["system", "System"],
-          ["light", "Light"],
-          ["dark", "Dark"],
-        ]}
-        pending={pending}
-        hint="Changes this device now; other devices keep their own choice."
-        onChoose={(v) => {
-          setThemeChoice(v as ThemeChoice);
-          save({ theme: v as ThemeChoice }, "Saved.");
-        }}
-      />
+      <>
+        <Choice
+          name="theme"
+          value={settings.theme}
+          options={[
+            ["system", "System"],
+            ["light", "Light"],
+            ["dark", "Dark"],
+          ]}
+          pending={pending}
+          hint="Changes this device now; other devices keep their own choice."
+          onChoose={(v) => {
+            setThemeChoice(v as ThemeChoice);
+            save({ theme: v as ThemeChoice }, "Saved.");
+          }}
+        />
+        {/* This device's light and dark theme (canvas page "Themes"); kept on the device only. */}
+        {(["light", "dark"] as const).map((mode) => (
+          <div key={mode} className="flex flex-col gap-1.5 pt-1">
+            <p aria-hidden="true" className="m-0 text-[12.5px] font-bold">
+              {mode === "light" ? "Light theme" : "Dark theme"}
+            </p>
+            <Choice
+              name={mode === "light" ? "Light theme" : "Dark theme"}
+              value={looks[mode]}
+              options={LOOKS[mode].map((l) => [l, LOOK_INFO[l].name] as const)}
+              pending={false}
+              hint={`${LOOK_INFO[looks[mode]].name}: ${LOOK_INFO[looks[mode]].about}.`}
+              onChoose={(v) => (mode === "light" ? setLook("light", v as LightLook) : setLook("dark", v as DarkLook))}
+            />
+          </div>
+        ))}
+      </>
     ),
   };
 
@@ -463,7 +482,15 @@ export function SettingsEditor({
           [
             ["furigana", "Furigana", settings.furigana ? "Above my level" : "Off"],
             // Hidden if dark mode is ever switched off again (src/lib/theme.ts).
-            ...(DARK_MODE ? ([["theme", "Theme", { system: "System", light: "Light", dark: "Dark" }[settings.theme]]] as const) : []),
+            ...(DARK_MODE
+              ? ([
+                  [
+                    "theme",
+                    "Theme",
+                    `${{ system: "System", light: "Light", dark: "Dark" }[settings.theme]} · ${LOOK_INFO[looks.light].name} / ${LOOK_INFO[looks.dark].name}`,
+                  ],
+                ] as const)
+              : []),
           ] as const
         ).map(([key, name, value]) => (
           <div key={key} className="border-t border-line">

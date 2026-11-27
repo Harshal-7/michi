@@ -274,6 +274,17 @@ export const Prompt = z.object({
 });
 export type Prompt = z.infer<typeof Prompt>;
 
+/** A shadowing set: short sentences to hear and say along with the voice (F_Shadowing). */
+export const Shadowing = z.object({
+  slug: keyed("shadow"),
+  level: Level,
+  /** In English, for lists and the player's top line: "Daily life". */
+  title: nonEmpty,
+  /** Japanese with ruby markup, each with its English. */
+  sentences: z.array(z.object({ ja: jaText, en: nonEmpty })).min(8).max(10),
+});
+export type Shadowing = z.infer<typeof Shadowing>;
+
 // ---------------------------------------------------------------------------
 // Files
 
@@ -286,6 +297,7 @@ export const CONTENT_FILES = {
   grammar: z.array(Grammar),
   resources: z.array(Resource),
   prompts: z.array(Prompt),
+  shadowing: z.array(Shadowing),
 } as const;
 export type ContentFile = keyof typeof CONTENT_FILES;
 
@@ -299,6 +311,7 @@ export const CONTENT_KEYS = {
   grammar: "slug",
   resources: "slug",
   prompts: "slug",
+  shadowing: "slug",
 } as const satisfies Record<ContentFile, string>;
 
 /** Path from the repo root. */

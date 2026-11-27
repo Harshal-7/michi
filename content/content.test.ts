@@ -21,6 +21,7 @@ import {
   parseRuby,
   type Prompt,
   type Resource,
+  type Shadowing,
   toPlain,
   type Word,
 } from "./schema";
@@ -36,6 +37,7 @@ const dictionary = load<{ id: string }>("dictionary");
 const grammar = load<Grammar>("grammar");
 const resources = load<Resource>("resources");
 const prompts = load<Prompt>("prompts");
+const shadowing = load<Shadowing>("shadowing");
 
 const count = <T>(items: T[], key: (t: T) => string) =>
   items.reduce<Record<string, number>>((acc, i) => ({ ...acc, [key(i)]: (acc[key(i)] ?? 0) + 1 }), {});
@@ -55,6 +57,7 @@ function japanese(): { where: string; text: string }[] {
     out.push({ where: `${p.slug} model`, text: p.model });
     for (const h of p.hints) out.push({ where: `${p.slug} hint`, text: h });
   }
+  for (const s of shadowing) s.sentences.forEach((x, i) => out.push({ where: `${s.slug} sentence ${i + 1}`, text: x.ja }));
   return out;
 }
 
@@ -77,6 +80,13 @@ describe("counts", () => {
     expect(count(prompts, (p) => p.level)).toEqual(EXPECTED.prompts);
     expect(resources.length).toBeGreaterThanOrEqual(EXPECTED.resources.min);
     expect(resources.length).toBeLessThanOrEqual(EXPECTED.resources.max);
+  });
+
+  it("has 10 N5 shadowing sets of 8 to 10 sentences, none repeated", () => {
+    expect(count(shadowing, (s) => s.level)).toEqual(EXPECTED.shadowing);
+    for (const s of shadowing) expect(s.sentences.length, s.slug).toBeGreaterThanOrEqual(8);
+    const all = shadowing.flatMap((s) => s.sentences.map((x) => toPlain(x.ja)));
+    expect(all.filter((x, i) => all.indexOf(x) !== i)).toEqual([]);
   });
 });
 
@@ -118,6 +128,7 @@ describe("keys and duplicates", () => {
       grammar: ["grammar:n5:te-mo-ii"],
       resources: ["res:jlpt-samples"],
       prompts: ["prompt:n5:self-intro"],
+      shadowing: [],
     };
     for (const name of Object.keys(keys) as ContentFile[]) {
       const have = new Set(load<Record<string, unknown>>(name).map((r) => r[CONTENT_KEYS[name]]));

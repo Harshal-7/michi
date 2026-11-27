@@ -6,6 +6,7 @@ import { and, asc, count, countDistinct, desc, eq, gte, inArray, isNull, lt, lte
 import type { DbOrTx } from "@/db/client";
 import { cards, deckItems, decks, itemContexts, items, reviewLogs } from "@/db/schema";
 import { addDays, phaseFor, type StudyDate, studyDate, studyDayBounds } from "@/lib/day";
+import { checkedSentencesFor } from "@/lib/learn/sentences";
 import { type DayPlan, newQuotaFor } from "@/lib/planner/day-plan";
 import type { Settings } from "@/lib/settings/schema";
 
@@ -164,9 +165,13 @@ export async function loadNewCards(
   return { cards: await withContent(db, picked), decks: wanted };
 }
 
-/** Adds each item's latest "where I met it" sentence. */
+/**
+ * Adds each item's latest "where I met it" sentence, and puts a grammar point's checked sentences
+ * of your own after its examples, so they take turns on its fill-in card.
+ */
 async function withContent(db: DbOrTx, rows: CardFields[]): Promise<StudyCard[]> {
   const ids = [...new Set(rows.map((r) => r.item.id))];
+  const mine = await checkedSentencesFor(db, [...new Set(rows.filter((r) => r.item.kind === "grammar").map((r) => r.item.id))]);
   const contexts = ids.length
     ? await db
         .selectDistinctOn([itemContexts.itemId], { itemId: itemContexts.itemId, ja: itemContexts.ja, en: itemContexts.en })
@@ -186,8 +191,14 @@ async function withContent(db: DbOrTx, rows: CardFields[]): Promise<StudyCard[]>
     dueAt: row.dueAt?.toISOString() ?? null,
     item: {
       ...row.item,
-      data: (row.item.data ?? {}) as Record<string, unknown>,
+      data: withMine((row.item.data ?? {}) as Record<string, unknown>, mine.get(row.item.id)),
       context: contextOf.get(row.item.id) ?? null,
     },
   }));
+}
+
+function withMine(data: Record<string, unknown>, mine: { ja: string; en: string }[] | undefined): Record<string, unknown> {
+  if (!mine?.length) return data;
+  const examples = Array.isArray(data.examples) ? data.examples : [];
+  return { ...data, examples: [...examples, ...mine] };
 }

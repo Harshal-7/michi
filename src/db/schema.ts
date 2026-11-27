@@ -677,3 +677,117 @@ export const seedRuns = pgTable("seed_runs", {
   finishedAt: at(),
   summary: jsonb().$type<Record<string, unknown>>(),
 });
+
+// ---------------------------------------------------------------------------
+// Round 2: quizzes
+
+/**
+ * Quiz mistakes answered right again in the mistakes review. A wrong question waits in the
+ * review until it has a row here.
+ */
+export const mistakeClears = pgTable("mistake_clears", {
+  questionId: integer()
+    .primaryKey()
+    .references(() => questions.id, { onDelete: "cascade" }),
+  clearedAt: createdAt(),
+});
+
+// ---------------------------------------------------------------------------
+// Round 2: shadowing
+
+/** Shadowing sets: a few sentences to listen to and say along with the voice (F_Shadowing). */
+export const shadowingSets = pgTable("shadowing_sets", {
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  seedSlug: text().unique(),
+  level: jlptLevel().notNull(),
+  title: text().notNull(),
+  /** Japanese with ruby markup, each with its English. */
+  sentences: jsonb().$type<{ ja: string; en: string }[]>().notNull(),
+  seedHash: text(),
+  userEditedAt: at(),
+  createdAt: createdAt(),
+  updatedAt: updatedAt(),
+});
+// The kana game (added 28 Nov 2026)
+
+/** Read it: a kana is shown and you type its romaji. Find it: the romaji is shown and you pick the kana. */
+export const kanaGameMode = pgEnum("kana_game_mode", ["read", "find"]);
+
+/**
+ * One finished kana game. The id is made on the device, so a retried save is stored once.
+ * `score` is 0–100 (src/lib/kana-game/score.ts); the counts are first tries. The game never
+ * touches the review schedule; its minutes go to `activity_logs`.
+ */
+export const kanaGames = pgTable(
+  "kana_games",
+  {
+    id: uuid().primaryKey(),
+    mode: kanaGameMode().notNull(),
+    /** Practising the weakest kana rather than picked groups. */
+    weakest: boolean().notNull().default(false),
+    scripts: text().array().notNull(),
+    groups: text().array().notNull(),
+    playedAt: at().notNull(),
+    studyDate: day().notNull(),
+    cards: smallint().notNull(),
+    firstTryRight: smallint().notNull(),
+    score: smallint().notNull(),
+    bestStreak: smallint().notNull(),
+    /** Mean time to a right first answer, in ms; null when none was right first time. */
+    meanMs: integer(),
+    durationMs: integer().notNull(),
+    createdAt: createdAt(),
+  },
+  (t) => [index().on(t.mode, t.playedAt), check("kana_games_score", sql`${t.score} between 0 and 100`)],
+);
+
+/** Each kana in a game: its first answer, how long it took, and how many tries it needed. */
+export const kanaGameAnswers = pgTable(
+  "kana_game_answers",
+  {
+    gameId: uuid()
+      .notNull()
+      .references(() => kanaGames.id, { onDelete: "cascade" }),
+    itemId: integer()
+      .notNull()
+      .references(() => items.id, { onDelete: "cascade" }),
+    position: smallint().notNull(),
+    /** Right on the first try. */
+    right: boolean().notNull(),
+    /** Time to the first answer, in ms. */
+    ms: integer().notNull(),
+    /** What was typed or picked first; empty for "Show me". */
+    given: text().notNull().default(""),
+    tries: smallint().notNull().default(1),
+  },
+  (t) => [primaryKey({ columns: [t.gameId, t.itemId] }), index().on(t.itemId)],
+);
+
+// ---------------------------------------------------------------------------
+// Typed vocabulary practice (/learn/vocab, added 28 Nov 2026)
+
+/** ja_en: see the word, type the meaning; en_ja: see the meaning, type the word. */
+export const vocabDirection = pgEnum("vocab_direction", ["ja_en", "en_ja"]);
+
+/**
+ * Right and wrong counts per word and direction from typed practice, for its filters and the
+ * "312 of 718 typed right" line. Practice never touches a card's review schedule.
+ */
+export const vocabProgress = pgTable(
+  "vocab_progress",
+  {
+    itemId: integer()
+      .notNull()
+      .references(() => items.id, { onDelete: "cascade" }),
+    direction: vocabDirection().notNull(),
+    right: integer().notNull().default(0),
+    wrong: integer().notNull().default(0),
+    /** Whether the latest answer was right. */
+    lastRight: boolean().notNull(),
+    lastAt: at().notNull(),
+  },
+  (t) => [
+    primaryKey({ columns: [t.itemId, t.direction] }),
+    check("vocab_progress_counts", sql`${t.right} >= 0 and ${t.wrong} >= 0`),
+  ],
+);
