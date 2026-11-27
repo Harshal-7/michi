@@ -791,3 +791,102 @@ export const vocabProgress = pgTable(
     check("vocab_progress_counts", sql`${t.right} >= 0 and ${t.wrong} >= 0`),
   ],
 );
+
+// ---------------------------------------------------------------------------
+// Play: the public games at /play, their players and leaderboards (added 28 Nov 2026)
+
+/**
+ * Who played a run. Guests pick a name and a 4-digit PIN (scrambled like the passphrase);
+ * Harshal is the one `is_owner` row, made by the migration, signed in by their passphrase
+ * session instead of a PIN. `name_key` (NFKC, lower case) keeps names unique.
+ */
+export const players = pgTable(
+  "players",
+  {
+    id: uuid().primaryKey().defaultRandom(),
+    name: text().notNull(),
+    nameKey: text().notNull().unique(),
+    /** Null for the owner, who has no PIN. */
+    pinHash: text(),
+    isOwner: boolean().notNull().default(false),
+    /** Hidden by Harshal from the leaderboards; the player can still play. */
+    hidden: boolean().notNull().default(false),
+    createdAt: createdAt(),
+    lastSeenAt: createdAt(),
+  },
+  (t) => [uniqueIndex("players_one_owner").on(t.isOwner).where(sql`${t.isOwner}`)],
+);
+
+/** A guest signed in on a device; like `auth_sessions`, the cookie's id is kept only as a hash. */
+export const playerSessions = pgTable(
+  "player_sessions",
+  {
+    idHash: text().primaryKey(),
+    playerId: uuid()
+      .notNull()
+      .references(() => players.id, { onDelete: "cascade" }),
+    createdAt: createdAt(),
+    lastSeenAt: createdAt(),
+    expiresAt: at().notNull(),
+  },
+  (t) => [index().on(t.playerId), index().on(t.expiresAt)],
+);
+
+/**
+ * One finished run of any game (src/lib/games/registry.ts). The id is made on the device, so a
+ * retried save is stored once. `setup` names what was played (kana: `read:hiragana:basic:20`);
+ * `ranked` runs are a standard setup played to the end, and only they reach the leaderboards.
+ * The score is worked out again on the server from the answers. `study_date` (IST, from 4 am)
+ * puts a run in a leaderboard week.
+ */
+export const gameRuns = pgTable(
+  "game_runs",
+  {
+    id: uuid().primaryKey(),
+    playerId: uuid()
+      .notNull()
+      .references(() => players.id, { onDelete: "cascade" }),
+    game: text().notNull(),
+    setup: text().notNull(),
+    ranked: boolean().notNull(),
+    playedAt: at().notNull(),
+    studyDate: day().notNull(),
+    cards: smallint().notNull(),
+    firstTryRight: smallint().notNull(),
+    score: smallint().notNull(),
+    bestStreak: smallint().notNull(),
+    /** Mean time to a right first answer, in ms; null when none was right first time. */
+    meanMs: integer(),
+    durationMs: integer().notNull(),
+    createdAt: createdAt(),
+  },
+  (t) => [
+    index().on(t.playerId, t.game, t.playedAt),
+    index().on(t.game, t.setup, t.studyDate).where(sql`${t.ranked}`),
+    check("game_runs_score", sql`${t.score} between 0 and 100`),
+  ],
+);
+
+/**
+ * Each card in a run: its first answer, how long it took and how many tries it needed. Items
+ * are content slugs (`kana:hiragana:shi`, `word:…`), so the games read their content from
+ * content/generated/*.json and need no database to play.
+ */
+export const gameAnswers = pgTable(
+  "game_answers",
+  {
+    runId: uuid()
+      .notNull()
+      .references(() => gameRuns.id, { onDelete: "cascade" }),
+    position: smallint().notNull(),
+    item: text().notNull(),
+    /** Right on the first try. */
+    right: boolean().notNull(),
+    /** Time to the first answer, in ms. */
+    ms: integer().notNull(),
+    /** What was typed or picked first; empty for "Show me". */
+    given: text().notNull().default(""),
+    tries: smallint().notNull().default(1),
+  },
+  (t) => [primaryKey({ columns: [t.runId, t.position] })],
+);
