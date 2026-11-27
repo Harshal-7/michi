@@ -8,7 +8,7 @@
  */
 import { type ReactNode, useEffect, useRef, useState } from "react";
 
-import type { PastGame } from "@/lib/kana-game/progress";
+import type { PastGame } from "@/lib/games/progress";
 
 const H = 112;
 const PAD = { top: 8, right: 6, bottom: 6, left: 34 };

@@ -1,8 +1,8 @@
 /**
- * Progress over time, for the start screen: best and recent scores, accuracy and speed over
- * recent games against the games before them, and the weakest kana.
+ * Progress over time, for a game's start screen: best and recent scores, accuracy and speed over
+ * recent runs against the runs before them, and the weakest items.
  */
-import { cardPoints } from "./score";
+import { cardPoints, DEFAULT_SPEED, type Speed } from "./score";
 
 export type PastGame = {
   playedAt: string;
@@ -58,28 +58,29 @@ export function progressOf(games: readonly PastGame[]): Progress {
   };
 }
 
-/** A kana's past answers count back this far. */
+/** An item's past answers count back this far. */
 export const STRENGTH_ANSWERS = 10;
-/** Below this a kana is worth practising. */
+/** Below this an item is worth practising. */
 export const WEAK_BELOW = 85;
 
-export type KanaAnswer = { itemId: number; right: boolean; ms: number };
-export type Strength = { itemId: number; strength: number; seen: number; right: number };
+/** One first answer to an item (a content slug such as `kana:hiragana:shi`). */
+export type ItemAnswer = { item: string; right: boolean; ms: number };
+export type Strength = { item: string; strength: number; seen: number; right: number };
 
 /**
- * How well each kana is known: the average points (the same 0–100 as the score) of its last
+ * How well each item is known: the average points (the same 0–100 as the score) of its last
  * few first answers. `answers` newest first.
  */
-export function strengths(answers: readonly KanaAnswer[]): Strength[] {
-  const by = new Map<number, KanaAnswer[]>();
+export function strengths(answers: readonly ItemAnswer[], speed: Speed = DEFAULT_SPEED): Strength[] {
+  const by = new Map<string, ItemAnswer[]>();
   for (const a of answers) {
-    const list = by.get(a.itemId) ?? [];
+    const list = by.get(a.item) ?? [];
     if (list.length < STRENGTH_ANSWERS) list.push(a);
-    by.set(a.itemId, list);
+    by.set(a.item, list);
   }
-  return [...by.entries()].map(([itemId, list]) => ({
-    itemId,
-    strength: Math.round(list.reduce((s, a) => s + cardPoints(a.right, a.ms), 0) / list.length),
+  return [...by.entries()].map(([item, list]) => ({
+    item,
+    strength: Math.round(list.reduce((s, a) => s + cardPoints(a.right, a.ms, speed), 0) / list.length),
     seen: list.length,
     right: list.filter((a) => a.right).length,
   }));
@@ -87,8 +88,10 @@ export function strengths(answers: readonly KanaAnswer[]): Strength[] {
 
 /** Weakest first: lowest strength, then the one missed more often, then the one seen more. */
 export function weakestFirst(list: readonly Strength[]): Strength[] {
-  return [...list].sort((a, b) => a.strength - b.strength || a.right / a.seen - b.right / b.seen || b.seen - a.seen || a.itemId - b.itemId);
+  return [...list].sort(
+    (a, b) => a.strength - b.strength || a.right / a.seen - b.right / b.seen || b.seen - a.seen || a.item.localeCompare(b.item),
+  );
 }
 
-/** The kana worth practising, weakest first. */
-export const weakKana = (list: readonly Strength[]) => weakestFirst(list).filter((s) => s.strength < WEAK_BELOW);
+/** The items worth practising, weakest first. */
+export const weakItems = (list: readonly Strength[]) => weakestFirst(list).filter((s) => s.strength < WEAK_BELOW);
