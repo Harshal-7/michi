@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useSpeak } from "@/components/cards/voice";
 import { Icon } from "@/components/ui/icon";
+import { hueStyle } from "@/lib/games/catalog";
 import { findOptions, isRightTyping, judgeTyped } from "@/lib/games/kana/answer";
 import { type GameKana, MODE_LABELS, type Mode } from "@/lib/games/kana/types";
 import { DEFAULT_SPEED } from "@/lib/games/score";
@@ -36,8 +37,9 @@ type Feedback = { kind: "miss"; given: string; next: GameState; pick: number | n
 type Options = { options: GameKana[]; answerIndex: number };
 
 /**
- * A game in play, laid out like the quick check's kana sprint (F_QuickCheckKana): the kana or
- * the romaji on a card, the answer below, a bar for the speed points and the last few answers.
+ * A game in play, full screen in the play look (P_Play): a chunky progress bar and the streak,
+ * the kana or the romaji on a card in the game's colour, the answer below, a bar for the speed
+ * points, why a miss was wrong, and the last few answers.
  */
 export function Play({
   deck,
@@ -221,61 +223,71 @@ export function Play({
   const retry = isRetry(state);
 
   return (
-    <div className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-page laptop:static laptop:z-auto laptop:overflow-visible laptop:bg-transparent">
-      <header className="flex shrink-0 flex-col gap-2.5 px-3 pt-[max(12px,env(safe-area-inset-top))] pb-2 laptop:px-0 laptop:pt-0">
-        <div className="flex items-center justify-between gap-2">
+    <div style={hueStyle("kana")} className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-page">
+      <header className="mx-auto flex w-full max-w-[680px] shrink-0 flex-col gap-2.5 px-4 pt-[max(12px,env(safe-area-inset-top))] pb-2 laptop:px-0 laptop:pt-16">
+        <div className="flex items-center gap-3">
           <button
             type="button"
             aria-label="Stop the game"
             onMouseDown={keepFocus}
             onClick={stop}
-            className="inline-flex size-11 items-center justify-center rounded-btn text-ink2"
+            className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-surface2 text-ink"
           >
-            <Icon d={X_ICON} size={22} stroke={1.8} />
+            <Icon d={X_ICON} size={18} stroke={2.4} />
           </button>
-          <p className="m-0 text-[15px] font-bold">
-            {weakest ? "Weakest kana" : "Kana game"} · {MODE_LABELS[mode]}
-          </p>
-          <p className="m-0 min-w-11 text-right text-[13px] text-ink2">
-            {cleared} / {deck.length}
+          <div role="img" aria-label={`${cleared} of ${deck.length} done`} className="h-3.5 flex-auto overflow-hidden rounded-full bg-track">
+            <div className="h-full rounded-full bg-hue" style={{ width: `${(cleared / deck.length) * 100}%` }} />
+          </div>
+          <p className="m-0 min-w-11 text-right text-sm font-black tabular-nums">
+            {cleared}/{deck.length}
           </p>
         </div>
-        <div role="img" aria-label={`${cleared} of ${deck.length} done`} className="mx-1.5 h-1 overflow-hidden rounded-full bg-track">
-          <div className="h-full bg-accent" style={{ width: `${(cleared / deck.length) * 100}%` }} />
+        <div className="flex items-center justify-between gap-2">
+          <p className="m-0 text-[13px] font-black tracking-[0.04em] text-hue uppercase">
+            {weakest ? "Weakest kana" : "Kana game"} · {MODE_LABELS[mode]}
+          </p>
+          {counted.streak > 1 && <span className="rounded-full bg-hue-tint px-2.5 py-1 text-[12.5px] font-black text-hue">{counted.streak} in a row</span>}
         </div>
       </header>
 
-      <div className="mx-auto flex w-full max-w-[640px] flex-auto flex-col gap-4 px-5 pt-2 pb-5 laptop:px-0">
+      <div className="mx-auto flex w-full max-w-[680px] flex-auto flex-col gap-3.5 px-4 pt-1 pb-5 laptop:px-0">
         <section
-          className={`flex h-[210px] shrink-0 flex-col items-center justify-center gap-1 rounded-card bg-surface shadow-card ${
-            feedback?.kind === "miss" ? "outline-2 outline-again" : flash ? "outline-2 outline-good" : ""
+          className={`relative flex min-h-[250px] shrink-0 flex-col items-center justify-center gap-2 rounded-[32px] bg-hue-tint p-[18px] text-center ${
+            feedback?.kind === "miss" ? "shadow-[0_0_0_3px_var(--again)]" : flash || feedback?.kind === "right" ? "shadow-[0_0_0_3px_var(--good)]" : ""
           }`}
         >
-          <p className="m-0 text-xs font-semibold text-ink2">
+          <p className="absolute top-4 left-[18px] m-0 text-[12.5px] font-black text-hue">
             {kana.script === "katakana" ? "Katakana" : "Hiragana"}
             {retry ? " · again" : ""}
           </p>
           {mode === "read" ? (
-            <p lang="ja" className={`m-0 font-card leading-[1.1] font-semibold ${[...kana.kana].length > 1 ? "text-[96px]" : "text-[124px]"}`}>
+            <p lang="ja" className={`m-0 font-card leading-[1.05] font-black ${[...kana.kana].length > 1 ? "text-[100px] laptop:text-[120px]" : "text-[140px] laptop:text-[150px]"}`}>
               {kana.kana}
             </p>
           ) : (
             <>
-              <p className="m-0 font-head text-[64px] leading-[1.1] font-bold tracking-[0.02em]">{kana.romaji}</p>
+              <p className="m-0 text-[92px] leading-[1.05] font-black tracking-[0.02em] laptop:text-[96px]">{kana.romaji}</p>
               {hasVoice && (
                 <button
                   type="button"
                   aria-label={`Say ${kana.romaji} again`}
                   onClick={() => say(kana.kana)}
-                  className="inline-flex min-h-10 items-center gap-1.5 rounded-btn border border-line bg-surface2 px-3.5 text-[13px] font-semibold text-ink"
+                  className="inline-flex min-h-10 items-center gap-1.5 rounded-btn bg-surface px-3.5 text-[13px] font-bold text-ink"
                 >
-                  <Icon d={SPEAKER} size={18} stroke={1.7} />
-                  Hear it
+                  <Icon d={SPEAKER} size={16} stroke={2} />
+                  Again · Space
                 </button>
               )}
             </>
           )}
         </section>
+
+        <div className="flex items-center gap-2.5">
+          <div role="img" aria-label="Time for speed points" className="h-1.5 flex-auto overflow-hidden rounded-full bg-track">
+            <SpeedBar shownAt={shownAt} running={!feedback} />
+          </div>
+          <span className="text-xs font-bold whitespace-nowrap text-ink2">{live === null ? "speed bonus" : `Score ${live}`}</span>
+        </div>
 
         {mode === "read" ? (
           <form
@@ -285,7 +297,7 @@ export function Play({
               else if (typed.trim()) submit(isRightTyping(typed, kana), typed.trim());
             }}
           >
-            <label className="flex flex-col gap-1.5 text-[13px] font-semibold text-ink2">
+            <label className="flex flex-col gap-1.5 text-[13px] font-black text-ink2">
               Type the romaji
               <input
                 ref={input}
@@ -298,8 +310,9 @@ export function Play({
                 spellCheck={false}
                 enterKeyHint="next"
                 aria-describedby="kana-feedback"
-                className={`box-border min-h-[54px] rounded-btn border-2 bg-surface px-4 text-[22px] font-bold tracking-[0.04em] text-ink outline-none ${
-                  feedback?.kind === "miss" ? "border-again" : "border-accent"
+                aria-invalid={feedback?.kind === "miss" || undefined}
+                className={`box-border min-h-[66px] rounded-[22px] border-[3px] bg-surface px-5 text-[30px] font-black tracking-[0.03em] text-ink outline-none ${
+                  feedback?.kind === "miss" ? "border-again" : "border-hue shadow-[0_0_0_5px_var(--hue-tint)]"
                 }`}
               />
             </label>
@@ -310,20 +323,28 @@ export function Play({
               {options.options.map((o, i) => {
                 const right = i === options.answerIndex;
                 const picked = feedback?.pick === i;
-                const style =
-                  feedback && right ? "border-2 border-good" : picked ? "border-2 border-again" : "border border-line";
+                const mark = feedback && right ? "right" : picked && !right ? "wrong" : null;
+                const style = mark === "right" ? "border-[3px] border-good" : mark === "wrong" ? "border-[3px] border-again" : "border-2 border-line shadow-card";
                 return (
                   <button
                     key={o.key}
                     type="button"
                     disabled={feedback !== null}
                     onClick={() => submit(right, o.kana, i)}
-                    className={`relative flex min-h-[92px] items-center justify-center rounded-card bg-surface shadow-card ${style}`}
+                    className={`relative flex min-h-24 items-center justify-center rounded-3xl bg-surface laptop:min-h-[100px] ${style}`}
                   >
-                    <span className="absolute top-2 left-3 text-[12.5px] font-bold text-ink2">{i + 1}</span>
-                    <span lang="ja" className="font-card text-[44px] leading-[1.1] font-semibold">
+                    <span className="absolute top-2.5 left-3.5 text-[12.5px] font-black text-ink2">{i + 1}</span>
+                    <span lang="ja" className="font-card text-[42px] leading-[1.1] font-black laptop:text-[52px]">
                       {o.kana}
                     </span>
+                    {mark && (
+                      <span
+                        aria-label={mark === "right" ? "the answer" : "your pick"}
+                        className={`absolute top-2.5 right-3 inline-flex size-6 items-center justify-center rounded-full text-sm font-black text-page ${mark === "right" ? "bg-good" : "bg-again"}`}
+                      >
+                        {mark === "right" ? "✓" : "✕"}
+                      </span>
+                    )}
                   </button>
                 );
               })}
@@ -331,72 +352,64 @@ export function Play({
           )
         )}
 
-        <p id="kana-feedback" aria-live="polite" className="m-0 min-h-[22px] text-center text-[15px]">
+        <div id="kana-feedback" aria-live="polite">
           {feedback?.kind === "miss" && (
-            <span className="font-bold text-again">
-              <span lang="ja" className="font-card">
-                {kana.kana}
-              </span>{" "}
-              is {kana.romaji}
-              {feedback.given && mode === "read" ? ` · you typed ${feedback.given}` : ""}
-              <span className="font-normal text-ink2"> · back in a few cards</span>
-            </span>
+            <div role="alert" className="flex items-center gap-3 rounded-[20px] bg-surface px-4 py-3.5 shadow-[0_0_0_2px_var(--again)]">
+              <div className="flex flex-auto flex-col gap-1">
+                <p className="m-0 text-base font-black text-again">
+                  <span lang="ja" className="font-card">
+                    {kana.kana}
+                  </span>{" "}
+                  is {kana.romaji}
+                </p>
+                <p className="m-0 text-[13.5px] leading-normal text-ink2">
+                  {feedback.given ? `You ${mode === "read" ? "typed" : "picked"} ` : ""}
+                  {feedback.given && <span lang={mode === "find" ? "ja" : undefined}>{feedback.given}</span>}
+                  {feedback.given ? ". " : ""}It comes back in a few cards.
+                </p>
+              </div>
+              <button
+                type="button"
+                onMouseDown={keepFocus}
+                onClick={() => advance(feedback.next)}
+                className="min-h-12 shrink-0 rounded-btn bg-ink px-5 text-[15px] font-black text-page"
+              >
+                Next<span className="hidden laptop:inline"> · Enter</span>
+              </button>
+            </div>
           )}
-        </p>
-
-        <div className="flex items-center gap-2.5">
-          <div role="img" aria-label="Time for speed points" className="h-1.5 flex-auto overflow-hidden rounded-full bg-track">
-            <SpeedBar shownAt={shownAt} running={!feedback} />
-          </div>
-          <span className="text-[12.5px] whitespace-nowrap text-ink2">
-            {counted.streak > 1 ? `${counted.streak} in a row · ` : ""}
-            {live === null ? "Score –" : `Score ${live}`}
-          </span>
         </div>
 
-        {recent.length > 0 && (
-          <div className="flex flex-col gap-1.5">
-            <p className="m-0 text-xs font-semibold text-ink2">Last few</p>
-            <div className="flex flex-wrap gap-1.5">
-              {recent.map((r, i) => (
-                <span
-                  key={`${r.kana}-${i}`}
-                  className={`inline-flex items-baseline gap-1.5 rounded-full border px-2.5 py-[5px] text-[13px] ${r.right ? "border-good text-good" : "border-again text-again"}`}
-                >
-                  <span lang="ja" className="font-card text-base font-semibold">
-                    {r.kana}
-                  </span>
-                  <span>{r.romaji}</span>
-                  <span className="font-bold">{r.right ? "right" : "missed"}</span>
+        <div className="flex items-center justify-between gap-2.5">
+          <div aria-label="Last few answers" className="flex items-center gap-1.5">
+            {recent.map((r, i) => (
+              <span
+                key={`${r.kana}-${i}`}
+                role="img"
+                aria-label={`${r.kana} ${r.romaji}, ${r.right ? "right" : "missed"}`}
+                className={`inline-flex size-[34px] items-center justify-center rounded-full bg-surface font-card text-[15px] font-black ${
+                  r.right ? "text-good shadow-[inset_0_0_0_2px_var(--good)]" : "text-again shadow-[inset_0_0_0_2px_var(--again)]"
+                }`}
+              >
+                <span lang="ja" aria-hidden="true">
+                  {r.kana}
                 </span>
-              ))}
-            </div>
+              </span>
+            ))}
           </div>
-        )}
-
-        <div className="grid grid-cols-2 gap-2.5">
-          <button
-            type="button"
-            disabled={feedback !== null}
-            onMouseDown={keepFocus}
-            onClick={() => submit(false, "")}
-            className="min-h-[50px] rounded-btn border border-line bg-surface text-[15px] font-bold disabled:opacity-45"
-          >
-            Show me
-          </button>
-          <button
-            type="button"
-            onMouseDown={keepFocus}
-            onClick={stop}
-            className="min-h-[50px] rounded-btn text-[15px] font-semibold text-ink2"
-          >
-            Stop here
-          </button>
+          {!feedback && (
+            <button
+              type="button"
+              onMouseDown={keepFocus}
+              onClick={() => submit(false, "")}
+              className="min-h-11 shrink-0 rounded-btn border-2 border-line bg-surface px-4 text-sm font-bold"
+            >
+              Show me
+            </button>
+          )}
         </div>
         <p className="m-0 mt-auto text-center text-[12.5px] leading-normal text-ink2">
-          {mode === "read"
-            ? "It moves on as soon as the romaji is right. Quicker answers score more."
-            : "Keys 1 to 4 pick, Space says it again. Quicker answers score more."}{" "}
+          {mode === "read" ? "It moves on as soon as the romaji is right. Quicker answers score more." : "Keys 1 to 4 pick, Space says it again. Quicker answers score more."}{" "}
           <span className="hidden laptop:inline">Esc stops.</span>
         </p>
       </div>

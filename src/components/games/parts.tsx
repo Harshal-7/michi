@@ -5,14 +5,14 @@
 export function Field({ label, note, children }: { label: string; note?: string; children: React.ReactNode }) {
   return (
     <div className="flex flex-col gap-2">
-      <p className="m-0 text-[13px] font-bold">{label}</p>
+      <p className="m-0 text-sm font-black">{label}</p>
       {children}
       {note && <p className="m-0 text-[12.5px] text-ink2">{note}</p>}
     </div>
   );
 }
 
-/** The segmented control from Settings: equal segments in a `--surface2` track. */
+/** The segmented control: equal segments in a `--surface2` track, the chosen one raised. */
 export function Segmented({
   name,
   legend,
@@ -29,11 +29,11 @@ export function Segmented({
   return (
     <fieldset className="m-0 border-none p-0">
       <legend className="sr-only">{legend}</legend>
-      <div className="grid gap-1 rounded-btn bg-surface2 p-1" style={{ gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))` }}>
+      <div className="grid gap-1 rounded-btn bg-surface2 p-[5px]" style={{ gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))` }}>
         {options.map(([v, text]) => (
           <label
             key={v}
-            className="relative inline-flex min-h-10 cursor-pointer items-center justify-center rounded-btn px-2 text-[13.5px] font-medium text-ink2 has-[:checked]:bg-surface has-[:checked]:font-bold has-[:checked]:text-ink has-[:checked]:shadow-card has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-accent"
+            className="relative inline-flex min-h-[42px] cursor-pointer items-center justify-center rounded-btn px-2 text-sm font-medium text-ink2 has-[:checked]:bg-surface has-[:checked]:font-black has-[:checked]:text-ink has-[:checked]:shadow-card has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-accent"
           >
             <input type="radio" name={name} value={v} checked={v === value} onChange={() => onChoose(v)} className="sr-only" />
             {text}

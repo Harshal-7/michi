@@ -1,12 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { SessionLoading, useInBrowser } from "@/components/cards/loading";
 import { VoiceProvider } from "@/components/cards/voice";
 import { ALL_KANA, kanaFor } from "@/lib/games/kana/content";
-import { setupKey, weakestKey } from "@/lib/games/kana/setups";
-import { type GameKana, type GameSettings, MODE_LABELS, type Mode, type Script, SCRIPTS, WEAKEST_COUNT } from "@/lib/games/kana/types";
+import { KANA_SETUPS, parseSetup, setupKey, weakestKey } from "@/lib/games/kana/setups";
+import { type GameKana, type GameSettings, LENGTHS, MODE_LABELS, type Mode, SCRIPTS, WEAKEST_COUNT } from "@/lib/games/kana/types";
 import { type PastGame, strengths, weakestFirst, type Strength } from "@/lib/games/progress";
 import { bestStreakOf, summarise } from "@/lib/games/score";
 import { buildDeck } from "@/lib/games/turns";
@@ -29,18 +29,13 @@ type Phase =
 
 const DEFAULT_VOICE = { name: null, rate: 1 };
 
-export type KanaGameProps = {
-  /** What "Save your score" shows for a player without a name: the guest sheet, from the play shell. */
-  saveScore?: (onSaved: () => void) => React.ReactNode;
-};
-
 /**
  * The kana game (inspired by GoKana): pick a way to play and the kana, clear the deck, then see
  * the score. Every kana picked is asked once; a miss shows the answer and comes back later. The
  * kana come from content/generated/kana.json; only the player and their history are fetched.
  */
-export function KanaGame(props: KanaGameProps) {
-  return useInBrowser() ? <Game {...props} /> : <SessionLoading />;
+export function KanaGame() {
+  return useInBrowser() ? <Game /> : <SessionLoading />;
 }
 
 function historyOf(me: Me | null): History {
@@ -54,20 +49,38 @@ function historyOf(me: Me | null): History {
   return { read: of("read"), find: of("find") };
 }
 
-/** `?script=katakana` from a chart page. Read in the browser, so the page itself stays static. */
-function scriptFromAddress(): Script | null {
-  const script = new URLSearchParams(window.location.search).get("script");
-  return SCRIPTS.find((s) => s === script) ?? null;
+/**
+ * What the address asks for, read in the browser so the page itself stays static:
+ * - `?script=katakana` from a chart page;
+ * - `?setup=read:hiragana:basic:20` from a leaderboard ("Play and be first");
+ * - `?quick=1` from the hub's quick play: the first board's game, started at once.
+ */
+function fromAddress(saved: GameSettings): { settings: GameSettings; quick: boolean } {
+  const q = new URLSearchParams(window.location.search);
+  const quick = q.get("quick") === "1";
+  const key = quick ? KANA_SETUPS[0].key : q.get("setup");
+  const parsed = key ? parseSetup(key) : null;
+  if (parsed && !parsed.weakest) {
+    const length = LENGTHS.find((l) => l === parsed.cards) ?? 0;
+    return { settings: { ...saved, mode: parsed.mode, scripts: parsed.scripts, groups: parsed.groups, length }, quick };
+  }
+  const script = SCRIPTS.find((s) => s === q.get("script"));
+  return { settings: script ? { ...saved, scripts: [script] } : saved, quick: false };
 }
 
-function Game({ saveScore }: KanaGameProps) {
-  // A chart page links here with its script; everything else is as last time on this device.
-  const [settings, setSettings] = useState<GameSettings>(() => {
-    const script = scriptFromAddress();
-    return { ...loadSettings(), ...(script ? { scripts: [script] } : {}) };
-  });
-  const [phase, setPhase] = useState<Phase>({ kind: "start" });
+function Game() {
+  // Everything is as last time on this device, unless the address asks for a setup.
+  const [opening] = useState(() => fromAddress(loadSettings()));
+  const [settings, setSettings] = useState<GameSettings>(opening.settings);
+  const [phase, setPhase] = useState<Phase>(() =>
+    opening.quick ? { kind: "play", id: crypto.randomUUID(), deck: buildDeck(kanaFor(ALL_KANA, opening.settings.scripts, opening.settings.groups), opening.settings.length), weakest: false, mode: opening.settings.mode } : { kind: "start" },
+  );
   const { me, reload } = usePlayer("kana");
+  // The address has done its job: going back to the start screen shouldn't start again.
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search);
+    if (q.has("quick") || q.has("setup")) window.history.replaceState(null, "", window.location.pathname);
+  }, []);
   const saver = useRunSaver(me ? (me.player?.id ?? null) : undefined, () => void reload());
   const history = useMemo(() => historyOf(me), [me]);
 
@@ -129,9 +142,12 @@ function Game({ saveScore }: KanaGameProps) {
 
   if (phase.kind === "done") {
     const missed = phase.result.cards.filter((c) => c.first && !c.first.right);
+    const standard = KANA_SETUPS.find((s) => s.key === phase.run.setup);
     return (
       <GameDone
-        kicker={`${phase.weakest ? "Weakest kana" : "Kana game"} · ${MODE_LABELS[phase.mode]}`}
+        game="kana"
+        ranked={standard && !phase.result.stopped ? standard.key : null}
+        kicker={standard ? `Kana game · ${standard.label.split(" · ").slice(0, 2).join(" · ")}` : `${phase.weakest ? "Weakest kana" : "Kana game"} · ${MODE_LABELS[phase.mode]}`}
         stopped={phase.result.stopped}
         summary={summarise(phase.run.answers)}
         unit="kana"
@@ -140,7 +156,6 @@ function Game({ saveScore }: KanaGameProps) {
         previousBest={phase.previousBest}
         save={saver.status}
         onRetrySave={() => void saver.flush()}
-        saveScore={saveScore?.(() => void reload())}
         missed={<Missed missed={missed} mode={phase.mode} stopped={phase.result.stopped} />}
         onAgain={() => start(phase.weakest)}
         onSettings={() => setPhase({ kind: "start" })}
@@ -164,14 +179,14 @@ function Game({ saveScore }: KanaGameProps) {
 function Missed({ missed, mode, stopped }: { missed: PlayResult["cards"]; mode: Mode; stopped: boolean }) {
   if (missed.length === 0) {
     return stopped ? null : (
-      <section className="rounded-card bg-surface px-4 py-3 shadow-card">
-        <p className="m-0 text-sm">Every kana right on the first try.</p>
+      <section className="rounded-game bg-surface px-4 py-3 shadow-card">
+        <p className="m-0 text-sm font-bold">Every kana right on the first try.</p>
       </section>
     );
   }
   return (
-    <section className="flex flex-col gap-2.5 rounded-card bg-surface p-4 shadow-card">
-      <h2 className="m-0 text-[15px] font-bold">Missed on the first try</h2>
+    <section className="flex flex-col gap-2.5 rounded-game bg-surface p-4 shadow-card">
+      <h2 className="m-0 text-base font-black">Missed on the first try</h2>
       <ul className="m-0 flex list-none flex-wrap gap-1.5 p-0">
         {missed.map((c) => (
           <li key={c.kana.key} className="inline-flex items-baseline gap-1.5 rounded-full border border-again px-2.5 py-[5px] text-[13px] text-again">
