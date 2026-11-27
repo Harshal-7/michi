@@ -12,7 +12,7 @@ import { dirname, join, relative } from "node:path";
 import { describe, expect, it } from "vitest";
 
 const ROOT = join(dirname(new URL(import.meta.url).pathname), "../../..");
-const PUBLIC = ["src/app/(play)", "src/app/api/play", "src/lib/play", "src/lib/games", "src/components/games"];
+const PUBLIC = ["src/app/(play)", "src/app/api/play", "src/lib/play", "src/lib/games", "src/components/games", "src/components/play"];
 const DB_ALLOWED = new Set(["src/db/play.ts", "src/db/auth.ts", "src/db/client.ts", "src/db/schema.ts"]);
 const RAW_DB = new Set(["src/db/client.ts", "src/db/schema.ts"]);
 const RAW_DB_USERS = new Set(["src/db/auth.ts", "src/db/client.ts", "src/lib/auth/session.ts"]);
