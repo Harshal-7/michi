@@ -13,15 +13,22 @@ import { normalizeMeaning } from "./match";
 import { type Direction, DIRECTIONS, type Level, type Progress, VOCAB_LEVELS, type VocabWord } from "./types";
 
 /** At most this many same-meaning words per word, so a meaning like "to be" can't swell the page. */
-const MAX_OTHERS = 12;
+const MAX_OTHERS = 8;
 
 type WordRow = { id: number; term: string; reading: string | null; data: Record<string, unknown> };
 
 const strings = (v: unknown): string[] => (Array.isArray(v) ? v.filter((s): s is string => typeof s === "string" && s !== "") : []);
 
+/** The example as the card back reads it: the sentence, its English and the Tatoeba id for the credit. */
 function example(v: unknown): VocabWord["example"] {
   const o = (v ?? {}) as Record<string, unknown>;
-  return typeof o.ja === "string" && o.ja ? { ...o, ja: o.ja, en: typeof o.en === "string" ? o.en : "" } : null;
+  if (typeof o.ja !== "string" || !o.ja) return null;
+  const tatoeba = (o.tatoeba ?? {}) as Record<string, unknown>;
+  return {
+    ja: o.ja,
+    en: typeof o.en === "string" ? o.en : "",
+    ...(o.source === "tatoeba" && typeof tatoeba.ja === "number" ? { source: "tatoeba", tatoeba: { ja: tatoeba.ja } } : {}),
+  };
 }
 
 /** Every word item, grouped by each of its meanings, for "another word with the same meaning". */
@@ -55,8 +62,9 @@ export async function loadVocab(db: Db, level: Level): Promise<VocabWord[]> {
     db.select({ id: items.id, term: items.term, reading: items.reading, data: items.data }).from(items).where(eq(items.kind, "word")),
   ]);
   if (rows.length === 0) return [];
+  const words = rows as WordRow[];
   const ids = rows.map((r) => r.id);
-  const jmdictIds = [...new Set(rows.map((r) => r.data.jmdictId).filter((v): v is string => typeof v === "string"))];
+  const jmdictIds = [...new Set(words.map((r) => r.data.jmdictId).filter((v): v is string => typeof v === "string"))];
   const [progress, entries] = await Promise.all([
     db.select().from(vocabProgress).where(inArray(vocabProgress.itemId, ids)),
     jmdictIds.length
@@ -72,7 +80,7 @@ export async function loadVocab(db: Db, level: Level): Promise<VocabWord[]> {
   const entryOf = new Map(entries.map((e) => [e.id, [...e.kanji, ...e.kana]]));
   const groups = byMeaning(all as WordRow[]);
 
-  return (rows as WordRow[]).map((r) => {
+  return words.map((r) => {
     const reading = r.reading ?? r.term;
     const meanings = strings(r.data.meanings);
     const jmdictId = typeof r.data.jmdictId === "string" ? r.data.jmdictId : null;
@@ -82,7 +90,7 @@ export async function loadVocab(db: Db, level: Level): Promise<VocabWord[]> {
       for (const o of groups.get(key) ?? []) {
         if (others.size >= MAX_OTHERS) break;
         if (o.id === r.id || others.has(o.id) || (o.reading ?? o.term) === reading) continue;
-        others.set(o.id, { term: o.term, reading: o.reading ?? o.term, meaning: strings(o.data.meanings).slice(0, 3).join("; ") });
+        others.set(o.id, { term: o.term, reading: o.reading ?? o.term, meaning: strings(o.data.meanings).slice(0, 2).join("; ") });
       }
     }
     const mine = progressOf.get(r.id) ?? {};

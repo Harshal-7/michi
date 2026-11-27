@@ -39,7 +39,7 @@ async function addWords(words: Word[], deckSlug = "n5-words"): Promise<number[]>
         meaning: w.meanings.join("; "),
         source: "starter" as const,
         dedupeKey: `${w.term}:${w.reading}`,
-        data: { meanings: w.meanings, pos: ["noun"], usuallyKana: false, ...(w.jmdictId ? { jmdictId: w.jmdictId } : {}) },
+        data: { meanings: w.meanings, pos: ["noun" as const], usuallyKana: false, ...(w.jmdictId ? { jmdictId: w.jmdictId } : {}) },
       })),
     )
     .returning({ id: items.id });
@@ -73,7 +73,7 @@ describe("loading a level's words", () => {
     expect(meet).toMatchObject({ reading: "あう", meanings: ["to meet", "to see"], forms: ["逢う"], others: [] });
     expect(meet.progress).toEqual({ ja_en: { right: 1, wrong: 0, lastRight: true }, en_ja: null });
     const big = words.find((w) => w.id === ookii)!;
-    expect(big.others).toEqual([{ term: "大きな", reading: "おおきな", meaning: "big; large; great" }]);
+    expect(big.others).toEqual([{ term: "大きな", reading: "おおきな", meaning: "big; large" }]);
     expect(ookina).toBeGreaterThan(0);
   });
 });
