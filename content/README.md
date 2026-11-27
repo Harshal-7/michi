@@ -1,7 +1,7 @@
 # Content
 
 Michi's starter content: kana, kanji, words with example sentences, a dictionary for auto-fill,
-grammar points, resources and speaking prompts.
+grammar points, resources, speaking prompts and shadowing sets.
 
 - `schema.ts` is the contract between the content pipeline (`scripts/content/`) and the app's seed
   runner. Both import it. Adding an optional field is safe; renaming or removing one breaks the seed.
@@ -23,6 +23,7 @@ grammar points, resources and speaking prompts.
 | `grammar.json` | N5 84, N4 132, N3 182 | JLPT Sensei's level lists, links checked; meanings written fresh; N5 points have 3–4 fill-in examples, 2 quiz questions and confusables, plus the lesson fields from `source/grammar-lessons.json`: a short meaning, how it's made, its topic and its place in the learning order |
 | `resources.json` | 45 | `source/resources.json`, each link checked |
 | `prompts.json` | N5 40, N4 40 | `source/prompts.json` |
+| `shadowing.json` | N5 10 sets of 8–10 sentences | `source/shadowing.json` |
 
 The word lists give 668 N4 and 2,140 N3 words. Four of them repeat a word from a lower level and
 stay at the lower level only: N4 そう, N3 在る; 有る, N3 運転 and N3 河.
@@ -72,7 +73,8 @@ wrong options.
 - **Grammar:** N5 points are in `source/grammar-n5-a.json`, `-b` and `-c` (by list position); N4 and
   N3 patterns and meanings are in `source/grammar-meanings.json`. Slugs come from the link table, so
   run `pnpm content:links` first if JLPT Sensei's lists change.
-- **Prompts** and **resources:** `source/prompts.json`, `source/resources.json`. Rerun the link check
+- **Prompts**, **shadowing** and **resources:** `source/prompts.json`, `source/shadowing.json`,
+  `source/resources.json`. Rerun the link check
   after adding a resource.
 - **Example sentences:** `source/word-examples.json` holds sentences written for Michi, keyed by word
   slug. They win over the automatic Tatoeba match, so this is also how to replace a Tatoeba sentence

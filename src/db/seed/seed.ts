@@ -16,7 +16,7 @@ import { desc, inArray, isNotNull, sql } from "drizzle-orm";
 import type { Settings } from "@/lib/settings/schema";
 
 import type { Db, Tx } from "../client";
-import { cards, deckItems, decks, dictionary, items, kanjiInfo, prompts, resources, seedRuns } from "../schema";
+import { cards, deckItems, decks, dictionary, items, kanjiInfo, prompts, resources, seedRuns, shadowingSets } from "../schema";
 import { getSettings } from "../settings";
 import { type Content, recordHash } from "./content";
 import { deckSwitch, grammarItem, kanaItem, kanjiItem, STARTER_DECKS, type StarterItem, wordItem } from "./starter";
@@ -50,6 +50,7 @@ export async function seed(db: Db, content: Content): Promise<SeedSummary> {
 
     summary.files.resources = await seedResources(tx, content.resources);
     summary.files.prompts = await seedPrompts(tx, content.prompts);
+    summary.files.shadowing = await seedShadowing(tx, content.shadowing);
     summary.files.dictionary = await seedDictionary(tx, content.dictionary);
     summary.files["kanji-info"] = await seedKanjiInfo(tx, content["kanji-info"]);
     return summary;
@@ -260,7 +261,7 @@ async function seedDeckItemsAndCards(
  */
 async function upsertBySlug<Row extends { seedSlug: string; seedHash: string }>(
   tx: Tx,
-  table: typeof resources | typeof prompts,
+  table: typeof resources | typeof prompts | typeof shadowingSets,
   rows: Row[],
   updateColumns: string[],
 ): Promise<FileSummary> {
@@ -330,6 +331,15 @@ function seedPrompts(tx: Tx, records: Content["prompts"]) {
       modelEn: r.modelEn,
     })),
     ["level", "prompt", "hints", "model", "model_en", "seed_hash"],
+  );
+}
+
+function seedShadowing(tx: Tx, records: Content["shadowing"]) {
+  return upsertBySlug(
+    tx,
+    shadowingSets,
+    records.map((r) => ({ seedSlug: r.slug, seedHash: recordHash(r), level: r.level, title: r.title, sentences: r.sentences })),
+    ["level", "title", "sentences", "seed_hash"],
   );
 }
 

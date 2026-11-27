@@ -677,3 +677,34 @@ export const seedRuns = pgTable("seed_runs", {
   finishedAt: at(),
   summary: jsonb().$type<Record<string, unknown>>(),
 });
+
+// ---------------------------------------------------------------------------
+// Round 2: quizzes
+
+/**
+ * Quiz mistakes answered right again in the mistakes review. A wrong question waits in the
+ * review until it has a row here.
+ */
+export const mistakeClears = pgTable("mistake_clears", {
+  questionId: integer()
+    .primaryKey()
+    .references(() => questions.id, { onDelete: "cascade" }),
+  clearedAt: createdAt(),
+});
+
+// ---------------------------------------------------------------------------
+// Round 2: shadowing
+
+/** Shadowing sets: a few sentences to listen to and say along with the voice (F_Shadowing). */
+export const shadowingSets = pgTable("shadowing_sets", {
+  id: integer().primaryKey().generatedAlwaysAsIdentity(),
+  seedSlug: text().unique(),
+  level: jlptLevel().notNull(),
+  title: text().notNull(),
+  /** Japanese with ruby markup, each with its English. */
+  sentences: jsonb().$type<{ ja: string; en: string }[]>().notNull(),
+  seedHash: text(),
+  userEditedAt: at(),
+  createdAt: createdAt(),
+  updatedAt: updatedAt(),
+});
