@@ -8,6 +8,13 @@
       "when": 1795265893242,
       "tag": "0000_initial",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1795811182910,
+      "tag": "0001_vocab_progress",
+      "breakpoints": true
     }
   ]
 }
