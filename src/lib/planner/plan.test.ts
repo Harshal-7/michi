@@ -75,7 +75,9 @@ describe("planner budgets", () => {
     expect(find(p, "speaking")!.minutes).toBe(10);
     expect(find(p, "listening")!.minutes).toBe(15);
     expect(find(p, "reading")).toBeUndefined();
-    expect(p.tasks.map((t) => t.kind)).toEqual(["reviews", "new_items", "speaking", "listening"]);
+    expect(p.tasks.map((t) => t.kind)).toEqual(["reviews", "new_items", "daily_quiz", "speaking", "listening"]);
+    expect(find(p, "daily_quiz")).toMatchObject({ must: true, minutes: 6, href: "/practice/quiz" });
+    expect(find(p, "speaking")!.href).toBe("/practice/speaking");
   });
 
   it("plans a Phase 1 weekend with reading and more listening", () => {
@@ -226,7 +228,7 @@ describe("the grammar read-through", () => {
   it("comes alongside the quick check on day 1 and fits a weekday", () => {
     const input = planInput("2026-12-03", { quickCheck: { remainingKana: 228, remainingOther: 798, startedOn: null }, readThrough: fresh });
     const p = plan(input);
-    expect(p.tasks.map((t) => t.key)).toEqual(["quick_check", "reviews", READ_THROUGH_KEY, "speaking", "listening"]);
+    expect(p.tasks.map((t) => t.key)).toEqual(["quick_check", "reviews", READ_THROUGH_KEY, "daily_quiz", "speaking", "listening"]);
     expect(total(p)).toBeLessThanOrEqual(p.budgetMinutes);
     // Nothing from the N5 lists the two checks cover.
     expect(slugsOf(input, p)).toEqual([]);

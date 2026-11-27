@@ -167,7 +167,10 @@ export function carryOver(status: DayStatus, today: StudyDate): DayTask[] {
     .map((t) => t.task);
 }
 
-/** A day counts towards the streak when Reviews are done (the daily quiz joins in round 2). */
+/**
+ * A day counts towards the streak when its Reviews and Daily quiz are done (decision 13). Days
+ * frozen before the quiz existed have no quiz task, so they count on Reviews alone.
+ */
 export const STREAK_KINDS: readonly TaskKind[] = ["reviews", "daily_quiz"];
 
 export function countsForStreak(status: DayStatus): boolean {

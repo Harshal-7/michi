@@ -4,7 +4,7 @@ import { eq, sql } from "drizzle-orm";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import type { Db } from "@/db/client";
-import { activityLogs, cards, dayPlans, deckItems, decks, items, quickCheck, reviewLogs, taskOverrides } from "@/db/schema";
+import { activityLogs, assessments, cards, dayPlans, deckItems, decks, items, quickCheck, reviewLogs, taskOverrides } from "@/db/schema";
 import { setOverride, updateSettings } from "@/db/settings";
 import { createTestDb } from "@/db/test/test-db";
 import { addDays, studyDayBounds } from "@/lib/day";
@@ -60,7 +60,7 @@ let grammar: Awaited<ReturnType<typeof addDeck>>;
 
 beforeEach(async () => {
   await db.execute(sql`truncate decks, items, cards, review_logs, quick_check, day_plans, task_overrides,
-    activity_logs, settings, calendar_overrides restart identity cascade`);
+    activity_logs, settings, calendar_overrides, assessments restart identity cascade`);
   kana = await addDeck("hiragana", "kana", 6);
   words = await addDeck("n5-words", "word", 30);
   grammar = await addDeck("n5-grammar", "grammar", 10);
@@ -213,13 +213,29 @@ describe("the day's activity", () => {
     const days = [addDays(DAY, -3), addDays(DAY, -2), addDays(DAY, -1)];
     await makeDue(words.cards.slice(0, 2).map((c) => c.id), days[0]);
     for (const d of days) await ensureDayPlan(db, d);
-    // Day 1: both due cards graded. Day 2: nothing. Day 3: marked done by hand.
+    // Day 1: both due cards graded and the daily quiz submitted. Day 2: reviews only, no quiz.
+    // Day 3: both marked done by hand.
     await grade(words.cards[0].id, days[0]);
     await grade(words.cards[1].id, days[0]);
-    await db.insert(taskOverrides).values({ studyDate: days[2], taskKey: "reviews", mark: "done" });
+    await db.insert(assessments).values({ kind: "daily", status: "submitted", studyDate: days[0], score: 8, total: 10, submittedAt: noon(days[0]) });
+    await db.insert(taskOverrides).values([
+      { studyDate: days[2], taskKey: "reviews", mark: "done" },
+      { studyDate: days[2], taskKey: "daily_quiz", mark: "done" },
+    ]);
     const { counted, first } = await loadCountedDays(db, DAY);
     expect(first).toBe(days[0]);
     expect([...counted].sort()).toEqual([days[0], days[2]]);
-    expect(await loadMarks(db, days[2])).toEqual({ reviews: "done" });
+    expect(await loadMarks(db, days[2])).toEqual({ reviews: "done", daily_quiz: "done" });
+  });
+
+  it("counts days frozen before the daily quiz existed on Reviews alone (decision 1)", async () => {
+    const day = addDays(DAY, -1);
+    await makeDue([words.cards[0].id], day);
+    const p = await ensureDayPlan(db, day);
+    expect(p.tasks.some((t) => t.kind === "daily_quiz")).toBe(true);
+    // An older plan, frozen before round 2: no quiz task.
+    await db.update(dayPlans).set({ plan: { ...p, tasks: p.tasks.filter((t) => t.kind !== "daily_quiz") } }).where(eq(dayPlans.studyDate, day));
+    await grade(words.cards[0].id, day);
+    expect([...(await loadCountedDays(db, DAY)).counted]).toEqual([day]);
   });
 });
