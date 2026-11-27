@@ -151,6 +151,29 @@ there have no shadow.
 - No guilt about missed days and no hype. Numbers must agree with each other across a screen.
 - Mock scores are a "rough pass guide", never a promise of passing.
 
+## 3b. The games at /play: their own look
+
+The public games (`src/app/(play)`, canvas page **Play · public games**, approved 28 Nov 2026) have an
+arcade look of their own. They keep the seal 道, the two fonts, the theme tokens and light/dark per device;
+the rest of this skill's look rules (one solid button, the sidebar, the bottom bar) don't bind them.
+
+- **A colour per game**: `--g-<slug>` and `--g-<slug>-tint` in `globals.css` (kana, vocab, forms, particles,
+  numbers, sounds, listen), the same in every light theme and in every dark theme; `theme.test.ts` checks
+  4.5:1 both ways and on cards. A page sets the game with `style={hueStyle(slug)}`
+  (`src/lib/games/catalog.ts`) and uses `bg-hue-tint`, `text-hue`, `border-hue` inside.
+- **Shapes and type**: `rounded-game` (26px) for play cards and panels, `shadow-lift` for the quick-play
+  hero, Zen Kaku Gothic New **900** (`font-black`) for titles and scores, giant cropped glyphs in the game's
+  colour at 15–20% as decoration (`aria-hidden`).
+- **Shell**: a top bar on phone and laptop (`src/components/play/top-bar.tsx`), no sidebar or bottom bar;
+  a game in play covers it. The player pill: "Pick a name" (ink pill), a guest's avatar and name, or
+  "Harshal" with a home button back to Michi.
+- **Players' colours**: `playerHue(name)` picks one of the 7 game colours, the same everywhere.
+- **Parts** (`src/components/play/`): `Podium` (top 3, with loading, empty and no-signal states),
+  `BoardRowView`, `BoardCard` for a game's start screen, the name sheet (`<dialog>`: a bottom sheet on a
+  phone, 460px on a laptop, the page behind faded with `--page` at 78%), the offline banner and the
+  "new version" bar. A new game builds its start, play and end screens from the kana game's
+  (`src/components/games/`).
+
 ## 4. States every screen needs
 
 Empty, loading, done for today, "grades waiting to save", no signal and "new version, reload" are drawn
