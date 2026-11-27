@@ -33,6 +33,19 @@ export const ROUTES = {
   settings: "/settings",
   voice: "/settings/voice",
   flags: "/settings/flags",
+  /** Round 2: the daily quiz, the Sunday test, past quizzes and the mistakes from them. */
+  quiz: "/practice/quiz",
+  weeklyTest: "/practice/weekly",
+  quizHistory: "/practice/history",
+  mistakes: "/practice/mistakes",
+  /** Round 2: the speaking prompt of the day, shadowing and listen-and-choose. */
+  speaking: "/practice/speaking",
+  shadowing: "/practice/shadowing",
+  listen: "/practice/listen",
+  /** The kana game: recognition and recall against the clock (added 28 Nov 2026). */
+  kanaGame: "/learn/kana/game",
+  /** Typed vocabulary practice, N5 to N3, Japanese → English and back (added 28 Nov 2026). */
+  vocab: "/learn/vocab",
 } as const;
 
 /** First match wins (the plan's "Day modes"). */
