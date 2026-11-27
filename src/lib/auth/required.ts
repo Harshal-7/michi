@@ -1,7 +1,5 @@
 /**
- * The passphrase sign-in is switched off for now (Harshal, 22 Nov 2026): every page, action and
- * route works without it, on production and previews alike. TODO: set this back to true in a later
- * round. The passphrase hash, the sign-in page and the sessions table all stay, so switching it on
- * again needs nothing else; devices then sign in once as before.
+ * The passphrase sign-in guards Harshal's own study data. It was switched off from 22 to 28 Nov
+ * 2026 and is back on with the public games (/play, which stays open to everyone).
  */
-export const SIGN_IN_REQUIRED = false;
+export const SIGN_IN_REQUIRED = true;
