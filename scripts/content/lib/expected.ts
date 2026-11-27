@@ -11,6 +11,8 @@ export const EXPECTED = {
   dictionary: 22661,
   grammar: { N5: 84, N4: 132, N3: 182 },
   prompts: { N5: 40, N4: 40 },
+  /** Shadowing sets of 8–10 sentences each. */
+  shadowing: { N5: 10 },
   /** About 45 resource links. */
   resources: { min: 40, max: 50 },
 } as const;

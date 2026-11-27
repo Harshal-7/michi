@@ -6,7 +6,7 @@ import { asc, eq, sql } from "drizzle-orm";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import type { Db } from "../client";
-import { cards, deckItems, decks, dictionary, items, kanjiInfo, prompts, resources, seedRuns } from "../schema";
+import { cards, deckItems, decks, dictionary, items, kanjiInfo, prompts, resources, seedRuns, shadowingSets } from "../schema";
 import { createTestDb } from "../test/test-db";
 import { type Content, ContentError, loadContent } from "./content";
 import { seed, seedIfChanged } from "./seed";
@@ -21,7 +21,7 @@ afterAll(() => drop?.());
 /** Empties every table the seed writes, so each test starts from nothing. */
 async function reset() {
   await db.execute(
-    sql`truncate items, decks, deck_items, cards, resources, prompts, dictionary, kanji_info, seed_runs, settings restart identity cascade`,
+    sql`truncate items, decks, deck_items, cards, resources, prompts, shadowing_sets, dictionary, kanji_info, seed_runs, settings restart identity cascade`,
   );
 }
 
@@ -36,6 +36,7 @@ async function snapshot() {
     cards: await db.select().from(cards).orderBy(asc(cards.id)),
     resources: await db.select().from(resources).orderBy(asc(resources.id)),
     prompts: await db.select().from(prompts).orderBy(asc(prompts.id)),
+    shadowing: await db.select().from(shadowingSets).orderBy(asc(shadowingSets.id)),
     dictionary: await db.select().from(dictionary).orderBy(asc(dictionary.id)),
     kanjiInfo: await db.select().from(kanjiInfo).orderBy(asc(kanjiInfo.kanji)),
   };
@@ -52,6 +53,7 @@ describe("seed", () => {
     expect(summary.files.words).toMatchObject({ added: 3, linked: 1 });
     expect(summary.files.dictionary).toMatchObject({ added: 3 });
     expect(summary.files["kanji-info"]).toMatchObject({ added: 3 });
+    expect(summary.files.shadowing).toMatchObject({ added: 1 });
     expect(summary.decksAdded).toBe(11);
 
     const deckRows = await db.select().from(decks).orderBy(asc(decks.position));
@@ -181,6 +183,21 @@ describe("seed", () => {
     expect(row.meanings).toEqual(["over there"]);
   });
 
+  it("updates a shadowing set unless you've edited it", async () => {
+    await seed(db, fixtures());
+    const next = fixtures();
+    next.shadowing[0].title = "Every day";
+    expect((await seed(db, next)).files.shadowing).toMatchObject({ updated: 1 });
+    const [row] = await db.select().from(shadowingSets);
+    expect(row).toMatchObject({ seedSlug: "shadow:n5:daily-life", level: "N5", title: "Every day" });
+    expect(row.sentences).toHaveLength(8);
+
+    await db.update(shadowingSets).set({ title: "Mine", userEditedAt: new Date() });
+    next.shadowing[0].title = "Days";
+    expect((await seed(db, next)).files.shadowing).toMatchObject({ keptEdits: 1 });
+    expect((await db.select().from(shadowingSets))[0].title).toBe("Mine");
+  });
+
   it("adds a grammar point's card once it has examples", async () => {
     await seed(db, fixtures());
     const next = fixtures();
@@ -206,7 +223,7 @@ describe("loading content", () => {
   let dir: string;
   beforeEach(() => {
     dir = mkdtempSync(join(tmpdir(), "michi-content-"));
-    for (const name of ["kana", "kanji", "kanji-info", "words", "dictionary", "grammar", "resources", "prompts"]) {
+    for (const name of ["kana", "kanji", "kanji-info", "words", "dictionary", "grammar", "resources", "prompts", "shadowing"]) {
       writeFileSync(join(dir, `${name}.json`), readFileSync(join(FIXTURES, `${name}.json`)));
     }
   });

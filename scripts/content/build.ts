@@ -20,6 +20,7 @@ import {
   type Prompt,
   toPlain,
   type Resource,
+  type Shadowing,
 } from "../../content/schema";
 import { dedupeKey } from "../../src/lib/items/dedupe";
 import { buildDictionary } from "./dictionary";
@@ -41,6 +42,7 @@ import {
   PromptsSource,
   ResourceLinkTable,
   ResourcesSource,
+  ShadowingSource,
   WordExamples,
 } from "./lib/source-types";
 import { writeLines, writePretty } from "./lib/write";
@@ -168,6 +170,12 @@ function buildPrompts(ctx: Ctx): Prompt[] {
   return prompts;
 }
 
+function buildShadowing(ctx: Ctx): Shadowing[] {
+  const sets = readSource("shadowing.json", ShadowingSource, []);
+  for (const s of sets) s.sentences.forEach((x, i) => checkWritten(`${s.slug} sentence ${i + 1}`, x.ja, { level: s.level }, ctx));
+  return sets;
+}
+
 const countBy = <T>(items: T[], key: (t: T) => string) => {
   const out: Record<string, number> = {};
   for (const i of items) out[key(i)] = (out[key(i)] ?? 0) + 1;
@@ -221,10 +229,11 @@ async function main() {
   const kanjiInfo = buildKanjiInfo(kanjiData);
   const dictionary = buildDictionary(jmCommon);
 
-  console.log("Grammar, resources, prompts…");
+  console.log("Grammar, resources, prompts, shadowing…");
   const grammar = buildGrammar(ctx);
   const resources = buildResources();
   const prompts = buildPrompts(ctx);
+  const shadowing = buildShadowing(ctx);
 
   // Counts
   expectCounts("kana", countBy(kana, (k) => k.script), EXPECTED.kana);
@@ -232,13 +241,14 @@ async function main() {
   expectCounts("words", countBy(words, (w) => w.level), EXPECTED.words);
   expectCounts("grammar", countBy(grammar, (g) => g.level), EXPECTED.grammar);
   expectCounts("prompts", countBy(prompts, (p) => p.level), EXPECTED.prompts);
+  expectCounts("shadowing", countBy(shadowing, (s) => s.level), EXPECTED.shadowing);
   if (kanjiInfo.length !== EXPECTED.kanjiInfo) problem(`kanji-info: expected ${EXPECTED.kanjiInfo}, got ${kanjiInfo.length}`);
   if (dictionary.length !== EXPECTED.dictionary) problem(`dictionary: expected ${EXPECTED.dictionary}, got ${dictionary.length}`);
   if (resources.length < EXPECTED.resources.min || resources.length > EXPECTED.resources.max)
     problem(`resources: expected about 45, got ${resources.length}`);
 
   // Contract: every file parses and its keys are unique.
-  const files = { kana, kanji, "kanji-info": kanjiInfo, words, dictionary, grammar, resources, prompts } satisfies Record<ContentFile, unknown[]>;
+  const files = { kana, kanji, "kanji-info": kanjiInfo, words, dictionary, grammar, resources, prompts, shadowing } satisfies Record<ContentFile, unknown[]>;
   const parsed = {} as Record<ContentFile, unknown[]>;
   for (const name of Object.keys(files) as ContentFile[]) {
     const result = CONTENT_FILES[name].safeParse(files[name]);
@@ -293,7 +303,7 @@ async function main() {
     `Counts: kana ${kana.length} (hiragana ${countBy(kana, (k) => k.script).hiragana}, katakana ${countBy(kana, (k) => k.script).katakana}); ` +
       `kanji ${LEVELS.map((l) => countBy(kanji, (k) => k.level)[l] ?? 0).join(" / ")} (+${kanjiInfo.length} jōyō); ` +
       `words ${LEVELS.map((l) => countBy(words, (w) => w.level)[l] ?? 0).join(" / ")}; dictionary ${dictionary.length}; ` +
-      `grammar ${LEVELS.map((l) => countBy(grammar, (g) => g.level)[l] ?? 0).join(" / ")}; resources ${resources.length}; prompts ${prompts.length}`,
+      `grammar ${LEVELS.map((l) => countBy(grammar, (g) => g.level)[l] ?? 0).join(" / ")}; resources ${resources.length}; prompts ${prompts.length}; shadowing ${shadowing.length}`,
   );
   if (problems.length) process.exit(1);
 }

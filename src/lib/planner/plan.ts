@@ -37,14 +37,17 @@ import { type DeckQuota, type DeckState, minutesFor, paceQuotas, scaleToMinutes 
 
 /**
  * Round 1 has Reviews, the quick check, New items, and listening, speaking and reading logged
- * in the minutes log; round 1.5 the grammar read-through. Round 2 adds grammar, the daily quiz
- * and the weekly test; round 3 the class and its log; round 4 mocks and Work Japanese.
+ * in the minutes log; round 1.5 the grammar read-through; round 2 the daily quiz, the weekly test
+ * and the speaking screen. The daily Grammar task stays off: N5 grammar cards come with New items.
+ * Round 3 adds the class and its log; round 4 mocks and Work Japanese.
  */
 export const AVAILABLE_TASK_KINDS: readonly TaskKind[] = [
   "reviews",
   "quick_check",
   "read_through",
   "new_items",
+  "daily_quiz",
+  "weekly_test",
   "speaking",
   "listening",
   "reading",
@@ -166,8 +169,8 @@ const task = (t: Omit<DayTask, "must"> & { must?: boolean }): DayTask => ({ must
 
 const byDisplayOrder = (a: DayTask, b: DayTask) => DISPLAY_ORDER.indexOf(a.kind) - DISPLAY_ORDER.indexOf(b.kind);
 
-/** Speaking, listening and reading are logged in the minutes log until their own screens arrive. */
-const minutesHref = (kind: "speaking" | "listening" | "reading") => `${ROUTES.minutes}?kind=${kind}`;
+/** Listening and reading are logged in the minutes log until their own screens arrive. */
+const minutesHref = (kind: "listening" | "reading") => `${ROUTES.minutes}?kind=${kind}`;
 
 /** Today's quick-check target: what's left spread over the days left of its first 3, kana first. */
 export function quickCheckPlan(
@@ -266,14 +269,14 @@ export function planDetail(input: PlanInput): PlanDetail {
   if (has("daily_quiz") && !mockToday) {
     tasks.push(
       prep && !weekend
-        ? task({ key: "daily_quiz", kind: "daily_quiz", title: "Section drill", minutes: SECTION_DRILL_MINUTES, must: true, href: ROUTES.practice })
-        : task({ key: "daily_quiz", kind: "daily_quiz", title: "Daily quiz", minutes: QUIZ_MINUTES, must: true, href: ROUTES.practice }),
+        ? task({ key: "daily_quiz", kind: "daily_quiz", title: "Section drill", minutes: SECTION_DRILL_MINUTES, must: true, href: ROUTES.quiz })
+        : task({ key: "daily_quiz", kind: "daily_quiz", title: "Daily quiz", minutes: QUIZ_MINUTES, must: true, href: ROUTES.quiz }),
     );
   }
   if (weekday(date) === 0 && has("weekly_test")) {
     const key = `weekly_test:${weekOf(date).start}`;
     if (!tasks.some((t) => t.key === key)) {
-      tasks.push(task({ key, kind: "weekly_test", title: "Weekly test", minutes: WEEKLY_TEST_MINUTES, must: true, href: ROUTES.practice }));
+      tasks.push(task({ key, kind: "weekly_test", title: "Weekly test", minutes: WEEKLY_TEST_MINUTES, must: true, href: ROUTES.weeklyTest }));
     }
   }
   if (mock && mockToday) {
@@ -282,7 +285,7 @@ export function planDetail(input: PlanInput): PlanDetail {
     );
   }
   const speaking = has("speaking")
-    ? task({ key: "speaking", kind: "speaking", title: "Speaking", minutes: SPEAKING_MIN, href: minutesHref("speaking") })
+    ? task({ key: "speaking", kind: "speaking", title: "Speaking", minutes: SPEAKING_MIN, href: ROUTES.speaking })
     : null;
   const fixed = tasks.reduce((s, t) => s + t.minutes, 0);
   if (speaking && fixed + speaking.minutes <= budget) tasks.push(speaking);
