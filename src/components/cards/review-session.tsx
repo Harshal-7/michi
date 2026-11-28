@@ -1,15 +1,18 @@
 "use client";
-// design-lint: legacy
 
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { Icon } from "@/components/ui/icon";
+import { Button } from "@/components/ui/button";
+import { Chip } from "@/components/ui/chip";
+import { GradeButtons } from "@/components/ui/grade-buttons";
+import { IconButton } from "@/components/ui/icon-button";
+import { SessionHeader } from "@/components/ui/session-header";
+import { VoiceProvider } from "@/components/ui/voice";
 import { getOutbox, useOutbox } from "@/lib/srs/outbox";
 import {
   type FsrsSettings,
   formatInterval,
-  GRADE_NAMES,
   type Grade,
   GRADES,
   gradeCard,
@@ -20,12 +23,12 @@ import {
 import type { StudyCard, UpNext } from "@/lib/srs/types";
 import type { VoicePrefs } from "@/lib/voice/voices";
 
-import { CardBack, CardFront, cardLabel } from "./faces";
+import { CardBack, CardFront, cardKind, cardSeen } from "./faces";
 import { FlagEditPanel } from "./flag-edit";
 import { SessionLoading, useInBrowser } from "./loading";
-import { SaveNotes, SaveState, WaitingChip } from "./status";
+import { NotebookCard } from "./notebook";
 import { SessionDone } from "./session-done";
-import { VoiceProvider } from "@/components/ui/voice";
+import { SaveNotes, SaveState, WaitingChip } from "./status";
 
 /** Coming back to the tab after this long reloads the queue. */
 const RELOAD_AFTER_MS = 5 * 60_000;
@@ -34,9 +37,6 @@ const LEARN_AHEAD_MS = 2 * 60_000;
 /** A card missed this many times is a trouble card. */
 export const TROUBLE_LAPSES = 4;
 
-const RATING_COLOR: Record<Grade, string> = { 1: "text-again", 2: "text-ink", 3: "text-good", 4: "text-easy" };
-const X_ICON = "M6 6l12 12 M18 6L6 18";
-const FLAG_ICON = "M5 21V4 M5 4h11l-2 4 2 4H5";
 
 type Session = {
   current: StudyCard | null;
@@ -273,89 +273,40 @@ function Session(props: SessionProps) {
 
   // A card counts as done once graded, even if it comes back later as a learning card.
   const done = Object.keys(session.first).length;
-  const left = Math.max(0, total - done);
-  const progress = total ? Math.round((done / total) * 100) : 0;
-  const title = mode === "new" ? "New items" : "Review";
-
-  const progressBar = (
-    <div role="img" aria-label={`${done} of ${total} cards done`} className="h-1 overflow-hidden rounded-full bg-track">
-      <div className="h-full bg-accent" style={{ width: `${progress}%` }} />
-    </div>
-  );
+  const at = Math.min(done + 1, total);
+  const title = mode === "new" ? props.label : props.label === "All due" ? "Reviews" : props.label;
+  const side = panel ? "flag or edit" : revealed ? "answer" : "front";
 
   return (
     <VoiceProvider prefs={props.voice}>
-      <div className="fixed inset-0 z-40 flex flex-col bg-page laptop:static laptop:z-auto laptop:gap-[18px] laptop:bg-transparent">
-        {/* Phone header (F_ReviewFront) */}
-        <header className="flex shrink-0 flex-col gap-2.5 px-3 pt-[max(12px,env(safe-area-inset-top))] pb-2 laptop:hidden">
-          <div className="flex items-center justify-between gap-2">
-            <button
-              type="button"
-              aria-label="End session"
-              onClick={end}
-              className="inline-flex size-11 items-center justify-center rounded-btn text-ink2"
-            >
-              <Icon d={X_ICON} size={22} stroke={1.8} />
-            </button>
-            <div className="flex min-w-0 items-center gap-2 text-[13px]">
-              <span className="truncate rounded-full bg-accent-soft px-2.5 py-1 font-semibold">{props.label}</span>
-              <span className="shrink-0 text-ink2">{left} left</span>
-            </div>
-            <button
-              type="button"
-              aria-label="Flag or edit this card"
-              aria-pressed={panel}
-              onClick={() => setPanel((p) => !p)}
-              className={`inline-flex size-11 items-center justify-center rounded-btn ${panel ? "bg-accent-soft text-accent" : "text-ink2"}`}
-            >
-              <Icon d={FLAG_ICON} size={20} stroke={1.7} />
-            </button>
-          </div>
-          <div className="mx-1.5">{progressBar}</div>
-          <div className="flex flex-col gap-2 empty:hidden">
-            <WaitingChip state={outbox} />
-            <SaveNotes state={outbox} />
-          </div>
-        </header>
-
-        {/* Laptop header (F_ReviewWeb) */}
-        <header className="hidden flex-col gap-2.5 laptop:flex">
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="flex items-center gap-2.5">
-              <h1 className="m-0 font-head text-[26px]">{title}</h1>
-              <span className="rounded-full bg-accent-soft px-3 py-1 text-[13px] font-bold">{props.label}</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="text-sm text-ink2">
-                {done} / {total}
-              </span>
-              <button
-                type="button"
-                onClick={end}
-                className="min-h-10 rounded-btn border border-line bg-transparent px-3.5 text-[13px] font-semibold"
-              >
-                End session
-              </button>
-            </div>
-          </div>
-          {progressBar}
+      <div className="fixed inset-0 z-session flex flex-col bg-page laptop:static laptop:z-auto laptop:mx-auto laptop:w-full laptop:max-w-160 laptop:gap-2 laptop:bg-transparent">
+        <div className="shrink-0 px-2.5 pt-[max(12px,env(safe-area-inset-top))] laptop:p-0">
+          <SessionHeader
+            title={title}
+            count={`${at} / ${total}`}
+            close={{ label: "End the session", onClick: end }}
+            progress={{ value: done, max: total, label: `Card ${at} of ${total}` }}
+            trailing={<IconButton icon="flag" label="Flag or edit this card" pressed={panel} onClick={() => setPanel((p) => !p)} />}
+          />
+        </div>
+        <div className="flex shrink-0 flex-col gap-2 px-5 pt-2 empty:hidden laptop:px-0">
+          <WaitingChip state={outbox} />
           <SaveNotes state={outbox} />
-        </header>
+        </div>
 
-        <div className="flex min-h-0 flex-auto flex-col px-4 pt-2 pb-3 laptop:flex-none laptop:p-0">
-          <article className="mx-auto box-border flex min-h-0 w-full flex-auto flex-col items-center gap-3.5 overflow-y-auto rounded-card bg-surface p-[18px] shadow-card laptop:min-h-[380px] laptop:max-w-[640px] laptop:flex-none laptop:px-7 laptop:py-6">
-            <div className="flex w-full items-center justify-between gap-2 text-xs font-semibold text-ink2 laptop:text-[12.5px]">
-              <span>{cardLabel(current)}</span>
-              <button
-                type="button"
-                onClick={() => setPanel((p) => !p)}
-                className="hidden font-normal text-ink2 underline laptop:inline"
-              >
-                {panel ? "Back to the card" : "Flag or edit this card"}
-              </button>
+        <div className="flex min-h-0 flex-1 flex-col px-5 pt-8 pb-5 laptop:min-h-120 laptop:flex-none laptop:px-0">
+          <NotebookCard
+            label={`Card ${at} of ${total} (${cardSeen(current)}), ${side}`}
+            rules={revealed ? 3 : 4}
+            className="flex-1 laptop:min-h-120"
+          >
+            <div className="flex items-center justify-end">
+              <Chip cover="blue" size="lg">
+                {cardKind(current)}
+              </Chip>
             </div>
             {message && !panel && (
-              <p role="status" className="m-0 w-full rounded-xl bg-surface2 px-3 py-2 text-[12.5px]">
+              <p role="status" className="m-0 mt-3 rounded-btn bg-surface2 px-3.5 py-2.5 text-meta">
                 {message}
               </p>
             )}
@@ -374,57 +325,45 @@ function Session(props: SessionProps) {
             ) : (
               <CardFront card={current} furigana={props.furigana} />
             )}
-          </article>
+          </NotebookCard>
         </div>
 
         {!panel && (
-          <footer className="mx-auto flex w-full shrink-0 flex-col gap-2.5 px-4 pb-[max(18px,env(safe-area-inset-bottom))] laptop:max-w-[640px] laptop:p-0">
+          <footer className="flex shrink-0 flex-col gap-2 px-5 pb-[max(20px,env(safe-area-inset-bottom))] laptop:px-0 laptop:pb-0">
             {revealed ? (
               <>
-                <div className="flex items-center justify-between laptop:hidden">
-                  <UndoButton visible={!!undo} onClick={undoLast} label="Undo last grade" />
-                  <span className="text-xs text-ink2">
-                    {current.state === "new" ? "new: grade how well you know it" : "next review after your grade"}
-                  </span>
+                <div className={`flex min-h-6 items-center gap-2 ${undo ? "justify-between" : "justify-center"}`}>
+                  <p className="m-0 text-body font-bold text-ink2">
+                    {current.state === "new" ? "How well do you know it?" : "How well did you remember it?"}
+                  </p>
+                  {undo && (
+                    <Button variant="text" size="sm" icon="undo" onClick={undoLast} className="-my-2.5" aria-keyshortcuts="U">
+                      Undo
+                    </Button>
+                  )}
                 </div>
-                <div className="grid grid-cols-4 gap-2 laptop:gap-2.5">
-                  {GRADES.map((g) => (
-                    <button
-                      key={g}
-                      type="button"
-                      disabled={!intervals}
-                      onClick={() => grade(g)}
-                      className="flex min-h-16 flex-col items-center justify-center gap-0.5 rounded-btn border border-line bg-surface px-1 py-2 disabled:opacity-60 laptop:min-h-[68px] laptop:gap-[3px] laptop:rounded-card"
-                    >
-                      <span className="flex items-center gap-2">
-                        <span className="hidden min-w-5 rounded-md border border-line px-1 text-xs font-bold text-ink2 laptop:inline">
-                          {g}
-                        </span>
-                        <span className={`text-[15px] font-bold laptop:text-base ${RATING_COLOR[g]}`}>{GRADE_NAMES[g]}</span>
-                      </span>
-                      <span className="text-xs text-ink2 laptop:text-[12.5px]">{intervals?.[g] ?? "…"}</span>
-                    </button>
-                  ))}
-                </div>
+                <GradeButtons
+                  label={current.state === "new" ? "How well do you know it?" : "How well did you remember it?"}
+                  intervals={[intervals?.[1] ?? "…", intervals?.[2] ?? "…", intervals?.[3] ?? "…", intervals?.[4] ?? "…"]}
+                  onGrade={grade}
+                  disabled={!intervals}
+                />
               </>
             ) : (
               <>
-                <div className="flex laptop:hidden">
-                  <UndoButton visible={!!undo} onClick={undoLast} label="Undo last grade" />
-                </div>
-                <button
-                  type="button"
-                  onClick={reveal}
-                  className="min-h-14 rounded-btn bg-accent text-[17px] font-bold text-on-accent"
-                >
+                {undo && (
+                  <Button variant="text" size="sm" icon="undo" onClick={undoLast} className="-my-1 self-center" aria-keyshortcuts="U">
+                    Undo last grade
+                  </Button>
+                )}
+                <Button size="lg" full onClick={reveal} aria-keyshortcuts="Space">
                   Show answer
-                </button>
+                </Button>
               </>
             )}
-            <div className="hidden flex-wrap items-center justify-between gap-2.5 text-[13px] text-ink2 laptop:flex">
+            <div className="flex flex-wrap items-center justify-between gap-2.5 text-meta text-ink2 max-laptop:hidden">
               <SaveState state={outbox} />
-              <span>Space shows the answer · 1–4 grades it</span>
-              <UndoButton visible={!!undo} onClick={undoLast} label="Undo (U)" />
+              <span>Space shows the answer · 1–4 grades it · U undoes</span>
             </div>
           </footer>
         )}
@@ -432,17 +371,3 @@ function Session(props: SessionProps) {
     </VoiceProvider>
   );
 }
-
-function UndoButton({ visible, onClick, label }: { visible: boolean; onClick: () => void; label: string }) {
-  if (!visible) return <span />;
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="min-h-9 rounded-btn border-none bg-transparent px-1.5 text-[13px] font-semibold text-ink2 laptop:min-h-10 laptop:px-3"
-    >
-      {label}
-    </button>
-  );
-}
-

@@ -1,22 +1,28 @@
 "use client";
-// design-lint: legacy
 
-import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
+import { Choice, VerdictButtons } from "@/components/quiz/choice";
+import { Button } from "@/components/ui/button";
+import { Chip } from "@/components/ui/chip";
+import { AnswerInput } from "@/components/ui/field";
+import { TimerBar } from "@/components/ui/progress";
 import { Ruby } from "@/components/ui/ruby";
-import { Icon } from "@/components/ui/icon";
+import { SessionHeader } from "@/components/ui/session-header";
+import { StatGrid, StatTile } from "@/components/ui/stat";
 import { getOutbox, useOutbox } from "@/lib/srs/outbox";
 import type { CheckItem } from "@/lib/srs/quick-check";
 import { FAST_MS, kanaVerdict, romajiMatches, SPOT_CHECK_EVERY, spotOptions } from "@/lib/srs/quick-check-rules";
 import type { UpNext } from "@/lib/srs/types";
 import type { VoicePrefs } from "@/lib/voice/voices";
 
-import { SessionLoading, useInBrowser } from "./loading";
-import { UpNextCard } from "./session-done";
-import { NoSignal, SaveNotes, SaveState, WaitingChip } from "./status";
-import { VoiceProvider } from "@/components/ui/voice";
 import { SpeakButton } from "@/components/ui/speak-button";
+import { VoiceProvider } from "@/components/ui/voice";
+
+import { SessionLoading, useInBrowser } from "./loading";
+import { NotebookCard, Rule } from "./notebook";
+import { DoneHead, DoneShell, DoneTop, Note, UpNextCard } from "./session-done";
+import { NoSignal, SaveNotes, SaveState, WaitingChip } from "./status";
 
 type Verdict = "known" | "unsure" | "unknown";
 type Recent = { kana: string; romaji: string; ok: boolean; mark: string };
@@ -25,8 +31,6 @@ type Spot = { item: CheckItem; options: string[]; answerIndex: number; chosen: n
 /** A held-back "Knew it" is asked this many cards later, so its answer isn't fresh. */
 const SPOT_DELAY = 3;
 
-const X_ICON = "M6 6l12 12 M18 6L6 18";
-const CHECK = "M5 12.5l4.5 4.5L19 7.5";
 
 export type QuickCheckProps = {
   items: CheckItem[];
@@ -194,202 +198,195 @@ function Check({ items: loaded, ...props }: QuickCheckProps) {
 
   const kind = spot ? spot.item.kind : item!.kind;
   const kindTitle = kind === "kana" ? "kana" : kind === "kanji" ? "N5 kanji" : "N5 words";
-  const progress = Math.round((index / items.length) * 100);
   const elapsed = Math.max(0, now - startedAt);
+  const bigTerm = (term: string) => ([...term].length > 3 ? "text-display" : "text-kana");
 
   return (
     <VoiceProvider prefs={props.voice}>
-      <div className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-page laptop:static laptop:z-auto laptop:overflow-visible laptop:bg-transparent">
-        <header className="flex shrink-0 flex-col gap-2.5 px-3 pt-[max(12px,env(safe-area-inset-top))] pb-2 laptop:px-0 laptop:pt-0">
-          <div className="flex items-center justify-between gap-2">
-            <button
-              type="button"
-              aria-label="Stop the quick check"
-              onClick={stop}
-              className="inline-flex size-11 items-center justify-center rounded-btn text-ink2"
-            >
-              <Icon d={X_ICON} size={22} stroke={1.8} />
-            </button>
-            <p className="m-0 text-[15px] font-bold">Quick check · {kindTitle}</p>
-            <p className="m-0 min-w-11 text-right text-[13px] text-ink2">
-              {index} / {items.length}
-            </p>
-          </div>
-          <div
-            role="img"
-            aria-label={`${index} of ${items.length} checked`}
-            className="mx-1.5 h-1 overflow-hidden rounded-full bg-track"
-          >
-            <div className="h-full bg-accent" style={{ width: `${progress}%` }} />
-          </div>
-          <div className="flex flex-col gap-2 empty:hidden">
-            <WaitingChip state={outbox} />
-            <SaveNotes state={outbox} />
-          </div>
-        </header>
+      <div className="fixed inset-0 z-session flex flex-col overflow-y-auto bg-page laptop:static laptop:z-auto laptop:mx-auto laptop:w-full laptop:max-w-160 laptop:overflow-visible laptop:bg-transparent">
+        <div className="shrink-0 px-2.5 pt-[max(12px,env(safe-area-inset-top))] laptop:p-0">
+          <SessionHeader
+            title="Quick check"
+            count={`${index} / ${items.length}`}
+            close={{ label: "Stop the quick check", onClick: stop }}
+            progress={{ value: index, max: items.length, label: `${index} of ${items.length} ${kindTitle} checked` }}
+          />
+        </div>
+        <div className="flex shrink-0 flex-col gap-2 px-5 pt-2 empty:hidden laptop:px-0">
+          <WaitingChip state={outbox} />
+          <SaveNotes state={outbox} />
+        </div>
 
-        <div className="mx-auto flex w-full max-w-[640px] flex-auto flex-col gap-4 px-5 pt-2 pb-5 laptop:px-0">
+        <div className="flex w-full flex-auto flex-col gap-4 px-5 pt-8 pb-6 laptop:px-0">
           {spot ? (
             <>
-              <article className="flex shrink-0 flex-col items-center gap-2.5 rounded-card bg-surface p-[18px] shadow-card">
-                <p className="m-0 self-start text-xs font-semibold text-ink2">
-                  {spot.item.kind === "kanji" ? "Kanji" : "Word"} · you said you knew it
-                </p>
-                <p lang="ja" className={`m-0 mt-2 font-card leading-[1.1] font-semibold ${[...spot.item.term].length > 3 ? "text-[56px]" : "text-[84px]"}`}>
+              <NotebookCard label="Quick question" sheets={["butter", "blue"]} rules={2} className="min-h-56">
+                <div className="flex justify-between">
+                  <Chip cover="butter" size="lg">
+                    you said you knew it
+                  </Chip>
+                  <Chip cover="blue" size="lg">
+                    {spot.item.kind === "kanji" ? "Kanji · N5" : "Word · N5"}
+                  </Chip>
+                </div>
+                <p lang="ja" className={`m-0 mt-4 text-center font-ja tracking-wide ${bigTerm(spot.item.term)}`}>
                   {spot.item.term}
                 </p>
-              </article>
+              </NotebookCard>
               <SpotCheck spot={spot} onChoose={answerSpot} onNext={() => setSpot(null)} />
             </>
           ) : isKana && item ? (
             <>
-              <p className="m-0 self-center rounded-full bg-accent-soft px-3 py-1 text-[12.5px] font-semibold">
-                Day {Math.min(props.day, 3)} of 3 · kana first
-              </p>
-              <section className="flex h-[230px] shrink-0 flex-col items-center justify-center gap-1 rounded-card bg-surface shadow-card">
-                <p className="m-0 text-xs font-semibold text-ink2">{item.script === "katakana" ? "Katakana" : "Hiragana"}</p>
-                <p lang="ja" className="m-0 font-card text-[124px] leading-[1.1] font-semibold">
+              <NotebookCard label={item.script === "katakana" ? "Katakana" : "Hiragana"} sheets={["butter", "blue"]} rules={2} className="min-h-60">
+                <div className="flex justify-between">
+                  <Chip cover="butter" size="lg">
+                    Day {Math.min(props.day, 3)} of 3 · kana first
+                  </Chip>
+                  <Chip cover="blue" size="lg">
+                    {item.script === "katakana" ? "Katakana" : "Hiragana"}
+                  </Chip>
+                </div>
+                <p lang="ja" className="m-0 mt-2 text-center font-ja text-kana">
                   {item.term}
                 </p>
-              </section>
+              </NotebookCard>
               <form
+                className="mt-2 flex flex-col gap-1.5"
                 onSubmit={(e) => {
                   e.preventDefault();
                   answerKana(typed, true);
                 }}
               >
-                <label className="flex flex-col gap-1.5 text-[13px] font-semibold text-ink2">
+                <label htmlFor="qc-romaji" className="text-meta font-bold">
                   Type the romaji
-                  <input
-                    ref={input}
-                    type="text"
-                    value={typed}
-                    onChange={(e) => answerKana(e.target.value, false)}
-                    autoComplete="off"
-                    autoCapitalize="none"
-                    autoCorrect="off"
-                    spellCheck={false}
-                    enterKeyHint="next"
-                    className="box-border min-h-[54px] rounded-btn border-2 border-accent bg-surface px-4 text-[22px] font-bold tracking-[0.04em] text-ink outline-none"
-                  />
                 </label>
+                <AnswerInput
+                  id="qc-romaji"
+                  // AnswerInput's props don't list `ref` yet (a note for 3d); it reaches the <input> all the same.
+                  {...({ ref: input } as Record<string, unknown>)}
+                  type="text"
+                  value={typed}
+                  onChange={(e) => answerKana(e.target.value, false)}
+                  autoComplete="off"
+                  autoCapitalize="none"
+                  autoCorrect="off"
+                  spellCheck={false}
+                  enterKeyHint="next"
+                />
               </form>
               <div className="flex items-center gap-2.5">
-                <div
-                  role="img"
-                  aria-label={`${(elapsed / 1000).toFixed(1)} seconds of 3 used`}
-                  className="h-1.5 flex-auto overflow-hidden rounded-full bg-track"
-                >
-                  <TimerFill startedAt={startedAt} running={!stopped} />
-                </div>
-                <span className="w-10 text-right text-[12.5px] text-ink2">{(elapsed / 1000).toFixed(1)} s</span>
+                <TimerBar startedAt={startedAt} durationMs={FAST_MS} running={!stopped} className="flex-auto" />
+                <span role="timer" aria-label={`${(elapsed / 1000).toFixed(1)} seconds of 3 used`} className="w-10 text-right text-meta text-ink2 tabular-nums">
+                  {(elapsed / 1000).toFixed(1)} s
+                </span>
               </div>
               {recent.length > 0 && (
                 <div className="flex flex-col gap-1.5">
-                  <p className="m-0 text-xs font-semibold text-ink2">Last few</p>
-                  <div className="flex flex-wrap gap-1.5">
+                  <p className="m-0 text-meta font-bold text-ink2">Last few</p>
+                  <ul className="m-0 flex list-none flex-wrap gap-1.5 p-0">
                     {recent.map((r, i) => (
-                      <span
+                      <li
                         key={`${r.kana}-${i}`}
-                        className={`inline-flex items-baseline gap-1.5 rounded-full border px-2.5 py-[5px] text-[13px] ${r.ok ? "border-good text-good" : "border-again text-again"}`}
+                        className={`inline-flex h-8 items-center gap-1.5 rounded-chip px-2.5 text-meta text-on-cover ${r.ok ? "bg-good-soft" : "bg-again-soft"}`}
                       >
-                        <span lang="ja" className="font-card text-base font-semibold">
+                        <span lang="ja" className="font-ja text-body">
                           {r.kana}
                         </span>
                         <span>{r.romaji}</span>
-                        <span className="font-bold">{r.mark}</span>
-                      </span>
+                        <b className="font-black">{r.mark}</b>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
               )}
               <div className="grid grid-cols-2 gap-2.5">
-                <button
-                  type="button"
-                  onClick={() => answerKana("", true)}
-                  className="min-h-[50px] rounded-btn border border-line bg-surface text-[15px] font-bold"
-                >
-                  I don&apos;t know
-                </button>
-                <button type="button" onClick={() => next()} className="min-h-[50px] rounded-btn text-[15px] font-semibold text-ink2">
+                <Button variant="secondary" onClick={() => answerKana("", true)}>
+                  I don’t know
+                </Button>
+                <Button variant="text" onClick={() => next()}>
                   Skip
-                </button>
+                </Button>
               </div>
-              <p className="m-0 mt-auto text-center text-[12.5px] leading-normal text-ink2">
-                Right within 3 seconds counts as known. Wrong or slower goes into your new cards.
-              </p>
+              <div className="mt-auto">
+                <Note icon="info">Right within 3 seconds counts as known. Wrong or slower goes into your new cards.</Note>
+              </div>
             </>
           ) : item ? (
             <>
-              <article className="flex shrink-0 flex-col items-center gap-2.5 rounded-card bg-surface p-[18px] shadow-card">
-                <p className="m-0 self-start text-xs font-semibold text-ink2">
-                  {item.kind === "kanji" ? "Kanji" : "Word"} · N5 · {shown ? "answer shown" : "say it to yourself"}
-                </p>
-                <p lang="ja" className={`m-0 mt-2 font-card leading-[1.1] font-semibold ${[...item.term].length > 3 ? "text-[56px]" : "text-[84px]"}`}>
-                  {item.term}
-                </p>
-                {shown && (
+              <NotebookCard
+                label={`${item.kind === "kanji" ? "Kanji" : "Word"} ${index + 1} of ${items.length}${shown ? ", answer" : ""}`}
+                sheets={["butter", "blue"]}
+                rules={2}
+                className="min-h-64"
+              >
+                <div className="flex items-center justify-between">
+                  <Chip cover="butter" size="lg">
+                    {shown ? "answer shown" : "say it to yourself"}
+                  </Chip>
+                  <Chip cover="blue" size="lg">
+                    {item.kind === "kanji" ? "Kanji · N5" : "Word · N5"}
+                  </Chip>
+                </div>
+                {shown ? (
                   <>
-                    {item.kind === "word" && item.reading && item.reading !== item.term && (
-                      <p lang="ja" className="m-0 text-xl text-ink2">
-                        {item.reading}
-                      </p>
-                    )}
-                    <p className="m-0 text-center font-head text-[26px] leading-tight">{item.meaning}</p>
-                    {item.kind === "word" && <SpeakButton variant="pill" text={item.reading || item.term}>Word</SpeakButton>}
+                    <div className="mt-4.5 flex items-center justify-between gap-3">
+                      <div className="min-w-0">
+                        <p lang="ja" className="m-0 font-ja text-display tracking-wide">
+                          {item.term}
+                        </p>
+                        {item.kind === "word" && item.reading && item.reading !== item.term && (
+                          <p lang="ja" className="m-0 font-ja text-title tracking-wide text-ink2">
+                            {item.reading}
+                          </p>
+                        )}
+                      </div>
+                      {item.kind === "word" && <SpeakButton variant="round-sm" text={item.reading || item.term} label="Play the word" />}
+                    </div>
+                    <p className="m-0 mt-3 text-headline font-black">{item.meaning}</p>
                     {item.example && (
                       <>
-                        <div className="h-px w-full bg-line" />
-                        <p className="m-0 text-center font-card text-xl leading-[1.9]">
+                        <Rule className="mt-4 mb-2.5" />
+                        <p className="m-0 font-ja text-title leading-ja">
                           <Ruby text={item.example.ja} furigana={props.furigana} />
                         </p>
-                        <p className="m-0 text-center text-sm text-ink2">{item.example.en}</p>
+                        <p className="m-0 text-body text-ink2">{item.example.en}</p>
                       </>
                     )}
                   </>
+                ) : (
+                  <p lang="ja" className={`m-0 mt-8 text-center font-ja tracking-wide ${bigTerm(item.term)}`}>
+                    {item.term}
+                  </p>
                 )}
-              </article>
+              </NotebookCard>
 
-              {!shown ? (
-                <button
-                  type="button"
-                  onClick={() => setShown(true)}
-                  className="min-h-14 rounded-btn bg-accent text-[17px] font-bold text-on-accent"
-                >
-                  Show answer
-                </button>
-              ) : (
-                <>
-                  <p className="m-0 text-center text-[15px] font-semibold">Did you know it?</p>
-                  <div className="grid grid-cols-3 gap-2">
-                    {(
-                      [
-                        ["unknown", "Forgot", "new card", "text-again"],
-                        ["unsure", "Unsure", "goes first", "text-ink"],
-                        ["known", "Knew it", "long wait", "text-good"],
-                      ] as const
-                    ).map(([verdict, label, hint, color]) => (
-                      <button
-                        key={verdict}
-                        type="button"
-                        onClick={() => choose(verdict)}
-                        className="flex min-h-[72px] flex-col items-center justify-center gap-0.5 rounded-card border border-line bg-surface px-1 py-2 shadow-card"
-                      >
-                        <span className={`text-base font-bold ${color}`}>{label}</span>
-                        <span className="text-xs text-ink2">{hint}</span>
-                      </button>
-                    ))}
-                  </div>
-                </>
-              )}
-              <p className="m-0 text-center text-[13.5px]">
-                <span className="font-bold text-good">Knew it {tally.known}</span> ·{" "}
-                <span className="font-bold">Unsure {tally.unsure}</span> ·{" "}
-                <span className="font-bold text-again">Forgot {tally.unknown}</span>
-              </p>
-              <p className="m-0 mt-auto text-center text-[12.5px] leading-normal text-ink2">
-                About 1 in 5 “Knew it” answers gets a quick check question. Known words come back over the next 4 weeks.
-              </p>
+              <div className="mt-3 flex flex-col gap-3">
+                {!shown ? (
+                  <Button size="lg" full onClick={() => setShown(true)}>
+                    Show answer
+                  </Button>
+                ) : (
+                  <>
+                    <p className="m-0 text-center text-body font-bold text-ink2">Did you know it?</p>
+                    <VerdictButtons
+                      label="Did you know it?"
+                      onChoose={choose}
+                      options={[
+                        { value: "unknown", label: "Forgot", hint: "new card", fill: "again" },
+                        { value: "unsure", label: "Unsure", hint: "goes first", fill: "warn" },
+                        { value: "known", label: "Knew it", hint: "long wait", fill: "good" },
+                      ]}
+                    />
+                  </>
+                )}
+                <p className="m-0 text-center text-meta text-ink2">
+                  So far: <b className="font-black text-good">Knew it {tally.known}</b> · <b className="font-black text-ink">Unsure {tally.unsure}</b> ·{" "}
+                  <b className="font-black text-again">Forgot {tally.unknown}</b>
+                </p>
+              </div>
+              <div className="mt-auto pt-2">
+                <Note icon="info">About 1 in 5 “Knew it” answers gets a quick question to be sure. Known words come back over the next 4 weeks.</Note>
+              </div>
             </>
           ) : null}
         </div>
@@ -409,51 +406,35 @@ function SpotCheck({
 }) {
   const answered = spot.chosen !== null;
   return (
-    <div className="flex flex-col gap-2">
-      <p className="m-0 text-center text-[15px] font-semibold">
-        Quick check: what does{" "}
-        <span lang="ja" className="font-card">
+    <div className="mt-2 flex flex-col gap-3">
+      <p className="m-0 text-center text-body font-bold">
+        A quick question: what does{" "}
+        <span lang="ja" className="font-ja">
           {spot.item.term}
         </span>{" "}
         mean?
       </p>
-      {spot.options.map((option, i) => {
-        const right = i === spot.answerIndex;
-        const style = answered && right ? "border-2 border-good" : answered && i === spot.chosen ? "border-2 border-again" : "border border-line";
-        return (
-          <button
-            key={option}
-            type="button"
-            aria-pressed={spot.chosen === i}
-            disabled={answered}
-            onClick={() => onChoose(i)}
-            className={`flex min-h-14 items-center justify-between gap-2.5 rounded-btn bg-surface px-4 text-left ${style}`}
-          >
-            <span className="flex items-center gap-3">
-              <span className="text-[13px] font-bold text-ink2">{i + 1}</span>
-              <span className="text-base font-semibold">{option}</span>
-            </span>
-            {answered && right && (
-              <span className="inline-flex items-center gap-1 text-[13px] font-bold text-good">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d={CHECK} />
-                </svg>
-                Right
-              </span>
-            )}
-          </button>
-        );
-      })}
+      <div role="group" aria-label="Options" className="flex flex-col gap-3">
+        {spot.options.map((option, i) => {
+          const right = i === spot.answerIndex;
+          const state = !answered ? "idle" : right ? "right" : i === spot.chosen ? "wrong" : "quiet";
+          return (
+            <Choice key={option} n={i + 1} state={state} pressed={spot.chosen === i} disabled={answered} onClick={() => onChoose(i)}>
+              <span className="text-lead font-bold">{option}</span>
+            </Choice>
+          );
+        })}
+      </div>
       {answered && (
         <>
-          <p className="m-0 text-sm text-ink2">
+          <p className="m-0 text-body text-ink2" aria-live="polite">
             {spot.chosen === spot.answerIndex
               ? "Right. It stays known and comes back in a few weeks."
               : `It means “${spot.options[spot.answerIndex]}”, so it goes first in your new cards instead.`}
           </p>
-          <button type="button" onClick={onNext} className="min-h-[54px] rounded-btn bg-accent text-base font-bold text-on-accent">
+          <Button size="lg" full onClick={onNext} iconEnd="arrow-right">
             Next
-          </button>
+          </Button>
         </>
       )}
     </div>
@@ -471,85 +452,57 @@ function QuickCheckDone(props: {
   const { tally } = props;
   const total = tally.known + tally.unsure + tally.unknown;
   return (
-    <>
-      <header className="flex flex-col gap-0.5">
-        <p className="m-0 text-[13px] text-ink2">Quick check · day {props.day} of 3</p>
-        <h1 className="m-0 font-head text-[30px] leading-[1.15]">{props.finished ? "Done for today" : "Stopped for now"}</h1>
-      </header>
-      <section className="flex flex-col gap-3 rounded-card bg-surface p-4 shadow-card">
-        <div className="flex flex-wrap items-baseline gap-2.5">
-          <p className="m-0 font-head text-[40px] leading-none">{total}</p>
-          <p className="m-0 text-[15px] text-ink2">{total === 1 ? "item" : "items"} checked</p>
-        </div>
-        <div className="grid grid-cols-3 gap-2">
-          {(
-            [
-              ["Knew it", tally.known, "text-good"],
-              ["Unsure", tally.unsure, "text-ink"],
-              ["Forgot", tally.unknown, "text-again"],
-            ] as const
-          ).map(([label, n, color]) => (
-            <div key={label} className="flex flex-col items-center gap-0.5 rounded-[14px] bg-surface2 px-1.5 py-2.5">
-              <span className="text-xl font-bold">{n}</span>
-              <span className={`text-[12.5px] font-bold ${color}`}>{label}</span>
-            </div>
-          ))}
-        </div>
-        {total > 0 && <SaveState state={props.outbox} saving />}
-      </section>
-      <section className="flex flex-col gap-1.5 rounded-card bg-surface px-3.5 py-3 shadow-card">
-        <p className="m-0 text-sm">
-          What you knew comes back over the next 4 weeks, at most 30 a day. Unsure and forgotten items go first in your new
-          cards.
+    <DoneShell>
+      <DoneTop label="Close the quick check" />
+      <DoneHead title={props.finished ? "Done for today" : "Stopped for now"} tick={props.finished && total > 0}>
+        <p className="m-0 mt-0.5 text-body text-ink2">
+          Quick check · day {Math.min(props.day, 3)} of 3 · {total} {total === 1 ? "item" : "items"} checked
         </p>
-        {props.leftAfter > 0 && (
-          <p className="m-0 text-sm text-ink2">
-            {props.leftAfter} items are left for {props.day < 3 ? "the next days" : "another day"}.{" "}
-            <Link href="/quick-check?more=1" className="font-semibold text-ink">
-              Keep going now
-            </Link>
-          </p>
+        {total > 0 && (
+          <div className="mt-1">
+            <SaveState state={props.outbox} saving />
+          </div>
         )}
+      </DoneHead>
+      <section aria-label="How it went" className="mt-6.5 border-t-[1.5px] border-line pt-5">
+        <StatGrid cols={3}>
+          <StatTile value={tally.known} label="knew it" tone="good" size="lg" />
+          <StatTile value={tally.unsure} label="unsure" size="lg" />
+          <StatTile value={tally.unknown} label="forgot" tone="again" size="lg" />
+        </StatGrid>
       </section>
-      {props.outbox.offline && <NoSignal />}
-      {props.upNext && <UpNextCard upNext={props.upNext} offline={props.outbox.offline} />}
-      <Link href="/" className="inline-flex min-h-11 items-center self-center text-sm font-semibold text-ink2">
-        Back to Today
-      </Link>
-    </>
-  );
-}
-
-/**
- * The 3-second bar. The browser animates it (`transform`, off the main thread), so it slides
- * smoothly even while typing re-renders the card, and it turns amber once the 3 seconds are up.
- */
-function TimerFill({ startedAt, running }: { startedAt: number; running: boolean }) {
-  const fill = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const el = fill.current;
-    if (!el) return;
-    const elapsed = Math.max(0, Date.now() - startedAt);
-    const from = Math.min(1, elapsed / FAST_MS);
-    el.dataset.over = elapsed > FAST_MS ? "true" : "false";
-    if (!running || from >= 1) {
-      el.style.transform = `scaleX(${from})`;
-      return;
-    }
-    const slide = el.animate([{ transform: `scaleX(${from})` }, { transform: "scaleX(1)" }], {
-      duration: FAST_MS - elapsed,
-      easing: "linear",
-      fill: "forwards",
-    });
-    slide.onfinish = () => (el.dataset.over = "true");
-    return () => slide.cancel();
-  }, [startedAt, running]);
-  return (
-    <div
-      ref={fill}
-      data-over="false"
-      style={{ transform: "scaleX(0)" }}
-      className="h-full w-full origin-left bg-good data-[over=true]:bg-warn"
-    />
+      <div className="mt-5">
+        <Note icon="info">
+          <p className="m-0">What you knew comes back over the next 4 weeks, at most 30 a day. Unsure and forgotten items go first in your new cards.</p>
+          {props.leftAfter > 0 && (
+            <p className="m-0 text-ink2">
+              {props.leftAfter} items are left for {props.day < 3 ? "the next days" : "another day"}.
+            </p>
+          )}
+        </Note>
+      </div>
+      {props.leftAfter > 0 && (
+        <div className="mt-3 flex justify-center">
+          <Button variant="secondary" href="/quick-check?more=1" iconEnd="arrow-right">
+            Keep going now
+          </Button>
+        </div>
+      )}
+      {props.outbox.offline && (
+        <div className="mt-4">
+          <NoSignal />
+        </div>
+      )}
+      {props.upNext && (
+        <div className="mt-6">
+          <UpNextCard upNext={props.upNext} offline={props.outbox.offline} />
+        </div>
+      )}
+      <div className="mt-2 flex justify-center">
+        <Button variant="quiet" href="/">
+          Back to Today
+        </Button>
+      </div>
+    </DoneShell>
   );
 }

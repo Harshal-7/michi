@@ -3,12 +3,11 @@ import type { Metadata } from "next";
 import {
   ComingUpCard,
   DoneCards,
-  ExamCard,
   ExamDayCard,
-  PhaseCard,
+  GoalLine,
+  GoalStrip,
   ProgressCard,
   RegistrationCard,
-  StreakCard,
   TodayHeader,
   WeekCard,
 } from "@/components/today/cards";
@@ -22,9 +21,10 @@ import { todaysPlan } from "@/lib/planner/today-plan";
 export const metadata: Metadata = { title: "Today" };
 
 /**
- * Today (Today, TodayWeb, F_TodayDone; dark from the tokens). The phone shows the streak in the
- * header and the cards in one column; from 1024px the page widens to the laptop board's two
- * columns, with the streak, "Coming up" and the minutes column.
+ * Today (RF_Today, RF_TodayDark, RF_TodayDone, RF_TodayWeb): the date and the streak, the goal as one
+ * quiet line, then the plan: the next step on the farmhouse card and the rest as a checklist. Once the
+ * plan is all done, the hanamaru and today's sticker. From 1024px the goal becomes a strip and the
+ * level's progress and the week sit in a column on the right; on the phone they follow the plan.
  */
 export default async function TodayPage() {
   await requireSignedIn();
@@ -34,19 +34,15 @@ export default async function TodayPage() {
   const examDay = plan.mode === "exam_day";
 
   return (
-    <div data-wide className="flex flex-col gap-3 laptop:gap-5">
-      <TodayHeader view={view} kicker={formatLong(view.date)} showStreak={!finished} />
-
-      <div className={`grid grid-cols-2 gap-2.5 laptop:grid-cols-[repeat(auto-fit,minmax(220px,1fr))] laptop:gap-4 ${finished ? "max-laptop:hidden" : ""}`}>
-        <PhaseCard view={view} />
-        <ExamCard view={view} />
-        <StreakCard view={view} />
-      </div>
+    <div data-wide className="flex flex-col gap-2 laptop:gap-3.5">
+      <TodayHeader view={view} date={formatLong(view.date)} />
+      <GoalLine view={view} />
+      <GoalStrip view={view} />
 
       {view.registration && <RegistrationCard registration={view.registration} />}
 
-      <div className="flex flex-col gap-3 laptop:flex-row laptop:flex-wrap laptop:items-start laptop:gap-4">
-        <div className="flex min-w-0 flex-col gap-3 laptop:flex-[3_1_420px] laptop:gap-4">
+      <div className="mt-2 flex flex-col gap-6 laptop:mt-1 laptop:grid laptop:grid-cols-[minmax(0,1fr)_352px] laptop:items-start laptop:gap-8">
+        <div className="flex min-w-0 flex-col gap-4">
           {examDay ? (
             <ExamDayCard level={view.examToday ?? "other"} date={view.date} />
           ) : finished ? (
@@ -60,11 +56,11 @@ export default async function TodayPage() {
               done={view.status.done}
             />
           )}
-          <ComingUpCard view={view} />
         </div>
-        <div className="flex min-w-0 flex-col gap-3 laptop:flex-[2_1_300px] laptop:gap-4">
+        <div className="flex min-w-0 flex-col gap-5 laptop:pt-12.5">
           <ProgressCard view={view} />
           <WeekCard view={view} />
+          <ComingUpCard view={view} />
         </div>
       </div>
     </div>

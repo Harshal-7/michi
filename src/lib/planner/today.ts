@@ -15,6 +15,7 @@ import {
   phaseFor,
   type StudyDate,
   studyDayBounds,
+  weekday,
   weekOf,
 } from "@/lib/day";
 import type { ItemKind } from "@/lib/items/data";
@@ -63,6 +64,8 @@ export type TodayView = {
   /** "register in March", until registration comes round. */
   registerNote: string | null;
   streak: Streak;
+  /** Sunday to Saturday of this calendar week: whether each day counted for the streak (the sticker sheet). */
+  stickerDays: boolean[];
   level: Level;
   bars: Bar[];
   week: { label: string; value: string }[];
@@ -234,6 +237,8 @@ export async function loadToday(db: Db, plan: DayPlan): Promise<TodayView> {
   // Streak: today joins once its streak tasks are done.
   if (countsForStreak(status) && plan.tasks.length > 0) counted.counted.add(date);
   const streak = streakOf(counted.counted, counted.first ?? date, date);
+  const sunday = addDays(date, -weekday(date));
+  const stickerDays = Array.from({ length: 7 }, (_, i) => counted.counted.has(addDays(sunday, i)));
 
   const phase = phaseFor(date, settings);
   const level: Level = phase ? LEVEL_FOR_PHASE[phase.id] : "N5";
@@ -270,6 +275,7 @@ export async function loadToday(db: Db, plan: DayPlan): Promise<TodayView> {
     registration,
     registerNote: registerNote(settings, date, exam),
     streak,
+    stickerDays,
     level,
     bars,
     week: weekStats,
