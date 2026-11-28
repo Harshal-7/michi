@@ -1,57 +1,62 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { ICONS, MORE_NAV } from "@/components/shell/nav";
+import { MORE_NAV } from "@/components/shell/nav";
+import { Rabbit } from "@/components/ui/art/rabbit";
+import { Chip } from "@/components/ui/chip";
 import { Icon } from "@/components/ui/icon";
-import { PageHeader } from "@/components/ui/page";
+import { List, ListRow } from "@/components/ui/list-row";
+import { PageHeader } from "@/components/ui/page-header";
 import { SignOut } from "@/components/ui/sign-out";
 import { getDb } from "@/db/client";
 import { getSettings } from "@/db/settings";
 import { requireSignedIn } from "@/lib/auth/session";
-import { daysBetween, formatLong, formatShort, studyDate } from "@/lib/day";
+import { daysBetween, formatDayMonth, formatLong, studyDate } from "@/lib/day";
 
 export const metadata: Metadata = { title: "More" };
 
-/** F_More: the pages that aren't in the phone's bottom bar, and the quick add. */
+/** RF_More: the pages that aren't in the phone's bottom bar, the way into the games, and signing out. */
 export default async function MorePage() {
   const session = await requireSignedIn();
   const today = studyDate();
   const { workUnlock } = await getSettings(getDb());
-  const notes: Partial<Record<string, string>> = {
-    work:
-      daysBetween(today, workUnlock) > 0
-        ? `unlocks ${formatShort(workUnlock, today)}`
-        : undefined,
-  };
+  const workLocked = daysBetween(today, workUnlock) > 0;
   return (
-    <div className="flex min-h-[calc(100dvh-200px)] flex-col gap-3.5">
-      <PageHeader kicker={formatLong(today)} title="More" />
-      <nav aria-label="More pages" className="flex flex-col rounded-card bg-surface px-3.5 py-1 shadow-card">
-        {MORE_NAV.map((n, i) => (
-          <Link
-            key={n.key}
-            href={n.href}
-            className={`flex min-h-[60px] items-center gap-3.5 py-2 no-underline ${i > 0 ? "border-t border-line" : ""}`}
-          >
-            <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-surface2 text-ink">
-              <Icon d={n.icon} size={20} />
-            </span>
-            <span className="flex min-w-0 flex-auto flex-col gap-px">
-              <span className="text-[15px] font-semibold">{n.label}</span>
-              <span className="text-[12.5px] text-ink2">{notes[n.key] ?? n.note}</span>
-            </span>
-            <Icon d={ICONS.chevronRight} size={18} stroke={1.8} className="shrink-0 text-ink2" />
-          </Link>
-        ))}
+    <div className="flex flex-col gap-4">
+      <PageHeader title="More" sub={formatLong(today)} />
+      <nav aria-label="More pages">
+        <List>
+          {MORE_NAV.map((n) => {
+            const locked = n.key === "work" && workLocked;
+            const waiting = n.soon || locked;
+            return (
+              <ListRow
+                key={n.key}
+                href={waiting ? undefined : n.href}
+                lead={{ icon: n.icon, cover: n.cover, waiting }}
+                title={n.label}
+                meta={locked ? `${n.note} · opens ${formatDayMonth(workUnlock)}` : n.note}
+                trailing={n.soon ? <Chip kind="soon">Soon</Chip> : undefined}
+                disabled={waiting}
+              />
+            );
+          })}
+        </List>
       </nav>
       <Link
-        href="/add-word"
-        className="flex min-h-[50px] items-center justify-center gap-2 rounded-btn bg-accent text-[15px] font-bold text-on-accent no-underline"
+        href="/play"
+        className="mt-1 flex min-h-20 items-center gap-4 rounded-card bg-cover-cobalt p-2 pr-5 text-on-cobalt no-underline shadow-card transition-transform duration-120 active:translate-y-px"
       >
-        <Icon d={ICONS.plus} size={18} stroke={2} />
-        Add a word
+        <span className="grid size-17 shrink-0 place-items-center overflow-hidden rounded-btn-lg bg-cover-blue">
+          <Rabbit pose="cheering" size={64} />
+        </span>
+        <span className="flex min-w-0 flex-1 flex-col gap-0.5">
+          <span className="text-title font-black">Games</span>
+          <span className="text-meta">The kana game and leaderboards, open to friends</span>
+        </span>
+        <Icon name="arrow-right" size={24} />
       </Link>
-      <div className="mt-auto">
+      <div className="mt-2">
         <SignOut device={session.device} />
       </div>
     </div>
