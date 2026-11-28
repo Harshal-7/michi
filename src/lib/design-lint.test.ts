@@ -17,7 +17,7 @@
  * Files not yet restyled carry `// design-lint: legacy` and are skipped, but a marked file with no
  * violations fails, so the list only shrinks. A real exception takes
  * `// design-lint-ignore-next-line <rule>: <reason>` (or the same in a JSX comment) on the line above.
- * The last redesign PR sets LEGACY_ALLOWED = false.
+ * The redesign is done: LEGACY_ALLOWED is false, so a file carrying the marker fails.
  */
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
@@ -25,7 +25,7 @@ import { join, relative } from "node:path";
 import { describe, expect, it } from "vitest";
 
 /** While true, files marked `// design-lint: legacy` are skipped. */
-export const LEGACY_ALLOWED = true;
+export const LEGACY_ALLOWED = false;
 
 export const LEGACY_MARKER = "// design-lint: legacy";
 
@@ -206,7 +206,7 @@ describe("design lint", () => {
     expect(COLOURS.has("accent")).toBe(true);
     expect(COLOURS.has("cover-butter")).toBe(true);
     expect(TEXT_SIZES.has("body")).toBe(true);
-    expect(LEGACY_ALLOWED).toBe(true);
+    expect(LEGACY_ALLOWED).toBe(false);
   });
 
   it("catches each rule and honours ignore-next-line", () => {

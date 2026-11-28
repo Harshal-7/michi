@@ -174,15 +174,12 @@ export const ICON_NAMES = Object.keys(PATHS) as IconName[];
  */
 export function Icon({
   name,
-  d,
   size = 24,
   stroke = 2,
   className,
 }: {
   /** Which icon from the set. */
-  name?: IconName;
-  /** @deprecated A raw path from the old screens. Use `name`; 3b–3d remove the last of these. */
-  d?: string;
+  name: IconName;
   /** Width and height in px (24 nav and icon buttons, 20 in buttons, 16–18 inline). */
   size?: number;
   /** Stroke width; 2.3 for the current nav tab. */
@@ -202,7 +199,7 @@ export function Icon({
       strokeLinejoin="round"
       className={className ? `shrink-0 ${className}` : "shrink-0"}
     >
-      {name ? PATHS[name] : <path d={d} />}
+      {PATHS[name]}
     </svg>
   );
 }

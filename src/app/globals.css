@@ -85,10 +85,6 @@
   --seg-shadow: 0 1px 2px rgba(30, 42, 68, 0.12), 0 0 0 1.5px var(--line-strong);
   --grade-shadow: inset 0 -3px 0 rgba(30, 42, 68, 0.1);
 
-  /* Legacy names, kept until every screen is restyled (3d deletes them). */
-  --shadow: var(--shade);
-  --glow: rgba(42, 98, 216, 0.18);
-
   /* Each game's colour on /play (hueStyle() in src/lib/games/catalog.ts): a deep shade for text and a
      cover tint. theme.test.ts checks 4.5:1 both ways, on the page and cards, and ink on the tint. */
   --g-kana: #2453c4;
@@ -173,9 +169,6 @@
   --seg-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 0 1.5px var(--line-strong);
   --grade-shadow: inset 0 -3px 0 rgba(30, 42, 68, 0.1);
 
-  --shadow: var(--shade);
-  --glow: rgba(126, 170, 255, 0.18);
-
   --g-kana: #9dbeff;
   --g-kana-tint: #1e2b47;
   --g-vocab: #aab5ee;
@@ -205,11 +198,6 @@
   --dur-2: 200ms;
   --dur-3: 320ms;
   --dur-draw: 800ms;
-
-  /* Legacy names, kept until every screen is restyled (3d deletes them). */
-  --font-head: var(--font-ui);
-  --font-card: var(--font-ja);
-  --head-weight: 700;
 }
 
 /*
@@ -284,6 +272,8 @@
   --color-hue: var(--hue);
   --color-hue-tint: var(--hue-tint);
 
+  /* Only the redesign's shadows: Tailwind's own (shadow-md …) are switched off. */
+  --shadow-*: initial;
   --shadow-card: var(--card-shadow);
   --shadow-raised: var(--raised-shadow);
   --shadow-btn: var(--btn-shadow);
@@ -292,10 +282,6 @@
   --shadow-sticker: 0 0 0 3px var(--snow), 0 4px 10px -3px var(--shade);
   --shadow-field: 0 0 0 3px var(--accent-soft);
   --shadow-ring: var(--ring);
-  /* Legacy names (3d deletes them). */
-  --shadow-hero: 0 0 0 2px var(--accent), var(--card-shadow);
-  --shadow-nav: var(--raised-shadow);
-  --shadow-lift: var(--raised-shadow);
 }
 
 /* The scale. Variables are emitted, so components can read them too (var(--text-body)). */
@@ -307,7 +293,9 @@
 
   /* Type (px): 12 must-do and tab labels · 14 meta · 16 body · 18 large buttons, sub-heads · 22 card
      and section titles · 28 phone screen titles · 40 laptop titles, kana on a card's back · 72 card kana.
-     Nothing under 12; inputs 16. Weights: 500 body, 700 labels and buttons, 900 titles and numbers. */
+     Nothing under 12; inputs 16. Weights: 500 body, 700 labels and buttons, 900 titles and numbers.
+     Tailwind's own sizes (text-sm …) and radii (rounded-xl …) are switched off. */
+  --text-*: initial;
   --text-caption: 12px;
   --text-caption--line-height: 16px;
   --text-meta: 14px;
@@ -327,6 +315,7 @@
   /* Lines that carry furigana need room above them. */
   --leading-ja: 2;
 
+  --radius-*: initial;
   /* Radii: chips 7 with one index-tab corner, buttons 14 (large 16), cards 22, sheets 28. */
   --radius-chip: 7px 7px 7px 2px;
   --radius-box: 8px;
@@ -338,8 +327,6 @@
   --radius-grade: 16px 16px 16px 6px;
   --radius-card: 22px;
   --radius-sheet: 28px;
-  /* Legacy name (3d deletes it). */
-  --radius-game: 22px;
 
   /* Layers: nav < chip < session < sheet < banner. */
   --z-index-nav: 20;
@@ -407,16 +394,6 @@
 }
 @utility pb-safe {
   padding-bottom: env(safe-area-inset-bottom);
-}
-
-/* Legacy utilities (3d deletes them): headings and big Japanese on the old screens. */
-@utility font-head {
-  font-family: var(--font-ui);
-  font-weight: var(--head-weight);
-}
-@utility font-card {
-  font-family: var(--font-ja);
-  font-weight: 600;
 }
 
 @layer base {

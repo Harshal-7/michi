@@ -38,9 +38,9 @@ Harshal designs the look on a canvas first and approves it. Build what the canva
 3. **Tokens and parts only.** The design-lint test (`src/lib/design-lint.test.ts`) fails on hex colours, arbitrary
    sizes/radii/shadows (`text-[…]`, `rounded-[…]`, `shadow-[…]`), Tailwind's default sizes and palette, raw
    z-index, `var()` in a class, `data-look`, an accent button built by hand outside `ui/` ("use Button"), and colour
-   classes that aren't tokens. Real exceptions take `// design-lint-ignore-next-line <rule>: <reason>`. Files not
-   restyled yet carry `// design-lint: legacy` (skipped); remove it when you restyle a file, and the test fails if a
-   marked file is already clean. Art colours live in `src/components/ui/art/*.ts`, not in components.
+   classes that aren't tokens; the class rules read only class strings, never copy. Real exceptions take
+   `// design-lint-ignore-next-line <rule>: <reason>`. Every file is restyled, so there's no legacy skip any more,
+   and Tailwind's own text sizes, radii and shadows are switched off in globals.css. Art colours live in `src/components/ui/art/*.ts`, not in components.
 4. **Check before handing over** (section 7), and say what you couldn't check.
 
 ## 3. The system
