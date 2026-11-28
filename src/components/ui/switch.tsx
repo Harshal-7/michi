@@ -1,0 +1,51 @@
+"use client";
+
+/**
+ * The on/off switch: a 52 × 32 track (accent when on, a line-strong edge when off) with a sliding
+ * knob. A real checkbox with role="switch" underneath. Controlled (`checked` + `onChange`) or, in a
+ * form, uncontrolled (`defaultChecked` + `name`).
+ *
+ * @example <Switch label="Speech recognition" checked={on} onChange={setOn} />
+ */
+export function Switch({
+  checked,
+  defaultChecked,
+  onChange,
+  label,
+  name,
+  disabled,
+}: {
+  /** On or off, when you control it. */
+  checked?: boolean;
+  /** The first state, when a form controls it. */
+  defaultChecked?: boolean;
+  onChange?: (on: boolean) => void;
+  /** What it switches, read out (the visible label usually sits beside it). */
+  label: string;
+  /** Form field name. */
+  name?: string;
+  disabled?: boolean;
+}) {
+  return (
+    <span className="relative inline-block h-8 w-13 shrink-0">
+      <input
+        type="checkbox"
+        role="switch"
+        aria-label={label}
+        name={name}
+        {...(checked !== undefined ? { checked } : { defaultChecked })}
+        disabled={disabled}
+        onChange={(e) => onChange?.(e.target.checked)}
+        className="peer absolute inset-0 m-0 size-full cursor-pointer opacity-0 disabled:cursor-default"
+      />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 rounded-full border-[1.5px] border-line-strong bg-track transition-colors duration-200 peer-checked:border-accent peer-checked:bg-accent peer-focus-visible:outline-[2.5px] peer-focus-visible:outline-offset-[3px] peer-focus-visible:outline-focus peer-focus-visible:outline-solid peer-disabled:opacity-60"
+      />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute top-1 left-1 size-6 rounded-full bg-snow shadow-btn transition-transform duration-200 ease-calm peer-checked:translate-x-5"
+      />
+    </span>
+  );
+}
