@@ -1,11 +1,14 @@
 "use client";
-// design-lint: legacy
 
-import Link from "next/link";
 import { useEffect, useRef, useState, useTransition } from "react";
 
 import { logPractice } from "@/app/(app)/practice/minutes-actions";
+import { Banner } from "@/components/ui/banner";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Ruby } from "@/components/ui/ruby";
+import { Segmented } from "@/components/ui/segmented";
+import { SessionHeader } from "@/components/ui/session-header";
 import { Icon } from "@/components/ui/icon";
 import { ROUTES } from "@/lib/planner/day-plan";
 import { sessionMinutes } from "@/lib/speaking/minutes";
@@ -14,14 +17,10 @@ import { estimateMs, speakAndWait, stopSpeaking } from "@/lib/voice/speak-wait";
 import { spoken } from "@/lib/voice/spoken";
 import { pickVoice, type VoicePrefs } from "@/lib/voice/voices";
 
-const CROSS = "M6 6l12 12 M18 6L6 18";
-const PLAY = "M8 5.5v13l10-6.5z";
-const STOP = "M7 7h10v10H7z";
 const SPEEDS = [0.8, 1] as const;
 const PAUSES = [1, 1.5, 2] as const;
-const ROW = "flex min-h-14 items-center justify-between gap-3";
-const QUIET = "min-h-[50px] rounded-btn border border-line bg-surface text-[15px] font-semibold text-ink disabled:opacity-60";
-const SOLID = "min-h-[50px] rounded-btn border-none bg-accent text-[15px] font-bold text-on-accent disabled:opacity-60";
+const ROW = "flex min-h-15 items-center justify-between gap-3";
+const STEP = "grid size-11 place-items-center rounded-full border-[1.5px] border-line-strong bg-surface text-lead font-bold text-ink transition-colors duration-120 hover:bg-surface2 disabled:border-line disabled:text-ink3";
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -171,43 +170,38 @@ export function ShadowingPlayer({
   const noVoice = voiceState === "none" || voiceState === "unsupported";
 
   return (
-    <div className="flex flex-col gap-4">
-      <header className="flex flex-col gap-2.5">
-        <div className="flex items-center justify-between gap-2">
-          <Link href={backHref} aria-label="Stop shadowing" className="-ml-2.5 inline-flex size-11 items-center justify-center rounded-btn text-ink2">
-            <Icon d={CROSS} size={22} stroke={1.8} />
-          </Link>
-          <p className="m-0 text-[15px] font-bold">Shadowing</p>
-          <p className="m-0 text-right text-[13px] text-ink2">
-            {label} · {index + 1} of {sentences.length}
-          </p>
-        </div>
-        <div role="img" aria-label={`Sentence ${index + 1} of ${sentences.length}`} className="mx-1.5 h-1 overflow-hidden rounded-full bg-track">
-          <div className="h-full bg-accent" style={{ width: `${((index + 1) / sentences.length) * 100}%` }} />
-        </div>
-      </header>
+    <div className="mx-auto flex w-full max-w-160 flex-col gap-4">
+      <SessionHeader
+        title="Shadowing"
+        count={`${index + 1} of ${sentences.length}`}
+        close={{ label: "Stop shadowing", href: backHref }}
+        progress={{ value: index + 1, max: sentences.length, label: `Sentence ${index + 1} of ${sentences.length}` }}
+      />
+      <p className="m-0 -mt-1 text-center text-meta text-ink2">{label}</p>
 
-      <section className="flex flex-col items-center gap-3 rounded-card bg-surface px-[18px] pt-7 pb-[22px] text-center shadow-card">
-        <p className="m-0 font-card text-[30px] leading-[1.9]">
+      <Card aria-label="The sentence" className="flex flex-col items-center gap-3 px-5 pt-7 pb-6 text-center">
+        <p className="m-0 font-ja text-headline leading-ja font-semibold">
           <Ruby text={sentence.ja} furigana={furigana} />
         </p>
-        <p className="m-0 text-[15px] text-ink2">{sentence.en}</p>
-      </section>
+        <p className="m-0 text-body text-ink2">{sentence.en}</p>
+      </Card>
 
       {noVoice ? (
-        <p className="m-0 rounded-card border border-dashed border-line p-3 text-[13px] text-ink2">
-          {voiceState === "unsupported" ? (
-            "This browser can't speak. Chrome on Android and on the Mac can."
-          ) : (
-            <>
-              No Japanese voice on this device yet. Android Settings → Text-to-speech → Speech Services by Google → Install voice data →
-              Japanese.{" "}
-              <Link href={ROUTES.voice} className="font-semibold text-accent">
-                Japanese voice settings
-              </Link>
-            </>
-          )}
-        </p>
+        <Banner
+          kind="info"
+          title={voiceState === "unsupported" ? "This browser can't speak" : "No Japanese voice on this device yet"}
+          action={
+            voiceState === "unsupported" ? undefined : (
+              <Button variant="quiet" size="sm" href={ROUTES.voice}>
+                Voice settings
+              </Button>
+            )
+          }
+        >
+          {voiceState === "unsupported"
+            ? "Chrome on Android and on the Mac can."
+            : "Android Settings → Text-to-speech → Speech Services by Google → Install voice data → Japanese."}
+        </Banner>
       ) : (
         <div className="flex flex-col items-center gap-2">
           <button
@@ -215,136 +209,101 @@ export function ShadowingPlayer({
             aria-label={playing ? "Stop" : "Play the sentence"}
             disabled={voiceState === "checking" || logged !== null}
             onClick={() => (playing ? stop() : void play())}
-            className="inline-flex size-[88px] items-center justify-center rounded-full border-none bg-accent text-on-accent shadow-nav disabled:opacity-60"
+            className="grid size-22 place-items-center rounded-full border-2 border-accent bg-accent-soft text-accent transition-colors duration-120 hover:bg-cover-blue disabled:border-line disabled:bg-surface2 disabled:text-ink3"
           >
-            {playing ? (
-              <Icon d={STOP} size={32} stroke={2} />
-            ) : (
-              <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d={PLAY} />
-              </svg>
-            )}
+            {playing ? <Icon name="pause" size={36} /> : <Icon name="play" size={38} />}
           </button>
-          <p className="m-0 text-[13px] text-ink2" aria-live="polite">
+          <p className="m-0 text-meta text-ink2" aria-live="polite">
             Listen, then say it with the voice{playing && repeat > 0 ? ` · repeat ${repeat} of ${repeats}` : ""}
           </p>
-          {problem && <p className="m-0 text-[13px]">{problem}</p>}
+          {problem && <p className="m-0 text-meta font-bold text-again">{problem}</p>}
         </div>
       )}
 
-      <section className="flex flex-col rounded-card bg-surface px-4 py-1.5 shadow-card">
+      <Card padding="none" aria-label="Playback" className="flex flex-col px-5 py-1">
         <div className={ROW}>
-          <span className="text-sm font-semibold">Speed</span>
-          <Segmented label="Speed" options={SPEEDS.map((s) => ({ value: s, label: `${s}×` }))} value={speed} onChange={setSpeed} />
+          <span className="text-body font-bold">Speed</span>
+          <Segmented
+            label="Speed"
+            name="speed"
+            className="w-40"
+            options={SPEEDS.map((v) => ({ value: String(v), label: `${v}×` }))}
+            value={String(speed)}
+            onChange={(v) => setSpeed(Number(v) as (typeof SPEEDS)[number])}
+          />
         </div>
-        <div className={`${ROW} border-t border-line`}>
-          <span className="text-sm font-semibold">Repeats</span>
-          <div className="flex items-center gap-1.5">
-            <button
-              type="button"
-              aria-label="Fewer repeats"
-              disabled={repeats <= 1}
-              onClick={() => setRepeats((n) => Math.max(1, n - 1))}
-              className="size-11 rounded-full border border-line bg-transparent text-lg text-ink disabled:opacity-40"
-            >
+        <div className={`${ROW} border-t-[1.5px] border-line`}>
+          <span className="text-body font-bold">Repeats</span>
+          <div className="flex items-center gap-2">
+            <button type="button" aria-label="Fewer repeats" disabled={repeats <= 1} onClick={() => setRepeats((n) => Math.max(1, n - 1))} className={STEP}>
               −
             </button>
-            <span className="min-w-6 text-center text-base font-bold" aria-live="polite">
+            <span className="min-w-6 text-center text-lead font-black" aria-live="polite">
               {repeats}
             </span>
-            <button
-              type="button"
-              aria-label="More repeats"
-              disabled={repeats >= 5}
-              onClick={() => setRepeats((n) => Math.min(5, n + 1))}
-              className="size-11 rounded-full border border-line bg-transparent text-lg text-ink disabled:opacity-40"
-            >
+            <button type="button" aria-label="More repeats" disabled={repeats >= 5} onClick={() => setRepeats((n) => Math.min(5, n + 1))} className={STEP}>
               +
             </button>
           </div>
         </div>
-        <div className={`${ROW} border-t border-line`}>
+        <div className={`${ROW} border-t-[1.5px] border-line`}>
           <span className="flex flex-col">
-            <span className="text-sm font-semibold">Pause between</span>
-            <span className="text-xs text-ink2">times the sentence</span>
+            <span className="text-body font-bold">Pause between</span>
+            <span className="text-meta text-ink2">times the sentence</span>
           </span>
-          <Segmented label="Pause between repeats" options={PAUSES.map((p) => ({ value: p, label: `${p}×` }))} value={pause} onChange={setPause} />
+          <Segmented
+            label="Pause between repeats"
+            name="pause"
+            className="w-48"
+            options={PAUSES.map((v) => ({ value: String(v), label: `${v}×` }))}
+            value={String(pause)}
+            onChange={(v) => setPause(Number(v) as (typeof PAUSES)[number])}
+          />
         </div>
-      </section>
+      </Card>
 
       <div className="mt-auto flex flex-col gap-2.5">
-        <p className="m-0 text-center text-[13px] text-ink2" aria-live="polite">
+        <p className="m-0 text-center text-meta text-ink2" aria-live="polite">
           {logged !== null ? `Logged ${logged} min. ` : ""}
           {minutesToday} min today · logged by itself
         </p>
         {error && (
-          <p role="alert" className="m-0 text-center text-[13px]">
+          <p role="alert" className="m-0 text-center text-meta font-bold text-again">
             {error}
           </p>
         )}
         {logged !== null ? (
           <div className="grid grid-cols-2 gap-2.5">
-            <button type="button" onClick={again} className={QUIET}>
+            <Button variant="secondary" size="lg" full onClick={again}>
               Again
-            </button>
-            <Link href={backHref} className={`${SOLID} flex items-center justify-center no-underline`}>
+            </Button>
+            <Button size="lg" full href={backHref}>
               {backHref === ROUTES.shadowing ? "Pick another set" : "Back to speaking"}
-            </Link>
+            </Button>
           </div>
         ) : (
           <div className="grid grid-cols-2 gap-2.5">
-            <button type="button" disabled={index === 0} onClick={() => go(index - 1)} className={QUIET}>
+            <Button variant="secondary" size="lg" full icon="chevron-left" disabled={index === 0} onClick={() => go(index - 1)}>
               Previous
-            </button>
+            </Button>
             {last ? (
               startedAt === null ? (
-                <Link href={backHref} className={`${SOLID} flex items-center justify-center no-underline`}>
+                <Button size="lg" full href={backHref}>
                   Done
-                </Link>
+                </Button>
               ) : (
-                <button type="button" disabled={saving} onClick={done} className={SOLID}>
+                <Button size="lg" full disabled={saving} loading={saving} onClick={done}>
                   Done · logs {minutes} min
-                </button>
+                </Button>
               )
             ) : (
-              <button type="button" onClick={() => go(index + 1)} className={SOLID}>
+              <Button size="lg" full iconEnd="chevron-right" onClick={() => go(index + 1)}>
                 Next
-              </button>
+              </Button>
             )}
           </div>
         )}
       </div>
-    </div>
-  );
-}
-
-/** A segmented control like Settings → Theme: the picked option raised on the surface. */
-function Segmented<T extends number>({
-  label,
-  options,
-  value,
-  onChange,
-}: {
-  label: string;
-  options: { value: T; label: string }[];
-  value: T;
-  onChange: (v: T) => void;
-}) {
-  return (
-    <div role="group" aria-label={label} className="flex gap-1 rounded-btn bg-surface2 p-1">
-      {options.map((o) => (
-        <button
-          key={o.value}
-          type="button"
-          aria-pressed={o.value === value}
-          onClick={() => onChange(o.value)}
-          className={`min-h-10 min-w-[52px] rounded-btn border-none px-2 text-sm ${
-            o.value === value ? "bg-surface font-bold text-ink shadow-card" : "bg-transparent font-medium text-ink2"
-          }`}
-        >
-          {o.label}
-        </button>
-      ))}
     </div>
   );
 }
