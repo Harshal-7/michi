@@ -1,10 +1,9 @@
-// design-lint: legacy
 import { eq } from "drizzle-orm";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { DeckCards, PaceForm } from "@/components/cards/deck-detail";
+import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import { PageHeader } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
@@ -32,35 +31,18 @@ export default async function DeckPage({ params }: PageProps<"/decks/[id]">) {
   const on = isDeckOn(deck, today);
 
   return (
-    <div
-      data-wide
-      className="mx-auto flex w-full max-w-[720px] flex-col gap-3 wide:grid wide:max-w-none wide:grid-cols-[340px_minmax(0,1fr)] wide:items-start wide:gap-x-8"
-    >
+    <div data-wide className="flex w-full flex-col gap-4 wide:grid wide:grid-cols-[360px_minmax(0,1fr)] wide:items-start wide:gap-x-10">
       {/* Wide: the deck, its review button and its pace stay in view on the left; the cards fill the right. */}
-      <div className="flex flex-col gap-3 wide:sticky wide:top-7">
-      <PageHeader
-        kicker={
-          <Link href="/decks" className="text-ink2">
-            Decks
-          </Link>
-        }
-        title={deck.name}
-        sub={`${cards.length} cards · ${started} started${suspended ? ` · ${suspended} suspended` : ""}${on ? "" : " · off"}`}
-      />
-      <div className="flex flex-wrap gap-2">
-        <Link
-          href={`/review?deck=${id}`}
-          className="inline-flex min-h-11 items-center rounded-btn border border-line bg-surface px-4 text-sm font-semibold no-underline"
-        >
+      <div className="flex flex-col gap-4 wide:sticky wide:top-8">
+        <PageHeader
+          back={{ href: "/decks", label: "Decks" }}
+          title={deck.name}
+          sub={`${cards.length} cards · ${started} started${suspended ? ` · ${suspended} suspended` : ""}${on ? "" : " · off"}`}
+        />
+        <Button variant="secondary" icon="review" href={`/review?deck=${id}`} className="self-start">
           Review this deck
-        </Link>
-      </div>
-      <PaceForm
-        deckId={id}
-        mode={deck.paceMode}
-        perDay={deck.pacePerDay}
-        deadline={deadline ? formatShort(deadline, today) : null}
-      />
+        </Button>
+        <PaceForm deckId={id} mode={deck.paceMode} perDay={deck.pacePerDay} deadline={deadline ? formatShort(deadline, today) : null} />
       </div>
       {cards.length ? <DeckCards cards={cards} /> : <EmptyState>This deck has no cards yet.</EmptyState>}
     </div>

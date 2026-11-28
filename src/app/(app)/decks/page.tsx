@@ -1,4 +1,3 @@
-// design-lint: legacy
 import type { Metadata } from "next";
 
 import { DeckList } from "@/components/cards/deck-list";
@@ -24,6 +23,7 @@ const UNITS: Record<string, [string, string]> = {
 /** "80 kanji · about 2 new a day", "668 words · off, switches on Fri 1 Jan" (F_Decks). */
 function deckMeta(d: DeckSummary, plan: DayPlan | null, today: StudyDate): string {
   const [one, many] = UNITS[d.kind ?? "word"] ?? ["card", "cards"];
+  // design-lint-ignore-next-line unknown-colour: "fill-in" is the English word, not a class
   const size = `${d.items.toLocaleString("en-IN")} ${d.items === 1 ? one : many}${d.kind === "grammar" ? " · fill-in cards" : ""}`;
   let state: string;
   if (!d.on) {
@@ -46,8 +46,8 @@ export default async function DecksPage() {
   const [decks, plan, settings] = await Promise.all([listDecks(db, today), readDayPlan(db, today), getSettings(db)]);
   const workLocked = daysBetween(today, settings.workUnlock) > 0;
   return (
-    <div data-wide className="mx-auto flex w-full max-w-[720px] flex-col gap-3 laptop:max-w-none">
-      <PageHeader kicker="New cards come from the lists that are on" title="Decks" />
+    <div data-wide className="flex w-full flex-col gap-3">
+      <PageHeader title="Decks" sub="New cards come from the lists that are on." />
       <DeckList
         rows={decks.map((d) => ({ id: d.id, name: d.name, on: d.on, meta: deckMeta(d, plan, today) }))}
         workLockedUntil={workLocked ? formatShort(settings.workUnlock, today) : null}

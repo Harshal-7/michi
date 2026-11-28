@@ -1,8 +1,8 @@
 "use client";
-// design-lint: legacy
 
 import { useSyncExternalStore } from "react";
 
+import { Banner } from "@/components/ui/banner";
 import { getVocabQueue } from "@/lib/vocab/queue";
 import type { Direction } from "@/lib/vocab/types";
 
@@ -14,8 +14,10 @@ export function WaitingLine() {
   const state = useSyncExternalStore(queue.subscribe, queue.getState, queue.getState);
   if (state.waiting === 0 || !state.stuck) return null;
   return (
-    <p role="status" className="m-0 self-start rounded-full border border-warn bg-surface px-3 py-1.5 text-[12.5px] font-bold text-warn">
-      {state.waiting} {state.waiting === 1 ? "answer" : "answers"} waiting to save{state.offline ? " · retrying" : ""}
-    </p>
+    <div role="status">
+      <Banner kind="waiting" title={`${state.waiting} ${state.waiting === 1 ? "answer" : "answers"} waiting to save`}>
+        {state.offline ? "Retrying when you're back online." : "They save by themselves; keep going."}
+      </Banner>
+    </div>
   );
 }

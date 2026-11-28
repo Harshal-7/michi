@@ -1,11 +1,15 @@
 "use client";
-// design-lint: legacy
 
 import Link from "next/link";
 import { type FormEvent, type ReactNode, useState, useTransition } from "react";
 
-import { ICONS } from "@/components/shell/nav";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Field } from "@/components/ui/field";
 import { Icon } from "@/components/ui/icon";
+import { SectionTitle } from "@/components/ui/page-header";
+import { Segmented } from "@/components/ui/segmented";
+import { Switch } from "@/components/ui/switch";
 import { daysBetween, formatDayMonth, formatShort, PHASE_NAMES, phaseFor, type StudyDate } from "@/lib/day";
 import type { Settings, SettingsPatch } from "@/lib/settings/schema";
 import { DARK_MODE } from "@/lib/theme";
@@ -29,12 +33,8 @@ type EditorKey =
   | "exceptions"
   | "furigana";
 
-const card = "rounded-card bg-surface shadow-card";
-const groupTitle = "m-0 text-xs font-bold uppercase tracking-[0.04em] text-ink2";
-const field = "min-h-11 w-full rounded-xl border border-line bg-page px-3 text-[15px] font-normal focus-visible:border-accent";
-const label = "flex flex-col gap-1.5 text-[12.5px] font-bold";
-const quiet = "inline-flex min-h-11 items-center justify-center rounded-btn border border-line bg-surface px-4 text-sm font-semibold no-underline";
-const solid = "inline-flex min-h-11 items-center justify-center rounded-btn border-none bg-accent px-5 text-sm font-bold text-on-accent disabled:opacity-60";
+/** A row in "Look and voice" and "Data": the name, its value, and a chevron or a switch. */
+const ROW = "flex min-h-13 w-full items-center gap-2.5 border-b-[1.5px] border-line text-left text-ink no-underline";
 
 const WEEKDAYS = [
   [1, "Mon"],
@@ -64,7 +64,7 @@ const hostName = (url: string | null) => {
   }
 };
 
-/** F_Settings: tiles that open an editor in place, the voice-and-look rows, and data. */
+/** RF_Settings: the look-and-voice rows, then tiles that open an editor in place, and data. */
 export function SettingsEditor({
   settings,
   exceptions,
@@ -108,12 +108,12 @@ export function SettingsEditor({
   const status = (
     <>
       {error && (
-        <p role="alert" className="m-0 text-[13px] font-semibold text-again">
+        <p role="alert" className="m-0 text-meta font-bold text-again">
           {error}
         </p>
       )}
       {saved && !error && (
-        <p role="status" className="m-0 text-[13px] font-semibold text-good">
+        <p role="status" className="m-0 text-meta font-bold text-good">
           {saved}
         </p>
       )}
@@ -160,17 +160,14 @@ export function SettingsEditor({
         hint={
           <>
             Your city&apos;s JLPT host runs registration. Find it on the{" "}
-            <a href="https://www.jlpt.jp/e/application/overseas_list.html" target="_blank" rel="noreferrer" className="text-accent">
+            <a href="https://www.jlpt.jp/e/application/overseas_list.html" target="_blank" rel="noreferrer" className="font-bold text-accent">
               official list of test sites
             </a>
             .
           </>
         }
       >
-        <label className={`${label} col-span-2`}>
-          Host&apos;s website
-          <input type="url" name="hostUrl" defaultValue={settings.registration.hostUrl ?? ""} placeholder="https://" className={field} />
-        </label>
+        <Field label="Host's website" type="url" name="hostUrl" defaultValue={settings.registration.hostUrl ?? ""} placeholder="https://" className="col-span-2" />
         <DateField name="n4" label="N4 reminder from" value={settings.registration.N4.remindOn} />
         <DateField name="n3" label="N3 reminder from" value={settings.registration.N3.remindOn} />
         <Check name="n4done" label="Registered for N4" checked={settings.registration.N4.registered} />
@@ -214,9 +211,9 @@ export function SettingsEditor({
           })
         }
       >
-        <fieldset className="col-span-2 m-0 flex flex-col gap-1.5 border-none p-0">
-          <legend className="mb-1.5 p-0 text-[12.5px] font-bold">Class days</legend>
-          <div className="flex flex-wrap gap-1.5">
+        <fieldset className="col-span-2 m-0 flex flex-col border-none p-0">
+          <legend className="mb-1.5 p-0 text-meta font-bold">Class days</legend>
+          <div className="flex flex-wrap gap-2">
             {WEEKDAYS.map(([n, name]) => (
               <Chip key={n} name="days" value={String(n)} label={name} checked={settings.classes.days.includes(n)} />
             ))}
@@ -252,13 +249,10 @@ export function SettingsEditor({
         pending={pending}
         onCancel={() => toggle("reminder")}
         onSubmit={(f) => save({ reminder: { enabled: f.get("enabled") === "on", time: f.get("time") as string } })}
-        hint="Sent in the evening only if Reviews or the daily quiz are still open. The reminder itself arrives in round 4."
+        hint="Meant for evenings when Reviews or the daily quiz are still open. Michi doesn’t send reminders yet; the time is kept for when it does."
       >
         <Check name="enabled" label="Remind me" checked={settings.reminder.enabled} />
-        <label className={label}>
-          Time
-          <input type="time" name="time" required defaultValue={settings.reminder.time} className={field} />
-        </label>
+        <Field label="Time" type="time" name="time" required defaultValue={settings.reminder.time} />
       </Form>
     ),
     exceptions: (
@@ -266,20 +260,21 @@ export function SettingsEditor({
         {upcoming.length > 0 && (
           <ul className="m-0 flex list-none flex-col p-0">
             {upcoming.map((e) => (
-              <li key={e.date} className="flex min-h-11 items-center gap-2 border-b border-line text-sm">
-                <span className="w-[92px] shrink-0 font-semibold">{short(e.date)}</span>
-                <span className="flex-auto text-ink2">
+              <li key={e.date} className="flex min-h-12 items-center gap-2.5 border-b-[1.5px] border-line text-body">
+                <span className="w-24 shrink-0 font-bold">{short(e.date)}</span>
+                <span className="flex-auto text-meta text-ink2">
                   {EXCEPTION_NAMES[e.kind]}
                   {e.note && ` · ${e.note}`}
                 </span>
-                <button
-                  type="button"
+                <Button
+                  variant="text"
+                  size="sm"
                   disabled={pending}
                   onClick={() => run(() => removeException(e.date), "Removed. Today's plan is up to date.")}
-                  className="min-h-11 border-none bg-transparent px-1 text-[13px] font-semibold text-ink2 underline underline-offset-2"
+                  className="px-2"
                 >
                   Remove
-                </button>
+                </Button>
               </li>
             ))}
           </ul>
@@ -301,20 +296,14 @@ export function SettingsEditor({
           hint="A rest day has only a few reviews and no new items; it doesn't count against the pace."
         >
           <DateField name="date" label="Date" value={today} />
-          <label className={label}>
-            Kind of day
-            <select name="kind" defaultValue="rest" className={field}>
-              {Object.entries(EXCEPTION_NAMES).map(([value, text]) => (
-                <option key={value} value={value}>
-                  {text}
-                </option>
-              ))}
-            </select>
-          </label>
-          <label className={`${label} col-span-2`}>
-            Note <span className="sr-only">(optional)</span>
-            <input type="text" name="note" maxLength={200} placeholder="optional, like “Diwali”" className={field} />
-          </label>
+          <Field as="select" label="Kind of day" name="kind" defaultValue="rest">
+            {Object.entries(EXCEPTION_NAMES).map(([value, text]) => (
+              <option key={value} value={value}>
+                {text}
+              </option>
+            ))}
+          </Field>
+          <Field label="Note (optional)" type="text" name="note" maxLength={200} placeholder="like “Diwali”" className="col-span-2" />
         </Form>
       </div>
     ),
@@ -333,6 +322,25 @@ export function SettingsEditor({
   };
 
   const groups: { title: string; tiles: { key: EditorKey; label: string; value: string; ask?: boolean; id?: string }[] }[] = [
+    {
+      title: "Study",
+      tiles: [
+        {
+          key: "classes",
+          label: `Classes · from ${formatDayMonth(settings.classes.startsOn)}`,
+          value:
+            settings.classes.days.length === 0
+              ? "None"
+              : `${WEEKDAYS.filter(([n]) => settings.classes.days.includes(n))
+                  .map(([, name]) => name)
+                  .join(" + ")} · ${hours(settings.classes.minutes)}`,
+        },
+        { key: "budgets", label: "Weekday / weekend", value: `${hours(settings.budgets.weekdayMinutes)} / ${hours(settings.budgets.weekendMinutes)}` },
+        { key: "recall", label: "Target recall", value: `${Math.round(settings.fsrs.targetRecall * 100)}%` },
+        { key: "reminder", label: "Reminder · if work is left", value: settings.reminder.enabled ? time12(settings.reminder.time) : "Off" },
+        { key: "exceptions", label: "Days off and exceptions", value: upcoming.length ? `${upcoming.length} coming up` : "None set" },
+      ],
+    },
     {
       title: "Dates",
       tiles: [
@@ -358,35 +366,58 @@ export function SettingsEditor({
         { key: "early", label: "N3 early start · Work", value: `${formatDayMonth(settings.n3EarlyStart)} · ${formatDayMonth(settings.workUnlock)}` },
       ],
     },
-    {
-      title: "Study",
-      tiles: [
-        {
-          key: "classes",
-          label: `Classes · from ${formatDayMonth(settings.classes.startsOn)}`,
-          value:
-            settings.classes.days.length === 0
-              ? "None"
-              : `${WEEKDAYS.filter(([n]) => settings.classes.days.includes(n))
-                  .map(([, name]) => name)
-                  .join(" + ")} · ${hours(settings.classes.minutes)}`,
-        },
-        { key: "budgets", label: "Weekday / weekend", value: `${hours(settings.budgets.weekdayMinutes)} / ${hours(settings.budgets.weekendMinutes)}` },
-        { key: "recall", label: "Target recall", value: `${Math.round(settings.fsrs.targetRecall * 100)}%` },
-        { key: "reminder", label: "Reminder · if work is left", value: settings.reminder.enabled ? time12(settings.reminder.time) : "Off" },
-        { key: "exceptions", label: "Days off and exceptions", value: upcoming.length ? `${upcoming.length} coming up` : "None set" },
-      ],
-    },
   ];
   const groupOf = (key: EditorKey) => groups.find((g) => g.tiles.some((t) => t.key === key))?.title;
 
   return (
-    <div className="flex flex-col gap-3 wide:grid wide:grid-cols-2 wide:items-start wide:gap-5">
-      {/* Wide: dates and study on the left; voice, look and data on the right. */}
-      <div className="flex flex-col gap-3 wide:gap-5">
+    <div className="flex flex-col gap-2">
+      <section aria-labelledby="look-and-voice" className="flex flex-col">
+        <SectionTitle id="look-and-voice">Look and voice</SectionTitle>
+        {/* Hidden if dark mode is ever switched off again (src/lib/theme.ts). */}
+        {DARK_MODE && <ThemeChoice saved={settings.theme} pending={pending} onSave={(theme) => save({ theme }, "Saved.")} />}
+        <div className="border-b-[1.5px] border-line">
+          <button
+            type="button"
+            aria-expanded={open === "furigana"}
+            aria-controls="edit-furigana"
+            onClick={() => toggle("furigana")}
+            className={`${ROW} border-b-0 bg-transparent p-0`}
+          >
+            <span className="flex-auto text-body font-bold">Furigana</span>
+            <span className="text-meta text-ink2">{settings.furigana ? "Above my level" : "Off"}</span>
+            <Icon name="chevron-right" size={20} className={`text-ink3 transition-transform duration-200 ${open === "furigana" ? "rotate-90" : ""}`} />
+          </button>
+          {open === "furigana" && (
+            <div id="edit-furigana" className="flex flex-col gap-2 pb-3.5">
+              {editors.furigana}
+              {status}
+            </div>
+          )}
+        </div>
+        <Link href="/settings/voice" className={ROW}>
+          <span className="flex-auto text-body font-bold">Japanese voice</span>
+          <span className="text-meta text-ink2">
+            {settings.voice.name ? <span lang="ja">{settings.voice.name}</span> : "Device default"} · {settings.voice.rate.toFixed(1)}×
+          </span>
+          <Icon name="chevron-right" size={20} className="text-ink3" />
+        </Link>
+        <div className={ROW}>
+          <span className="flex-auto text-body font-bold">
+            Speech recognition
+          </span>
+          <Switch
+            label="Speech recognition"
+            defaultChecked={settings.speechRecognition}
+            disabled={pending}
+            onChange={(on) => save({ speechRecognition: on }, "Saved.")}
+          />
+        </div>
+        {!open && <div className="pt-2 empty:hidden">{status}</div>}
+      </section>
+
       {groups.map((g) => (
-        <section key={g.title} className={`${card} flex flex-col gap-2 px-3 pt-2.5 pb-3`}>
-          <h2 className={`${groupTitle} mx-0.5`}>{g.title}</h2>
+        <section key={g.title} aria-labelledby={`group-${g.title}`} className="mt-3 flex flex-col gap-1">
+          <SectionTitle id={`group-${g.title}`}>{g.title}</SectionTitle>
           <div className="grid grid-cols-2 gap-2">
             {g.tiles.map((t) => (
               <button
@@ -396,102 +427,35 @@ export function SettingsEditor({
                 aria-expanded={open === t.key}
                 aria-controls={`edit-${t.key}`}
                 onClick={() => toggle(t.key)}
-                className={`flex min-h-[52px] flex-col justify-center gap-0.5 rounded-[14px] border-none px-2.5 py-[7px] text-left ${
-                  open === t.key ? "bg-accent-soft" : "bg-surface2"
+                className={`flex min-h-15 min-w-0 flex-col justify-center gap-0.5 rounded-btn border-[1.5px] px-3.5 py-2 text-left transition-colors duration-120 ${
+                  open === t.key ? "border-accent bg-accent-soft" : "border-transparent bg-surface2 hover:border-line-strong"
                 }`}
               >
-                <span className="text-[11.5px] text-ink2">{t.label}</span>
-                <span className={`text-sm font-bold ${t.ask ? "text-accent" : ""}`}>{t.value}</span>
+                <span className="text-meta text-ink2">{t.label}</span>
+                <span className={`text-body font-bold ${t.ask ? "text-accent" : "text-ink"}`}>{t.value}</span>
               </button>
             ))}
           </div>
           {open && groupOf(open) === g.title && (
-            <div id={`edit-${open}`} className="mt-1 flex flex-col gap-3 border-t border-line pt-3">
+            <Card id={`edit-${open}`} className="mt-2 flex flex-col gap-3">
               {editors[open]}
               {status}
-            </div>
+            </Card>
           )}
         </section>
       ))}
-      </div>
 
-      <div className="flex flex-col gap-3 wide:gap-5">
-      <section className={`${card} flex flex-col px-3.5 pt-2.5 pb-1.5`}>
-        <h2 className={`${groupTitle} mb-0.5`}>Voice and look</h2>
-        {/* Hidden if dark mode is ever switched off again (src/lib/theme.ts). */}
-        {DARK_MODE && <ThemeChoice saved={settings.theme} pending={pending} onSave={(theme) => save({ theme }, "Saved.")} />}
-        <Link href="/settings/voice" className="flex min-h-11 items-center gap-2.5 no-underline">
-          <span className="flex min-w-0 flex-auto flex-col">
-            <span className="text-sm font-semibold">Japanese voice</span>
-            <span className="text-xs text-ink2">
-              {settings.voice.name ? <span lang="ja">{settings.voice.name}</span> : "Device default"} · {settings.voice.rate.toFixed(1)}×
-            </span>
+      <section aria-labelledby="data" className="mt-3 flex flex-col">
+        <SectionTitle id="data">Data</SectionTitle>
+        <Link href="/settings/flags" className={`${ROW} border-b-0`}>
+          <span className="flex flex-auto flex-col">
+            <span className="text-body font-bold">Flagged items</span>
+            <span className="text-meta text-ink2">Cards you flagged as reading wrong</span>
           </span>
-          <Icon d={ICONS.chevronRight} size={16} stroke={1.8} className="text-ink2" />
+          <Icon name="chevron-right" size={20} className="text-ink3" />
         </Link>
-        <label className="flex min-h-11 cursor-pointer items-center gap-2.5 border-t border-line">
-          <span className="flex-auto text-sm font-semibold">Speech recognition</span>
-          <span className="relative h-7 w-[46px] shrink-0">
-            <input
-              type="checkbox"
-              role="switch"
-              defaultChecked={settings.speechRecognition}
-              disabled={pending}
-              onChange={(e) => save({ speechRecognition: e.target.checked }, "Saved.")}
-              className="peer absolute inset-0 m-0 size-full cursor-pointer opacity-0"
-            />
-            <span aria-hidden="true" className="pointer-events-none absolute inset-0 rounded-full bg-track transition-colors peer-checked:bg-accent peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-accent" />
-            <span aria-hidden="true" className="pointer-events-none absolute top-[3px] left-[3px] size-[22px] rounded-full bg-surface shadow-card transition-transform peer-checked:translate-x-[18px]" />
-          </span>
-        </label>
-        {(
-          [
-            ["furigana", "Furigana", settings.furigana ? "Above my level" : "Off"],
-          ] as const
-        ).map(([key, name, value]) => (
-          <div key={key} className="border-t border-line">
-            <button
-              type="button"
-              aria-expanded={open === key}
-              aria-controls={`edit-${key}`}
-              onClick={() => toggle(key)}
-              className="flex min-h-11 w-full items-center gap-2.5 border-none bg-transparent p-0 text-left"
-            >
-              <span className="flex-auto text-sm font-semibold">{name}</span>
-              <span className="text-[13px] text-ink2">{value}</span>
-              <Icon d={ICONS.chevronRight} size={16} stroke={1.8} className={`text-ink2 transition-transform ${open === key ? "rotate-90" : ""}`} />
-            </button>
-            {open === key && (
-              <div id={`edit-${key}`} className="flex flex-col gap-2 pb-3">
-                {editors[key]}
-                {status}
-              </div>
-            )}
-          </div>
-        ))}
       </section>
-
-      <section className={`${card} flex flex-col gap-1.5 px-3.5 pt-2.5 pb-1.5`}>
-        <h2 className={groupTitle}>Data</h2>
-        <div className="grid grid-cols-2 gap-2">
-          {["Export everything", "Import a backup"].map((t) => (
-            <button key={t} type="button" disabled className="flex min-h-11 flex-col items-center justify-center rounded-btn border border-line bg-surface2 text-[13px] font-semibold opacity-70">
-              {t}
-              <span className="text-[11px] font-medium text-ink2">coming in round 3</span>
-            </button>
-          ))}
-        </div>
-        <Link href="/settings/flags" className="flex min-h-11 items-center gap-2.5 border-t border-line no-underline">
-          <span className="flex-auto text-sm font-semibold">Flagged items</span>
-          <Icon d={ICONS.chevronRight} size={16} stroke={1.8} className="text-ink2" />
-        </Link>
-        <div className="flex min-h-11 items-center gap-2.5 border-t border-line">
-          <span className="flex-auto text-sm font-semibold">About and credits</span>
-          <span className="text-[13px] text-ink2">coming in round 3</span>
-        </div>
-      </section>
-      {footer}
-      </div>
+      {footer && <div className="mt-4">{footer}</div>}
     </div>
   );
 }
@@ -516,52 +480,43 @@ function Form({
     onSubmit(new FormData(e.currentTarget), e.currentTarget);
   };
   return (
-    <form onSubmit={submit} className="flex flex-col gap-3">
-      <div className="grid grid-cols-2 gap-3">{children}</div>
-      {hint && <p className="m-0 text-[12.5px] leading-normal text-ink2">{hint}</p>}
-      <div className="flex flex-wrap gap-2">
-        <button type="submit" disabled={pending} className={solid}>
+    <form onSubmit={submit} className="flex flex-col gap-3.5">
+      <div className="grid grid-cols-1 gap-3.5 min-[420px]:grid-cols-2">{children}</div>
+      {hint && <p className="m-0 text-meta text-ink2">{hint}</p>}
+      <div className="flex flex-wrap items-center gap-2">
+        <Button type="submit" disabled={pending} loading={pending}>
           {pending ? "Saving…" : submitLabel}
-        </button>
-        <button type="button" onClick={onCancel} className={quiet}>
+        </Button>
+        <Button variant="text" onClick={onCancel} className="px-3">
           Close
-        </button>
+        </Button>
       </div>
     </form>
   );
 }
 
 function DateField({ name, label: text, value }: { name: string; label: string; value: string }) {
-  return (
-    <label className={label}>
-      {text}
-      <input type="date" name={name} required defaultValue={value} className={field} />
-    </label>
-  );
+  return <Field label={text} type="date" name={name} required defaultValue={value} />;
 }
 
 function NumberField({ name, label: text, value, min, max }: { name: string; label: string; value: number; min: number; max: number }) {
-  return (
-    <label className={label}>
-      {text}
-      <input type="number" name={name} inputMode="numeric" required min={min} max={max} defaultValue={value} className={field} />
-    </label>
-  );
+  return <Field label={text} type="number" name={name} inputMode="numeric" required min={min} max={max} defaultValue={value} />;
 }
 
+/** An on/off in a form: the label, then a switch that submits "on" under `name`. */
 function Check({ name, label: text, checked }: { name: string; label: string; checked: boolean }) {
   return (
-    <label className="flex min-h-11 items-center gap-2.5 text-[13.5px] font-semibold">
-      <input type="checkbox" name={name} defaultChecked={checked} className="size-[22px] accent-[var(--accent)]" />
+    <label className="flex min-h-13 items-center justify-between gap-3 self-end text-body font-bold">
       {text}
+      <Switch name={name} label={text} defaultChecked={checked} />
     </label>
   );
 }
 
-/** A chip that's a checkbox (F_Parts chips: picked is ink on page). */
+/** A day chip that's a checkbox (ChoiceChips' look, uncontrolled for the form). */
 function Chip({ name, value, label: text, checked }: { name: string; value: string; label: string; checked: boolean }) {
   return (
-    <label className="relative inline-flex min-h-11 cursor-pointer items-center rounded-full border border-line px-3.5 text-[13px] has-[:checked]:border-ink has-[:checked]:bg-ink has-[:checked]:font-bold has-[:checked]:text-page has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-accent">
+    <label className="relative inline-flex h-11 cursor-pointer items-center rounded-pill border-[1.5px] border-line-strong bg-surface px-4 text-body font-bold text-ink transition-colors duration-120 hover:bg-surface2 has-checked:border-cover-blue has-checked:bg-cover-blue has-checked:font-black has-checked:text-on-cover has-focus-visible:outline-[2.5px] has-focus-visible:outline-offset-[3px] has-focus-visible:outline-focus has-focus-visible:outline-solid">
       <input type="checkbox" name={name} value={value} defaultChecked={checked} className="sr-only" />
       {text}
     </label>
@@ -584,25 +539,17 @@ function Choice({
   hint?: string;
 }) {
   return (
-    <fieldset className="m-0 flex flex-col gap-2 border-none p-0" disabled={pending}>
-      <legend className="sr-only">{name}</legend>
-      {/* A segmented control, like the grammar status (F_GrammarPoint): equal segments in one track. */}
-      <div
-        className="grid max-w-[420px] gap-1 rounded-btn bg-surface2 p-1"
-        style={{ gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))` }}
-      >
-        {options.map(([v, text]) => (
-          <label
-            key={v}
-            className="relative inline-flex min-h-10 cursor-pointer items-center justify-center rounded-btn px-3 text-[13.5px] font-medium text-ink2 has-[:checked]:bg-surface has-[:checked]:font-bold has-[:checked]:text-ink has-[:checked]:shadow-card has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-accent"
-          >
-            <input type="radio" name={name} value={v} defaultChecked={v === value} onChange={() => onChoose(v)} className="sr-only" />
-            {text}
-          </label>
-        ))}
-      </div>
-      {hint && <p className="m-0 text-[12.5px] text-ink2">{hint}</p>}
-    </fieldset>
+    <div className="flex flex-col gap-2">
+      <Segmented
+        label={name}
+        name={name}
+        defaultValue={value}
+        disabled={pending}
+        onChange={onChoose}
+        options={options.map(([v, text]) => ({ value: v, label: text }))}
+      />
+      {hint && <p className="m-0 text-meta text-ink2">{hint}</p>}
+    </div>
   );
 }
 
