@@ -33,7 +33,7 @@ export default async function MorePage() {
               <ListRow
                 key={n.key}
                 href={waiting ? undefined : n.href}
-                lead={{ icon: n.icon, cover: n.cover, waiting }}
+                lead={{ icon: locked ? "lock" : n.icon, cover: n.cover, waiting }}
                 title={n.label}
                 meta={locked ? `${n.note} · opens ${formatDayMonth(workUnlock)}` : n.note}
                 trailing={n.soon ? <Chip kind="soon">Soon</Chip> : undefined}
