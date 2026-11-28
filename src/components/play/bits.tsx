@@ -1,49 +1,14 @@
-"use client";
-// design-lint: legacy
-
-/** Small parts the play pages share: the seal, avatars, the podium, places and icons. */
+/** Small parts the play pages share: the seal, avatars, places and board rows (RF_PlayHub, RF_PlayLeaderboard). */
 import type { Place } from "@/lib/games/leaderboard";
 import { hueStyle, playerHue } from "@/lib/games/catalog";
 
-export const PLAY_ICONS = {
-  play: "M8 5.5v13l11-6.5z",
-  home: "M4 11l8-7 8 7 M6 9.5V20h12V9.5",
-  back: "M15 5l-7 7 7 7",
-  close: "M6 6l12 12 M18 6L6 18",
-  check: "M5 12.5l4.5 4.5L19 7.5",
-  sound: "M4 9.5h3.5L12 5.5v13l-4.5-4H4z M15.5 9a4 4 0 0 1 0 6",
-  clock: "M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18z M12 7.5V12l3 2",
-  noSignal: "M2 8.5a15 15 0 0 1 20 0 M5.5 12a10 10 0 0 1 13 0 M9 15.5a5 5 0 0 1 6 0 M12 19h.01 M3 3l18 18",
-  signOut: "M15 4h4v16h-4 M10 8l-4 4 4 4 M6 12h10",
-  bin: "M4 7h16 M9 7V4h6v3 M6 7l1 13h10l1-13",
-} as const;
-
-/** A stroked icon in the play pages' weight. */
-export function PlayIcon({ d, size = 20, stroke = 1.9, className }: { d: string; size?: number; stroke?: number; className?: string }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={stroke} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className={className}>
-      <path d={d} />
-    </svg>
-  );
-}
-
-/** The filled triangle on Play buttons. */
-export function PlayTriangle({ size = 18 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d={PLAY_ICONS.play} />
-    </svg>
-  );
-}
-
-/** Michi's seal: 道 on the accent, turned a little. */
-export function Seal({ size = 36 }: { size?: number }) {
+/** Michi's seal: 道 on a cover-blue disc with a snow rim. */
+export function Seal() {
   return (
     <span
       lang="ja"
       aria-hidden="true"
-      style={{ width: size, height: size, fontSize: Math.round(size * 0.58), borderRadius: Math.round(size * 0.3) }}
-      className="inline-flex shrink-0 -rotate-5 items-center justify-center bg-accent font-card font-black text-on-accent"
+      className="inline-grid size-9 shrink-0 place-items-center rounded-full bg-cover-blue font-ja text-lead leading-none text-on-cover shadow-sticker"
     >
       道
     </span>
@@ -52,14 +17,16 @@ export function Seal({ size = 36 }: { size?: number }) {
 
 const isJapanese = (s: string) => /[^\x00-\x7f]/.test(s);
 
-/** A player's initial in their colour (src/lib/games/catalog.ts, playerHue). */
-export function Avatar({ name, size = 34, className = "" }: { name: string; size?: number; className?: string }) {
+/** A player's initial in their colour (src/lib/games/catalog.ts, playerHue): 32 on the tint in pills, 88 on the deep shade on their page. */
+export function Avatar({ name, size = "sm", className = "" }: { name: string; size?: "sm" | "lg"; className?: string }) {
   return (
     <span
       aria-hidden="true"
       lang={isJapanese(name) ? "ja" : undefined}
-      style={{ ...hueStyle(playerHue(name)), width: size, height: size, fontSize: Math.round(size * 0.42) }}
-      className={`inline-flex shrink-0 items-center justify-center rounded-full bg-hue-tint font-black text-hue ${className}`}
+      style={hueStyle(playerHue(name))}
+      className={`inline-grid shrink-0 place-items-center rounded-full leading-none font-black ${
+        size === "lg" ? "size-22 bg-hue text-display text-hue-tint shadow-sticker" : "size-8 bg-hue-tint text-meta text-hue"
+      } ${className}`}
     >
       {[...name][0]?.toUpperCase()}
     </span>
@@ -86,72 +53,121 @@ export function ordinal(n: number): string {
 export const placeLine = (p: Place, unit: string) =>
   `${p.firstTryRight} of ${p.cards}${p.meanMs === null ? "" : ` · ${(p.meanMs / 1000).toFixed(1)} s a ${unit}`}`;
 
-export type PodiumState = "ready" | "loading" | "empty" | "stale";
+/** How a board looks while it loads, with nobody on it, or with no signal (dimmed). */
+export type BoardState = "ready" | "loading" | "empty" | "stale";
 
-const PLACES = ["1st", "2nd", "3rd"];
-const HEIGHT = { sm: [84, 64, 52], lg: [118, 92, 76] } as const;
+const MEDAL = ["bg-cover-butter", "bg-cover-blue", "bg-cover-mint"];
 
-/**
- * The top 3 on a podium: 2nd, 1st, 3rd from the left, 1st on the accent. Loading shows grey
- * blocks; a board with nobody on it yet shows three dashed "Open" places; `stale` dims it when
- * there's no signal.
- */
-export function Podium({ top, size = "sm", state = "ready" }: { top: readonly Place[]; size?: "sm" | "lg"; state?: PodiumState }) {
-  const lg = size === "lg";
-  const slots = [0, 1, 2].map((i) => (state === "ready" || state === "stale" ? (top[i] ?? null) : null));
-  const label = state === "loading" ? "Top 3, loading" : state === "empty" ? "Top 3: no scores yet" : "Top 3";
+/** The place: a cover-coloured sticker for the top 3 (butter, blue, mint), a plain number after. */
+export function PlaceBadge({ place }: { place: number }) {
+  const medal = MEDAL[place - 1];
+  return medal ? (
+    <span className={`inline-grid size-8 shrink-0 place-items-center rounded-full text-meta leading-none font-black text-on-cover tabular-nums shadow-sticker ${medal}`}>{place}</span>
+  ) : (
+    <span className="inline-grid w-8 shrink-0 place-items-center text-meta font-bold text-ink2 tabular-nums">{place}</span>
+  );
+}
+
+/** A row on a board: the place, the name (with its line unless `dense`), the score; yours on accent-soft. */
+export function BoardRowView({ p, unit, dense = false }: { p: Place; unit: string; dense?: boolean }) {
   return (
-    <ol aria-label={label} aria-busy={state === "loading" || undefined} className={`m-0 grid list-none grid-cols-3 items-end gap-2 p-0 ${state === "stale" ? "opacity-50" : ""}`}>
-      {slots.map((p, i) => {
-        const avatar = lg ? (i === 0 ? 64 : 52) : i === 0 ? 46 : 38;
-        const order = ["order-2", "order-1", "order-3"][i];
-        const block = state === "loading" ? "bg-surface2" : !p ? "border-2 border-dashed border-ink2/50 text-ink2" : i === 0 ? "bg-accent text-on-accent" : "bg-surface2 text-ink";
-        return (
-          <li key={i} className={`flex min-w-0 flex-col items-center gap-1.5 ${order}`}>
-            {p ? (
-              <Avatar name={p.name} size={avatar} />
-            ) : (
-              <span
-                aria-hidden="true"
-                style={{ width: avatar, height: avatar }}
-                className={`inline-flex items-center justify-center rounded-full font-black text-ink2 ${state === "loading" ? "bg-surface2" : "border-2 border-dashed border-ink2/50"}`}
-              >
-                {state === "loading" ? "" : "?"}
-              </span>
-            )}
-            <span className={`max-w-full truncate font-bold ${lg ? "text-sm" : "text-[12.5px]"} ${state === "loading" ? "h-[1.2em] w-12 rounded-md bg-surface2" : ""} ${!p ? "text-ink2" : ""}`}>
-              {p ? <PlayerName name={p.name} /> : state === "loading" ? "" : "Open"}
-              {p?.you && <span className="font-medium text-ink2"> · you</span>}
-            </span>
-            <span style={{ height: HEIGHT[size][i] }} className={`flex w-full flex-col items-center gap-0.5 rounded-t-[14px] rounded-b-[4px] pt-2 ${block}`}>
-              {state !== "loading" && (
-                <>
-                  <span className={`leading-none font-black ${lg ? "text-2xl" : "text-[19px]"}`}>{p ? p.score : "–"}</span>
-                  <span className="text-xs font-bold">{PLACES[i]}</span>
-                </>
-              )}
-            </span>
-          </li>
-        );
-      })}
+    <li className={`flex items-center gap-3 rounded-btn pr-3.5 pl-2 ${dense ? "min-h-11" : "min-h-13.5"} ${p.you ? "bg-accent-soft" : ""}`}>
+      <PlaceBadge place={p.place} />
+      <span className="flex min-w-0 flex-auto flex-col">
+        <span className="truncate text-body font-bold">
+          <PlayerName name={p.name} />
+          {p.you && <span className="font-medium text-ink2"> · you</span>}
+        </span>
+        {!dense && <span className="text-caption text-ink2">{placeLine(p, unit)}</span>}
+      </span>
+      <span className={`font-black tabular-nums ${dense ? "text-lead" : "text-title"}`}>{p.score}</span>
+    </li>
+  );
+}
+
+/** Grey rows in the shape of a board, while it loads. */
+export function BoardSkeleton({ rows = 3 }: { rows?: number }) {
+  return (
+    <div role="status" aria-label="Loading the board" className="flex flex-col gap-0.5">
+      {Array.from({ length: rows }, (_, i) => (
+        <span key={i} className="flex min-h-11 items-center gap-3 pr-3.5 pl-2">
+          <span className="size-8 shrink-0 animate-pulse-soft rounded-full bg-surface2" />
+          <span className="h-3 w-2/5 animate-pulse-soft rounded-full bg-surface2" />
+          <span className="ml-auto h-3 w-7 animate-pulse-soft rounded-full bg-surface2" />
+        </span>
+      ))}
+    </div>
+  );
+}
+
+/** A board's places as a list: the top 3 on the hub and the done screen, the top 20 on the leaderboards. */
+export function BoardRows({
+  places,
+  unit,
+  dense = false,
+  state = "ready",
+  label,
+}: {
+  places: readonly Place[];
+  unit: string;
+  dense?: boolean;
+  state?: BoardState;
+  label: string;
+}) {
+  if (state === "loading") return <BoardSkeleton rows={dense ? 3 : 6} />;
+  return (
+    <ol aria-label={label} className={`m-0 flex list-none flex-col gap-0.5 p-0 ${state === "stale" ? "opacity-50" : ""}`}>
+      {places.map((p) => (
+        <BoardRowView key={`${p.place}-${p.name}`} p={p} unit={unit} dense={dense} />
+      ))}
     </ol>
   );
 }
 
-/** A row on a board: place, avatar, name with its line, score. */
-export function BoardRowView({ p, unit, dense = false }: { p: Place; unit: string; dense?: boolean }) {
+/** A key on the keyboard, for the "Enter starts" hints. */
+export function Kbd({ children }: { children: string }) {
   return (
-    <li className={`flex items-center gap-3 rounded-2xl px-3 ${dense ? "min-h-11" : "min-h-[54px]"} ${p.you ? "bg-accent-soft" : ""}`}>
-      <span className="w-6 text-[13px] font-black text-ink2 tabular-nums">{p.place}</span>
-      <Avatar name={p.name} size={dense ? 30 : 34} />
-      <span className="flex min-w-0 flex-auto flex-col">
-        <span className="truncate text-[15px] font-bold">
-          <PlayerName name={p.name} />
-          {p.you && <span className="font-medium text-ink2"> · you</span>}
-        </span>
-        {!dense && <span className="text-xs text-ink2">{placeLine(p, unit)}</span>}
-      </span>
-      <span className={`font-black tabular-nums ${dense ? "text-base" : "text-lg"}`}>{p.score}</span>
-    </li>
+    <kbd className="inline-flex h-6.5 items-center rounded-box border-[1.5px] border-line-strong bg-surface px-2 font-ui text-caption leading-none font-bold text-ink shadow-btn">
+      {children}
+    </kbd>
   );
 }
+
+/**
+ * A game's glyph drawn big (the hero's seal, the tiles): SVG text, so it scales with `size` the way
+ * the board draws it, in the pencil hand. Decoration; the game's name says it in words.
+ */
+export function GameGlyph({ glyph, size, className }: { glyph: string; size: number; className?: string }) {
+  return (
+    <svg aria-hidden="true" width={size} height={size} viewBox="0 0 100 100" className={`block shrink-0 overflow-visible ${className ?? ""}`}>
+      <text x="50" y="52" textAnchor="middle" dominantBaseline="central" fontSize={glyph.length > 1 ? 56 : 78} fill="currentColor" lang="ja" className="font-ja">
+        {glyph}
+      </text>
+    </svg>
+  );
+}
+
+/** Faint ruled lines across a cobalt band (the hub's hero, a game's start), like the inside of a notebook cover. */
+export function PaperRules({ height }: { height: number }) {
+  return (
+    <svg aria-hidden="true" width="100%" height={height} className="absolute inset-x-0 top-0 text-on-cobalt">
+      {Array.from({ length: Math.floor(height / 52) }, (_, i) => (
+        <path key={i} d={`M0 ${52 * (i + 1)}H4000`} stroke="currentColor" strokeOpacity="0.07" strokeWidth="1.5" />
+      ))}
+    </svg>
+  );
+}
+
+/** Each game's glyph colour on its tile: the cover's deeper tone (RF_PlayHub), as static classes for Tailwind. */
+const GAME_TONE: Record<string, string> = {
+  kana: "text-tone-cobalt",
+  vocab: "text-tone-peri",
+  forms: "text-tone-mint",
+  particles: "text-tone-lilac",
+  numbers: "text-tone-butter",
+  sounds: "text-tone-aqua",
+  listen: "text-tone-pink",
+};
+
+/** The text class for a game's big glyph on its own colour; unknown games use their hue. */
+export const gameTone = (slug: string) => GAME_TONE[slug] ?? "text-hue";

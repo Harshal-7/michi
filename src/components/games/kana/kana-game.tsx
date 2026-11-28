@@ -1,9 +1,9 @@
 "use client";
-// design-lint: legacy
 
 import { useEffect, useMemo, useState } from "react";
 
 import { SessionLoading, useInBrowser } from "@/components/cards/loading";
+import { Card } from "@/components/ui/card";
 import { VoiceProvider } from "@/components/ui/voice";
 import { ALL_KANA, kanaFor } from "@/lib/games/kana/content";
 import { KANA_SETUPS, parseSetup, setupKey, weakestKey } from "@/lib/games/kana/setups";
@@ -178,22 +178,20 @@ function Game() {
 
 function Missed({ missed, mode, stopped }: { missed: PlayResult["cards"]; mode: Mode; stopped: boolean }) {
   if (missed.length === 0) {
-    return stopped ? null : (
-      <section className="rounded-game bg-surface px-4 py-3 shadow-card">
-        <p className="m-0 text-sm font-bold">Every kana right on the first try.</p>
-      </section>
-    );
+    return stopped ? null : <p className="m-0 text-center text-body font-bold text-good">Every kana right on the first try.</p>;
   }
   return (
-    <section className="flex flex-col gap-2.5 rounded-game bg-surface p-4 shadow-card">
-      <h2 className="m-0 text-base font-black">Missed on the first try</h2>
+    <Card aria-labelledby="missed" className="flex flex-col gap-2.5">
+      <h2 id="missed" className="m-0 text-lead font-black">
+        Missed on the first try
+      </h2>
       <ul className="m-0 flex list-none flex-wrap gap-1.5 p-0">
         {missed.map((c) => (
-          <li key={c.kana.key} className="inline-flex items-baseline gap-1.5 rounded-full border border-again px-2.5 py-[5px] text-[13px] text-again">
-            <span lang="ja" className="font-card text-base font-semibold">
+          <li key={c.kana.key} className="inline-flex min-h-8 items-baseline gap-1.5 rounded-pill border-[1.5px] border-again px-2.5 py-1 text-meta text-again">
+            <span lang="ja" className="font-ja text-body">
               {c.kana.kana}
             </span>
-            <span>{c.kana.romaji}</span>
+            <span className="font-bold">{c.kana.romaji}</span>
             {c.first?.given && (
               <span className="text-ink2">
                 you {mode === "read" ? "typed " : "picked "}
@@ -203,8 +201,8 @@ function Missed({ missed, mode, stopped }: { missed: PlayResult["cards"]; mode: 
           </li>
         ))}
       </ul>
-      <p className="m-0 text-[12.5px] text-ink2">They count towards your weakest kana, which you can practise from the start screen.</p>
-    </section>
+      <p className="m-0 text-meta text-ink2">They count towards your weakest kana, which you can practise from the start screen.</p>
+    </Card>
   );
 }
 

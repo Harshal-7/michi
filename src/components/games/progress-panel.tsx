@@ -1,5 +1,4 @@
 "use client";
-// design-lint: legacy
 
 import { EmptyState } from "@/components/ui/empty-state";
 import { type PastGame, progressOf, type Window } from "@/lib/games/progress";
@@ -30,7 +29,7 @@ export function ProgressPanel({
   scoreNote: React.ReactNode;
 }) {
   const p = progressOf(runs);
-  const note = <p className="m-0 text-[12.5px] leading-normal text-ink2">{scoreNote}</p>;
+  const note = <p className="m-0 text-meta text-ink2">{scoreNote}</p>;
   if (p.games === 0) {
     return (
       <div className="flex flex-col gap-3">
@@ -44,28 +43,28 @@ export function ProgressPanel({
   }
   return (
     <div className="flex flex-col gap-3">
-      <section aria-label={`${label} progress`} className="flex flex-col gap-3 rounded-card bg-surface p-4 shadow-card">
+      <section aria-label={`${label} progress`} className="flex flex-col gap-3 rounded-card border-[1.5px] border-line bg-surface p-4 shadow-card">
         <div className="flex items-baseline justify-between gap-2">
-          <h2 className="m-0 text-[15px] font-bold">{label} · your games</h2>
-          <p className="m-0 text-[12.5px] text-ink2">{p.games === 1 ? "1 game" : `${p.games} games`}</p>
+          <h2 className="m-0 text-lead font-black">{label} · your games</h2>
+          <p className="m-0 text-meta text-ink2">{p.games === 1 ? "1 game" : `${p.games} games`}</p>
         </div>
-        <div className="grid grid-cols-2 gap-2 wide:grid-cols-4">
+        <dl className="m-0 grid grid-cols-2 gap-2 wide:grid-cols-4">
           <Tile label="Best score" value={String(p.best?.score ?? "–")} />
           <Tile label="Last game" value={String(p.last?.score ?? "–")} />
           <Tile label="Right first time" value={p.recent ? `${p.recent.accuracy}%` : "–"} note={compareAccuracy(p.recent, p.before)} />
           <Tile label={`Per ${unit}`} value={p.recent?.meanMs ? formatSeconds(p.recent.meanMs) : "–"} note={compareSpeed(p.recent, p.before)} />
-        </div>
-        <p className="m-0 text-[12.5px] text-ink2">
+        </dl>
+        <p className="m-0 text-meta text-ink2">
           Right first time and speed are over your last {p.recent?.games === 1 ? "game" : `${p.recent?.games} games`}
           {p.before ? `, against the ${p.before.games === 1 ? "game" : `${p.before.games}`} before.` : "."}
         </p>
         <div className="flex flex-col gap-1.5">
-          <h3 className="m-0 text-[13px] font-bold">Score per game</h3>
+          <h3 className="m-0 text-meta font-bold">Score per game</h3>
           <ScoreChart games={p.chart} />
         </div>
         <div className="grid gap-3 wide:grid-cols-2">
           <div className="flex flex-col gap-1.5">
-            <h3 className="m-0 text-[13px] font-bold">Right first time</h3>
+            <h3 className="m-0 text-meta font-bold">Right first time</h3>
             <LineChart
               games={p.chart}
               value={(g) => (g.cards ? Math.round((g.firstTryRight / g.cards) * 100) : null)}
@@ -76,7 +75,7 @@ export function ProgressPanel({
             />
           </div>
           <div className="flex flex-col gap-1.5">
-            <h3 className="m-0 text-[13px] font-bold">Seconds per {unit}</h3>
+            <h3 className="m-0 text-meta font-bold">Seconds per {unit}</h3>
             <LineChart
               games={p.chart}
               value={(g) => (g.meanMs === null ? null : g.meanMs / 1000)}
@@ -87,24 +86,24 @@ export function ProgressPanel({
             />
           </div>
         </div>
-        <p className="m-0 text-xs text-ink2">Oldest on the left, your last game on the right. Lower seconds is faster.</p>
+        <p className="m-0 text-caption text-ink2">Oldest on the left, your last game on the right. Lower seconds is faster.</p>
       </section>
 
-      <section aria-label={`Weakest ${unit}`} className="flex flex-col gap-2.5 rounded-card bg-surface p-4 shadow-card">
-        <h2 className="m-0 text-[15px] font-bold">Weakest {unit}</h2>
+      <section aria-label={`Weakest ${unit}`} className="flex flex-col gap-2.5 rounded-card border-[1.5px] border-line bg-surface p-4 shadow-card">
+        <h2 className="m-0 text-lead font-black">Weakest {unit}</h2>
         {weak.length === 0 ? (
-          <p className="m-0 text-[13px] text-ink2">None stand out: everything you&apos;ve played lately was right first time and quick.</p>
+          <p className="m-0 text-meta text-ink2">None stand out: everything you&apos;ve played lately was right first time and quick.</p>
         ) : (
           <>
-            <p className="m-0 text-[12.5px] text-ink2">Missed or slow over their last few {label} answers, weakest first.</p>
+            <p className="m-0 text-meta text-ink2">Missed or slow over their last few {label} answers, weakest first.</p>
             <ul className="m-0 grid list-none grid-cols-3 gap-2 p-0 min-[420px]:grid-cols-4 wide:grid-cols-6">
               {weak.map((w) => (
-                <li key={w.key} className="flex flex-col items-center gap-0.5 rounded-[14px] bg-surface2 px-1 py-2">
-                  <span lang="ja" className="font-card text-[24px] leading-[1.2] font-semibold">
+                <li key={w.key} className="flex flex-col items-center gap-0.5 rounded-btn bg-surface2 px-1 py-2">
+                  <span lang="ja" className="font-ja text-title">
                     {w.face}
                   </span>
-                  <span className="text-[12.5px] font-semibold">{w.answer}</span>
-                  <span className="text-[11px] text-ink2">{w.right === w.seen ? "right, but slow" : `${w.right} of ${w.seen} right`}</span>
+                  <span className="text-meta font-bold">{w.answer}</span>
+                  <span className="text-caption text-ink2">{w.right === w.seen ? "right, but slow" : `${w.right} of ${w.seen} right`}</span>
                 </li>
               ))}
             </ul>
