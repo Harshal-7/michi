@@ -1,43 +1,38 @@
 "use client";
-// design-lint: legacy
 
 import { useActionState } from "react";
 
+import { Rabbit } from "@/components/ui/art/rabbit";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Field } from "@/components/ui/field";
 import { signIn, type SignInState } from "@/lib/auth/actions";
 
+/** RF_SignIn's card: the passphrase, Sign in, and the plain rules, with the rabbit waving from its corner. */
 export function SignInForm({ next, disabled }: { next: string; disabled: boolean }) {
   const [state, action, pending] = useActionState<SignInState, FormData>(signIn, {});
   return (
-    <form action={action} className="flex flex-col gap-3.5 rounded-card bg-surface p-5 shadow-card">
-      <input type="hidden" name="next" value={next} />
-      <label className="flex flex-col gap-1.5 text-[13px] font-bold">
-        Passphrase
-        <input
+    <Card as="div" padding="lg" className="relative pt-5 pb-4.5">
+      <Rabbit pose="waving" size={72} className="absolute -top-12.5 right-3.5" />
+      <form action={action} className="flex flex-col gap-3.5">
+        <input type="hidden" name="next" value={next} />
+        <Field
+          label="Passphrase"
           type="password"
           name="passphrase"
           autoComplete="current-password"
           required
           autoFocus
-          aria-invalid={state.error ? true : undefined}
-          aria-describedby={state.error ? "sign-in-error" : undefined}
-          className="min-h-12 rounded-xl border border-line bg-page px-3.5 text-base font-normal"
+          error={state.error}
         />
-      </label>
-      {state.error && (
-        <p id="sign-in-error" role="alert" className="m-0 text-[13px] font-semibold text-again">
+        <p role="alert" className="sr-only">
           {state.error}
         </p>
-      )}
-      <button
-        type="submit"
-        disabled={pending || disabled}
-        className="min-h-[50px] rounded-btn border-none bg-accent text-base font-bold text-on-accent disabled:opacity-60"
-      >
-        {pending ? "Signing in…" : "Sign in"}
-      </button>
-      <p className="m-0 text-[12.5px] leading-normal text-ink2">
-        This device stays signed in for a year. After 5 wrong tries, sign-in pauses for 15 minutes.
-      </p>
-    </form>
+        <Button type="submit" size="lg" full iconEnd="arrow-right" disabled={pending || disabled} loading={pending}>
+          {pending ? "Signing in…" : "Sign in"}
+        </Button>
+        <p className="m-0 text-meta text-ink2">This device stays signed in for a year. After 5 wrong tries, sign-in pauses for 15 minutes.</p>
+      </form>
+    </Card>
   );
 }
