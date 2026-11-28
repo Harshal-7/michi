@@ -2,9 +2,12 @@
 
 import { useEffect, useRef } from "react";
 
+/** Items between ticks: one each up to 40 items, then the first of these that keeps it to 40 ticks. */
+const TICK_STEPS = [1, 10, 25, 50, 100, 250, 500, 1000];
+
 /**
- * B's ruled progress bar: a 10px track with the accent fill and a snow tick between items (n − 1 ticks,
- * drawn while there are 40 items or fewer). `strip` is the laptop goal strip: 24 tall on cover-blue.
+ * B's ruled progress bar: a 10px track with the accent fill and a snow tick between items (n − 1 ticks
+ * up to 40 items; past that a tick every 10, 25, 50… items, whichever keeps it at 40 ticks or fewer). `strip` is the laptop goal strip: 24 tall on cover-blue.
  *
  * @example <ProgressBar value={7} max={18} label="Card 7 of 18" />
  */
@@ -34,7 +37,8 @@ export function ProgressBar({
   const pct = max > 0 ? Math.max(0, Math.min(100, (value / max) * 100)) : 0;
   const fill = { accent: "bg-accent", good: "bg-good", hanamaru: "bg-hanamaru" }[tone];
   const track = size === "strip" ? "h-6 rounded-box bg-cover-blue" : "h-2.5 rounded-full bg-track";
-  const n = ticks && max > 1 && max <= 40 ? max - 1 : 0;
+  const step = TICK_STEPS.find((s) => max / s <= 40) ?? Math.ceil(max / 40);
+  const n = ticks && max > 1 ? Math.ceil(max / step) - 1 : 0;
   return (
     <div
       role="progressbar"
@@ -51,7 +55,7 @@ export function ProgressBar({
       {n > 0 && (
         <svg aria-hidden="true" width="100%" height="100%" viewBox="0 0 100 10" preserveAspectRatio="none" className="absolute inset-0">
           {Array.from({ length: n }, (_, i) => {
-            const x = (((i + 1) / max) * 100).toFixed(1);
+            const x = ((((i + 1) * step) / max) * 100).toFixed(1);
             return <path key={i} d={`M${x} 2.5V7.5`} stroke="var(--snow)" strokeOpacity="0.75" strokeWidth="0.9" vectorEffect="non-scaling-stroke" />;
           })}
         </svg>

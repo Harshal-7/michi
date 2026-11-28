@@ -20,11 +20,15 @@ const FILL: Record<Grade, string> = { 1: "bg-again-soft", 2: "bg-warn-soft", 3: 
 
 /**
  * The page a finished session sits on: full screen on the phone (over the bars, like the session
- * itself), the centred column on a laptop.
+ * itself), the centred column on a laptop. `split` asks for the wide column on a laptop, for a done
+ * screen that lays itself out in two columns there.
  */
-export function DoneShell({ children }: { children: ReactNode }) {
+export function DoneShell({ children, split = false }: { children: ReactNode; split?: boolean }) {
   return (
-    <div className="fixed inset-0 z-session overflow-y-auto bg-page px-5 pt-[max(12px,env(safe-area-inset-top))] pb-8 laptop:static laptop:z-auto laptop:mx-auto laptop:w-full laptop:max-w-160 laptop:overflow-visible laptop:bg-transparent laptop:p-0">
+    <div
+      data-wide={split ? "" : undefined}
+      className={`fixed inset-0 z-session overflow-y-auto bg-page px-5 pt-[max(12px,env(safe-area-inset-top))] pb-8 laptop:static laptop:z-auto laptop:mx-auto laptop:w-full laptop:overflow-visible laptop:bg-transparent laptop:p-0 ${split ? "laptop:max-w-250" : "laptop:max-w-160"}`}
+    >
       <div className="flex flex-col">{children}</div>
     </div>
   );

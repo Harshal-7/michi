@@ -29,7 +29,7 @@ export function ProgressPanel({
   scoreNote: React.ReactNode;
 }) {
   const p = progressOf(runs);
-  const note = <p className="m-0 text-meta text-ink2">{scoreNote}</p>;
+  const note = <p className="m-0 max-w-130 text-meta text-ink2">{scoreNote}</p>;
   if (p.games === 0) {
     return (
       <div className="flex flex-col gap-3">

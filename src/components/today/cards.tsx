@@ -254,7 +254,7 @@ export function DoneCards({ view }: { view: TodayView }) {
       <SectionTitle id="plan-title" meta={`${view.status.done} of ${view.rows.length} done`}>
         Today’s plan
       </SectionTitle>
-      <HeroCard aria-label="Done for today" className="mt-1.5" art={<Scene lit={6} />} artClassName="h-32 laptop:h-43" bodyClassName="relative gap-0 px-4 pt-2 pb-4">
+      <HeroCard aria-label="Done for today" className="mt-1.5" art={<Scene lit={6} />} artClassName="h-32 laptop:h-auto laptop:min-h-43 laptop:aspect-19/6" bodyClassName="relative gap-0 px-4 pt-2 pb-4">
         <div aria-hidden="true" className="absolute inset-0 flex flex-col gap-6.75 pt-7.5">
           {Array.from({ length: 12 }, (_, i) => (
             <div key={i} className="h-px shrink-0 bg-paper-rule" />

@@ -219,7 +219,7 @@ export function QuizRunner({
         }
       >
         <QuestionView
-          key={q.id}
+          key={`question-${q.id}`}
           asked={q.asked}
           chosen={pick}
           onChoose={choose}
@@ -233,7 +233,7 @@ export function QuizRunner({
             {error}
           </p>
         )}
-        <FlagQuestion key={q.id} questionId={q.id} open={flagging} onClose={() => setFlagging(false)} />
+        <FlagQuestion key={`flag-${q.id}`} questionId={q.id} open={flagging} onClose={() => setFlagging(false)} />
       </QuizShell>
     </VoiceProvider>
   );

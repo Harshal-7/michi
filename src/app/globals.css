@@ -473,9 +473,10 @@
     opacity: 1;
   }
 
-  /* Furigana: half the size, never under 10px, in the secondary ink. */
+  /* Furigana: half the size, never under 11px, in the secondary ink. --leading-ja (2) still holds a line
+     with furigana to its neighbours' height from 14px text up (checked at 14, 16, 18 and 22). */
   rt {
-    font-size: max(0.5em, 10px);
+    font-size: max(0.5em, 11px);
     color: var(--ink2);
   }
 
