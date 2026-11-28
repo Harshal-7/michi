@@ -70,8 +70,7 @@ export function Play({
   const [flash, setFlash] = useState(false);
   const [options, setOptions] = useState<Options | null>(() => (mode === "find" ? findOptions(deck[0], all) : null));
   const [hasVoice, setHasVoice] = useState(false);
-  // ui AnswerInput doesn't type a ref yet, so the box is found inside its form.
-  const answerForm = useRef<HTMLFormElement>(null);
+  const answerBox = useRef<HTMLInputElement>(null);
   const moreLetters = useRef<ReturnType<typeof setTimeout> | null>(null);
   const say = useSpeak();
 
@@ -143,7 +142,7 @@ export function Play({
 
   // Read it: the input keeps focus from card to card, so the phone's keyboard stays up.
   useEffect(() => {
-    if (mode === "read") answerForm.current?.querySelector("input")?.focus();
+    if (mode === "read") answerBox.current?.focus();
   }, [mode, index, feedback]);
 
   // Find it: say the kana when the device has a Japanese voice.
@@ -313,7 +312,6 @@ export function Play({
 
         {mode === "read" ? (
           <form
-            ref={answerForm}
             className="mt-3.5"
             onSubmit={(e) => {
               e.preventDefault();
@@ -325,6 +323,7 @@ export function Play({
               Type the romaji
             </label>
             <AnswerInput
+              ref={answerBox}
               id="romaji"
               type="text"
               value={typed}

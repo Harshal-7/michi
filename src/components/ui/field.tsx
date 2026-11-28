@@ -1,4 +1,4 @@
-import { type InputHTMLAttributes, type ReactNode, type SelectHTMLAttributes, type TextareaHTMLAttributes, useId } from "react";
+import { type ComponentProps, type InputHTMLAttributes, type ReactNode, type SelectHTMLAttributes, type TextareaHTMLAttributes, useId } from "react";
 
 import { Icon } from "./icon";
 
@@ -92,7 +92,7 @@ export function AnswerInput({
   /** Japanese answers: Klee One with lang="ja". */
   ja?: boolean;
   className?: string;
-} & InputHTMLAttributes<HTMLInputElement>) {
+} & Omit<ComponentProps<"input">, "className">) {
   const edge = { idle: "border-control-edge focus:border-accent focus:shadow-field", right: "border-good", wrong: "border-again" }[state];
   return (
     <input

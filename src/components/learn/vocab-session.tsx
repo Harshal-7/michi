@@ -235,8 +235,7 @@ export function VocabSession({ level, set, direction, furigana, voice, onAnswer,
             {ja ? "Type the word" : "Type the meaning"}
           </label>
           <AnswerInput
-            // AnswerInput passes every prop to its <input>, ref included (React 19); its type just doesn't list ref yet.
-            {...({ ref: input } as object)}
+            ref={input}
             id="vocab-answer"
             key={direction}
             type="text"

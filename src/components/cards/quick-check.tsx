@@ -262,8 +262,7 @@ function Check({ items: loaded, ...props }: QuickCheckProps) {
                 </label>
                 <AnswerInput
                   id="qc-romaji"
-                  // AnswerInput's props don't list `ref` yet (a note for 3d); it reaches the <input> all the same.
-                  {...({ ref: input } as Record<string, unknown>)}
+                  ref={input}
                   type="text"
                   value={typed}
                   onChange={(e) => answerKana(e.target.value, false)}
