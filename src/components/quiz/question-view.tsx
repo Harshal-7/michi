@@ -1,18 +1,19 @@
 "use client";
-// design-lint: legacy
 
 import { toPlain } from "@content/schema";
-import { useEffect } from "react";
+import { type ReactNode, useEffect } from "react";
 
-import { useSpeak } from "@/components/ui/voice";
-import { SpeakButton } from "@/components/ui/speak-button";
-import { Mixed, Ruby } from "@/components/ui/ruby";
+import { Card } from "@/components/ui/card";
+import { Chip } from "@/components/ui/chip";
 import { Icon } from "@/components/ui/icon";
+import { Mixed, Ruby } from "@/components/ui/ruby";
+import { SpeakButton } from "@/components/ui/speak-button";
+import { useSpeak } from "@/components/ui/voice";
 import { type Asked, TYPE_LABEL, UNDERLINE } from "@/lib/quiz/types";
 
-const CHECK = "M5 12.5l4.5 4.5L19 7.5";
-const CROSS = "M6 6l12 12 M18 6L6 18";
-const MARK = "font-semibold underline decoration-2 underline-offset-[6px]";
+import { Choice } from "./choice";
+
+const MARK = "underline decoration-2 underline-offset-6";
 
 /** Japanese with the quiz's marks: ⟨word⟩ underlined without furigana, [[blank]] as a gap. */
 export function AskedJa({ ja, furigana, filled = false }: { ja: string; furigana: boolean; filled?: boolean }) {
@@ -33,7 +34,7 @@ function OrderLine({ asked, furigana, filled }: { asked: Asked; furigana: boolea
   const order = asked.order!;
   const right = asked.options[asked.answer];
   return (
-    <p className="m-0 font-card text-[22px] leading-[2]">
+    <p className="m-0 font-ja text-title leading-ja">
       {order.before && <Ruby text={order.before} furigana={furigana} />}
       {[0, 1, 2, 3].map((i) => (
         <span key={i} lang="ja" className="mx-1 inline-block min-w-[2.6em] border-b-2 border-ink2 text-center text-ink2">
@@ -46,8 +47,9 @@ function OrderLine({ asked, furigana, filled }: { asked: Asked; furigana: boolea
 }
 
 /**
- * One question (F_QuizQuestion): the type chip, the card, four options and, once answered, which
- * was right and why. `chosen` is the option picked, or null.
+ * One question (RF_QuizQuestion): the type chip, the question on a card, four options and, once
+ * answered, which was right and why. `chosen` is the option picked, or null. `aside` sits right of
+ * the chip ("2 right · 1 to review").
  */
 export function QuestionView({
   asked,
@@ -55,12 +57,14 @@ export function QuestionView({
   onChoose,
   furigana,
   disabled = false,
+  aside,
 }: {
   asked: Asked;
   chosen: number | null;
   onChoose: (index: number) => void;
   furigana: boolean;
   disabled?: boolean;
+  aside?: ReactNode;
 }) {
   const say = useSpeak();
   const answered = chosen !== null;
@@ -73,81 +77,67 @@ export function QuestionView({
 
   return (
     <>
-      <p className="m-0 self-start rounded-btn bg-accent-soft px-3 py-1 text-[12.5px] font-bold">{TYPE_LABEL[asked.type]}</p>
+      <div className="flex items-center justify-between gap-3">
+        <Chip cover="lilac" size="lg">
+          {TYPE_LABEL[asked.type]}
+        </Chip>
+        {aside && <span className="text-meta text-ink2">{aside}</span>}
+      </div>
 
-      <section className="flex flex-col gap-3.5 rounded-card bg-surface px-[18px] py-[22px] shadow-card">
+      <Card className="flex flex-col px-4.5 pt-6 pb-5.5">
         {asked.say && (
-          <div className="flex items-center gap-3">
+          <div className="mb-3 flex items-center gap-3">
             <SpeakButton text={asked.say} label="Play again" />
-            <span className="text-[13px] text-ink2">Tap to hear it again</span>
+            <span className="text-meta text-ink2">Tap to hear it again</span>
           </div>
         )}
         {asked.ja && (
-          <p className={`m-0 font-card leading-[1.6] ${asked.big ? "text-[40px] font-semibold" : "text-[26px]"}`}>
+          <p className={`m-0 font-ja leading-ja ${asked.big ? "text-display" : "text-title"}`}>
             <AskedJa ja={asked.ja} furigana={furigana} filled={answered} />
           </p>
         )}
         {asked.order && <OrderLine asked={asked} furigana={furigana} filled={answered} />}
         {asked.en && (
-          <p className={`m-0 ${asked.big && !asked.ja ? "font-head text-[26px] leading-[1.3]" : "text-[15px] text-ink2"}`}>
+          <p className={`m-0 ${asked.big && !asked.ja ? "text-headline font-black" : "mt-1 text-body text-ink2"}`}>
             {asked.type === "kana" ? <span className="font-bold">{asked.en}</span> : asked.en}
           </p>
         )}
-        <p className="m-0 text-[15px] text-ink2">{asked.instruction}</p>
-      </section>
+        <div aria-hidden="true" className="mt-3.5 mb-3 h-px bg-line" />
+        <p className="m-0 text-lead font-bold">{asked.instruction}</p>
+      </Card>
 
-      <div className="flex flex-col gap-2" role="group" aria-label="Options">
+      <div className="mt-1 flex flex-col gap-3" role="group" aria-label="Options">
         {asked.options.map((option, i) => {
-          const isRight = answered && i === right;
-          const isWrongPick = answered && i === chosen && i !== right;
+          const state = !answered ? "idle" : i === right ? "right" : i === chosen ? "wrong" : "quiet";
           return (
-            <button
-              key={`${i}-${option}`}
-              type="button"
-              aria-pressed={chosen === i}
-              disabled={answered || disabled}
-              onClick={() => onChoose(i)}
-              className={`flex min-h-14 items-center justify-between gap-2.5 rounded-btn bg-surface px-4 text-left text-ink disabled:cursor-default ${
-                isRight ? "border-2 border-good" : isWrongPick ? "border-2 border-again" : "border border-line"
-              }`}
-            >
-              <span className="flex min-w-0 items-center gap-3">
-                <span className="text-[13px] font-bold text-ink2">{i + 1}</span>
-                {asked.optionsLang === "ja" ? (
-                  <Ruby text={option} furigana={furigana} className="text-[19px] font-semibold" />
-                ) : (
-                  <span className="text-[16px] font-semibold">{option}</span>
-                )}
-              </span>
-              {isRight && (
-                <span className="inline-flex shrink-0 items-center gap-1 text-[13px] font-bold text-good">
-                  <Icon d={CHECK} size={18} stroke={2.2} />
-                  Right
-                </span>
+            <Choice key={`${i}-${option}`} n={i + 1} state={state} pressed={chosen === i} disabled={answered || disabled} onClick={() => onChoose(i)}>
+              {asked.optionsLang === "ja" ? (
+                <Ruby text={option} furigana={furigana} className="font-ja text-title" />
+              ) : (
+                <span className="text-lead font-bold">{option}</span>
               )}
-              {isWrongPick && (
-                <span className="inline-flex shrink-0 items-center gap-1 text-[13px] font-bold text-again">
-                  <Icon d={CROSS} size={18} stroke={2.2} />
-                  Yours
-                </span>
-              )}
-            </button>
+            </Choice>
           );
         })}
       </div>
 
-      {answered && (
+      {answered ? (
         <div className="flex flex-col gap-1" aria-live="polite">
-          <p className="m-0 text-sm text-ink2">
+          <p className="m-0 text-body text-ink2">
             <span className={`font-bold ${chosen === right ? "text-good" : "text-again"}`}>{chosen === right ? "Right." : "Not quite."}</span>{" "}
             {asked.explain && <Mixed text={asked.explain} furigana={furigana} />}
           </p>
           {asked.full && (
-            <p className="m-0 text-sm text-ink2">
-              <Ruby text={asked.full.ja} furigana={furigana} className="text-[15px] text-ink" /> {asked.full.en}
+            <p className="m-0 text-body text-ink2">
+              <Ruby text={asked.full.ja} furigana={furigana} className="font-ja text-ink" /> {asked.full.en}
             </p>
           )}
         </div>
+      ) : (
+        <p className="m-0 flex items-center justify-center gap-2 text-meta text-ink2 max-laptop:hidden">
+          <Icon name="keyboard" size={18} className="text-ink3" />
+          Press 1–4 to choose, then Enter
+        </p>
       )}
     </>
   );
