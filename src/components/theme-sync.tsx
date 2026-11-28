@@ -2,7 +2,7 @@
 
 import { useEffect, useSyncExternalStore } from "react";
 
-import { PAGE_COLOR, parseThemeChoice, resolveTheme, THEME_KEY, type ThemeChoice } from "@/lib/theme";
+import { PAGE_COLOR, parseThemeChoice, resolveTheme, THEME_KEY, type ResolvedTheme, type ThemeChoice } from "@/lib/theme";
 
 function read(key: string): string | null {
   try {
@@ -50,6 +50,24 @@ function subscribe(onChange: () => void) {
  */
 export function useThemeChoice(fallback: ThemeChoice = "system"): ThemeChoice {
   return useSyncExternalStore(subscribe, readChoice, () => fallback);
+}
+
+function subscribeResolved(onChange: () => void) {
+  const dark = window.matchMedia("(prefers-color-scheme: dark)");
+  const off = subscribe(onChange);
+  dark.addEventListener("change", onChange);
+  return () => {
+    off();
+    dark.removeEventListener("change", onChange);
+  };
+}
+
+const readResolved = (): ResolvedTheme =>
+  resolveTheme(readChoice(), window.matchMedia("(prefers-color-scheme: dark)").matches);
+
+/** Light or dark as this device shows it now (the choice, with "system" resolved). The server sees light. */
+export function useResolvedTheme(): ResolvedTheme {
+  return useSyncExternalStore(subscribeResolved, readResolved, () => "light");
 }
 
 /**
