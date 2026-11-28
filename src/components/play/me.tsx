@@ -78,7 +78,7 @@ export function MyPage() {
         {player.hidden && <p className="m-0 text-meta font-bold text-ink2">Your name is hidden from the leaderboards.</p>}
         {summary && (
           <dl className="m-0 mt-2 grid w-full grid-cols-3 gap-2">
-            <Stat value={String(summary.runs)} label={summary.runs === 1 ? "game" : "games"} />
+            <Stat value={String(summary.runs)} label={summary.runs === 1 ? "time played" : "times played"} />
             <Stat value={String(bests.length)} label={bests.length === 1 ? "game tried" : "games tried"} />
             <Stat value={String(todo.length + CATALOG.filter((g) => !isLive(g.slug)).length)} label="still to try" />
           </dl>
