@@ -22,7 +22,7 @@ type Props = {
 
 /**
  * The one way Japanese with furigana is shown. Always lang="ja", so kanji take Japanese shapes.
- * <rt> styling (half size, at least 10px, --ink2) lives in globals.css. Lines with furigana want
+ * <rt> styling (half size, at least 11px, --ink2) lives in globals.css. Lines with furigana want
  * `leading-ja` for room above them.
  */
 export function Ruby({ text, furigana = true, blank = "fill", className }: Props) {

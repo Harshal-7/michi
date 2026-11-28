@@ -69,7 +69,7 @@ notebook covers, stickers, illustrations and the one blue action. The red pencil
 - Scale (px): 12 · 14 · 16 · 18 · 22 · 28 · 40 · 72, as `--text-<name>` tokens. Body 16 on the phone, inputs 16,
   nothing under 12. Lines that carry furigana use `--leading-ja`.
 - Every Japanese run sits in an element with `lang="ja"`. Furigana is `<ruby>漢字<rt>かんじ</rt></ruby>`, `rt` at
-  `max(0.5em, 10px)`, through the shared `Ruby` component.
+  `max(0.5em, 11px)`, through the shared `Ruby` component.
 - Load both families from the one Google Fonts css2 link in `src/app/layout.tsx` (not `next/font/google`).
 
 **Shape and space**
@@ -160,6 +160,6 @@ those, don't invent new ones. Words stay calm and plain, with no guilt about mis
 - [ ] Phone (390 wide, and 375×667 for the review card + 4 grade buttons) and laptop (1280×800) match the boards.
 - [ ] Light and dark both checked.
 - [ ] Keyboard: focus visible; review Space / 1–4 / U, quiz 1–4, kana Enter / Esc / Space still work.
-- [ ] Targets ≥ 44px, text ≥ 12px, `rt` ≥ 10px, contrast ≥ 4.5:1, `lang="ja"` on Japanese.
+- [ ] Targets ≥ 44px, text ≥ 12px, `rt` ≥ 11px, contrast ≥ 4.5:1, `lang="ja"` on Japanese.
 - [ ] Reduced motion: nothing moves that shouldn't, nothing is hidden.
 - [ ] `pnpm check` passes (includes design-lint and the theme contrast test). Say what you didn't check.
