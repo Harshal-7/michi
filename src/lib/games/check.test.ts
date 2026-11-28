@@ -31,7 +31,8 @@ describe("the server's score", () => {
   it("is worked out from the answers, whatever the device says", () => {
     const r = run();
     const checked = check(r);
-    expect(checked).toMatchObject({ cards: 20, firstTryRight: 15, ranked: true, bestStreak: 3 });
+    // 20 cards was a standard setup until a game played every kana picked; it saves, unranked.
+    expect(checked).toMatchObject({ cards: 20, firstTryRight: 15, ranked: false, bestStreak: 3 });
     // 15 right; the first is 1.0 s (100 points), speed points fall from 1.5 s.
     const expected = Math.round(r.answers.reduce((s, a) => s + (a.right ? 70 + 30 * Math.min(1, Math.max(0, (5000 - a.ms) / 3500)) : 0), 0) / 20);
     expect(checked).toMatchObject({ score: expected });
@@ -41,8 +42,10 @@ describe("the server's score", () => {
 
   it("ranks only a standard setup played to the end", () => {
     expect(check(run({}, 12))).toMatchObject({ ranked: false, cards: 12 });
-    const custom = run({ setup: "read:hiragana:basic:46", durationMs: 400_000 }, 46);
-    expect(check(custom)).toMatchObject({ ranked: false });
+    const full = run({ setup: "read:hiragana:basic:46", durationMs: 400_000 }, 46);
+    expect(check(full)).toMatchObject({ ranked: true });
+    const stopped = run({ setup: "read:hiragana:basic:46", durationMs: 400_000 }, 30);
+    expect(check(stopped)).toMatchObject({ ranked: false });
     const weakest = run({ setup: "read:weakest:5" }, 5);
     expect(check(weakest)).toMatchObject({ ranked: false });
   });
@@ -88,15 +91,16 @@ describe("the save checks", () => {
 });
 
 describe("the kana setups", () => {
-  it("rank three setups per mode, each a real deck", () => {
+  it("rank three full decks of the basic kana per mode", () => {
     expect(KANA_SETUPS.map((s) => s.key)).toEqual([
-      "read:hiragana:basic:20",
-      "read:katakana:basic:20",
-      "read:hiragana+katakana:basic+dakuten+combo+extended:50",
-      "find:hiragana:basic:20",
-      "find:katakana:basic:20",
-      "find:hiragana+katakana:basic+dakuten+combo+extended:50",
+      "read:hiragana:basic:46",
+      "read:katakana:basic:46",
+      "read:hiragana+katakana:basic:92",
+      "find:hiragana:basic:46",
+      "find:katakana:basic:46",
+      "find:hiragana+katakana:basic:92",
     ]);
+    expect(KANA_SETUPS[0].label).toBe("Read it · Hiragana · 46");
     for (const s of KANA_SETUPS) expect(kanaRules.setup(s.key), s.key).toMatchObject({ standard: true });
     expect(gameBySlug("kana")?.setups).toBe(KANA_SETUPS);
   });

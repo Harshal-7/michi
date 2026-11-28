@@ -129,6 +129,24 @@ describe("theme", () => {
     }
   });
 
+  it("keeps each game's colour at 4.5:1 on its tint, on cards and on the page, and its tint on it, in every theme", () => {
+    const games = ["kana", "vocab", "forms", "particles", "numbers", "sounds", "listen"];
+    for (const look of ALL) {
+      // The game colours are the same in every light theme and in every dark theme.
+      const shared = (LOOKS.dark as readonly Look[]).includes(look) ? '[data-theme="dark"]' : ":root";
+      const t = (name: string) => token(SELECTOR[look], name)!;
+      for (const g of games) {
+        const hue = token(shared, `g-${g}`)!;
+        const tint = token(shared, `g-${g}-tint`)!;
+        expect(hue, `${look} --g-${g}`).toMatch(/^#[0-9a-f]{6}$/);
+        expect(contrast(hue, tint), `${look}: ${g} on its tint`).toBeGreaterThanOrEqual(4.5);
+        expect(contrast(tint, hue), `${look}: ${g} tint on it`).toBeGreaterThanOrEqual(4.5);
+        for (const bg of ["page", "surface"]) expect(contrast(hue, t(bg)), `${look}: ${g} on ${bg}`).toBeGreaterThanOrEqual(4.5);
+        for (const fg of ["ink", "ink2"]) expect(contrast(t(fg), tint), `${look}: ${fg} on ${g} tint`).toBeGreaterThanOrEqual(4.5);
+      }
+    }
+  });
+
   it("draws the icon in the light accent colours", () => {
     const svg = readFileSync("src/app/icon.svg", "utf8");
     expect(svg).toContain(`<rect width="100" height="100" rx="22" fill="${token(":root", "accent")}"/>`);

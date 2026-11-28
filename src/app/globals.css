@@ -182,6 +182,48 @@
   --card-shadow: 0 1px 2px var(--shadow), 0 8px 24px var(--shadow);
 }
 
+/*
+ * The games at /play have their own look (canvas page "Play · public games", approved 28 Nov 2026):
+ * a colour per game, bigger corners and a lifted hero. The pairs are the same in every light theme
+ * and in every dark theme. Text in a game's colour sits on its tint or on --surface, and the tint
+ * reads on the colour too; src/lib/theme.test.ts checks 4.5:1 for each in every theme.
+ */
+:root {
+  --radius-play: 26px;
+  --lift: 0 2px 4px var(--shadow), 0 14px 32px var(--shadow);
+  --g-kana: #b03a22;
+  --g-kana-tint: #fbe4dd;
+  --g-vocab: #2d4e9c;
+  --g-vocab-tint: #e2e8f8;
+  --g-forms: #2f6b45;
+  --g-forms-tint: #ddf0e4;
+  --g-particles: #7b3a8f;
+  --g-particles-tint: #f1e3f6;
+  --g-numbers: #855800;
+  --g-numbers-tint: #f9ebc8;
+  --g-sounds: #0e6767;
+  --g-sounds-tint: #d6f0ee;
+  --g-listen: #a12e5c;
+  --g-listen-tint: #fae1eb;
+}
+
+[data-theme="dark"] {
+  --g-kana: #f2a08b;
+  --g-kana-tint: #3a1b14;
+  --g-vocab: #9db5f5;
+  --g-vocab-tint: #18223d;
+  --g-forms: #8fd0a0;
+  --g-forms-tint: #14301f;
+  --g-particles: #d9a6ea;
+  --g-particles-tint: #2e1a36;
+  --g-numbers: #ebc46e;
+  --g-numbers-tint: #352808;
+  --g-sounds: #7fd6d2;
+  --g-sounds-tint: #0e2e2e;
+  --g-listen: #f29bbe;
+  --g-listen-tint: #3a1626;
+}
+
 /* Tailwind names for the tokens: bg-surface, text-ink2, border-line, rounded-card, shadow-card, laptop: … */
 @theme inline {
   --color-page: var(--page);
@@ -205,6 +247,13 @@
   --shadow-card: var(--card-shadow);
   --shadow-hero: var(--hero-shadow);
   --shadow-nav: var(--nav-shadow);
+  --shadow-lift: var(--lift);
+  --radius-game: var(--radius-play);
+
+  /* A game's colour on /play: the page sets --hue and --hue-tint (src/lib/games/catalog.ts), so
+     one class (bg-hue-tint, text-hue) serves every game. */
+  --color-hue: var(--hue);
+  --color-hue-tint: var(--hue-tint);
 
   --breakpoint-laptop: 64rem;
   /* Wide laptop screens (1280px+): pages that opt in with data-wide use a second column. */

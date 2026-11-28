@@ -5,6 +5,9 @@ import { useCallback, useEffect, useState } from "react";
 import type { ItemAnswer, PastRun } from "@/db/play";
 import type { VoicePrefs } from "@/lib/voice/voices";
 
+/** Kept in step with PLAYER_EVENT in src/components/play/player.tsx. */
+const PLAYER_EVENT = "michi:player";
+
 export type PlayerInfo = { id: string; name: string; isOwner: boolean; hidden: boolean };
 
 /** What /api/play/me says about this device's player and their runs of one game. */
@@ -34,6 +37,10 @@ export function usePlayer(game: string): { me: Me | null; offline: boolean; relo
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- the player is fetched once in the browser
     void reload();
+    // The name sheet (src/components/play/player.tsx) says when this device's player changes.
+    const changed = () => void reload();
+    window.addEventListener(PLAYER_EVENT, changed);
+    return () => window.removeEventListener(PLAYER_EVENT, changed);
   }, [reload]);
   return { me, offline, reload };
 }

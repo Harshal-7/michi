@@ -37,3 +37,17 @@ export function nameProblem(raw: string): string | null {
 export const cleanPin = (raw: string) => raw.normalize("NFKC").trim();
 
 export const pinProblem = (raw: string): string | null => (/^\d{4}$/.test(cleanPin(raw)) ? null : "The PIN is 4 digits.");
+
+/**
+ * Close names to offer when one is taken: the name with a number after it (counting on from a
+ * number it ends in), shortened to fit. Which are free is the database's job.
+ */
+export function suggestionsFor(raw: string): string[] {
+  const name = cleanName(raw);
+  const tail = /(\d+)$/.exec(name);
+  const stem = tail ? name.slice(0, -tail[1].length) : name;
+  const next = tail ? Number(tail[1]) + 1 : 1;
+  const numbered = (n: number) => [...stem].slice(0, NAME_MAX - String(n).length).join("") + n;
+  const all = [next, next + 1, 7, 22, 88, next + 10].map(numbered);
+  return [...new Set(all)].filter((c) => nameKey(c) !== nameKey(name));
+}

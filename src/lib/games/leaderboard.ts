@@ -21,15 +21,45 @@ export const TOP = 20;
 export const boardSince = (period: Period, now = new Date()): StudyDate | null => (period === "week" ? weekOf(studyDate(now)).start : null);
 
 /** A place on a board, as the page shows it. Player ids stay on the server. */
-export type Place = { place: number; name: string; score: number; meanMs: number | null; playedAt: string; isOwner: boolean; you: boolean };
+export type Place = {
+  place: number;
+  name: string;
+  score: number;
+  meanMs: number | null;
+  playedAt: string;
+  cards: number;
+  firstTryRight: number;
+  isOwner: boolean;
+  you: boolean;
+};
 
 export type BoardView = { top: Place[]; me: Place | null; players: number };
 
 /** The top places and, when the player is further down, their own. `rows` best first. */
 export function boardView(rows: readonly BoardRow[], playerId: string | null, top = TOP): BoardView {
   const places = rows.map(
-    (r, i): Place => ({ place: i + 1, name: r.name, score: r.score, meanMs: r.meanMs, playedAt: r.playedAt, isOwner: r.isOwner, you: r.playerId === playerId }),
+    (r, i): Place => ({
+      place: i + 1,
+      name: r.name,
+      score: r.score,
+      meanMs: r.meanMs,
+      playedAt: r.playedAt,
+      cards: r.cards,
+      firstTryRight: r.firstTryRight,
+      isOwner: r.isOwner,
+      you: r.playerId === playerId,
+    }),
   );
   const mine = places.find((p) => p.you) ?? null;
   return { top: places.slice(0, top), me: mine && mine.place > top ? mine : null, players: places.length };
+}
+
+/**
+ * Where a score not on the board yet would land: one more than the places that beat it (a higher
+ * score, or the same score played quicker). Ties after that go to whoever got there first, so a
+ * new run lands after an equal one.
+ */
+export function placeFor(score: number, meanMs: number | null, rows: readonly Pick<Place, "score" | "meanMs">[]): number {
+  const quick = (ms: number | null) => ms ?? Number.POSITIVE_INFINITY;
+  return 1 + rows.filter((r) => r.score > score || (r.score === score && quick(r.meanMs) <= quick(meanMs))).length;
 }

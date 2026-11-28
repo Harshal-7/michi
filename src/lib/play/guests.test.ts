@@ -52,7 +52,8 @@ describe("guests", () => {
     for (let i = 0; i < MAX_WRONG_PER_ADDRESS; i++) await checkGuest(db, `name${i}`, "1234", "6.6.6.6", minutes(0));
     expect(await checkGuest(db, "fresh", "1234", "6.6.6.6", minutes(1))).toEqual({ error: WAIT_MESSAGE });
     expect(await checkGuest(db, "fresh", "1234", "7.7.7.7", minutes(1))).toEqual({ error: NO_MATCH });
-  });
+    // 22 scrypt checks: about 4 seconds alone, more on a busy machine.
+  }, 20_000);
 
   it("lets one address make only so many names", async () => {
     for (let i = 0; i < MAX_NEW_PER_ADDRESS; i++) expect(await makeGuest(db, `guest${i}`, "1234", "8.8.8.8", minutes(0))).toHaveProperty("player");

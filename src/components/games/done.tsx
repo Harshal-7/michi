@@ -3,12 +3,14 @@
 import Link from "next/link";
 import { useEffect } from "react";
 
+import { Avatar, BoardRowView, ordinal, PlayerName } from "@/components/play/bits";
+import { usePlayMaybe } from "@/components/play/player";
+import { useBoard } from "@/components/play/use-board";
+import { hueStyle } from "@/lib/games/catalog";
+import { type Place, placeFor } from "@/lib/games/leaderboard";
 import { formatSeconds, type RunSummary } from "@/lib/games/score";
 
-import { Tile } from "./parts";
 import type { SaveStatus } from "./use-saver";
-
-const CHECK = "M5 12.5l4.5 4.5L19 7.5";
 
 const clock = (ms: number) => {
   const s = Math.round(ms / 1000);
@@ -16,10 +18,13 @@ const clock = (ms: number) => {
 };
 
 /**
- * The end of any game's run: the score, how it went, what was missed (the game draws its own
- * list as `missed`), saving, and play again.
+ * The end of any game's run (P_SaveScore): the score as a stamp in the game's colour and how it
+ * went; where it lands on this week's board; saving it, or "Save your score" for a player
+ * without a name; what was missed (the game draws its own list as `missed`); and play again.
  */
 export function GameDone({
+  game,
+  ranked,
   kicker,
   stopped,
   summary,
@@ -29,13 +34,16 @@ export function GameDone({
   previousBest,
   save,
   onRetrySave,
-  saveScore,
   missed,
   onAgain,
   onSettings,
   footnote,
 }: {
-  /** "Kana game · Read it" */
+  /** The game's slug, for its colour and board. */
+  game: string;
+  /** The run's setup key when it's a standard setup played to the end, else null. */
+  ranked: string | null;
+  /** "Kana game · Read it · Hiragana" */
   kicker: string;
   stopped: boolean;
   summary: RunSummary;
@@ -46,15 +54,20 @@ export function GameDone({
   previousBest: number | null;
   save: SaveStatus;
   onRetrySave: () => void;
-  /** What a nameless player sees in place of "Saved": the way to "Save your score". */
-  saveScore: React.ReactNode;
   missed: React.ReactNode;
   onAgain: () => void;
   onSettings: () => void;
   footnote: string | null;
 }) {
-  const best = previousBest !== null && summary.score > previousBest;
-  const accuracy = summary.cards ? Math.round((summary.firstTryRight / summary.cards) * 100) : 0;
+  const play = usePlayMaybe();
+  const nameless = save.state === "nameless";
+  const best = !nameless && previousBest !== null && summary.score > previousBest;
+  const { view, reload } = useBoard(game, ranked, "week");
+
+  // Once the run is saved, the board is fetched again to show its place.
+  useEffect(() => {
+    if (save.state === "saved" && ranked) void reload();
+  }, [save.state, ranked, reload]);
 
   // Enter plays again.
   useEffect(() => {
@@ -66,67 +79,172 @@ export function GameDone({
     return () => window.removeEventListener("keydown", onKey);
   }, [onAgain]);
 
-  return (
-    <>
-      <header className="flex flex-col gap-0.5">
-        <p className="m-0 text-[13px] text-ink2">{kicker}</p>
-        <h1 className="m-0 font-head text-[30px] leading-[1.15]">{stopped ? "Stopped for now" : "Deck cleared"}</h1>
-      </header>
+  const wouldBe = nameless && ranked && view ? placeFor(summary.score, summary.meanMs, view.top) : null;
+  const shownPlace = wouldBe !== null && wouldBe <= 20 ? wouldBe : null;
+  const openSave = () => play?.openSheet({ kind: "save", score: summary.score, place: shownPlace });
 
-      <section className="flex flex-col gap-3 rounded-card bg-surface p-4 shadow-card">
-        <div className="flex flex-wrap items-baseline gap-2.5">
-          <p className="m-0 font-head text-[40px] leading-none">{summary.score}</p>
-          <p className="m-0 text-[15px] text-ink2">score out of 100</p>
-          {best && <p className="m-0 rounded-full bg-accent-soft px-3 py-1 text-[12.5px] font-semibold">Your best so far</p>}
+  return (
+    <div style={hueStyle(game)} className="mx-auto flex w-full max-w-[560px] flex-col gap-3.5">
+      <section className="flex flex-col items-center gap-2.5 rounded-game bg-surface px-5 pt-[22px] pb-[18px] text-center shadow-card">
+        <p className="m-0 text-[13px] font-black tracking-[0.04em] text-hue uppercase">{kicker}</p>
+        <div role="img" aria-label={`Score ${summary.score} out of 100`} className="relative my-1.5">
+          <div className="flex size-[132px] -rotate-6 flex-col items-center justify-center rounded-full border-4 border-hue text-hue outline-2 outline-offset-4 outline-hue">
+            <span className="text-[54px] leading-none font-black">{summary.score}</span>
+            <span className="text-[13px] font-black">out of 100</span>
+          </div>
+          {best && <span className="absolute -top-1 -right-12 rotate-3 rounded-full bg-accent px-3 py-1.5 text-[12.5px] font-black text-on-accent">New best!</span>}
         </div>
-        <div className="grid grid-cols-2 gap-2 min-[480px]:grid-cols-4">
-          <Tile value={`${summary.firstTryRight} of ${summary.cards}`} label="right first time" note={`${accuracy}%`} />
-          <Tile value={summary.meanMs === null ? "–" : formatSeconds(summary.meanMs)} label={`per ${unit}`} note="when right" />
-          <Tile value={String(bestStreak)} label="best run" note="in a row" />
-          <Tile value={clock(durationMs)} label="time" note={stopped ? "before stopping" : "for the deck"} />
+        <h1 className="m-0 text-[28px] leading-[1.1] font-black">{stopped ? "Stopped for now" : "Deck cleared!"}</h1>
+        <div className="grid w-full grid-cols-4 gap-1.5">
+          <Stat value={`${summary.firstTryRight}/${summary.cards}`} label="right first" />
+          <Stat value={summary.meanMs === null ? "–" : formatSeconds(summary.meanMs)} label={`per ${unit}`} />
+          <Stat value={String(bestStreak)} label="in a row" />
+          <Stat value={clock(durationMs)} label="time" />
         </div>
-        {save.state === "nameless" ? saveScore : <SaveLine save={save} onRetry={onRetrySave} />}
       </section>
+
+      {nameless ? (
+        <section className="flex flex-col gap-3 rounded-game bg-surface p-[18px] shadow-hero">
+          <div>
+            <h2 className="m-0 text-xl font-black">{shownPlace ? `You’d be ${ordinal(shownPlace)} this week` : "Save your score"}</h2>
+            <p className="mt-0.5 mb-0 text-[13.5px] text-ink2">
+              {shownPlace ? "Save it to take the spot. No email, ten seconds." : "Keep it with a name and a 4-digit PIN, on any device. No email."}
+            </p>
+          </div>
+          {shownPlace && view && <Neighbours place={shownPlace} top={view.top} score={summary.score} unit={unit} />}
+          <button type="button" onClick={openSave} className="min-h-14 rounded-btn bg-accent text-[17px] font-black text-on-accent">
+            Save my score
+          </button>
+        </section>
+      ) : (
+        <Saved save={save} onRetry={onRetrySave} ranked={ranked} view={view} unit={unit} />
+      )}
 
       {missed}
 
-      <div className="flex flex-col gap-2">
-        <button type="button" onClick={onAgain} className="min-h-14 rounded-btn bg-accent text-[17px] font-bold text-on-accent">
+      <div className="grid grid-cols-2 gap-2.5">
+        <button
+          type="button"
+          onClick={onAgain}
+          className={`inline-flex min-h-[54px] items-center justify-center gap-2 rounded-btn text-base font-black ${nameless ? "border-2 border-ink" : "bg-accent text-on-accent"}`}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M8 5.5v13l11-6.5z" />
+          </svg>
           Play again
         </button>
-        <button type="button" onClick={onSettings} className="min-h-[50px] rounded-btn border border-line bg-surface text-[15px] font-bold">
+        <button type="button" onClick={onSettings} className="min-h-[54px] rounded-btn border-2 border-line bg-surface text-base font-bold">
           Change the game
         </button>
-        <Link href="/play" className="inline-flex min-h-11 items-center self-center text-sm font-semibold text-ink2">
-          All games
-        </Link>
       </div>
-      {footnote && <p className="m-0 text-center text-[12.5px] text-ink2">{footnote}</p>}
-    </>
+      <Link href="/play" className="-mt-1 inline-flex min-h-11 items-center self-center text-sm font-bold text-ink2 no-underline">
+        All games
+      </Link>
+      <p className="m-0 text-center text-[12.5px] text-ink2">{nameless ? "Not saved yet: this game is kept on this device for now." : footnote}</p>
+    </div>
   );
 }
 
-function SaveLine({ save, onRetry }: { save: SaveStatus; onRetry: () => void }) {
-  if (save.state === "saved" || (save.state === "idle" && save.waiting === 0)) {
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="flex flex-col gap-px rounded-[14px] bg-surface2 px-0.5 py-[9px]">
+      <span className="text-[17px] font-black">{value}</span>
+      <span className="text-[11.5px] text-ink2">{label}</span>
+    </div>
+  );
+}
+
+/** The places around where a nameless score would land, with a "You" row at its place. */
+function Neighbours({ place, top, score, unit }: { place: number; top: readonly Place[]; score: number; unit: string }) {
+  const above = top[place - 2];
+  const below = top[place - 1];
+  return (
+    <ol className="m-0 flex list-none flex-col gap-0.5 p-0">
+      {above && <BoardRowView p={above} unit={unit} dense />}
+      <li className="flex min-h-11 items-center gap-3 rounded-2xl bg-accent-soft px-3">
+        <span className="w-6 text-[13px] font-black text-ink2">{place}</span>
+        <span aria-hidden="true" className="inline-flex size-[30px] items-center justify-center rounded-full bg-accent text-[13px] font-black text-on-accent">
+          ?
+        </span>
+        <span className="flex-auto text-[15px] font-bold">You</span>
+        <span className="text-base font-black">{score}</span>
+      </li>
+      {below && <BoardRowView p={{ ...below, place: below.place + 1 }} unit={unit} dense />}
+    </ol>
+  );
+}
+
+/** For a player with a name: saving, saved with this week's place, or waiting for signal. */
+function Saved({
+  save,
+  onRetry,
+  ranked,
+  view,
+  unit,
+}: {
+  save: SaveStatus;
+  onRetry: () => void;
+  ranked: string | null;
+  view: ReturnType<typeof useBoard>["view"];
+  unit: string;
+}) {
+  if (save.state === "waiting") {
     return (
-      <p className="m-0 flex items-center gap-2 text-[13px] font-bold text-good">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <path d={CHECK} />
-        </svg>
-        Saved
+      <section className="flex flex-col gap-2 rounded-game bg-surface p-4 shadow-card">
+        <div className="flex flex-wrap items-center gap-2">
+          <p role="status" className="m-0 rounded-full bg-warn px-3 py-1.5 text-[12.5px] font-black text-page">
+            {save.waiting === 1 ? "Waiting to save" : `${save.waiting} games waiting to save`}
+          </p>
+          <button type="button" onClick={onRetry} className="min-h-11 rounded-btn px-3 text-[13px] font-bold">
+            Try again
+          </button>
+        </div>
+        <p className="m-0 text-[12.5px] text-ink2">Kept on this device. It goes on the board when you’re back.</p>
+      </section>
+    );
+  }
+  if (save.state !== "saved" && !(save.state === "idle" && save.waiting === 0)) {
+    return <p className="m-0 self-center rounded-full bg-surface2 px-3 py-1.5 text-[12.5px] font-bold">Saving…</p>;
+  }
+  const rows = view?.top ?? [];
+  const mine = view ? (view.me ?? rows.find((p) => p.you) ?? null) : null;
+  if (!ranked || !mine) {
+    return (
+      <p className="m-0 self-center rounded-full bg-good px-3 py-1.5 text-[12.5px] font-black text-page">
+        ✓ Saved{ranked ? "" : " · this setup isn’t ranked"}
       </p>
     );
   }
-  if (save.state === "saving" || save.state === "idle") return <p className="m-0 text-[13px] font-bold text-ink2">Saving…</p>;
+  const above = mine.place > 1 ? rows[mine.place - 2] : null;
+  const below = rows[mine.place];
+  const gap = above ? above.score - mine.score : 0;
   return (
-    <div className="flex flex-wrap items-center gap-2">
-      <p role="status" className="m-0 rounded-full border border-warn bg-surface px-3 py-1.5 text-[12.5px] font-bold text-warn">
-        {save.waiting === 1 ? "Waiting to save" : `${save.waiting} games waiting to save`}
-      </p>
-      <button type="button" onClick={onRetry} className="min-h-11 rounded-btn px-3 text-[13px] font-semibold text-ink">
-        Try again
-      </button>
-      <p className="m-0 w-full text-[12.5px] text-ink2">It&apos;s kept on this device and saves next time there&apos;s signal.</p>
-    </div>
+    <section className="flex flex-col gap-3 rounded-game bg-surface p-[18px] shadow-hero">
+      <div>
+        <div>
+          <h2 className="m-0 text-xl font-black">Saved · {ordinal(mine.place)} this week</h2>
+          <p className="mt-0.5 mb-0 text-[13.5px] text-ink2">
+            {!above
+              ? "Top of this week’s board."
+              : gap > 0
+                ? `${gap} more ${gap === 1 ? "point takes" : "points take"} ${ordinal(mine.place - 1)}.`
+                : `A quicker game takes ${ordinal(mine.place - 1)}.`}
+          </p>
+        </div>
+      </div>
+      <ol className="m-0 flex list-none flex-col gap-0.5 p-0">
+        {above && mine.place <= 20 && <BoardRowView p={above} unit={unit} dense />}
+        <li className="flex min-h-11 items-center gap-3 rounded-2xl bg-accent-soft px-3">
+          <span className="w-6 text-[13px] font-black text-ink2">{mine.place}</span>
+          <Avatar name={mine.name} size={30} />
+          <span className="flex-auto truncate text-[15px] font-bold">
+            <PlayerName name={mine.name} />
+            <span className="font-medium text-ink2"> · you</span>
+          </span>
+          <span className="text-base font-black">{mine.score}</span>
+        </li>
+        {below && mine.place <= 20 && <BoardRowView p={below} unit={unit} dense />}
+      </ol>
+    </section>
   );
 }
