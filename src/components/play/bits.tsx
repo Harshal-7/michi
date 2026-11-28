@@ -1,4 +1,7 @@
-/** Small parts the play pages share: the seal, avatars, places and board rows (RF_PlayHub, RF_PlayLeaderboard). */
+/**
+ * Small parts the play pages share: the seal, avatars, places and board rows (RF_PlayHub, RF_PlayLeaderboard).
+ * No "use client": /play's server page calls gameTone() and hueStyle() directly, which a client module can't serve.
+ */
 import type { Place } from "@/lib/games/leaderboard";
 import { hueStyle, playerHue } from "@/lib/games/catalog";
 
