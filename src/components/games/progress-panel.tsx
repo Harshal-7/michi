@@ -1,6 +1,7 @@
 "use client";
+// design-lint: legacy
 
-import { EmptyState } from "@/components/ui/page";
+import { EmptyState } from "@/components/ui/empty-state";
 import { type PastGame, progressOf, type Window } from "@/lib/games/progress";
 import { formatSeconds } from "@/lib/games/score";
 

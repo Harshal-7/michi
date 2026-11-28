@@ -1,9 +1,11 @@
 "use client";
+// design-lint: legacy
 
 import { useCallback, useEffect, useState } from "react";
 
 import { SessionLoading, useInBrowser } from "@/components/cards/loading";
-import { EmptyState, PageHeader } from "@/components/ui/page";
+import { EmptyState } from "@/components/ui/empty-state";
+import { PageHeader } from "@/components/ui/page-header";
 import { ROUTES } from "@/lib/planner/day-plan";
 import { getVocabQueue } from "@/lib/vocab/queue";
 import {
@@ -19,7 +21,8 @@ import {
 } from "@/lib/vocab/types";
 import type { VoicePrefs } from "@/lib/voice/voices";
 
-import { BackLink, LinkTabs } from "./tabs";
+import { BackLink } from "@/components/ui/back-link";
+import { LinkTabs } from "@/components/ui/link-tabs";
 import { DIRECTION_LABELS, WaitingLine } from "./vocab-parts";
 import { type Answer, VocabSession } from "./vocab-session";
 

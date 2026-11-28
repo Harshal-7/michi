@@ -1,4 +1,5 @@
 "use client";
+// design-lint: legacy
 
 /**
  * Small charts for the game's start screen, drawn as SVG in the tokens: score per game as bars,

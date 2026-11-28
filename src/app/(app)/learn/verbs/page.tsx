@@ -1,8 +1,9 @@
+// design-lint: legacy
 import type { Metadata } from "next";
 
-import { BackLink } from "@/components/learn/tabs";
-import { Mixed, Ruby } from "@/components/ruby";
-import { PageHeader } from "@/components/ui/page";
+import { BackLink } from "@/components/ui/back-link";
+import { Mixed, Ruby } from "@/components/ui/ruby";
+import { PageHeader } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import { getSettings } from "@/db/settings";
 import { requireSignedIn } from "@/lib/auth/session";

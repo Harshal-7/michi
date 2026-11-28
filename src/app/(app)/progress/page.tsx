@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 
 import { Heatmap, loadHeatmap } from "@/components/progress/heatmap";
-import { EmptyState, PageHeader } from "@/components/ui/page";
+import { EmptyState } from "@/components/ui/empty-state";
+import { PageHeader } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import { getSettings } from "@/db/settings";
 import { requireSignedIn } from "@/lib/auth/session";

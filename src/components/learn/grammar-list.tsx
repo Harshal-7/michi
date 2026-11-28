@@ -1,9 +1,10 @@
 "use client";
+// design-lint: legacy
 
 import Link from "next/link";
 import { useState } from "react";
 
-import { Mixed } from "@/components/ruby";
+import { Mixed } from "@/components/ui/ruby";
 import { Icon } from "@/components/ui/icon";
 import type { GrammarStatus, PointRow } from "@/lib/learn/grammar";
 

@@ -1,9 +1,10 @@
 "use client";
+// design-lint: legacy
 
 import { useEffect, useMemo, useState } from "react";
 
 import { SessionLoading, useInBrowser } from "@/components/cards/loading";
-import { VoiceProvider } from "@/components/cards/voice";
+import { VoiceProvider } from "@/components/ui/voice";
 import { ALL_KANA, kanaFor } from "@/lib/games/kana/content";
 import { KANA_SETUPS, parseSetup, setupKey, weakestKey } from "@/lib/games/kana/setups";
 import { type GameKana, type GameSettings, MODE_LABELS, type Mode, SCRIPTS, WEAKEST_COUNT } from "@/lib/games/kana/types";

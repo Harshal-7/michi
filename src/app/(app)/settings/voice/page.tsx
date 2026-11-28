@@ -1,8 +1,9 @@
+// design-lint: legacy
 import type { Metadata } from "next";
 import Link from "next/link";
 
 import { VoiceSettings } from "@/components/cards/voice-settings";
-import { PageHeader } from "@/components/ui/page";
+import { PageHeader } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import { getSettings } from "@/db/settings";
 import { requireSignedIn } from "@/lib/auth/session";

@@ -1,4 +1,5 @@
 "use client";
+// design-lint: legacy
 
 /** Small parts the play pages share: the seal, avatars, the podium, places and icons. */
 import type { Place } from "@/lib/games/leaderboard";

@@ -1,6 +1,9 @@
 "use client";
+// design-lint: legacy
 
 import { useEffect, useState } from "react";
+
+import { useVersionPoll } from "@/components/ui/use-version-poll";
 
 import { queuedRuns } from "../games/queue";
 import { PLAY_ICONS, PlayIcon } from "./bits";
@@ -31,37 +34,14 @@ export function OfflineBanner() {
   );
 }
 
-const CHECK_EVERY_MS = 10 * 60_000;
-
 /**
- * "A new version of Michi Play is ready. Reload" once a newer deploy is live: the page remembers
- * the deploy it came from and asks /api/play/version when the tab comes back and every 10 minutes.
- * Finished games wait on the device, so reloading loses nothing.
+ * "A new version of Michi Play is ready. Reload" once a newer deploy is live (useVersionPoll asks
+ * /api/play/version when the tab comes back and every 10 minutes). Finished games wait on the
+ * device, so reloading loses nothing.
  */
 export function PlayVersionBanner({ version }: { version: string }) {
-  const [loaded] = useState(version);
-  const [latest, setLatest] = useState<string | null>(null);
-  useEffect(() => {
-    if (loaded === "dev") return;
-    const check = async () => {
-      try {
-        const res = await fetch("/api/play/version", { cache: "no-store" });
-        if (res.ok) setLatest(((await res.json()) as { version: string }).version);
-      } catch {
-        // No signal: check again later.
-      }
-    };
-    const onVisible = () => {
-      if (document.visibilityState === "visible") void check();
-    };
-    document.addEventListener("visibilitychange", onVisible);
-    const timer = setInterval(check, CHECK_EVERY_MS);
-    return () => {
-      document.removeEventListener("visibilitychange", onVisible);
-      clearInterval(timer);
-    };
-  }, [loaded]);
-  if (loaded === "dev" || !latest || latest === "dev" || latest === loaded) return null;
+  const newer = useVersionPoll(version, "/api/play/version");
+  if (!newer) return null;
   return (
     <div
       role="status"

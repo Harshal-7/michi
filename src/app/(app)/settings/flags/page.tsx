@@ -1,9 +1,11 @@
+// design-lint: legacy
 import { desc, eq } from "drizzle-orm";
 import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ResolveFlag } from "@/components/cards/resolve-flag";
-import { EmptyState, PageHeader } from "@/components/ui/page";
+import { EmptyState } from "@/components/ui/empty-state";
+import { PageHeader } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import { flags, items } from "@/db/schema";
 import { requireSignedIn } from "@/lib/auth/session";

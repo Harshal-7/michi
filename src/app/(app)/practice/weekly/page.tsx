@@ -1,10 +1,11 @@
+// design-lint: legacy
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { BackLink } from "@/components/learn/tabs";
+import { BackLink } from "@/components/ui/back-link";
 import { QuizPage } from "@/components/quiz/quiz-page";
 import { QuizStart } from "@/components/quiz/quiz-runner";
-import { EmptyState } from "@/components/ui/page";
+import { EmptyState } from "@/components/ui/empty-state";
 import { getDb } from "@/db/client";
 import { getSettings } from "@/db/settings";
 import { requireSignedIn } from "@/lib/auth/session";

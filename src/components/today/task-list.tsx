@@ -1,4 +1,5 @@
 "use client";
+// design-lint: legacy
 
 import Link from "next/link";
 import { useState, useTransition } from "react";

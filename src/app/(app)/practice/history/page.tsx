@@ -1,11 +1,12 @@
+// design-lint: legacy
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { BackLink } from "@/components/learn/tabs";
+import { BackLink } from "@/components/ui/back-link";
 import { TypeChips } from "@/components/quiz/results";
 import { Icon } from "@/components/ui/icon";
 import { ICONS } from "@/components/shell/nav";
-import { EmptyState } from "@/components/ui/page";
+import { EmptyState } from "@/components/ui/empty-state";
 import { getDb } from "@/db/client";
 import { requireSignedIn } from "@/lib/auth/session";
 import { formatDayMonth, formatShort, studyDate } from "@/lib/day";

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { GrammarScreen, levelParam } from "@/components/learn/grammar-screen";
 import { LessonView } from "@/components/learn/lesson";
-import { EmptyState } from "@/components/ui/page";
+import { EmptyState } from "@/components/ui/empty-state";
 import { getDb } from "@/db/client";
 import { getSettings } from "@/db/settings";
 import { requireSignedIn } from "@/lib/auth/session";

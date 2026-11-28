@@ -1,11 +1,13 @@
+// design-lint: legacy
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { BackLink } from "@/components/learn/tabs";
+import { BackLink } from "@/components/ui/back-link";
 import { ShadowingPlayer } from "@/components/practice/shadowing-player";
-import { Ruby } from "@/components/ruby";
-import { EmptyState, PageHeader } from "@/components/ui/page";
+import { Ruby } from "@/components/ui/ruby";
+import { EmptyState } from "@/components/ui/empty-state";
+import { PageHeader } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import { getSettings } from "@/db/settings";
 import { requireSignedIn } from "@/lib/auth/session";

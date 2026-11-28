@@ -1,4 +1,5 @@
 "use client";
+// design-lint: legacy
 
 import Link from "next/link";
 import { useOptimistic, useTransition } from "react";
@@ -6,7 +7,7 @@ import { useOptimistic, useTransition } from "react";
 import { Icon } from "@/components/ui/icon";
 import { switchDeck } from "@/app/(app)/decks/actions";
 
-import { Switch } from "./switch";
+import { Switch } from "@/components/ui/switch";
 
 const LOCK = "M6 11h12v9H6z M8 11V8a4 4 0 0 1 8 0v3";
 const CHEVRON = "M9 6l6 6-6 6";

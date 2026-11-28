@@ -1,9 +1,10 @@
+// design-lint: legacy
 import { type Level, LEVELS } from "@content/schema";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import { Mixed } from "@/components/ruby";
-import { PageHeader } from "@/components/ui/page";
+import { Mixed } from "@/components/ui/ruby";
+import { PageHeader } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import { formatDayMonth, formatLong, isStudyDate, studyDate } from "@/lib/day";
 import { pointsFor } from "@/lib/learn/cached";
@@ -11,7 +12,8 @@ import { grammarDeckSwitches, nextUnread, pointCounts, READ_THROUGH_LEVEL } from
 import { ROUTES } from "@/lib/planner/day-plan";
 
 import { GrammarList } from "./grammar-list";
-import { BackLink, LinkTabs } from "./tabs";
+import { BackLink } from "@/components/ui/back-link";
+import { LinkTabs } from "@/components/ui/link-tabs";
 
 export const levelParam = (v: unknown): Level => (typeof v === "string" && (LEVELS as readonly string[]).includes(v) ? (v as Level) : "N5");
 

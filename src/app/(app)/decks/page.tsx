@@ -1,7 +1,9 @@
+// design-lint: legacy
 import type { Metadata } from "next";
 
 import { DeckList } from "@/components/cards/deck-list";
-import { EmptyState, PageHeader } from "@/components/ui/page";
+import { EmptyState } from "@/components/ui/empty-state";
+import { PageHeader } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import { getSettings } from "@/db/settings";
 import { requireSignedIn } from "@/lib/auth/session";

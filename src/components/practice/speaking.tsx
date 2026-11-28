@@ -1,12 +1,13 @@
 "use client";
+// design-lint: legacy
 
 import Link from "next/link";
 import { useEffect, useRef, useState, useTransition } from "react";
 
 import { logPractice } from "@/app/(app)/practice/minutes-actions";
-import { VoiceProvider } from "@/components/cards/voice";
-import { PlayIcon } from "@/components/learn/lesson-parts";
-import { Ruby } from "@/components/ruby";
+import { VoiceProvider } from "@/components/ui/voice";
+import { SpeakButton } from "@/components/ui/speak-button";
+import { Ruby } from "@/components/ui/ruby";
 import { Icon } from "@/components/ui/icon";
 import { ROUTES } from "@/lib/planner/day-plan";
 import { compareSpoken } from "@/lib/speaking/compare";
@@ -263,7 +264,7 @@ export function SpeakingPrompt({
           )}
           <div className="flex items-center justify-between gap-2">
             <h2 className="m-0 text-xs font-bold text-ink2">Model answer</h2>
-            <PlayIcon text={spoken(prompt.model)} label="Play the model answer" />
+            <SpeakButton variant="icon" text={spoken(prompt.model)} label="Play the model answer" />
           </div>
           <p className="m-0 font-card text-lg leading-[1.85]">
             {comparison ? (

@@ -1,10 +1,11 @@
+// design-lint: legacy
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { Mixed } from "@/components/ruby";
+import { Mixed } from "@/components/ui/ruby";
 import { ICONS } from "@/components/shell/nav";
 import { Icon } from "@/components/ui/icon";
-import { PageHeader } from "@/components/ui/page";
+import { PageHeader } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import { requireSignedIn } from "@/lib/auth/session";
 import { formatLong, studyDate } from "@/lib/day";

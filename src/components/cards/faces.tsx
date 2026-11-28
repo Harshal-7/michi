@@ -1,10 +1,11 @@
 "use client";
+// design-lint: legacy
 
-import { Ruby } from "@/components/ruby";
+import { Ruby } from "@/components/ui/ruby";
 import type { StudyCard } from "@/lib/srs/types";
 import { spoken } from "@/lib/voice/spoken";
 
-import { PlayPill, PlayRound } from "./voice";
+import { SpeakButton } from "@/components/ui/speak-button";
 
 /**
  * The front and back of every card (the plan's Screens 2; boards F_ReviewFront, F_ReviewBack and
@@ -190,7 +191,7 @@ export function CardFront({ card, furigana }: FaceProps) {
         {item.term}
       </p>
       {item.kind !== "kanji" && (
-        <PlayRound text={item.kind === "kana" ? item.term : item.reading || item.term} label="Play it" />
+        <SpeakButton text={item.kind === "kana" ? item.term : item.reading || item.term} label="Play it" />
       )}
       <Hint>{hint}</Hint>
     </div>
@@ -222,7 +223,7 @@ function KanaBack({ card, furigana }: FaceProps) {
         {item.term}
       </p>
       <Meaning>{item.reading ?? ""}</Meaning>
-      <PlayPill text={item.term}>Sound</PlayPill>
+      <SpeakButton variant="pill" text={item.term}>Sound</SpeakButton>
       {ex && (
         <>
           <Divider />
@@ -231,7 +232,7 @@ function KanaBack({ card, furigana }: FaceProps) {
               <Ruby text={hasKanji(ex.term) ? `{${ex.term}|${ex.reading}}` : ex.term} furigana={furigana} />
             </p>
             <p className="m-0 text-sm text-ink2">{ex.meaning}</p>
-            <PlayPill text={ex.reading || ex.term}>Word</PlayPill>
+            <SpeakButton variant="pill" text={ex.reading || ex.term}>Word</SpeakButton>
           </div>
         </>
       )}
@@ -290,9 +291,9 @@ function KanjiBack({ card }: FaceProps) {
                   </span>
                   <span className="text-sm text-ink2">{w.meaning}</span>
                 </span>
-                <PlayPill text={w.reading} lang="ja">
+                <SpeakButton variant="pill" text={w.reading} lang="ja">
                   {w.term}
-                </PlayPill>
+                </SpeakButton>
               </li>
             ))}
           </ul>
@@ -327,8 +328,8 @@ function WordBack({ card, furigana }: FaceProps) {
         </p>
       )}
       <div className="flex flex-wrap justify-center gap-2">
-        <PlayPill text={reading || item.term}>Word</PlayPill>
-        {ex && <PlayPill text={spoken(ex.ja)}>Sentence</PlayPill>}
+        <SpeakButton variant="pill" text={reading || item.term}>Word</SpeakButton>
+        {ex && <SpeakButton variant="pill" text={spoken(ex.ja)}>Sentence</SpeakButton>}
       </div>
       {ex && (
         <>
@@ -354,7 +355,7 @@ function GrammarBack({ card, furigana }: FaceProps) {
         <>
           <Divider />
           <ExampleBlock ex={ex} furigana={furigana} />
-          <PlayPill text={spoken(ex.ja)}>Sentence</PlayPill>
+          <SpeakButton variant="pill" text={spoken(ex.ja)}>Sentence</SpeakButton>
         </>
       )}
       <Context card={card} furigana={furigana} />

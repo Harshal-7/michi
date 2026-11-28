@@ -1,11 +1,13 @@
 "use client";
+// design-lint: legacy
 
 import { type FormEvent, useEffect, useRef, useState } from "react";
 import { bind, unbind } from "wanakana";
 
 import { CardBack } from "@/components/cards/faces";
-import { PlayRound, VoiceProvider } from "@/components/cards/voice";
-import { Ruby } from "@/components/ruby";
+import { VoiceProvider } from "@/components/ui/voice";
+import { SpeakButton } from "@/components/ui/speak-button";
+import { Ruby } from "@/components/ui/ruby";
 import { Icon } from "@/components/ui/icon";
 import type { StudyCard } from "@/lib/srs/types";
 import { checkJapanese, checkMeaning, type JaWord } from "@/lib/vocab/match";
@@ -219,7 +221,7 @@ export function VocabSession({ level, set, direction, furigana, voice, onAnswer,
                 <p className={`m-0 text-center font-card font-semibold leading-[1.25] ${big <= 2 ? "text-[72px]" : big <= 4 ? "text-[60px]" : big <= 6 ? "text-[48px]" : "text-[36px]"}`}>
                   <Ruby text={ruby ? `{${word.term}|${word.reading}}` : word.term} furigana={furigana} />
                 </p>
-                <PlayRound text={word.reading} label="Play it" />
+                <SpeakButton text={word.reading} label="Play it" />
               </div>
             )}
           </article>

@@ -1,9 +1,11 @@
 "use client";
+// design-lint: legacy
 
 import { type ReactNode, useState } from "react";
 
-import { PlayPill, useSpeak, VoiceProvider } from "@/components/cards/voice";
-import { Ruby } from "@/components/ruby";
+import { useSpeak, VoiceProvider } from "@/components/ui/voice";
+import { SpeakButton } from "@/components/ui/speak-button";
+import { Ruby } from "@/components/ui/ruby";
 import type { ChartSection, KanaCell, KanaStatus } from "@/lib/learn/kana";
 import type { VoicePrefs } from "@/lib/voice/voices";
 
@@ -133,8 +135,8 @@ function Detail({
           </p>
         )}
         <div className="flex flex-wrap items-center gap-1.5">
-          <PlayPill text={cell.kana}>Sound</PlayPill>
-          {ex && <PlayPill text={ex.reading || ex.term}>Word</PlayPill>}
+          <SpeakButton variant="pill" text={cell.kana}>Sound</SpeakButton>
+          {ex && <SpeakButton variant="pill" text={ex.reading || ex.term}>Word</SpeakButton>}
         </div>
         <p className="m-0 flex flex-wrap items-center gap-x-2 text-xs text-ink2">
           <span>{STATUS_LABEL[cell.status]}</span>

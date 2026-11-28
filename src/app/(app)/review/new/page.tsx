@@ -4,7 +4,8 @@ import Link from "next/link";
 
 import { ReviewSession } from "@/components/cards/review-session";
 import { UpNextLive } from "@/components/cards/session-done";
-import { EmptyState, PageHeader } from "@/components/ui/page";
+import { EmptyState } from "@/components/ui/empty-state";
+import { PageHeader } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import { decks } from "@/db/schema";
 import { getSettings } from "@/db/settings";

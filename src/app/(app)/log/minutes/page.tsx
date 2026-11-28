@@ -1,9 +1,11 @@
+// design-lint: legacy
 import type { Metadata } from "next";
 import Link from "next/link";
 
 import { ICONS } from "@/components/shell/nav";
 import { Icon } from "@/components/ui/icon";
-import { EmptyState, PageHeader } from "@/components/ui/page";
+import { EmptyState } from "@/components/ui/empty-state";
+import { PageHeader } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import { requireSignedIn } from "@/lib/auth/session";
 import { formatLong, formatShort, studyDate, weekOf } from "@/lib/day";

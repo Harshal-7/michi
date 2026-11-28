@@ -1,16 +1,15 @@
 "use client";
+// design-lint: legacy
 
 import { blanks } from "@content/schema";
 import { useRouter } from "next/navigation";
 import { useOptimistic, useState, useTransition } from "react";
 
 import { changeStatus, markLesson } from "@/app/(app)/grammar/actions";
-import { useSpeak } from "@/components/cards/voice";
-import { Mixed, Ruby } from "@/components/ruby";
+import { Mixed, Ruby } from "@/components/ui/ruby";
 import { Icon } from "@/components/ui/icon";
 import type { GrammarStatus, Lesson } from "@/lib/learn/grammar";
 
-const SPEAKER = "M4 9.5h3.5L12 5.5v13l-4.5-4H4z M15.5 9a4 4 0 0 1 0 6";
 const CHECK = "M5 12.5l4.5 4.5L19 7";
 const CROSS = "M6 6l12 12 M18 6L6 18";
 const STATUSES: { key: GrammarStatus; label: string }[] = [
@@ -45,20 +44,6 @@ export function StatusChips({ itemId, status }: { itemId: number; status: Gramma
   );
 }
 
-/** A quiet play button for one example sentence. */
-export function PlayIcon({ text, label }: { text: string; label: string }) {
-  const say = useSpeak();
-  return (
-    <button
-      type="button"
-      aria-label={label}
-      onClick={() => say(text)}
-      className="inline-flex size-11 shrink-0 items-center justify-center rounded-full border border-line bg-surface2 text-ink"
-    >
-      <Icon d={SPEAKER} size={18} stroke={1.7} />
-    </button>
-  );
-}
 
 /** A small stable shuffle, so the server and the browser order the options the same way. */
 function seededOrder<T>(items: T[], seed: string): T[] {

@@ -1,10 +1,11 @@
 "use client";
+// design-lint: legacy
 
 import Link from "next/link";
 import { useEffect, useRef, useState, useTransition } from "react";
 
 import { logPractice } from "@/app/(app)/practice/minutes-actions";
-import { Ruby } from "@/components/ruby";
+import { Ruby } from "@/components/ui/ruby";
 import { Icon } from "@/components/ui/icon";
 import { ROUTES } from "@/lib/planner/day-plan";
 import { sessionMinutes } from "@/lib/speaking/minutes";

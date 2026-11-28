@@ -1,8 +1,9 @@
+// design-lint: legacy
 import type { Metadata } from "next";
 
-import { BackLink } from "@/components/learn/tabs";
+import { BackLink } from "@/components/ui/back-link";
 import { SpeakingPrompt } from "@/components/practice/speaking";
-import { EmptyState } from "@/components/ui/page";
+import { EmptyState } from "@/components/ui/empty-state";
 import { getDb } from "@/db/client";
 import { getSettings } from "@/db/settings";
 import { requireSignedIn } from "@/lib/auth/session";

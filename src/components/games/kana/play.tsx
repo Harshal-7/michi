@@ -1,8 +1,9 @@
 "use client";
+// design-lint: legacy
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { useSpeak } from "@/components/cards/voice";
+import { useSpeak } from "@/components/ui/voice";
 import { Icon } from "@/components/ui/icon";
 import { hueStyle } from "@/lib/games/catalog";
 import { findOptions, isRightTyping, judgeTyped } from "@/lib/games/kana/answer";

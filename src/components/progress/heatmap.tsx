@@ -1,3 +1,4 @@
+// design-lint: legacy
 import { sql } from "drizzle-orm";
 
 import type { Db } from "@/db/client";

@@ -1,4 +1,5 @@
 "use client";
+// design-lint: legacy
 
 import { useActionState, useState } from "react";
 

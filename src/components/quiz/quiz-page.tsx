@@ -1,6 +1,7 @@
+// design-lint: legacy
 import type { ReactNode } from "react";
 
-import { BackLink } from "@/components/learn/tabs";
+import { BackLink } from "@/components/ui/back-link";
 import { getDb } from "@/db/client";
 import type { Settings } from "@/lib/settings/schema";
 import { loadMistakes, missOutcomes, type Quiz } from "@/lib/quiz/store";

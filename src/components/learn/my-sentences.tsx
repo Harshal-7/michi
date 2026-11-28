@@ -1,9 +1,10 @@
 "use client";
+// design-lint: legacy
 
 import { type ChangeEvent, useState, useTransition } from "react";
 
 import { addMySentence, checkMySentence, deleteMySentence, editMySentence, saveNotes } from "@/app/(app)/grammar/actions";
-import { Ruby } from "@/components/ruby";
+import { Ruby } from "@/components/ui/ruby";
 import { Icon } from "@/components/ui/icon";
 import { defaultPart, type MySentence, splitPart } from "@/lib/learn/sentence-parts";
 

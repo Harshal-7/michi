@@ -1,4 +1,5 @@
 "use client";
+// design-lint: legacy
 
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -24,7 +25,7 @@ import { FlagEditPanel } from "./flag-edit";
 import { SessionLoading, useInBrowser } from "./loading";
 import { SaveNotes, SaveState, WaitingChip } from "./status";
 import { SessionDone } from "./session-done";
-import { VoiceProvider } from "./voice";
+import { VoiceProvider } from "@/components/ui/voice";
 
 /** Coming back to the tab after this long reloads the queue. */
 const RELOAD_AFTER_MS = 5 * 60_000;

@@ -1,9 +1,10 @@
 "use client";
+// design-lint: legacy
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { Ruby } from "@/components/ruby";
+import { Ruby } from "@/components/ui/ruby";
 import { Icon } from "@/components/ui/icon";
 import { getOutbox, useOutbox } from "@/lib/srs/outbox";
 import type { CheckItem } from "@/lib/srs/quick-check";
@@ -14,7 +15,8 @@ import type { VoicePrefs } from "@/lib/voice/voices";
 import { SessionLoading, useInBrowser } from "./loading";
 import { UpNextCard } from "./session-done";
 import { NoSignal, SaveNotes, SaveState, WaitingChip } from "./status";
-import { PlayPill, VoiceProvider } from "./voice";
+import { VoiceProvider } from "@/components/ui/voice";
+import { SpeakButton } from "@/components/ui/speak-button";
 
 type Verdict = "known" | "unsure" | "unknown";
 type Recent = { kana: string; romaji: string; ok: boolean; mark: string };
@@ -334,7 +336,7 @@ function Check({ items: loaded, ...props }: QuickCheckProps) {
                       </p>
                     )}
                     <p className="m-0 text-center font-head text-[26px] leading-tight">{item.meaning}</p>
-                    {item.kind === "word" && <PlayPill text={item.reading || item.term}>Word</PlayPill>}
+                    {item.kind === "word" && <SpeakButton variant="pill" text={item.reading || item.term}>Word</SpeakButton>}
                     {item.example && (
                       <>
                         <div className="h-px w-full bg-line" />

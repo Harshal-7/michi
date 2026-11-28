@@ -1,10 +1,12 @@
+// design-lint: legacy
 import { eq } from "drizzle-orm";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { DeckCards, PaceForm } from "@/components/cards/deck-detail";
-import { EmptyState, PageHeader } from "@/components/ui/page";
+import { EmptyState } from "@/components/ui/empty-state";
+import { PageHeader } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import { decks } from "@/db/schema";
 import { getSettings } from "@/db/settings";

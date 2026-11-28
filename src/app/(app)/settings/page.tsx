@@ -1,3 +1,4 @@
+// design-lint: legacy
 import type { Metadata } from "next";
 
 import { SignOut } from "@/components/ui/sign-out";

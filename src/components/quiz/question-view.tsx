@@ -1,10 +1,12 @@
 "use client";
+// design-lint: legacy
 
 import { toPlain } from "@content/schema";
 import { useEffect } from "react";
 
-import { PlayRound, useSpeak } from "@/components/cards/voice";
-import { Mixed, Ruby } from "@/components/ruby";
+import { useSpeak } from "@/components/ui/voice";
+import { SpeakButton } from "@/components/ui/speak-button";
+import { Mixed, Ruby } from "@/components/ui/ruby";
 import { Icon } from "@/components/ui/icon";
 import { type Asked, TYPE_LABEL, UNDERLINE } from "@/lib/quiz/types";
 
@@ -76,7 +78,7 @@ export function QuestionView({
       <section className="flex flex-col gap-3.5 rounded-card bg-surface px-[18px] py-[22px] shadow-card">
         {asked.say && (
           <div className="flex items-center gap-3">
-            <PlayRound text={asked.say} label="Play again" />
+            <SpeakButton text={asked.say} label="Play again" />
             <span className="text-[13px] text-ink2">Tap to hear it again</span>
           </div>
         )}

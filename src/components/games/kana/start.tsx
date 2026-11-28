@@ -1,9 +1,10 @@
 "use client";
+// design-lint: legacy
 
 import Link from "next/link";
 import { useEffect } from "react";
 
-import { Switch } from "@/components/cards/switch";
+import { Switch } from "@/components/ui/switch";
 import { PLAY_ICONS, PlayIcon, PlayTriangle } from "@/components/play/bits";
 import { BoardCard } from "@/components/play/board-card";
 import { hueStyle } from "@/lib/games/catalog";

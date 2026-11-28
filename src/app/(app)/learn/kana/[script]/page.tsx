@@ -1,10 +1,12 @@
+// design-lint: legacy
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { KanaChart } from "@/components/learn/kana-chart";
-import { BackLink, LinkTabs } from "@/components/learn/tabs";
-import { PageHeader } from "@/components/ui/page";
+import { BackLink } from "@/components/ui/back-link";
+import { LinkTabs } from "@/components/ui/link-tabs";
+import { PageHeader } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import { getSettings } from "@/db/settings";
 import { requireSignedIn } from "@/lib/auth/session";

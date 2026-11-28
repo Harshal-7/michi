@@ -1,4 +1,5 @@
 "use client";
+// design-lint: legacy
 
 import { useState, useTransition } from "react";
 

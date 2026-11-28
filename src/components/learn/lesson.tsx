@@ -1,15 +1,17 @@
+// design-lint: legacy
 import Link from "next/link";
 
-import { VoiceProvider } from "@/components/cards/voice";
-import { Mixed, Ruby } from "@/components/ruby";
+import { SpeakButton } from "@/components/ui/speak-button";
+import { VoiceProvider } from "@/components/ui/voice";
+import { Mixed, Ruby } from "@/components/ui/ruby";
 import type { Lesson } from "@/lib/learn/grammar";
 import type { Mine } from "@/lib/learn/sentences";
 import { spoken } from "@/lib/voice/spoken";
 import type { VoicePrefs } from "@/lib/voice/voices";
 
-import { LessonCheck, PlayIcon, StatusChips } from "./lesson-parts";
+import { LessonCheck, StatusChips } from "./lesson-parts";
 import { LessonNotes, MySentences } from "./my-sentences";
-import { BackLink } from "./tabs";
+import { BackLink } from "@/components/ui/back-link";
 
 const card = "flex flex-col gap-2 rounded-card bg-surface px-3.5 py-3 shadow-card laptop:gap-1 laptop:px-6 laptop:py-5";
 const SITE = { jlptsensei: "JLPT Sensei", bunpro: "Bunpro" } as const;
@@ -70,7 +72,7 @@ export function LessonView({
                 </p>
                 <p className="m-0 text-[13px] text-ink2 laptop:text-[13.5px]">{ex.en}</p>
               </div>
-              <PlayIcon text={spoken(ex.ja)} label={`Play example ${i + 1}`} />
+              <SpeakButton variant="icon" text={spoken(ex.ja)} label={`Play example ${i + 1}`} />
             </div>
           ))}
         </section>

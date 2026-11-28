@@ -1,4 +1,5 @@
 "use client";
+// design-lint: legacy
 
 /** Small parts every game's start and end screens share. */
 

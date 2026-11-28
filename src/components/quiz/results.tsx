@@ -1,7 +1,8 @@
+// design-lint: legacy
 import Link from "next/link";
 
-import { Mixed, Ruby } from "@/components/ruby";
-import { BackLink } from "@/components/learn/tabs";
+import { Mixed, Ruby } from "@/components/ui/ruby";
+import { BackLink } from "@/components/ui/back-link";
 import { formatLong } from "@/lib/day";
 import type { Quiz, QuizQuestion } from "@/lib/quiz/store";
 import { QUIZ_TITLE, TYPE_LABEL, TYPE_SHORT } from "@/lib/quiz/types";

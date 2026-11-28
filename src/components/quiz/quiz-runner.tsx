@@ -1,11 +1,12 @@
 "use client";
+// design-lint: legacy
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState, useTransition } from "react";
 
 import { answerAction, flagQuestionAction, startQuizAction, submitAction } from "@/app/(app)/practice/quiz-actions";
-import { VoiceProvider } from "@/components/cards/voice";
+import { VoiceProvider } from "@/components/ui/voice";
 import { Icon } from "@/components/ui/icon";
 import type { Asked, QuizKind } from "@/lib/quiz/types";
 import type { VoicePrefs } from "@/lib/voice/voices";
