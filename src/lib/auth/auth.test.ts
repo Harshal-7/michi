@@ -54,6 +54,14 @@ describe("session token", () => {
     expect(verifySessionToken(`${id}.`, secret)).toBeNull();
   });
 
+  it("keeps a player's cookie and a sign-in cookie apart", () => {
+    const id = newSessionId();
+    const player = signSession(id, secret, "michi-player");
+    expect(verifySessionToken(player, secret, "michi-player")).toBe(id);
+    expect(verifySessionToken(player, secret)).toBeNull();
+    expect(verifySessionToken(signSession(id, secret), secret, "michi-player")).toBeNull();
+  });
+
   it("stores only a hash of the id", () => {
     const id = newSessionId();
     expect(hashSessionId(id)).not.toContain(id);

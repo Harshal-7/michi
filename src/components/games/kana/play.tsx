@@ -4,14 +4,14 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useSpeak } from "@/components/cards/voice";
 import { Icon } from "@/components/ui/icon";
-import { findOptions, isRightTyping, judgeTyped } from "@/lib/kana-game/answer";
-import { answer, currentCard, type FirstAnswer, type GameState, isFinished, isRetry, startGame } from "@/lib/kana-game/game";
-import { NO_SPEED_MS } from "@/lib/kana-game/score";
-import { type GameKana, MODE_LABELS, type Mode } from "@/lib/kana-game/types";
+import { findOptions, isRightTyping, judgeTyped } from "@/lib/games/kana/answer";
+import { type GameKana, MODE_LABELS, type Mode } from "@/lib/games/kana/types";
+import { DEFAULT_SPEED } from "@/lib/games/score";
+import { answer, currentCard, type FirstAnswer, type GameState, isFinished, isRetry, startGame } from "@/lib/games/turns";
 import { japaneseVoices } from "@/lib/voice/voices";
 import { loadVoices } from "@/lib/voice/speak";
 
-import { playTone, wakeTones } from "./tones";
+import { playTone, wakeTones } from "../tones";
 
 const X_ICON = "M6 6l12 12 M18 6L6 18";
 const SPEAKER = "M4 9.5h3.5L12 5.5v13l-4.5-4H4z M15.5 9a4 4 0 0 1 0 6 M18 6.5a7.5 7.5 0 0 1 0 11";
@@ -314,7 +314,7 @@ export function Play({
                   feedback && right ? "border-2 border-good" : picked ? "border-2 border-again" : "border border-line";
                 return (
                   <button
-                    key={o.id}
+                    key={o.key}
                     type="button"
                     disabled={feedback !== null}
                     onClick={() => submit(right, o.kana, i)}
@@ -417,6 +417,8 @@ function WakeTones({ on }: { on: boolean }) {
  * The speed bar: fills over the 5 seconds that earn speed points and turns amber once they're
  * gone. The browser animates it (`transform`), so it slides smoothly while typing re-renders.
  */
+const NO_SPEED_MS = DEFAULT_SPEED.noneMs;
+
 function SpeedBar({ shownAt, running }: { shownAt: number; running: boolean }) {
   const fill = useRef<HTMLDivElement>(null);
   useEffect(() => {

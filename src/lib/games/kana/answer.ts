@@ -71,7 +71,7 @@ export function findOptions(
   random: () => number = Math.random,
   count = 4,
 ): { options: GameKana[]; answerIndex: number } {
-  const pool = all.filter((k) => k.script === target.script && k.id !== target.id && !soundsSame(k, target));
+  const pool = all.filter((k) => k.script === target.script && k.key !== target.key && !soundsSame(k, target));
   const byKana = new Map(pool.map((k) => [k.kana, k]));
   const picked: GameKana[] = [];
   const add = (k: GameKana | undefined) => {

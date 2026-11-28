@@ -42,8 +42,8 @@ export const ROUTES = {
   speaking: "/practice/speaking",
   shadowing: "/practice/shadowing",
   listen: "/practice/listen",
-  /** The kana game: recognition and recall against the clock (added 28 Nov 2026). */
-  kanaGame: "/learn/kana/game",
+  /** The kana game, one of the public games at /play (moved there 28 Nov 2026). */
+  kanaGame: "/play/kana",
   /** Typed vocabulary practice, N5 to N3, Japanese → English and back (added 28 Nov 2026). */
   vocab: "/learn/vocab",
 } as const;
