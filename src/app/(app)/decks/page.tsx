@@ -23,7 +23,6 @@ const UNITS: Record<string, [string, string]> = {
 /** "80 kanji · about 2 new a day", "668 words · off, switches on Fri 1 Jan" (F_Decks). */
 function deckMeta(d: DeckSummary, plan: DayPlan | null, today: StudyDate): string {
   const [one, many] = UNITS[d.kind ?? "word"] ?? ["card", "cards"];
-  // design-lint-ignore-next-line unknown-colour: "fill-in" is the English word, not a class
   const size = `${d.items.toLocaleString("en-IN")} ${d.items === 1 ? one : many}${d.kind === "grammar" ? " · fill-in cards" : ""}`;
   let state: string;
   if (!d.on) {

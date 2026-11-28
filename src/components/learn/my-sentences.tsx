@@ -136,7 +136,7 @@ function SentenceForm({
       }}
     >
       <Field label="Sentence" ja required value={input.sentence} onChange={set("sentence")} autoFocus />
-      <Field label="Grammar part" ja required value={input.part} onChange={set("part")} hint="It becomes the gap you fill on the card." />
+      <Field label="Grammar part" ja required value={input.part} onChange={set("part")} hint="It becomes the blank on the fill-in card." />
       <Field label="English (optional)" value={input.en} onChange={set("en")} />
       {checked && <p className="m-0 text-meta text-ink2">Changing the Japanese takes the check off, so you can check it again.</p>}
       {error && (
