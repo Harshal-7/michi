@@ -185,7 +185,7 @@ export function TaskList({
           aria-label={`Next step: ${hero.title}`}
           className="mt-1.5"
           art={<Scene lit={Math.min(6, done)} />}
-          artClassName="h-34 laptop:h-43"
+          artClassName="h-34 laptop:h-auto laptop:min-h-43 laptop:aspect-19/6"
           bodyClassName="laptop:flex-row laptop:items-center laptop:gap-5 laptop:px-5.5 laptop:pt-4"
         >
           <div className="flex min-w-0 flex-1 flex-col gap-0.5">
