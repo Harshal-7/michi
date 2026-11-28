@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 
 import { ListenDrill } from "@/components/quiz/mistakes-review";
-import { EmptyState, PageHeader } from "@/components/ui/page";
+import { Spot } from "@/components/ui/art/spots";
+import { EmptyState } from "@/components/ui/empty-state";
+import { PageHeader } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import { getSettings } from "@/db/settings";
 import { requireSignedIn } from "@/lib/auth/session";
@@ -13,7 +15,7 @@ export const metadata: Metadata = { title: "Listen and choose" };
 
 /**
  * Five words read aloud by the device's Japanese voice; pick how each is written. Nothing is
- * saved but the minutes. No board: built from the quiz question's parts.
+ * saved but the minutes. Built from RF_QuizQuestion's parts.
  */
 export default async function ListenPage() {
   await requireSignedIn();
@@ -26,8 +28,10 @@ export default async function ListenPage() {
   if (built.length === 0) {
     return (
       <>
-        <PageHeader title="Listen and choose" size="md" />
-        <EmptyState>Nothing to listen to yet. Words you&apos;ve started come here.</EmptyState>
+        <PageHeader back={{ href: "/practice", label: "Practice" }} title="Listen and choose" />
+        <EmptyState art={<Spot kind="notebook" />} title="Nothing to listen to yet">
+          Words you&apos;ve started come here.
+        </EmptyState>
       </>
     );
   }

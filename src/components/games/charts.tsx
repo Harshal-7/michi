@@ -48,7 +48,7 @@ function Frame({
           {ticks.map((t) => (
             <g key={t.text}>
               <line x1={PAD.left} x2={width - PAD.right} y1={t.y} y2={t.y} className="stroke-line" strokeWidth={1} />
-              <text x={PAD.left - 6} y={t.y} dy="0.32em" textAnchor="end" className="fill-ink2 text-[11px]">
+              <text x={PAD.left - 6} y={t.y} dy="0.32em" textAnchor="end" className="fill-ink2 text-caption">
                 {t.text}
               </text>
             </g>

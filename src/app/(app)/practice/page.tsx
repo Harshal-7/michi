@@ -2,12 +2,17 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import { PageHeader } from "@/components/ui/page";
+import { Rabbit } from "@/components/ui/art/rabbit";
+import { Button } from "@/components/ui/button";
+import { Chip, COVER_BG, type Cover } from "@/components/ui/chip";
+import { Icon } from "@/components/ui/icon";
+import { List, ListRow } from "@/components/ui/list-row";
+import { PageHeader, SectionTitle } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import { getSettings } from "@/db/settings";
 import { requireSignedIn } from "@/lib/auth/session";
 import { addDays, formatLong, formatShort, studyDate, weekOf } from "@/lib/day";
-import { makeCalendar, MOCK_MINUTES, mockOn } from "@/lib/planner/calendar";
+import { makeCalendar, mockOn } from "@/lib/planner/calendar";
 import { ROUTES } from "@/lib/planner/day-plan";
 import { QUIZ_MINUTES, WEEKLY_TEST_MINUTES } from "@/lib/planner/plan";
 import { loadExceptions } from "@/lib/planner/store";
@@ -17,10 +22,14 @@ import { listShadowingSets, promptOfTheDay } from "@/lib/speaking/practice";
 
 export const metadata: Metadata = { title: "Practice" };
 
-const card = "flex flex-col rounded-card bg-surface shadow-card";
-const solid = "inline-flex min-h-11 items-center justify-center self-start rounded-btn bg-accent px-[18px] text-sm font-bold text-on-accent no-underline";
-const soft = "inline-flex min-h-10 shrink-0 items-center rounded-btn bg-accent-soft px-4 text-[13px] font-bold text-ink no-underline";
-const textLink = "mt-1 inline-flex min-h-8 items-center self-start text-[13px] font-semibold text-ink2";
+/** The kanji tile at the start of a Practice row: 42px, a cover colour, the kanji in Klee One. */
+function Glyph({ kanji, cover }: { kanji: string; cover: Cover }) {
+  return (
+    <span lang="ja" aria-hidden="true" className={`grid size-10.5 shrink-0 place-items-center rounded-btn font-ja text-title text-on-cover ${COVER_BG[cover]}`}>
+      {kanji}
+    </span>
+  );
+}
 
 /** The next mock test within about four months, from the planner's calendar. */
 function nextMock(cal: ReturnType<typeof makeCalendar>, today: string) {
@@ -31,58 +40,32 @@ function nextMock(cal: ReturnType<typeof makeCalendar>, today: string) {
   return null;
 }
 
-type QuizCard = { big: string; status: ReactNode; action: ReactNode; hero: boolean };
+type Row = { meta: string; href?: string; trailing?: ReactNode; must: boolean };
 
-function quizCard(quiz: Quiz | null, href: string, results: string, solidNext: boolean, notStarted: string, doneLabel: string): QuizCard {
+/** A quiz row: started, in progress or done. The one solid Start sits on whatever is next. */
+function quizRow(quiz: Quiz | null, href: string, results: string, isNext: boolean, notStarted: string): Row {
   if (quiz?.status === "submitted") {
+    return { meta: `Done · ${quiz.score} / ${quiz.total}`, href: results, must: false };
+  }
+  const label = quiz ? "Continue" : "Start";
+  const meta = quiz ? `${quiz.questions.filter((q) => q.correct !== null).length} of ${quiz.total} answered` : notStarted;
+  if (isNext) {
     return {
-      big: `${quiz.score} / ${quiz.total}`,
-      status: <p className="m-0 text-[12.5px] font-bold text-good">{doneLabel}</p>,
-
-      action: (
-        <Link href={results} className={textLink}>
-          See results
-        </Link>
+      meta,
+      must: true,
+      trailing: (
+        <Button icon="play" href={href}>
+          {label}
+        </Button>
       ),
-      hero: false,
     };
   }
-  if (quiz) {
-    const answered = quiz.questions.filter((q) => q.correct !== null).length;
-    return {
-      big: `${answered} / ${quiz.total}`,
-      status: <p className="m-0 text-[12.5px] text-ink2">answered so far</p>,
-      action: solidNext ? (
-        <Link href={href} className={`${solid} mt-1`}>
-          Continue
-        </Link>
-      ) : (
-        <Link href={href} className={textLink}>
-          Continue
-        </Link>
-      ),
-      hero: solidNext,
-    };
-  }
-  return {
-    big: notStarted,
-    status: null,
-    action: solidNext ? (
-      <Link href={href} className={`${solid} mt-1`}>
-        Start
-      </Link>
-    ) : (
-      <Link href={href} className={textLink}>
-        Start
-      </Link>
-    ),
-    hero: solidNext,
-  };
+  return { meta, href, must: true };
 }
 
 /**
- * Practice (F_Practice): the daily quiz and weekly test, mock tests (round 4), speaking and
- * listening, and the mistakes review. The one solid button goes on whatever is next.
+ * Practice (RF_PracticeHub): the quizzes and tests, then speaking and listening, then the way to the
+ * games. The one solid Start goes on whatever is next.
  */
 export default async function PracticePage() {
   await requireSignedIn();
@@ -104,109 +87,114 @@ export default async function PracticePage() {
   const weeklyDue = week !== null && weekly?.status !== "submitted";
   const next: "daily" | "weekly" | "mistakes" | null = !dailyDone ? "daily" : weeklyDue ? "weekly" : mistakes.length > 0 ? "mistakes" : null;
 
-  const d = quizCard(daily, ROUTES.quiz, ROUTES.quiz, next === "daily", `${QUIZ_LENGTH.daily} questions`, "Done today");
-  const w: QuizCard = week
-    ? quizCard(weekly, ROUTES.weeklyTest, weekly ? `/practice/history/${weekly.id}` : ROUTES.weeklyTest, next === "weekly", "Open now", "Done")
-    : { big: formatShort(testSunday(weekOf(today).start), today), status: null, action: null, hero: false };
+  const d = quizRow(daily, ROUTES.quiz, ROUTES.quiz, next === "daily", `${QUIZ_LENGTH.daily} questions · about ${QUIZ_MINUTES} min`);
+  const w: Row = week
+    ? quizRow(
+        weekly,
+        ROUTES.weeklyTest,
+        weekly ? `/practice/history/${weekly.id}` : ROUTES.weeklyTest,
+        next === "weekly",
+        `Open to ${formatShort(addDays(testSunday(week), WEEKLY_OPEN_DAYS), today)} · ${QUIZ_LENGTH.weekly} questions · ${WEEKLY_TEST_MINUTES} min`,
+      )
+    : {
+        meta: `Sundays · ${QUIZ_LENGTH.weekly} questions · ${WEEKLY_TEST_MINUTES} min`,
+        href: ROUTES.weeklyTest,
+        must: false,
+        trailing: <Chip kind="soon">{formatShort(testSunday(weekOf(today).start), today)}</Chip>,
+      };
+  const m: Row =
+    mistakes.length === 0
+      ? { meta: "Nothing waiting", must: false }
+      : next === "mistakes"
+        ? {
+            meta: `${mistakes.length} waiting from the last week’s quizzes`,
+            must: false,
+            trailing: (
+              <Button icon="play" href={ROUTES.mistakes}>
+                Start
+              </Button>
+            ),
+          }
+        : { meta: `${mistakes.length} waiting from the last week’s quizzes`, href: ROUTES.mistakes, must: false };
 
   const drills = [
+    { kanji: "聞", cover: "aqua" as const, title: "Listen and choose", meta: `${LISTEN_DRILL_LENGTH} words read aloud · about 4 min`, href: ROUTES.listen },
+    { kanji: "話", cover: "peri" as const, title: "Speaking prompt", meta: prompt ? `${prompt.prompt} · 10 min` : "No prompts yet", href: ROUTES.speaking },
     {
-      title: "Speaking prompt",
-      meta: prompt ? `${prompt.prompt} · 10 min` : "No prompts yet",
-      href: ROUTES.speaking,
-    },
-    {
+      kanji: "影",
+      cover: "butter" as const,
       title: "Shadowing",
       meta: sets.length ? `${sets.length} sets · 8 to 10 sentences each` : "No sets yet",
       href: ROUTES.shadowing,
     },
-    { title: "Listen and choose", meta: `${LISTEN_DRILL_LENGTH} words read aloud · about 4 min`, href: ROUTES.listen },
   ];
 
-  const quizCards = (
-    <div className="grid grid-cols-2 gap-2.5">
-      <section className={`${card} gap-1 p-3.5 ${d.hero ? "shadow-hero" : ""}`}>
-        <h2 className="m-0 text-[13px] font-bold">Daily quiz</h2>
-        <p className="m-0 font-head text-2xl">{d.big}</p>
-        {d.status ?? <p className="m-0 text-[12.5px] text-ink2">about {QUIZ_MINUTES} min</p>}
-        {d.action}
-      </section>
-      <section className={`${card} gap-1 p-3.5 ${w.hero ? "shadow-hero" : ""}`}>
-        <h2 className="m-0 text-[13px] font-bold">Weekly test</h2>
-        <p className="m-0 font-head text-2xl">{w.big}</p>
-        {w.status ?? <p className="m-0 text-[12.5px] text-ink2">{QUIZ_LENGTH.weekly} questions on this week</p>}
-        <p className="m-0 mt-1 text-[12.5px] text-ink2">
-          {week ? `Open to ${formatShort(addDays(testSunday(week), WEEKLY_OPEN_DAYS), today)} · ${WEEKLY_TEST_MINUTES} min` : "Opens Sunday, stays open to Wed"}
-        </p>
-        {w.action}
-      </section>
-    </div>
-  );
-
-  const mistakesCard = (
-    <section className={`${card} flex-row items-center gap-3 p-3.5 ${next === "mistakes" ? "shadow-hero" : ""}`}>
-      <div className="flex min-w-0 flex-auto flex-col gap-0.5">
-        <h2 className="m-0 text-[15px] font-bold">Mistakes review</h2>
-        <p className="m-0 text-[12.5px] text-ink2">
-          {mistakes.length === 0 ? "Nothing waiting" : `${mistakes.length} waiting from the last week's quizzes`}
-        </p>
-      </div>
-      {mistakes.length > 0 && (
-        <Link
-          href={ROUTES.mistakes}
-          className={
-            next === "mistakes"
-              ? "inline-flex min-h-11 shrink-0 items-center rounded-btn bg-accent px-[18px] text-sm font-bold text-on-accent no-underline"
-              : soft
-          }
-        >
-          Start
-        </Link>
-      )}
-    </section>
-  );
-
   return (
-    <div data-wide className="flex flex-col gap-3 wide:grid wide:grid-cols-2 wide:items-start wide:gap-5">
-      <div className="flex flex-col gap-3 wide:col-span-2">
-        <PageHeader kicker={formatLong(today)} title="Practice" />
+    <div data-wide className="flex flex-col gap-4 wide:grid wide:grid-cols-2 wide:items-start wide:gap-x-8 wide:gap-y-5">
+      <div className="wide:col-span-2">
+        <PageHeader sub={formatLong(today)} title="Practice" />
       </div>
 
-      <div className="flex flex-col gap-3 wide:gap-5">
-        {quizCards}
-        {mistakesCard}
-        <Link href={ROUTES.quizHistory} className="inline-flex min-h-9 items-center self-center text-[13px] font-semibold text-ink2 wide:self-start">
-          Quiz history
+      <section aria-labelledby="tests-title">
+        <SectionTitle id="tests-title" link={{ href: ROUTES.quizHistory, label: "History" }}>
+          Quizzes and tests
+        </SectionTitle>
+        <List aria-labelledby="tests-title">
+          <ListRow
+            lead={{ node: <Glyph kanji="問" cover="mint" /> }}
+            title="Daily quiz"
+            chip={d.must && <Chip cover="butter">must-do</Chip>}
+            meta={d.meta}
+            href={d.href}
+            trailing={d.trailing}
+          />
+          <ListRow
+            lead={{ node: <Glyph kanji="週" cover="blue" /> }}
+            title="Weekly test"
+            meta={w.meta}
+            href={w.href}
+            trailing={w.trailing}
+            chevron={week !== null && !w.trailing}
+          />
+          <ListRow lead={{ node: <Glyph kanji="直" cover="pink" /> }} title="Mistakes review" meta={m.meta} href={m.href} trailing={m.trailing} />
+          <ListRow
+            lead={{ node: <Glyph kanji="模" cover="lilac" /> }}
+            title="Mock tests"
+            meta={
+              mock
+                ? `${mock.level} mock ${formatShort(mock.date, today)} · coming later`
+                : "Timed tests and book scores · coming later"
+            }
+            trailing={<Chip kind="soon">Soon</Chip>}
+          />
+        </List>
+      </section>
+
+      <div className="flex flex-col gap-4">
+        <section aria-labelledby="speaking-title">
+          <SectionTitle id="speaking-title">Speaking and listening</SectionTitle>
+          <List aria-labelledby="speaking-title">
+            {drills.map((dr) => (
+              <ListRow key={dr.title} lead={{ node: <Glyph kanji={dr.kanji} cover={dr.cover} /> }} title={dr.title} meta={dr.meta} href={dr.href} />
+            ))}
+          </List>
+        </section>
+
+        <Link
+          href="/play"
+          className="relative flex min-h-21 items-center gap-1.5 overflow-hidden rounded-card bg-cover-cobalt py-3 pr-4 pl-1.5 text-on-cobalt no-underline shadow-card"
+        >
+          <span className="-mb-3.5 shrink-0">
+            <Rabbit pose="cheering" size={110} />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block text-lead font-black">Games</span>
+            <span className="block text-meta">Kana game and more, open to friends</span>
+          </span>
+          <span className="grid size-10 shrink-0 place-items-center rounded-full bg-on-cobalt text-cover-cobalt">
+            <Icon name="arrow-right" size={20} />
+          </span>
         </Link>
-      </div>
-
-      <div className="flex flex-col gap-3 wide:gap-5">
-        <section className={`${card} px-3.5 py-2`}>
-          <h2 className="m-0 mt-1.5 mb-0.5 text-[13px] font-bold">Speaking and listening</h2>
-          {drills.map((dr, i) => (
-            <div key={dr.title} className={`flex items-center gap-3 py-2.5 ${i ? "border-t border-line" : ""}`}>
-              <div className="flex min-w-0 flex-auto flex-col gap-px">
-                <p className="m-0 text-[15px] font-semibold">{dr.title}</p>
-                <p className="m-0 text-[12.5px] text-ink2">{dr.meta}</p>
-              </div>
-              <Link href={dr.href} className={soft}>
-                Start
-              </Link>
-            </div>
-          ))}
-        </section>
-
-        <section className={`${card} gap-0.5 p-3.5`}>
-          <h2 className="m-0 text-[13px] font-bold">Mock tests</h2>
-          {mock && (
-            <p className="m-0 text-[15px] font-semibold">
-              {mock.level} mock · {formatShort(mock.date, today)}
-            </p>
-          )}
-          <p className="m-0 text-[12.5px] text-ink2">
-            {mock ? `Vocabulary, grammar and reading · ${MOCK_MINUTES[mock.level]} min · ` : ""}Mock tests and scores from books come in round 4.
-          </p>
-        </section>
       </div>
     </div>
   );

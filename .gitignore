@@ -44,3 +44,6 @@ next-env.d.ts
 
 # downloaded content sources (scripts/content fetches fixed versions here)
 /scripts/content/.cache/
+
+# worktrees of side sessions (Tailwind would scan their copies)
+.claude/worktrees/

@@ -1,9 +1,9 @@
 import { blanks, parseRuby, toPlain } from "@content/schema";
 
-/** The canvas's "this word" mark (F_QuizQuestion): a 2px underline set 6px below. */
-const MARK = "font-semibold underline decoration-2 underline-offset-[6px]";
+/** The "this word" mark (RF_QuizQuestion): a 2px underline set 6px below. */
+const MARK = "font-bold underline decoration-2 underline-offset-6";
 /** The grammar point inside a lesson's example (F_GrammarPoint). */
-const ACCENT = "font-semibold text-accent";
+const ACCENT = "font-bold text-accent";
 /** Runs of Japanese inside English: kana, kanji, 〜 and Japanese punctuation. */
 const JA_RUN = /([　-ヿ㐀-䶿一-鿿＀-￯]+)/u;
 
@@ -22,7 +22,8 @@ type Props = {
 
 /**
  * The one way Japanese with furigana is shown. Always lang="ja", so kanji take Japanese shapes.
- * <rt> styling (0.4em, --ink2) lives in globals.css.
+ * <rt> styling (half size, at least 10px, --ink2) lives in globals.css. Lines with furigana want
+ * `leading-ja` for room above them.
  */
 export function Ruby({ text, furigana = true, blank = "fill", className }: Props) {
   const [answer] = blanks(text);

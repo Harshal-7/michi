@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 
 import { Heatmap, loadHeatmap } from "@/components/progress/heatmap";
-import { EmptyState, PageHeader } from "@/components/ui/page";
+import { Rabbit } from "@/components/ui/art/rabbit";
+import { EmptyState } from "@/components/ui/empty-state";
+import { PageHeader } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import { getSettings } from "@/db/settings";
 import { requireSignedIn } from "@/lib/auth/session";
@@ -9,7 +11,7 @@ import { daysBetween, PHASE_NAMES, phaseFor, studyDate } from "@/lib/day";
 
 export const metadata: Metadata = { title: "Progress" };
 
-/** F_Progress. Round 1 draws the year of reviews; the rest of the page is round 4. */
+/** Progress: the year of reviews now; progress per level, mock scores and minutes per week come later. */
 export default async function ProgressPage() {
   await requireSignedIn();
   const today = studyDate();
@@ -22,9 +24,12 @@ export default async function ProgressPage() {
     : null;
   return (
     <>
-      <PageHeader kicker={kicker} title="Progress" size="md" />
+      <PageHeader sub={kicker} title="Progress" />
       <Heatmap weeks={weeks} today={today} />
-      <EmptyState>Progress per level, mock scores and minutes per week arrive in round 4.</EmptyState>
+      <EmptyState art={<Rabbit pose="reading" size={160} />} title="More is on its way">
+        Progress per level, your mock scores and minutes per week will join this page. Until then, Today shows the
+        level’s progress and this week.
+      </EmptyState>
     </>
   );
 }

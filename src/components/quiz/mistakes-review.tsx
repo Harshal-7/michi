@@ -1,41 +1,25 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { logListeningAction, retryMistakeAction } from "@/app/(app)/practice/quiz-actions";
-import { VoiceProvider } from "@/components/cards/voice";
-import { Icon } from "@/components/ui/icon";
+import { Rabbit } from "@/components/ui/art/rabbit";
+import { Spot } from "@/components/ui/art/spots";
+import { Button } from "@/components/ui/button";
+import { DoneScreen } from "@/components/ui/done-screen";
+import { EmptyState } from "@/components/ui/empty-state";
+import { SkeletonText } from "@/components/ui/skeleton";
+import { StatGrid, StatTile } from "@/components/ui/stat";
+import { VoiceProvider } from "@/components/ui/voice";
 import type { Asked } from "@/lib/quiz/types";
 import type { VoicePrefs } from "@/lib/voice/voices";
 
 import { QuestionView } from "./question-view";
-import { Dots, FlagQuestion } from "./quiz-runner";
+import { FlagQuestion, QuizShell } from "./quiz-runner";
 import { INSTALL_VOICE, useHasJapaneseVoice } from "./use-voice";
 
-const X_ICON = "M6 6l12 12 M18 6L6 18";
-
 type Item = { id: number | null; asked: Asked };
-
-function Header({ title, index, total, marks, leave }: { title: string; index: number; total: number; marks: ("good" | "again" | "now" | "")[]; leave: string }) {
-  return (
-    <header className="flex flex-col gap-2.5">
-      <div className="flex items-center justify-between gap-2">
-        <Link href="/practice" aria-label={leave} className="inline-flex size-11 items-center justify-center rounded-btn text-ink2">
-          <Icon d={X_ICON} size={22} stroke={1.8} />
-        </Link>
-        <p className="m-0 text-[15px] font-bold">{title}</p>
-        <p className="m-0 min-w-11 text-right text-[13px] text-ink2">
-          {Math.min(index + 1, total)} / {total}
-        </p>
-      </div>
-      <div className="mx-1.5">
-        <Dots marks={marks} label={`Question ${Math.min(index + 1, total)} of ${total}`} />
-      </div>
-    </header>
-  );
-}
 
 /**
  * Asking a list of questions in order, answers shown at once. Used by the mistakes review (a right
@@ -57,6 +41,7 @@ function Drill({
   leave: string;
 }) {
   const [index, setIndex] = useState(0);
+  const [flagging, setFlagging] = useState(false);
   const [chosen, setChosen] = useState<(number | null)[]>(() => items.map(() => null));
   const finished = index >= items.length;
   const right = chosen.filter((c, i) => c !== null && c === items[i].asked.answer).length;
@@ -78,6 +63,7 @@ function Drill({
   );
   const next = useCallback(() => {
     setIndex((i) => i + 1);
+    setFlagging(false);
     window.scrollTo({ top: 0 });
   }, []);
   // Keys 1–4 answer and Enter moves on, as in the quiz.
@@ -92,33 +78,26 @@ function Drill({
   }, [choose, finished, next, pick]);
 
   if (finished) return <>{done(right)}</>;
+  const at = Math.min(index + 1, items.length);
   return (
-    <div className="flex flex-col gap-3.5">
-      <Header title={title} index={index} total={items.length} marks={marks} leave={leave} />
-      <QuestionView
-        key={`${index}-${item.id}`}
-        asked={item.asked}
-        chosen={pick}
-        furigana={furigana}
-        onChoose={choose}
-      />
-      <div className="mt-2 flex flex-col gap-1.5">
-        <button
-          type="button"
-          disabled={pick === null}
-          onClick={next}
-          className="min-h-[54px] w-full rounded-btn border-none bg-accent text-base font-bold text-on-accent disabled:opacity-50"
-        >
+    <QuizShell
+      title={title}
+      count={`${at} / ${items.length}`}
+      close={{ href: "/practice", label: leave }}
+      marks={marks}
+      marksLabel={`Question ${at} of ${items.length}`}
+      flag={item.id !== null ? { open: flagging, toggle: () => setFlagging((f) => !f) } : undefined}
+      footer={
+        <Button size="lg" full disabled={pick === null} onClick={next}>
           {index === items.length - 1 ? "Finish" : "Next question"}
-        </button>
-        {item.id !== null && <FlagQuestion key={item.id} questionId={item.id} />}
-      </div>
-    </div>
+        </Button>
+      }
+    >
+      <QuestionView key={`${index}-${item.id}`} asked={item.asked} chosen={pick} furigana={furigana} onChoose={choose} />
+      {item.id !== null && <FlagQuestion key={item.id} questionId={item.id} open={flagging} onClose={() => setFlagging(false)} />}
+    </QuizShell>
   );
 }
-
-const quiet = "flex min-h-11 items-center justify-center rounded-btn border border-line text-sm font-semibold text-ink no-underline";
-const solid = "flex min-h-[50px] items-center justify-center rounded-btn bg-accent text-[15px] font-bold text-on-accent no-underline";
 
 /** The mistakes review: each waiting mistake asked again. Right clears it; wrong keeps it waiting. */
 export function MistakesReview({ items, furigana, voice }: { items: { id: number; asked: Asked }[]; furigana: boolean; voice: VoicePrefs }) {
@@ -137,22 +116,32 @@ export function MistakesReview({ items, furigana, voice }: { items: { id: number
           });
         }}
         done={(right) => (
-          <section className="flex flex-col gap-3 rounded-card bg-surface p-4 shadow-card">
-            <h1 className="m-0 font-head text-[24px]">Mistakes review done</h1>
-            <p className="m-0 text-sm text-ink2">
-              {right} of {items.length} right this time.{" "}
-              {right < items.length ? `The ${items.length - right === 1 ? "one" : items.length - right} you missed will wait here for next time.` : "Nothing is waiting now."}
-              {failed && " Some answers didn't save; they'll come up again."}
-            </p>
-            {right < items.length && (
-              <button type="button" onClick={() => router.refresh()} className={quiet}>
-                Try the rest again
-              </button>
-            )}
-            <Link href="/practice" className={solid}>
-              Back to Practice
-            </Link>
-          </section>
+          <DoneScreen
+            title="Mistakes review done"
+            stats={
+              <StatGrid cols={2}>
+                <StatTile value={right} label="right this time" tone="good" size="lg" />
+                <StatTile value={items.length - right} label="still waiting" size="lg" />
+              </StatGrid>
+            }
+            actions={
+              <>
+                <Button size="lg" full href="/practice" iconEnd="arrow-right">
+                  Back to Practice
+                </Button>
+                {right < items.length && (
+                  <Button variant="secondary" full icon="refresh" onClick={() => router.refresh()}>
+                    Try the rest again
+                  </Button>
+                )}
+              </>
+            }
+          >
+            {right < items.length
+              ? `The ${items.length - right === 1 ? "one" : items.length - right} you missed will wait here for next time.`
+              : "Nothing is waiting now."}
+            {failed && " Some answers didn’t save; they’ll come up again."}
+          </DoneScreen>
         )}
       />
     </VoiceProvider>
@@ -167,17 +156,21 @@ export function ListenDrill({ items, furigana, voice }: { items: Asked[]; furiga
     if (hasVoice) startedAt.current ??= Date.now();
   }, [hasVoice]);
 
-  if (hasVoice === null) return <p className="m-0 text-sm text-ink2">Looking for a Japanese voice…</p>;
+  if (hasVoice === null) return <SkeletonText lines={3} label="Looking for a Japanese voice" />;
   if (!hasVoice)
     return (
-      <section className="flex flex-col gap-2 rounded-card bg-surface p-4 shadow-card">
-        <h1 className="m-0 font-head text-[24px]">Listen and choose</h1>
-        <p className="m-0 text-sm">This device has no Japanese voice yet, so there&apos;s nothing to listen to.</p>
-        <p className="m-0 text-sm text-ink2">On an Android phone: {INSTALL_VOICE}. Then come back here.</p>
-        <Link href="/settings/voice" className={quiet}>
-          Japanese voice settings
-        </Link>
-      </section>
+      <EmptyState
+        art={<Spot kind="tea" />}
+        title="No Japanese voice on this device yet"
+        action={
+          <Button variant="secondary" href="/settings/voice">
+            Japanese voice settings
+          </Button>
+        }
+      >
+        <p className="m-0">There’s nothing to listen to without one.</p>
+        <p className="m-0 mt-2">On an Android phone: {INSTALL_VOICE}. Then come back here.</p>
+      </EmptyState>
     );
   return (
     <VoiceProvider prefs={voice}>
@@ -207,17 +200,25 @@ function ListenDone({ right, total, startedAt }: { right: number; total: number;
     });
   }, [startedAt]);
   return (
-    <section className="flex flex-col gap-3 rounded-card bg-surface p-4 shadow-card">
-      <h1 className="m-0 font-head text-[24px]">Listen and choose</h1>
-      <p className="m-0 text-sm text-ink2">
-        {right} of {total} right.{logged !== null ? ` ${logged} min of listening logged.` : ""}
-      </p>
-      <button type="button" onClick={() => router.refresh()} className={quiet}>
-        Five more
-      </button>
-      <Link href="/practice" className={solid}>
-        Back to Practice
-      </Link>
-    </section>
+    <DoneScreen
+      title="Listen and choose"
+      art={<Rabbit pose="cheering" size={180} />}
+      stats={
+        <StatGrid cols={2}>
+          <StatTile value={`${right} of ${total}`} label="right" tone="good" size="lg" />
+          {logged !== null && <StatTile value={`${logged} min`} label="listening logged" size="lg" />}
+        </StatGrid>
+      }
+      actions={
+        <>
+          <Button size="lg" full href="/practice" iconEnd="arrow-right">
+            Back to Practice
+          </Button>
+          <Button variant="secondary" full icon="refresh" onClick={() => router.refresh()}>
+            Five more
+          </Button>
+        </>
+      }
+    />
   );
 }

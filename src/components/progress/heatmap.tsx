@@ -1,5 +1,8 @@
 import { sql } from "drizzle-orm";
 
+import { Card } from "@/components/ui/card";
+import { SectionTitle } from "@/components/ui/page-header";
+
 import type { Db } from "@/db/client";
 import { addDays, daysBetween, formatShort, type StudyDate, weekOf } from "@/lib/day";
 
@@ -60,11 +63,10 @@ export function Heatmap({ weeks, today }: { weeks: HeatmapDay[][]; today: StudyD
         ? `Every day since ${formatShort(run.since, today)}: ${run.days} in a row.`
         : `${total.toLocaleString("en-IN")} reviews on ${active} ${active === 1 ? "day" : "days"}.`;
   return (
-    <section className="flex flex-col gap-2.5 rounded-card bg-surface px-3.5 py-3 shadow-card laptop:px-[18px] laptop:py-4">
-      <div className="flex flex-col gap-1">
-        <h2 className="m-0 text-[13px] font-bold">Reviews, last year</h2>
-        <p className="m-0 text-[12.5px] leading-[1.45] text-ink2">{summary}</p>
-        <p className="m-0 text-xs text-ink2">Darker = more reviews</p>
+    <Card aria-labelledby="heat-title" className="flex flex-col gap-3 pt-3">
+      <div className="flex flex-col">
+        <SectionTitle id="heat-title">Reviews, last year</SectionTitle>
+        <p className="m-0 text-body text-ink2">{summary}</p>
       </div>
       {/* Scrolls sideways on a phone, starting at this week (the right-hand end); fits on a laptop. */}
       <div dir="rtl" className="overflow-x-auto pb-1">
@@ -95,6 +97,15 @@ export function Heatmap({ weeks, today }: { weeks: HeatmapDay[][]; today: StudyD
           </svg>
         </div>
       </div>
-    </section>
+      <div aria-hidden="true" className="flex items-center justify-end gap-1.5 text-caption text-ink2">
+        <span>Fewer</span>
+        {STEP_STYLE.map((c) => (
+          <svg key={c} width={CELL} height={CELL} className="block">
+            <rect width={CELL} height={CELL} rx={3} className={c} />
+          </svg>
+        ))}
+        <span>More</span>
+      </div>
+    </Card>
   );
 }

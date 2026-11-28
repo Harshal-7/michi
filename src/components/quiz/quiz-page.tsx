@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { BackLink } from "@/components/learn/tabs";
+import { PageHeader } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import type { Settings } from "@/lib/settings/schema";
 import { loadMistakes, missOutcomes, type Quiz } from "@/lib/quiz/store";
@@ -52,11 +52,7 @@ export async function QuizPage({
   }
   return (
     <>
-      <header className="flex flex-col gap-0.5">
-        <BackLink href="/practice">Practice</BackLink>
-        <h1 className="m-0 font-head text-[28px] leading-[1.15]">{title}</h1>
-        <p className="m-0 text-[13px] text-ink2">{kicker}</p>
-      </header>
+      <PageHeader back={{ href: "/practice", label: "Practice" }} title={title} sub={kicker} />
       {start}
     </>
   );

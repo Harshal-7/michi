@@ -17,7 +17,7 @@ describe("<Ruby>", () => {
 
   it("fills or hides a blank", () => {
     const text = "{雨|あめ}が{降|ふ}っている[[から]]、{出|で}かけません。";
-    expect(html({ text })).toContain('underline-offset-[6px]">から</span>');
+    expect(html({ text })).toContain('underline-offset-6">から</span>');
     const hidden = html({ text, blank: "hide" });
     expect(hidden).not.toContain("から");
     expect(hidden).toContain("(blank)");

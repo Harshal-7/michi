@@ -3,7 +3,11 @@ import Link from "next/link";
 
 import { QuickCheck } from "@/components/cards/quick-check";
 import { UpNextLive } from "@/components/cards/session-done";
-import { EmptyState, PageHeader } from "@/components/ui/page";
+import { Rabbit } from "@/components/ui/art/rabbit";
+import { Spot } from "@/components/ui/art/spots";
+import { Button } from "@/components/ui/button";
+import { EmptyState } from "@/components/ui/empty-state";
+import { PageHeader } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import { getSettings } from "@/db/settings";
 import { requireSignedIn } from "@/lib/auth/session";
@@ -33,18 +37,18 @@ export default async function QuickCheckPage({ searchParams }: PageProps<"/quick
   if (left <= 0) {
     return (
       <>
-        <PageHeader kicker={formatLong(today)} title="Quick check" />
-        <EmptyState>The quick check is finished: all {progress.total} N5 items are checked. What you knew comes back in your reviews.</EmptyState>
+        <PageHeader sub={formatLong(today)} title="Quick check" />
+        <EmptyState art={<Rabbit pose="cheering" size={180} />} title="The quick check is finished">The quick check is finished: all {progress.total} N5 items are checked. What you knew comes back in your reviews.</EmptyState>
       </>
     );
   }
   if (!plan && !more) {
     return (
       <>
-        <PageHeader kicker={formatLong(today)} title="Quick check" />
-        <EmptyState>
+        <PageHeader sub={formatLong(today)} title="Quick check" />
+        <EmptyState art={<Spot kind="notebook" />} title="No plan yet today">
           Today&apos;s plan isn&apos;t made yet, so it doesn&apos;t know how much of the quick check is for today. Open{" "}
-          <Link href={ROUTES.today} className="font-bold">
+          <Link href={ROUTES.today} className="font-bold text-accent">
             Today
           </Link>{" "}
           first.
@@ -58,12 +62,17 @@ export default async function QuickCheckPage({ searchParams }: PageProps<"/quick
   if (target === 0) {
     return (
       <>
-        <PageHeader kicker={`Quick check · day ${Math.min(progress.day, 3)} of 3`} title="Done for today" />
-        <EmptyState>
-          Today&apos;s share is checked: {progress.checkedToday} items. {left} are left for the next days.{" "}
-          <Link href="/quick-check?more=1" className="font-bold">
-            Keep going now
-          </Link>
+        <PageHeader sub={`Quick check · day ${Math.min(progress.day, 3)} of 3`} title="Quick check" />
+        <EmptyState
+          art={<Spot kind="lantern" />}
+          title="Today’s share is checked"
+          action={
+            <Button variant="secondary" href="/quick-check?more=1" iconEnd="arrow-right">
+              Keep going now
+            </Button>
+          }
+        >
+          {progress.checkedToday} items checked today. {left} are left for the next days.
         </EmptyState>
         {upNext && <UpNextLive upNext={upNext} />}
       </>

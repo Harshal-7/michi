@@ -4,7 +4,9 @@ import Link from "next/link";
 
 import { ReviewSession } from "@/components/cards/review-session";
 import { UpNextLive } from "@/components/cards/session-done";
-import { EmptyState, PageHeader } from "@/components/ui/page";
+import { Spot } from "@/components/ui/art/spots";
+import { EmptyState } from "@/components/ui/empty-state";
+import { PageHeader } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import { decks } from "@/db/schema";
 import { getSettings } from "@/db/settings";
@@ -36,10 +38,10 @@ export default async function NewItemsPage({ searchParams }: PageProps<"/review/
   if (!plan) {
     return (
       <>
-        <PageHeader kicker={formatLong(today)} title="New items" />
-        <EmptyState>
+        <PageHeader sub={formatLong(today)} title="New items" />
+        <EmptyState art={<Spot kind="notebook" />} title="No plan yet today">
           Today&apos;s plan isn&apos;t made yet, so there are no new cards to bring in. Open{" "}
-          <Link href={ROUTES.today} className="font-bold">
+          <Link href={ROUTES.today} className="font-bold text-accent">
             Today
           </Link>{" "}
           first, then come back.
@@ -55,8 +57,8 @@ export default async function NewItemsPage({ searchParams }: PageProps<"/review/
     const introduced = quotas.reduce((sum, d) => sum + Math.min(d.quota, d.introduced), 0);
     return (
       <>
-        <PageHeader kicker={formatLong(today)} title="New items" />
-        <EmptyState>
+        <PageHeader sub={formatLong(today)} title="New items" />
+        <EmptyState art={<Spot kind="lantern" />} title={introduced > 0 ? "New cards are in" : "No new cards today"}>
           {introduced > 0
             ? `Today's new cards are in: ${introduced} introduced. They come back in your reviews.`
             : "No new cards today. Today's plan has none, or every list that's on is finished."}

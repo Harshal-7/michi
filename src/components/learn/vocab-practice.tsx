@@ -3,7 +3,12 @@
 import { useCallback, useEffect, useState } from "react";
 
 import { SessionLoading, useInBrowser } from "@/components/cards/loading";
-import { EmptyState, PageHeader } from "@/components/ui/page";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { EmptyState } from "@/components/ui/empty-state";
+import { PageHeader } from "@/components/ui/page-header";
+import { ProgressBar } from "@/components/ui/progress";
+import { Segmented } from "@/components/ui/segmented";
 import { ROUTES } from "@/lib/planner/day-plan";
 import { getVocabQueue } from "@/lib/vocab/queue";
 import {
@@ -19,7 +24,8 @@ import {
 } from "@/lib/vocab/types";
 import type { VoicePrefs } from "@/lib/voice/voices";
 
-import { BackLink, LinkTabs } from "./tabs";
+import { BackLink } from "@/components/ui/back-link";
+import { LinkTabs } from "@/components/ui/link-tabs";
 import { DIRECTION_LABELS, WaitingLine } from "./vocab-parts";
 import { type Answer, VocabSession } from "./vocab-session";
 
@@ -124,8 +130,10 @@ function Practice({ level, words, counts, furigana, voice }: Props) {
 
   return (
     <>
-      <BackLink href={ROUTES.learn}>Learn</BackLink>
-      <PageHeader title="Vocabulary" sub="Type the meaning, or type the word, for the JLPT word lists" />
+      <header className="flex flex-col gap-1">
+        <BackLink href={ROUTES.learn}>Learn</BackLink>
+        <PageHeader title="Vocabulary" sub="Type the meaning, or type the word, for the JLPT word lists" />
+      </header>
       <LinkTabs
         label="Level"
         tabs={VOCAB_LEVELS.map((l) => ({
@@ -136,28 +144,27 @@ function Practice({ level, words, counts, furigana, voice }: Props) {
         }))}
       />
 
-      <section aria-label={`${level} progress`} className="flex flex-col gap-3 rounded-card bg-surface px-4 py-3.5 shadow-card">
+      <Card aria-label={`${level} progress`} className="flex flex-col gap-4">
         {(["ja_en", "en_ja"] as const).map((d) => {
           const n = typedRight(d);
           return (
-            <div key={d} className="flex flex-col gap-1.5">
-              <p className="m-0 flex flex-wrap items-baseline justify-between gap-x-3 text-[13px]">
-                <span className="font-semibold">{DIRECTION_LABELS[d]}</span>
+            <div key={d} className="flex flex-col gap-2">
+              <p className="m-0 flex flex-wrap items-baseline justify-between gap-x-3 text-meta">
+                <span className="font-bold">{DIRECTION_LABELS[d]}</span>
                 <span className="text-ink2">
                   {n.toLocaleString("en")} of {current.length.toLocaleString("en")} typed right
                 </span>
               </p>
-              <div className="h-2 overflow-hidden rounded-full bg-track" aria-hidden="true">
-                <div className="h-full bg-good" style={{ width: `${current.length ? (n / current.length) * 100 : 0}%` }} />
-              </div>
+              <ProgressBar value={n} max={current.length} ticks={false} tone="good" label={`${DIRECTION_LABELS[d]}: ${n} of ${current.length} typed right`} />
             </div>
           );
         })}
-      </section>
+      </Card>
 
-      <section aria-label="Choose a set" className="flex flex-col gap-3.5 rounded-card bg-surface px-4 py-3.5 shadow-card">
-        <Segmented
-          name="Direction"
+      <section aria-label="Choose a set" className="flex flex-col gap-4">
+        <Choice
+          name="direction"
+          label="Direction"
           value={choices.direction}
           onChoose={(direction) => choose({ direction })}
           options={[
@@ -165,8 +172,9 @@ function Practice({ level, words, counts, furigana, voice }: Props) {
             { value: "en_ja", label: "English → Japanese", note: "type the word" },
           ]}
         />
-        <Segmented
-          name="Words"
+        <Choice
+          name="words"
+          label="Words"
           value={choices.filter}
           onChoose={(filter) => choose({ filter })}
           options={[
@@ -175,8 +183,9 @@ function Practice({ level, words, counts, furigana, voice }: Props) {
             { value: "missed", label: "Missed", note: `${filtered.missed.toLocaleString("en")} last time` },
           ]}
         />
-        <Segmented
-          name="Order"
+        <Choice
+          name="order"
+          label="Order"
           value={choices.order}
           onChoose={(order) => choose({ order })}
           options={[
@@ -187,9 +196,9 @@ function Practice({ level, words, counts, furigana, voice }: Props) {
       </section>
 
       {size > 0 ? (
-        <button type="button" onClick={start} className="min-h-[54px] rounded-btn bg-accent text-base font-bold text-on-accent">
+        <Button size="lg" full iconEnd="arrow-right" onClick={start}>
           Start · {size.toLocaleString("en")} {size === 1 ? "word" : "words"}
-        </button>
+        </Button>
       ) : (
         <EmptyState>
           {choices.filter === "missed"
@@ -197,41 +206,48 @@ function Practice({ level, words, counts, furigana, voice }: Props) {
             : `Every ${level} word has been typed right this way. Pick “All” to go through them again.`}
         </EmptyState>
       )}
-      <p className="m-0 text-center text-[12.5px] leading-normal text-ink2">
-        Practice keeps its own counts on this list. It doesn&apos;t change your reviews.
-      </p>
+      <p className="m-0 text-center text-meta text-ink2">Practice keeps its own counts on this list. It doesn&apos;t change your reviews.</p>
       <WaitingLine />
     </>
   );
 }
 
-/** Settings' segmented control: equal segments in a --surface2 track, the chosen one raised. */
-function Segmented<T extends string>({
+/** One choice: its label above the shared segmented control, with a quiet note under each option. */
+function Choice<T extends string>({
   name,
+  label,
   value,
   options,
   onChoose,
 }: {
   name: string;
+  label: string;
   value: T;
   options: { value: T; label: string; note?: string }[];
   onChoose: (value: T) => void;
 }) {
+  const tall = options.some((o) => o.note);
   return (
-    <fieldset className="m-0 flex flex-col gap-1.5 border-none p-0">
-      <legend className="mb-1.5 p-0 text-xs font-semibold text-ink2">{name}</legend>
-      <div className="grid gap-1 rounded-btn bg-surface2 p-1" style={{ gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))` }}>
-        {options.map((o) => (
-          <label
-            key={o.value}
-            className="relative flex min-h-11 cursor-pointer flex-col items-center justify-center rounded-btn px-2 py-1 text-center text-[13.5px] leading-[1.2] font-medium text-ink2 has-[:checked]:bg-surface has-[:checked]:font-bold has-[:checked]:text-ink has-[:checked]:shadow-card has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-accent"
-          >
-            <input type="radio" name={name} value={o.value} checked={o.value === value} onChange={() => onChoose(o.value)} className="sr-only" />
-            <span>{o.label}</span>
-            {o.note && <span className="text-[11px] font-medium text-ink2">{o.note}</span>}
-          </label>
-        ))}
-      </div>
-    </fieldset>
+    <div className="flex flex-col gap-2">
+      <p className="m-0 text-meta font-bold">{label}</p>
+      <Segmented
+        label={label}
+        name={name}
+        value={value}
+        onChange={onChoose}
+        className={tall ? "[&>label]:h-14" : undefined}
+        options={options.map((o) => ({
+          value: o.value,
+          label: o.note ? (
+            <span className="flex flex-col items-center leading-tight">
+              <span className="max-w-full truncate">{o.label}</span>
+              <span className="text-caption font-medium text-ink2">{o.note}</span>
+            </span>
+          ) : (
+            o.label
+          ),
+        }))}
+      />
+    </div>
   );
 }

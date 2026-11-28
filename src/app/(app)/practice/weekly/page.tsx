@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-
-import { BackLink } from "@/components/learn/tabs";
+import { Spot } from "@/components/ui/art/spots";
+import { Button } from "@/components/ui/button";
+import { PageHeader } from "@/components/ui/page-header";
 import { QuizPage } from "@/components/quiz/quiz-page";
 import { QuizStart } from "@/components/quiz/quiz-runner";
-import { EmptyState } from "@/components/ui/page";
+import { EmptyState } from "@/components/ui/empty-state";
 import { getDb } from "@/db/client";
 import { getSettings } from "@/db/settings";
 import { requireSignedIn } from "@/lib/auth/session";
@@ -28,19 +28,21 @@ export default async function WeeklyTestPage() {
     const last = await findQuiz(db, "weekly", addDays(thisWeek, -7));
     return (
       <>
-        <header className="flex flex-col gap-0.5">
-          <BackLink href="/practice">Practice</BackLink>
-          <h1 className="m-0 font-head text-[28px] leading-[1.15]">Weekly test</h1>
-        </header>
-        <EmptyState>
+        <PageHeader back={{ href: "/practice", label: "Practice" }} title="Weekly test" />
+        <EmptyState
+          art={<Spot kind="notebook" />}
+          title={`Opens on Sunday ${formatDayMonth(testSunday(thisWeek))}`}
+          action={
+            last?.status === "submitted" && (
+              <Button variant="quiet" href={`/practice/history/${last.id}`}>
+                Last week’s test: {last.score} / {last.total}
+              </Button>
+            )
+          }
+        >
           This week&apos;s test opens on Sunday {formatDayMonth(testSunday(thisWeek))} and stays open to Wednesday. It has {QUIZ_LENGTH.weekly} questions on what you
           studied Monday to Sunday.
         </EmptyState>
-        {last?.status === "submitted" && (
-          <Link href={`/practice/history/${last.id}`} className="self-start text-[13px] font-semibold text-ink2">
-            Last week&apos;s test: {last.score} / {last.total}
-          </Link>
-        )}
       </>
     );
   }

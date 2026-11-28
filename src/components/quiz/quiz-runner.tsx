@@ -1,79 +1,129 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useState, useTransition } from "react";
+import { type ReactNode, useCallback, useEffect, useRef, useState, useTransition } from "react";
 
 import { answerAction, flagQuestionAction, startQuizAction, submitAction } from "@/app/(app)/practice/quiz-actions";
-import { VoiceProvider } from "@/components/cards/voice";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Field } from "@/components/ui/field";
 import { Icon } from "@/components/ui/icon";
+import { IconButton } from "@/components/ui/icon-button";
+import { SessionHeader } from "@/components/ui/session-header";
+import { VoiceProvider } from "@/components/ui/voice";
 import type { Asked, QuizKind } from "@/lib/quiz/types";
 import type { VoicePrefs } from "@/lib/voice/voices";
 
 import { QuestionView } from "./question-view";
 import { useHasJapaneseVoice } from "./use-voice";
 
-const X_ICON = "M6 6l12 12 M18 6L6 18";
-const FLAG_ICON = "M5 21V4 M5 4h11l-2 4 2 4H5";
-
 export type RunnerQuestion = { id: number; asked: Asked; chosen: number | null };
 
-/** The progress dots: green right, red wrong, accent now, track still to come. */
-export function Dots({ marks, label, height = 6 }: { marks: ("good" | "again" | "now" | "")[]; label: string; height?: number }) {
+/** The progress dots (RF_QuizQuestion): good right, again wrong, accent now, track still to come. */
+export function Dots({ marks, label }: { marks: ("good" | "again" | "now" | "")[]; label: string }) {
   return (
-    <div role="img" aria-label={label} className="grid gap-1" style={{ gridTemplateColumns: `repeat(${marks.length}, minmax(0, 1fr))` }}>
+    <div role="img" aria-label={label} className="flex gap-1">
       {marks.map((m, i) => (
-        <span key={i} className={`rounded-full ${m === "good" ? "bg-good" : m === "again" ? "bg-again" : m === "now" ? "bg-accent" : "bg-track"}`} style={{ height }} />
+        <span key={i} className={`h-2.5 flex-1 rounded-full ${m === "good" ? "bg-good" : m === "again" ? "bg-again" : m === "now" ? "bg-accent" : "bg-track"}`} />
       ))}
     </div>
   );
 }
 
-/** "Flag this question": a short note saved with the question as asked. */
-export function FlagQuestion({ questionId }: { questionId: number }) {
-  const [open, setOpen] = useState(false);
+/** "Flag this question": a short note saved with the question as asked, opened from the header's flag. */
+export function FlagQuestion({ questionId, open, onClose }: { questionId: number; open: boolean; onClose: () => void }) {
   const [note, setNote] = useState("");
   const [done, setDone] = useState<string | null>(null);
   const [pending, start] = useTransition();
-  if (done) return <p className="m-0 text-center text-[13px] text-ink2" role="status">{done}</p>;
-  if (!open)
+  if (done)
     return (
-      <button type="button" onClick={() => setOpen(true)} className="inline-flex min-h-11 items-center gap-1.5 self-center border-none bg-transparent text-[13px] text-ink2">
-        <Icon d={FLAG_ICON} size={16} stroke={1.8} />
-        Flag this question
-      </button>
+      <p className="m-0 text-center text-meta text-ink2" role="status">
+        {done}
+      </p>
     );
+  if (!open) return null;
   return (
-    <form
-      className="flex flex-col gap-2"
-      onSubmit={(e) => {
-        e.preventDefault();
-        start(async () => {
-          const r = await flagQuestionAction({ questionId, note });
-          setDone("ok" in r ? "Flagged. You'll find it in Settings → Flagged items." : r.error);
-        });
-      }}
+    <Card
+      as="div"
+      className="flex flex-col gap-3"
     >
-      <label className="flex flex-col gap-1.5 text-[12.5px] font-bold">
-        What reads wrong?
-        <input
+      <form
+        className="flex flex-col gap-3"
+        onSubmit={(e) => {
+          e.preventDefault();
+          start(async () => {
+            const r = await flagQuestionAction({ questionId, note });
+            setDone("ok" in r ? "Flagged. You’ll find it in Settings → Flagged items." : r.error);
+          });
+        }}
+      >
+        <Field
+          label="What reads wrong?"
           type="text"
           value={note}
           onChange={(e) => setNote(e.target.value)}
           maxLength={1000}
           placeholder="optional, like “から is right too”"
-          className="min-h-11 rounded-xl border border-line bg-page px-3 text-[15px] font-normal focus-visible:border-accent"
         />
-      </label>
-      <div className="flex gap-2">
-        <button type="button" onClick={() => setOpen(false)} className="min-h-11 flex-1 rounded-btn border border-line bg-surface text-sm font-semibold">
-          Cancel
-        </button>
-        <button type="submit" disabled={pending} className="min-h-11 flex-1 rounded-btn border border-line bg-surface2 text-sm font-semibold disabled:opacity-60">
-          Flag it
-        </button>
+        <div className="flex justify-end gap-2">
+          <Button variant="text" onClick={onClose}>
+            Cancel
+          </Button>
+          <Button variant="secondary" type="submit" icon="flag" loading={pending} disabled={pending}>
+            Flag it
+          </Button>
+        </div>
+      </form>
+    </Card>
+  );
+}
+
+/**
+ * The frame of a quiz-like session (RF_QuizQuestion): the session header with close, title, count and
+ * the flag, the dots under it, the question scrolling in the middle and the one button pinned at the
+ * bottom. Full screen on the phone, the centred column on a laptop.
+ */
+export function QuizShell({
+  title,
+  count,
+  close,
+  marks,
+  marksLabel,
+  flag,
+  footer,
+  children,
+}: {
+  title: string;
+  count: string;
+  close: { href: string; label: string };
+  marks: ("good" | "again" | "now" | "")[];
+  marksLabel: string;
+  /** The flag button's state, when the question can be flagged. */
+  flag?: { open: boolean; toggle: () => void };
+  footer: ReactNode;
+  children: ReactNode;
+}) {
+  // Each new question starts at the top of the scrolling middle.
+  const body = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    body.current?.scrollTo({ top: 0 });
+  }, [count]);
+  return (
+    <div className="fixed inset-0 z-session flex flex-col bg-page laptop:static laptop:z-auto laptop:mx-auto laptop:w-full laptop:max-w-160 laptop:gap-2 laptop:bg-transparent">
+      <div className="flex shrink-0 flex-col gap-2 px-2.5 pt-[max(12px,env(safe-area-inset-top))] laptop:p-0">
+        <SessionHeader
+          title={title}
+          count={count}
+          close={close}
+          trailing={flag && <IconButton icon="flag" label="Flag this question" pressed={flag.open} onClick={flag.toggle} />}
+        />
+        <div className="mx-3.5 laptop:mx-2">
+          <Dots marks={marks} label={marksLabel} />
+        </div>
       </div>
-    </form>
+      <div ref={body} className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto px-5 pt-5.5 pb-4 laptop:overflow-visible laptop:px-0">{children}</div>
+      <div className="shrink-0 px-5 pb-[max(20px,env(safe-area-inset-bottom))] laptop:px-0">{footer}</div>
+    </div>
   );
 }
 
@@ -100,6 +150,7 @@ export function QuizRunner({
   const firstOpen = chosen.findIndex((c) => c === null);
   const [index, setIndex] = useState(firstOpen === -1 ? questions.length - 1 : firstOpen);
   const [error, setError] = useState<string | null>(null);
+  const [flagging, setFlagging] = useState(false);
   const [pending, start] = useTransition();
   const q = questions[index];
   const pick = chosen[index];
@@ -122,6 +173,7 @@ export function QuizRunner({
     if (pick === null) return;
     if (!last) {
       setIndex((i) => i + 1);
+      setFlagging(false);
       window.scrollTo({ top: 0 });
       return;
     }
@@ -153,41 +205,36 @@ export function QuizRunner({
 
   return (
     <VoiceProvider prefs={voice}>
-      <div className="flex flex-col gap-3.5">
-        <header className="flex flex-col gap-2.5">
-          <div className="flex items-center justify-between gap-2">
-            <Link href="/practice" aria-label="Leave the quiz" className="inline-flex size-11 items-center justify-center rounded-btn text-ink2">
-              <Icon d={X_ICON} size={22} stroke={1.8} />
-            </Link>
-            <p className="m-0 text-[15px] font-bold">{title}</p>
-            <p className="m-0 min-w-11 text-right text-[13px] text-ink2">
-              {index + 1} / {questions.length}
-            </p>
-          </div>
-          <div className="mx-1.5">
-            <Dots marks={marks} label={`Question ${index + 1} of ${questions.length}; ${rightSoFar} right and ${wrongSoFar} wrong so far`} />
-          </div>
-        </header>
-
-        <QuestionView key={q.id} asked={q.asked} chosen={pick} onChoose={choose} furigana={furigana} />
-
+      <QuizShell
+        title={title}
+        count={`${index + 1} / ${questions.length}`}
+        close={{ href: "/practice", label: "Leave the quiz" }}
+        marks={marks}
+        marksLabel={`Question ${index + 1} of ${questions.length}; ${rightSoFar} right and ${wrongSoFar} wrong so far`}
+        flag={{ open: flagging, toggle: () => setFlagging((f) => !f) }}
+        footer={
+          <Button size="lg" full disabled={pick === null || pending || (last && !allAnswered)} loading={pending} onClick={next}>
+            {last ? "See results" : "Next question"}
+          </Button>
+        }
+      >
+        <QuestionView
+          key={q.id}
+          asked={q.asked}
+          chosen={pick}
+          onChoose={choose}
+          furigana={furigana}
+          aside={
+            rightSoFar + wrongSoFar > 0 ? `${rightSoFar} right · ${wrongSoFar} to review` : undefined
+          }
+        />
         {error && (
-          <p role="alert" className="m-0 text-[13px] font-semibold text-again">
+          <p role="alert" className="m-0 text-meta font-bold text-again">
             {error}
           </p>
         )}
-        <div className="mt-2 flex flex-col items-stretch gap-1.5">
-          <button
-            type="button"
-            disabled={pick === null || pending || (last && !allAnswered)}
-            onClick={next}
-            className="min-h-[54px] w-full rounded-btn border-none bg-accent text-base font-bold text-on-accent disabled:opacity-50"
-          >
-            {last ? "See results" : "Next question"}
-          </button>
-          <FlagQuestion key={q.id} questionId={q.id} />
-        </div>
-      </div>
+        <FlagQuestion key={q.id} questionId={q.id} open={flagging} onClose={() => setFlagging(false)} />
+      </QuizShell>
     </VoiceProvider>
   );
 }
@@ -199,16 +246,25 @@ export function QuizStart({ kind, count, minutes, note }: { kind: QuizKind; coun
   const [error, setError] = useState<string | null>(null);
   const [pending, start] = useTransition();
   return (
-    <section className="flex flex-col gap-3 rounded-card bg-surface p-4 shadow-hero">
-      <p className="m-0 text-[15px] font-semibold">
+    <Card className="flex flex-col gap-3">
+      <p className="m-0 text-lead font-black">
         {count} questions · about {minutes} min
       </p>
-      <p className="m-0 text-[13px] text-ink2">
+      <p className="m-0 text-body text-ink2">
         {note ?? "Kana, kanji readings, meanings, grammar, sentence order and one to listen to."} Wrong answers go back into your reviews.
       </p>
-      {hasVoice === false && <p className="m-0 text-[13px] text-ink2">No Japanese voice on this device, so the listening question becomes a meaning question.</p>}
-      <button
-        type="button"
+      {hasVoice === false && (
+        <p className="m-0 flex items-start gap-2 text-meta text-ink2">
+          <Icon name="info" size={18} className="mt-px text-ink3" />
+          No Japanese voice on this device, so the listening question becomes a meaning question.
+        </p>
+      )}
+      <Button
+        size="lg"
+        full
+        icon="play"
+        className="mt-1"
+        loading={pending}
         disabled={pending || hasVoice === null}
         onClick={() =>
           start(async () => {
@@ -218,15 +274,14 @@ export function QuizStart({ kind, count, minutes, note }: { kind: QuizKind; coun
             else router.refresh();
           })
         }
-        className="min-h-[50px] rounded-btn border-none bg-accent text-[15px] font-bold text-on-accent disabled:opacity-60"
       >
         {pending ? "Starting…" : "Start"}
-      </button>
+      </Button>
       {error && (
-        <p role="alert" className="m-0 text-[13px] font-semibold text-again">
+        <p role="alert" className="m-0 text-meta font-bold text-again">
           {error}
         </p>
       )}
-    </section>
+    </Card>
   );
 }

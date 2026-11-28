@@ -9,8 +9,9 @@ import { daysBetween, formatDayMonth, studyDate } from "@/lib/day";
 import { todaysPlan } from "@/lib/planner/today-plan";
 
 /**
- * The signed-in app: the laptop sidebar from 1024px; below that the top bar, the page and the
- * floating pill nav. Pages use the phone layout, centred and at most 720px wide on a laptop.
+ * The signed-in app: the laptop sidebar from 1024px; below that the page, "+ Add a word" at the top of
+ * the hubs and the bottom bar. Pages use the phone layout (20px sides), centred and at most 720px wide
+ * on a laptop (44px sides). Main's bottom padding clears the bar (--nav-h).
  * Layouts don't run again on every navigation, so each page checks the session too.
  * The first page load of each study day freezes the day's plan (src/lib/planner/freeze.ts), so
  * every page and both devices see the same list. A page that opts in with `data-wide` gets the
@@ -26,10 +27,10 @@ export default async function AppLayout({ children }: LayoutProps<"/">) {
   const workLocked = daysBetween(studyDate(), settings.workUnlock) > 0;
   return (
     <div className="min-h-dvh laptop:flex">
-      <Sidebar workBadge={workLocked ? formatDayMonth(settings.workUnlock) : null} />
-      <div className="min-w-0 flex-1">
+      <Sidebar workBadge={workLocked ? `opens ${formatDayMonth(settings.workUnlock)}` : null} />
+      <div className="relative min-w-0 flex-1">
         <PhoneTopBar />
-        <main className="mx-auto flex w-full max-w-[720px] flex-col gap-3 px-4 pt-3 pb-[calc(112px+env(safe-area-inset-bottom))] laptop:px-12 laptop:pt-7 laptop:pb-8 laptop:has-[>[data-wide]]:max-w-[1136px]">
+        <main className="mx-auto flex w-full max-w-180 flex-col gap-4 px-5 pt-[max(12px,env(safe-area-inset-top))] pb-nav laptop:px-11 laptop:pt-8 laptop:pb-10 laptop:has-[>[data-wide]]:max-w-[1136px]">
           {children}
         </main>
       </div>

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-
-import { BackLink } from "@/components/learn/tabs";
+import { Rabbit } from "@/components/ui/art/rabbit";
+import { Button } from "@/components/ui/button";
+import { PageHeader } from "@/components/ui/page-header";
 import { MistakesReview } from "@/components/quiz/mistakes-review";
-import { EmptyState } from "@/components/ui/page";
+import { EmptyState } from "@/components/ui/empty-state";
 import { getDb } from "@/db/client";
 import { getSettings } from "@/db/settings";
 import { requireSignedIn } from "@/lib/auth/session";
@@ -23,14 +23,18 @@ export default async function MistakesPage() {
   if (mistakes.length === 0) {
     return (
       <>
-        <header className="flex flex-col gap-0.5">
-          <BackLink href="/practice">Practice</BackLink>
-          <h1 className="m-0 font-head text-[28px] leading-[1.15]">Mistakes review</h1>
-        </header>
-        <EmptyState>No mistakes waiting. Ones from your quizzes come here for a week.</EmptyState>
-        <Link href="/practice/history" className="self-start text-[13px] font-semibold text-ink2">
-          Quiz history
-        </Link>
+        <PageHeader back={{ href: "/practice", label: "Practice" }} title="Mistakes review" />
+        <EmptyState
+          art={<Rabbit pose="sleepy" size={180} />}
+          title="No mistakes waiting"
+          action={
+            <Button variant="quiet" href="/practice/history">
+              Quiz history
+            </Button>
+          }
+        >
+          Ones from your quizzes come here for a week.
+        </EmptyState>
       </>
     );
   }

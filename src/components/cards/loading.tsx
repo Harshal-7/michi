@@ -2,6 +2,8 @@
 
 import { useSyncExternalStore } from "react";
 
+import { SkeletonText } from "@/components/ui/skeleton";
+
 const subscribeNothing = () => () => {};
 
 /** False while rendering on the server and hydrating, true once in the browser. */
@@ -13,13 +15,11 @@ export function useInBrowser(): boolean {
   );
 }
 
-/** The loading state from F_Parts, while a session starts. */
+/** The loading state while a session starts: skeleton lines in a card (RF_States, loading). */
 export function SessionLoading() {
   return (
-    <div aria-label="Loading" className="flex flex-col gap-2 rounded-card bg-surface p-3">
-      <span className="h-3 w-[55%] rounded-full bg-surface2" />
-      <span className="h-2.5 w-[85%] rounded-full bg-surface2" />
-      <span className="h-2.5 w-[70%] rounded-full bg-surface2" />
+    <div className="rounded-card border-[1.5px] border-line bg-surface px-5 py-4.5">
+      <SkeletonText lines={3} label="Loading" />
     </div>
   );
 }

@@ -6,13 +6,20 @@ import { createPlayer, type PlayerState, signInPlayer } from "@/lib/play/actions
 import { hueStyle } from "@/lib/games/catalog";
 import { NAME_MAX } from "@/lib/play/names";
 
-import { ordinal, PLAY_ICONS, PlayIcon } from "./bits";
+import { Rabbit } from "@/components/ui/art/rabbit";
+import { Banner } from "@/components/ui/banner";
+import { Button } from "@/components/ui/button";
+import { Icon } from "@/components/ui/icon";
+
+import { ordinal } from "./bits";
 import { announcePlayer, type SheetMode, usePlay } from "./player";
 
 /**
- * "Pick a name" (P_GuestForm): a name with a live check and a 4-digit PIN, or "Welcome back" with
- * a name and PIN. A sheet from the bottom on a phone, a dialog on a laptop. Opened from the top
- * bar, or from a game's end to save the score; signing in claims the games kept on this device.
+ * "Pick a name" (RF_PlayNameSheet): a name with a live check and a 4-digit PIN, or "Welcome back" with
+ * a name and PIN. A sheet from the bottom on a phone, a dialog on a laptop, with ui Sheet's look; its
+ * own <dialog> because the head carries the rabbit (or the score) and the form switches inside it.
+ * Opened from the top bar, or from a game's end to save the score; signing in claims the games kept
+ * on this device.
  */
 export function NameSheet() {
   const { sheet, closeSheet } = usePlay();
@@ -42,11 +49,11 @@ export function NameSheet() {
         if (e.target === e.currentTarget) closeSheet();
       }}
       aria-label={sheet?.kind === "save" ? "Save your score" : have ? "Welcome back" : "Pick a name"}
-      className="m-auto mb-0 max-h-[calc(100dvh-12px)] w-full max-w-none overflow-y-auto rounded-t-[30px] border-0 bg-surface p-0 text-ink shadow-[0_-1px_0_var(--line),0_-16px_40px_var(--shadow)] backdrop:bg-[color-mix(in_srgb,var(--page)_78%,transparent)] laptop:mb-auto laptop:w-[460px] laptop:max-w-[460px] laptop:rounded-[30px] laptop:shadow-[var(--card-shadow),0_30px_80px_var(--shadow)]"
+      className="m-auto mb-0 max-h-[calc(100dvh-12px)] w-full max-w-none overflow-y-auto rounded-t-sheet border-0 bg-raised p-0 text-ink shadow-raised backdrop:bg-scrim laptop:mb-auto laptop:w-120 laptop:rounded-sheet"
     >
       {sheet && (
-        <div className="flex flex-col gap-3 px-5 pt-2.5 pb-[max(28px,env(safe-area-inset-bottom))] laptop:p-7">
-          <span aria-hidden="true" className="h-[5px] w-11 self-center rounded-full bg-track laptop:hidden" />
+        <div className="flex flex-col gap-3 px-5 pt-2.5 pb-[max(16px,env(safe-area-inset-bottom))] laptop:px-7 laptop:pt-6 laptop:pb-6">
+          <span aria-hidden="true" className="h-1.25 w-11 self-center rounded-full bg-line-strong laptop:hidden" />
           {have ? (
             <HaveName key="have" onDone={done} onSwitch={() => setHave(false)} onClose={closeSheet} />
           ) : (
@@ -61,21 +68,25 @@ export function NameSheet() {
 function Header({ title, lead, onClose, stamp }: { title: string; lead: string; onClose: () => void; stamp?: number }) {
   return (
     <div className="flex items-start gap-3">
-      {stamp !== undefined && (
+      {stamp !== undefined ? (
         <span
           aria-hidden="true"
           style={hueStyle("kana")}
-          className="inline-flex size-14 shrink-0 -rotate-6 items-center justify-center rounded-full border-[3px] border-hue text-[21px] font-black text-hue"
+          className="mt-1 grid size-14 shrink-0 -rotate-6 place-items-center rounded-full border-[3px] border-hue text-title font-black text-hue"
         >
           {stamp}
         </span>
+      ) : (
+        <span className="mt-1.5 shrink-0">
+          <Rabbit pose="waving" size={72} />
+        </span>
       )}
-      <div className="flex flex-auto flex-col gap-1">
-        <h2 className="m-0 text-[26px] leading-[1.1] font-black">{title}</h2>
-        <p className="m-0 text-sm leading-normal text-ink2">{lead}</p>
+      <div className="flex min-w-0 flex-auto flex-col gap-1">
+        <h2 className="m-0 text-headline font-black">{title}</h2>
+        <p className="m-0 text-meta text-ink2">{lead}</p>
       </div>
-      <button type="button" aria-label="Close" onClick={onClose} className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-surface2">
-        <PlayIcon d={PLAY_ICONS.close} size={18} stroke={2.2} />
+      <button type="button" aria-label="Close" onClick={onClose} className="grid size-12 shrink-0 place-items-center rounded-full bg-surface2 text-ink hover:bg-accent-soft">
+        <Icon name="close" />
       </button>
     </div>
   );
@@ -134,7 +145,7 @@ function NewName({ mode, onDone, onSwitch, onClose }: { mode: SheetMode; onDone:
   const free = check?.free && !serverNameError;
 
   return (
-    <form action={action} className="flex flex-col gap-[18px]">
+    <form action={action} className="flex flex-col gap-4">
       <Header
         title={save ? `Save your ${save.score}` : "Pick a name"}
         lead={
@@ -156,14 +167,14 @@ function NewName({ mode, onDone, onSwitch, onClose }: { mode: SheetMode; onDone:
       >
         {check && !check.free && check.suggestions.length > 0 && (
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-[13px] font-bold text-ink2">Free:</span>
+            <span className="text-meta font-bold text-ink2">Free:</span>
             {check.suggestions.map((s) => (
               <button
                 key={s}
                 type="button"
                 lang={/[^\x00-\x7f]/.test(s) ? "ja" : undefined}
                 onClick={() => setName(s)}
-                className="min-h-10 rounded-btn border-[1.5px] border-line bg-surface px-3.5 text-sm font-bold"
+                className="h-11 rounded-pill border-[1.5px] border-line-strong bg-surface px-3.5 text-meta font-bold hover:bg-surface2"
               >
                 {s}
               </button>
@@ -182,20 +193,20 @@ function NewName({ mode, onDone, onSwitch, onClose }: { mode: SheetMode; onDone:
       <div className="flex flex-col gap-2">
         <ul aria-label="What Michi keeps" className="m-0 flex list-none flex-wrap gap-1.5 p-0">
           {["No email", "Any device", "Delete any time"].map((k) => (
-            <li key={k} className="inline-flex items-center gap-1.5 rounded-full bg-surface2 px-[11px] py-1.5 text-[12.5px] font-bold">
-              <PlayIcon d={PLAY_ICONS.check} size={14} stroke={2.6} className="text-good" />
+            <li key={k} className="inline-flex h-7.5 items-center gap-1.5 rounded-track bg-surface2 px-2.75 text-meta font-bold">
+              <Icon name="check" size={16} stroke={2.6} className="text-good" />
               {k}
             </li>
           ))}
         </ul>
-        <p className="m-0 text-[12.5px] leading-normal text-ink2">Michi keeps only your name, a scrambled copy of your PIN and your scores.</p>
+        <p className="m-0 text-meta text-ink2">Michi keeps only your name, a scrambled copy of your PIN and your scores.</p>
       </div>
-      <button type="submit" disabled={pending} className="min-h-[58px] rounded-btn bg-accent text-[17px] font-black text-on-accent disabled:opacity-60">
+      <Button type="submit" size="lg" full loading={pending} disabled={pending}>
         {pending ? "Saving…" : save ? "Save my score" : "Save and play"}
-      </button>
-      <p className="-mt-1.5 mb-0 text-center text-sm text-ink2">
-        Have a name?{" "}
-        <button type="button" onClick={onSwitch} className="min-h-11 font-black text-accent">
+      </Button>
+      <p className="-mt-2 mb-0 flex items-center justify-center gap-1 text-meta text-ink2">
+        Have a name?
+        <button type="button" onClick={onSwitch} className="h-11 px-1.5 text-body font-black text-accent">
           Sign in
         </button>
       </p>
@@ -209,7 +220,7 @@ function HaveName({ onDone, onSwitch, onClose }: { onDone: () => void; onSwitch:
   useDoneOnce(state, onDone);
   const locked = state.field === "wait";
   return (
-    <form action={action} className="flex flex-col gap-[18px]">
+    <form action={action} className="flex flex-col gap-4">
       <Header title="Welcome back" lead="Your name and PIN, from any device." onClose={onClose} />
       <NameField
         value={name}
@@ -227,12 +238,12 @@ function HaveName({ onDone, onSwitch, onClose }: { onDone: () => void; onSwitch:
         reset={state}
       />
       {locked && <Wait error={state.error!} />}
-      <button type="submit" disabled={pending || locked} className="min-h-[58px] rounded-btn bg-accent text-[17px] font-black text-on-accent disabled:opacity-45">
+      <Button type="submit" size="lg" full loading={pending} disabled={pending || locked}>
         {pending ? "Signing in…" : "Sign in"}
-      </button>
-      <p className="-mt-1.5 mb-0 text-center text-sm text-ink2">
-        New here?{" "}
-        <button type="button" onClick={onSwitch} className="min-h-11 font-black text-accent">
+      </Button>
+      <p className="-mt-2 mb-0 flex items-center justify-center gap-1 text-meta text-ink2">
+        New here?
+        <button type="button" onClick={onSwitch} className="h-11 px-1.5 text-body font-black text-accent">
           Pick a name
         </button>
       </p>
@@ -255,11 +266,11 @@ function NameField({
   note: string;
   children?: React.ReactNode;
 }) {
-  const border = state === "bad" ? "border-again" : state === "free" ? "border-good" : "border-line";
+  const border = state === "bad" ? "border-again" : state === "free" ? "border-good" : "border-line-strong focus:border-accent focus:shadow-field";
   const noteStyle = state === "bad" ? "font-bold text-again" : state === "free" ? "font-bold text-good" : "text-ink2";
   return (
-    <div className="flex flex-col gap-2">
-      <label htmlFor="play-name" className="text-sm font-black">
+    <div className="flex flex-col gap-1.5">
+      <label htmlFor="play-name" className="text-meta font-black">
         Your name
       </label>
       <div className="relative">
@@ -277,11 +288,11 @@ function NameField({
           maxLength={NAME_MAX * 2}
           aria-invalid={state === "bad" || undefined}
           aria-describedby="play-name-note"
-          className={`box-border min-h-14 w-full rounded-2xl border-2 bg-page pr-12 pl-4 text-[19px] font-bold ${border}`}
+          className={`box-border block h-14 w-full rounded-btn-lg border-2 bg-surface pr-12 pl-4 text-lead font-bold text-ink outline-none transition-[border-color,box-shadow] duration-120 ${border}`}
         />
-        {state === "free" && <PlayIcon d={PLAY_ICONS.check} size={22} stroke={2.6} className="absolute top-[17px] right-4 text-good" />}
+        {state === "free" && <Icon name="check" size={22} stroke={2.6} className="absolute top-4.25 right-4 text-good" />}
       </div>
-      <p id="play-name-note" aria-live="polite" className={`m-0 text-[13px] leading-[1.45] ${noteStyle}`}>
+      <p id="play-name-note" aria-live="polite" className={`m-0 text-meta ${noteStyle}`}>
         {note}
       </p>
       {children}
@@ -334,7 +345,7 @@ function PinBoxes({
   const first = digits.findIndex((d) => d === "");
   return (
     <fieldset disabled={disabled} className={`m-0 flex flex-col gap-2 border-none p-0 ${disabled ? "opacity-45" : ""}`}>
-      <legend className="mb-2 p-0 text-sm font-black">{legend}</legend>
+      <legend className="mb-2 p-0 text-meta font-black">{legend}</legend>
       <input type="hidden" name="pin" value={digits.join("")} />
       <div className="flex gap-2.5">
         {digits.map((d, i) => (
@@ -355,13 +366,13 @@ function PinBoxes({
               if (e.key === "Backspace" && !digits[i] && i > 0) boxes.current[i - 1]?.focus();
             }}
             onFocus={(e) => e.target.select()}
-            className={`box-border h-16 w-[58px] rounded-2xl border-2 bg-page p-0 text-center text-[28px] font-black ${
-              error ? "border-again" : i === first ? "border-accent shadow-[0_0_0_4px_var(--accent-soft)]" : "border-line"
+            className={`box-border h-16 w-14.5 rounded-btn-lg border-2 bg-surface p-0 text-center text-headline font-black text-ink outline-none focus:border-accent focus:shadow-field ${
+              error ? "border-again" : i === first ? "border-accent shadow-field" : "border-line-strong"
             }`}
           />
         ))}
       </div>
-      <p aria-live="polite" className={`m-0 text-[13px] leading-[1.45] ${error ? "font-bold text-again" : "text-ink2"}`}>
+      <p aria-live="polite" className={`m-0 text-meta ${error ? "font-bold text-again" : "text-ink2"}`}>
         {error ?? note}
       </p>
     </fieldset>
@@ -370,12 +381,8 @@ function PinBoxes({
 
 function Wait({ error }: { error: string }) {
   return (
-    <div role="alert" className="flex items-start gap-3 rounded-2xl bg-surface2 px-4 py-3.5">
-      <PlayIcon d={PLAY_ICONS.clock} size={24} className="shrink-0 text-warn" />
-      <div>
-        <p className="m-0 text-[15px] font-black">Take a short break</p>
-        <p className="mt-0.5 mb-0 text-[13.5px] leading-[1.45] text-ink2">{error}</p>
-      </div>
-    </div>
+    <Banner kind="info" icon="clock" role="alert" title="Take a short break">
+      {error}
+    </Banner>
   );
 }

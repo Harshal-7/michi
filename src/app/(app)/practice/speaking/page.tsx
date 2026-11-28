@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
-import { BackLink } from "@/components/learn/tabs";
 import { SpeakingPrompt } from "@/components/practice/speaking";
-import { EmptyState } from "@/components/ui/page";
+import { Spot } from "@/components/ui/art/spots";
+import { EmptyState } from "@/components/ui/empty-state";
+import { PageHeader } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import { getSettings } from "@/db/settings";
 import { requireSignedIn } from "@/lib/auth/session";
@@ -12,7 +13,7 @@ import { promptOfTheDay } from "@/lib/speaking/practice";
 
 export const metadata: Metadata = { title: "Speaking prompt" };
 
-/** The speaking prompt of the day (F_Speaking). */
+/** The speaking prompt of the day. */
 export default async function SpeakingPage() {
   await requireSignedIn();
   const db = getDb();
@@ -20,15 +21,14 @@ export default async function SpeakingPage() {
   const prompt = await promptOfTheDay(db, studyDate(), settings);
 
   return (
-    <div className="flex flex-col gap-3">
-      <header className="flex flex-col gap-0.5">
-        <BackLink href={ROUTES.practice}>Practice</BackLink>
-        <h1 className="m-0 font-head text-[26px] leading-[1.2]">Speaking prompt</h1>
-      </header>
+    <div className="flex flex-col gap-4">
+      <PageHeader title="Speaking prompt" back={{ href: ROUTES.practice, label: "Practice" }} />
       {prompt ? (
         <SpeakingPrompt prompt={prompt} recognition={settings.speechRecognition} furigana={settings.furigana} voice={settings.voice} />
       ) : (
-        <EmptyState>No speaking prompts yet. They arrive with the next content update.</EmptyState>
+        <EmptyState art={<Spot kind="notebook" />} title="No speaking prompts yet">
+          They arrive with the next content update.
+        </EmptyState>
       )}
     </div>
   );

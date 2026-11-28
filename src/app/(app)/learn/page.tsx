@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import type { ReactNode } from "react";
 
-import { Mixed } from "@/components/ruby";
-import { ICONS } from "@/components/shell/nav";
-import { Icon } from "@/components/ui/icon";
-import { PageHeader } from "@/components/ui/page";
+import { Rabbit } from "@/components/ui/art/rabbit";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { type Cover, COVER_BG } from "@/components/ui/chip";
+import { List, ListRow } from "@/components/ui/list-row";
+import { PageHeader } from "@/components/ui/page-header";
+import { ProgressBar } from "@/components/ui/progress";
+import { Mixed } from "@/components/ui/ruby";
 import { getDb } from "@/db/client";
 import { requireSignedIn } from "@/lib/auth/session";
 import { formatLong, studyDate } from "@/lib/day";
@@ -15,70 +19,80 @@ import { ROUTES } from "@/lib/planner/day-plan";
 
 export const metadata: Metadata = { title: "Learn" };
 
-/** Learn: the kana charts, verb forms and the grammar lessons, with the N5 read-through up top while it's going. */
+/** RF_LearnHub: the N5 read-through up top while it's going, then the kana charts, verb forms, vocabulary and grammar. */
 export default async function LearnPage() {
   await requireSignedIn();
   const db = getDb();
   const [hiragana, katakana, n5] = await Promise.all([loadKana(db, "hiragana"), loadKana(db, "katakana"), pointsFor(READ_THROUGH_LEVEL)]);
   const grammar = pointCounts(n5);
   const next = nextUnread(n5);
-  const kanaNote = (rows: typeof hiragana) => {
-    const c = kanaCounts(rows);
-    return `${rows.length} characters · ${c.review} in your reviews`;
-  };
-  const rows = [
-    { href: "/learn/kana/hiragana", label: "Hiragana", note: kanaNote(hiragana), glyph: "あ" },
-    { href: "/learn/kana/katakana", label: "Katakana", note: kanaNote(katakana), glyph: "ア" },
-    { href: ROUTES.kanaGame, label: "Kana game", note: "read a kana and type it, or hear it and find it", glyph: "か" },
-    { href: "/learn/verbs", label: "Verb forms", note: "the 3 groups; ます, ない, て and た", glyph: "て" },
-    { href: ROUTES.vocab, label: "Vocabulary", note: "type the meaning or the word · N5 to N3", glyph: "語" },
-    { href: ROUTES.grammar, label: "Grammar", note: `N5 · ${grammar.total} points · ${grammar.confident} confident · ${grammar.learning} learning`, glyph: "文" },
+  const kanaNote = (rows: typeof hiragana) => `${rows.length} characters · ${kanaCounts(rows).review} in your reviews`;
+  const rows: { href: string; label: string; note: ReactNode; glyph: string; cover: Cover }[] = [
+    { href: "/learn/kana/hiragana", label: "Hiragana", note: kanaNote(hiragana), glyph: "あ", cover: "blue" },
+    { href: "/learn/kana/katakana", label: "Katakana", note: kanaNote(katakana), glyph: "ア", cover: "peri" },
+    { href: ROUTES.kanaGame, label: "Kana game", note: "read a kana and type it, or hear it and find it", glyph: "か", cover: "butter" },
+    { href: "/learn/verbs", label: "Verb forms", note: <Mixed text="the 3 groups; ます, ない, て and た" />, glyph: "て", cover: "mint" },
+    { href: ROUTES.vocab, label: "Vocabulary", note: "type the meaning or the word · N5 to N3", glyph: "語", cover: "pink" },
+    {
+      href: ROUTES.grammar,
+      label: "Grammar",
+      note: `N5 · ${grammar.total} lessons · ${grammar.confident} confident · ${grammar.learning} learning`,
+      glyph: "文",
+      cover: "lilac",
+    },
   ];
 
   return (
     <>
-      <PageHeader kicker={formatLong(studyDate())} title="Learn" />
+      <PageHeader title="Learn" sub={formatLong(studyDate())} />
       {next && (
-        <section className="flex flex-col gap-2 rounded-card bg-surface px-4 py-3.5 shadow-hero">
-          <p className="m-0 text-xs font-semibold text-ink2">N5 grammar read-through</p>
-          <h2 className="m-0 text-[17px] font-bold">
+        <Card aria-labelledby="read-through" className="relative mt-1.5">
+          <Rabbit pose="reading" size={96} className="absolute -top-1.5 right-3" />
+          <h2 id="read-through" className="m-0 pr-24 text-title font-black">
             {grammar.read === 0 ? "Read each lesson once" : `${grammar.read} of ${grammar.total} lessons read`}
           </h2>
-          <p className="m-0 text-[13px] leading-[1.6] text-ink2">
-            At the end of each lesson, pick &ldquo;I know this&rdquo; or &ldquo;Learn it&rdquo;. What you know comes back in reviews
-            in a few weeks; the rest goes to the front of your new cards.
-          </p>
-          <div className="h-2 overflow-hidden rounded-full bg-track" aria-hidden="true">
-            <div className="h-full bg-good" style={{ width: `${grammar.total ? (grammar.read / grammar.total) * 100 : 0}%` }} />
-          </div>
-          <p className="m-0 text-[13px]">
-            <span className="text-ink2">Next: </span>
-            <span className="font-card text-base font-semibold">
+          <p className="m-0 mt-0.5 text-meta text-ink2">N5 grammar read-through</p>
+          {grammar.read === 0 && (
+            <p className="m-0 mt-2 pr-4 text-meta text-ink2">
+              At the end of each lesson, pick &ldquo;I know this&rdquo; or &ldquo;Learn it&rdquo;. What you know comes back in reviews in a few
+              weeks; the rest goes to the front of your new cards.
+            </p>
+          )}
+          <ProgressBar value={grammar.read} max={grammar.total} label={`${grammar.read} of ${grammar.total} lessons read`} className="mt-3.5" />
+          <p className="m-0 mt-3 flex flex-wrap items-baseline gap-x-2 text-meta text-ink2">
+            <span>Next</span>
+            <span className="font-ja text-title font-semibold text-ink">
               <Mixed text={next.pattern} />
             </span>
-            <span className="text-ink2"> · {next.gloss}</span>
+            <span>· {next.gloss}</span>
           </p>
-          <Link
-            href={`/grammar/${next.id}`}
-            className="flex min-h-[50px] items-center justify-center rounded-btn bg-accent px-4 text-[15px] font-bold text-on-accent no-underline"
-          >
+          <Button href={`/grammar/${next.id}`} size="lg" full iconEnd="arrow-right" className="mt-3">
             {grammar.read === 0 ? "Start the read-through" : "Continue"}
-          </Link>
-        </section>
+          </Button>
+        </Card>
       )}
-      <nav aria-label="Learn" className="flex flex-col rounded-card bg-surface px-3.5 py-1 shadow-card">
-        {rows.map((r, i) => (
-          <Link key={r.href} href={r.href} className={`flex min-h-[60px] items-center gap-3.5 py-2 no-underline ${i > 0 ? "border-t border-line" : ""}`}>
-            <span lang="ja" aria-hidden="true" className="inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-surface2 font-card text-xl font-semibold">
-              {r.glyph}
-            </span>
-            <span className="flex min-w-0 flex-auto flex-col gap-px">
-              <span className="text-[15px] font-semibold">{r.label}</span>
-              <span className="text-[12.5px] text-ink2">{r.note}</span>
-            </span>
-            <Icon d={ICONS.chevronRight} size={18} stroke={1.8} className="shrink-0 text-ink2" />
-          </Link>
-        ))}
+      <nav aria-label="Learn">
+        <List>
+          {rows.map((r) => (
+            <ListRow
+              key={r.href}
+              href={r.href}
+              lead={{
+                node: (
+                  <span
+                    aria-hidden="true"
+                    lang="ja"
+                    className={`grid size-11 shrink-0 place-items-center rounded-pill font-ja text-title leading-none font-semibold text-on-cover ${COVER_BG[r.cover]}`}
+                  >
+                    {r.glyph}
+                  </span>
+                ),
+              }}
+              title={r.label}
+              meta={r.note}
+            />
+          ))}
+        </List>
       </nav>
     </>
   );

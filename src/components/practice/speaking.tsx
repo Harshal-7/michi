@@ -1,12 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef, useState, useTransition } from "react";
 
 import { logPractice } from "@/app/(app)/practice/minutes-actions";
-import { VoiceProvider } from "@/components/cards/voice";
-import { PlayIcon } from "@/components/learn/lesson-parts";
-import { Ruby } from "@/components/ruby";
+import { VoiceProvider } from "@/components/ui/voice";
+import { SpeakButton } from "@/components/ui/speak-button";
+import { Ruby } from "@/components/ui/ruby";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { Icon } from "@/components/ui/icon";
 import { ROUTES } from "@/lib/planner/day-plan";
 import { compareSpoken } from "@/lib/speaking/compare";
@@ -16,11 +17,6 @@ import { canRecognise, listen, recognitionProblem } from "@/lib/speaking/recogni
 import { spoken } from "@/lib/voice/spoken";
 import type { VoicePrefs } from "@/lib/voice/voices";
 
-const MIC = "M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z M5.5 11.5a6.5 6.5 0 0 0 13 0 M12 18v3";
-const STOP = "M7 7h10v10H7z";
-const PLAY = "M8 5.5v13l10-6.5z";
-const CARD = "flex flex-col rounded-card bg-surface px-4 py-3.5 shadow-card";
-const QUIET = "inline-flex min-h-11 items-center justify-center gap-1.5 rounded-btn border border-line bg-surface px-3.5 text-[13px] font-semibold text-ink disabled:opacity-60";
 
 type Recorder = "idle" | "starting" | "recording" | "recorded" | "playing" | "played";
 
@@ -198,23 +194,25 @@ export function SpeakingPrompt({
           ? "This browser has no speech recognition, so there's no transcript. Recording still works."
           : null;
 
+  const recording = state === "recording";
+
   return (
     <VoiceProvider prefs={voice}>
-      <section className={`${CARD} gap-1.5`}>
-        <p className="m-0 text-[12.5px] text-ink2">Today&apos;s prompt</p>
-        <p className="m-0 text-[17px] leading-snug font-semibold">{prompt.prompt}</p>
+      <Card aria-label="Today's prompt" className="flex flex-col gap-1">
+        <p className="m-0 text-meta text-ink2">Today&apos;s prompt</p>
+        <p className="m-0 text-lead font-bold">{prompt.prompt}</p>
         {prompt.title && (
-          <p lang="ja" className="m-0 font-card text-[17px] text-ink2">
+          <p lang="ja" className="m-0 font-ja text-lead font-semibold text-ink2">
             {prompt.title}
           </p>
         )}
-      </section>
+      </Card>
 
       {prompt.hints.length > 0 && (
-        <div className="flex flex-wrap items-center gap-1.5">
-          <span className="text-xs font-semibold text-ink2">Try using</span>
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-meta font-bold text-ink2">Try using</span>
           {prompt.hints.map((h) => (
-            <span key={h} className="rounded-btn border border-line px-3 py-[5px] text-sm">
+            <span key={h} className="rounded-pill border-[1.5px] border-line bg-surface px-3 py-1 font-ja text-body leading-ja font-semibold">
               <Ruby text={h} furigana={furigana} />
             </span>
           ))}
@@ -224,54 +222,53 @@ export function SpeakingPrompt({
       <div className="flex items-center gap-3.5">
         <button
           type="button"
-          aria-label={state === "recording" ? "Stop recording" : "Record your answer"}
+          aria-label={recording ? "Stop recording" : "Record your answer"}
           disabled={state === "starting" || state === "playing"}
-          onClick={() => (state === "recording" ? stop() : void record())}
-          className="inline-flex size-[68px] shrink-0 items-center justify-center rounded-full border-none bg-accent text-on-accent shadow-nav disabled:opacity-60"
+          onClick={() => (recording ? stop() : void record())}
+          className={`grid size-17 shrink-0 place-items-center rounded-full border-2 transition-colors duration-120 disabled:border-line disabled:bg-surface2 disabled:text-ink3 ${
+            recording ? "border-again bg-again-soft text-again" : "border-accent bg-accent-soft text-accent hover:bg-cover-blue"
+          }`}
         >
-          <Icon d={state === "recording" ? STOP : MIC} size={28} stroke={1.8} />
+          {recording ? <span aria-hidden="true" className="size-5.5 rounded-box bg-current" /> : <Icon name="mic" size={30} />}
         </button>
-        <div className="flex min-w-0 flex-auto flex-col gap-0.5" aria-live="polite">
-          <p className="m-0 text-[15px] font-bold">{status}</p>
-          <p className="m-0 text-xs text-ink2">Played back once, then thrown away</p>
+        <div className="flex min-w-0 flex-auto flex-col" aria-live="polite">
+          <p className="m-0 text-body font-bold">{status}</p>
+          <p className="m-0 text-meta text-ink2">Played back once, then thrown away</p>
         </div>
-        <button type="button" disabled={state !== "recorded"} onClick={playBack} className={`${QUIET} shrink-0 whitespace-nowrap`}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d={PLAY} />
-          </svg>
+        <Button variant="secondary" size="sm" icon="play" disabled={state !== "recorded"} onClick={playBack}>
           Play back
-        </button>
+        </Button>
       </div>
       {problem && (
-        <p role="alert" className="m-0 text-[13px]">
+        <p role="alert" className="m-0 text-meta font-bold text-again">
           {problem}
         </p>
       )}
-      {recognitionNote && <p className="m-0 text-[12.5px] text-ink2">{recognitionNote}</p>}
-      {heardProblem && <p className="m-0 text-[12.5px] text-ink2">{heardProblem}</p>}
+      {recognitionNote && <p className="m-0 text-meta text-ink2">{recognitionNote}</p>}
+      {heardProblem && <p className="m-0 text-meta text-ink2">{heardProblem}</p>}
 
       {revealed ? (
-        <section className={`${CARD} gap-2`}>
+        <Card aria-label="Model answer" className="flex flex-col gap-2">
           {heard && (
             <>
-              <h2 className="m-0 text-xs font-bold text-ink2">What I heard</h2>
-              <p lang="ja" className="m-0 font-card text-lg leading-[1.6]">
+              <h2 className="m-0 text-meta font-bold text-ink2">What I heard</h2>
+              <p lang="ja" className="m-0 font-ja text-title leading-ja font-semibold">
                 {heard}
               </p>
-              <div className="h-px bg-line" />
+              <div className="h-[1.5px] bg-line" />
             </>
           )}
           <div className="flex items-center justify-between gap-2">
-            <h2 className="m-0 text-xs font-bold text-ink2">Model answer</h2>
-            <PlayIcon text={spoken(prompt.model)} label="Play the model answer" />
+            <h2 className="m-0 text-meta font-bold text-ink2">Model answer</h2>
+            <SpeakButton variant="icon" text={spoken(prompt.model)} label="Play the model answer" />
           </div>
-          <p className="m-0 font-card text-lg leading-[1.85]">
+          <p className="m-0 font-ja text-title leading-ja font-semibold">
             {comparison ? (
               comparison.segments.map((s, i) =>
                 s.said ? (
                   <Ruby key={i} text={s.text} furigana={furigana} />
                 ) : (
-                  <mark key={i} className="rounded-[4px] bg-accent-soft px-0.5 text-ink">
+                  <mark key={i} className="rounded-box bg-accent-soft px-0.5 text-ink">
                     <Ruby text={s.text} furigana={furigana} />
                   </mark>
                 ),
@@ -280,36 +277,28 @@ export function SpeakingPrompt({
               <Ruby text={prompt.model} furigana={furigana} />
             )}
           </p>
-          <p className="m-0 text-[13px] text-ink2">{prompt.modelEn}</p>
+          <p className="m-0 text-body text-ink2">{prompt.modelEn}</p>
           {comparison && (
-            <p className="m-0 text-[12.5px] text-ink2">
+            <p className="m-0 text-meta text-ink2">
               {comparison.said === 1 ? "You said all of it." : "Highlighted: the part you didn't say."} Speech recognition never changes your reviews.
             </p>
           )}
-        </section>
+        </Card>
       ) : (
-        <button type="button" onClick={() => setRevealed(true)} className={`${QUIET} min-h-12 text-[15px]`}>
+        <Button variant="secondary" icon="eye" full onClick={() => setRevealed(true)}>
           Show the model answer
-        </button>
+        </Button>
       )}
 
       <div className="mt-2 flex flex-col gap-2">
-        <Link
-          href={`${ROUTES.shadowing}?prompt=${prompt.id}`}
-          className="flex min-h-12 items-center justify-center rounded-btn border border-line bg-surface text-[15px] font-semibold no-underline"
-        >
+        <Button variant="secondary" icon="headphones" full href={`${ROUTES.shadowing}?prompt=${prompt.id}`}>
           Shadow the model answer
-        </Link>
-        <button
-          type="button"
-          disabled={startedAt === null || saving}
-          onClick={finish}
-          className="min-h-[52px] rounded-btn border-none bg-accent text-[15px] font-bold text-on-accent disabled:opacity-60"
-        >
+        </Button>
+        <Button size="lg" full disabled={startedAt === null || saving} loading={saving} onClick={finish}>
           {startedAt === null ? "Done" : `Done · logs ${minutes} min`}
-        </button>
-        <p className="m-0 text-center text-[12.5px] text-ink2" aria-live="polite">
-          {logged ?? (startedAt === null ? "Minutes count from your first Record." : " ")}
+        </Button>
+        <p className="m-0 text-center text-meta text-ink2" aria-live="polite">
+          {logged ?? (startedAt === null ? "Minutes count from your first Record." : " ")}
         </p>
       </div>
     </VoiceProvider>

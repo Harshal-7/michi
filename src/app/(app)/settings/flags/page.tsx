@@ -1,9 +1,11 @@
 import { desc, eq } from "drizzle-orm";
 import type { Metadata } from "next";
-import Link from "next/link";
 
 import { ResolveFlag } from "@/components/cards/resolve-flag";
-import { EmptyState, PageHeader } from "@/components/ui/page";
+import { Spot } from "@/components/ui/art/spots";
+import { EmptyState } from "@/components/ui/empty-state";
+import { List } from "@/components/ui/list-row";
+import { PageHeader, SectionTitle } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import { flags, items } from "@/db/schema";
 import { requireSignedIn } from "@/lib/auth/session";
@@ -35,45 +37,45 @@ export default async function FlagsPage() {
   const resolved = rows.filter((r) => r.status === "resolved");
 
   const list = (group: typeof rows) => (
-    <section className="flex flex-col rounded-card bg-surface px-3.5 py-1 shadow-card">
-      {group.map((f, i) => {
+    <List>
+      {group.map((f) => {
         const shown = f.target as { term?: string; meaning?: string };
         return (
-          <div key={f.id} className={`flex items-start gap-3 py-2.5 ${i ? "border-t border-line" : ""}`}>
+          <li key={f.id} className="flex items-start gap-3 border-b-[1.5px] border-line py-3 last:border-b-0">
             <div className="flex min-w-0 flex-auto flex-col gap-0.5">
-              <p className="m-0 flex flex-wrap items-baseline gap-2">
-                <span lang="ja" className="font-card text-lg font-semibold">
+              <p className="m-0 flex flex-wrap items-baseline gap-x-2">
+                <span lang="ja" className="font-ja text-title font-semibold">
                   {f.term ?? shown.term ?? "A removed item"}
                 </span>
-                <span className="text-xs text-ink2">{f.meaning ?? shown.meaning}</span>
+                <span className="text-meta text-ink2">{f.meaning ?? shown.meaning}</span>
               </p>
-              {f.note && <p className="m-0 text-sm">{f.note}</p>}
-              <p className="m-0 text-xs text-ink2">Flagged {formatShort(studyDate(f.createdAt), today)}</p>
+              {f.note && <p className="m-0 text-body">{f.note}</p>}
+              <p className="m-0 text-meta text-ink2">Flagged {formatShort(studyDate(f.createdAt), today)}</p>
             </div>
             <ResolveFlag id={f.id} resolved={f.status === "resolved"} />
-          </div>
+          </li>
         );
       })}
-    </section>
+    </List>
   );
 
   return (
     <>
-      <PageHeader
-        kicker={
-          <Link href={ROUTES.settings} className="text-ink2">
-            Settings
-          </Link>
-        }
-        title="Flagged items"
-        size="md"
-      />
-      {open.length ? list(open) : <EmptyState>Nothing flagged. Use the flag on any card when something reads wrong.</EmptyState>}
+      <PageHeader title="Flagged items" back={{ href: ROUTES.settings, label: "Settings" }} />
+      {open.length ? (
+        list(open)
+      ) : (
+        <EmptyState art={<Spot kind="notebook" />} title="Nothing flagged">
+          Use the flag on any card when something reads wrong.
+        </EmptyState>
+      )}
       {resolved.length > 0 && (
-        <>
-          <h2 className="m-0 mt-2 text-xs font-bold tracking-[0.04em] text-ink2 uppercase">Resolved</h2>
+        <section aria-labelledby="resolved" className="flex flex-col">
+          <SectionTitle id="resolved" meta={`${resolved.length}`}>
+            Resolved
+          </SectionTitle>
           {list(resolved)}
-        </>
+        </section>
       )}
     </>
   );

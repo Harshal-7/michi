@@ -3,7 +3,10 @@ import type { Metadata } from "next";
 
 import { ReviewSession } from "@/components/cards/review-session";
 import { UpNextLive } from "@/components/cards/session-done";
-import { EmptyState, PageHeader } from "@/components/ui/page";
+import { Rabbit } from "@/components/ui/art/rabbit";
+import { Button } from "@/components/ui/button";
+import { EmptyState } from "@/components/ui/empty-state";
+import { PageHeader } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import { decks } from "@/db/schema";
 import { getSettings } from "@/db/settings";
@@ -38,10 +41,13 @@ export default async function ReviewPage({ searchParams }: PageProps<"/review">)
     const { nextDueAt } = await dueCounts(db, now, today);
     return (
       <>
-        <PageHeader kicker={formatLong(today)} title="Review" />
-        <EmptyState>
-          Nothing to review right now{deck ? ` in ${deck.name}` : ""}.
-          {nextDueAt ? ` The next card is due ${formatNextDue(nextDueAt, now)}.` : " Cards come here once you've started them."}
+        <PageHeader sub={formatLong(today)} title="Review" />
+        <EmptyState
+          art={<Rabbit pose="sleepy" size={180} />}
+          title={`Nothing to review right now${deck ? ` in ${deck.name}` : ""}`}
+          action={!upNext && <Button variant="quiet" href="/">Back to Today</Button>}
+        >
+          {nextDueAt ? `The next card is due ${formatNextDue(nextDueAt, now)}.` : "Cards come here once you’ve started them."}
         </EmptyState>
         {upNext && <UpNextLive upNext={upNext} />}
       </>

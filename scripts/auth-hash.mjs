@@ -16,7 +16,7 @@ const N = 32768;
 const R = 8;
 const P = 1;
 const KEY_LEN = 32;
-const MIN_LENGTH = 12;
+const MIN_LENGTH = 8;
 
 export function hashPassphrase(passphrase) {
   const salt = randomBytes(16);
@@ -87,7 +87,7 @@ async function main() {
   const toVercel = process.argv.includes("--vercel");
   const first = await askHidden("Passphrase: ");
   if (first.length < MIN_LENGTH) {
-    console.error(`Use at least ${MIN_LENGTH} characters. A short phrase of a few words works well.`);
+    console.error(`Use at least ${MIN_LENGTH} characters. A word and a few numbers works (not a common password).`);
     process.exit(1);
   }
   const again = await askHidden("Type it again: ");

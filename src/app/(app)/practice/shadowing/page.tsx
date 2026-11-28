@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { BackLink } from "@/components/learn/tabs";
 import { ShadowingPlayer } from "@/components/practice/shadowing-player";
-import { Ruby } from "@/components/ruby";
-import { EmptyState, PageHeader } from "@/components/ui/page";
+import { Ruby } from "@/components/ui/ruby";
+import { Spot } from "@/components/ui/art/spots";
+import { EmptyState } from "@/components/ui/empty-state";
+import { List, ListRow } from "@/components/ui/list-row";
+import { PageHeader } from "@/components/ui/page-header";
 import { getDb } from "@/db/client";
 import { getSettings } from "@/db/settings";
 import { requireSignedIn } from "@/lib/auth/session";
@@ -59,33 +60,39 @@ export default async function ShadowingPage({ searchParams }: PageProps<"/practi
 
   const sets = await listShadowingSets(db);
   return (
-    <div className="flex flex-col gap-3">
-      <div className="flex flex-col gap-0.5">
-        <BackLink href={ROUTES.practice}>Practice</BackLink>
-        <PageHeader title="Shadowing" sub="Pick a set. Listen to each sentence, then say it along with the voice." size="md" />
-      </div>
+    <div className="flex flex-col gap-4">
+      <PageHeader
+        title="Shadowing"
+        sub="Pick a set. Listen to each sentence, then say it along with the voice."
+        back={{ href: ROUTES.practice, label: "Practice" }}
+      />
       {sets.length === 0 ? (
-        <EmptyState>No shadowing sets yet. They arrive with the next content update.</EmptyState>
+        <EmptyState art={<Spot kind="notebook" />} title="No shadowing sets yet">
+          They arrive with the next content update.
+        </EmptyState>
       ) : (
-        <ul className="m-0 flex list-none flex-col rounded-card bg-surface px-4 py-1.5 shadow-card">
-          {sets.map((s, i) => (
-            <li key={s.id} className={i ? "border-t border-line" : ""}>
-              <Link href={`${ROUTES.shadowing}?set=${s.id}`} className="flex min-h-14 flex-col justify-center gap-0.5 py-2 no-underline">
-                <span className="flex items-baseline justify-between gap-2">
-                  <span className="text-[15px] font-semibold">{s.title}</span>
-                  <span className="shrink-0 text-xs text-ink2">
+        <List aria-label="Shadowing sets">
+          {sets.map((s) => (
+            <ListRow
+              key={s.id}
+              href={`${ROUTES.shadowing}?set=${s.id}`}
+              lead={{ icon: "headphones", cover: "aqua" }}
+              title={s.title}
+              meta={
+                <span className="flex min-w-0 flex-col">
+                  <span>
                     {s.level} · {s.sentences.length} sentences
                   </span>
+                  {s.sentences[0] && (
+                    <span className="truncate">
+                      <Ruby text={s.sentences[0].ja} furigana={false} />
+                    </span>
+                  )}
                 </span>
-                {s.sentences[0] && (
-                  <span className="truncate text-[13px] text-ink2">
-                    <Ruby text={s.sentences[0].ja} furigana={false} />
-                  </span>
-                )}
-              </Link>
-            </li>
+              }
+            />
           ))}
-        </ul>
+        </List>
       )}
     </div>
   );
