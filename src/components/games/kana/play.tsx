@@ -1,10 +1,14 @@
 "use client";
-// design-lint: legacy
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { useSpeak } from "@/components/ui/voice";
+import { Rabbit } from "@/components/ui/art/rabbit";
+import { Button } from "@/components/ui/button";
+import { AnswerInput } from "@/components/ui/field";
 import { Icon } from "@/components/ui/icon";
+import { TimerBar } from "@/components/ui/progress";
+import { useSpeak } from "@/components/ui/voice";
+import { Kbd } from "@/components/play/bits";
 import { hueStyle } from "@/lib/games/catalog";
 import { findOptions, isRightTyping, judgeTyped } from "@/lib/games/kana/answer";
 import { type GameKana, MODE_LABELS, type Mode } from "@/lib/games/kana/types";
@@ -15,13 +19,12 @@ import { loadVoices } from "@/lib/voice/speak";
 
 import { playTone, wakeTones } from "../tones";
 
-const X_ICON = "M6 6l12 12 M18 6L6 18";
-const SPEAKER = "M4 9.5h3.5L12 5.5v13l-4.5-4H4z M15.5 9a4 4 0 0 1 0 6 M18 6.5a7.5 7.5 0 0 1 0 11";
-
 /** How long a missed answer stays on screen before the game moves on (Enter moves on sooner). */
 const MISS_MS = 1800;
 /** How long a right pick in Find it stays green. */
 const PICKED_MS = 320;
+/** The speed bar fills over the 5 seconds that earn speed points, then turns amber (ui TimerBar). */
+const NO_SPEED_MS = DEFAULT_SPEED.noneMs;
 /** ん takes n or nn: after an n, this long without another letter counts as n. */
 const MORE_LETTERS_MS = 450;
 
@@ -38,9 +41,9 @@ type Feedback = { kind: "miss"; given: string; next: GameState; pick: number | n
 type Options = { options: GameKana[]; answerIndex: number };
 
 /**
- * A game in play, full screen in the play look (P_Play): a chunky progress bar and the streak,
- * the kana or the romaji on a plain card (the game's colour only in the small parts), the answer below, a bar for the speed
- * points, why a miss was wrong, and the last few answers.
+ * A game in play, full screen (RF_PlayKanaInPlay): a chunky progress bar with the rabbit riding it and
+ * the streak, the kana or the romaji big on a plain card (the game's colour only in the small parts),
+ * the answer below, a bar for the speed points, why a miss was wrong, and the last few answers.
  */
 export function Play({
   deck,
@@ -67,7 +70,8 @@ export function Play({
   const [flash, setFlash] = useState(false);
   const [options, setOptions] = useState<Options | null>(() => (mode === "find" ? findOptions(deck[0], all) : null));
   const [hasVoice, setHasVoice] = useState(false);
-  const input = useRef<HTMLInputElement>(null);
+  // ui AnswerInput doesn't type a ref yet, so the box is found inside its form.
+  const answerForm = useRef<HTMLFormElement>(null);
   const moreLetters = useRef<ReturnType<typeof setTimeout> | null>(null);
   const say = useSpeak();
 
@@ -139,7 +143,7 @@ export function Play({
 
   // Read it: the input keeps focus from card to card, so the phone's keyboard stays up.
   useEffect(() => {
-    if (mode === "read") input.current?.focus();
+    if (mode === "read") answerForm.current?.querySelector("input")?.focus();
   }, [mode, index, feedback]);
 
   // Find it: say the kana when the device has a Japanese voice.
@@ -222,128 +226,143 @@ export function Play({
     if (mode === "read") e.preventDefault();
   };
   const retry = isRetry(state);
-
+  const pct = (cleared / deck.length) * 100;
   return (
-    <div style={hueStyle("kana")} className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-page">
-      <header className="mx-auto flex w-full max-w-[680px] shrink-0 flex-col gap-2.5 px-4 pt-[max(12px,env(safe-area-inset-top))] pb-2 laptop:px-0 laptop:pt-16">
+    <div style={hueStyle("kana")} className="fixed inset-0 z-session flex flex-col overflow-y-auto bg-page">
+      <header className="mx-auto w-full max-w-170 shrink-0 px-4 pt-[max(24px,env(safe-area-inset-top))] laptop:px-0 laptop:pt-14">
         <div className="flex items-center gap-3">
           <button
             type="button"
             aria-label="Stop the game"
+            aria-keyshortcuts="Escape"
             onMouseDown={keepFocus}
             onClick={stop}
-            className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-surface2 text-ink"
+            className="grid size-12 shrink-0 place-items-center rounded-full bg-surface2 text-ink hover:bg-accent-soft"
           >
-            <Icon d={X_ICON} size={18} stroke={2.4} />
+            <Icon name="close" />
           </button>
-          <div role="img" aria-label={`${cleared} of ${deck.length} done`} className="h-3.5 flex-auto overflow-hidden rounded-full bg-track">
-            <div className="h-full rounded-full bg-hue" style={{ width: `${(cleared / deck.length) * 100}%` }} />
+          <div className="relative h-12 flex-auto">
+            <div aria-hidden="true" className="absolute -top-5 transition-[left] duration-300 ease-calm" style={{ left: `calc(${pct}% - 26px)` }}>
+              <Rabbit pose="sitting" size={52} />
+            </div>
+            <div
+              role="progressbar"
+              aria-label={`${cleared} of ${deck.length} done`}
+              aria-valuemin={0}
+              aria-valuemax={deck.length}
+              aria-valuenow={cleared}
+              className="absolute inset-x-0 top-4.25 h-3.5 overflow-hidden rounded-full bg-track"
+            >
+              <div className="h-full rounded-full bg-hue transition-[width] duration-300 ease-calm" style={{ width: `${pct}%` }} />
+            </div>
           </div>
-          <p className="m-0 min-w-11 text-right text-sm font-black tabular-nums">
+          <p className="m-0 min-w-13 text-right text-body font-black tabular-nums">
             {cleared}/{deck.length}
           </p>
         </div>
-        <div className="flex items-center justify-between gap-2">
-          <p className="m-0 text-[13px] font-black tracking-[0.04em] text-hue uppercase">
+        <div className="mt-2 flex min-h-7 items-center justify-between gap-2">
+          <p className="m-0 text-meta font-bold text-ink2">
             {weakest ? "Weakest kana" : "Kana game"} · {MODE_LABELS[mode]}
           </p>
-          {counted.streak > 1 && <span className="rounded-full bg-hue-tint px-2.5 py-1 text-[12.5px] font-black text-hue">{counted.streak} in a row</span>}
+          {counted.streak > 1 && (
+            <span className="inline-flex h-7 items-center gap-1.5 rounded-track bg-hue-tint px-2.5 text-meta leading-none font-black text-hue">
+              <Icon name="streak" size={16} />
+              {counted.streak} in a row
+            </span>
+          )}
         </div>
       </header>
 
-      <div className="mx-auto flex w-full max-w-[680px] flex-auto flex-col gap-3.5 px-4 pt-1 pb-5 laptop:px-0">
+      <div className="mx-auto flex w-full max-w-170 flex-auto flex-col px-4 pt-3.5 pb-5.5 laptop:px-0">
         <section
-          className={`relative flex min-h-[250px] shrink-0 flex-col items-center justify-center gap-2 rounded-[32px] bg-surface p-[18px] text-center ${
-            feedback?.kind === "miss" ? "shadow-[0_0_0_3px_var(--again)]" : flash || feedback?.kind === "right" ? "shadow-[0_0_0_3px_var(--good)]" : "shadow-card"
+          aria-label={mode === "read" ? "Kana to read" : "Sound to find"}
+          className={`relative flex h-82.5 shrink-0 flex-col items-center justify-center gap-2 rounded-sheet border-[1.5px] border-line bg-surface p-4.5 text-center shadow-card transition-shadow duration-120 laptop:h-90 ${
+            feedback?.kind === "miss" ? "ring-3 ring-again" : flash || feedback?.kind === "right" ? "ring-3 ring-good" : ""
           }`}
         >
-          <p className="absolute top-4 left-[18px] m-0 text-[12.5px] font-black text-hue">
+          <p className="absolute top-4 left-5 m-0 text-meta font-bold text-hue">
             {kana.script === "katakana" ? "Katakana" : "Hiragana"}
             {retry ? " · again" : ""}
           </p>
           {mode === "read" ? (
-            <p lang="ja" className={`m-0 font-card leading-[1.05] font-black ${[...kana.kana].length > 1 ? "text-[100px] laptop:text-[120px]" : "text-[140px] laptop:text-[150px]"}`}>
+            <p
+              lang="ja"
+              // design-lint-ignore-next-line text-size: the kana in play is drawn bigger than the scale's 72 (RF_PlayKanaInPlay: 176)
+              className={`m-0 pb-3 font-ja leading-none text-ink ${[...kana.kana].length > 1 ? "text-[120px]" : "text-[176px]"}`}
+            >
               {kana.kana}
             </p>
           ) : (
             <>
-              <p className="m-0 text-[92px] leading-[1.05] font-black tracking-[0.02em] laptop:text-[96px]">{kana.romaji}</p>
+              {/* design-lint-ignore-next-line text-size: the romaji to find is drawn big, like the kana in Read it */}
+              <p className="m-0 text-[92px] leading-none font-black tracking-[0.02em]">{kana.romaji}</p>
               {hasVoice && (
-                <button
-                  type="button"
-                  aria-label={`Say ${kana.romaji} again`}
-                  onClick={() => say(kana.kana)}
-                  className="inline-flex min-h-10 items-center gap-1.5 rounded-btn bg-surface px-3.5 text-[13px] font-bold text-ink"
-                >
-                  <Icon d={SPEAKER} size={16} stroke={2} />
+                <Button variant="secondary" size="sm" icon="speaker" onClick={() => say(kana.kana)} aria-label={`Say ${kana.romaji} again`}>
                   Again · Space
-                </button>
+                </Button>
               )}
             </>
           )}
         </section>
 
-        <div className="flex items-center gap-2.5">
-          <div role="img" aria-label="Time for speed points" className="h-1.5 flex-auto overflow-hidden rounded-full bg-track">
-            <SpeedBar shownAt={shownAt} running={!feedback} />
-          </div>
-          <span className="text-xs font-bold whitespace-nowrap text-ink2">{live === null ? "speed bonus" : `Score ${live}`}</span>
+        <div className="mt-3.5 flex items-center gap-2.5">
+          <Icon name="clock" size={20} className="text-ink2" />
+          <TimerBar startedAt={shownAt} durationMs={NO_SPEED_MS} running={!feedback} label="Time for speed points" className="flex-auto" />
+          <span className="text-meta font-bold whitespace-nowrap text-ink2">{live === null ? "speed bonus" : `Score ${live}`}</span>
         </div>
 
         {mode === "read" ? (
           <form
+            ref={answerForm}
+            className="mt-3.5"
             onSubmit={(e) => {
               e.preventDefault();
               if (feedback) advance(feedback.next);
               else if (typed.trim()) submit(isRightTyping(typed, kana), typed.trim());
             }}
           >
-            <label className="flex flex-col gap-1.5 text-[13px] font-black text-ink2">
+            <label htmlFor="romaji" className="mb-1.5 block text-meta font-bold text-ink2">
               Type the romaji
-              <input
-                ref={input}
-                type="text"
-                value={typed}
-                onChange={(e) => onType(e.target.value)}
-                autoComplete="off"
-                autoCapitalize="none"
-                autoCorrect="off"
-                spellCheck={false}
-                enterKeyHint="next"
-                aria-describedby="kana-feedback"
-                aria-invalid={feedback?.kind === "miss" || undefined}
-                className={`box-border min-h-[66px] rounded-[22px] border-2 bg-surface px-5 text-[30px] font-black tracking-[0.03em] text-ink outline-none ${
-                  feedback?.kind === "miss" ? "border-again" : "border-[color-mix(in_srgb,var(--ink)_28%,transparent)]"
-                }`}
-              />
             </label>
+            <AnswerInput
+              id="romaji"
+              type="text"
+              value={typed}
+              onChange={(e) => onType(e.target.value)}
+              autoComplete="off"
+              enterKeyHint="next"
+              aria-describedby="kana-feedback kana-hint"
+              state={feedback?.kind === "miss" ? "wrong" : "idle"}
+            />
           </form>
         ) : (
           options && (
-            <div role="group" aria-label="Pick the kana" className="grid grid-cols-2 gap-2.5">
+            <div role="group" aria-label="Pick the kana" className="mt-3.5 grid grid-cols-2 gap-2.5">
               {options.options.map((o, i) => {
                 const right = i === options.answerIndex;
                 const picked = feedback?.pick === i;
                 const mark = feedback && right ? "right" : picked && !right ? "wrong" : null;
-                const style = mark === "right" ? "border-[3px] border-good" : mark === "wrong" ? "border-[3px] border-again" : "border-2 border-line shadow-card";
+                const style = mark === "right" ? "border-2 border-good ring-3 ring-good/30" : mark === "wrong" ? "border-2 border-again ring-3 ring-again/30" : "border-[1.5px] border-line-strong shadow-card";
                 return (
                   <button
                     key={o.key}
                     type="button"
+                    aria-keyshortcuts={String(i + 1)}
                     disabled={feedback !== null}
                     onClick={() => submit(right, o.kana, i)}
-                    className={`relative flex min-h-24 items-center justify-center rounded-3xl bg-surface laptop:min-h-[100px] ${style}`}
+                    className={`relative flex min-h-24 items-center justify-center rounded-card bg-surface text-ink hover:bg-surface2 laptop:min-h-25 ${style}`}
                   >
-                    <span className="absolute top-2.5 left-3.5 text-[12.5px] font-black text-ink2">{i + 1}</span>
-                    <span lang="ja" className="font-card text-[42px] leading-[1.1] font-black laptop:text-[52px]">
+                    <span className="absolute top-2.5 left-3.5 text-meta font-bold text-ink2">{i + 1}</span>
+                    <span lang="ja" className="font-ja text-display leading-tight">
                       {o.kana}
                     </span>
                     {mark && (
                       <span
+                        role="img"
                         aria-label={mark === "right" ? "the answer" : "your pick"}
-                        className={`absolute top-2.5 right-3 inline-flex size-6 items-center justify-center rounded-full text-sm font-black text-page ${mark === "right" ? "bg-good" : "bg-again"}`}
+                        className={`absolute top-2.5 right-3 grid size-6 place-items-center rounded-full text-page ${mark === "right" ? "bg-good" : "bg-again"}`}
                       >
-                        {mark === "right" ? "✓" : "✕"}
+                        <Icon name={mark === "right" ? "check" : "close"} size={16} stroke={2.6} />
                       </span>
                     )}
                   </button>
@@ -355,64 +374,60 @@ export function Play({
 
         <div id="kana-feedback" aria-live="polite">
           {feedback?.kind === "miss" && (
-            <div role="alert" className="flex items-center gap-3 rounded-[20px] bg-surface px-4 py-3.5 shadow-[0_0_0_2px_var(--again)]">
-              <div className="flex flex-auto flex-col gap-1">
-                <p className="m-0 text-base font-black text-again">
-                  <span lang="ja" className="font-card">
+            <div role="alert" className="mt-3.5 flex items-center gap-3 rounded-btn-lg border-2 border-again bg-again-soft px-4 py-3 text-on-cover">
+              <div className="flex flex-auto flex-col gap-0.5">
+                <p className="m-0 text-body font-black">
+                  <span lang="ja" className="font-ja">
                     {kana.kana}
                   </span>{" "}
                   is {kana.romaji}
                 </p>
-                <p className="m-0 text-[13.5px] leading-normal text-ink2">
+                <p className="m-0 text-meta text-on-cover2">
                   {feedback.given ? `You ${mode === "read" ? "typed" : "picked"} ` : ""}
                   {feedback.given && <span lang={mode === "find" ? "ja" : undefined}>{feedback.given}</span>}
                   {feedback.given ? ". " : ""}It comes back in a few cards.
                 </p>
               </div>
-              <button
-                type="button"
-                onMouseDown={keepFocus}
-                onClick={() => advance(feedback.next)}
-                className="min-h-12 shrink-0 rounded-btn bg-ink px-5 text-[15px] font-black text-page"
-              >
-                Next<span className="hidden laptop:inline"> · Enter</span>
-              </button>
+              <Button variant="secondary" onMouseDown={keepFocus} onClick={() => advance(feedback.next)} aria-keyshortcuts="Enter">
+                Next
+              </Button>
             </div>
           )}
         </div>
 
-        <div className="flex items-center justify-between gap-2.5">
+        <div className="mt-4.5 flex items-center justify-between gap-2.5">
           <div aria-label="Last few answers" className="flex items-center gap-1.5">
             {recent.map((r, i) => (
               <span
                 key={`${r.kana}-${i}`}
                 role="img"
                 aria-label={`${r.kana} ${r.romaji}, ${r.right ? "right" : "missed"}`}
-                className={`inline-flex size-[34px] items-center justify-center rounded-full bg-surface font-card text-[15px] font-black ${
-                  r.right ? "text-good shadow-[inset_0_0_0_2px_var(--good)]" : "text-again shadow-[inset_0_0_0_2px_var(--again)]"
-                }`}
+                className={`grid size-9 place-items-center rounded-full border-2 bg-surface ${r.right ? "border-good text-good" : "border-again text-again"}`}
               >
-                <span lang="ja" aria-hidden="true">
+                <span lang="ja" aria-hidden="true" className="font-ja text-body leading-none">
                   {r.kana}
                 </span>
               </span>
             ))}
           </div>
           {!feedback && (
-            <button
-              type="button"
-              onMouseDown={keepFocus}
-              onClick={() => submit(false, "")}
-              className="min-h-11 shrink-0 rounded-btn border-2 border-line bg-surface px-4 text-sm font-bold"
-            >
+            <Button variant="secondary" onMouseDown={keepFocus} onClick={() => submit(false, "")}>
               Show me
-            </button>
+            </Button>
           )}
         </div>
-        <p className="m-0 mt-auto text-center text-[12.5px] leading-normal text-ink2">
-          {mode === "read" ? "It moves on as soon as the romaji is right. Quicker answers score more." : "Keys 1 to 4 pick, Space says it again. Quicker answers score more."}{" "}
-          <span className="hidden laptop:inline">Esc stops.</span>
-        </p>
+        <div id="kana-hint" className="mt-auto flex flex-col items-center gap-2.5 pt-6 text-center text-meta text-ink2">
+          <p className="m-0">
+            {mode === "read" ? "It moves on as soon as the romaji is right. Quicker answers score more." : "Keys 1 to 4 pick, Space says it again. Quicker answers score more."}
+          </p>
+          <p className="m-0 flex items-center justify-center gap-2">
+            <Kbd>Enter</Kbd>
+            <span>next after a miss</span>
+            <span aria-hidden="true">·</span>
+            <Kbd>Esc</Kbd>
+            <span>stop</span>
+          </p>
+        </div>
       </div>
       {/* The page's wake-up for tones on the very first card. */}
       <WakeTones on={tones} />
@@ -427,33 +442,3 @@ function WakeTones({ on }: { on: boolean }) {
   return null;
 }
 
-/**
- * The speed bar: fills over the 5 seconds that earn speed points and turns amber once they're
- * gone. The browser animates it (`transform`), so it slides smoothly while typing re-renders.
- */
-const NO_SPEED_MS = DEFAULT_SPEED.noneMs;
-
-function SpeedBar({ shownAt, running }: { shownAt: number; running: boolean }) {
-  const fill = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const el = fill.current;
-    if (!el) return;
-    const elapsed = Math.max(0, Date.now() - shownAt);
-    const from = Math.min(1, elapsed / NO_SPEED_MS);
-    el.dataset.over = elapsed > NO_SPEED_MS ? "true" : "false";
-    if (!running || from >= 1) {
-      el.style.transform = `scaleX(${from})`;
-      return;
-    }
-    const slide = el.animate([{ transform: `scaleX(${from})` }, { transform: "scaleX(1)" }], {
-      duration: NO_SPEED_MS - elapsed,
-      easing: "linear",
-      fill: "forwards",
-    });
-    slide.onfinish = () => (el.dataset.over = "true");
-    return () => slide.cancel();
-  }, [shownAt, running]);
-  return (
-    <div ref={fill} data-over="false" style={{ transform: "scaleX(0)" }} className="h-full w-full origin-left bg-good data-[over=true]:bg-warn" />
-  );
-}
