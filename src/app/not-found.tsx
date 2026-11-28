@@ -11,6 +11,7 @@ export default function NotFound() {
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-120 flex-col justify-center px-5 py-10">
       <EmptyState
+        heading="h1"
         art={<Spot kind="path" size={160} />}
         title={<span className="text-headline">This page isn’t here</span>}
         action={

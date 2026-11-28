@@ -17,6 +17,7 @@ export function EmptyState({
   title,
   children,
   action,
+  heading: Heading = "h2",
   className,
 }: {
   /** The picture, about 160 wide (decoration). */
@@ -27,6 +28,8 @@ export function EmptyState({
   children?: ReactNode;
   /** One way on: a Button (quiet or primary). */
   action?: ReactNode;
+  /** The title's level: h1 when the empty state is the whole page (the 404). */
+  heading?: "h1" | "h2";
   className?: string;
 }) {
   if (!title && !art) {
@@ -40,7 +43,7 @@ export function EmptyState({
   return (
     <section className={`flex flex-col items-center gap-3 px-2 py-8 text-center ${className ?? ""}`}>
       {art}
-      {title && <h2 className="m-0 mt-3 text-title font-black">{title}</h2>}
+      {title && <Heading className="m-0 mt-3 text-title font-black">{title}</Heading>}
       {children && <div className="max-w-sm text-body text-ink2">{children}</div>}
       {action && <div className="mt-2 flex flex-col items-center gap-2">{action}</div>}
     </section>
