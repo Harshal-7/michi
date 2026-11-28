@@ -44,7 +44,7 @@ export function DeckList({ rows, workLockedUntil }: { rows: DeckRowView[]; workL
         </li>
       ))}
       {workLockedUntil && (
-        <li className={ROW} aria-disabled="true">
+        <li className={ROW}>
           <span className="flex min-w-0 flex-auto flex-col">
             <span className="text-body font-bold text-ink3">Work Japanese</span>
             <span className="text-meta text-ink3">locked until {workLockedUntil}</span>
