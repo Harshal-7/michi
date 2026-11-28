@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { type FormEvent, type ReactNode, useState, useTransition } from "react";
+import { type FormEvent, type ReactNode, useEffect, useState, useTransition } from "react";
 
+import { Rabbit } from "@/components/ui/art/rabbit";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Field } from "@/components/ui/field";
-import { Icon } from "@/components/ui/icon";
+import { Icon, type IconName } from "@/components/ui/icon";
 import { SectionTitle } from "@/components/ui/page-header";
 import { Segmented } from "@/components/ui/segmented";
 import { Switch } from "@/components/ui/switch";
@@ -46,6 +47,14 @@ const WEEKDAYS = [
   [0, "Sun"],
 ] as const;
 const EXCEPTION_NAMES: Record<Exception["kind"], string> = { rest: "Rest day", no_class: "No class", exam: "Exam day" };
+
+/** The sections, for the index beside them on a wide screen. */
+const SECTIONS: { id: string; label: string; note: string; icon: IconName }[] = [
+  { id: "settings-look", label: "Look and voice", note: "Theme, furigana, voice", icon: "sun" },
+  { id: "settings-study", label: "Study", note: "Classes, time, recall", icon: "clock" },
+  { id: "settings-dates", label: "Dates", note: "Exams and deadlines", icon: "calendar" },
+  { id: "settings-data", label: "Data", note: "Flagged items", icon: "flag" },
+];
 
 /** "75 min", "2 h", "3.5 h", as F_Settings writes them. */
 const hours = (minutes: number) => (minutes >= 60 && minutes % 30 === 0 ? `${minutes / 60} h` : `${minutes} min`);
@@ -321,9 +330,10 @@ export function SettingsEditor({
     ),
   };
 
-  const groups: { title: string; tiles: { key: EditorKey; label: string; value: string; ask?: boolean; id?: string }[] }[] = [
+  const groups: { title: string; id: string; tiles: { key: EditorKey; label: string; value: string; ask?: boolean; id?: string }[] }[] = [
     {
       title: "Study",
+      id: "settings-study",
       tiles: [
         {
           key: "classes",
@@ -343,6 +353,7 @@ export function SettingsEditor({
     },
     {
       title: "Dates",
+      id: "settings-dates",
       tiles: [
         {
           key: "phases",
@@ -370,93 +381,150 @@ export function SettingsEditor({
   const groupOf = (key: EditorKey) => groups.find((g) => g.tiles.some((t) => t.key === key))?.title;
 
   return (
-    <div className="flex flex-col gap-2">
-      <section aria-labelledby="look-and-voice" className="flex flex-col">
-        <SectionTitle id="look-and-voice">Look and voice</SectionTitle>
-        {/* Hidden if dark mode is ever switched off again (src/lib/theme.ts). */}
-        {DARK_MODE && <ThemeChoice saved={settings.theme} pending={pending} onSave={(theme) => save({ theme }, "Saved.")} />}
-        <div className="border-b-[1.5px] border-line">
-          <button
-            type="button"
-            aria-expanded={open === "furigana"}
-            aria-controls="edit-furigana"
-            onClick={() => toggle("furigana")}
-            className={`${ROW} border-b-0 bg-transparent p-0`}
-          >
-            <span className="flex-auto text-body font-bold">Furigana</span>
-            <span className="text-meta text-ink2">{settings.furigana ? "Above my level" : "Off"}</span>
-            <Icon name="chevron-right" size={20} className={`text-ink3 transition-transform duration-200 ${open === "furigana" ? "rotate-90" : ""}`} />
-          </button>
-          {open === "furigana" && (
-            <div id="edit-furigana" className="flex flex-col gap-2 pb-3.5">
-              {editors.furigana}
-              {status}
+    <div className="flex flex-col gap-2 wide:grid wide:grid-cols-[13rem_minmax(0,1fr)] wide:items-start wide:gap-x-12">
+      <SectionIndex />
+      <div className="flex min-w-0 flex-col gap-2 wide:gap-9">
+        <section id="settings-look" aria-labelledby="look-and-voice" className="flex scroll-mt-8 flex-col">
+          <SectionTitle id="look-and-voice">Look and voice</SectionTitle>
+          <div className="flex flex-col wide:grid wide:grid-cols-2 wide:items-start wide:gap-x-10">
+            {/* Hidden if dark mode is ever switched off again (src/lib/theme.ts). */}
+            {DARK_MODE && <ThemeChoice saved={settings.theme} pending={pending} onSave={(theme) => save({ theme }, "Saved.")} />}
+            <div className="flex flex-col">
+              <div className="border-b-[1.5px] border-line">
+                <button
+                  type="button"
+                  aria-expanded={open === "furigana"}
+                  aria-controls="edit-furigana"
+                  onClick={() => toggle("furigana")}
+                  className={`${ROW} border-b-0 bg-transparent p-0`}
+                >
+                  <span className="flex-auto text-body font-bold">Furigana</span>
+                  <span className="text-meta text-ink2">{settings.furigana ? "Above my level" : "Off"}</span>
+                  <Icon name="chevron-right" size={20} className={`text-ink3 transition-transform duration-200 ${open === "furigana" ? "rotate-90" : ""}`} />
+                </button>
+                {open === "furigana" && (
+                  <div id="edit-furigana" className="flex flex-col gap-2 pb-3.5">
+                    {editors.furigana}
+                    {status}
+                  </div>
+                )}
+              </div>
+              <Link href="/settings/voice" className={ROW}>
+                <span className="flex-auto text-body font-bold">Japanese voice</span>
+                <span className="text-meta text-ink2">
+                  {settings.voice.name ? <span lang="ja">{settings.voice.name}</span> : "Device default"} · {settings.voice.rate.toFixed(1)}×
+                </span>
+                <Icon name="chevron-right" size={20} className="text-ink3" />
+              </Link>
+              <div className={ROW}>
+                <span className="flex-auto text-body font-bold">Speech recognition</span>
+                <Switch
+                  label="Speech recognition"
+                  defaultChecked={settings.speechRecognition}
+                  disabled={pending}
+                  onChange={(on) => save({ speechRecognition: on }, "Saved.")}
+                />
+              </div>
             </div>
-          )}
-        </div>
-        <Link href="/settings/voice" className={ROW}>
-          <span className="flex-auto text-body font-bold">Japanese voice</span>
-          <span className="text-meta text-ink2">
-            {settings.voice.name ? <span lang="ja">{settings.voice.name}</span> : "Device default"} · {settings.voice.rate.toFixed(1)}×
-          </span>
-          <Icon name="chevron-right" size={20} className="text-ink3" />
-        </Link>
-        <div className={ROW}>
-          <span className="flex-auto text-body font-bold">
-            Speech recognition
-          </span>
-          <Switch
-            label="Speech recognition"
-            defaultChecked={settings.speechRecognition}
-            disabled={pending}
-            onChange={(on) => save({ speechRecognition: on }, "Saved.")}
-          />
-        </div>
-        {!open && <div className="pt-2 empty:hidden">{status}</div>}
-      </section>
+          </div>
+          {!open && <div className="pt-2 empty:hidden">{status}</div>}
+        </section>
 
-      {groups.map((g) => (
-        <section key={g.title} aria-labelledby={`group-${g.title}`} className="mt-3 flex flex-col gap-1">
-          <SectionTitle id={`group-${g.title}`}>{g.title}</SectionTitle>
-          <div className="grid grid-cols-2 gap-2">
-            {g.tiles.map((t) => (
-              <button
-                key={t.key}
-                id={t.id}
-                type="button"
-                aria-expanded={open === t.key}
-                aria-controls={`edit-${t.key}`}
-                onClick={() => toggle(t.key)}
-                className={`flex min-h-15 min-w-0 flex-col justify-center gap-0.5 rounded-btn border-[1.5px] px-3.5 py-2 text-left transition-colors duration-120 ${
-                  open === t.key ? "border-accent bg-accent-soft" : "border-transparent bg-surface2 hover:border-line-strong"
+        {groups.map((g) => (
+          <section key={g.title} id={g.id} aria-labelledby={`group-${g.title}`} className="mt-3 flex scroll-mt-8 flex-col gap-1 wide:mt-0">
+            <SectionTitle id={`group-${g.title}`}>{g.title}</SectionTitle>
+            <div className="grid grid-cols-2 gap-2 wide:grid-cols-3 wide:gap-2.5">
+              {g.tiles.map((t) => (
+                <button
+                  key={t.key}
+                  id={t.id}
+                  type="button"
+                  aria-expanded={open === t.key}
+                  aria-controls={`edit-${t.key}`}
+                  onClick={() => toggle(t.key)}
+                  className={`flex min-h-15 min-w-0 flex-col justify-center gap-0.5 rounded-btn border-[1.5px] px-3.5 py-2 text-left transition-colors duration-120 wide:min-h-18 wide:px-4 ${
+                    open === t.key ? "border-accent bg-accent-soft" : "border-transparent bg-surface2 hover:border-line-strong"
+                  }`}
+                >
+                  <span className="text-meta text-ink2">{t.label}</span>
+                  <span className={`text-body font-bold ${t.ask ? "text-accent" : "text-ink"}`}>{t.value}</span>
+                </button>
+              ))}
+            </div>
+            {open && groupOf(open) === g.title && (
+              <Card id={`edit-${open}`} className="mt-2 flex flex-col gap-3 wide:p-6">
+                {editors[open]}
+                {status}
+              </Card>
+            )}
+          </section>
+        ))}
+
+        <section id="settings-data" aria-labelledby="data" className="mt-3 flex scroll-mt-8 flex-col wide:mt-0">
+          <SectionTitle id="data">Data</SectionTitle>
+          <Link href="/settings/flags" className={`${ROW} border-b-0 wide:w-1/2 wide:pr-5`}>
+            <span className="flex flex-auto flex-col">
+              <span className="text-body font-bold">Flagged items</span>
+              <span className="text-meta text-ink2">Cards you flagged as reading wrong</span>
+            </span>
+            <Icon name="chevron-right" size={20} className="text-ink3" />
+          </Link>
+        </section>
+        {footer && <div className="mt-4 wide:mt-0 wide:flex wide:justify-start">{footer}</div>}
+      </div>
+    </div>
+  );
+}
+
+/**
+ * The sections as a sticky index on a wide screen (1280px+), with the one you're reading marked; the
+ * sitting rabbit under it. Hidden below that, where the sections are one column.
+ */
+function SectionIndex() {
+  const [here, setHere] = useState(SECTIONS[0].id);
+  useEffect(() => {
+    const seen = new Map<string, boolean>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) seen.set(e.target.id, e.isIntersecting);
+        const first = SECTIONS.find((s) => seen.get(s.id));
+        if (first) setHere(first.id);
+      },
+      { rootMargin: "-10% 0px -55% 0px" },
+    );
+    for (const s of SECTIONS) {
+      const el = document.getElementById(s.id);
+      if (el) observer.observe(el);
+    }
+    return () => observer.disconnect();
+  }, []);
+  return (
+    <nav aria-label="Settings sections" className="sticky top-8 hidden flex-col gap-6 wide:flex">
+      <ul className="m-0 flex list-none flex-col gap-1 p-0">
+        {SECTIONS.map((s) => {
+          const on = s.id === here;
+          return (
+            <li key={s.id}>
+              <a
+                href={`#${s.id}`}
+                aria-current={on ? "true" : undefined}
+                onClick={() => setHere(s.id)}
+                className={`flex min-h-14 items-center gap-3 rounded-btn px-3.5 py-2 no-underline transition-colors duration-120 ${
+                  on ? "bg-cover-blue text-on-cover" : "text-ink hover:bg-surface2"
                 }`}
               >
-                <span className="text-meta text-ink2">{t.label}</span>
-                <span className={`text-body font-bold ${t.ask ? "text-accent" : "text-ink"}`}>{t.value}</span>
-              </button>
-            ))}
-          </div>
-          {open && groupOf(open) === g.title && (
-            <Card id={`edit-${open}`} className="mt-2 flex flex-col gap-3">
-              {editors[open]}
-              {status}
-            </Card>
-          )}
-        </section>
-      ))}
-
-      <section aria-labelledby="data" className="mt-3 flex flex-col">
-        <SectionTitle id="data">Data</SectionTitle>
-        <Link href="/settings/flags" className={`${ROW} border-b-0`}>
-          <span className="flex flex-auto flex-col">
-            <span className="text-body font-bold">Flagged items</span>
-            <span className="text-meta text-ink2">Cards you flagged as reading wrong</span>
-          </span>
-          <Icon name="chevron-right" size={20} className="text-ink3" />
-        </Link>
-      </section>
-      {footer && <div className="mt-4">{footer}</div>}
-    </div>
+                <Icon name={s.icon} size={20} className={on ? "" : "text-ink2"} />
+                <span className="flex flex-col">
+                  <span className={`text-body ${on ? "font-black" : "font-bold"}`}>{s.label}</span>
+                  <span className={`text-caption ${on ? "text-on-cover2" : "text-ink2"}`}>{s.note}</span>
+                </span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+      <Rabbit pose="sitting" size={112} className="self-center" />
+    </nav>
   );
 }
 
