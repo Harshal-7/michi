@@ -3,6 +3,7 @@
 // scrambled form the app checks sign-ins against. The passphrase itself is never saved.
 //
 //   pnpm auth:hash            prints the line for .env.local or Vercel
+//   pnpm auth:hash --local    writes it into .env.local (replacing the old line)
 //   pnpm auth:hash --vercel   sends it straight to the Vercel project "michi" (Production
 //                             and Preview, as a Secret) instead of printing it
 //
@@ -10,6 +11,7 @@
 
 import { spawnSync } from "node:child_process";
 import { randomBytes, scrypt } from "node:crypto";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 
 const N = 32768;
@@ -96,7 +98,13 @@ async function main() {
     process.exit(1);
   }
   const hash = await hashPassphrase(first);
-  if (toVercel) {
+  if (process.argv.includes("--local")) {
+    const old = existsSync(".env.local") ? readFileSync(".env.local", "utf8") : "";
+    const line = `PASSPHRASE_HASH=${hash}`;
+    const next = /^PASSPHRASE_HASH=.*$/m.test(old) ? old.replace(/^PASSPHRASE_HASH=.*$/m, line) : `${old}${old && !old.endsWith("\n") ? "\n" : ""}${line}\n`;
+    writeFileSync(".env.local", next);
+    console.log("\nPASSPHRASE_HASH is set in .env.local. The dev server picks it up on its own; reload the sign-in page.");
+  } else if (toVercel) {
     sendToVercel("PASSPHRASE_HASH", hash);
     console.log("\nPASSPHRASE_HASH is set in Vercel for Production and Preview. Redeploy to use it.");
   } else {
