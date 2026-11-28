@@ -163,7 +163,30 @@ the rest of this skill's look rules (one solid button, the sidebar, the bottom b
   (`src/lib/games/catalog.ts`) and uses `bg-hue-tint`, `text-hue`, `border-hue` inside.
 - **Shapes and type**: `rounded-game` (26px) for play cards and panels, `shadow-lift` for the quick-play
   hero, Zen Kaku Gothic New **900** (`font-black`) for titles and scores, giant cropped glyphs in the game's
-  colour at 15–20% as decoration (`aria-hidden`).
+  colour at 15–20% as decoration on the hub's posters (`aria-hidden`).
+- **Tints are for small things and the hub.** A game's tint fills the hub's posters, glyph tiles, chips and
+  the leaderboard's podium panel. Big panels a player looks at for long (the card in a game, the end
+  screen's score panel, a start screen) sit on `--surface` with `shadow-card`; the game's colour stays in
+  the small parts (label, progress, input ring, stamp). In dark themes a big tint reads muddy (Harshal,
+  28 Nov 2026).
+- **A game's start screen is calm and simple, like Kanago** (Harshal, 28 Nov 2026), and every game uses
+  the same shape:
+  - **One column, settings first.** Settings come first and fit on a laptop screen without scrolling;
+    this week's board (`BoardCard`) and the player's progress follow below, never beside them. The
+    column is 600px on a phone and 860px on a laptop, where the settings use the width (not a stretched
+    phone layout): groups sit side by side and Start is a centred 360px button, not a full-width bar.
+  - **No banner.** A small title row: a round back button to /play, the game's glyph in a 44px tint tile,
+    the name (26–30px, 900) and one line under it.
+  - **Game mode first** (`ModeCards` in `src/components/games/parts.tsx`): the modes as wide cards (one
+    under the other on a phone, side by side from 560px), each with a small preview of how it plays (か for Read it, ka for Find it), its name and one
+    line. The picked card is `--surface` with a 2px game-colour border; the others `--surface2`.
+  - **Then the choices as tiles** (`OptionTiles`): a small uppercase heading, equal tiles with a glyph
+    and a label, the picked ones `--surface` with a 2px game-colour border. Only choices that apply
+    (no greyed-out tiles). On a laptop two groups share a row (writing system | kana).
+  - **No "how many".** A game plays every item picked; the boards rank full decks of the standard
+    choices. Then one accent **Start · 46 kana**, and the small extras (weakest, tones) on one quiet line.
+- **In a game**, the answer box has a 2px neutral border (`--ink` at 28%), red after a miss; no thick
+  coloured ring.
 - **Shell**: a top bar on phone and laptop (`src/components/play/top-bar.tsx`), no sidebar or bottom bar;
   a game in play covers it. The player pill: "Pick a name" (ink pill), a guest's avatar and name, or
   "Harshal" with a home button back to Michi.
@@ -172,7 +195,7 @@ the rest of this skill's look rules (one solid button, the sidebar, the bottom b
   `BoardRowView`, `BoardCard` for a game's start screen, the name sheet (`<dialog>`: a bottom sheet on a
   phone, 460px on a laptop, the page behind faded with `--page` at 78%), the offline banner and the
   "new version" bar. A new game builds its start, play and end screens from the kana game's
-  (`src/components/games/`).
+  (`src/components/games/`, with `OptionTiles` for its choices).
 
 ## 4. States every screen needs
 

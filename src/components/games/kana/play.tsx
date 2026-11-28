@@ -38,7 +38,7 @@ type Options = { options: GameKana[]; answerIndex: number };
 
 /**
  * A game in play, full screen in the play look (P_Play): a chunky progress bar and the streak,
- * the kana or the romaji on a card in the game's colour, the answer below, a bar for the speed
+ * the kana or the romaji on a plain card (the game's colour only in the small parts), the answer below, a bar for the speed
  * points, why a miss was wrong, and the last few answers.
  */
 export function Play({
@@ -252,8 +252,8 @@ export function Play({
 
       <div className="mx-auto flex w-full max-w-[680px] flex-auto flex-col gap-3.5 px-4 pt-1 pb-5 laptop:px-0">
         <section
-          className={`relative flex min-h-[250px] shrink-0 flex-col items-center justify-center gap-2 rounded-[32px] bg-hue-tint p-[18px] text-center ${
-            feedback?.kind === "miss" ? "shadow-[0_0_0_3px_var(--again)]" : flash || feedback?.kind === "right" ? "shadow-[0_0_0_3px_var(--good)]" : ""
+          className={`relative flex min-h-[250px] shrink-0 flex-col items-center justify-center gap-2 rounded-[32px] bg-surface p-[18px] text-center ${
+            feedback?.kind === "miss" ? "shadow-[0_0_0_3px_var(--again)]" : flash || feedback?.kind === "right" ? "shadow-[0_0_0_3px_var(--good)]" : "shadow-card"
           }`}
         >
           <p className="absolute top-4 left-[18px] m-0 text-[12.5px] font-black text-hue">
@@ -311,8 +311,8 @@ export function Play({
                 enterKeyHint="next"
                 aria-describedby="kana-feedback"
                 aria-invalid={feedback?.kind === "miss" || undefined}
-                className={`box-border min-h-[66px] rounded-[22px] border-[3px] bg-surface px-5 text-[30px] font-black tracking-[0.03em] text-ink outline-none ${
-                  feedback?.kind === "miss" ? "border-again" : "border-hue shadow-[0_0_0_5px_var(--hue-tint)]"
+                className={`box-border min-h-[66px] rounded-[22px] border-2 bg-surface px-5 text-[30px] font-black tracking-[0.03em] text-ink outline-none ${
+                  feedback?.kind === "miss" ? "border-again" : "border-[color-mix(in_srgb,var(--ink)_28%,transparent)]"
                 }`}
               />
             </label>

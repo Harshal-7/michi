@@ -85,7 +85,7 @@ export function GameDone({
 
   return (
     <div style={hueStyle(game)} className="mx-auto flex w-full max-w-[560px] flex-col gap-3.5">
-      <section className="flex flex-col items-center gap-2.5 rounded-game bg-hue-tint px-5 pt-[22px] pb-[18px] text-center">
+      <section className="flex flex-col items-center gap-2.5 rounded-game bg-surface px-5 pt-[22px] pb-[18px] text-center shadow-card">
         <p className="m-0 text-[13px] font-black tracking-[0.04em] text-hue uppercase">{kicker}</p>
         <div role="img" aria-label={`Score ${summary.score} out of 100`} className="relative my-1.5">
           <div className="flex size-[132px] -rotate-6 flex-col items-center justify-center rounded-full border-4 border-hue text-hue outline-2 outline-offset-4 outline-hue">
@@ -147,7 +147,7 @@ export function GameDone({
 
 function Stat({ value, label }: { value: string; label: string }) {
   return (
-    <div className="flex flex-col gap-px rounded-[14px] bg-surface px-0.5 py-[9px]">
+    <div className="flex flex-col gap-px rounded-[14px] bg-surface2 px-0.5 py-[9px]">
       <span className="text-[17px] font-black">{value}</span>
       <span className="text-[11.5px] text-ink2">{label}</span>
     </div>
