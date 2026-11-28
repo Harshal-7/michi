@@ -106,7 +106,10 @@ export default async function VerbsPage() {
         <h2 className="m-0 text-title font-bold">All the forms</h2>
         <div className="-mx-5 overflow-x-auto px-5">
           <table className="w-full min-w-[440px] border-collapse">
-            <caption className="sr-only">Fifteen verbs in the dictionary, ます, ない, て and た forms</caption>
+            <caption className="sr-only">
+              Fifteen verbs in the dictionary, <span lang="ja">ます</span>, <span lang="ja">ない</span>, <span lang="ja">て</span> and{" "}
+              <span lang="ja">た</span> forms
+            </caption>
             <thead>
               <tr className="text-left text-meta text-ink2">
                 <th className="py-1 pr-3 font-bold">Verb</th>
