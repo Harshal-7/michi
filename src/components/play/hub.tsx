@@ -8,7 +8,7 @@ import { PlayerName, Podium, type PodiumState } from "./bits";
 import { usePlay } from "./player";
 import { useBoard } from "./use-board";
 
-/** The board the hub shows: the quick-play game, Read it · Hiragana · Basic · 20, this week. */
+/** The board the hub shows: the quick-play game, Read it · all 46 basic hiragana, this week. */
 export const HUB_BOARD = { game: "kana", setup: KANA_SETUPS[0].key, label: "Kana game · Read it · Hiragana" } as const;
 
 /** The hub's greeting: for a visitor, what Play is; for a player, their best kana score. */

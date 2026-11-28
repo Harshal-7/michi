@@ -52,7 +52,7 @@ function QuickPlay() {
       </span>
       <span className="self-start rounded-full border-[1.5px] border-current px-2.5 py-1 text-[11.5px] font-black tracking-[0.08em] uppercase laptop:text-xs">Quick play</span>
       <h2 className="mt-0.5 mb-0 text-[30px] leading-[1.1] font-black laptop:text-[44px]">Kana game</h2>
-      <p className="m-0 max-w-[230px] text-[14.5px] leading-[1.45] laptop:max-w-[380px] laptop:text-[17px]">20 hiragana. See one, type how it sounds. About a minute.</p>
+      <p className="m-0 max-w-[230px] text-[14.5px] leading-[1.45] laptop:max-w-[380px] laptop:text-[17px]">All 46 hiragana. See one, type how it sounds. About two minutes.</p>
       <div className="relative mt-auto flex items-center gap-3 laptop:gap-4">
         <Link
           href="/play/kana?quick=1"

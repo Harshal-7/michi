@@ -23,7 +23,7 @@ export type CatalogGame = {
 };
 
 export const CATALOG: readonly CatalogGame[] = [
-  { slug: "kana", name: "Kana game", short: "Kana", glyph: "か", note: "Read a kana and type it, or hear it and find it", minutes: 1, sound: false },
+  { slug: "kana", name: "Kana game", short: "Kana", glyph: "か", note: "Read a kana and type it, or hear it and find it", minutes: 2, sound: false },
   { slug: "vocab", name: "Vocabulary", short: "Vocab", glyph: "語", note: "Type the meaning, the word or how it’s read", minutes: 2, sound: false },
   { slug: "forms", name: "Verb forms", short: "Verbs", glyph: "て", note: "Make each verb form: ", ja: "ます・ない・て・た", minutes: 2, sound: false },
   { slug: "particles", name: "Particles", short: "Particles", glyph: "を", note: "Pick the particle that fits the sentence", minutes: 2, sound: false },

@@ -6,7 +6,7 @@ import { SessionLoading, useInBrowser } from "@/components/cards/loading";
 import { VoiceProvider } from "@/components/cards/voice";
 import { ALL_KANA, kanaFor } from "@/lib/games/kana/content";
 import { KANA_SETUPS, parseSetup, setupKey, weakestKey } from "@/lib/games/kana/setups";
-import { type GameKana, type GameSettings, LENGTHS, MODE_LABELS, type Mode, SCRIPTS, WEAKEST_COUNT } from "@/lib/games/kana/types";
+import { type GameKana, type GameSettings, MODE_LABELS, type Mode, SCRIPTS, WEAKEST_COUNT } from "@/lib/games/kana/types";
 import { type PastGame, strengths, weakestFirst, type Strength } from "@/lib/games/progress";
 import { bestStreakOf, summarise } from "@/lib/games/score";
 import { buildDeck } from "@/lib/games/turns";
@@ -61,8 +61,7 @@ function fromAddress(saved: GameSettings): { settings: GameSettings; quick: bool
   const key = quick ? KANA_SETUPS[0].key : q.get("setup");
   const parsed = key ? parseSetup(key) : null;
   if (parsed && !parsed.weakest) {
-    const length = LENGTHS.find((l) => l === parsed.cards) ?? 0;
-    return { settings: { ...saved, mode: parsed.mode, scripts: parsed.scripts, groups: parsed.groups, length }, quick };
+    return { settings: { ...saved, mode: parsed.mode, scripts: parsed.scripts, groups: parsed.groups }, quick };
   }
   const script = SCRIPTS.find((s) => s === q.get("script"));
   return { settings: script ? { ...saved, scripts: [script] } : saved, quick: false };
@@ -73,7 +72,7 @@ function Game() {
   const [opening] = useState(() => fromAddress(loadSettings()));
   const [settings, setSettings] = useState<GameSettings>(opening.settings);
   const [phase, setPhase] = useState<Phase>(() =>
-    opening.quick ? { kind: "play", id: crypto.randomUUID(), deck: buildDeck(kanaFor(ALL_KANA, opening.settings.scripts, opening.settings.groups), opening.settings.length), weakest: false, mode: opening.settings.mode } : { kind: "start" },
+    opening.quick ? { kind: "play", id: crypto.randomUUID(), deck: buildDeck(kanaFor(ALL_KANA, opening.settings.scripts, opening.settings.groups), 0), weakest: false, mode: opening.settings.mode } : { kind: "start" },
   );
   const { me, reload } = usePlayer("kana");
   // The address has done its job: going back to the start screen shouldn't start again.
@@ -96,7 +95,7 @@ function Game() {
           history[settings.mode].weakest.slice(0, WEAKEST_COUNT).map((s) => s.kana),
           0,
         )
-      : buildDeck(kanaFor(ALL_KANA, settings.scripts, settings.groups), settings.length);
+      : buildDeck(kanaFor(ALL_KANA, settings.scripts, settings.groups), 0);
     if (deck.length === 0) return;
     setPhase({ kind: "play", id: crypto.randomUUID(), deck, weakest: useWeakest, mode: settings.mode });
   };

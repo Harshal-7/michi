@@ -27,15 +27,19 @@ beforeEach(() => db.execute(sql`truncate game_runs cascade; truncate activity_lo
 const BASIC = kanaFor(ALL_KANA, ["hiragana"], ["basic"]);
 const guest = async (name: string) => (await createGuest(db, name, name.toLowerCase(), "scrypt:x"))!;
 
-/** A 20-card Read it run; `right` cards right first time at 1 s each, so the score is 5 × right. */
-function run(playedAt: string, right = 20, over: Partial<GameRun> = {}): GameRun {
+/** The ranked Read it board: every basic hiragana. */
+const READ = "read:hiragana:basic:46";
+const FIND = "find:hiragana:basic:46";
+
+/** A full 46-card Read it run; `right` cards right first time at 1 s each (100 points each, the rest 0). */
+function run(playedAt: string, right = 46, over: Partial<GameRun> = {}): GameRun {
   return {
     id: randomUUID(),
     game: "kana",
-    setup: "read:hiragana:basic:20",
+    setup: READ,
     playedAt,
     durationMs: 95_000,
-    answers: BASIC.slice(0, 20).map((k, i) => ({ item: k.key, right: i < right, ms: 1000, given: k.romaji, tries: i < right ? 1 : 2 })),
+    answers: BASIC.map((k, i) => ({ item: k.key, right: i < right, ms: 1000, given: k.romaji, tries: i < right ? 1 : 2 })),
     ...over,
   };
 }
@@ -51,12 +55,12 @@ describe("saving a run", () => {
   });
 
   it("stores it once, scored on the server, with Harshal's minutes as study time", async () => {
-    const r = run("2026-12-02T05:00:00.000Z", 16);
+    const r = run("2026-12-02T05:00:00.000Z", 37);
     expect(await saveRun(db, owner, r, NOW)).toEqual({ ok: true, saved: true, ranked: true, score: 80 });
     expect(await saveRun(db, owner, r, NOW)).toEqual({ ok: true, saved: false, ranked: true, score: 80 });
     const [row] = await db.select().from(gameRuns);
-    expect(row).toMatchObject({ playerId: owner.id, game: "kana", cards: 20, firstTryRight: 16, score: 80, bestStreak: 16, meanMs: 1000, studyDate: "2026-12-02" });
-    expect(await db.select().from(gameAnswers)).toHaveLength(20);
+    expect(row).toMatchObject({ playerId: owner.id, game: "kana", cards: 46, firstTryRight: 37, score: 80, bestStreak: 37, meanMs: 1000, studyDate: "2026-12-02" });
+    expect(await db.select().from(gameAnswers)).toHaveLength(46);
     const logs = await db.select().from(activityLogs);
     expect(logs).toEqual([expect.objectContaining({ kind: "study", skill: "general", minutes: 2, auto: true, note: "Kana game", studyDate: "2026-12-02" })]);
   });
@@ -78,14 +82,14 @@ describe("saving a run", () => {
   });
 
   it("gives back a player's runs and recent answers per mode", async () => {
-    await saveRun(db, owner, run("2026-12-01T05:00:00.000Z", 10), NOW);
-    await saveRun(db, owner, run("2026-12-02T05:00:00.000Z", 20), NOW);
-    await saveRun(db, owner, run("2026-12-02T05:30:00.000Z", 20, { setup: "find:hiragana:basic:20" }), NOW);
+    await saveRun(db, owner, run("2026-12-01T05:00:00.000Z", 23), NOW);
+    await saveRun(db, owner, run("2026-12-02T05:00:00.000Z"), NOW);
+    await saveRun(db, owner, run("2026-12-02T05:30:00.000Z", 46, { setup: FIND }), NOW);
     await saveRun(db, await guest("Aki"), run("2026-12-02T05:00:00.000Z"), NOW);
     const runs = await loadRuns(db, owner.id, "kana");
     expect(runs.map((r) => [r.setup.split(":")[0], r.score])).toEqual([["find", 100], ["read", 100], ["read", 50]]);
     const answers = await loadItemAnswers(db, owner.id, "kana", 1);
-    expect(answers.filter((a) => a.mode === "read")).toHaveLength(20);
+    expect(answers.filter((a) => a.mode === "read")).toHaveLength(46);
     expect(answers.find((a) => a.mode === "read" && a.item === BASIC[15].key)).toMatchObject({ right: true });
   });
 });
@@ -93,15 +97,15 @@ describe("saving a run", () => {
 describe("leaderboards", () => {
   it("rank each player's best, ties to the quicker, and leave out hidden names and unranked runs", async () => {
     const [aki, mei, ken] = [await guest("Aki"), await guest("Mei"), await guest("Ken")];
-    await saveRun(db, aki, run("2026-12-01T05:00:00.000Z", 10), NOW);
-    await saveRun(db, aki, run("2026-12-01T06:00:00.000Z", 18), NOW);
-    await saveRun(db, mei, run("2026-12-01T05:00:00.000Z", 18, { answers: run("", 18).answers.map((a) => ({ ...a, ms: 1600 })) }), NOW);
-    await saveRun(db, owner, run("2026-12-01T05:00:00.000Z", 20), NOW);
-    await saveRun(db, ken, run("2026-12-01T05:00:00.000Z", 20), NOW);
-    await saveRun(db, aki, run("2026-12-01T07:00:00.000Z", 20, { setup: "read:weakest:20" }), NOW);
+    await saveRun(db, aki, run("2026-12-01T05:00:00.000Z", 23), NOW);
+    await saveRun(db, aki, run("2026-12-01T06:00:00.000Z", 41), NOW);
+    await saveRun(db, mei, run("2026-12-01T05:00:00.000Z", 41, { answers: run("", 41).answers.map((a) => ({ ...a, ms: 1600 })) }), NOW);
+    await saveRun(db, owner, run("2026-12-01T05:00:00.000Z"), NOW);
+    await saveRun(db, ken, run("2026-12-01T05:00:00.000Z"), NOW);
+    await saveRun(db, aki, run("2026-12-01T07:00:00.000Z", 20, { setup: "read:weakest:20", answers: run("").answers.slice(0, 20) }), NOW);
     await setGuestHidden(db, "ken", true);
-    const rows = await loadBoard(db, "kana", "read:hiragana:basic:20", null);
-    expect(rows.map((r) => [r.name, r.score])).toEqual([["Harshal", 100], ["Aki", 90], ["Mei", 89]]);
+    const rows = await loadBoard(db, "kana", READ, null);
+    expect(rows.map((r) => [r.name, r.score])).toEqual([["Harshal", 100], ["Aki", 89], ["Mei", 88]]);
     const view = boardView(rows, mei.id, 2);
     expect(view.top.map((p) => [p.place, p.name, p.you])).toEqual([[1, "Harshal", false], [2, "Aki", false]]);
     expect(view.me).toMatchObject({ place: 3, name: "Mei", you: true });
@@ -113,15 +117,15 @@ describe("leaderboards", () => {
   it("start the week on Monday at 4 am IST", async () => {
     const [sun, late, mon] = [await guest("Sunday"), await guest("Late"), await guest("Monday")];
     // Sunday 29 Nov 11 pm IST, and Monday 30 Nov 3:30 am IST (still Sunday's study day).
-    await saveRun(db, sun, run("2026-11-29T17:30:00.000Z", 20), NOW);
-    await saveRun(db, late, run("2026-11-29T22:00:00.000Z", 19), NOW);
+    await saveRun(db, sun, run("2026-11-29T17:30:00.000Z"), NOW);
+    await saveRun(db, late, run("2026-11-29T22:00:00.000Z", 45), NOW);
     // Monday 30 Nov 4:00 am IST: this week.
-    await saveRun(db, mon, run("2026-11-29T22:30:00.000Z", 12), NOW);
+    await saveRun(db, mon, run("2026-11-29T22:30:00.000Z", 23), NOW);
     expect(boardSince("week", NOW)).toBe("2026-11-30");
     expect(boardSince("all", NOW)).toBeNull();
-    const week = await loadBoard(db, "kana", "read:hiragana:basic:20", boardSince("week", NOW));
+    const week = await loadBoard(db, "kana", READ, boardSince("week", NOW));
     expect(week.map((r) => r.name)).toEqual(["Monday"]);
-    const all = await loadBoard(db, "kana", "read:hiragana:basic:20", null);
+    const all = await loadBoard(db, "kana", READ, null);
     expect(all.map((r) => r.name)).toEqual(["Sunday", "Late", "Monday"]);
     // Sunday 6 Dec 11:59 pm IST is still this week; Monday 7 Dec 4 am is the next.
     expect(boardSince("week", new Date("2026-12-06T18:29:00Z"))).toBe("2026-11-30");
@@ -143,12 +147,12 @@ describe("a player's summary and names", () => {
   it("counts their runs and keeps the best of each game with its setup", async () => {
     const mei = await guest("Mei");
     expect(await loadSummary(db, mei.id)).toMatchObject({ runs: 0, bests: [] });
-    await saveRun(db, mei, run("2026-12-02T05:00:00.000Z", 12), NOW);
-    await saveRun(db, mei, run("2026-12-02T05:10:00.000Z", 18, { setup: "find:hiragana:basic:20" }), NOW);
-    await saveRun(db, mei, run("2026-12-02T05:20:00.000Z", 14), NOW);
+    await saveRun(db, mei, run("2026-12-02T05:00:00.000Z", 23), NOW);
+    await saveRun(db, mei, run("2026-12-02T05:10:00.000Z", 41, { setup: FIND }), NOW);
+    await saveRun(db, mei, run("2026-12-02T05:20:00.000Z", 30), NOW);
     const summary = await loadSummary(db, mei.id);
     expect(summary.runs).toBe(3);
-    expect(summary.bests).toEqual([{ game: "kana", setup: "find:hiragana:basic:20", score: 90 }]);
+    expect(summary.bests).toEqual([{ game: "kana", setup: FIND, score: 89 }]);
     expect(Date.parse(summary.since)).not.toBeNaN();
   });
 
@@ -160,9 +164,9 @@ describe("a player's summary and names", () => {
 
   it("puts each place's right-first-time count on the board", async () => {
     const aki = await guest("Aki");
-    await saveRun(db, aki, run("2026-12-02T05:00:00.000Z", 19), NOW);
-    const [row] = await loadBoard(db, "kana", "read:hiragana:basic:20", null);
-    expect(row).toMatchObject({ name: "Aki", cards: 20, firstTryRight: 19, score: 95 });
+    await saveRun(db, aki, run("2026-12-02T05:00:00.000Z", 44), NOW);
+    const [row] = await loadBoard(db, "kana", READ, null);
+    expect(row).toMatchObject({ name: "Aki", cards: 46, firstTryRight: 44, score: 96 });
   });
 });
 

@@ -1,14 +1,20 @@
 /**
- * The kana game's setup keys: `<mode>:<scripts>:<groups>:<cards>` (`read:hiragana:basic:20`), or
+ * The kana game's setup keys: `<mode>:<scripts>:<groups>:<cards>` (`read:hiragana:basic:46`), or
  * `<mode>:weakest:<cards>` for "Practise your weakest". The first part is the mode, as for every
  * game, so progress can be shown per mode. Only the standard setups rank (decision C).
  */
+import { ALL_KANA, kanaFor } from "./content";
 import { GROUPS, type Group, LENGTHS, type Mode, MODE_LABELS, MODES, type Script, SCRIPTS, WEAKEST_COUNT } from "./types";
 
-const STANDARD: [Script[], Group[], number, string][] = [
-  [["hiragana"], ["basic"], 20, "Hiragana · Basic · 20"],
-  [["katakana"], ["basic"], 20, "Katakana · Basic · 20"],
-  [["hiragana", "katakana"], [...GROUPS], 50, "Both · All groups · 50"],
+/**
+ * A game plays every kana picked (Harshal, 28 Nov 2026: no "how many"), so the boards are full
+ * decks of the basic kana: hiragana, katakana, or both. Older 20- and 50-card runs still save
+ * (deckSizes) but don't rank.
+ */
+const STANDARD: [Script[], Group[], string][] = [
+  [["hiragana"], ["basic"], "Hiragana"],
+  [["katakana"], ["basic"], "Katakana"],
+  [["hiragana", "katakana"], ["basic"], "Both"],
 ];
 
 export function setupKey(mode: Mode, scripts: readonly Script[], groups: readonly Group[], cards: number): string {
@@ -21,7 +27,10 @@ export const weakestKey = (mode: Mode, cards: number) => `${mode}:weakest:${card
 
 /** The setups with leaderboards, in the order the boards list them. */
 export const KANA_SETUPS: { key: string; label: string; mode: Mode }[] = MODES.flatMap((mode) =>
-  STANDARD.map(([scripts, groups, cards, label]) => ({ key: setupKey(mode, scripts, groups, cards), label: `${MODE_LABELS[mode]} · ${label}`, mode })),
+  STANDARD.map(([scripts, groups, label]) => {
+    const cards = kanaFor(ALL_KANA, scripts, groups).length;
+    return { key: setupKey(mode, scripts, groups, cards), label: `${MODE_LABELS[mode]} · ${label} · ${cards}`, mode };
+  }),
 );
 
 export type ParsedSetup =
