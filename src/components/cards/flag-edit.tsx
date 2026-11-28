@@ -1,18 +1,16 @@
 "use client";
-// design-lint: legacy
 
 import { useState, useTransition } from "react";
 
+import { Button } from "@/components/ui/button";
+import { Field } from "@/components/ui/field";
+import { Segmented } from "@/components/ui/segmented";
 import { type EditedItem, editItem, flagItem } from "@/lib/srs/item-actions";
 import type { StudyCard } from "@/lib/srs/types";
 
-const INPUT =
-  "min-h-11 w-full box-border rounded-xl border-2 border-line bg-page px-3 text-[15px] font-medium outline-none focus:border-accent";
-const LABEL = "flex flex-col gap-1.5 text-[12.5px] font-bold";
-
 /**
  * Flag a card that reads wrong, or fix the item yourself. Shown in place of the card's face, built
- * from the chips, inputs and buttons on F_Parts.
+ * from the shared parts (RF_Parts): a segmented choice, fields and buttons.
  */
 export function FlagEditPanel({
   card,
@@ -56,80 +54,58 @@ export function FlagEditPanel({
 
   return (
     <form
-      className="flex w-full flex-auto flex-col gap-3"
+      className="flex w-full flex-auto flex-col gap-4 pt-4 pb-2"
       onSubmit={(e) => {
         e.preventDefault();
         submit();
       }}
     >
-      <div role="radiogroup" aria-label="Flag or edit" className="flex gap-1.5">
-        {(["flag", "edit"] as const).map((m) => (
-          <button
-            key={m}
-            type="button"
-            role="radio"
-            aria-checked={mode === m}
-            onClick={() => setMode(m)}
-            className={`min-h-11 rounded-btn px-4 text-[13px] ${
-              mode === m ? "bg-ink font-bold text-page" : "border border-line"
-            }`}
-          >
-            {m === "flag" ? "Flag this card" : "Edit it"}
-          </button>
-        ))}
-      </div>
+      <Segmented
+        label="Flag or edit"
+        name="flag-or-edit"
+        value={mode}
+        onChange={setMode}
+        options={[
+          { value: "flag", label: "Flag it", icon: "flag" },
+          { value: "edit", label: "Edit it", icon: "edit" },
+        ]}
+      />
       {mode === "flag" ? (
-        <label className={LABEL}>
-          What reads wrong?
-          <textarea
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
-            rows={4}
-            placeholder="The reading, the meaning, the example…"
-            className={`${INPUT} py-2.5`}
-          />
-        </label>
+        <Field
+          as="textarea"
+          label="What reads wrong?"
+          value={note}
+          onChange={(e) => setNote(e.target.value)}
+          rows={4}
+          placeholder="The reading, the meaning, the example…"
+        />
       ) : (
         <>
-          <label className={LABEL}>
-            {card.item.kind === "grammar" ? "Pattern" : card.item.kind === "kana" ? "Kana" : "Term"}
-            <input lang="ja" value={term} onChange={(e) => setTerm(e.target.value)} className={INPUT} />
-          </label>
+          <Field
+            label={card.item.kind === "grammar" ? "Pattern" : card.item.kind === "kana" ? "Kana" : "Term"}
+            ja
+            value={term}
+            onChange={(e) => setTerm(e.target.value)}
+          />
           {card.item.kind !== "grammar" && (
-            <label className={LABEL}>
-              {isKana ? "Romaji" : "Reading"}
-              <input lang={isKana ? undefined : "ja"} value={reading} onChange={(e) => setReading(e.target.value)} className={INPUT} />
-            </label>
+            <Field label={isKana ? "Romaji" : "Reading"} ja={!isKana} value={reading} onChange={(e) => setReading(e.target.value)} />
           )}
-          {!isKana && (
-            <label className={LABEL}>
-              Meaning
-              <input value={meaning} onChange={(e) => setMeaning(e.target.value)} className={INPUT} />
-            </label>
-          )}
-          <p className="m-0 text-[12.5px] text-ink2">Your edit is kept when the starter content is updated.</p>
+          {!isKana && <Field label="Meaning" value={meaning} onChange={(e) => setMeaning(e.target.value)} />}
+          <p className="m-0 text-meta text-ink2">Your edit is kept when the starter content is updated.</p>
         </>
       )}
       {error && (
-        <p role="alert" className="m-0 text-[13px] font-semibold text-again">
+        <p role="alert" className="m-0 text-meta font-bold text-again">
           {error}
         </p>
       )}
       <div className="mt-auto flex flex-wrap items-center justify-end gap-2">
-        <button
-          type="button"
-          onClick={() => onClose()}
-          className="min-h-11 rounded-btn border border-line bg-surface px-4 text-sm font-semibold"
-        >
+        <Button variant="text" onClick={() => onClose()}>
           Cancel
-        </button>
-        <button
-          type="submit"
-          disabled={pending || (mode === "flag" && note.trim() === "")}
-          className="min-h-11 rounded-btn bg-accent px-[18px] text-sm font-bold text-on-accent disabled:opacity-60"
-        >
+        </Button>
+        <Button type="submit" loading={pending} disabled={pending || (mode === "flag" && note.trim() === "")}>
           {pending ? "Saving…" : mode === "flag" ? "Flag it" : "Save the edit"}
-        </button>
+        </Button>
       </div>
     </form>
   );
