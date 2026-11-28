@@ -72,7 +72,7 @@ function GameTile({ game }: { game: CatalogGame }) {
   const live = isLive(game.slug);
   const body = (
     <>
-      <GameGlyph glyph={game.glyph} size={58} className={`absolute top-1.5 right-1.5 laptop:size-20 ${gameTone(game.slug)}`} />
+      <GameGlyph glyph={game.glyph} size={58} className={`absolute -top-1 right-0 laptop:top-1.5 laptop:right-1.5 laptop:size-20 ${gameTone(game.slug)}`} />
       <span className="absolute top-2 left-2 flex flex-col items-start gap-1">
         <Chip kind="soon">{live ? `${game.minutes} min` : "Soon"}</Chip>
         {live && <BestChip game={game.slug} />}
