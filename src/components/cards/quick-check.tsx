@@ -450,57 +450,65 @@ function QuickCheckDone(props: {
 }) {
   const { tally } = props;
   const total = tally.known + tally.unsure + tally.unknown;
+  // Laptop: the result on the left, Up next and the way back on the right. Phone (and with nothing up next): one column.
+  const split = props.upNext !== null;
   return (
-    <DoneShell>
+    <DoneShell split={split}>
       <DoneTop label="Close the quick check" />
-      <DoneHead title={props.finished ? "Done for today" : "Stopped for now"} tick={props.finished && total > 0}>
-        <p className="m-0 mt-0.5 text-body text-ink2">
-          Quick check · day {Math.min(props.day, 3)} of 3 · {total} {total === 1 ? "item" : "items"} checked
-        </p>
-        {total > 0 && (
-          <div className="mt-1">
-            <SaveState state={props.outbox} saving />
-          </div>
-        )}
-      </DoneHead>
-      <section aria-label="How it went" className="mt-6.5 border-t-[1.5px] border-line pt-5">
-        <StatGrid cols={3}>
-          <StatTile value={tally.known} label="knew it" tone="good" size="lg" />
-          <StatTile value={tally.unsure} label="unsure" size="lg" />
-          <StatTile value={tally.unknown} label="forgot" tone="again" size="lg" />
-        </StatGrid>
-      </section>
-      <div className="mt-5">
-        <Note icon="info">
-          <p className="m-0">What you knew comes back over the next 4 weeks, at most 30 a day. Unsure and forgotten items go first in your new cards.</p>
-          {props.leftAfter > 0 && (
-            <p className="m-0 text-ink2">
-              {props.leftAfter} items are left for {props.day < 3 ? "the next days" : "another day"}.
+      <div className={split ? "flex flex-col laptop:grid laptop:grid-cols-2 laptop:items-center laptop:gap-x-12 laptop:pb-8 wide:gap-x-16" : "flex flex-col"}>
+        <div className="flex min-w-0 flex-col">
+          <DoneHead title={props.finished ? "Done for today" : "Stopped for now"} tick={props.finished && total > 0}>
+            <p className="m-0 mt-0.5 text-body text-ink2">
+              Quick check · day {Math.min(props.day, 3)} of 3 · {total} {total === 1 ? "item" : "items"} checked
             </p>
+            {total > 0 && (
+              <div className="mt-1">
+                <SaveState state={props.outbox} saving />
+              </div>
+            )}
+          </DoneHead>
+          <section aria-label="How it went" className="mt-6.5 border-t-[1.5px] border-line pt-5">
+            <StatGrid cols={3}>
+              <StatTile value={tally.known} label="knew it" tone="good" size="lg" />
+              <StatTile value={tally.unsure} label="unsure" size="lg" />
+              <StatTile value={tally.unknown} label="forgot" tone="again" size="lg" />
+            </StatGrid>
+          </section>
+          <div className="mt-5">
+            <Note icon="info">
+              <p className="m-0">What you knew comes back over the next 4 weeks, at most 30 a day. Unsure and forgotten items go first in your new cards.</p>
+              {props.leftAfter > 0 && (
+                <p className="m-0 text-ink2">
+                  {props.leftAfter} items are left for {props.day < 3 ? "the next days" : "another day"}.
+                </p>
+              )}
+            </Note>
+          </div>
+          {props.leftAfter > 0 && (
+            <div className="mt-3 flex justify-center">
+              <Button variant="secondary" href="/quick-check?more=1" iconEnd="arrow-right">
+                Keep going now
+              </Button>
+            </div>
           )}
-        </Note>
-      </div>
-      {props.leftAfter > 0 && (
-        <div className="mt-3 flex justify-center">
-          <Button variant="secondary" href="/quick-check?more=1" iconEnd="arrow-right">
-            Keep going now
-          </Button>
+          {props.outbox.offline && (
+            <div className="mt-4">
+              <NoSignal />
+            </div>
+          )}
         </div>
-      )}
-      {props.outbox.offline && (
-        <div className="mt-4">
-          <NoSignal />
+        <div className={`flex min-w-0 flex-col ${split ? "laptop:rounded-card laptop:bg-surface2 laptop:p-6" : ""}`}>
+          {props.upNext && (
+            <div className="mt-6 laptop:mt-0">
+              <UpNextCard upNext={props.upNext} offline={props.outbox.offline} />
+            </div>
+          )}
+          <div className="mt-2 flex justify-center laptop:mt-3">
+            <Button variant="quiet" href="/">
+              Back to Today
+            </Button>
+          </div>
         </div>
-      )}
-      {props.upNext && (
-        <div className="mt-6">
-          <UpNextCard upNext={props.upNext} offline={props.outbox.offline} />
-        </div>
-      )}
-      <div className="mt-2 flex justify-center">
-        <Button variant="quiet" href="/">
-          Back to Today
-        </Button>
       </div>
     </DoneShell>
   );
