@@ -26,6 +26,7 @@
   /* Lines */
   --line: #e1e7f1;
   --line-strong: #c5cfe0;
+  --control-edge: #8792aa; /* input and switch edges, 3:1 on surface */
   --track: #e5ebf4;
   /* The one action */
   --accent: #2a62d8;
@@ -119,6 +120,7 @@
   --ink3: #949db0;
   --line: #2b3241;
   --line-strong: #3c4558;
+  --control-edge: #5e6a85; /* input and switch edges, 3:1 on surface */
   --track: #2b3241;
   --accent: #7eaaff;
   --on-accent: #0e1a33;
@@ -225,6 +227,7 @@
   --color-ink3: var(--ink3);
   --color-line: var(--line);
   --color-line-strong: var(--line-strong);
+  --color-control-edge: var(--control-edge);
   --color-track: var(--track);
   --color-accent: var(--accent);
   --color-on-accent: var(--on-accent);

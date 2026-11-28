@@ -3,7 +3,7 @@ import { type InputHTMLAttributes, type ReactNode, type SelectHTMLAttributes, ty
 import { Icon } from "./icon";
 
 const CONTROL =
-  "block w-full rounded-btn border-[1.5px] border-line-strong bg-surface px-4 text-ink outline-none transition-[border-color,box-shadow] duration-120 placeholder:text-ink3 focus:border-accent focus:shadow-field aria-invalid:border-again disabled:border-line disabled:bg-surface2 disabled:text-ink3";
+  "block w-full rounded-btn border-[1.5px] border-control-edge bg-surface px-4 text-ink outline-none transition-[border-color,box-shadow] duration-120 placeholder:text-ink3 focus:border-accent focus:shadow-field aria-invalid:border-again disabled:border-line disabled:bg-surface2 disabled:text-ink3";
 
 type Common = {
   /** The visible label above (14/700). */
@@ -27,7 +27,7 @@ type FieldProps = Common &
 
 /**
  * A labelled input, textarea or select: label 14/700 above, a 52-tall box (radius 14, 16px text,
- * 1.5px line-strong edge), the hint or error under it. Focus = accent edge + a soft ring. Every other
+ * 1.5px control-edge edge (3:1)), the hint or error under it. Focus = accent edge + a soft ring. Every other
  * prop (name, defaultValue, required, onChange, ref …) goes to the control itself, so uncontrolled
  * form fields keep working.
  *
@@ -93,7 +93,7 @@ export function AnswerInput({
   ja?: boolean;
   className?: string;
 } & InputHTMLAttributes<HTMLInputElement>) {
-  const edge = { idle: "border-line-strong focus:border-accent focus:shadow-field", right: "border-good", wrong: "border-again" }[state];
+  const edge = { idle: "border-control-edge focus:border-accent focus:shadow-field", right: "border-good", wrong: "border-again" }[state];
   return (
     <input
       lang={ja ? "ja" : undefined}

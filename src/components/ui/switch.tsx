@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * The on/off switch: a 52 × 32 track (accent when on, a line-strong edge when off) with a sliding
+ * The on/off switch: a 52 × 32 track (accent when on, a control-edge edge when off, 3:1) with a sliding
  * knob. A real checkbox with role="switch" underneath. Controlled (`checked` + `onChange`) or, in a
  * form, uncontrolled (`defaultChecked` + `name`).
  *
@@ -40,7 +40,7 @@ export function Switch({
       />
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 rounded-full border-[1.5px] border-line-strong bg-track transition-colors duration-200 peer-checked:border-accent peer-checked:bg-accent peer-focus-visible:outline-[2.5px] peer-focus-visible:outline-offset-[3px] peer-focus-visible:outline-focus peer-focus-visible:outline-solid peer-disabled:opacity-60"
+        className="pointer-events-none absolute inset-0 rounded-full border-[1.5px] border-control-edge bg-track transition-colors duration-200 peer-checked:border-accent peer-checked:bg-accent peer-focus-visible:outline-[2.5px] peer-focus-visible:outline-offset-[3px] peer-focus-visible:outline-focus peer-focus-visible:outline-solid peer-disabled:opacity-60"
       />
       <span
         aria-hidden="true"

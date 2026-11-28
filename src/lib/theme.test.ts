@@ -17,7 +17,7 @@ const THEMES: ResolvedTheme[] = ["light", "dark"];
 
 /** Every colour a theme fills; the dark block must repeat each so nothing leaks from light. */
 const COLOR_TOKENS = [
-  "page", "surface", "surface2", "raised", "ink", "ink2", "ink3", "line", "line-strong", "track", "accent", "on-accent",
+  "page", "surface", "surface2", "raised", "ink", "ink2", "ink3", "line", "line-strong", "control-edge", "track", "accent", "on-accent",
   "accent-soft", "accent-hover", "accent-press", "focus", "good", "warn", "again", "easy", "good-soft", "warn-soft",
   "again-soft", "easy-soft", "hanamaru", "on-cover", "on-cover2", "cover-blue", "cover-mint", "cover-butter", "cover-pink",
   "cover-lilac", "cover-aqua", "cover-peri", "cover-cobalt", "on-cobalt", "tone-cobalt", "tone-blue", "tone-peri",
@@ -154,6 +154,10 @@ describe("theme", () => {
       expect(contrast(c("focus"), c("page")), `${t}: focus`).toBeGreaterThanOrEqual(3);
       // Input and switch borders: the kit's line-strong is the visible edge; ink3 (placeholders) is checked above.
       expect(contrast(c("line-strong"), c("page")), `${t}: line-strong`).toBeGreaterThanOrEqual(1.4);
+      // WCAG 1.4.11: the edges that show where an input or a switch is must reach 3:1.
+      for (const ground of ["page", "surface"]) {
+        expect(contrast(c("control-edge"), c(ground)), `${t}: control-edge on ${ground}`).toBeGreaterThanOrEqual(3);
+      }
     }
   });
 
