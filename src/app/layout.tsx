@@ -6,14 +6,14 @@ import { THEME_SCRIPT } from "@/lib/theme";
 import "./globals.css";
 
 /**
- * Zen Kaku Gothic New for everything you read and the headings; Zen Old Mincho for the big
- * Japanese on card faces. Google serves Japanese fonts as ~120 small unicode-range files per
- * weight, and the browser fetches only the ones a page uses. (next/font/google downloads all
- * 607 at every dev start and build, and the dev server timed out on a quarter of them.) The 900
- * weights are for the games at /play: titles, scores and the big glyphs.
+ * Zen Maru Gothic for the UI (500 body, 700 labels and buttons, 900 titles and numbers) and Klee One
+ * 600 for card kana, Japanese lines and the teacher's note: the textbook pencil hand. Only the weights
+ * in use are loaded. Google serves Japanese fonts as ~120 small unicode-range files per weight, and the
+ * browser fetches only the ones a page uses. (next/font/google downloads all of them at every dev start
+ * and build, and the dev server timed out on a quarter of them.)
  */
 const FONTS_CSS =
-  "https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Zen+Old+Mincho:wght@600;700;900&display=swap";
+  "https://fonts.googleapis.com/css2?family=Klee+One:wght@600&family=Zen+Maru+Gothic:wght@500;700;900&display=swap";
 
 export const metadata: Metadata = {
   title: { default: "Michi 道", template: "%s · Michi" },

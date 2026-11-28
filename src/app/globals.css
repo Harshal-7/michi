@@ -1,272 +1,419 @@
 @import "tailwindcss";
 
 /*
- * Michi's tokens: the approved mix "Colours Washi · Fonts 2 Print · Cards Soft · Nav Pill", with the
- * themes Harshal picked on 28 Nov 2026 (canvas page "Themes"; .claude/skills/michi-design/SKILL.md).
- * The theme blocks below are the only place colours are written down; everything else uses the tokens.
+ * Michi's tokens: the 2026 redesign, B "Hanamaru" (notebook blue, cover colours, the red pencil) with C's
+ * art (the snow rabbit and the seasonal farmhouse). Approved on the canvas page "Redesign · final";
+ * every value comes from michi-canvas/redesign/final/kit/tokens.css.txt (.claude/skills/michi-design).
  *
- * Each device picks a light theme and a dark theme in Settings → Theme. THEME_SCRIPT in src/lib/theme.ts
- * puts data-theme="light|dark" and data-look="<theme>" on <html> before the first paint. Every theme
- * fills the same tokens; they differ in their whites or darks and in how cards sit on the page
- * (--card-shadow: a soft shadow, a fine line, or nothing). They share the accent and rating colours.
+ * One light and one dark theme. THEME_SCRIPT in src/lib/theme.ts puts data-theme="light|dark" on <html>
+ * before the first paint. The theme blocks below are the only place colours are written down; everything
+ * else uses the tokens through Tailwind (bg-surface, text-ink2, rounded-card, shadow-card, text-body …).
+ * Both blocks also match [data-theme] on any element, so /design can show light and dark side by side.
  * src/lib/theme.ts repeats each --page for the phone's address bar, and src/app/icon.svg uses the light
- * --accent and --on-accent; src/lib/theme.test.ts keeps them in step.
+ * --accent and --on-accent; src/lib/theme.test.ts keeps them in step and checks the contrast pairs.
  */
-:root {
-  --radius: 18px;
-  --btn-radius: 999px;
-  --hero-shadow: 0 0 0 2px var(--accent), 0 8px 24px var(--shadow);
-  --nav-shadow: 0 10px 30px var(--glow);
+:root,
+[data-theme="light"] {
+  /* Grounds */
+  --page: #ffffff;
+  --surface: #ffffff;
+  --surface2: #f4f7fc;
+  --raised: #ffffff;
+  /* Text */
+  --ink: #1e2a44;
+  --ink2: #46526d;
+  --ink3: #5f6a84;
+  /* Lines */
+  --line: #e1e7f1;
+  --line-strong: #c5cfe0;
+  --track: #e5ebf4;
+  /* The one action */
+  --accent: #2a62d8;
+  --on-accent: #ffffff;
+  --accent-soft: #e6eefd;
+  --accent-hover: #2456c2;
+  --accent-press: #1f4cad;
+  --focus: #2a62d8;
+  /* States and their soft fills (grade buttons, covers) */
+  --good: #17815a; /* kit #18845A, one step darker so it reads on surface2 (4.5:1) */
+  --warn: #946300;
+  --again: #b8325e;
+  --easy: #1d6fb8;
+  --good-soft: #cff0e1;
+  --warn-soft: #fcebaf;
+  --again-soft: #fadbe3;
+  --easy-soft: #d5e5fc;
+  /* The red pencil: rewards only (the hanamaru, the red tick, よくできました, "New best!") */
+  --hanamaru: #d3263c;
+  /* Notebook covers, text on them, and their deeper tones (glyphs, sticker and checkbox rims) */
+  --on-cover: #1e2a44;
+  --on-cover2: #46526d;
+  --cover-blue: #d5e5fc;
+  --cover-mint: #cff0e1;
+  --cover-butter: #fcebaf;
+  --cover-pink: #fadbe3;
+  --cover-lilac: #e5ddfa;
+  --cover-aqua: #ccedf1;
+  --cover-peri: #d9dffb;
+  --cover-cobalt: #2453c4;
+  --on-cobalt: #ffffff;
+  --tone-cobalt: #4f7fe6;
+  --tone-blue: #6e9bea;
+  --tone-peri: #8797ea;
+  --tone-mint: #5cc198;
+  --tone-lilac: #a48de6;
+  --tone-butter: #e2b93f;
+  --tone-aqua: #45b8c6;
+  --tone-pink: #e98ba6;
+  /* Art */
+  --paper-rule: #d9e3f2;
+  --ring-metal: #8e9ab0;
+  --snow: #ffffff;
+  --usagi: #ffffff;
+  --usagi-shade: #dae1f3;
+  --usagi-edge: #c9d2e6;
+  --usagi-ground: #dce3f4;
+  --lit: #ffd45e;
+  --scene-night: #1b2455;
+  --shade: rgba(30, 42, 68, 0.13);
+  --scrim: rgba(18, 24, 40, 0.45);
+  /* Shadows (Tailwind: shadow-card, shadow-raised, shadow-btn, shadow-seg, shadow-grade, shadow-sticker, shadow-field) */
+  --card-shadow: 0 1px 0 rgba(30, 42, 68, 0.05), 0 8px 20px -12px rgba(30, 42, 68, 0.28);
+  --raised-shadow: 0 2px 6px rgba(30, 42, 68, 0.08), 0 24px 48px -20px rgba(30, 42, 68, 0.4);
+  --btn-shadow: 0 2px 0 rgba(20, 40, 90, 0.18);
+  --seg-shadow: 0 1px 2px rgba(30, 42, 68, 0.12), 0 0 0 1.5px var(--line-strong);
+  --grade-shadow: inset 0 -3px 0 rgba(30, 42, 68, 0.1);
 
-  /* Loaded from Google Fonts in src/app/layout.tsx. */
-  --font-ui: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", sans-serif;
-  --font-head: "Zen Kaku Gothic New", "Hiragino Sans", "Noto Sans JP", sans-serif;
-  --font-card: "Zen Old Mincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
-  --head-weight: 700;
+  /* Legacy names, kept until every screen is restyled (3d deletes them). */
+  --shadow: var(--shade);
+  --glow: rgba(42, 98, 216, 0.18);
+
+  /* Each game's colour on /play (hueStyle() in src/lib/games/catalog.ts): a deep shade for text and a
+     cover tint. theme.test.ts checks 4.5:1 both ways, on the page and cards, and ink on the tint. */
+  --g-kana: #2453c4;
+  --g-kana-tint: #d5e5fc;
+  --g-vocab: #4150b8;
+  --g-vocab-tint: #d9dffb;
+  --g-forms: #0f6e4a;
+  --g-forms-tint: #cff0e1;
+  --g-particles: #6446b8;
+  --g-particles-tint: #e5ddfa;
+  --g-numbers: #765000;
+  --g-numbers-tint: #fcebaf;
+  --g-sounds: #0b6670;
+  --g-sounds-tint: #ccedf1;
+  --g-listen: #a42d59;
+  --g-listen-tint: #fadbe3;
 
   color-scheme: light;
 }
 
-/* Light themes. Kumo is the default, so it sits on :root. */
-/* Kumo 雲: light grey page, white raised cards. */
-:root {
-  --page: #f2f2f1;
-  --surface: #ffffff;
-  --surface2: #ececeb;
-  --ink: #1a1a1a;
-  --ink2: #595959;
-  --line: #e2e2e0;
-  --accent: #b03a22;
-  --on-accent: #fff8f0;
-  --accent-soft: #f8e4de;
-  --good: #2f6b45;
-  --warn: #7d5c00;
-  --again: #a3242b;
-  --easy: #2f5c8a;
-  --track: #e8e8e6;
-  --glow: rgba(176, 58, 34, 0.16);
-  --shadow: rgba(0, 0, 0, 0.06);
-  --card-shadow: 0 1px 2px var(--shadow), 0 8px 24px var(--shadow);
-}
-
-/* Shiro 白: pure white, cards drawn with a fine line. */
-[data-look="shiro"] {
-  --page: #ffffff;
-  --surface: #ffffff;
-  --surface2: #f4f4f3;
-  --ink: #1a1a1a;
-  --ink2: #5c5c5c;
-  --line: #e5e5e3;
-  --accent: #b03a22;
-  --on-accent: #fff8f0;
-  --accent-soft: #f8e4de;
-  --good: #2f6b45;
-  --warn: #7d5c00;
-  --again: #a3242b;
-  --easy: #2f5c8a;
-  --track: #ececea;
-  --glow: rgba(176, 58, 34, 0.16);
-  --shadow: rgba(0, 0, 0, 0.05);
-  --card-shadow: 0 0 0 1px var(--line);
-}
-
-/* Kinu 絹: white page, flat light grey cards. */
-[data-look="kinu"] {
-  --page: #ffffff;
-  --surface: #f5f5f4;
-  --surface2: #e9e9e7;
-  --ink: #1a1a1a;
-  --ink2: #575757;
-  --line: #e0e0de;
-  --accent: #b03a22;
-  --on-accent: #fff8f0;
-  --accent-soft: #f5e0d9;
-  --good: #2f6b45;
-  --warn: #7d5c00;
-  --again: #a3242b;
-  --easy: #2f5c8a;
-  --track: #e1e1df;
-  --glow: rgba(176, 58, 34, 0.16);
-  --shadow: rgba(0, 0, 0, 0.05);
-  --card-shadow: none;
-}
-
-/* Washi 和紙: the first look: cream paper. */
-[data-look="washi"] {
-  --page: #faf8f3;
-  --surface: #fefdfa;
-  --surface2: #f2eee6;
-  --ink: #1d1a16;
-  --ink2: #5b544a;
-  --line: #e3dccf;
-  --accent: #b03a22;
-  --on-accent: #fff8f0;
-  --accent-soft: #f2dcd3;
-  --good: #2f6b45;
-  --warn: #7d5c00;
-  --again: #a3242b;
-  --easy: #2f5c8a;
-  --track: #ebe5da;
-  --glow: rgba(176, 58, 34, 0.16);
-  --shadow: rgba(40, 30, 20, 0.08);
-  --card-shadow: 0 1px 2px var(--shadow), 0 8px 24px var(--shadow);
-}
-
-/*
- * Dark themes. Kuro is the default. They follow Material's dark theme
- * (m2.material.io/design/color/dark-theme): raised surfaces are lighter than the page, text is
- * off-white, and the accent and rating colours are desaturated so they pass 4.5:1 on every surface.
- */
-/* Kuro 黒: true black, cards drawn with a fine line. */
+/* Dark: the night desk. */
 [data-theme="dark"] {
-  --page: #000000;
-  --surface: #121212;
-  --surface2: #1f1f1f;
-  --ink: #ececec;
-  --ink2: #a3a3a3;
-  --line: #2c2c2c;
-  --accent: #e88a73;
-  --on-accent: #1a0d08;
-  --accent-soft: #33221e;
-  --good: #8fcb9b;
-  --warn: #e0b565;
-  --again: #f28b82;
-  --easy: #8ab4f8;
-  --track: #2a2a2a;
-  --glow: rgba(232, 138, 115, 0.16);
-  --shadow: rgba(0, 0, 0, 0.6);
-  --card-shadow: 0 0 0 1px var(--line);
+  --page: #12151c;
+  --surface: #191d26;
+  --surface2: #1f2430;
+  --raised: #252b38;
+  --ink: #e9edf5;
+  --ink2: #b9c1d1;
+  --ink3: #949db0;
+  --line: #2b3241;
+  --line-strong: #3c4558;
+  --track: #2b3241;
+  --accent: #7eaaff;
+  --on-accent: #0e1a33;
+  --accent-soft: #1e2b47;
+  --accent-hover: #9abdff;
+  --accent-press: #6a98f0;
+  --focus: #9dbeff;
+  --good: #5ccb9c;
+  --warn: #eac160;
+  --again: #ff8aa6;
+  --easy: #74b7f5;
+  --good-soft: #8fcfb3;
+  --warn-soft: #e3c97e;
+  --again-soft: #e9a9b9;
+  --easy-soft: #9bbcf0;
+  --hanamaru: #ff5c70;
+  --on-cover: #1a2238;
+  --on-cover2: #34405c;
+  --cover-blue: #9bbcf0;
+  --cover-mint: #8fcfb3;
+  --cover-butter: #e3c97e;
+  --cover-pink: #e9a9b9;
+  --cover-lilac: #bcaeea;
+  --cover-aqua: #8bccd5;
+  --cover-peri: #aab5ee;
+  --cover-cobalt: #2f5bcb;
+  --on-cobalt: #ffffff;
+  --tone-cobalt: #5b86e6;
+  --tone-blue: #6d93da;
+  --tone-peri: #6f81da;
+  --tone-mint: #45a97f;
+  --tone-lilac: #8e76d6;
+  --tone-butter: #c9a43a;
+  --tone-aqua: #3aa2b0;
+  --tone-pink: #d9728f;
+  --paper-rule: #323a4b;
+  --ring-metal: #8e9ab0;
+  --snow: #eef1f7;
+  --usagi: #e9edf5;
+  --usagi-shade: #b4bfda;
+  --usagi-edge: #e9edf5;
+  --usagi-ground: #2b3241;
+  --lit: #ffd45e;
+  --scene-night: #0a0e25;
+  --shade: rgba(0, 0, 0, 0.35);
+  --scrim: rgba(0, 0, 0, 0.6);
+  --card-shadow: 0 1px 0 rgba(0, 0, 0, 0.3), 0 10px 24px -12px rgba(0, 0, 0, 0.6);
+  --raised-shadow: 0 2px 6px rgba(0, 0, 0, 0.4), 0 24px 48px -20px rgba(0, 0, 0, 0.7);
+  --btn-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+  --seg-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 0 1.5px var(--line-strong);
+  --grade-shadow: inset 0 -3px 0 rgba(30, 42, 68, 0.1);
+
+  --shadow: var(--shade);
+  --glow: rgba(126, 170, 255, 0.18);
+
+  --g-kana: #9dbeff;
+  --g-kana-tint: #1e2b47;
+  --g-vocab: #aab5ee;
+  --g-vocab-tint: #23284a;
+  --g-forms: #8fcfb3;
+  --g-forms-tint: #15302a;
+  --g-particles: #bcaeea;
+  --g-particles-tint: #2a2247;
+  --g-numbers: #e3c97e;
+  --g-numbers-tint: #332a12;
+  --g-sounds: #8bccd5;
+  --g-sounds-tint: #123035;
+  --g-listen: #e9a9b9;
+  --g-listen-tint: #3a1c28;
 
   color-scheme: dark;
 }
 
-/* Sumi 墨: soft charcoal, a touch warm. */
-[data-theme="dark"][data-look="sumi"] {
-  --page: #1a1918;
-  --surface: #252422;
-  --surface2: #302e2c;
-  --ink: #eeebe6;
-  --ink2: #aca79f;
-  --line: #3b3936;
-  --accent: #e88a73;
-  --on-accent: #1a0d08;
-  --accent-soft: #3d2a24;
-  --good: #8fcb9b;
-  --warn: #e0b565;
-  --again: #f28b82;
-  --easy: #8ab4f8;
-  --track: #373532;
-  --glow: rgba(232, 138, 115, 0.16);
-  --shadow: rgba(0, 0, 0, 0.45);
-  --card-shadow: 0 1px 2px var(--shadow), 0 8px 24px var(--shadow);
-}
+/* Shared by both themes: fonts, the bar height, motion. */
+:root {
+  /* The phone's bottom bar: main's bottom padding and the outbox chip sit above it. */
+  --nav-h: 72px;
+  --ring: 0 0 0 3px var(--page), 0 0 0 5.5px var(--focus);
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-spring: cubic-bezier(0.3, 1.4, 0.5, 1);
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 320ms;
+  --dur-draw: 800ms;
 
-/* Graphite: Material grey, the first dark. */
-[data-theme="dark"][data-look="graphite"] {
-  --page: #121212;
-  --surface: #1e1e1e;
-  --surface2: #2c2c2c;
-  --ink: #e0e0e0;
-  --ink2: #a0a0a0;
-  --line: #383838;
-  --accent: #e88a73;
-  --on-accent: #1a0d08;
-  --accent-soft: #342522;
-  --good: #8fcb9b;
-  --warn: #e0b565;
-  --again: #f28b82;
-  --easy: #8ab4f8;
-  --track: #333333;
-  --glow: rgba(232, 138, 115, 0.16);
-  --shadow: rgba(0, 0, 0, 0.5);
-  --card-shadow: 0 1px 2px var(--shadow), 0 8px 24px var(--shadow);
+  /* Legacy names, kept until every screen is restyled (3d deletes them). */
+  --font-head: var(--font-ui);
+  --font-card: var(--font-ja);
+  --head-weight: 700;
 }
 
 /*
- * The games at /play have their own look (canvas page "Play · public games", approved 28 Nov 2026):
- * a colour per game, bigger corners and a lifted hero. The pairs are the same in every light theme
- * and in every dark theme. Text in a game's colour sits on its tint or on --surface, and the tint
- * reads on the colour too; src/lib/theme.test.ts checks 4.5:1 for each in every theme.
+ * Tailwind names for the tokens. Tailwind's own palette is switched off, so a typo or a stock colour
+ * (bg-red-500) doesn't compile into anything; src/lib/design-lint.test.ts also catches them.
  */
-:root {
-  --radius-play: 26px;
-  --lift: 0 2px 4px var(--shadow), 0 14px 32px var(--shadow);
-  --g-kana: #b03a22;
-  --g-kana-tint: #fbe4dd;
-  --g-vocab: #2d4e9c;
-  --g-vocab-tint: #e2e8f8;
-  --g-forms: #2f6b45;
-  --g-forms-tint: #ddf0e4;
-  --g-particles: #7b3a8f;
-  --g-particles-tint: #f1e3f6;
-  --g-numbers: #855800;
-  --g-numbers-tint: #f9ebc8;
-  --g-sounds: #0e6767;
-  --g-sounds-tint: #d6f0ee;
-  --g-listen: #a12e5c;
-  --g-listen-tint: #fae1eb;
-}
-
-[data-theme="dark"] {
-  --g-kana: #f2a08b;
-  --g-kana-tint: #3a1b14;
-  --g-vocab: #9db5f5;
-  --g-vocab-tint: #18223d;
-  --g-forms: #8fd0a0;
-  --g-forms-tint: #14301f;
-  --g-particles: #d9a6ea;
-  --g-particles-tint: #2e1a36;
-  --g-numbers: #ebc46e;
-  --g-numbers-tint: #352808;
-  --g-sounds: #7fd6d2;
-  --g-sounds-tint: #0e2e2e;
-  --g-listen: #f29bbe;
-  --g-listen-tint: #3a1626;
-}
-
-/* Tailwind names for the tokens: bg-surface, text-ink2, border-line, rounded-card, shadow-card, laptop: … */
 @theme inline {
+  --color-*: initial;
   --color-page: var(--page);
   --color-surface: var(--surface);
   --color-surface2: var(--surface2);
+  --color-raised: var(--raised);
   --color-ink: var(--ink);
   --color-ink2: var(--ink2);
+  --color-ink3: var(--ink3);
   --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-track: var(--track);
   --color-accent: var(--accent);
   --color-on-accent: var(--on-accent);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-press: var(--accent-press);
+  --color-focus: var(--focus);
   --color-good: var(--good);
   --color-warn: var(--warn);
   --color-again: var(--again);
   --color-easy: var(--easy);
-  --color-track: var(--track);
-
-  --radius-card: var(--radius);
-  --radius-btn: var(--btn-radius);
-
-  --shadow-card: var(--card-shadow);
-  --shadow-hero: var(--hero-shadow);
-  --shadow-nav: var(--nav-shadow);
-  --shadow-lift: var(--lift);
-  --radius-game: var(--radius-play);
-
+  --color-good-soft: var(--good-soft);
+  --color-warn-soft: var(--warn-soft);
+  --color-again-soft: var(--again-soft);
+  --color-easy-soft: var(--easy-soft);
+  /* Role aliases. */
+  --color-danger: var(--again);
+  --color-danger-soft: var(--again-soft);
+  --color-info: var(--easy);
+  --color-info-soft: var(--easy-soft);
+  --color-hanamaru: var(--hanamaru);
+  --color-on-cover: var(--on-cover);
+  --color-on-cover2: var(--on-cover2);
+  --color-cover-blue: var(--cover-blue);
+  --color-cover-mint: var(--cover-mint);
+  --color-cover-butter: var(--cover-butter);
+  --color-cover-pink: var(--cover-pink);
+  --color-cover-lilac: var(--cover-lilac);
+  --color-cover-aqua: var(--cover-aqua);
+  --color-cover-peri: var(--cover-peri);
+  --color-cover-cobalt: var(--cover-cobalt);
+  --color-on-cobalt: var(--on-cobalt);
+  --color-tone-cobalt: var(--tone-cobalt);
+  --color-tone-blue: var(--tone-blue);
+  --color-tone-peri: var(--tone-peri);
+  --color-tone-mint: var(--tone-mint);
+  --color-tone-lilac: var(--tone-lilac);
+  --color-tone-butter: var(--tone-butter);
+  --color-tone-aqua: var(--tone-aqua);
+  --color-tone-pink: var(--tone-pink);
+  --color-paper-rule: var(--paper-rule);
+  --color-ring-metal: var(--ring-metal);
+  --color-snow: var(--snow);
+  --color-usagi: var(--usagi);
+  --color-usagi-shade: var(--usagi-shade);
+  --color-usagi-edge: var(--usagi-edge);
+  --color-usagi-ground: var(--usagi-ground);
+  --color-lit: var(--lit);
+  --color-scene-night: var(--scene-night);
+  --color-shade: var(--shade);
+  --color-scrim: var(--scrim);
   /* A game's colour on /play: the page sets --hue and --hue-tint (src/lib/games/catalog.ts), so
      one class (bg-hue-tint, text-hue) serves every game. */
   --color-hue: var(--hue);
   --color-hue-tint: var(--hue-tint);
 
+  --shadow-card: var(--card-shadow);
+  --shadow-raised: var(--raised-shadow);
+  --shadow-btn: var(--btn-shadow);
+  --shadow-seg: var(--seg-shadow);
+  --shadow-grade: var(--grade-shadow);
+  --shadow-sticker: 0 0 0 3px var(--snow), 0 4px 10px -3px var(--shade);
+  --shadow-field: 0 0 0 3px var(--accent-soft);
+  --shadow-ring: var(--ring);
+  /* Legacy names (3d deletes them). */
+  --shadow-hero: 0 0 0 2px var(--accent), var(--card-shadow);
+  --shadow-nav: var(--raised-shadow);
+  --shadow-lift: var(--raised-shadow);
+}
+
+/* The scale. Variables are emitted, so components can read them too (var(--text-body)). */
+@theme static {
+  /* Zen Maru Gothic 500/700/900 for the UI; Klee One 600 for card kana, Japanese lines and the teacher's
+     note. Loaded from the one Google Fonts link in src/app/layout.tsx. font-ui, font-ja. */
+  --font-ui: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Hiragino Sans", sans-serif;
+  --font-ja: "Klee One", "Zen Maru Gothic", "Hiragino Sans", sans-serif;
+
+  /* Type (px): 12 must-do and tab labels · 14 meta · 16 body · 18 large buttons, sub-heads · 22 card
+     and section titles · 28 phone screen titles · 40 laptop titles, kana on a card's back · 72 card kana.
+     Nothing under 12; inputs 16. Weights: 500 body, 700 labels and buttons, 900 titles and numbers. */
+  --text-caption: 12px;
+  --text-caption--line-height: 16px;
+  --text-meta: 14px;
+  --text-meta--line-height: 20px;
+  --text-body: 16px;
+  --text-body--line-height: 24px;
+  --text-lead: 18px;
+  --text-lead--line-height: 26px;
+  --text-title: 22px;
+  --text-title--line-height: 28px;
+  --text-headline: 28px;
+  --text-headline--line-height: 34px;
+  --text-display: 40px;
+  --text-display--line-height: 46px;
+  --text-kana: 72px;
+  --text-kana--line-height: 1.1;
+  /* Lines that carry furigana need room above them. */
+  --leading-ja: 2;
+
+  /* Radii: chips 7 with one index-tab corner, buttons 14 (large 16), cards 22, sheets 28. */
+  --radius-chip: 7px 7px 7px 2px;
+  --radius-box: 8px;
+  --radius-seg: 11px;
+  --radius-pill: 12px;
+  --radius-btn: 14px;
+  --radius-track: 15px;
+  --radius-btn-lg: 16px;
+  --radius-grade: 16px 16px 16px 6px;
+  --radius-card: 22px;
+  --radius-sheet: 28px;
+  /* Legacy name (3d deletes it). */
+  --radius-game: 22px;
+
+  /* Layers: nav < chip < session < sheet < banner. */
+  --z-index-nav: 20;
+  --z-index-chip: 30;
+  --z-index-session: 40;
+  --z-index-sheet: 50;
+  --z-index-banner: 60;
+
+  --ease-calm: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-spring: cubic-bezier(0.3, 1.4, 0.5, 1);
+
+  --animate-draw: draw 800ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-drop: drop 420ms cubic-bezier(0.3, 1.4, 0.5, 1) both;
+  --animate-fill: fill-up linear both;
+  --animate-fade: fade 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-pulse-soft: pulse-soft 1.6s ease-in-out infinite;
+
   --breakpoint-laptop: 64rem;
   /* Wide laptop screens (1280px+): pages that opt in with data-wide use a second column. */
   --breakpoint-wide: 80rem;
+
+  /* The hanamaru ring draws itself (pathLength="1" paths). */
+  @keyframes draw {
+    from {
+      stroke-dashoffset: 1;
+    }
+  }
+  /* The day's sticker drops onto the sheet. */
+  @keyframes drop {
+    from {
+      transform: translateY(-24px) rotate(-30deg) scale(1.2);
+      opacity: 0;
+    }
+  }
+  /* TimerBar: grows from empty to full over the round (animation-duration set inline). */
+  @keyframes fill-up {
+    from {
+      transform: scaleX(0);
+    }
+  }
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+  }
+  @keyframes pulse-soft {
+    50% {
+      opacity: 0.55;
+    }
+  }
 }
 
-/* font-head for headings, font-card for big Japanese on cards (Zen Old Mincho). */
+/* The main column clears the phone's bottom bar; floating bits sit just above it. */
+@utility pb-nav {
+  padding-bottom: calc(var(--nav-h) + 32px + env(safe-area-inset-bottom));
+}
+@utility bottom-nav {
+  bottom: calc(var(--nav-h) + 12px + env(safe-area-inset-bottom));
+}
+@utility h-nav {
+  height: calc(var(--nav-h) + env(safe-area-inset-bottom));
+}
+@utility pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+@utility pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Legacy utilities (3d deletes them): headings and big Japanese on the old screens. */
 @utility font-head {
-  font-family: var(--font-head);
+  font-family: var(--font-ui);
   font-weight: var(--head-weight);
 }
 @utility font-card {
-  font-family: var(--font-card);
+  font-family: var(--font-ja);
+  font-weight: 600;
 }
 
 @layer base {
@@ -274,6 +421,7 @@
     background: var(--page);
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
+    scrollbar-color: var(--line-strong) transparent;
   }
 
   body {
@@ -282,8 +430,36 @@
     background: var(--page);
     color: var(--ink);
     font-family: var(--font-ui);
+    font-weight: 500;
+    font-size: 16px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Anything inside a [data-theme] block (the /design panels) takes that theme's ground and ink. */
+  [data-theme] {
+    color: var(--ink);
+  }
+
+  p,
+  li,
+  dd,
+  figcaption,
+  blockquote {
+    text-wrap: pretty;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  /* Japanese breaks between phrases, not mid-word (Chrome); strict rules for small kana and marks. */
+  :lang(ja) {
+    word-break: auto-phrase;
+    line-break: strict;
   }
 
   a {
@@ -298,30 +474,52 @@
     color: inherit;
   }
 
+  input,
+  textarea {
+    caret-color: var(--accent);
+  }
+
   button {
     cursor: pointer;
   }
 
-  /* Furigana: 0.4em in the secondary ink. */
+  ::selection {
+    background: var(--accent-soft);
+    color: var(--ink);
+  }
+
+  ::placeholder {
+    color: var(--ink3);
+    opacity: 1;
+  }
+
+  /* Furigana: half the size, never under 10px, in the secondary ink. */
   rt {
-    font-size: 0.4em;
+    font-size: max(0.5em, 10px);
     color: var(--ink2);
   }
 
-  /* A visible ring on everything you can tab to. */
+  /* The focus ring on everything you can tab to: a 3px gap, then 2.5px of --focus (the kit's --ring). */
   :focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
+    outline: 2.5px solid var(--focus);
+    outline-offset: 3px;
   }
 }
 
+/*
+ * Reduced motion, calm rather than switched off: things that would move or draw show their end state
+ * at once (the hanamaru already drawn, the sticker already placed, windows already lit), colour and
+ * opacity changes stay as short fades, and nothing is hidden.
+ */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
+    animation-duration: 1ms !important;
+    animation-delay: 0s !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-property: color, background-color, border-color, opacity, outline-color !important;
+    transition-duration: var(--dur-1) !important;
     scroll-behavior: auto !important;
   }
 }
