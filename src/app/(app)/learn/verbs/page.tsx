@@ -68,7 +68,9 @@ export default async function VerbsPage() {
           </ul>
           {guide.form === "te" && (
             <table className="w-full border-collapse text-body">
-              <caption className="sr-only">Group 1 て-forms by the last sound</caption>
+              <caption className="sr-only">
+                Group 1 <span lang="ja">て</span>-forms by the last sound
+              </caption>
               <thead>
                 <tr className="text-left text-meta text-ink2">
                   <th className="py-1 font-bold">Ends in</th>

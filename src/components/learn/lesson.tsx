@@ -33,7 +33,9 @@ function MixUps({ items }: { items: Confusable[] }) {
             <span className="font-ja text-lead font-semibold">
               <Mixed text={c.pattern} />
             </span>
-            <span className="min-w-0 flex-1 text-meta text-ink2">{c.gloss}</span>
+            <span className="min-w-0 flex-1 text-meta text-ink2">
+              <Mixed text={c.gloss} />
+            </span>
             <Icon name="chevron-right" size={20} className="text-ink3" />
           </Link>
         </li>
@@ -94,10 +96,12 @@ export function LessonView({
               <h1 className="m-0 font-ja text-display leading-snug font-semibold tracking-wide">
                 <Mixed text={lesson.pattern} />
               </h1>
-              <p className="m-0 mt-0.5 text-lead font-bold">{lesson.gloss}</p>
+              <p className="m-0 mt-0.5 text-lead font-bold">
+                <Mixed text={lesson.gloss} />
+              </p>
               <div className="mt-3 flex flex-wrap gap-2">
                 <Chip cover="blue">{lesson.level}</Chip>
-                {lesson.topic && <Chip cover="lilac">{lesson.topic}</Chip>}
+                {lesson.topic && <Chip cover="lilac"><Mixed text={lesson.topic} /></Chip>}
               </div>
               {lesson.formation && !same(lesson.formation, lesson.pattern) && (
                 <p className="m-0 mt-3 text-meta text-ink2">

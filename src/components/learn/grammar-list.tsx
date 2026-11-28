@@ -56,7 +56,7 @@ export function GrammarList({ points, nextId }: { points: PointRow[]; nextId: nu
       {groups.length === 0 && <p className="m-0 text-body text-ink2">No grammar points match.</p>}
       {groups.map((g, gi) => (
         <section key={`${g.topic ?? "all"}-${gi}`} aria-label={g.topic ?? "Grammar points"} className="flex flex-col">
-          {g.topic && <h2 className="m-0 mt-2 text-lead font-bold">{g.topic}</h2>}
+          {g.topic && <h2 className="m-0 mt-2 text-lead font-bold"><Mixed text={g.topic} /></h2>}
           <List>
             {g.points.map((p) => (
               <ListRow
@@ -68,7 +68,7 @@ export function GrammarList({ points, nextId }: { points: PointRow[]; nextId: nu
                   </span>
                 }
                 chip={p.id === nextId ? <Chip cover="butter">next</Chip> : undefined}
-                meta={p.gloss}
+                meta={<Mixed text={p.gloss} />}
                 trailing={<StatusChip status={p.status} />}
               />
             ))}
